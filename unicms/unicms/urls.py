@@ -20,7 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'mdeditor/', include('mdeditor.urls'))
+    path('mdeditor/', include('mdeditor.urls'))
 ]
 
 

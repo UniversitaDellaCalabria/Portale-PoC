@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'mdeditor',
+    
+    'cms_context',
 
 ]
 

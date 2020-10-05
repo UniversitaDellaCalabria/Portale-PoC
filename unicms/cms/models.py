@@ -1,123 +1,14 @@
-# coding: utf-8
+import logging
 
-from django.db import models
 from django.contrib.auth import get_user_model()
-
-from mdeditor.fields import MDTextField
-
-from django.core import urlresolvers
 from django.contrib.contenttypes.models import ContentType
+from django.db import models
 from django.utils.translation import gettext_lazy as _ 
 
+from cms_context.models import *
+from mdeditor.fields import MDTextField
 
-class TimeStampedModel(models.Model):
-	create = models.DateTimeField(auto_now_add=True)
-	modified =  models.DateTimeField(auto_now=True)
-
-	class Meta:
-		abstract = True
- 
-
-class EditorialBoardContext(TimeStampedModel):
-    """
-    A Page can belong to one or more Context
-    A editor/moderator can belong to one or more Context
-    The same for Page Templates
-    """
-    name = models.CharField(max_length=160, blank=False, 
-                            null=False, unique=True)
-    request_match = models.TextField(max_length=1024, 
-                                     null=False, blank=False,
-                                     unique=True)
-    is_active   = models.BooleanField()
-    
-    class Meta:
-        ordering = ['name']
-        verbose_name_plural = _("EditorialBoard Context")
-    
-    def __str__(self):
-        return self.name
-
-
-class EditorialBoardPermission(TimeStampedModel):
-    CHOICES = (('0', _('nothing')),
-               ('1', _('can edit his/her own')),
-               ('2', _('can edit all pages in his/her context')),
-               ('3', _('can edit all pages')),
-               ('4', _('can edit his/her own')),
-               )
-    
-    name = models.CharField(max_length=160, blank=False, 
-                            null=False, unique=True)
-    rights = models.CharField(max_length=5, blank=False, 
-                              null=False, choices=CHOICES)
-    
-    class Meta:
-        ordering = ['name']
-        verbose_name_plural = _("EditorialBoard Permissions")
-    
-    def __str__(self):
-        return self.name
-
-
-class EditorialBoardRole(TimeStampedModel):
-    # CHOICES = (('-1', _('Translator')),
-               # ('0', _('Editor')),
-               # ('1', _('Context Moderator')),
-               # ('3', _('Platform Moderator')),
-               # )
-    name = models.CharField(max_length=160, blank=False, 
-                            null=False, unique=True)
-    
-    class Meta:
-        ordering = ['name']
-        verbose_name_plural = _("EditorialBoard Roles")
-    
-    def __str__(self):
-        return self.name
-
-
-class EditorialBoardRolePermissions(TimeStampedModel):
-    role = models.ForeignKey(EditorialBoardRole)
-    permission = models.ForeignKey(EditorialBoardPermission)
-    
-    class Meta:
-        ordering = ['name']
-        verbose_name_plural = _("EditorialBoard Role Permissions")
-    
-    def __str__(self):
-        return self.name
-
-
-class EditorialBoardContextUsers(TimeStampedModel):
-    """
-    A Page can belong to one or more Context
-    A editor/moderator can belong to one or more Context
-    The same for Page Templates
-    """
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    context = models.ForeignKey(EditorialBoardContext, on_delete=models.CASCADE)
-    role = models.ForeignKey(EditorialBoardRole, on_delete=models.CASCADE)
-    is_active   = models.BooleanField()
-    
-    class Meta:
-        verbose_name_plural = _("EditorialBoard Context Users")
-    
-    def __str__(self):
-        return self.name
-
-
-class EditorialBoardWorkFlow(TimeStampedModel):
-    context = models.ForeignKey(EditorialBoardContext, 
-                                on_delete=models.CASCADE)
-    can_publish = models.ForeignKey(EditorialBoardRole, 
-                                    on_delete=models.CASCADE)
-    
-    class Meta:
-        verbose_name_plural = _("EditorialBoard Context WorkFlow")
-    
-    def __str__(self):
-        return self.name
+logger = logging.getLogger(__name__)
 
 
 class Category(TimeStampedModel):
@@ -125,7 +16,7 @@ class Category(TimeStampedModel):
                                    null=False, unique=False)
     description = models.TextField(max_length=1024, 
                                    null=False, blank=False)
-    image       = models.ImageField(upload_to="pages_categories/images/", 
+    image       = models.ImageField(upload_to="page_categories/images/", 
                                     null=True, blank=True, 
                                     max_length=254)
     
@@ -138,10 +29,11 @@ class Category(TimeStampedModel):
     
     def image_as_html(self):
         if getattr(self.image, 'url', None):
-            return '<img width=51 src="{}"/>'.format(.url)
+            src_img = self.image.url
         else:
-            return '<img width=51 src="/statics/images/no-image.jpg">{}'
-    
+            src_img = "{}/images/no-image.jpg".format(settings.STATIC_URL)
+        return '<img width={} src="{}"/>'.format(src_img)
+        
     image_as_html.short_description = _('Image of this Category')
     image_as_html.allow_tags = True
 
@@ -238,16 +130,21 @@ class Page(TimeStampedModel):
 
 class Language(TimeStampedModel):
     id_tabella          = models.AutoField(primary_key=True)
-    name                = models.CharField(max_length=160, blank=False, null=False, unique=False)
-    short_name          = models.CharField(max_length=12, blank=False, null=False)
+    name                = models.CharField(max_length=160, blank=False, 
+                                           null=False, unique=False)
+    short_name          = models.CharField(max_length=12, 
+                                           blank=False, null=False)
     created    = models.DateTimeField(auto_now=True)
-    icon                = models.ImageField(upload_to="languages_icons/", null=True, blank=True, max_length=133)    
+    icon                = models.ImageField(upload_to="languages_icons/", 
+                                            null=True, blank=True, max_length=133)    
     is_active           = models.BooleanField()
+    
     class Meta:
         ordering = ['nome']
         verbose_name_plural = "Lingue"        
+    
     def __str__(self):
-        return '%s' % self.nome
+        return self.nome
 
 
 class PageMultiLanguage(TimeStampedModel):
