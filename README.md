@@ -24,7 +24,6 @@ of the following permissions (see `cms_context.settings.CMS_CONTEXT_PERMISSIONS`
 - can edit all pages in his/her context
 - can edit all pages in his/her context and descendants
 - can edit all pages
-- can edit his/her own
 - can translate all pages in his/her context
 - can translate all pages in his/her context and descendants
 - can translate all pages
