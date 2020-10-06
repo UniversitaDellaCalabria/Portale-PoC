@@ -1,8 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 
 
-CMS_CONTEXT_PERMISSIONS = (('0', _('everything everywhere')),
-                           ('1', _('can edit created by him/her')),
+CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her')),
                            ('2', _('can edit all pages in his/her context')),
                            ('3', _('can edit all pages in his/her context and descendants')),
                            ('3', _('can edit all pages')),

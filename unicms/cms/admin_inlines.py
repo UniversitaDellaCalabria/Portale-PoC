@@ -16,6 +16,7 @@ class PageLinkInline(admin.TabularInline):
 class PageRelatedInline(admin.TabularInline):
     model = PageRelated
     fk_name = 'page'
+    autocomplete_fields = ('related_page',)
     extra = 0
 
 
