@@ -14,8 +14,8 @@ class EditorialBoardContextAdminInline(admin.TabularInline):
     extra = 0
 
 
-class EditorialBoardUsersAdminInline(admin.TabularInline):
-    model = EditorialBoardUsers
+class EditorialBoardEditorsAdminInline(admin.TabularInline):
+    model = EditorialBoardEditors
     extra = 0
     readonly_fields = ('created', 'modified')
     autocomplete_fields = ('user', 'context')
@@ -36,12 +36,12 @@ class EditorialBoardContextAdmin(admin.ModelAdmin):
     list_filter = ('site', 'created', 'modified', 'is_active')
     search_fields = ('name', 'path',)
     readonly_fields = ('created', 'modified')
-    inlines = (EditorialBoardUsersAdminInline,)
+    inlines = (EditorialBoardEditorsAdminInline,)
 
 
-@admin.register(EditorialBoardRolePermissions)
-class EditorialBoardRolePermissionsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'permission', 'is_active')
+@admin.register(EditorialBoardEditors)
+class EditorialBoardEditorsAdmin(admin.ModelAdmin):
+    list_display = ('user', 'permission', 'context', 'is_active')
     list_filter = ('permission', 'created', 'modified', 'is_active')
-    search_fields = ('name', )
+    search_fields = ('user', )
     readonly_fields = ('created', 'modified')
