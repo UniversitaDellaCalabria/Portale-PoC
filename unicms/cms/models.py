@@ -13,9 +13,12 @@ from . settings import *
 logger = logging.getLogger(__name__)
 CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
                                   CMS_IMAGE_CATEGORY_SIZE)
+CMS_BLOCK_SCHEMAS = getattr(settings, 'CMS_BLOCK_SCHEMAS',
+                                  CMS_BLOCK_SCHEMAS)
+
 
 class SortableModel(models.Model):
-    order = models.IntegerField(null=True, blank=True)
+    order = models.IntegerField(null=True, blank=True, default=10)
 
     class Meta:
         abstract = True
@@ -25,6 +28,28 @@ class SortableModel(models.Model):
 class ActivableModel(models.Model):
     is_active    = models.BooleanField()
 
+    class Meta:
+        abstract = True
+
+
+class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel):
+    name = models.CharField(max_length=60, blank=True, null=True, 
+                            help_text=_("Specify the container "
+                                        "section in the template where "
+                                        "this block would be rendered."))
+    schema = models.TextField(choices=CMS_BLOCK_SCHEMAS,
+                              blank=False, null=False)
+    template = models.CharField(choices=[(i, i) for i in CMS_BLOCK_TEMPLATES],
+                                blank=False, null=False,
+                                max_length=1024)
+    content = models.TextField(help_text=_("according to the "
+                                           "block template schema"),
+                               blank=True, null=True)
+    section = models.CharField(max_length=60, blank=True, null=True, 
+                               help_text=_("Specify the container "
+                                           "section in the template where "
+                                           "this block would be rendered."))
+    
     class Meta:
         abstract = True
 
@@ -74,19 +99,22 @@ class SubCategory(TimeStampedModel):
 class PageTemplate(TimeStampedModel, ActivableModel):
     name = models.CharField(max_length=160,
                             blank=True, null=True)
-    path = models.CharField(max_length=1024,
-                            blank=False, null=False)
+    template_file = models.CharField(max_length=1024,
+                                     blank=False, null=False,
+                                     choices=[(i,i) for i in CMS_PAGE_TEMPLATES])
 
     class Meta:
         ordering = ['name']
-        verbose_name_plural = _("Page HTML Templates")
+        verbose_name_plural = _("Page Templates")
 
     def __str__(self):
         return self.name if self.name else self.path
 
 
-class BlockTemplate(PageTemplate, ActivableModel):
-    schema = models.TextField(help_text=_("in json format"))
+class PageBlockTemplate(AbstractPageBlock):
+    template = models.ForeignKey(PageTemplate,
+                                 null=False, blank=False,
+                                 on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['name']
@@ -152,21 +180,12 @@ class Page(TimeStampedModel, ActivableModel):
         return '{} {}'.format(self.context, self.slug)
 
 
-class PageBlock(TimeStampedModel):
+class PageBlock(AbstractPageBlock):
     page = models.ForeignKey(Page, null=False, blank=False,
                              on_delete=models.CASCADE)
-    block_template = models.ForeignKey(BlockTemplate,
-                                       null=False, blank=False,
-                                       on_delete=models.CASCADE)
-    content = models.TextField(help_text=_("json according to the "
-                                           "template schema"))
-
+    
     class Meta:
         verbose_name_plural = _("Page Block")
-
-    def get_translation(self, lang_id):
-        return PageBlockLocalization.objects.\
-                filter(lang=lang_id, page=self)
 
     def __str__(self):
         return '{} {}'.format(self.page, self.block_template)

@@ -32,7 +32,7 @@ class SiteAdmin(admin.ModelAdmin):
 
 @admin.register(EditorialBoardContext)
 class EditorialBoardContextAdmin(admin.ModelAdmin):
-    list_display = ('name', 'path', 'is_active')
+    list_display = ('name', 'path', 'site', 'is_active')
     list_filter = ('site', 'created', 'modified', 'is_active')
     search_fields = ('name', 'path',)
     readonly_fields = ('created', 'modified')

@@ -23,3 +23,7 @@ class PageRelatedInline(admin.TabularInline):
 class PageBlockInline(admin.TabularInline):
     model = PageBlock
     extra = 0
+
+class PageBlockTemplateInline(admin.TabularInline):
+    model = PageBlockTemplate
+    extra = 0

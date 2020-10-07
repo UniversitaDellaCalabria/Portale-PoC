@@ -10,6 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display  = ('name', 'image_as_html')
     inlines = (SubCategoryAdminInline, )
 
+
 #  @admin.register(SubCategory)
 class SubCategoryAdmin(admin.ModelAdmin):
     list_display  = ('name', 'category')
@@ -18,14 +19,15 @@ class SubCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(PageTemplate)
 class PageTemplateAdmin(admin.ModelAdmin):
-    list_display  = ('name', 'path', 'created', 'is_active')
-    search_fields   = ('name', 'path',)
+    list_display  = ('name', 'template_file', 'created', 'is_active')
+    search_fields   = ('name', 'template_file',)
+    inlines       = (PageBlockTemplateInline, )
 
 
-@admin.register(BlockTemplate)
-class BlockTemplateAdmin(admin.ModelAdmin):
-    list_display  = ('name', 'path', 'is_active')
-    search_fields   = ('name', 'path',)
+@admin.register(PageBlockTemplate)
+class PageBlockTemplateAdmin(admin.ModelAdmin):
+    list_display  = ('name', 'template', 'is_active')
+    search_fields   = ('name', 'template',)
 
 
 @admin.register(Page)
