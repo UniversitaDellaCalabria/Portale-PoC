@@ -20,6 +20,12 @@ class PageRelatedInline(admin.TabularInline):
     extra = 0
 
 
+class ContextNavBarItemInline(admin.TabularInline):
+    model = ContextNavBarItem
+    autocomplete_fields = ('context', 'parent', 'page')
+    extra = 0
+
+
 class PageBlockInline(admin.TabularInline):
     model = PageBlock
     extra = 0

@@ -41,9 +41,6 @@ class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel):
                                         "this block would be rendered."))
     schema = models.TextField(choices=CMS_BLOCK_SCHEMAS,
                               blank=False, null=False)
-    template = models.CharField(choices=[(i, i) for i in CMS_BLOCK_TEMPLATES],
-                                blank=False, null=False,
-                                max_length=1024)
     content = models.TextField(help_text=_("according to the "
                                            "block template schema"),
                                blank=True, null=True)
@@ -103,7 +100,7 @@ class PageTemplate(TimeStampedModel, ActivableModel):
                             blank=True, null=True)
     template_file = models.CharField(max_length=1024,
                                      blank=False, null=False,
-                                     choices=[(i,i) for i in CMS_PAGE_TEMPLATES])
+                                     choices=CMS_PAGE_TEMPLATES)
 
     class Meta:
         ordering = ['name']
@@ -117,7 +114,9 @@ class PageBlockTemplate(AbstractPageBlock):
     template = models.ForeignKey(PageTemplate,
                                  null=False, blank=False,
                                  on_delete=models.CASCADE)
-
+    template_file = models.CharField(max_length=1024,
+                                     blank=False, null=False,
+                                     choices=CMS_BLOCK_TEMPLATES)
     class Meta:
         ordering = ['name']
         verbose_name_plural = _("Page Block HTML Templates")
@@ -145,6 +144,29 @@ class ContextBasePageTemplate(TimeStampedModel, ActivableModel):
 
     def __str__(self):
         return self.name
+
+
+class ContextNavBarItem(TimeStampedModel, SortableModel, ActivableModel):
+    """
+    elements that builds up the navigation menu
+    """
+    context = models.ForeignKey(ContextBasePageTemplate,
+                                on_delete=models.CASCADE,
+                                limit_choices_to={'is_active': True},)
+    name = models.CharField(max_length=33, blank=False, null=False)
+    parent = models.ForeignKey('ContextNavBarItem', 
+                               null=False, blank=False,
+                               on_delete=models.CASCADE,
+                               related_name="related_page")
+    url = models.URLField(help_text=_("url"))
+    page = models.ForeignKey('Page', null=True, blank=True,
+                             on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name_plural = _("Context Navigation Menu Items")
+
+    def __str__(self):
+        return '{} {}'.format(self.page, self.parent or '')
 
 
 class Page(TimeStampedModel, ActivableModel):

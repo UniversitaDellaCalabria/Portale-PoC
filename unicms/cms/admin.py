@@ -35,7 +35,14 @@ class ContextBasePageTemplateAdmin(admin.ModelAdmin):
     list_display  = ('name', 'context', 'template', 'is_active')
     search_fields   = ('name', 'template',)
     list_filter = ('context', )
-    inlines = (PageInline,)
+    inlines = (ContextNavBarItemInline, PageInline,)
+
+
+@admin.register(ContextNavBarItem)
+class ContextNavBarItemAdmin(admin.ModelAdmin):
+    list_display  = ('context', 'name', 'parent', 'is_active')
+    search_fields   = ('context', 'name', 'parent',)
+    list_filter = ('context', 'created', 'modified')
 
 
 @admin.register(Page)
