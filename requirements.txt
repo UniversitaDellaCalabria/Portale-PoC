@@ -3,4 +3,6 @@ django_unical_bootstrap_italia
 
 # https://github.com/pylixm/django-mdeditor
 django-mdeditor>=0.1.18
+django-taggit
 pillow
+

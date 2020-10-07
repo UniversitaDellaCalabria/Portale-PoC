@@ -9,5 +9,4 @@ CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her')),
                            ('6', _('can publish created by him/her')),
                            ('7', _('can publish all pages in his/her context')),
                            ('8', _('can publish all pages in his/her context and descendants')),
-                           ('9', _('can publish all pages')),
                            )

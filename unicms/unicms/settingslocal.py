@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'mdeditor',
 
     'cms_context',
+    'taggit',
     'cms',
 
 ]

@@ -30,10 +30,19 @@ class PageBlockTemplateAdmin(admin.ModelAdmin):
     search_fields   = ('name', 'template',)
 
 
+@admin.register(ContextBasePageTemplate)
+class ContextBasePageTemplateAdmin(admin.ModelAdmin):
+    list_display  = ('name', 'context', 'template', 'is_active')
+    search_fields   = ('name', 'template',)
+    list_filter = ('context', )
+    inlines = (PageInline,)
+
+
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
     search_fields = ('slug',)
     list_display  = ('context', 'slug', 'is_active',)
-    list_filter   = ('category', 'state', 'is_active',
+    list_filter   = ('state', 'is_active', 'category',
                      'created', 'modified', 'date_start', 'date_end')
-    inlines       = (PageBlockInline, PageRelatedInline, PageLinkInline, )
+    inlines       = (PageBlockInline, PageRelatedInline, 
+                     PageLinkInline, PageThirdPartyBlockInline)

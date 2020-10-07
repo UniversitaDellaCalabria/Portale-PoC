@@ -24,6 +24,17 @@ class PageBlockInline(admin.TabularInline):
     model = PageBlock
     extra = 0
 
+
+class PageThirdPartyBlockInline(admin.TabularInline):
+    model = PageThirdPartyBlock
+    extra = 0
+
+
 class PageBlockTemplateInline(admin.TabularInline):
     model = PageBlockTemplate
+    extra = 0
+
+
+class PageInline(admin.TabularInline):
+    model = Page
     extra = 0

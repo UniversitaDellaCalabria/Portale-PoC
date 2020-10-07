@@ -54,4 +54,5 @@ Todo
 
 - SiteMap exporter
 - Api OAS3
--
+- Menu builder (per context)
+- Category/SubCategory labels localization

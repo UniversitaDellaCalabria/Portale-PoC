@@ -7,14 +7,16 @@ from django.utils.translation import gettext_lazy as _
 
 from cms_context.models import *
 from mdeditor.fields import MDTextField
+from taggit.managers import TaggableManager
 
 from . settings import *
+
 
 logger = logging.getLogger(__name__)
 CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
                                   CMS_IMAGE_CATEGORY_SIZE)
 CMS_BLOCK_SCHEMAS = getattr(settings, 'CMS_BLOCK_SCHEMAS',
-                                  CMS_BLOCK_SCHEMAS)
+                            CMS_BLOCK_SCHEMAS)
 
 
 class SortableModel(models.Model):
@@ -59,13 +61,13 @@ class Category(TimeStampedModel):
                                    null=False, unique=False)
     description = models.TextField(max_length=1024,
                                    null=False, blank=False)
-    image       = models.ImageField(upload_to="page_categories/images/",
+    image       = models.ImageField(upload_to="images/categories",
                                     null=True, blank=True,
                                     max_length=512)
 
     class Meta:
         ordering = ['name']
-        verbose_name_plural = _("Category")
+        verbose_name_plural = _("Content Categories")
 
     def __str__(self):
         return self.name
@@ -93,7 +95,7 @@ class SubCategory(TimeStampedModel):
         verbose_name_plural = _("SubCategory")
 
     def __str__(self):
-        return self.name
+        return '({}) {}'.format(self.category, self.name)
 
 
 class PageTemplate(TimeStampedModel, ActivableModel):
@@ -124,21 +126,43 @@ class PageBlockTemplate(AbstractPageBlock):
         return self.name if self.name else self.path
 
 
-class Page(TimeStampedModel, ActivableModel):
-    STATES = (('draft', _('Draft')),
-              ('wait', _('Wait for a revision')),
-              ('published', _('Published')),)
-
+class ContextBasePageTemplate(TimeStampedModel, ActivableModel):
+    name = models.CharField(max_length=160,
+                            blank=False, null=False)
     context = models.ForeignKey(EditorialBoardContext,
                                 on_delete=models.CASCADE,
                                 limit_choices_to={'is_active': True},)
     template = models.ForeignKey(PageTemplate,
                                  on_delete=models.CASCADE,
                                  limit_choices_to={'is_active': True},)
+    note = models.TextField(null=True, blank=True,
+                            help_text=_("Editorial Board Notes, "
+                                        "not visible by public."))
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = _("Context Base Page Templates")
+
+    def __str__(self):
+        return self.name
+
+
+class Page(TimeStampedModel, ActivableModel):
+    STATES = (('draft', _('Draft')),
+              ('wait', _('Wait for a revision')),
+              ('published', _('Published')),)
+
+    name = models.CharField(max_length=160,
+                            blank=False, null=False)
+    context = models.ForeignKey(ContextBasePageTemplate,
+                                on_delete=models.CASCADE,
+                                limit_choices_to={'is_active': True},)
     slug = models.SlugField(max_length=256,
                             help_text=_('name-of-the-url-path'))
     category = models.ManyToManyField(SubCategory)
-    editorial_note = models.TextField(null=True,blank=True)
+    note = models.TextField(null=True, blank=True,
+                            help_text=_("Editorial Board Notes, "
+                                        "not visible by public."))
 
     date_start = models.DateTimeField()
     date_end = models.DateTimeField(null=True, blank=True)
@@ -152,7 +176,7 @@ class Page(TimeStampedModel, ActivableModel):
                                     null=True, blank=True,
                                     on_delete=models.CASCADE,
                                     related_name='modified_by')
-
+    tags = TaggableManager()
 
     def delete(self, *args, **kwargs):
         pubs = PageRelativa.objects.filter(Page_relativa=self)
@@ -177,7 +201,7 @@ class Page(TimeStampedModel, ActivableModel):
         return [i.image_as_html() for i in self.categorie.all()]
 
     def __str__(self):
-        return '{} {}'.format(self.context, self.slug)
+        return '{} {}'.format(self.name, self.state)
 
 
 class PageBlock(AbstractPageBlock):
@@ -188,20 +212,41 @@ class PageBlock(AbstractPageBlock):
         verbose_name_plural = _("Page Block")
 
     def __str__(self):
-        return '{} {}'.format(self.page, self.block_template)
+        return '{} {} {}:{}'.format(self.page,
+                                    self.order or '#', 
+                                    self.section or '#')
+
+
+class PageThirdPartyBlock(TimeStampedModel, SortableModel, ActivableModel):
+    page = models.ForeignKey(Page, null=False, blank=False,
+                             on_delete=models.CASCADE)
+    block = models.ForeignKey(PageBlock, null=False, blank=False,
+                             on_delete=models.CASCADE)
+    section = models.CharField(max_length=60, blank=True, null=True, 
+                               help_text=_("Specify the container "
+                                           "section in the template where "
+                                           "this block would be rendered."))
+    
+    class Meta:
+        verbose_name_plural = _("Page Third-Party Block")
+
+    def __str__(self):
+        return '{} {} {}:{}'.format(self.page, self.block, 
+                                    self.order or '#', 
+                                    self.section or '#')
 
 
 class PageBlockLocalization(TimeStampedModel, ActivableModel):
-    page_block = models.ForeignKey(Page, null=False, blank=False,
-                                   on_delete=models.CASCADE)
+    block = models.ForeignKey(Page, null=False, blank=False,
+                              on_delete=models.CASCADE)
     language   = models.CharField(choices=settings.LANGUAGES,
                                   max_length=12, null=False,blank=False)
 
     class Meta:
-        verbose_name_plural = _("Page block Localizations")
+        verbose_name_plural = _("Page Third-Party Blocks")
 
     def __str__(self):
-        return '{} {}'.format(self.page, self.Language)
+        return '{} {}'.format(self.block, self.language)
 
 
 class PageRelated(TimeStampedModel, SortableModel, ActivableModel):
