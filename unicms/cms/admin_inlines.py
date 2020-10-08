@@ -41,6 +41,11 @@ class PageBlockTemplateInline(admin.TabularInline):
     extra = 0
 
 
+class PageTemplateThirdPartyBlockInline(admin.TabularInline):
+    model = PageTemplateThirdPartyBlock
+    extra = 0
+
+
 class PageInline(admin.TabularInline):
     model = Page
     extra = 0

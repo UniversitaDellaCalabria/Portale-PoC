@@ -17,6 +17,8 @@ CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
                                   CMS_IMAGE_CATEGORY_SIZE)
 CMS_BLOCK_SCHEMAS = getattr(settings, 'CMS_BLOCK_SCHEMAS',
                             CMS_BLOCK_SCHEMAS)
+CMS_TEMPLATE_BLOCK_SECTIONS = getattr(settings, 'CMS_TEMPLATE_BLOCK_SECTIONS',
+                                      CMS_TEMPLATE_BLOCK_SECTIONS)
 
 
 class SortableModel(models.Model):
@@ -35,7 +37,7 @@ class ActivableModel(models.Model):
 
 
 class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel):
-    name = models.CharField(max_length=60, blank=True, null=True, 
+    name = models.CharField(max_length=60, blank=True, null=True,
                             help_text=_("Specify the container "
                                         "section in the template where "
                                         "this block would be rendered."))
@@ -44,11 +46,12 @@ class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel):
     content = models.TextField(help_text=_("according to the "
                                            "block template schema"),
                                blank=True, null=True)
-    section = models.CharField(max_length=60, blank=True, null=True, 
+    section = models.CharField(max_length=60, blank=True, null=True,
                                help_text=_("Specify the container "
                                            "section in the template where "
-                                           "this block would be rendered."))
-    
+                                           "this block would be rendered."),
+                               choices=CMS_TEMPLATE_BLOCK_SECTIONS)
+
     class Meta:
         abstract = True
 
@@ -110,13 +113,35 @@ class PageTemplate(TimeStampedModel, ActivableModel):
         return self.name if self.name else self.path
 
 
+class PageTemplateThirdPartyBlock(TimeStampedModel, SortableModel, ActivableModel):
+    template = models.ForeignKey(PageTemplate,
+                                 on_delete=models.CASCADE,
+                                 limit_choices_to={'is_active': True},)
+    block = models.ForeignKey('PageBlock', null=False, blank=False,
+                             on_delete=models.CASCADE)
+    section = models.CharField(max_length=33, blank=True, null=True,
+                               help_text=_("Specify the container "
+                                           "section in the template where "
+                                           "this block would be rendered."),
+                               choices=CMS_TEMPLATE_BLOCK_SECTIONS)
+
+    class Meta:
+        verbose_name_plural = _("Page Template Third-Party Block")
+
+    def __str__(self):
+        return '({}) {} {}:{}'.format(self.template, self.block,
+                                      self.order or '#',
+                                      self.section or '#')
+
+
 class PageBlockTemplate(AbstractPageBlock):
     template = models.ForeignKey(PageTemplate,
                                  null=False, blank=False,
                                  on_delete=models.CASCADE)
     template_file = models.CharField(max_length=1024,
                                      blank=False, null=False,
-                                     choices=CMS_BLOCK_TEMPLATES)
+                                     choices=CMS_BLOCK_TEMPLATES,
+                                     default='base.html')
     class Meta:
         ordering = ['name']
         verbose_name_plural = _("Page Block HTML Templates")
@@ -125,7 +150,7 @@ class PageBlockTemplate(AbstractPageBlock):
         return self.name if self.name else self.path
 
 
-class ContextBasePageTemplate(TimeStampedModel, ActivableModel):
+class ContextBasePage(TimeStampedModel, ActivableModel):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
     context = models.ForeignKey(EditorialBoardContext,
@@ -140,7 +165,7 @@ class ContextBasePageTemplate(TimeStampedModel, ActivableModel):
 
     class Meta:
         ordering = ['name']
-        verbose_name_plural = _("Context Base Page Templates")
+        verbose_name_plural = _("Context Base Pages")
 
     def __str__(self):
         return self.name
@@ -150,23 +175,24 @@ class ContextNavBarItem(TimeStampedModel, SortableModel, ActivableModel):
     """
     elements that builds up the navigation menu
     """
-    context = models.ForeignKey(ContextBasePageTemplate,
+    context = models.ForeignKey(ContextBasePage,
                                 on_delete=models.CASCADE,
                                 limit_choices_to={'is_active': True},)
     name = models.CharField(max_length=33, blank=False, null=False)
-    parent = models.ForeignKey('ContextNavBarItem', 
-                               null=False, blank=False,
+    parent = models.ForeignKey('ContextNavBarItem',
+                               null=True, blank=True,
                                on_delete=models.CASCADE,
                                related_name="related_page")
-    url = models.URLField(help_text=_("url"))
+    url = models.URLField(help_text=_("url"), null=True, blank=True)
     page = models.ForeignKey('Page', null=True, blank=True,
                              on_delete=models.CASCADE)
-    
+
     class Meta:
         verbose_name_plural = _("Context Navigation Menu Items")
 
     def __str__(self):
-        return '{} {}'.format(self.page, self.parent or '')
+        return '({}) {} {}'.format(self.context,
+                                   self.name, self.parent or '')
 
 
 class Page(TimeStampedModel, ActivableModel):
@@ -176,7 +202,7 @@ class Page(TimeStampedModel, ActivableModel):
 
     name = models.CharField(max_length=160,
                             blank=False, null=False)
-    context = models.ForeignKey(ContextBasePageTemplate,
+    context = models.ForeignKey(ContextBasePage,
                                 on_delete=models.CASCADE,
                                 limit_choices_to={'is_active': True},)
     slug = models.SlugField(max_length=256,
@@ -229,13 +255,13 @@ class Page(TimeStampedModel, ActivableModel):
 class PageBlock(AbstractPageBlock):
     page = models.ForeignKey(Page, null=False, blank=False,
                              on_delete=models.CASCADE)
-    
+
     class Meta:
         verbose_name_plural = _("Page Block")
 
     def __str__(self):
         return '{} {} {}:{}'.format(self.page,
-                                    self.order or '#', 
+                                    self.order or '#',
                                     self.section or '#')
 
 
@@ -244,17 +270,18 @@ class PageThirdPartyBlock(TimeStampedModel, SortableModel, ActivableModel):
                              on_delete=models.CASCADE)
     block = models.ForeignKey(PageBlock, null=False, blank=False,
                              on_delete=models.CASCADE)
-    section = models.CharField(max_length=60, blank=True, null=True, 
+    section = models.CharField(max_length=60, blank=True, null=True,
                                help_text=_("Specify the container "
                                            "section in the template where "
-                                           "this block would be rendered."))
-    
+                                           "this block would be rendered."),
+                               choices=CMS_TEMPLATE_BLOCK_SECTIONS)
+
     class Meta:
         verbose_name_plural = _("Page Third-Party Block")
 
     def __str__(self):
-        return '{} {} {}:{}'.format(self.page, self.block, 
-                                    self.order or '#', 
+        return '{} {} {}:{}'.format(self.page, self.block,
+                                    self.order or '#',
                                     self.section or '#')
 
 
