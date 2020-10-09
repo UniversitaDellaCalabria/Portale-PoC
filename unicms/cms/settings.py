@@ -12,8 +12,13 @@ logging.basicConfig(level=getattr(logging, 'DEBUG'))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-CMS_TEMPLATE_BLOCK_SECTIONS = (('head', _('Header')),
+CMS_TEMPLATE_BLOCK_SECTIONS = (('pre-head', _('Pre-Header')),
+                               ('head', _('Header')),
                                ('menu', _('Navigation Menu')),
+                               ('menu-2', _('Navigation Menu 2')),
+                               ('menu-3', _('Navigation Menu 3')),
+                               ('slider', _('Carousel/Slider')),
+                               ('slider-2', _('Carousel/Slider 2')),
                                ('1','1'),
                                ('2','2'),
                                ('3','3'),
@@ -23,6 +28,7 @@ CMS_TEMPLATE_BLOCK_SECTIONS = (('head', _('Header')),
                                ('7','7'),
                                ('8','8'),
                                ('9','9'),
+                               ('pre-footer', _('Pre-Footer')),
                                ('footer', _('Footer'))
                               )
 

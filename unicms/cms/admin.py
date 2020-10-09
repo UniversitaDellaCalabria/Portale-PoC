@@ -59,5 +59,5 @@ class PageAdmin(admin.ModelAdmin):
     list_display  = ('context', 'slug', 'is_active',)
     list_filter   = ('state', 'is_active', 'category',
                      'created', 'modified', 'date_start', 'date_end')
-    inlines       = (PageBlockInline, PageRelatedInline,
-                     PageLinkInline, PageThirdPartyBlockInline)
+    inlines       = (PageBlockInline, PageThirdPartyBlockInline,
+                     PageRelatedInline, PageLinkInline)

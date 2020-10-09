@@ -227,19 +227,17 @@ class Page(TimeStampedModel, ActivableModel):
     tags = TaggableManager()
 
     def delete(self, *args, **kwargs):
-        pubs = PageRelativa.objects.filter(Page_relativa=self)
-        for pubss in pubs:
-            pubss.delete()
+        PageRelated.objects.filter(related_page=self).delete()
         super(Page, self).delete(*args, **kwargs)
 
 
     def save(self, *args, **kwargs):
         super(Page, self).save(*args, **kwargs)
-        for rel in PageRelativa.objects.filter(Page=self):
-            if not PageRelativa.objects.\
-                    filter(Page=rel.related_page, related_page=self):
-                PageRelativa.objects.\
-                    create(Page=rel.page, related_page=self,
+        for rel in PageRelated.objects.filter(page=self):
+            if not PageRelated.objects.\
+                    filter(page=rel.related_page, related_page=self):
+                PageRelated.objects.\
+                    create(page=rel.page, related_page=self,
                            is_active=True)
 
     class Meta:
