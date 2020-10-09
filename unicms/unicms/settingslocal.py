@@ -28,8 +28,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'mdeditor',
+    
+    'filebrowser',
+    'tinymce',
 
     'cms_context',
     'taggit',
@@ -109,3 +110,45 @@ LOGGING = {
         },
     }
 }
+
+# TinyMCE CONFIGURATION
+# https://django-tinymce.readthedocs.io/en/latest/installation.html#configuration
+
+TINYMCE_DEFAULT_CONFIG = {
+    # 'plugins': "table,spellchecker,paste,searchreplace",
+    # 'theme': "advanced",
+    # 'cleanup_on_startup': True,
+    # 'custom_undo_redo_levels': 10,
+    "theme": "silver",
+    "height": 500,
+    "menubar": True,
+    "plugins": "advlist,autolink,lists,link,image,charmap,"
+               "print,preview,anchor,"
+               "searchreplace,visualblocks,code,fullscreen,"
+               "insertdatetime,media,table,paste,hr,"
+               "code,help,wordcount",
+    "toolbar": "undo redo | formatselect | "
+               "bold italic backcolor | alignleft aligncenter "
+               "alignright alignjustify | bullist numlist outdent indent | "
+               "removeformat | help",
+    
+    # added
+    "a11y_advanced_options": True,
+    "media_alt_source": False,
+    
+    # image upload
+    # https://www.tiny.cloud/docs/general-configuration-guide/upload-images/
+}
+# TINYMCE_SPELLCHECKER = True
+# TINYMCE_COMPRESSOR = True
+
+# TINYMCE_EXTRA_MEDIA = {
+    # 'css': {
+        # 'all': [
+            # ...
+        # ],
+    # },
+    # 'js': [
+        # ...
+    # ],
+# }

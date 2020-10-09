@@ -17,10 +17,24 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from filebrowser.sites import site
+
+site.storage.location = "media/"
+site.directory = "uploads/"
+
+ADMIN_PATH = getattr(settings, 'ADMIN_PATH', 'admin')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('mdeditor/', include('mdeditor.urls'))
+    path(f'{ADMIN_PATH}/', admin.site.urls),
+    # path('mdeditor/', include('mdeditor.urls')),
+    
+    path('tinymce/', include('tinymce.urls')),
+    
+    # TODO, better configuration here
+    # https://django-filebrowser.readthedocs.io/en/latest/settings.html
+    # https://www.tiny.cloud/docs/general-configuration-guide/upload-images/
+    path(f'{ADMIN_PATH}/filebrowser/', 
+         include((site.urls[0], 'filebrowser'), namespace='filebrowser')),
 ]
 
 

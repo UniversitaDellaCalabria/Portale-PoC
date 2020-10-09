@@ -3,9 +3,9 @@ from django.contrib import admin
 from . models import *
 
 
-class SubCategoryAdminInline(admin.TabularInline):
-    model = SubCategory
-    extra = 0
+# class SubCategoryAdminInline(admin.TabularInline):
+    # model = SubCategory
+    # extra = 0
 
 
 class PageLinkInline(admin.TabularInline):
@@ -49,3 +49,9 @@ class PageTemplateThirdPartyBlockInline(admin.TabularInline):
 class PageInline(admin.TabularInline):
     model = Page
     extra = 0
+
+
+class ContextPublicationLocalizationInline(admin.StackedInline):
+    model = ContextPublicationLocalization
+    extra = 0
+
