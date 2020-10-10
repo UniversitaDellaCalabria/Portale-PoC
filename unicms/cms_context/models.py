@@ -28,7 +28,7 @@ class Site(TimeStampedModel):
     is_active   = models.BooleanField()
 
     class Meta:
-        verbose_name_plural = _("1. Sites")
+        verbose_name_plural = _("Sites")
 
     def __str__(self):
         return self.fqdn
@@ -46,7 +46,7 @@ class EditorialBoardContext(TimeStampedModel):
     is_active   = models.BooleanField()
 
     class Meta:
-        verbose_name_plural = _("2. Site Contexts")
+        verbose_name_plural = _("Site Contexts")
 
     def __str__(self):
         return '{}: {} ({})'.format(self.site, self.name, self.path)
@@ -68,7 +68,7 @@ class EditorialBoardEditors(TimeStampedModel):
     is_active   = models.BooleanField()
 
     class Meta:
-        verbose_name_plural = _("3. Context Editors")
+        verbose_name_plural = _("Context Editors")
 
     def __str__(self):
         if getattr(self, 'context'):

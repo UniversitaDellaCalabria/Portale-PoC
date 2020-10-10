@@ -4,12 +4,14 @@ from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils.safestring import mark_safe
 
 from cms_context.models import *
 from taggit.managers import TaggableManager
 from tinymce import models as tinymce_models
 
 from . settings import *
+from . utils import remove_file
 
 
 logger = logging.getLogger(__name__)
@@ -49,7 +51,9 @@ class AbstractContextPublication(TimeStampedModel, ActivableModel):
                                          help_text=_("Strap line (press)"))
     content           =  tinymce_models.HTMLField(null=True,blank=True,
                                                   help_text=_('Content'))
-    state             = models.CharField(choices=PAGE_STATES, max_length=33)
+    state             = models.CharField(choices=PAGE_STATES, 
+                                         max_length=33,
+                                         default='draft')
     date_start        = models.DateTimeField(null=True,blank=True)
     date_end          = models.DateTimeField(null=True,blank=True)
     category          = models.ManyToManyField('Category')
@@ -62,6 +66,11 @@ class AbstractContextPublication(TimeStampedModel, ActivableModel):
         indexes = [
            models.Index(fields=['title']),
         ]
+
+
+def file_context_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    return 'user_{0}/{1}'.format(instance.context.site, filename)
 
 
 class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel):
@@ -100,12 +109,18 @@ class Category(TimeStampedModel):
     def __str__(self):
         return self.name
 
+    def delete(self, *args, **kwargs):
+        remove_file(self.image.url)
+        super(self.cls, self).delete(*args, **kwargs)
+
     def image_as_html(self):
-        if getattr(self.image, 'url', None):
-            src_img = self.image.url
-        else:
-            src_img = f"{settings.STATIC_URL}/images/no-image.jpg"
-        return f'<img width={CMS_IMAGE_CATEGORY_SIZE} src="{src_img}"/>'
+        res = ""
+        try:
+            res = f'<img width={CMS_IMAGE_CATEGORY_SIZE} src="{self.image.url}"/>'
+        except ValueError as e:
+            # *** ValueError: The 'image' attribute has no file associated with it.
+            res = f"{settings.STATIC_URL}images/no-image.jpg"
+        return mark_safe(res)
 
     image_as_html.short_description = _('Image of this Category')
     image_as_html.allow_tags = True
@@ -132,13 +147,16 @@ class PageTemplate(TimeStampedModel, ActivableModel):
     template_file = models.CharField(max_length=1024,
                                      blank=False, null=False,
                                      choices=CMS_PAGE_TEMPLATES)
+    note = models.TextField(null=True, blank=True,
+                            help_text=_("Editorial Board Notes, "
+                                        "not visible by public."))
 
     class Meta:
         ordering = ['name']
         verbose_name_plural = _("Page Templates")
 
     def __str__(self):
-        return self.name if self.name else self.path
+        return '{} ({})'.format(self.name, self.template_file)
 
 
 class PageTemplateThirdPartyBlock(TimeStampedModel, SortableModel, ActivableModel):
@@ -178,32 +196,11 @@ class PageBlockTemplate(AbstractPageBlock):
         return self.name if self.name else self.path
 
 
-class ContextBasePage(TimeStampedModel, ActivableModel):
-    name = models.CharField(max_length=160,
-                            blank=False, null=False)
-    context = models.ForeignKey(EditorialBoardContext,
-                                on_delete=models.CASCADE,
-                                limit_choices_to={'is_active': True},)
-    template = models.ForeignKey(PageTemplate,
-                                 on_delete=models.CASCADE,
-                                 limit_choices_to={'is_active': True},)
-    note = models.TextField(null=True, blank=True,
-                            help_text=_("Editorial Board Notes, "
-                                        "not visible by public."))
-
-    class Meta:
-        ordering = ['name']
-        verbose_name_plural = _("Context Base Pages")
-
-    def __str__(self):
-        return self.name
-
-
 class ContextNavBarItem(TimeStampedModel, SortableModel, ActivableModel):
     """
     elements that builds up the navigation menu
     """
-    context = models.ForeignKey(ContextBasePage,
+    context = models.ForeignKey(EditorialBoardContext,
                                 on_delete=models.CASCADE,
                                 limit_choices_to={'is_active': True},)
     name = models.CharField(max_length=33, blank=False, null=False)
@@ -231,19 +228,22 @@ class ContextNavBarItem(TimeStampedModel, SortableModel, ActivableModel):
 class Page(TimeStampedModel, ActivableModel):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
-    context = models.ForeignKey(ContextBasePage,
+    context = models.ForeignKey(EditorialBoardContext,
                                 on_delete=models.CASCADE,
                                 limit_choices_to={'is_active': True},)
+    base_template = models.ForeignKey(PageTemplate,
+                                      on_delete=models.CASCADE,
+                                      limit_choices_to={'is_active': True},)
     slug = models.SlugField(max_length=256,
                             help_text=_('name-of-the-url-path'))
-    category = models.ManyToManyField(Category)
     note = models.TextField(null=True, blank=True,
                             help_text=_("Editorial Board Notes, "
                                         "not visible by public."))
 
     date_start = models.DateTimeField()
     date_end = models.DateTimeField(null=True, blank=True)
-    state = models.CharField(choices=PAGE_STATES, max_length=33)
+    state = models.CharField(choices=PAGE_STATES, max_length=33,
+                             default='draft')
 
     created_by = models.ForeignKey(get_user_model(),
                                    null=True, blank=True,
@@ -341,7 +341,7 @@ class PageLink(TimeStampedModel):
 
 
 class ContextPublication(AbstractContextPublication):
-    context           = models.ManyToManyField(ContextBasePage,
+    context           = models.ManyToManyField(EditorialBoardContext,
                                                limit_choices_to={'is_active': True},)
     
     slug              = models.SlugField(null=True, blank=True)
@@ -365,15 +365,100 @@ class ContextPublication(AbstractContextPublication):
         return '{} {}' % (self.context, self.title)
 
 
-class ContextPublicationLocalization(AbstractContextPublication):
+class ContextPublicationRelated(TimeStampedModel, SortableModel, ActivableModel):
+    publication = models.ForeignKey(ContextPublication, null=False, blank=False,
+                             related_name='parent_page',
+                             on_delete=models.CASCADE)
+    related = models.ForeignKey(ContextPublication, null=False, blank=False,
+                                on_delete=models.CASCADE,
+                                related_name="related_page")
+
+    class Meta:
+        verbose_name_plural = _("Related Publications")
+        unique_together = ("publication", "related")
+
+    def __str__(self):
+        return '{} {}'.format(self.publication, self.related)
+
+
+class ContextPublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
+    publication = models.ForeignKey(ContextPublication, null=False, blank=False,
+                                    related_name='page_attachment',
+                                    on_delete=models.CASCADE)
+    name = models.CharField(max_length=60, blank=True, null=True,
+                    help_text=_("Specify the container "
+                                "section in the template where "
+                                "this block would be rendered."))
+    file = models.FileField(upload_to=file_context_path)
+    description = models.TextField()
+    
+    file_size = models.IntegerField(blank=True, null=True)
+    file_format = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
+                                   max_length=256,
+                                   blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = _("Publication Attachments")
+
+    def __str__(self):
+        return '{} {} ({})'.format(self.publication, self.name, 
+                                   self.file_format)
+
+
+class ContextPublicationLocalization(TimeStampedModel, ActivableModel):
     context_publication = models.ForeignKey(ContextPublication, 
                                             null=False, blank=False,
                                             on_delete=models.CASCADE)
     language   = models.CharField(choices=settings.LANGUAGES,
-                                  max_length=12, null=False,blank=False)
-
+                                  max_length=12, null=False,blank=False,
+                                  default='en')
+    subheading        = models.TextField(max_length=1024, 
+                                         null=True,blank=True, 
+                                         help_text=_("Strap line (press)"))
+    content           =  tinymce_models.HTMLField(null=True,blank=True,
+                                                  help_text=_('Content'))
+    created_by = models.ForeignKey(get_user_model(),
+                                   null=True, blank=True,
+                                   on_delete=models.CASCADE,
+                                   related_name='publoc_created_by')
+    modified_by = models.ForeignKey(get_user_model(),
+                                    null=True, blank=True,
+                                    on_delete=models.CASCADE,
+                                    related_name='publoc_modified_by')
     class Meta:
-        verbose_name_plural = _("Context Publication Localization")
+        verbose_name_plural = _("Context Publication Localizations")
 
     def __str__(self):
         return '{} {}'.format(self.context, self.language)
+
+
+class ContextMedia(TimeStampedModel):
+    context = models.ForeignKey(EditorialBoardContext,
+                                on_delete=models.CASCADE,
+                                limit_choices_to={'is_active': True},)
+    name = models.CharField(max_length=60, blank=True, null=True,
+                        help_text=_("Specify the container "
+                                    "section in the template where "
+                                    "this block would be rendered."))
+    file = models.FileField(upload_to=file_context_path)
+    description = models.TextField()
+    
+    file_size = models.IntegerField(blank=True, null=True)
+    file_format = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
+                                   max_length=256,
+                                   blank=True, null=True)
+    
+    created_by = models.ForeignKey(get_user_model(),
+                                   null=True, blank=True,
+                                   on_delete=models.CASCADE,
+                                   related_name='media_created_by')
+    modified_by = models.ForeignKey(get_user_model(),
+                                    null=True, blank=True,
+                                    on_delete=models.CASCADE,
+                                    related_name='media_modified_by')
+    
+    class Meta:
+        verbose_name_plural = _("Context Media")
+
+    def __str__(self):
+        return '{} {}' % (self.context, self.name)
