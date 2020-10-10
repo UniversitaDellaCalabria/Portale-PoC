@@ -19,8 +19,8 @@ from django.contrib import admin
 from django.urls import path, include
 from filebrowser.sites import site
 
-site.storage.location = "media/"
-site.directory = "uploads/"
+# site.storage.location = "media/"
+# site.directory = "uploads/"
 
 ADMIN_PATH = getattr(settings, 'ADMIN_PATH', 'admin')
 
@@ -33,11 +33,14 @@ urlpatterns = [
     # TODO, better configuration here
     # https://django-filebrowser.readthedocs.io/en/latest/settings.html
     # https://www.tiny.cloud/docs/general-configuration-guide/upload-images/
-    path(f'{ADMIN_PATH}/filebrowser/', 
-         include((site.urls[0], 'filebrowser'), namespace='filebrowser')),
+    # path(f'{ADMIN_PATH}/filebrowser/', 
+         # include((site.urls[0], 'filebrowser'), namespace='filebrowser')),
+    
+    path('', include('cms.urls')),
 ]
 
 
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

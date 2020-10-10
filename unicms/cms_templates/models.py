@@ -16,7 +16,7 @@ CMS_BLOCK_TEMPLATES = getattr(settings, 'CMS_BLOCK_TEMPLATES',
 CMS_TEMPLATE_BLOCK_SECTIONS = getattr(settings, 'CMS_TEMPLATE_BLOCK_SECTIONS',
                                       app_settings.CMS_TEMPLATE_BLOCK_SECTIONS)
 CMS_PAGE_TEMPLATES = getattr(settings, 'CMS_PAGE_TEMPLATES',
-                            app_settings.CMS_PAGE_TEMPLATES)
+                             app_settings.CMS_PAGE_TEMPLATES)
 
 
 class TimeStampedModel(models.Model):
@@ -107,8 +107,7 @@ class PageBlockTemplate(AbstractPageBlock):
                                  on_delete=models.CASCADE)
     template_file = models.CharField(max_length=1024,
                                      blank=False, null=False,
-                                     choices=CMS_BLOCK_TEMPLATES,
-                                     default='base.html')
+                                     choices=CMS_BLOCK_TEMPLATES)
     class Meta:
         ordering = ['name']
         verbose_name_plural = _("Page Block HTML Templates")

@@ -3,7 +3,6 @@ import logging
 from django.contrib.auth import get_user_model
 # from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from cms_context.models import *
@@ -21,8 +20,6 @@ from . utils import remove_file
 
 
 logger = logging.getLogger(__name__)
-CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
-                                  CMS_IMAGE_CATEGORY_SIZE)
 
 
 def context_publication_attachment_path(instance, filename):
@@ -70,7 +67,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
     """
     elements that builds up the navigation menu
     """
-    context = models.ForeignKey(EditorialBoardContext,
+    context = models.ForeignKey(WebPath,
                                 on_delete=models.CASCADE,
                                 limit_choices_to={'is_active': True},)
     name = models.CharField(max_length=33, blank=False, null=False)
@@ -94,7 +91,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
 
 
 class Publication(AbstractPublication):
-    context           = models.ManyToManyField(EditorialBoardContext,
+    context           = models.ManyToManyField(WebPath,
                                                limit_choices_to={'is_active': True},)
     
     slug              = models.SlugField(null=True, blank=True)
@@ -112,7 +109,7 @@ class Publication(AbstractPublication):
                                     related_name='pub_modified_by')
     
     class Meta:
-        verbose_name_plural = _("Pubblications")
+        verbose_name_plural = _("Publications")
 
     def __str__(self):
         return '{} {}' % (self.context, self.title)
@@ -200,7 +197,7 @@ class MediaCollection(TimeStampedModel):
 
 
 class Media(TimeStampedModel):
-    context = models.ForeignKey(EditorialBoardContext,
+    context = models.ForeignKey(WebPath,
                                 on_delete=models.CASCADE,
                                 limit_choices_to={'is_active': True},)
     name = models.CharField(max_length=60, blank=True, null=True,

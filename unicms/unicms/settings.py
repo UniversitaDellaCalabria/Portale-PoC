@@ -27,7 +27,8 @@ ROOT_URLCONF = 'unicms.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates/pages', 
+                 'templates/blocks'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

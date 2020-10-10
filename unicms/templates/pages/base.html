@@ -7,22 +7,11 @@ bootstrap-italia-base.html
 
 {% load i18n %}
 <!-- From app django-sass-processor -->
-{% if debug %}{% load sass_tags %}{% endif %}
 {% load static %}
-{% load good_delivery_tags %}
 
 <!-- Return to Agid native template -->
 {% block extra_head %}
 {{ block.super }}
-{% if debug %}
-<link rel="stylesheet" href="{% sass_src 'css/good_delivery.scss' %}">
-{% else %}
-<link rel="stylesheet" href="{% static 'css/good_delivery.css' %}">
-{% endif %}
-<link rel="stylesheet" href="{% static 'css/datatables.css' %}">
-<!--
-<link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.css' %}">
--->
 {% endblock extra_head %}
 
 <!-- Page Title -->
@@ -50,8 +39,6 @@ dell'Università della Calabria.
 {% if request.user.is_authenticated %}
 {{ request.user }} -
 {% endif %}
-{% current_date as current_date %}
-{{ current_date }}
 {% endblock header_slim_org_name %}
 
 {% block header_slim_sub_menu %}{% endblock header_slim_sub_menu %}
@@ -66,11 +53,9 @@ dell'Università della Calabria.
 
 <!-- Header Profile / Logout buttons -->
 {% block header_slim_buttons %}
-{% include 'header_slim_buttons.html' %}
 {% endblock header_slim_buttons %}
 
 {% block menu_links %}
-{% include 'main_menu.html' %}
 {% endblock menu_links %}
 
 {% block header_center_search %}{% endblock header_center_search %}
@@ -81,7 +66,6 @@ dell'Università della Calabria.
 <div class="container">
     {% block content_title %}
     <div class="py-md-5 bd-content clearfix">
-        {% include 'title_display.html' %}
         {% block right_button %}
         {% endblock right_button %}
     </div>

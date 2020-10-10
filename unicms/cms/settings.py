@@ -7,7 +7,6 @@ logger = logging.getLogger(__name__)
 
 
 CMS_IMAGE_THUMBSIZE = 128
-CMS_IMAGE_CATEGORY_SIZE = 128
 
 # file validation
 FILETYPE_PDF = ('application/pdf',)

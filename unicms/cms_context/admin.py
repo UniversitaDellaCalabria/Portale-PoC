@@ -18,8 +18,8 @@ class WebSiteAdmin(admin.ModelAdmin):
     search_fields = ('domain', 'name')
 
 
-class EditorialBoardContextAdminInline(admin.TabularInline):
-    model = EditorialBoardContext
+class WebPathAdminInline(admin.TabularInline):
+    model = WebPath
     extra = 0
 
 
@@ -30,8 +30,8 @@ class EditorialBoardEditorsAdminInline(admin.TabularInline):
     autocomplete_fields = ('user', 'context')
 
 
-@admin.register(EditorialBoardContext)
-class EditorialBoardContextAdmin(admin.ModelAdmin):
+@admin.register(WebPath)
+class WebPathAdmin(admin.ModelAdmin):
     list_display = ('name', 'path', 'site', 'is_active')
     list_filter = ('site', 'created', 'modified', 'is_active')
     search_fields = ('name', 'path',)

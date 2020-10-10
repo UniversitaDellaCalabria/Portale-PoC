@@ -14,7 +14,7 @@ SECRET_KEY = '0jg!+quiguen7)-!%rl32(ya+uf6w8lr58)g4-k^s%5+-86b+l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
@@ -30,6 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'django.contrib.sites',
+    
+    'sass_processor',
+    'bootstrap_italia_template',
+    'django_unical_bootstrap_italia',
     
     'taggit',
     'tinymce',

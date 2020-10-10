@@ -25,7 +25,7 @@ class WebSite(Site):
         return self.domain
 
 
-class EditorialBoardContext(TimeStampedModel):
+class WebPath(TimeStampedModel):
     """
     A Page can belong to one or more Context
     A editor/moderator can belong to one or more Context
@@ -53,7 +53,7 @@ class EditorialBoardEditors(TimeStampedModel):
                              on_delete=models.CASCADE)
     permission = models.CharField(max_length=5, blank=False, null=False,
                                   choices=CMS_CONTEXT_PERMISSIONS)
-    context = models.ForeignKey(EditorialBoardContext,
+    context = models.ForeignKey(WebPath,
                                 on_delete=models.CASCADE,
                                 null=True, blank=True)
     is_active   = models.BooleanField()
