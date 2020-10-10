@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 CMS_CONTEXT_PERMISSIONS = getattr(settings, 'CMS_CONTEXT_PERMISSIONS',
                                   app_settings.CMS_CONTEXT_PERMISSIONS)
 
+
 class WebSite(Site):
     is_active   = models.BooleanField()
     
@@ -37,7 +38,7 @@ class WebPath(TimeStampedModel):
     is_active   = models.BooleanField()
 
     class Meta:
-        verbose_name_plural = _("Site Contexts")
+        verbose_name_plural = _("Site Contexts (WebPaths)")
 
     def __str__(self):
         return '{}: {} ({})'.format(self.site, self.name, self.path)
@@ -59,7 +60,7 @@ class EditorialBoardEditors(TimeStampedModel):
     is_active   = models.BooleanField()
 
     class Meta:
-        verbose_name_plural = _("Context Editors")
+        verbose_name_plural = _("Editorial Board Users")
 
     def __str__(self):
         if getattr(self, 'context'):
