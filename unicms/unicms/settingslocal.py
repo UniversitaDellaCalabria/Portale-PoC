@@ -29,15 +29,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'filebrowser',
-    'tinymce',
-
-    'cms_context',
+    'django.contrib.sites',
+    
     'taggit',
+    'tinymce',
+    
+    'cms_templates',
+    'cms_context',
+    'cms_pages',
     'cms',
 
 ]
 
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

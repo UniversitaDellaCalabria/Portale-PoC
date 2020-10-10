@@ -3,7 +3,10 @@ import logging
 from django.db import models
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.contrib.sites.models import Site
 from django.utils.translation import gettext_lazy as _
+
+from cms_templates.models import TimeStampedModel
 
 from . import settings as app_settings
 
@@ -12,26 +15,14 @@ logger = logging.getLogger(__name__)
 CMS_CONTEXT_PERMISSIONS = getattr(settings, 'CMS_CONTEXT_PERMISSIONS',
                                   app_settings.CMS_CONTEXT_PERMISSIONS)
 
-
-class TimeStampedModel(models.Model):
-    created = models.DateTimeField(auto_now_add=True)
-    modified =  models.DateTimeField(auto_now=True)
-
-    class Meta:
-        abstract = True
-
-
-class Site(TimeStampedModel):
-    fqdn = models.CharField(max_length=160, blank=False,
-                            null=False, unique=True,
-                            help_text=_('server FQDN'))
+class WebSite(Site):
     is_active   = models.BooleanField()
-
+    
     class Meta:
         verbose_name_plural = _("Sites")
 
     def __str__(self):
-        return self.fqdn
+        return self.domain
 
 
 class EditorialBoardContext(TimeStampedModel):
@@ -40,7 +31,7 @@ class EditorialBoardContext(TimeStampedModel):
     A editor/moderator can belong to one or more Context
     The same for Page Templates
     """
-    site = models.ForeignKey(Site, on_delete=models.CASCADE)
+    site = models.ForeignKey(WebSite, on_delete=models.CASCADE)
     name = models.CharField(max_length=254, blank=False, null=False)
     path = models.TextField(max_length=2048, null=False, blank=False)
     is_active   = models.BooleanField()

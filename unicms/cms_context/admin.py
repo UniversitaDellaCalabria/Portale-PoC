@@ -9,6 +9,15 @@ from django.utils.translation import gettext, gettext_lazy as _
 from . models import *
 
 
+admin.site.unregister(Site)
+
+@admin.register(WebSite)
+class WebSiteAdmin(admin.ModelAdmin):
+    list_display = ('name', 'domain', 'is_active')
+    list_filter = ('is_active',)
+    search_fields = ('domain', 'name')
+
+
 class EditorialBoardContextAdminInline(admin.TabularInline):
     model = EditorialBoardContext
     extra = 0
@@ -19,15 +28,6 @@ class EditorialBoardEditorsAdminInline(admin.TabularInline):
     extra = 0
     readonly_fields = ('created', 'modified')
     autocomplete_fields = ('user', 'context')
-
-
-@admin.register(Site)
-class SiteAdmin(admin.ModelAdmin):
-    list_display = ('fqdn', 'is_active')
-    list_filter = ('created', 'modified', 'is_active')
-    search_fields = ('fqdn',)
-    readonly_fields = ('created', 'modified')
-    inlines = [EditorialBoardContextAdminInline,]
 
 
 @admin.register(EditorialBoardContext)
