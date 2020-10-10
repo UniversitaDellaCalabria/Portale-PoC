@@ -73,10 +73,10 @@ FILETYPE_TEXT = ('text/plain',
                  'application/msword',
                  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                 )
-FILETYPE_IMG = ('image/jpeg', 'image/png', 'image/gif', 'image/x-ms-bmp')
+FILETYPE_IMAGE = ('image/jpeg', 'image/png', 'image/gif', 'image/x-ms-bmp')
 FILETYPE_P7M = ('application/pkcs7-mime',)
 FILETYPE_SIGNED = FILETYPE_PDF + FILETYPE_P7M
-FILETYPE_ALLOWED = FILETYPE_TEXT + FILETYPE_DATA + FILETYPE_IMG + FILETYPE_SIGNED
+FILETYPE_ALLOWED = FILETYPE_TEXT + FILETYPE_DATA + FILETYPE_IMAGE + FILETYPE_SIGNED
 
 # maximum permitted filename lengh in attachments, uploads
 FILE_NAME_MAX_LEN = 128

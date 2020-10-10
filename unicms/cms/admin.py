@@ -52,10 +52,12 @@ class PageTemplateThirdPartyBlockAdmin(admin.ModelAdmin):
 
 
 @admin.register(Page)
-class PageAdmin(admin.ModelAdmin):
-    search_fields = ('slug',)
-    list_display  = ('context', 'name', 'slug', 'is_active',)
-    list_filter   = ('state', 'is_active',
+class PageAdmin(AbstractCreateModifiedBy):
+    search_fields = ('name',)
+    list_display  = ('context', 'name', 
+                     'date_start', 'date_end', 
+                     'is_active',)
+    list_filter   = ('state', 'is_active', 'category',
                      'created', 'modified', 'date_start', 'date_end')
     inlines       = (PageBlockInline, PageThirdPartyBlockInline,
                      PageRelatedInline, PageLinkInline)
@@ -87,3 +89,8 @@ class ContextMediaAdmin(admin.ModelAdmin):
     list_filter   = ('context__site__fqdn', 'file_format', 
                      'created', 'modified')
     readonly_fields = AbstractCreateModifiedBy.readonly_fields + ('file_size', 'file_format')
+
+
+@admin.register(ContextMediaCollection)
+class ContextMediaCollectionAdmin(admin.ModelAdmin):
+    search_fields = ('name',)
