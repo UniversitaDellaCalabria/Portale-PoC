@@ -25,39 +25,6 @@ CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
                                   CMS_IMAGE_CATEGORY_SIZE)
 
 
-class Category(TimeStampedModel):
-    name        = models.CharField(max_length=160, blank=False,
-                                   null=False, unique=False)
-    description = models.TextField(max_length=1024,
-                                   null=False, blank=False)
-    image       = models.ImageField(upload_to="images/categories",
-                                    null=True, blank=True,
-                                    max_length=512)
-
-    class Meta:
-        ordering = ['name']
-        verbose_name_plural = _("Page Categories")
-
-    def __str__(self):
-        return self.name
-
-    def delete(self, *args, **kwargs):
-        remove_file(self.image.url)
-        super(self.cls, self).delete(*args, **kwargs)
-
-    def image_as_html(self):
-        res = ""
-        try:
-            res = f'<img width={CMS_IMAGE_CATEGORY_SIZE} src="{self.image.url}"/>'
-        except ValueError as e:
-            # *** ValueError: The 'image' attribute has no file associated with it.
-            res = f"{settings.STATIC_URL}images/no-image.jpg"
-        return mark_safe(res)
-
-    image_as_html.short_description = _('Image of this Category')
-    image_as_html.allow_tags = True
-
-
 class Page(TimeStampedModel, ActivableModel):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
@@ -85,7 +52,12 @@ class Page(TimeStampedModel, ActivableModel):
                                     on_delete=models.CASCADE,
                                     related_name='modified_by')
     
-    category          = models.ManyToManyField(Category)
+    type = models.CharField(max_length=33,
+                            default="standard",
+                            choices=(('standard', _('Standard Page')),
+                                     ('custom', _('Custom Page')),
+                                     ('home', _('Home Page'))))
+                                              
     tags = TaggableManager()
 
     def delete(self, *args, **kwargs):

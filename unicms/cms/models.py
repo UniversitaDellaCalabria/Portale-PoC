@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from cms_context.models import *
-from cms_pages.models import Category, PAGE_STATES
+from cms_pages.models import PAGE_STATES
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   ActivableModel, 
                                   SortableModel,
@@ -37,9 +37,9 @@ def context_media_path(instance, filename):
 
 
 class AbstractPublication(TimeStampedModel, ActivableModel):
-    title             = models.CharField(max_length=256, 
-                                       null=False, blank=False,
-                                       help_text=_("Heading, Headline"))
+    title   = models.CharField(max_length=256, 
+                               null=False, blank=False,
+                               help_text=_("Heading, Headline"))
     
     subheading        = models.TextField(max_length=1024, 
                                          null=True,blank=True, 
@@ -51,16 +51,49 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
                                          default='draft')
     date_start        = models.DateTimeField(null=True,blank=True)
     date_end          = models.DateTimeField(null=True,blank=True)
-    category          = models.ManyToManyField(Category)
+    category          = models.ManyToManyField('Category')
     
-    note              = models.TextField(null=True,blank=True,
-                                         help_text=_('Editorial Board notes'))
+    note    = models.TextField(null=True,blank=True,
+                               help_text=_('Editorial Board notes'))
 
     class Meta:
         abstract = True
         indexes = [
            models.Index(fields=['title']),
         ]
+
+
+class Category(TimeStampedModel):
+    name        = models.CharField(max_length=160, blank=False,
+                                   null=False, unique=False)
+    description = models.TextField(max_length=1024,
+                                   null=False, blank=False)
+    image       = models.ImageField(upload_to="images/categories",
+                                    null=True, blank=True,
+                                    max_length=512)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = _("Page Categories")
+
+    def __str__(self):
+        return self.name
+
+    def delete(self, *args, **kwargs):
+        remove_file(self.image.url)
+        super(self.cls, self).delete(*args, **kwargs)
+
+    def image_as_html(self):
+        res = ""
+        try:
+            res = f'<img width={CMS_IMAGE_CATEGORY_SIZE} src="{self.image.url}"/>'
+        except ValueError as e:
+            # *** ValueError: The 'image' attribute has no file associated with it.
+            res = f"{settings.STATIC_URL}images/no-image.jpg"
+        return mark_safe(res)
+
+    image_as_html.short_description = _('Image of this Category')
+    image_as_html.allow_tags = True
 
 
 class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
@@ -91,8 +124,8 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
 
 
 class Publication(AbstractPublication):
-    context           = models.ManyToManyField(WebPath,
-                                               limit_choices_to={'is_active': True},)
+    context = models.ManyToManyField(WebPath,
+                                     limit_choices_to={'is_active': True},)
     
     slug              = models.SlugField(null=True, blank=True)
     in_evidence_start = models.DateTimeField(null=True,blank=True)

@@ -80,12 +80,13 @@ class PageTemplate(TimeStampedModel, ActivableModel):
         return '{} ({})'.format(self.name, self.template_file)
 
 
-class PageTemplateThirdPartyBlock(TimeStampedModel, SortableModel, ActivableModel):
+class PageTemplateThirdPartyBlock(TimeStampedModel, 
+                                  SortableModel, ActivableModel):
     template = models.ForeignKey(PageTemplate,
                                  on_delete=models.CASCADE,
                                  limit_choices_to={'is_active': True},)
     block = models.ForeignKey('cms_pages.PageBlock', null=False, blank=False,
-                             on_delete=models.CASCADE)
+                              on_delete=models.CASCADE)
     section = models.CharField(max_length=33, blank=True, null=True,
                                help_text=_("Specify the container "
                                            "section in the template where "
@@ -108,6 +109,7 @@ class PageBlockTemplate(AbstractPageBlock):
     template_file = models.CharField(max_length=1024,
                                      blank=False, null=False,
                                      choices=CMS_BLOCK_TEMPLATES)
+    
     class Meta:
         ordering = ['name']
         verbose_name_plural = _("Page Block HTML Templates")

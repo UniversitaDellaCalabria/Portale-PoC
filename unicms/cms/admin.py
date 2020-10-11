@@ -9,6 +9,15 @@ class AbstractCreateModifiedBy(admin.ModelAdmin):
     readonly_fields = ('created_by', 'modified_by')
 
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display  = ('name', 'image_as_html')
+    # inlines = (SubCategoryAdminInline, )
+    
+    def delete_model(modeladmin, request, queryset):
+        obj.delete()
+
+
 @admin.register(NavigationBarItem)
 class NavigationBarItemAdmin(admin.ModelAdmin):
     list_display  = ('context', 'name', 'parent', 'is_active')
