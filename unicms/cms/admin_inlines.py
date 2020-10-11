@@ -28,3 +28,10 @@ class PublicationAttachmentInline(admin.StackedInline):
     extra = 0
     classes = ['collapse']
     readonly_fields = ('file_size', 'file_format')
+
+
+class PublicationLinkInline(admin.StackedInline):
+    model = PublicationLink
+    extra = 0
+    fk_name = 'publication'
+    classes = ['collapse']

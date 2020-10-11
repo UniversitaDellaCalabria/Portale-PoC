@@ -142,5 +142,5 @@ class PageLink(TimeStampedModel):
         verbose_name_plural = _("Page Links")
 
     def __str__(self):
-        return '{} {}' % (self.page, self.block_template)
+        return '{} {}' % (self.page, self.name)
 

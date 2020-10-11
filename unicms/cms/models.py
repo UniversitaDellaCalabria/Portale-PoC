@@ -148,6 +148,19 @@ class Publication(AbstractPublication):
         return '{} {}' % (self.context, self.title)
 
 
+class PublicationLink(TimeStampedModel):
+    publication = models.ForeignKey(Publication, null=False, blank=False,
+                                    on_delete=models.CASCADE)
+    name = models.CharField(max_length=256, null=False, blank=False)
+    url = models.URLField(help_text=_("url"))
+
+    class Meta:
+        verbose_name_plural = _("Publication Links")
+
+    def __str__(self):
+        return '{} {}' % (self.publication, self.name)
+
+
 class PublicationRelated(TimeStampedModel, SortableModel, ActivableModel):
     publication = models.ForeignKey(Publication, null=False, blank=False,
                              related_name='parent_page',

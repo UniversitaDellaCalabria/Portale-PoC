@@ -12,7 +12,6 @@ class AbstractCreateModifiedBy(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display  = ('name', 'image_as_html')
-    # inlines = (SubCategoryAdminInline, )
     
     def delete_model(modeladmin, request, queryset):
         obj.delete()
@@ -33,6 +32,7 @@ class PublicationAdmin(AbstractCreateModifiedBy):
                      'created', 'modified', 'date_start', 'date_end')
     inlines       = (PublicationLocalizationInline,
                      PublicationRelatedInline,
+                     PublicationLinkInline,
                      PublicationAttachmentInline)
 
 
@@ -50,7 +50,8 @@ class MediaAdmin(admin.ModelAdmin):
     list_display  = ('context', 'name', 'file_size', 'file_format')
     list_filter   = ('context__site__domain', 'file_format', 
                      'created', 'modified')
-    readonly_fields = AbstractCreateModifiedBy.readonly_fields + ('file_size', 'file_format')
+    readonly_fields = AbstractCreateModifiedBy.readonly_fields + \
+                      ('file_size', 'file_format')
 
 
 @admin.register(MediaCollection)
