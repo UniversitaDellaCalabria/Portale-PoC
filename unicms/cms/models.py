@@ -15,12 +15,14 @@ from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
 from taggit.managers import TaggableManager
 from tinymce import models as tinymce_models
 
+from cms_medias import settings as cms_media_settings
 from . settings import *
 from . utils import remove_file
 
 
 logger = logging.getLogger(__name__)
-
+FILETYPE_ALLOWED = getattr(settings, 'FILETYPE_ALLOWED',
+                           cms_media_settings.FILETYPE_ALLOWED)
 
 def context_publication_attachment_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
@@ -28,13 +30,6 @@ def context_publication_attachment_path(instance, filename):
                                 instance.context.pk,
                                 instance.pk,
                                 filename)
-
-def context_media_path(instance, filename):
-    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return '{}/{}/{}'.format(instance.context.site, 
-                                instance.context.pk,
-                                filename)
-
 
 class AbstractPublication(TimeStampedModel, ActivableModel):
     title   = models.CharField(max_length=256, 
@@ -74,7 +69,7 @@ class Category(TimeStampedModel):
 
     class Meta:
         ordering = ['name']
-        verbose_name_plural = _("Page Categories")
+        verbose_name_plural = _("Content Categories")
 
     def __str__(self):
         return self.name
@@ -226,51 +221,3 @@ class PublicationLocalization(TimeStampedModel, ActivableModel):
 
     def __str__(self):
         return '{} {}'.format(self.context, self.language)
-
-
-class MediaCollection(TimeStampedModel):
-    name        = models.CharField(max_length=160, blank=False,
-                                   null=False, unique=False)
-    description = models.TextField(max_length=1024,
-                                   null=False, blank=False)
-
-    class Meta:
-        ordering = ['name']
-        verbose_name_plural = _("Media Collections")
-
-    def __str__(self):
-        return self.name
-
-
-class Media(TimeStampedModel):
-    context = models.ForeignKey(WebPath,
-                                on_delete=models.CASCADE,
-                                limit_choices_to={'is_active': True},)
-    name = models.CharField(max_length=60, blank=True, null=True,
-                        help_text=_("Specify the container "
-                                    "section in the template where "
-                                    "this block would be rendered."))
-    file = models.FileField(upload_to=context_media_path)
-    description = models.TextField()
-    
-    file_size = models.IntegerField(blank=True, null=True)
-    file_format = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
-                                   max_length=256,
-                                   blank=True, null=True)
-    
-    collections = models.ManyToManyField('MediaCollection')
-    
-    created_by = models.ForeignKey(get_user_model(),
-                                   null=True, blank=True,
-                                   on_delete=models.CASCADE,
-                                   related_name='media_created_by')
-    modified_by = models.ForeignKey(get_user_model(),
-                                    null=True, blank=True,
-                                    on_delete=models.CASCADE,
-                                    related_name='media_modified_by')
-    
-    class Meta:
-        verbose_name_plural = _("Media")
-
-    def __str__(self):
-        return '{} {}' % (self.context, self.name)

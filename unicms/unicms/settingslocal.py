@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'tinymce',
     
     'cms_templates',
+    'cms_medias',
     'cms_context',
     'cms_pages',
     'cms',

@@ -42,18 +42,3 @@ class PublicationLocalizationAdmin(AbstractCreateModifiedBy):
     list_display  = ('context_publication', 'language', 'is_active',)
     list_filter   = ('context_publication__state', 'is_active', 
                      'created', 'modified', 'language')
-
-
-@admin.register(Media)
-class MediaAdmin(admin.ModelAdmin):
-    search_fields = ('name',)
-    list_display  = ('context', 'name', 'file_size', 'file_format')
-    list_filter   = ('context__site__domain', 'file_format', 
-                     'created', 'modified')
-    readonly_fields = AbstractCreateModifiedBy.readonly_fields + \
-                      ('file_size', 'file_format')
-
-
-@admin.register(MediaCollection)
-class MediaCollectionAdmin(admin.ModelAdmin):
-    search_fields = ('name',)
