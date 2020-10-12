@@ -103,7 +103,8 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                null=True, blank=True,
                                on_delete=models.CASCADE,
                                related_name="related_page")
-    url = models.URLField(help_text=_("url"), null=True, blank=True)
+    url = models.CharField(help_text=_("url"), 
+                           null=True, blank=True, max_length=2048)
     section = models.CharField(max_length=60, blank=True, null=True,
                                help_text=_("Specify the container "
                                            "section in the template where "
@@ -197,6 +198,9 @@ class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
 
 
 class PublicationLocalization(TimeStampedModel, ActivableModel):
+    title   = models.CharField(max_length=256, 
+                               null=False, blank=False,
+                               help_text=_("Heading, Headline"))
     context_publication = models.ForeignKey(Publication, 
                                             null=False, blank=False,
                                             on_delete=models.CASCADE)
