@@ -6,5 +6,5 @@ from django.urls import path, include
 from . views import *
 
 urlpatterns = [
-    path('', load_context, name='load_context'),
+    path('', cms_content, name='cms_content'),
     ]

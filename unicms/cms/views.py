@@ -6,12 +6,19 @@ from django.http import (HttpResponse,
                          HttpResponseBadRequest,
                          HttpResponseRedirect)
 from django.shortcuts import render, get_object_or_404
+from django.utils import translation
 
 from cms_context.models import WebSite, WebPath
 from cms_pages.models import Page
 
 
-def load_context(request):
+def get_request_lang(request):
+    lang = request.GET.get('lang',
+                           translation.get_language_from_request(request))
+    return lang
+
+
+def cms_content(request):
     requested_site = re.match('^[a-zA-Z0-9\.\-\_]*', 
                               # request.headers.get('Host', '')
                               request.get_host()).group()

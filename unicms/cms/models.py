@@ -105,6 +105,14 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                related_name="related_page")
     url = models.CharField(help_text=_("url"), 
                            null=True, blank=True, max_length=2048)
+    page = models.ForeignKey(WebPath,
+                             related_name='page_path',
+                             on_delete=models.CASCADE, 
+                             null=True, blank=True)
+    publication = models.ForeignKey('Publication', 
+                                    null=True, blank=True,
+                                    related_name='pub',
+                                    on_delete=models.CASCADE)
     section = models.CharField(max_length=60, blank=True, null=True,
                                help_text=_("Specify the container "
                                            "section in the template where "
@@ -113,7 +121,11 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
     
     class Meta:
         verbose_name_plural = _("Context Navigation Menu Items")
-
+    
+    @property
+    def link(self):
+        return self.url or self.page or self.publication or '#'
+    
     def __str__(self):
         return '({}) {} {}'.format(self.context,
                                    self.name, self.parent or '')
@@ -139,6 +151,20 @@ class Publication(AbstractPublication):
     
     class Meta:
         verbose_name_plural = _("Publications")
+
+    def active_translations(self):
+        return PublicationLocalization.objects.filter(item=self, 
+                                                      is_active=True)
+
+    def translate_as(self, lang):
+        """
+        returns translation if available
+        """
+        trans = PublicationLocalization.objects.filter(item=self,
+                                                       lang=lang,
+                                                       is_active=True)
+        if trans: return trans.first()
+        else: return self
 
     def __str__(self):
         return '{} {}' % (self.context, self.title)
