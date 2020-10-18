@@ -28,7 +28,7 @@ def cms_content(request):
         return HttpResponseBadRequest()
     
     path = request.get_full_path()
-    context = get_object_or_404(WebPath, path=path)
+    context = get_object_or_404(WebPath, path=path, site=website)
     page = Page.objects.filter(context = context,
                                is_active = True,
                                state = 'published').first()

@@ -9,6 +9,25 @@ This platform was built on top of Django Framework, with few specialized librari
 
 The final goal is to achieve as much as possible, writing as little code as possible and working even less!
 
+Setup
+-----
+
+````
+apt install python3-pip
+pip3 install virtualenv
+mkdir Portale-PoC && cd "$_"
+git clone https://github.com/UniversitaDellaCalabria/Portale-PoC.git
+virtualenv -ppython3 env
+source env/bin/activate
+pip3 install -r requirements.txt
+cd unicms
+./manage.py migrate
+./manage.py createsuperuser
+./manage.py runserver
+````
+
+go to `/admin` and submit the superuser credential to start putting some data into the model.
+
 Model
 -----
 
