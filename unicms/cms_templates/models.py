@@ -9,8 +9,8 @@ from . import settings as app_settings
 
 logger = logging.getLogger(__name__)
 
-CMS_BLOCK_SCHEMAS = getattr(settings, 'CMS_BLOCK_SCHEMAS',
-                            app_settings.CMS_BLOCK_SCHEMAS)
+CMS_BLOCK_TYPES = getattr(settings, 'CMS_BLOCK_TYPES',
+                          app_settings.CMS_BLOCK_TYPES)
 CMS_BLOCK_TEMPLATES = getattr(settings, 'CMS_BLOCK_TEMPLATES',
                             app_settings.CMS_BLOCK_TEMPLATES)
 CMS_TEMPLATE_BLOCK_SECTIONS = getattr(settings, 'CMS_TEMPLATE_BLOCK_SECTIONS',
@@ -47,8 +47,8 @@ class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel):
                             help_text=_("Specify the container "
                                         "section in the template where "
                                         "this block would be rendered."))
-    schema = models.TextField(choices=CMS_BLOCK_SCHEMAS,
-                              blank=False, null=False)
+    type = models.TextField(choices=CMS_BLOCK_TYPES,
+                            blank=False, null=False)
     content = models.TextField(help_text=_("according to the "
                                            "block template schema"),
                                blank=True, null=True)
@@ -67,7 +67,10 @@ class PageTemplate(TimeStampedModel, ActivableModel):
                             blank=True, null=True)
     template_file = models.CharField(max_length=1024,
                                      blank=False, null=False,
-                                     choices=CMS_PAGE_TEMPLATES)
+                                     choices=CMS_PAGE_TEMPLATES or \
+                                     (('', 'No templates found'),))
+    blocks = models.ManyToManyField('PageBlockTemplate', 
+                                    null=True, blank=True)
     note = models.TextField(null=True, blank=True,
                             help_text=_("Editorial Board Notes, "
                                         "not visible by public."))
@@ -103,16 +106,14 @@ class PageTemplateThirdPartyBlock(TimeStampedModel,
 
 
 class PageBlockTemplate(AbstractPageBlock):
-    template = models.ForeignKey(PageTemplate,
-                                 null=False, blank=False,
-                                 on_delete=models.CASCADE)
     template_file = models.CharField(max_length=1024,
                                      blank=False, null=False,
-                                     choices=CMS_BLOCK_TEMPLATES)
+                                     choices=CMS_BLOCK_TEMPLATES or \
+                                     (('', 'No templates found'),))
     
     class Meta:
         ordering = ['name']
-        verbose_name_plural = _("Page Block HTML Templates")
+        verbose_name_plural = _("Block Templates")
 
     def __str__(self):
         return self.name if self.name else self.path

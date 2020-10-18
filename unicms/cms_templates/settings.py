@@ -31,12 +31,13 @@ CMS_TEMPLATE_BLOCK_SECTIONS = (('pre-head', _('Pre-Header')),
                                ('8','8'),
                                ('9','9'),
                                ('pre-footer', _('Pre-Footer')),
-                               ('footer', _('Footer'))
+                               ('footer', _('Footer')),
+                               ('post-footer', _('Post-Footer'))
                               )
 
-CMS_BLOCK_SCHEMAS = (
-                       ('{}' ,_('heading')),
-                       ('{}' ,_('body')),
+CMS_BLOCK_TYPES = (
+                       ('unicms.cms_templates.HTMLBlock', 'HTML Block'),
+                       ('unicms.cms_templates.JSONBlock', 'JSON Block'),
                     )
 
 CMS_BLOCK_TEMPLATES_FOLDERS = (f'{BASE_DIR}/templates/blocks',)

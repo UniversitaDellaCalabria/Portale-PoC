@@ -8,14 +8,14 @@ from . models import *
 class PageTemplateAdmin(admin.ModelAdmin):
     list_display  = ('name', 'template_file', 'created', 'is_active')
     search_fields   = ('name', 'template_file',)
-    inlines       = (PageBlockTemplateInline,
-                     PageTemplateThirdPartyBlockInline)
+    inlines       = (PageTemplateThirdPartyBlockInline,)
 
 
 @admin.register(PageBlockTemplate)
 class PageBlockTemplateAdmin(admin.ModelAdmin):
-    list_display  = ('name', 'template', 'is_active')
-    search_fields   = ('name', 'template',)
+    list_display  = ('name', 'type', 'template_file', 'is_active')
+    search_fields   = ('name', 'template_file',)
+    list_filter = ('type',)
 
 
 #  @admin.register(PageTemplateThirdPartyBlock)
