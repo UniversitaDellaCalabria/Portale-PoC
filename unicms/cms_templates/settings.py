@@ -38,19 +38,24 @@ CMS_TEMPLATE_BLOCK_SECTIONS = (('pre-head', _('Pre-Header')),
 CMS_BLOCK_TYPES = (
                        ('unicms.cms_templates.HTMLBlock', 'HTML Block'),
                        ('unicms.cms_templates.JSONBlock', 'JSON Block'),
+                       ('unical.flescaTeam.custom_blocks.AngularJSONBlock', 'Angular JSON Block'),
                     )
 
 CMS_BLOCK_TEMPLATES_FOLDERS = (f'{BASE_DIR}/templates/blocks',)
-CMS_BLOCK_TEMPLATES = [(i[0].split(os.path.sep)[-1], i[0].split(os.path.sep)[-1])  for i in
-                       [glob(f"{e}/*.html") for e in CMS_BLOCK_TEMPLATES_FOLDERS]
-                       if len(i) > 0
-                      ]
+CMS_BLOCK_TEMPLATES = []
+blocks_templates_files = [glob(f"{e}/*.html") for e in CMS_BLOCK_TEMPLATES_FOLDERS]
+for i in blocks_templates_files[0]:
+    fname = i.split(os.path.sep)[-1]
+    CMS_BLOCK_TEMPLATES.append((fname, fname) )
 
 CMS_PAGE_TEMPLATES_FOLDERS = (f'{BASE_DIR}/templates/pages',)
-CMS_PAGE_TEMPLATES = [(i[0].split(os.path.sep)[-1], i[0].split(os.path.sep)[-1]) for i in
-                       [glob(f"{e}/*.html") for e in CMS_PAGE_TEMPLATES_FOLDERS]
-                      if len(i) > 0
-                      ]
+CMS_PAGE_TEMPLATES = []
+pages_templates_files = [glob(f"{e}/*.html") for e in CMS_PAGE_TEMPLATES_FOLDERS]
+for i in pages_templates_files[0]:
+    fname = i.split(os.path.sep)[-1]
+    CMS_PAGE_TEMPLATES.append((fname, fname) )
+
+
 if CMS_BLOCK_TEMPLATES:
     logger.info('Loading block template files:{}'.format('\n  '.join([i[1] for i in CMS_BLOCK_TEMPLATES])))
 else:

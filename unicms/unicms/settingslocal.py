@@ -43,10 +43,10 @@ INSTALLED_APPS = [
     'cms_context',
     'cms_pages',
     'cms',
+    
+    'unical_templates',
 
 ]
-
-SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
