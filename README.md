@@ -32,7 +32,8 @@ Model
 -----
 
 This project is composed by the following applications:
-- cms_context, where multiple sites, webpaths and EditorialBoard Permissions can be managed
+- websites, where multiple sites can be defined.
+- cms_context, where webpaths and EditorialBoard Users and Permissions can be defined
 - cms_templates, where multiple page templates can be managed
 - cms_pages, where we can create a custom page with a custom template and blocks
 - cms, where Editorial boards can write post and publish content in one or more contexts.
@@ -118,7 +119,7 @@ Search Engine
 [WiP]
 
 An external storage (RDBMS or MongoDB) that takes metainformations on each 
-creation or modification of a page or a publication or whatever needed to be foundable.
+creation or modification of a page or a publication or whatever needed to be searchable.
 
 Installing MongoDB on Debian10
 ````
@@ -156,6 +157,8 @@ entry = {"title": "that name that likes you",
          "description": "My first blog post!",
          "content-type": "cms.",
          "content-id": "",
+         "site": "www.unical.it",
+         "context": "/"
          "url": "http://sdfsdf",
          "tags": ["mongodb", "python", "pymongo"],
          "date": timezone.now()}
@@ -166,6 +169,8 @@ entries = [{"title": "hahaha",
             "description": "asdasd blog post!",
             "content-type": "cms.",
             "content-id": "",
+            "site": "www.unical.it",
+            "context": "/"
             "url": "http://sdfsdf",
             "tags": ["mongodb", "python"],
             "date": timezone.now()},
@@ -173,6 +178,8 @@ entries = [{"title": "hahaha",
             "description": "a234234 blog post!",
             "content-type": "cms.",
             "content-id": "",
+            "site": "www.unical.it",
+            "context": "/"
             "url": "My 234blog post!",
             "tags": ["mongodb", "python"],
             "date": timezone.now()}]
@@ -202,8 +209,6 @@ for i in db.find(search_filter): print(i)
 count = 1
 res = db.find(search_filter)
 for i in res[0:count]: print(i)
-
-
 ````
 
 Todo
