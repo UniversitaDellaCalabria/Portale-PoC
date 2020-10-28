@@ -19,9 +19,9 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(NavigationBarItem)
 class NavigationBarItemAdmin(admin.ModelAdmin):
-    list_display  = ('context', 'name', 'parent', 'is_active')
+    list_display  = ('context', 'name', 'parent', 'order', 'is_active')
     search_fields   = ('context', 'name', 'parent',)
-    list_filter = ('context', 'created', 'modified')
+    list_filter = ('context__site', 'created', 'modified')
 
 
 @admin.register(Publication)

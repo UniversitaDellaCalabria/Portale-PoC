@@ -36,8 +36,28 @@ bootstrap-italia-base.html
 {% block header_center_url %}
 {% endblock header_center_url %}
 
-{% block header_slim_sub_menu %}
-{% endblock header_slim_sub_menu %}
+    {% block header_slim_sub_menu %}
+    <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+            <span>ITA</span>
+            <svg class="icon d-none d-lg-block">
+                <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
+            </svg>
+        </a>
+        <div class="dropdown-menu">
+            <div class="row">
+                <div class="col-12">
+                    <div class="link-list-wrapper">
+                        <ul class="link-list">
+                            <li><a class="list-item" href="#"><span>ITA</span></a></li>
+                            <li><a class="list-item" href="#"><span>ENG</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock header_slim_sub_menu %}
 
 <!-- Mobile slim_org_name -->
 {% block header_slim_mobile_org_name %}

@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 CMS_TEMPLATE_BLOCK_SECTIONS = (('pre-head', _('Pre-Header')),
                                ('head', _('Header')),
-                               ('menu', _('Navigation Menu')),
+                               ('menu', _('Navigation Main Menu')),
                                ('menu-2', _('Navigation Menu 2')),
                                ('menu-3', _('Navigation Menu 3')),
                                ('slider', _('Carousel/Slider')),
