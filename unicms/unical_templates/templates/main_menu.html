@@ -1,20 +1,114 @@
 {% load i18n %}
 {% load static %}
 
-{% block menu_pre_buttons %}
-<li class="nav-item">
-    <a class="nav-link" href="#">
-        <span>{% trans "Home" %}</span>
-    </a>
-</li>
-{% endblock menu_pre_buttons %}
+{% for item in menu %}
+    <li class="nav-item {% if forloop.first %}active{% endif %} {% if item.get_childs %}dropdown{% endif %}">
+        <a class="nav-link {% if forloop.first %}active{% endif %} {% if item.get_childs %}dropdown_toggle{% endif %}" 
+           {% if item.get_childs %}data-toggle="dropdown" aria-expanded="false"{% endif %}
+           {% if subitem.link %}href="{{ subitem.get_link|default_if_none:'#' }}"{% endif %}>
+            <span>{{ item.name }}</span>
+            <!--
+            Home Only
+            <span class="sr-only">current</span>
+            -->         
+            {% if item.get_childs %}
+            <svg class="icon icon-xs">
+                <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
+            </svg>
+            {% endif %}
+        </a>
+        {% if item.get_childs %}
+        <div class="dropdown-menu">
+            <div class="link-list-wrapper">
+                <ul class="link-list">
+                <li>
+                    <h3 class="no_toc" id="heading">{{ item.name }}</h3>
+                </li>
+                {% for subitem in item.get_childs %}
+                    {% if subitem.link %}
+                    <li>
+                        <a class="list-item" href="{{ subitem.link|default_if_none:'#'  }}">
+                            <span>{{ subitem.name }}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </li>
+{% endfor %}
 
-<li class="nav-item">
-    <a class="nav-link"
-       href="#">
-        <span>{% trans "Documentazione" %}</span>
-    </a>
-</li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+            <span>Esempio di Dropdown</span>
+            <svg class="icon icon-xs">
+                <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
+            </svg>
+        </a>
+        <div class="dropdown-menu">
+            <div class="link-list-wrapper">
+                <ul class="link-list">
+                    <li>
+                        <h3 class="no_toc" id="heading">Heading</h3>
+                    </li>
+                    <li><a class="list-item" href="#"><span>Link list 1</span></a></li>
+                    <li><a class="list-item" href="#"><span>Link list 2</span></a></li>
+                    <li><a class="list-item" href="#"><span>Link list 3</span></a></li>
+                    <li><span class="divider"></span></li>
+                    <li><a class="list-item" href="#"><span>Link list 4</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item dropdown megamenu">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+            <span>Esempio di Megamenu</span>
+            <svg class="icon icon-xs">
+                <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
+            </svg>
+        </a>
+        <div class="dropdown-menu">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="link-list-wrapper">
+                        <ul class="link-list">
+                            <li>
+                                <h3 class="no_toc">Heading 1</h3>
+                            </li>
+                            <li><a class="list-item" href="#"><span>Link list 1 </span></a></li>
+                            <li><a class="list-item" href="#"><span>Link list 2 </span></a></li>
+                            <li><a class="list-item" href="#"><span>Link list 3 </span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="link-list-wrapper">
+                        <ul class="link-list">
+                            <li>
+                                <h3 class="no_toc">Heading 2</h3>
+                            </li>
+                            <li><a class="list-item" href="#"><span>Link list 1 </span></a></li>
+                            <li><a class="list-item" href="#"><span>Link list 2 </span></a></li>
+                            <li><a class="list-item" href="#"><span>Link list 3 </span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="link-list-wrapper">
+                        <ul class="link-list">
+                            <li>
+                                <h3 class="no_toc">Heading 3</h3>
+                            </li>
+                            <li><a class="list-item" href="#"><span>Link list 1 </span></a></li>
+                            <li><a class="list-item" href="#"><span>Link list 2 </span></a></li>
+                            <li><a class="list-item" href="#"><span>Link list 3</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
 
-{% block menu_post_buttons %}
-{% endblock menu_post_buttons %}

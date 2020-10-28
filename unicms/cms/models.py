@@ -126,6 +126,13 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
     def link(self):
         return self.url or self.page or self.publication or '#'
     
+    def get_childs(self):
+        return NavigationBarItem.objects.filter(is_active=True,
+                                                parent=self,
+                                                section=self.section).\
+                                         order_by('order')
+        
+    
     def __str__(self):
         return '({}) {} {}'.format(self.context,
                                    self.name, self.parent or '')
