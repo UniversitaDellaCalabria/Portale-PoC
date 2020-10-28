@@ -120,6 +120,92 @@ Search Engine
 An external storage (RDBMS or MongoDB) that takes metainformations on each 
 creation or modification of a page or a publication or whatever needed to be foundable.
 
+Installing MongoDB on Debian10
+````
+apt install -y mongodb-org
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+apt update
+apt install -y mongodb-org
+````
+
+Start MongoDB
+````
+systemctl daemon-reload
+systemctl enable mongod
+systemctl start mongod
+````
+
+Gettings started with MongoDB
+````
+from django.utils import timezone
+import pymongo
+
+client = pymongo.MongoClient('10.0.3.217', 27017)
+
+# get database
+mdb = client.unicms
+
+# get collection
+db = mdb.search
+
+# check version to understand which pymongo documentation you should use!
+pymongo.version
+
+entry = {"title": "that name that likes you",
+         "description": "My first blog post!",
+         "content-type": "cms.",
+         "content-id": "",
+         "url": "http://sdfsdf",
+         "tags": ["mongodb", "python", "pymongo"],
+         "date": timezone.now()}
+
+db.insert_one(entry)
+
+entries = [{"title": "hahaha",
+            "description": "asdasd blog post!",
+            "content-type": "cms.",
+            "content-id": "",
+            "url": "http://sdfsdf",
+            "tags": ["mongodb", "python"],
+            "date": timezone.now()},
+            {"title": "23423",
+            "description": "a234234 blog post!",
+            "content-type": "cms.",
+            "content-id": "",
+            "url": "My 234blog post!",
+            "tags": ["mongodb", "python"],
+            "date": timezone.now()}]
+db.insert_many(entries)
+
+
+# how many entries do we have?
+db.count_documents({})
+
+# regexp filters
+import re
+regexp = re.compile('^h', re.I)
+search_filter = {"title": regexp}
+
+# date range filter
+search_filter = {
+        "date": {
+            "$gte": timezone.datetime(2010, 4, 29),
+            "$lt": timezone.datetime(2021, 4, 29)
+            }
+}
+
+# exec query
+for i in db.find(search_filter): print(i)
+
+# result sliced (for pagination)
+count = 1
+res = db.find(search_filter)
+for i in res[0:count]: print(i)
+
+
+````
+
 Todo
 ----
 

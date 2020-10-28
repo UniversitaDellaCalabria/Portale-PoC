@@ -4,7 +4,9 @@ django_unical_bootstrap_italia
 # https://github.com/pylixm/django-mdeditor
 # django-mdeditor>=0.1.18
 django-tinymce>=3.1.0
-django-filebrowser>=3.13.1
+# django-filebrowser>=3.13.1
 django-taggit
 pillow
 
+# mongo
+pymongo>=3.11.0
