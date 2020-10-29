@@ -19,7 +19,7 @@
                 {% for subitem in item.get_childs %}
                     {% if subitem.link %}
                     <li>
-                        <a class="list-item" href="{{ subitem.link|default_if_none:'#'  }}">
+                        <a class="list-item" href="{% if subitem.link %}"{{ subitem.get_link}}"{% else %}"#"{% endif %}">
                             <span>{{ subitem.name }}</span>
                         </a>
                     </li>

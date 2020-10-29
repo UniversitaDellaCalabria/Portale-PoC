@@ -28,22 +28,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'django.contrib.sites',
-    
+
     'sass_processor',
     'bootstrap_italia_template',
     'django_unical_bootstrap_italia',
-    
+
     'taggit',
     'tinymce',
-    
+
     'cms_templates',
     'cms_medias',
     'cms_context',
-    'cms_pages',
     'cms',
-    
+
     'unical_templates',
 
 ]
@@ -140,11 +139,11 @@ TINYMCE_DEFAULT_CONFIG = {
                "bold italic backcolor | alignleft aligncenter "
                "alignright alignjustify | bullist numlist outdent indent | "
                "removeformat | help",
-    
+
     # added
     "a11y_advanced_options": True,
     "media_alt_source": False,
-    
+
     # image upload
     # https://www.tiny.cloud/docs/general-configuration-guide/upload-images/
 }
