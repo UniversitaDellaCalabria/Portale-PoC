@@ -9,7 +9,7 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import translation
 
 from cms_context.models import WebSite, WebPath
-from cms_pages.models import Page
+from . models import Page
 
 
 def get_request_lang(request):
@@ -19,14 +19,14 @@ def get_request_lang(request):
 
 
 def cms_content(request):
-    requested_site = re.match('^[a-zA-Z0-9\.\-\_]*', 
+    requested_site = re.match('^[a-zA-Z0-9\.\-\_]*',
                               # request.headers.get('Host', '')
                               request.get_host()).group()
     website = get_object_or_404(WebSite, domain = requested_site)
-    
+
     if not website:
         return HttpResponseBadRequest()
-    
+
     path = request.get_full_path()
     context = get_object_or_404(WebPath, path=path, site=website)
     page = Page.objects.filter(context = context,
@@ -34,7 +34,7 @@ def cms_content(request):
                                state = 'published').first()
     if not page:
         raise Http404()
-    
+
     context_vars = {
         'website': website,
         'path': path,
@@ -42,4 +42,3 @@ def cms_content(request):
         'page': page,
     }
     return render(request, page.base_template.template_file, context_vars)
-    

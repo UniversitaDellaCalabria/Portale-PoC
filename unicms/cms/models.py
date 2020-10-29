@@ -3,15 +3,17 @@ import logging
 from django.contrib.auth import get_user_model
 # from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from cms_context.models import *
-from cms_pages.models import PAGE_STATES
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
-                                  ActivableModel, 
+                                  AbstractPageBlock,
+                                  ActivableModel,
+                                  PageTemplate,
                                   SortableModel,
                                   TimeStampedModel)
-                                  
+
 from taggit.managers import TaggableManager
 from tinymce import models as tinymce_models
 
@@ -23,31 +25,157 @@ from . utils import remove_file
 logger = logging.getLogger(__name__)
 FILETYPE_ALLOWED = getattr(settings, 'FILETYPE_ALLOWED',
                            cms_media_settings.FILETYPE_ALLOWED)
+PAGE_STATES = (('draft', _('Draft')),
+               ('wait', _('Wait for a revision')),
+               ('published', _('Published')),)
+CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
+                                  CMS_IMAGE_CATEGORY_SIZE)
+
 
 def context_publication_attachment_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return '{}/{}/{}/{}'.format(instance.context.site, 
+    return '{}/{}/{}/{}'.format(instance.context.site,
                                 instance.context.pk,
                                 instance.pk,
                                 filename)
 
+
+class Page(TimeStampedModel, ActivableModel):
+    name = models.CharField(max_length=160,
+                            blank=False, null=False)
+    context = models.ForeignKey(WebPath,
+                                on_delete=models.CASCADE,
+                                limit_choices_to={'is_active': True},)
+    base_template = models.ForeignKey(PageTemplate,
+                                      on_delete=models.CASCADE,
+                                      limit_choices_to={'is_active': True},)
+    note = models.TextField(null=True, blank=True,
+                            help_text=_("Editorial Board Notes, "
+                                        "not visible by public."))
+
+    date_start = models.DateTimeField()
+    date_end = models.DateTimeField(null=True, blank=True)
+    state = models.CharField(choices=PAGE_STATES, max_length=33,
+                             default='draft')
+
+    created_by = models.ForeignKey(get_user_model(),
+                                   null=True, blank=True,
+                                   on_delete=models.CASCADE,
+                                   related_name='created_by')
+    modified_by = models.ForeignKey(get_user_model(),
+                                    null=True, blank=True,
+                                    on_delete=models.CASCADE,
+                                    related_name='modified_by')
+
+    type = models.CharField(max_length=33,
+                            default="standard",
+                            choices=(('standard', _('Standard Page')),
+                                     ('custom', _('Custom Page')),
+                                     ('home', _('Home Page'))))
+
+    tags = TaggableManager()
+
+    def delete(self, *args, **kwargs):
+        PageRelated.objects.filter(related_page=self).delete()
+        super(Page, self).delete(*args, **kwargs)
+
+
+    def save(self, *args, **kwargs):
+        super(Page, self).save(*args, **kwargs)
+        for rel in PageRelated.objects.filter(page=self):
+            if not PageRelated.objects.\
+                    filter(page=rel.related_page, related_page=self):
+                PageRelated.objects.\
+                    create(page=rel.page, related_page=self,
+                           is_active=True)
+
+    class Meta:
+        verbose_name_plural = _("Pages")
+
+    def get_category_img(self):
+        return [i.image_as_html() for i in self.category.all()]
+
+    def __str__(self):
+        return '{} {}'.format(self.name, self.state)
+
+
+class PageBlock(AbstractPageBlock):
+    page = models.ForeignKey(Page, null=False, blank=False,
+                             on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = _("Page Block")
+
+    def __str__(self):
+        return '{} {} {}:{}'.format(self.page,
+                                    self.order or '#',
+                                    self.section or '#')
+
+
+class PageThirdPartyBlock(TimeStampedModel, SortableModel, ActivableModel):
+    page = models.ForeignKey(Page, null=False, blank=False,
+                             on_delete=models.CASCADE)
+    block = models.ForeignKey(PageBlock, null=False, blank=False,
+                             on_delete=models.CASCADE)
+    section = models.CharField(max_length=60, blank=True, null=True,
+                               help_text=_("Specify the container "
+                                           "section in the template where "
+                                           "this block will be rendered."),
+                               choices=CMS_TEMPLATE_BLOCK_SECTIONS)
+
+    class Meta:
+        verbose_name_plural = _("Page Third-Party Block")
+
+    def __str__(self):
+        return '{} {} {}:{}'.format(self.page, self.block,
+                                    self.order or '#',
+                                    self.section or '#')
+
+class PageRelated(TimeStampedModel, SortableModel, ActivableModel):
+    page = models.ForeignKey(Page, null=False, blank=False,
+                             related_name='parent_page',
+                             on_delete=models.CASCADE)
+    related_page = models.ForeignKey(Page, null=False, blank=False,
+                                     on_delete=models.CASCADE,
+                                     related_name="related_page")
+
+    class Meta:
+        verbose_name_plural = _("Related Pages")
+        unique_together = ("page", "related_page")
+
+    def __str__(self):
+        return '{} {}'.format(self.page, self.related_page)
+
+
+class PageLink(TimeStampedModel):
+    page = models.ForeignKey(Page, null=False, blank=False,
+                             on_delete=models.CASCADE)
+    name = models.CharField(max_length=256, null=False, blank=False)
+    url = models.URLField(help_text=_("url"))
+
+    class Meta:
+        verbose_name_plural = _("Page Links")
+
+    def __str__(self):
+        return '{} {}' % (self.page, self.name)
+
 class AbstractPublication(TimeStampedModel, ActivableModel):
-    title   = models.CharField(max_length=256, 
+    title   = models.CharField(max_length=256,
                                null=False, blank=False,
                                help_text=_("Heading, Headline"))
-    
-    subheading        = models.TextField(max_length=1024, 
-                                         null=True,blank=True, 
+
+    subheading        = models.TextField(max_length=1024,
+                                         null=True,blank=True,
                                          help_text=_("Strap line (press)"))
     content           =  tinymce_models.HTMLField(null=True,blank=True,
                                                   help_text=_('Content'))
-    state             = models.CharField(choices=PAGE_STATES, 
+    state             = models.CharField(choices=PAGE_STATES,
                                          max_length=33,
                                          default='draft')
     date_start        = models.DateTimeField(null=True,blank=True)
     date_end          = models.DateTimeField(null=True,blank=True)
     category          = models.ManyToManyField('Category')
-    
+
     note    = models.TextField(null=True,blank=True,
                                help_text=_('Editorial Board notes'))
 
@@ -103,13 +231,13 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                null=True, blank=True,
                                on_delete=models.CASCADE,
                                related_name="related_page")
-    url = models.CharField(help_text=_("url"), 
+    url = models.CharField(help_text=_("url"),
                            null=True, blank=True, max_length=2048)
     page = models.ForeignKey(WebPath,
                              related_name='page_path',
-                             on_delete=models.CASCADE, 
+                             on_delete=models.CASCADE,
                              null=True, blank=True)
-    publication = models.ForeignKey('Publication', 
+    publication = models.ForeignKey('Publication',
                                     null=True, blank=True,
                                     related_name='pub',
                                     on_delete=models.CASCADE)
@@ -118,21 +246,21 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                            "section in the template where "
                                            "this menu will be rendered."),
                                choices=CMS_TEMPLATE_BLOCK_SECTIONS)
-    
+
     class Meta:
         verbose_name_plural = _("Context Navigation Menu Items")
-    
+
     @property
     def link(self):
         return self.url or self.page or self.publication or '#'
-    
+
     def get_childs(self):
         return NavigationBarItem.objects.filter(is_active=True,
                                                 parent=self,
                                                 section=self.section).\
                                          order_by('order')
-        
-    
+
+
     def __str__(self):
         return '({}) {} {}'.format(self.context,
                                    self.name, self.parent or '')
@@ -141,12 +269,12 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
 class Publication(AbstractPublication):
     context = models.ManyToManyField(WebPath,
                                      limit_choices_to={'is_active': True},)
-    
+
     slug              = models.SlugField(null=True, blank=True)
     in_evidence_start = models.DateTimeField(null=True,blank=True)
     in_evidence_end   = models.DateTimeField(null=True,blank=True)
     tags = TaggableManager()
-    
+
     created_by = models.ForeignKey(get_user_model(),
                                    null=True, blank=True,
                                    on_delete=models.CASCADE,
@@ -155,12 +283,12 @@ class Publication(AbstractPublication):
                                     null=True, blank=True,
                                     on_delete=models.CASCADE,
                                     related_name='pub_modified_by')
-    
+
     class Meta:
         verbose_name_plural = _("Publications")
 
     def active_translations(self):
-        return PublicationLocalization.objects.filter(item=self, 
+        return PublicationLocalization.objects.filter(item=self,
                                                       is_active=True)
 
     def translate_as(self, lang):
@@ -216,7 +344,7 @@ class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
                                 "this block would be rendered."))
     file = models.FileField(upload_to=context_publication_attachment_path)
     description = models.TextField()
-    
+
     file_size = models.IntegerField(blank=True, null=True)
     file_format = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
                                    max_length=256,
@@ -226,22 +354,22 @@ class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
         verbose_name_plural = _("Publication Attachments")
 
     def __str__(self):
-        return '{} {} ({})'.format(self.publication, self.name, 
+        return '{} {} ({})'.format(self.publication, self.name,
                                    self.file_format)
 
 
 class PublicationLocalization(TimeStampedModel, ActivableModel):
-    title   = models.CharField(max_length=256, 
+    title   = models.CharField(max_length=256,
                                null=False, blank=False,
                                help_text=_("Heading, Headline"))
-    context_publication = models.ForeignKey(Publication, 
+    context_publication = models.ForeignKey(Publication,
                                             null=False, blank=False,
                                             on_delete=models.CASCADE)
     language   = models.CharField(choices=settings.LANGUAGES,
                                   max_length=12, null=False,blank=False,
                                   default='en')
-    subheading        = models.TextField(max_length=1024, 
-                                         null=True,blank=True, 
+    subheading        = models.TextField(max_length=1024,
+                                         null=True,blank=True,
                                          help_text=_("Strap line (press)"))
     content           =  tinymce_models.HTMLField(null=True,blank=True,
                                                   help_text=_('Content'))

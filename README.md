@@ -35,7 +35,6 @@ This project is composed by the following applications:
 - websites, where multiple sites can be defined.
 - cms_context, where webpaths and EditorialBoard Users and Permissions can be defined
 - cms_templates, where multiple page templates can be managed
-- cms_pages, where we can create a custom page with a custom template and blocks
 - cms, where Editorial boards can write post and publish content in one or more contexts.
 
 > :warning: **If you are a pure Djangoer**: You should know that templates and urls would be managed with cms_context, entirely through admin interface. We can even load third-party django applications, it is necessary to take into account configuring the url paths before defining uniCMS ones, otherwise uniCMS will intercept them and with a good chance will return to the user a page of 404.
@@ -57,7 +56,7 @@ CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her')),
                            )
 ````
 
-`cms_pages` is the model where we've defined how we build a Page.
+`cms` is the model where we've defined how we build a Page.
 For us, a Page, is anything else than a composition of blocks, rendered in a
 HTML template. This means that a page is a block container, in which we can
 define many blocks with different order. For every page we must define
@@ -85,10 +84,10 @@ These takes as argument the following objects:
     'website': WebSite object (cms_context.models.Website)
     'path': request.get_full_path(), eg: "/that/resource/slug-or-whatever"
     'context': Context object (cms_context.models.WebPath)
-    'page': Page object (cms_pages.models.Page)
+    'page': Page object (cms.models.Page)
 ````
 
-Standing on the information taked from these objects the uniCMS template tag 
+Standing on the information taked from these objects the uniCMS template tag
 can create additional blocks and render many other informations.
 
 
@@ -118,7 +117,7 @@ Search Engine
 
 [WiP]
 
-An external storage (RDBMS or MongoDB) that takes metainformations on each 
+An external storage (RDBMS or MongoDB) that takes metainformations on each
 creation or modification of a page or a publication or whatever needed to be searchable.
 
 Installing MongoDB on Debian10

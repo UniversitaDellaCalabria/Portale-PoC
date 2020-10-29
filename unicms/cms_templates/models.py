@@ -69,7 +69,7 @@ class PageTemplate(TimeStampedModel, ActivableModel):
                                      blank=False, null=False,
                                      choices=CMS_PAGE_TEMPLATES or \
                                      (('', 'No templates found'),))
-    blocks = models.ManyToManyField('PageBlockTemplate', 
+    blocks = models.ManyToManyField('PageBlockTemplate',
                                     null=True, blank=True)
     note = models.TextField(null=True, blank=True,
                             help_text=_("Editorial Board Notes, "
@@ -83,12 +83,12 @@ class PageTemplate(TimeStampedModel, ActivableModel):
         return '{} ({})'.format(self.name, self.template_file)
 
 
-class PageTemplateThirdPartyBlock(TimeStampedModel, 
+class PageTemplateThirdPartyBlock(TimeStampedModel,
                                   SortableModel, ActivableModel):
     template = models.ForeignKey(PageTemplate,
                                  on_delete=models.CASCADE,
                                  limit_choices_to={'is_active': True},)
-    block = models.ForeignKey('cms_pages.PageBlock', null=False, blank=False,
+    block = models.ForeignKey('cms.PageBlock', null=False, blank=False,
                               on_delete=models.CASCADE)
     section = models.CharField(max_length=33, blank=True, null=True,
                                help_text=_("Specify the container "
@@ -110,7 +110,7 @@ class PageBlockTemplate(AbstractPageBlock):
                                      blank=False, null=False,
                                      choices=CMS_BLOCK_TEMPLATES or \
                                      (('', 'No templates found'),))
-    
+
     class Meta:
         ordering = ['name']
         verbose_name_plural = _("Block Templates")
