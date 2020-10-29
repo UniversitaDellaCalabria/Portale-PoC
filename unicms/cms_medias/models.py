@@ -43,9 +43,6 @@ class MediaCollection(ActivableModel, TimeStampedModel):
 
 
 class Media(ActivableModel, TimeStampedModel):
-    context = models.ForeignKey(WebPath,
-                                on_delete=models.CASCADE,
-                                limit_choices_to={'is_active': True},)
     title = models.CharField(max_length=60, blank=True, null=True,
                              help_text=_("Media file title"))
     file = models.FileField(upload_to=context_media_path)
