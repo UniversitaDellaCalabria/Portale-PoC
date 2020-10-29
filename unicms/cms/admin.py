@@ -34,7 +34,8 @@ class CategoryAdmin(admin.ModelAdmin):
 class NavigationBarItemAdmin(admin.ModelAdmin):
     list_display  = ('context', 'name', 'parent', 'order', 'is_active')
     search_fields   = ('context', 'name', 'parent',)
-    list_filter = ('context__site', 'created', 'modified')
+    list_filter = ('context__site__domain', 'created', 'modified')
+    inlines = (NavigationBarItemLocalizationInline,)
 
 
 @admin.register(Publication)

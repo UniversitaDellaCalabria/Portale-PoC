@@ -3,6 +3,12 @@ from django.contrib import admin
 from . models import *
 
 
+class NavigationBarItemLocalizationInline(admin.TabularInline):
+    model = NavigationBarItemLocalization
+    extra = 0
+    classes = ['collapse']
+
+
 class PageInline(admin.TabularInline):
     model = Page
     extra = 0

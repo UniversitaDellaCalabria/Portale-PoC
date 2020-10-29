@@ -265,6 +265,20 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
         return '{} - {} {}'.format(self.context,
                                    self.name, self.parent or '')
 
+class NavigationBarItemLocalization(models.Model):
+    item = models.ForeignKey(NavigationBarItem,
+                             on_delete=models.CASCADE)
+    language   = models.CharField(choices=settings.LANGUAGES,
+                                  max_length=12, null=False,blank=False,
+                                  default='en')
+    name = models.CharField(max_length=33, blank=False, null=False)
+
+    class Meta:
+        verbose_name_plural = _("Context Navigation Menu Item Localizations")
+
+    def __str__(self):
+        return '{} - {}'.format(self.item, self.language)
+
 
 class Publication(AbstractPublication):
     context = models.ManyToManyField(WebPath,
