@@ -1,0 +1,533 @@
+[
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$aL1y4It24fXT$1Wk5h0sRihJB9e09LnevaV4lJukNGuZ5lno1kFXKLmY=",
+    "last_login": "2020-10-29T09:11:05.328Z",
+    "is_superuser": true,
+    "username": "wert",
+    "is_staff": true,
+    "date_joined": "2020-10-29T09:08:47.271Z",
+    "first_name": null,
+    "last_name": null,
+    "is_active": true,
+    "email": "that@mail.org",
+    "taxpayer_id": null,
+    "matricola_studente": null,
+    "matricola_dipendente": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2020-10-29T09:11:28.811Z",
+    "user": 1,
+    "content_type": 17,
+    "object_id": "2",
+    "object_repr": "test.unical.it",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2020-10-29T09:11:39.009Z",
+    "user": 1,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "test.unical.it: Portale dell'Università della Calabria (/)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2020-10-29T09:12:00.091Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "Portale dell'Università della Calabria (unical_portale_base.html)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2020-10-29T09:12:22.055Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "Portale dell'Università della Calabria (unical_portale_base.html)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is active\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2020-10-29T09:12:44.439Z",
+    "user": 1,
+    "content_type": 22,
+    "object_id": "1",
+    "object_repr": "Portale dell'Università della Calabria published",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2020-10-29T09:18:53.180Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "1",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Ateneo ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2020-10-29T09:19:21.194Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "2",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Didattica ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2020-10-29T09:19:36.102Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "3",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Campus e Servizi ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2020-10-29T09:19:48.543Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "4",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Ricerca ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2020-10-29T09:20:02.601Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "5",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Terza Missione ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2020-10-29T09:20:19.291Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "6",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Internazionale ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2020-10-29T09:21:05.983Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "3",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Campus e Servizi ",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2020-10-29T09:21:12.043Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "4",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Ricerca ",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2020-10-29T09:21:17.638Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "5",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Terza Missione ",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2020-10-29T09:21:23.307Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "6",
+    "object_repr": "(test.unical.it: Portale dell'Università della Calabria (/)) Internazionale ",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2020-10-29T09:27:04.181Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "7",
+    "object_repr": "test.unical.it: Portale dell'Università della Calabria (/) - Lauree test.unical.it: Portale dell'Università della Calabria (/) - Didattica ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2020-10-29T09:28:17.311Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "8",
+    "object_repr": "test.unical.it: Portale dell'Università della Calabria (/) - Lauree Magistrali a ciclo unico test.unical.it: Portale dell'Università della Calabria (/) - Didattica ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2020-10-29T09:29:16.368Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "9",
+    "object_repr": "test.unical.it: Portale dell'Università della Calabria (/) - Lauree Magistrali test.unical.it: Portale dell'Università della Calabria (/) - Didattica ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2020-10-29T10:32:18.107Z",
+    "user": 1,
+    "content_type": 21,
+    "object_id": "4",
+    "object_repr": "test.unical.it: Portale dell'Università della Calabria (/) - Ricerca ",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"navigation bar item localization\", \"object\": \"test.unical.it: Portale dell'Universit\\u00e0 della Calabria (/) - Ricerca  - en\"}}]"
+  }
+},
+{
+  "model": "sites.site",
+  "pk": 1,
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  }
+},
+{
+  "model": "sites.site",
+  "pk": 2,
+  "fields": {
+    "domain": "test.unical.it",
+    "name": "Portale dell'Università della Calabria"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 1,
+  "fields": {
+    "name": "home",
+    "slug": "home"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 2,
+  "fields": {
+    "name": "unical",
+    "slug": "unical"
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 1,
+  "fields": {
+    "tag": 1,
+    "content_type": 22,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 2,
+  "fields": {
+    "tag": 2,
+    "content_type": 22,
+    "object_id": 1
+  }
+},
+{
+  "model": "cms_templates.pagetemplate",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-29T09:12:00.088Z",
+    "modified": "2020-10-29T09:12:22.048Z",
+    "is_active": true,
+    "name": "Portale dell'Università della Calabria",
+    "template_file": "unical_portale_base.html",
+    "note": "",
+    "blocks": []
+  }
+},
+{
+  "model": "cms_context.website",
+  "pk": 2,
+  "fields": {
+    "is_active": true
+  }
+},
+{
+  "model": "cms_context.webpath",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-29T09:11:39.008Z",
+    "modified": "2020-10-29T09:11:39.008Z",
+    "site": 2,
+    "name": "Portale dell'Università della Calabria",
+    "path": "/",
+    "is_active": true
+  }
+},
+{
+  "model": "cms.page",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-29T09:12:44.427Z",
+    "modified": "2020-10-29T09:12:44.427Z",
+    "is_active": true,
+    "name": "Portale dell'Università della Calabria",
+    "context": 1,
+    "base_template": 1,
+    "note": "",
+    "date_start": "2020-10-29T09:12:02Z",
+    "date_end": null,
+    "state": "published",
+    "created_by": null,
+    "modified_by": null,
+    "type": "standard"
+  }
+},
+{
+  "model": "cms.navigationbaritem",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-29T09:18:53.178Z",
+    "modified": "2020-10-29T09:18:53.178Z",
+    "order": 10,
+    "is_active": true,
+    "context": 1,
+    "name": "Ateneo",
+    "page": 1,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cms.navigationbaritem",
+  "pk": 2,
+  "fields": {
+    "created": "2020-10-29T09:19:21.186Z",
+    "modified": "2020-10-29T09:19:21.186Z",
+    "order": 20,
+    "is_active": true,
+    "context": 1,
+    "name": "Didattica",
+    "page": 1,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cms.navigationbaritem",
+  "pk": 3,
+  "fields": {
+    "created": "2020-10-29T09:19:36.099Z",
+    "modified": "2020-10-29T09:21:05.980Z",
+    "order": 30,
+    "is_active": true,
+    "context": 1,
+    "name": "Campus e Servizi",
+    "page": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cms.navigationbaritem",
+  "pk": 4,
+  "fields": {
+    "created": "2020-10-29T09:19:48.538Z",
+    "modified": "2020-10-29T10:32:18.103Z",
+    "order": 40,
+    "is_active": true,
+    "context": 1,
+    "name": "Ricerca",
+    "page": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cms.navigationbaritem",
+  "pk": 5,
+  "fields": {
+    "created": "2020-10-29T09:20:02.598Z",
+    "modified": "2020-10-29T09:21:17.634Z",
+    "order": 50,
+    "is_active": true,
+    "context": 1,
+    "name": "Terza Missione",
+    "page": 1,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cms.navigationbaritem",
+  "pk": 6,
+  "fields": {
+    "created": "2020-10-29T09:20:19.287Z",
+    "modified": "2020-10-29T09:21:23.295Z",
+    "order": 60,
+    "is_active": true,
+    "context": 1,
+    "name": "Internazionale",
+    "page": 1,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cms.navigationbaritem",
+  "pk": 7,
+  "fields": {
+    "created": "2020-10-29T09:27:04.167Z",
+    "modified": "2020-10-29T09:27:04.168Z",
+    "order": 10,
+    "is_active": true,
+    "context": 1,
+    "name": "Lauree",
+    "page": 1,
+    "parent": 2,
+    "url": null,
+    "publication": null,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cms.navigationbaritem",
+  "pk": 8,
+  "fields": {
+    "created": "2020-10-29T09:28:17.305Z",
+    "modified": "2020-10-29T09:28:17.305Z",
+    "order": 20,
+    "is_active": true,
+    "context": 1,
+    "name": "Lauree Magistrali a ciclo unico",
+    "page": 1,
+    "parent": 2,
+    "url": null,
+    "publication": null,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cms.navigationbaritem",
+  "pk": 9,
+  "fields": {
+    "created": "2020-10-29T09:29:16.363Z",
+    "modified": "2020-10-29T09:29:16.363Z",
+    "order": 30,
+    "is_active": true,
+    "context": 1,
+    "name": "Lauree Magistrali",
+    "page": 1,
+    "parent": 2,
+    "url": null,
+    "publication": null,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cms.navigationbaritemlocalization",
+  "pk": 1,
+  "fields": {
+    "item": 4,
+    "language": "en",
+    "name": "Research"
+  }
+}
+]
