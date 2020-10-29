@@ -9,12 +9,15 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import translation
 
 from cms_context.models import WebSite, WebPath
+from urllib.parse import urlparse
 from . models import Page
 
 
-def get_request_lang(request):
+def detect_user_language(request):
     lang = request.GET.get('lang',
                            translation.get_language_from_request(request))
+    translation.activate(lang)
+    request.LANGUAGE_CODE = translation.get_language()
     return lang
 
 
@@ -27,13 +30,16 @@ def cms_content(request):
     if not website:
         return HttpResponseBadRequest()
 
-    path = request.get_full_path()
+    path = urlparse(request.get_full_path()).path
     context = get_object_or_404(WebPath, path=path, site=website)
     page = Page.objects.filter(context = context,
                                is_active = True,
                                state = 'published').first()
     if not page:
         raise Http404()
+
+    # language detect
+    detect_user_language(request)
 
     context_vars = {
         'website': website,
