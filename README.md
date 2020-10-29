@@ -22,6 +22,10 @@ source env/bin/activate
 pip3 install -r requirements.txt
 cd unicms
 ./manage.py migrate
+
+# if you want to load some example datas
+./manage.py loaddata ../dumps/cms.json 
+
 ./manage.py createsuperuser
 ./manage.py runserver
 ````

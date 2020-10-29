@@ -57,7 +57,8 @@ bootstrap-italia-base.html
     {% block header_slim_sub_menu %}
     <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-            <span>ITA</span>
+            
+            <span>{{ request.LANGUAGE_CODE }}</span>
             <svg class="icon d-none d-lg-block">
                 <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
             </svg>
@@ -211,9 +212,7 @@ bootstrap-italia-base.html
 {% block extra_scripts %}
 <script>
 $(function() {
-
   $(".it-full-carousel").owlCarousel({
-
       slideSpeed : 300,
       paginationSpeed : 400,
 
@@ -222,7 +221,6 @@ $(function() {
       //itemsDesktopSmall : false,
       //itemsTablet: false,
       //itemsMobile : false,
-
   });
 
 });

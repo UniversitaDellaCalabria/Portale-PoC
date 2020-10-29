@@ -1,5 +1,6 @@
 Django>3.0.1,<4.0
 django_unical_bootstrap_italia
+django-nested-admin>=3.3.2
 
 # https://github.com/pylixm/django-mdeditor
 # django-mdeditor>=0.1.18

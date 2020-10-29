@@ -69,8 +69,7 @@ class PageTemplate(TimeStampedModel, ActivableModel):
                                      blank=False, null=False,
                                      choices=CMS_PAGE_TEMPLATES or \
                                      (('', 'No templates found'),))
-    blocks = models.ManyToManyField('PageBlockTemplate',
-                                    null=True, blank=True)
+    blocks = models.ManyToManyField('PageBlockTemplate')
     note = models.TextField(null=True, blank=True,
                             help_text=_("Editorial Board Notes, "
                                         "not visible by public."))

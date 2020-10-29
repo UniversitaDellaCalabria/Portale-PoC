@@ -37,10 +37,12 @@ INSTALLED_APPS = [
 
     'taggit',
     'tinymce',
-
+    'nested_admin',
+    
     'cms_templates',
-    'cms_medias',
+    'cms_carousels',
     'cms_context',
+    'cms_medias',
     'cms',
 
     'unical_templates',
@@ -71,8 +73,7 @@ LANGUAGES = [('ar', 'Arabic'),
              ('es', 'Spanish'),
              ('fr', 'French'),
              ('it', 'Italian'),
-             ('pt', 'Portuguese'),
-             ('pt-br', 'Brazilian Portuguese'), ]
+             ('pt', 'Portuguese')]
 
 # Static files (CSS, JavaScript, Images)
 STATICFILES_FINDERS = [
