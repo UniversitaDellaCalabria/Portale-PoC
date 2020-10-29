@@ -32,6 +32,20 @@ bootstrap-italia-base.html
 {% trans "Sito istituzionale dell'Università della Calabria" %}
 {% endblock page_meta_description %}
 
+{% block header_slim_top_left %}
+   <div style="min-width: 5vw; display: block;">
+    <!--
+    <label for="search_top">search</label>
+    -->
+    <input type="text" class="" id="search_top"
+           style="height: 1.5vw;"
+           placeholder="{% trans 'search' %}">
+    <!--
+    <svg class="icon"  ><use xlink:href="{% static '/svg/sprite.svg' %}#it-search"></use></svg>
+    -->
+  </div>
+{% endblock header_slim_top_left %}
+
 <!-- URL link top left -->
 {% block header_slim_org_url %}
 {% endblock header_slim_org_url %}

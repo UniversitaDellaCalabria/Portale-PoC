@@ -2,20 +2,12 @@
 {% load static %}
 
 {% for item in menu %}
-    <li class="nav-item {% if forloop.first %}active{% endif %} {% if item.get_childs %}dropdown{% endif %}">
-        <a class="nav-link {% if forloop.first %}active{% endif %} {% if item.get_childs %}dropdown_toggle{% endif %}" 
-           {% if item.get_childs %}data-toggle="dropdown" aria-expanded="false"{% endif %}
-           {% if subitem.link %}href="{{ subitem.get_link|default_if_none:'#' }}"{% endif %}>
+    <li class="nav-item {% if forloop.first %}active {% endif %}{% if item.get_childs %}dropdown megamenu{% endif %}">
+        <a class="nav-link {% if forloop.first %}active {% endif %}{% if item.get_childs %}dropdown_toggle{% endif %}" href={% if subitem.link %}"{{ subitem.get_link}}"{% else %}"#"{% endif %} {% if item.get_childs %}data-toggle="dropdown" aria-expanded="false"{% endif %}>
             <span>{{ item.name }}</span>
-            <!--
-            Home Only
-            <span class="sr-only">current</span>
-            -->         
-            {% if item.get_childs %}
-            <svg class="icon icon-xs">
+            {% if item.get_childs %}<svg class="icon icon-xs">
                 <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
-            </svg>
-            {% endif %}
+            </svg>{% endif %}
         </a>
         {% if item.get_childs %}
         <div class="dropdown-menu">
@@ -32,7 +24,7 @@
                         </a>
                     </li>
                     {% endif %}
-                    
+
                 {% endfor %}
                 </ul>
             </div>
@@ -41,28 +33,6 @@
     </li>
 {% endfor %}
 
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-            <span>Esempio di Dropdown</span>
-            <svg class="icon icon-xs">
-                <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
-            </svg>
-        </a>
-        <div class="dropdown-menu">
-            <div class="link-list-wrapper">
-                <ul class="link-list">
-                    <li>
-                        <h3 class="no_toc" id="heading">Heading</h3>
-                    </li>
-                    <li><a class="list-item" href="#"><span>Link list 1</span></a></li>
-                    <li><a class="list-item" href="#"><span>Link list 2</span></a></li>
-                    <li><a class="list-item" href="#"><span>Link list 3</span></a></li>
-                    <li><span class="divider"></span></li>
-                    <li><a class="list-item" href="#"><span>Link list 4</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </li>
     <li class="nav-item dropdown megamenu">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
             <span>Esempio di Megamenu</span>
@@ -111,4 +81,3 @@
             </div>
         </div>
     </li>
-
