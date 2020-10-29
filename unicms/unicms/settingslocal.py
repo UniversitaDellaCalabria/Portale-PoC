@@ -66,6 +66,13 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+LANGUAGES = [('ar', 'Arabic'),
+             ('en', 'English'),
+             ('es', 'Spanish'),
+             ('fr', 'French'),
+             ('it', 'Italian'),
+             ('pt', 'Portuguese'),
+             ('pt-br', 'Brazilian Portuguese'), ]
 
 # Static files (CSS, JavaScript, Images)
 STATICFILES_FINDERS = [
