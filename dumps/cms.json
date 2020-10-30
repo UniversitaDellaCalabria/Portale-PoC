@@ -84,6 +84,49 @@
   }
 },
 {
+  "model": "cms_carousels.carousel",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:33:34.047Z",
+    "modified": "2020-10-30T16:43:19.238Z",
+    "is_active": true,
+    "name": "Portale Unical Home",
+    "description": "Carosello principale di immagini e notizie",
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_carousels.carouselitem",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:35:38.477Z",
+    "modified": "2020-10-30T16:35:44.796Z",
+    "order": 0,
+    "is_active": true,
+    "carousel": 1,
+    "image": 1,
+    "pre_heading": "Benvenuti",
+    "heading": "Poteva andare peggio",
+    "description": "dfsdfsd sdf sdf sdf sdf"
+  }
+},
+{
+  "model": "cms_carousels.carouselitemlocalization",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:43:19.241Z",
+    "modified": "2020-10-30T16:43:19.241Z",
+    "order": 0,
+    "is_active": true,
+    "carousel_item": 1,
+    "language": "en",
+    "pre_heading": "Welcome",
+    "heading": "that thing",
+    "description": ""
+  }
+},
+{
   "model": "cms_context.website",
   "pk": 2,
   "fields": {
@@ -121,7 +164,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:18:53.178Z",
-    "modified": "2020-10-30T14:26:14.269Z",
+    "modified": "2020-10-30T15:29:00.576Z",
     "order": 10,
     "is_active": true,
     "menu": 1,
@@ -288,11 +331,36 @@
   }
 },
 {
+  "model": "cms_menus.navigationbaritemlocalization",
+  "pk": 2,
+  "fields": {
+    "item": 1,
+    "language": "en",
+    "name": "Home"
+  }
+},
+{
+  "model": "cms_medias.media",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:32:21.019Z",
+    "modified": "2020-10-30T16:32:21.019Z",
+    "is_active": true,
+    "title": "Unical Campus",
+    "file": "medias/2020/campus_khrzwfL.jpg",
+    "description": "Vista con panorama",
+    "file_size": null,
+    "file_format": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
   "model": "cms.page",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-10-29T09:12:44.427Z",
+    "modified": "2020-10-30T16:37:39.524Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
     "context": 1,
@@ -304,6 +372,19 @@
     "created_by": null,
     "modified_by": null,
     "type": "standard"
+  }
+},
+{
+  "model": "cms.pagecarousel",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:37:39.528Z",
+    "modified": "2020-10-30T16:37:39.528Z",
+    "order": 10,
+    "is_active": true,
+    "section": "slider",
+    "page": 1,
+    "carousel": 1
   }
 }
 ]
