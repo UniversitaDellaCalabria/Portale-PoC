@@ -11,12 +11,14 @@ from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   AbstractPageBlock,
                                   ActivableModel,
                                   PageTemplate,
+                                  SectionAbstractModel,
                                   SortableModel,
                                   TimeStampedModel)
 
 from taggit.managers import TaggableManager
 from tinymce import models as tinymce_models
 
+from cms_carousels.models import Carousel
 from cms_medias import settings as cms_media_settings
 from . settings import *
 from . utils import remove_file
@@ -99,10 +101,27 @@ class Page(TimeStampedModel, ActivableModel):
         return '{} {}'.format(self.name, self.state)
 
 
+class PageCarousel(SectionAbstractModel, ActivableModel, SortableModel,
+                   TimeStampedModel):
+    page = models.ForeignKey(Page, null=False, blank=False,
+                             on_delete=models.CASCADE)
+    carousel = models.ForeignKey(Carousel, null=False, blank=False,
+                                 on_delete=models.CASCADE)
+    
+
+    class Meta:
+        verbose_name_plural = _("Page Carousel")
+
+    def __str__(self):
+        return '{} {} {}:{}'.format(self.page,
+                                    self.order or '#',
+                                    self.section or '#')
+
+
 class PageBlock(AbstractPageBlock):
     page = models.ForeignKey(Page, null=False, blank=False,
                              on_delete=models.CASCADE)
-
+                               
     class Meta:
         verbose_name_plural = _("Page Block")
 
@@ -158,6 +177,7 @@ class PageLink(TimeStampedModel):
 
     def __str__(self):
         return '{} {}' % (self.page, self.name)
+
 
 class AbstractPublication(TimeStampedModel, ActivableModel):
     title   = models.CharField(max_length=256,
@@ -220,12 +240,7 @@ class Category(TimeStampedModel):
 
 
 class Publication(AbstractPublication):
-    context = models.ManyToManyField(WebPath,
-                                     limit_choices_to={'is_active': True},)
-
     slug              = models.SlugField(null=True, blank=True)
-    in_evidence_start = models.DateTimeField(null=True,blank=True)
-    in_evidence_end   = models.DateTimeField(null=True,blank=True)
     tags = TaggableManager()
 
     created_by = models.ForeignKey(get_user_model(),
@@ -256,6 +271,29 @@ class Publication(AbstractPublication):
 
     def __str__(self):
         return '{} {}' % (self.context, self.title)
+
+
+class PublicationContext(TimeStampedModel, ActivableModel):
+    publication = models.ForeignKey(Publication, null=False, blank=False,
+                                    on_delete=models.CASCADE)
+    context = models.ForeignKey(WebPath, on_delete=models.CASCADE)
+    in_evidence_start = models.DateTimeField(null=True,blank=True)
+    in_evidence_end   = models.DateTimeField(null=True,blank=True)
+
+    created_by = models.ForeignKey(get_user_model(),
+                                   null=True, blank=True,
+                                   on_delete=models.CASCADE,
+                                   related_name='contpub_created_by')
+    modified_by = models.ForeignKey(get_user_model(),
+                                    null=True, blank=True,
+                                    on_delete=models.CASCADE,
+                                    related_name='contpub_modified_by')
+
+    class Meta:
+        verbose_name_plural = _("Publication Contexts")
+
+    def __str__(self):
+        return '{} {}' % (self.publication, self.context)
 
 
 class PublicationLink(TimeStampedModel):

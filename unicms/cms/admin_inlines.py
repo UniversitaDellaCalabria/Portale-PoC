@@ -27,6 +27,12 @@ class PageBlockInline(admin.TabularInline):
     model = PageBlock
     extra = 0
 
+class PublicationContextInline(admin.TabularInline):
+    model = PublicationContext
+    extra = 0
+    classes = ['collapse']
+    readonly_fields = ('created_by', 'modified_by')
+    
 
 class PageThirdPartyBlockInline(admin.TabularInline):
     model = PageThirdPartyBlock
@@ -45,6 +51,7 @@ class PublicationRelatedInline(admin.StackedInline):
     extra = 0
     fk_name = 'publication'
     classes = ['collapse']
+    raw_id_fields = ('related',)
 
 
 class PublicationAttachmentInline(admin.StackedInline):
@@ -59,3 +66,9 @@ class PublicationLinkInline(admin.StackedInline):
     extra = 0
     fk_name = 'publication'
     classes = ['collapse']
+
+class PageCarouselInline(admin.TabularInline):
+    model = PageCarousel
+    extra = 0
+    classes = ['collapse']
+    raw_id_fields = ("carousel",)

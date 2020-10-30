@@ -42,7 +42,18 @@ class ActivableModel(models.Model):
         abstract = True
 
 
-class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel):
+class SectionAbstractModel(models.Model):
+    section = models.CharField(max_length=60, blank=True, null=True,
+                               help_text=_("Specify the container "
+                                           "section in the template where "
+                                           "this block would be rendered."),
+                               choices=CMS_TEMPLATE_BLOCK_SECTIONS)
+    class Meta:
+        abstract = True
+
+
+class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel,
+                        SectionAbstractModel):
     name = models.CharField(max_length=60, blank=True, null=True,
                             help_text=_("Specify the container "
                                         "section in the template where "
@@ -52,11 +63,6 @@ class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel):
     content = models.TextField(help_text=_("according to the "
                                            "block template schema"),
                                blank=True, null=True)
-    section = models.CharField(max_length=60, blank=True, null=True,
-                               help_text=_("Specify the container "
-                                           "section in the template where "
-                                           "this block would be rendered."),
-                               choices=CMS_TEMPLATE_BLOCK_SECTIONS)
 
     class Meta:
         abstract = True
