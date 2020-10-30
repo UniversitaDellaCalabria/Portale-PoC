@@ -26,6 +26,16 @@ class NavigationBar(TimeStampedModel, ActivableModel, SectionAbstractModel):
     class Meta:
         verbose_name_plural = _("Context Navigation Menus")
 
+
+    def get_localized_items(self, lang=settings.LANGUAGE, **kwargs):
+        items = []
+        for i in NavigationBarItem.objects.filter(menu=self,
+                                                  is_active=True,
+                                                  **kwargs).\
+                                           order_by('order'):
+            items.append(i.localized(lang=lang))
+        return items
+    
     def __str__(self):
         return '{} - {}'.format(self.context, self.name)
 
@@ -68,11 +78,28 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
     def link(self):
         return self.url or self.page or self.publication or '#'
 
-    def get_childs(self):
-        return NavigationBarItem.objects.filter(is_active=True,
-                                                parent=self,
-                                                menu=self.menu).\
-                                         order_by('order')
+    def localized(self, lang=settings.LANGUAGE, **kwargs):
+        i18n = NavigationBarItemLocalization.objects.filter(item=self,
+                                                            language=lang).first()
+        if i18n:
+            self.name = i18n.name
+            self.language = lang
+        else:
+            self.language = None
+        return self
+
+    def get_childs(self, lang=settings.LANGUAGE):
+        items = NavigationBarItem.objects.filter(is_active=True,
+                                                 parent=self,
+                                                 menu=self.menu).\
+                                          order_by('order')
+        if getattr(self, 'language', lang):
+            for item in items:
+                i18n = NavigationBarItemLocalization.objects.filter(item=self,
+                                                                    language=lang).first()
+                if i18n:
+                    item.name = i18n
+        return items
 
 
     def __str__(self):

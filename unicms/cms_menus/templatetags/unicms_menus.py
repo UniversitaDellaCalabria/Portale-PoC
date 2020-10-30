@@ -25,16 +25,8 @@ def load_menus(context, section, template):
                                         is_active=True,
                                         context=context['context']).first()
     if not menu: return ''
-    menu_items = NavigationBarItem.objects.filter(menu=menu,
-                                                  is_active=True,
-                                                  parent__isnull=True).\
-                                           order_by('order')
-    # i18n override
     language = request.LANGUAGE_CODE
-    for i in menu_items:
-        i18n = i.navigationbaritemlocalization_set.filter(language=language).first()
-        if i18n:
-            i.name = i18n.name
-    #
+    menu_items = menu.get_localized_items(lang=language, 
+                                          parent__isnull=True)
     data = {'menu': menu_items}
     return handle_faulty_templates(template, data, name='load_menus')

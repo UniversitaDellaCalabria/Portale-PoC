@@ -23,18 +23,9 @@ def load_carousel(context, section, template):
                                        is_active=True,
                                        page__context=context['context']).first()
     if not page: return ''
-    else: carousel = page.carousel
-    carousel_items = carousel.carouselitem_set.filter(carousel=carousel,
-                                                       is_active=True,).\
-                                                       order_by('order')
-    # i18n override
+    else: carousel = page.carousel    
+    
     language = request.LANGUAGE_CODE
-    for i in carousel_items:
-        i18n = i.carouselitemlocalization_set.filter(language=language).first()
-        if i18n:
-            i.heading = i18n.heading
-            i.pre_heading = i18n.pre_heading
-            i.description = i18n.description
-    #
+    carousel_items = carousel.get_localized_items(lang=language)
     data = {'carousel_items': carousel_items}
     return handle_faulty_templates(template, data, name='load_carousel')

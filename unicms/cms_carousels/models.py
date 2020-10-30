@@ -30,6 +30,16 @@ class Carousel(ActivableModel, TimeStampedModel):
         ordering = ['name']
         verbose_name_plural = _("Carousels")
 
+
+    def get_localized_items(self, lang=settings.LANGUAGE):
+        items = []
+        for i in self.carouselitem_set.filter(carousel=self,
+                                              is_active=True,).\
+                                       order_by('order'):
+            items.append(i.localized(lang=lang))
+        return items
+        
+            
     def __str__(self):
         return self.name
 
@@ -48,7 +58,16 @@ class CarouselItem(ActivableModel, TimeStampedModel, SortableModel):
     
     class Meta:
         verbose_name_plural = _("Carousel Items")
-
+    
+    def localized(self, lang=settings.LANGUAGE):
+        i18n = CarouselItemLocalization.objects.filter(carousel_item=self,
+                                                       language=lang).first()
+        if i18n:
+            self.heading = i18n.heading
+            self.pre_heading = i18n.pre_heading
+            self.description = i18n.description
+        return self
+        
     def __str__(self):
         return '{} {}'.format(self.carousel, self.heading)
 
