@@ -113,9 +113,9 @@ class PageCarousel(SectionAbstractModel, ActivableModel, SortableModel,
         verbose_name_plural = _("Page Carousel")
 
     def __str__(self):
-        return '{} {} {}:{}'.format(self.page,
-                                    self.order or '#',
-                                    self.section or '#')
+        return '{} {} :{}'.format(self.page,
+                                  self.order or '#',
+                                  self.section or '#')
 
 
 class PageBlock(AbstractPageBlock):

@@ -24,6 +24,7 @@ def load_menus(context, section, template):
     menu = NavigationBar.objects.filter(section=section,
                                         is_active=True,
                                         context=context['context']).first()
+    if not menu: return ''
     menu_items = NavigationBarItem.objects.filter(menu=menu,
                                                   is_active=True,
                                                   parent__isnull=True).\

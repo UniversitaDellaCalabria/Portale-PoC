@@ -3,6 +3,7 @@ import logging
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from cms_templates.models import (ActivableModel, 
@@ -22,9 +23,8 @@ FILETYPE_ALLOWED = getattr(settings, 'FILETYPE_ALLOWED',
 
 def context_media_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return '{}/{}/{}'.format(instance.context.site, 
-                             instance.context.pk,
-                             filename)
+    return 'medias/{}/{}'.format(timezone.now().year,
+                                 filename)
 
 
 class MediaCollection(ActivableModel, TimeStampedModel):
@@ -65,7 +65,7 @@ class Media(ActivableModel, TimeStampedModel):
         verbose_name_plural = _("Media")
 
     def __str__(self):
-        return '{} {}' % (self.context, self.name)
+        return '{} {}'.format(self.title, self.file_format)
 
 
 # class MediaLink(TimeStampedModel):

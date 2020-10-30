@@ -7,6 +7,7 @@ from cms_context.models import WebPath
 from cms_medias.models import Media
 from cms_templates.models import (ActivableModel, 
                                   SortableModel,
+                                  SectionAbstractModel,
                                   TimeStampedModel)
 
 
@@ -49,12 +50,12 @@ class CarouselItem(ActivableModel, TimeStampedModel, SortableModel):
         verbose_name_plural = _("Carousel Items")
 
     def __str__(self):
-        return '{} {}' % (self.carousel, self.heading)
+        return '{} {}'.format(self.carousel, self.heading)
 
 
 class CarouselItemLocalization(ActivableModel, TimeStampedModel, SortableModel):
     carousel_item = models.ForeignKey(CarouselItem,
-                                  on_delete=models.CASCADE)
+                                      on_delete=models.CASCADE)
     language   = models.CharField(choices=settings.LANGUAGES,
                                   max_length=12, null=False,blank=False,
                                   default='en')
@@ -64,13 +65,13 @@ class CarouselItemLocalization(ActivableModel, TimeStampedModel, SortableModel):
                              help_text=_("Heading"))
     
     # hopefully markdown here!
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     
     class Meta:
         verbose_name_plural = _("Carousel Item Localization")
 
     def __str__(self):
-        return '{} {}' % (self.carousel_item, self.language)
+        return '{} {}'.format(self.carousel_item, self.language)
 
 
 class CarouselItemLink(ActivableModel, TimeStampedModel, SortableModel):

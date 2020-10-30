@@ -16,6 +16,7 @@ bootstrap-italia-base.html
 <!-- load custom template tags -->
 {% load unicms_blocks %}
 {% load unicms_menus %}
+{% load unicms_carousels %}
 
 <!-- Return to Agid native template -->
 {% block extra_head %}
@@ -128,7 +129,10 @@ bootstrap-italia-base.html
 {% block container %}
 
 {% block hero %}
+{% load_carousel section='slider' template="unical_portale_hero.html" %}
+<!--
 {% include "unical_portale_hero.html" %}
+-->
 {% endblock hero %}
 
 <div class="container">
