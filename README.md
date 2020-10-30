@@ -32,6 +32,11 @@ cd unicms
 
 go to `/admin` and submit the superuser credential to start putting some data into the model.
 
+If you want to share your example data
+````
+./manage.py dumpdata --exclude auth.permission --exclude contenttypes --exclude sessions --exclude admin --indent 2 > ../dumps/cms.json 
+````
+
 Model
 -----
 
