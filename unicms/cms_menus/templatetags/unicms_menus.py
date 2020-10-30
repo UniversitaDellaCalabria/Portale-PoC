@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 from cms_context.utils import detect_user_language
 
-from cms_menus.models import NavigationBarItem
+from cms_menus.models import NavigationBar, NavigationBarItem
 
 
 logger = logging.getLogger(__name__)
@@ -24,12 +24,15 @@ def load_menus(context, section, template):
     request = context['request']
     language = detect_user_language(request)
 
-    menu = NavigationBarItem.objects.filter(section=section,
-                                            is_active=True,
-                                            parent__isnull=True).\
-                                     order_by('order')
+    menu = NavigationBar.objects.filter(section=section,
+                                        is_active=True,
+                                        context=context['context']).first()
+    menu_items = NavigationBarItem.objects.filter(menu=menu,
+                                                  is_active=True,
+                                                  parent__isnull=True).\
+                                           order_by('order')
     # i18n override
-    for i in menu:
+    for i in menu_items:
         #  import pdb; pdb.set_trace()
         i18n = i.navigationbaritemlocalization_set.filter(language=language).first()
         if i18n:
@@ -38,7 +41,7 @@ def load_menus(context, section, template):
 
     data = {
             'context': context,
-            'menu': menu
+            'menu': menu_items
     }
     try:
         return render_to_string(template, data)

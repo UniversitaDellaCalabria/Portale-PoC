@@ -1,40 +1,19 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from cms.models import Page
 from cms_context.models import *
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   ActivableModel,
+                                  SectionAbstractModel,
                                   SortableModel,
                                   TimeStampedModel)
 
-
-class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
-    """
-    elements that builds up the navigation menu
-    """
+class NavigationBar(TimeStampedModel, ActivableModel, SectionAbstractModel):
     context = models.ForeignKey(WebPath,
-                                on_delete=models.CASCADE,
-                                limit_choices_to={'is_active': True},)
+                            on_delete=models.CASCADE,
+                            limit_choices_to={'is_active': True},)
     name = models.CharField(max_length=33, blank=False, null=False)
-    page = models.ForeignKey(WebPath,
-                             related_name='page_path',
-                             on_delete=models.CASCADE,
-                             null=True, blank=True)
-    parent = models.ForeignKey('NavigationBarItem',
-                               null=True, blank=True,
-                               on_delete=models.CASCADE,
-                               related_name="related_page")
-    url = models.CharField(help_text=_("url"),
-                           null=True, blank=True, max_length=2048)
-    publication = models.ForeignKey('cms.Publication',
-                                    null=True, blank=True,
-                                    related_name='pub',
-                                    on_delete=models.CASCADE)
-    section = models.CharField(max_length=60, blank=False, null=False,
-                               help_text=_("Specify the container "
-                                           "section in the template where "
-                                           "this menu will be rendered."),
-                               choices=CMS_TEMPLATE_BLOCK_SECTIONS)
     created_by = models.ForeignKey(get_user_model(),
                                    null=True, blank=True,
                                    on_delete=models.CASCADE,
@@ -43,6 +22,45 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                     null=True, blank=True,
                                     on_delete=models.CASCADE,
                                     related_name='menu_modified_by')
+    
+    class Meta:
+        verbose_name_plural = _("Context Navigation Menus")
+
+    def __str__(self):
+        return '{} - {}'.format(self.context, self.name)
+
+
+class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
+    """
+    elements that builds up the navigation menu
+    """
+    menu = models.ForeignKey(NavigationBar,
+                             null=True, blank=True,
+                             on_delete=models.CASCADE,
+                             related_name="related_menu")
+    name = models.CharField(max_length=33, blank=False, null=False)
+    page = models.ForeignKey(Page,
+                             null=True, blank=True,
+                             on_delete=models.CASCADE,
+                             related_name="linked_page")
+    parent = models.ForeignKey('NavigationBarItem',
+                               null=True, blank=True,
+                               on_delete=models.CASCADE,
+                               related_name="related_parent")
+    url = models.CharField(help_text=_("url"),
+                           null=True, blank=True, max_length=2048)
+    publication = models.ForeignKey('cms.Publication',
+                                    null=True, blank=True,
+                                    related_name='pub',
+                                    on_delete=models.CASCADE)
+    created_by = models.ForeignKey(get_user_model(),
+                                   null=True, blank=True,
+                                   on_delete=models.CASCADE,
+                                   related_name='menu_item_created_by')
+    modified_by = models.ForeignKey(get_user_model(),
+                                    null=True, blank=True,
+                                    on_delete=models.CASCADE,
+                                    related_name='menu_item_modified_by')
     class Meta:
         verbose_name_plural = _("Context Navigation Menu Items")
 
@@ -53,12 +71,12 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
     def get_childs(self):
         return NavigationBarItem.objects.filter(is_active=True,
                                                 parent=self,
-                                                section=self.section).\
+                                                menu=self.menu).\
                                          order_by('order')
 
 
     def __str__(self):
-        return '{} - {} {}'.format(self.context,
+        return '{} - {} {}'.format(self.menu,
                                    self.name, self.parent or '')
 
 
