@@ -8,9 +8,9 @@ class MediaCollectionItemInline(admin.TabularInline):
     extra = 0
 
 
-class MediaLinkInline(admin.TabularInline):
-    model = MediaLink
-    extra = 0
+# class MediaLinkInline(admin.TabularInline):
+    # model = MediaLink
+    # extra = 0
 
 
 @admin.register(Media)
@@ -21,7 +21,7 @@ class MediaAdmin(admin.ModelAdmin):
                      'created', 'modified')
     readonly_fields = ('created_by', 'modified_by', 
                        'file_size', 'file_format')
-    inlines = (MediaCollectionItemInline, MediaLinkInline)
+    inlines = (MediaCollectionItemInline,) # MediaLinkInline)
 
 
 @admin.register(MediaCollection)

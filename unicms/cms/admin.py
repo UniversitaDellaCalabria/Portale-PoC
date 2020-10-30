@@ -30,14 +30,6 @@ class CategoryAdmin(admin.ModelAdmin):
         obj.delete()
 
 
-@admin.register(NavigationBarItem)
-class NavigationBarItemAdmin(admin.ModelAdmin):
-    list_display  = ('context', 'name', 'parent', 'order', 'is_active')
-    search_fields   = ('context', 'name', 'parent',)
-    list_filter = ('context__site__domain', 'created', 'modified')
-    inlines = (NavigationBarItemLocalizationInline,)
-
-
 @admin.register(Publication)
 class PublicationAdmin(AbstractCreateModifiedBy):
     search_fields = ('title',)

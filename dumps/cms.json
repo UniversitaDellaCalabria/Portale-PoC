@@ -122,7 +122,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritem",
+  "model": "cms_menus.navigationbaritem",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:18:53.178Z",
@@ -139,7 +139,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritem",
+  "model": "cms_menus.navigationbaritem",
   "pk": 2,
   "fields": {
     "created": "2020-10-29T09:19:21.186Z",
@@ -156,7 +156,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritem",
+  "model": "cms_menus.navigationbaritem",
   "pk": 3,
   "fields": {
     "created": "2020-10-29T09:19:36.099Z",
@@ -173,7 +173,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritem",
+  "model": "cms_menus.navigationbaritem",
   "pk": 4,
   "fields": {
     "created": "2020-10-29T09:19:48.538Z",
@@ -190,7 +190,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritem",
+  "model": "cms_menus.navigationbaritem",
   "pk": 5,
   "fields": {
     "created": "2020-10-29T09:20:02.598Z",
@@ -207,7 +207,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritem",
+  "model": "cms_menus.navigationbaritem",
   "pk": 6,
   "fields": {
     "created": "2020-10-29T09:20:19.287Z",
@@ -224,7 +224,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritem",
+  "model": "cms_menus.navigationbaritem",
   "pk": 7,
   "fields": {
     "created": "2020-10-29T09:27:04.167Z",
@@ -241,7 +241,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritem",
+  "model": "cms_menus.navigationbaritem",
   "pk": 8,
   "fields": {
     "created": "2020-10-29T09:28:17.305Z",
@@ -258,7 +258,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritem",
+  "model": "cms_menus.navigationbaritem",
   "pk": 9,
   "fields": {
     "created": "2020-10-29T09:29:16.363Z",
@@ -275,7 +275,7 @@
   }
 },
 {
-  "model": "cms.navigationbaritemlocalization",
+  "model": "cms_menus.navigationbaritemlocalization",
   "pk": 1,
   "fields": {
     "item": 4,

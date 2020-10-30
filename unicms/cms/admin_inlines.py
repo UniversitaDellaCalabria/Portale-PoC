@@ -3,12 +3,6 @@ from django.contrib import admin
 from . models import *
 
 
-class NavigationBarItemLocalizationInline(admin.TabularInline):
-    model = NavigationBarItemLocalization
-    extra = 0
-    classes = ['collapse']
-
-
 class PageInline(admin.TabularInline):
     model = Page
     extra = 0
@@ -36,13 +30,6 @@ class PageBlockInline(admin.TabularInline):
 
 class PageThirdPartyBlockInline(admin.TabularInline):
     model = PageThirdPartyBlock
-    extra = 0
-    classes = ['collapse']
-
-
-class NavigationBarItemInline(admin.TabularInline):
-    model = NavigationBarItem
-    autocomplete_fields = ('context', 'parent', 'page')
     extra = 0
     classes = ['collapse']
 

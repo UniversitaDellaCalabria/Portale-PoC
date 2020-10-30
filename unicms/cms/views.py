@@ -6,19 +6,11 @@ from django.http import (HttpResponse,
                          HttpResponseBadRequest,
                          HttpResponseRedirect)
 from django.shortcuts import render, get_object_or_404
-from django.utils import translation
 
 from cms_context.models import WebSite, WebPath
+from cms_context.utils import detect_user_language
 from urllib.parse import urlparse
 from . models import Page
-
-
-def detect_user_language(request):
-    lang = request.GET.get('lang',
-                           translation.get_language_from_request(request))
-    translation.activate(lang)
-    request.LANGUAGE_CODE = translation.get_language()
-    return lang
 
 
 def cms_content(request):

@@ -68,17 +68,17 @@ class Media(ActivableModel, TimeStampedModel):
         return '{} {}' % (self.context, self.name)
 
 
-class MediaLink(TimeStampedModel):
-    media = models.ForeignKey(Media, on_delete=models.CASCADE)
-    title = models.CharField(max_length=60, blank=True, null=True,
-                             help_text=_("Link title"))
-    url = models.TextField()
+# class MediaLink(TimeStampedModel):
+    # media = models.ForeignKey(Media, on_delete=models.CASCADE)
+    # title = models.CharField(max_length=60, blank=True, null=True,
+                             # help_text=_("Link title"))
+    # url = models.TextField()
     
-    class Meta:
-        verbose_name_plural = _("Media Links")
+    # class Meta:
+        # verbose_name_plural = _("Media Links")
 
-    def __str__(self):
-        return '{} {}' % (self.media, self.title)
+    # def __str__(self):
+        # return '{} {}' % (self.media, self.title)
 
 
 class MediaCollectionItem(ActivableModel, SortableModel, TimeStampedModel):
