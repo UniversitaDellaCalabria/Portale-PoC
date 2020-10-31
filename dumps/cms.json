@@ -88,7 +88,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:33:34.047Z",
-    "modified": "2020-10-30T16:43:19.238Z",
+    "modified": "2020-10-31T15:05:32.336Z",
     "is_active": true,
     "name": "Portale Unical Home",
     "description": "Carosello principale di immagini e notizie",
@@ -101,14 +101,44 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:35:38.477Z",
-    "modified": "2020-10-30T16:35:44.796Z",
+    "modified": "2020-10-31T15:05:32.338Z",
     "order": 0,
     "is_active": true,
     "carousel": 1,
     "image": 1,
     "pre_heading": "Benvenuti",
-    "heading": "Poteva andare peggio",
-    "description": "dfsdfsd sdf sdf sdf sdf"
+    "heading": "Questa è una Intestazione",
+    "description": "Questo è il corpo del messaggio."
+  }
+},
+{
+  "model": "cms_carousels.carouselitem",
+  "pk": 2,
+  "fields": {
+    "created": "2020-10-31T13:54:29.853Z",
+    "modified": "2020-10-31T15:05:32.340Z",
+    "order": 1,
+    "is_active": true,
+    "carousel": 1,
+    "image": 2,
+    "pre_heading": "Studenti",
+    "heading": "Altro elemento",
+    "description": "La foto di background viene automaticamente rivestita di un overlay grigio per migliorare il contrasto con il testo in sovraimpressione. In caso di assenza di testo la foto non verrà scurita."
+  }
+},
+{
+  "model": "cms_carousels.carouselitem",
+  "pk": 3,
+  "fields": {
+    "created": "2020-10-31T15:04:48.019Z",
+    "modified": "2020-10-31T15:04:48.019Z",
+    "order": 2,
+    "is_active": true,
+    "carousel": 1,
+    "image": 3,
+    "pre_heading": "Altri studenti",
+    "heading": "In tutte le Salse",
+    "description": "E possibile definire l'ordine di apparizione degli elementi di carousel con un semplice drag and drop"
   }
 },
 {
@@ -124,6 +154,20 @@
     "pre_heading": "Welcome",
     "heading": "that thing",
     "description": ""
+  }
+},
+{
+  "model": "cms_carousels.carouselitemlink",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-31T14:05:01.913Z",
+    "modified": "2020-10-31T14:14:51.624Z",
+    "order": 0,
+    "is_active": true,
+    "carousel_item": 1,
+    "title_preset": "read more",
+    "title": null,
+    "url": "#"
   }
 },
 {
@@ -349,6 +393,38 @@
     "title": "Unical Campus",
     "file": "medias/2020/campus_khrzwfL.jpg",
     "description": "Vista con panorama",
+    "file_size": null,
+    "file_format": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_medias.media",
+  "pk": 2,
+  "fields": {
+    "created": "2020-10-31T13:53:43.251Z",
+    "modified": "2020-10-31T14:35:45.239Z",
+    "is_active": true,
+    "title": "Unical Campus esempio 2",
+    "file": "medias/2020/students1.jpg",
+    "description": "Esempio di immagine promozionale di campus",
+    "file_size": null,
+    "file_format": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_medias.media",
+  "pk": 3,
+  "fields": {
+    "created": "2020-10-31T15:04:12.200Z",
+    "modified": "2020-10-31T15:04:12.200Z",
+    "is_active": true,
+    "title": "studenti 3",
+    "file": "medias/2020/students2.jpg",
+    "description": "studenti 3",
     "file_size": null,
     "file_format": null,
     "created_by": null,
