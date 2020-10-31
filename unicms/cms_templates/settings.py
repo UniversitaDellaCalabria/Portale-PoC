@@ -67,3 +67,12 @@ if CMS_PAGE_TEMPLATES:
 else:
     logger.warning('Page template files not found')
 
+CMS_LINKS_LABELS = (('view', _('View')),
+                    ('open', _('Open')),
+                    ('read more', _('Read More')),
+                    ('more', _('More')),
+                    ('get in', _('Get in')),
+                    ('enter', _('Enter')),
+                    ('submit', _('Submit')),
+                    ('custom', _('custom'))
+                  )

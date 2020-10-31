@@ -5,7 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 from cms_context.models import WebPath
 from cms_medias.models import Media
-from cms_templates.models import (ActivableModel, 
+from cms_templates.models import (CMS_LINKS_LABELS,
+                                  ActivableModel, 
                                   SortableModel,
                                   SectionAbstractModel,
                                   TimeStampedModel)
@@ -54,10 +55,13 @@ class CarouselItem(ActivableModel, TimeStampedModel, SortableModel):
                              help_text=_("Heading"))
     
     # hopefully markdown here!
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     
     class Meta:
         verbose_name_plural = _("Carousel Items")
+    
+    def get_links(self):
+        return self.carouselitemlink_set.filter(is_active=True)
     
     def localized(self, lang=settings.LANGUAGE):
         i18n = CarouselItemLocalization.objects.filter(carousel_item=self,
@@ -96,6 +100,9 @@ class CarouselItemLocalization(ActivableModel, TimeStampedModel, SortableModel):
 class CarouselItemLink(ActivableModel, TimeStampedModel, SortableModel):
     carousel_item = models.ForeignKey(CarouselItem,
                                       on_delete=models.CASCADE)
+    title_preset = models.CharField(choices=CMS_LINKS_LABELS,
+                                    default='custom',
+                                    max_length=33)
     title = models.CharField(max_length=120, blank=True, null=True,
                              help_text=_("Title"))
     url = models.CharField(max_length=2048)
@@ -103,8 +110,11 @@ class CarouselItemLink(ActivableModel, TimeStampedModel, SortableModel):
     class Meta:
         verbose_name_plural = _("Carousel Item Links")
 
+    def get_title(self):
+        return self.title if self.title_preset == 'custom' else self.title_preset
+
     def __str__(self):
-        return '{} {}' % (self.carousel_item, self.url)
+        return '{} {}'.format(self.carousel_item, self.url)
 
 
 class CarouselItemLinkLocalization(ActivableModel, TimeStampedModel, SortableModel):
@@ -118,6 +128,6 @@ class CarouselItemLinkLocalization(ActivableModel, TimeStampedModel, SortableMod
     
     class Meta:
         verbose_name_plural = _("Carousel Item Links")
-
+    
     def __str__(self):
         return '{} {}' % (self.carousel, self.url)

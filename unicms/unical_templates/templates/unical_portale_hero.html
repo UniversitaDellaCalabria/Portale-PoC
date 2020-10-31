@@ -7,13 +7,13 @@
     
     {% for item in carousel_items %}
     <div class="it-single-slide-wrapper">
-      <div class="it-hero-wrapper it-dark it-overlay">
+      <div class="it-hero-wrapper {% if item.heading %} it-dark {% endif %} it-overlay">
           
           <!-- - img-->
           <div class="img-responsive-wrapper">
             <div class="img-responsive">
                 <div class="img-wrapper">
-                    <img src="{% static 'images/unical_banner.jpg' %}" title="img title" alt="imagealt">
+                    <img src="{{ item.image.file.url }}" title="{{ item.image.name }}" alt="{{ item.image.name }}">
                 </div>
             </div>
           </div>
@@ -22,11 +22,13 @@
           <div class="container">
             <div class="row">
                 <div class="col-12">
-                  <div class="it-hero-text-wrapper bg-dark">
-                      <span class="it-category">{{ item.pre_heading }}</span>
-                      <h1 class="no_toc">{{ item.heading }}</h1>
-                      <p class="d-none d-lg-block">{{ item.description }}</p>
-                      <div class="it-btn-container"><a class="btn btn-sm btn-secondary" href="#">Label button</a></div>
+                  <div class="it-hero-text-wrapper {% if item.heading %} bg-dark {% endif %}">
+                      <span class="it-category">{{ item.pre_heading|default_if_none:"" }}</span>
+                      <h1 class="no_toc">{{ item.heading|default_if_none:"" }}</h1>
+                      <p class="d-none d-lg-block">{{ item.description|default_if_none:"" }}</p>
+                      {% for link in item.get_links %}
+                        <div class="it-btn-container"><a class="btn btn-sm btn-secondary" href="{{ link.url }}">{{ link.get_title }}</a></div>
+                      {% endfor %}
                   </div>
                 </div>
             </div>
