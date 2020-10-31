@@ -21,6 +21,20 @@ bootstrap-italia-base.html
 <!-- Return to Agid native template -->
 {% block extra_head %}
 {{ block.super }}
+<style>
+.it-header-navbar-wrapper {
+    background: #fff;
+}
+
+.navbar .navbar-collapsable .navbar-nav li a.nav-link {
+    color: #000;
+}
+
+.it-carousel-wrapper .owl-stage-outer {
+    padding-top: 0px;
+    padding-bottom: 0;
+}
+</style>
 {% endblock extra_head %}
 
 <!-- Page Title -->
@@ -34,18 +48,58 @@ bootstrap-italia-base.html
 {% endblock page_meta_description %}
 
 {% block header_slim_top_left %}
-   <div style="min-width: 5vw; display: block;">
-    <!--
-    <label for="search_top">search</label>
-    -->
-    <input type="text" class="" id="search_top"
-           style="height: 1.5vw;"
-           placeholder="{% trans 'search' %}">
-    <!--
-    <svg class="icon"  ><use xlink:href="{% static '/svg/sprite.svg' %}#it-search"></use></svg>
-    -->
-  </div>
+<!--
+<div style="" class="header-slim-left-zone">
+<div class="it-access-top-wrapper">
+    <form class="form-inline d-flex justify-content-center md-form form-sm">
+        <svg class="icon icon-white"><use xlink:href="{% static '/svg/sprite.svg' %}#it-search"></use></svg>
+        <input class="form-control form-control-sm ml-3 w-175 h-2" type="text" placeholder="Search" aria-label="Search">
+    </form>
+</div>
+</div>
+-->
+
+<div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+            <span>{% trans "Rubrica telefonica" %}                
+                <svg class="icon icon-white"><use xlink:href="{% static '/svg/sprite.svg' %}#it-telephone"></use></svg>
+            </span>
+            <svg class="icon d-none d-lg-block">
+                <use xlink:href="{% static '/svg/sprite.svg' %}#it-expand"></use>
+            </svg>
+        </a>
+        <div class="dropdown-menu">
+            <div class="row">
+                <div class="col-12">
+                    <div class="link-list-wrapper">
+                        <ul class="link-list">
+                            <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
+                            <li><a class="list-item" href="?lang=ar"><span>Shortcut 1</span></a></li>
+                            
+                            <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
+                            <li><a class="list-item" href="?lang=en"><span>Shortcut 2</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<div style="" class="header-slim-left-zone">
+    <p class="text-white">
+        
+
+    </p>
+</div>
 {% endblock header_slim_top_left %}
+
+<!-- Logo in Header -->
+{% block header_center_logo %}
+<div class="col-10 col-md-12 offset-1 offset-md-0">
+    <image src="{% static 'images/logo1.svg' %}" style="width: 100%;"/>
+</div>
+{% endblock header_center_logo %}
 
 <!-- URL link top left -->
 {% block header_slim_org_url %}
@@ -89,6 +143,46 @@ bootstrap-italia-base.html
 <!-- Make empty areas -->
 {% block header_mobile_arrow %}{% endblock header_mobile_arrow %}
 {% block header_mobile_slim_menu %}{% endblock header_mobile_slim_menu %}
+
+{% block header_center_right_zone %}
+<div class="it-right-zone">
+<div class="it-socials d-none d-md-flex">
+  <span>Seguici su</span>
+  <ul>
+    <li>
+      <a href="#" aria-label="Facebook" target="_blank">
+        <svg class="icon">
+          <use xlink:href="{% static '/svg/sprite.svg' %}#it-facebook"></use>
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a href="#" aria-label="Github" target="_blank">
+        <svg class="icon">
+          <use xlink:href="{% static '/svg/sprite.svg' %}#it-github"></use>
+        </svg>
+      </a>
+    </li>
+    <li>
+      <a href="#" aria-label="Twitter" target="_blank">
+        <svg class="icon">
+          <use xlink:href="{% static '/svg/sprite.svg' %}#it-twitter"></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="it-search-wrapper">
+  <span class="d-none d-md-block">Cerca</span>
+  <a class="search-link rounded-icon" aria-label="Cerca" href="#">
+    <svg class="icon">
+      <use xlink:href="{% static '/svg/sprite.svg' %}#it-search"></use>
+    </svg>
+  </a>
+</div>
+</div>
+
+{% endblock header_center_right_zone %}
 
 <!-- Main Menu -->
 {% block main_menu %}
@@ -146,9 +240,11 @@ bootstrap-italia-base.html
     {% block under_content_title %}{% endblock under_content_title %}
 
     <div class="py-md-5 bd-content clearfix">
+<!--
 <div class="pull-left">
     <h2><span style="word-break: break-word;">UniCal {% trans "Notizie" %}</span></h2>
 </div>
+-->
 </div>
     <div class="row">
         <div class="col-12 col-lg-9">
@@ -220,8 +316,8 @@ $(function() {
       items : 1,
       //itemsDesktop : false,
       //itemsDesktopSmall : false,
-      //itemsTablet: false,
-      //itemsMobile : false,
+      itemsTablet: true,
+      itemsMobile : true,
   });
 });
 </script>

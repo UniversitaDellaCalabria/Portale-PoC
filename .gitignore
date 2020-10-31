@@ -1,5 +1,4 @@
 # Byte-compiled / optimized / DLL files
-unicms/media/*
 unicms/static/*
 __pycache__/
 *.py[cod]
