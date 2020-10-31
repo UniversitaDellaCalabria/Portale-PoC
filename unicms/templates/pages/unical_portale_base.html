@@ -21,10 +21,23 @@ bootstrap-italia-base.html
 <!-- Return to Agid native template -->
 {% block extra_head %}
 {{ block.super }}
-<style>
+<style> 
+
+.menu-wrapper {
+    z-index: 1 !important;
+    }
+
+.owl-carousel {
+    z-index: 0;
+}
+
 .it-header-navbar-wrapper {
     background: #fff;
 }
+
+.owl-nav {
+    display: none;
+    }
 
 .navbar .navbar-collapsable .navbar-nav li a.nav-link {
     color: #000;
@@ -226,6 +239,53 @@ bootstrap-italia-base.html
 {% load_carousel section='slider' template="unical_portale_hero.html" %}
 {% endblock hero %}
 
+
+<!-- menu secondario diretto -->
+    {% block middle-section %}
+    <div class="container py-4 mb-4">
+      <div class="row pt-4">
+        <div class="col-sm">
+          <div class="bg text-white text-center h-25 d-inline-block" style="">
+            <a>
+            <span class="text-black font-weight-bold">
+                <svg class="icon mr-2"><use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-right-circle"></use></svg>
+                <u>my Unical</u>
+            </span>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="bg text-white text-center h-25 d-inline-block" style="">
+            <a>
+            <span class="text-black font-weight-bold">
+                <svg class="icon mr-2"><use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-right-circle"></use></svg>
+                <u>Orienta Unical</u>
+            </span>
+            </a>
+          </div>        
+        </div>
+        <div class="col-sm">
+          <div class="bg text-white text-center h-25 d-inline-block" style="">
+            <a>
+            <span class="text-black font-weight-bold">
+                <svg class="icon mr-2"><use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-right-circle"></use></svg>
+                <u>Unical Store</u>
+            </span>
+            </a>
+          </div>
+        </div>
+        
+        
+        <div class="col-sm"><!-- vuoto --></div>
+
+      </div>
+
+    </div>
+    {% endblock middle-section %}
+
+
+
+<!--
 <div class="container">
     {% block content_title %}
     {% if title %}
@@ -240,12 +300,13 @@ bootstrap-italia-base.html
     {% block under_content_title %}{% endblock under_content_title %}
 
     <div class="py-md-5 bd-content clearfix">
-<!--
-<div class="pull-left">
-    <h2><span style="word-break: break-word;">UniCal {% trans "Notizie" %}</span></h2>
+    </div>
 </div>
 -->
-</div>
+
+<div class="row pt-2 mt-2" style="background-color: #eeeeee;">
+    <div class="container">
+        
     <div class="row">
         <div class="col-12 col-lg-9">
             {% include "unical_portale_home_news.html" %}
@@ -254,18 +315,22 @@ bootstrap-italia-base.html
             {% include "unical_portale_agenda.html" %}
         </div>
     </div>
+</div>
+</div>
 
-    <hr>
-
+    
+    <div class="container">
     <div class="row">
         <div class="col-12 col-lg-3">
-            <h3 class="mb-5 mt-4 d-lg-block">&nbsp;</h3>
+            <button type="button" class="btn btn-primary btn-block btn-lg mb-2">AVVISI</button>
             <button type="button" class="btn btn-secondary btn-block btn-lg mb-2">In evidenza</button>
             <button type="button" class="btn btn-secondary btn-block btn-lg mb-2">Ricerca</button>
             <button type="button" class="btn btn-secondary btn-block btn-lg mb-2">Didattica</button>
         </div>
         <div class="col-12 col-lg-9">
-            <h3 class="mb-5 mt-4">avvisi</h3>
+<!--
+            <h3 class="mb-5 mt-4">{% trans "avvisi" %}</h3>
+-->
             {% include "unical_portale_home_avvisi.html" %}
         </div>
     </div>
@@ -285,7 +350,12 @@ bootstrap-italia-base.html
           <use xlink:href="{% static 'svg/sprite.svg' %}#it-arrow-up"></use>
         </svg>
     </a>
+
+    </div>
+
 </div>
+
+
 <div class="cookiebar">
     <p>{% trans "Questo sito utilizza cookie tecnici, analytics e di terze parti." %}
        <br>
