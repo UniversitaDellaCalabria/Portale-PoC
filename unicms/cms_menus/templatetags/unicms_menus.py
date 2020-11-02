@@ -19,7 +19,7 @@ register = template.Library()
 
 @detect_language
 @register.simple_tag(takes_context=True)
-def load_menus(context, section, template):
+def load_menu(context, section, template):
     request = context['request']
     menu = NavigationBar.objects.filter(section=section,
                                         is_active=True,
@@ -29,4 +29,4 @@ def load_menus(context, section, template):
     menu_items = menu.get_localized_items(lang=language, 
                                           parent__isnull=True)
     data = {'menu': menu_items}
-    return handle_faulty_templates(template, data, name='load_menus')
+    return handle_faulty_templates(template, data, name='load_menu')

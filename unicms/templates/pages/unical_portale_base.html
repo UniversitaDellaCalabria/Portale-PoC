@@ -101,8 +101,6 @@ bootstrap-italia-base.html
 
 <div style="" class="header-slim-left-zone">
     <p class="text-white">
-        
-
     </p>
 </div>
 {% endblock header_slim_top_left %}
@@ -218,7 +216,7 @@ bootstrap-italia-base.html
                             <ul class="navbar-nav">
                                 {% block menu_links %}
                                     <!-- LOAD menu Blocks -->
-                                    {% load_menus section='menu-1' template="main_menu.html" %}
+                                    {% load_menu section='menu-1' template="main_menu.html" %}
                                 {% endblock menu_links %}
                             </ul>
                         </div>
@@ -241,47 +239,9 @@ bootstrap-italia-base.html
 
 
 <!-- menu secondario diretto -->
-    {% block middle-section %}
-    <div class="container py-4 mb-4">
-      <div class="row pt-4">
-        <div class="col-sm">
-          <div class="bg text-white text-center h-25 d-inline-block" style="">
-            <a>
-            <span class="text-black font-weight-bold">
-                <svg class="icon mr-2"><use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-right-circle"></use></svg>
-                <u>my Unical</u>
-            </span>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm">
-          <div class="bg text-white text-center h-25 d-inline-block" style="">
-            <a>
-            <span class="text-black font-weight-bold">
-                <svg class="icon mr-2"><use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-right-circle"></use></svg>
-                <u>Orienta Unical</u>
-            </span>
-            </a>
-          </div>        
-        </div>
-        <div class="col-sm">
-          <div class="bg text-white text-center h-25 d-inline-block" style="">
-            <a>
-            <span class="text-black font-weight-bold">
-                <svg class="icon mr-2"><use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-right-circle"></use></svg>
-                <u>Unical Store</u>
-            </span>
-            </a>
-          </div>
-        </div>
-        
-        
-        <div class="col-sm"><!-- vuoto --></div>
-
-      </div>
-
-    </div>
-    {% endblock middle-section %}
+{% block middle-section %}
+{% load_menu section='menu-2' template="unical_portale_menu_secondario.html" %}
+{% endblock middle-section %}
 
 
 
