@@ -18,7 +18,8 @@ class PageAdmin(admin.ModelAdmin):
     list_filter   = ('state', 'is_active', 'type',
                      'created', 'modified', 'date_start', 'date_end')
     readonly_fields = ('created_by', 'modified_by')
-    inlines       = (PageCarouselInline, PageBlockInline, 
+    inlines       = (PageMenuInline,
+                     PageCarouselInline, PageBlockInline, 
                      PageThirdPartyBlockInline,
                      PageRelatedInline, PageLinkInline)
 

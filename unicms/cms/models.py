@@ -7,6 +7,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from cms_context.models import *
+from cms_menus.models import NavigationBar
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   AbstractPageBlock,
                                   ActivableModel,
@@ -113,8 +114,22 @@ class PageCarousel(SectionAbstractModel, ActivableModel, SortableModel,
         verbose_name_plural = _("Page Carousel")
 
     def __str__(self):
-        return '{} {} :{}'.format(self.page,
-                                  self.order or '#',
+        return '{} {} :{}'.format(self.page, self.carousel,
+                                  self.section or '#')
+
+
+class PageMenu(SectionAbstractModel, ActivableModel, SortableModel,
+               TimeStampedModel):
+    page = models.ForeignKey(Page, null=False, blank=False,
+                             on_delete=models.CASCADE)
+    menu = models.ForeignKey(NavigationBar, null=False, blank=False,
+                             on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = _("Page Navigation Bars")
+
+    def __str__(self):
+        return '{} {} :{}'.format(self.page, self.menu,
                                   self.section or '#')
 
 

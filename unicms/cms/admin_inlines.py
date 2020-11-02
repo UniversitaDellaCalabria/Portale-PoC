@@ -67,8 +67,16 @@ class PublicationLinkInline(admin.StackedInline):
     fk_name = 'publication'
     classes = ['collapse']
 
+
 class PageCarouselInline(admin.TabularInline):
     model = PageCarousel
     extra = 0
     classes = ['collapse']
     raw_id_fields = ("carousel",)
+
+
+class PageMenuInline(admin.TabularInline):
+    model = PageMenu
+    extra = 0
+    classes = ['collapse']
+    raw_id_fields = ("menu",)

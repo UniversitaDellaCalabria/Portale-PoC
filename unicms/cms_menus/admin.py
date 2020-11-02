@@ -24,21 +24,18 @@ class NavigationBarItemInline(nested_admin.NestedStackedInline):
 
 @admin.register(NavigationBar)
 class NavigationBarAdmin(nested_admin.NestedModelAdmin):
-    list_display  = ('context', 'name', 'section', 'is_active')
-    search_fields   = ('context', 'name',)
-    list_filter = ('context__site__domain', 
-                   'created', 'modified')
+    list_display  = ('name', 'is_active')
+    search_fields   = ('name',)
+    list_filter = ('created', 'modified')
     readonly_fields = ('created_by', 'modified_by')
     inlines = (NavigationBarItemInline,)
-    raw_id_fields = ('context', )
 
 
 @admin.register(NavigationBarItem)
 class NavigationBarItemAdmin(nested_admin.NestedModelAdmin):
     list_display  = ('menu', 'name', 'parent', 'is_active')
-    search_fields   = ('menu__context__name', 'name',)
-    list_filter = ('menu__context__site__domain', 
-                   'created', 'modified')
+    search_fields   = ('name',)
+    list_filter = ('created', 'modified')
     readonly_fields = ('created_by', 'modified_by')
     inlines = (NavigationBarItemLocalizationInline,)
     raw_id_fields = ('menu', )

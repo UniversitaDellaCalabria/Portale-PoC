@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from cms.models import Page
 from cms_context.models import *
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   ActivableModel,
@@ -9,10 +8,7 @@ from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   SortableModel,
                                   TimeStampedModel)
 
-class NavigationBar(TimeStampedModel, ActivableModel, SectionAbstractModel):
-    context = models.ForeignKey(WebPath,
-                            on_delete=models.CASCADE,
-                            limit_choices_to={'is_active': True},)
+class NavigationBar(TimeStampedModel, ActivableModel):
     name = models.CharField(max_length=33, blank=False, null=False)
     created_by = models.ForeignKey(get_user_model(),
                                    null=True, blank=True,
@@ -37,7 +33,7 @@ class NavigationBar(TimeStampedModel, ActivableModel, SectionAbstractModel):
         return items
     
     def __str__(self):
-        return '{} - {}'.format(self.context, self.name)
+        return '{}'.format(self.name)
 
 
 class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
@@ -49,7 +45,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                              on_delete=models.CASCADE,
                              related_name="related_menu")
     name = models.CharField(max_length=33, blank=False, null=False)
-    page = models.ForeignKey(Page,
+    page = models.ForeignKey('cms.Page',
                              null=True, blank=True,
                              on_delete=models.CASCADE,
                              related_name="linked_page")
