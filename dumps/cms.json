@@ -225,9 +225,19 @@
     "created": "2020-10-30T14:06:46.447Z",
     "modified": "2020-10-30T14:22:35.013Z",
     "is_active": true,
-    "section": "menu-1",
-    "context": 1,
     "name": "Unical Portale - Menu principale",
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbar",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-02T09:42:43.659Z",
+    "modified": "2020-11-02T09:43:31.256Z",
+    "is_active": true,
+    "name": "Unical Portale Menu Secondario",
     "created_by": null,
     "modified_by": null
   }
@@ -395,6 +405,60 @@
   }
 },
 {
+  "model": "cms_menus.navigationbaritem",
+  "pk": 12,
+  "fields": {
+    "created": "2020-11-02T09:43:31.257Z",
+    "modified": "2020-11-02T09:43:31.257Z",
+    "order": 0,
+    "is_active": true,
+    "menu": 2,
+    "name": "my Unical",
+    "page": null,
+    "parent": null,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 13,
+  "fields": {
+    "created": "2020-11-02T09:43:31.258Z",
+    "modified": "2020-11-02T09:43:31.258Z",
+    "order": 1,
+    "is_active": true,
+    "menu": 2,
+    "name": "Orienta Unical",
+    "page": null,
+    "parent": null,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 14,
+  "fields": {
+    "created": "2020-11-02T09:43:31.258Z",
+    "modified": "2020-11-02T09:43:31.258Z",
+    "order": 2,
+    "is_active": true,
+    "menu": 2,
+    "name": "Unical Store",
+    "page": null,
+    "parent": null,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
   "model": "cms_menus.navigationbaritemlocalization",
   "pk": 1,
   "fields": {
@@ -465,7 +529,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-10-30T16:37:39.524Z",
+    "modified": "2020-11-02T10:09:03.491Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
     "context": 1,
@@ -490,6 +554,32 @@
     "section": "slider",
     "page": 1,
     "carousel": 1
+  }
+},
+{
+  "model": "cms.pagemenu",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-02T10:08:40.122Z",
+    "modified": "2020-11-02T10:08:40.122Z",
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 1,
+    "menu": 1
+  }
+},
+{
+  "model": "cms.pagemenu",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-02T10:09:03.494Z",
+    "modified": "2020-11-02T10:09:03.494Z",
+    "order": 11,
+    "is_active": true,
+    "section": "menu-2",
+    "page": 1,
+    "menu": 2
   }
 }
 ]
