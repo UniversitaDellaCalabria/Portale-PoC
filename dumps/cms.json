@@ -88,7 +88,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:33:34.047Z",
-    "modified": "2020-10-31T15:05:32.336Z",
+    "modified": "2020-11-02T09:35:12.153Z",
     "is_active": true,
     "name": "Portale Unical Home",
     "description": "Carosello principale di immagini e notizie",
@@ -101,8 +101,8 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:35:38.477Z",
-    "modified": "2020-10-31T15:05:32.338Z",
-    "order": 0,
+    "modified": "2020-11-02T09:35:12.157Z",
+    "order": 1,
     "is_active": true,
     "carousel": 1,
     "image": 1,
@@ -116,8 +116,8 @@
   "pk": 2,
   "fields": {
     "created": "2020-10-31T13:54:29.853Z",
-    "modified": "2020-10-31T15:05:32.340Z",
-    "order": 1,
+    "modified": "2020-11-02T09:35:12.159Z",
+    "order": 2,
     "is_active": true,
     "carousel": 1,
     "image": 2,
@@ -131,13 +131,13 @@
   "pk": 3,
   "fields": {
     "created": "2020-10-31T15:04:48.019Z",
-    "modified": "2020-10-31T15:04:48.019Z",
-    "order": 2,
+    "modified": "2020-11-02T09:35:12.155Z",
+    "order": 0,
     "is_active": true,
     "carousel": 1,
     "image": 3,
-    "pre_heading": "Altri studenti",
-    "heading": "In tutte le Salse",
+    "pre_heading": "Per gli studenti",
+    "heading": "Innovare non è un'opzione",
     "description": "E possibile definire l'ordine di apparizione degli elementi di carousel con un semplice drag and drop"
   }
 },
@@ -157,6 +157,21 @@
   }
 },
 {
+  "model": "cms_carousels.carouselitemlocalization",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-02T09:34:48.487Z",
+    "modified": "2020-11-02T09:34:48.487Z",
+    "order": 0,
+    "is_active": true,
+    "carousel_item": 3,
+    "language": "en",
+    "pre_heading": "Students first",
+    "heading": "Innovation is not an option",
+    "description": "We can even control the order of the carousel items and modify it with a simple drag and drop, via backend"
+  }
+},
+{
   "model": "cms_carousels.carouselitemlink",
   "pk": 1,
   "fields": {
@@ -165,6 +180,20 @@
     "order": 0,
     "is_active": true,
     "carousel_item": 1,
+    "title_preset": "read more",
+    "title": null,
+    "url": "#"
+  }
+},
+{
+  "model": "cms_carousels.carouselitemlink",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-02T09:32:19.175Z",
+    "modified": "2020-11-02T09:32:19.175Z",
+    "order": 0,
+    "is_active": true,
+    "carousel_item": 3,
     "title_preset": "read more",
     "title": null,
     "url": "#"
