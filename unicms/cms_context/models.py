@@ -18,7 +18,7 @@ CMS_CONTEXT_PERMISSIONS = getattr(settings, 'CMS_CONTEXT_PERMISSIONS',
 
 class WebSite(Site):
     is_active   = models.BooleanField()
-    
+
     class Meta:
         verbose_name_plural = _("Sites")
 
@@ -39,6 +39,14 @@ class WebPath(TimeStampedModel):
 
     class Meta:
         verbose_name_plural = _("Site Contexts (WebPaths)")
+
+    def split(self) -> list:
+        """
+        return splitted nodes in a list
+        """
+        if self.path == '/':
+            return ['/']
+        return self.path.split('/')
 
     def __str__(self):
         return '{}: {} ({})'.format(self.site, self.name, self.path)
