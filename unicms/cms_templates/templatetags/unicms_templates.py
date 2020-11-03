@@ -13,3 +13,8 @@ from cms.views import detect_user_language
 
 logger = logging.getLogger(__name__)
 register = template.Library()
+
+
+@register.simple_tag
+def supported_languages():
+    return settings.LANGUAGES

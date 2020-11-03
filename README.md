@@ -9,6 +9,16 @@ This platform was built on top of Django Framework, with few specialized librari
 
 The final goal is to achieve as much as possible, writing as little code as possible and working even less!
 
+# Table of Contents
+1. [Setup](#setup)
+2. [Model](#model)
+3. [Template tags](#template-tags)
+4. [Page Blocks](#fourth-examplehttpwwwfourthexamplecom)
+5. [Context Menu](#context-menu)
+6. [Search Engine](#search-engine)
+7. [Todo](#todo)
+
+
 Setup
 -----
 
@@ -24,7 +34,7 @@ cd unicms
 ./manage.py migrate
 
 # if you want to load some example datas
-./manage.py loaddata ../dumps/cms.json 
+./manage.py loaddata ../dumps/cms.json
 
 ./manage.py createsuperuser
 ./manage.py runserver
@@ -34,7 +44,7 @@ go to `/admin` and submit the superuser credential to start putting some data in
 
 If you want to share your example data
 ````
-./manage.py dumpdata --exclude auth.permission --exclude contenttypes --exclude sessions --exclude admin --indent 2 > ../dumps/cms.json 
+./manage.py dumpdata --exclude auth.permission --exclude contenttypes --exclude sessions --exclude admin --indent 2 > ../dumps/cms.json
 ````
 
 Model
@@ -49,6 +59,7 @@ This project is composed by the following applications:
 - cms, where Editorial boards can write post and publish content in one or more contexts.
 
 > :warning: **If you are a pure Djangoer**: You should know that templates and urls would be managed with cms_context, entirely through admin interface. We can even load third-party django applications, it is necessary to take into account configuring the url paths before defining uniCMS ones, otherwise uniCMS will intercept them and with a good chance will return to the user a page of 404.
+
 
 The first one, called `cms_context`, defines the multi web site logic (multi context) we adopted.
 Each context, or website, is nothing more than a
@@ -100,6 +111,17 @@ These takes as argument the following objects:
 
 Standing on the information taked from these objects the uniCMS template tag
 can create additional blocks and render many other informations.
+
+Here the templatetags we use:
+
+`cms_templates`
+- supported_languages: get settings.LANGUAGES_CODE to templates
+
+`cms_menus`
+- `load_menu`: eg, `{% load_menu section='menu-1' template="main_menu.html" %}`
+
+`cms_carousels`
+- `load_carousel`: similar to `load_menu`
 
 
 Page Blocks
