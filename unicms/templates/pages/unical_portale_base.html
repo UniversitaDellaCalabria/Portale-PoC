@@ -21,7 +21,7 @@ bootstrap-italia-base.html
 <!-- Return to Agid native template -->
 {% block extra_head %}
 {{ block.super }}
-<style> 
+<style>
 
 .menu-wrapper {
     z-index: 1 !important;
@@ -74,7 +74,7 @@ bootstrap-italia-base.html
 
 <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-            <span>{% trans "Rubrica telefonica" %}                
+            <span>{% trans "Rubrica telefonica" %}
                 <svg class="icon icon-white"><use xlink:href="{% static '/svg/sprite.svg' %}#it-telephone"></use></svg>
             </span>
             <svg class="icon d-none d-lg-block">
@@ -88,7 +88,7 @@ bootstrap-italia-base.html
                         <ul class="link-list">
                             <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
                             <li><a class="list-item" href="?lang=ar"><span>Shortcut 1</span></a></li>
-                            
+
                             <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
                             <li><a class="list-item" href="?lang=en"><span>Shortcut 2</span></a></li>
                         </ul>
@@ -123,7 +123,7 @@ bootstrap-italia-base.html
     {% block header_slim_sub_menu %}
     <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-            
+
             <span>{{ request.LANGUAGE_CODE }}</span>
             <svg class="icon d-none d-lg-block">
                 <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
@@ -210,14 +210,14 @@ bootstrap-italia-base.html
                     <div class="navbar-collapsable" id="nav10">
                         <div class="overlay"></div>
                         <div class="close-div sr-only">
-                            <button class="btn close-menu" type="button"><span class="it-close"></span>close</button>
+                            <button class="btn close-menu" type="button"><span class="it-close"></span>{% trans "close" %}</button>
                         </div>
                         <div class="menu-wrapper">
                             <ul class="navbar-nav">
-                                {% block menu_links %}
+                                {% block menu_main %}
                                     <!-- LOAD menu Blocks -->
                                     {% load_menu section='menu-1' template="main_menu.html" %}
-                                {% endblock menu_links %}
+                                {% endblock menu_main %}
                             </ul>
                         </div>
                     </div>
@@ -237,13 +237,10 @@ bootstrap-italia-base.html
 {% load_carousel section='slider' template="unical_portale_hero.html" %}
 {% endblock hero %}
 
-
 <!-- menu secondario diretto -->
 {% block middle-section %}
 {% load_menu section='menu-2' template="unical_portale_menu_secondario.html" %}
 {% endblock middle-section %}
-
-
 
 <!--
 <div class="container">
@@ -266,7 +263,7 @@ bootstrap-italia-base.html
 
 <div class="row pt-2 mt-2" style="background-color: #eeeeee;">
     <div class="container">
-        
+
     <div class="row">
         <div class="col-12 col-lg-9">
             {% include "unical_portale_home_news.html" %}
@@ -278,7 +275,7 @@ bootstrap-italia-base.html
 </div>
 </div>
 
-    
+
     <div class="container">
     <div class="row">
         <div class="col-12 col-lg-3">
