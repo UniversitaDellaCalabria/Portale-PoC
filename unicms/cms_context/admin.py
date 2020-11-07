@@ -11,16 +11,17 @@ from . models import *
 
 admin.site.unregister(Site)
 
+
+class WebPathAdminInline(admin.TabularInline):
+    model = WebPath
+    extra = 0
+
+
 @admin.register(WebSite)
 class WebSiteAdmin(admin.ModelAdmin):
     list_display = ('name', 'domain', 'is_active')
     list_filter = ('is_active',)
     search_fields = ('domain', 'name')
-
-
-class WebPathAdminInline(admin.TabularInline):
-    model = WebPath
-    extra = 0
 
 
 class EditorialBoardEditorsAdminInline(admin.TabularInline):

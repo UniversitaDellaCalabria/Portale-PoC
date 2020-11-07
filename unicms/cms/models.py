@@ -288,7 +288,8 @@ class Publication(AbstractPublication):
         return '{} {}' % (self.context, self.title)
 
 
-class PublicationContext(TimeStampedModel, ActivableModel):
+class PublicationContext(TimeStampedModel, ActivableModel, 
+                         SectionAbstractModel):
     publication = models.ForeignKey(Publication, null=False, blank=False,
                                     on_delete=models.CASCADE)
     context = models.ForeignKey(WebPath, on_delete=models.CASCADE)
