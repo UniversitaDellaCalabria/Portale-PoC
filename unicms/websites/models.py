@@ -1,9 +1,10 @@
 from django.db import models
-from django.contrib.sites.models import Site
 from django.utils.translation import gettext_lazy as _
 
 
-class WebSite(Site):
+class WebSite(models.Model):
+    name = models.CharField(max_length=254, blank=False, null=False)
+    domain = models.CharField(max_length=254, blank=False, null=False)
     is_active   = models.BooleanField()
     
     class Meta:
