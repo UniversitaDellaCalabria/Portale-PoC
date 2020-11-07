@@ -7,12 +7,14 @@ from django.http import (HttpResponse,
                          HttpResponseRedirect)
 from django.shortcuts import render, get_object_or_404
 
+from cms_context.decorators import detect_language
 from cms_context.models import WebSite, WebPath
 from cms_context.utils import detect_user_language
 from urllib.parse import urlparse
 from . models import Page
 
 
+@detect_language
 def cms_content(request):
     requested_site = re.match('^[a-zA-Z0-9\.\-\_]*',
                               # request.headers.get('Host', '')
@@ -30,13 +32,11 @@ def cms_content(request):
     if not page:
         raise Http404()
 
-    # language detect
-    detect_user_language(request)
-
     context_vars = {
         'website': website,
         'path': path,
         'context': context,
         'page': page,
     }
-    return render(request, page.base_template.template_file, context_vars)
+    return render(request, 
+                  page.base_template.template_file, context_vars)
