@@ -57,6 +57,7 @@ This project is composed by the following applications:
 - cms_menus, specialized app for navigation bar creation and management.
 - cms_carousels, specialized app for Carousel and Slider creation and management.
 - cms, where Editorial boards can write post and publish content in one or more contexts.
+- cms_previews, menus, pages, publications and carousel previews
 
 > :warning: **If you are a pure Djangoer**: You should know that templates and urls would be managed with cms_context, entirely through admin interface. We can even load third-party django applications, it is necessary to take into account configuring the url paths before defining uniCMS ones, otherwise uniCMS will intercept them and with a good chance will return to the user a page of 404.
 

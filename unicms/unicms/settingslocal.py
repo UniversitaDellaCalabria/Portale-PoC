@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'cms_menus',
     'cms_medias',
     'cms',
-
+    'cms_previews',
+    
     'unical_templates',
 
 ]
