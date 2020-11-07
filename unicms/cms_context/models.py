@@ -41,7 +41,9 @@ class WebPath(TimeStampedModel):
                                help_text=_('path be prefixed with '
                                            'the parent one, on save'))
     path = models.TextField(max_length=2048, null=False, blank=False)
-    fullpath = models.TextField(max_length=2048, null=True, blank=True)
+    fullpath = models.TextField(max_length=2048, null=True, blank=True,
+                                help_text=_("final path prefixed with the "
+                                            "parent path"))
     is_active   = models.BooleanField()
 
     class Meta:
@@ -58,7 +60,7 @@ class WebPath(TimeStampedModel):
     def save(self, *args, **kwargs):
         if self.parent:
             # update fullpath
-            fullpath = f'{self.parent.path}/{self.path}'
+            fullpath = f'{self.parent.path}/{self.path}'.replace('//', '/')
             if fullpath != self.fullpath: 
                 self.fullpath = fullpath
             
@@ -68,6 +70,7 @@ class WebPath(TimeStampedModel):
             for child_path in WebPath.objects.filter(parent=self):
                 child_path.save()
         else:
+            self.fullpath = self.path
             return super(WebPath, self).save(*args, **kwargs)
         
     def __str__(self):

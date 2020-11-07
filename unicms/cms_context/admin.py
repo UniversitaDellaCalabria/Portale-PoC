@@ -36,7 +36,7 @@ class WebPathAdmin(admin.ModelAdmin):
     list_display = ('name', 'path', 'site', 'is_active')
     list_filter = ('site', 'created', 'modified', 'is_active')
     search_fields = ('name', 'path',)
-    readonly_fields = ('created', 'modified')
+    readonly_fields = ('fullpath', 'created', 'modified')
     inlines = (EditorialBoardEditorsAdminInline,)
 
 
