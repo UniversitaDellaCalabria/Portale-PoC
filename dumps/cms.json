@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$aL1y4It24fXT$1Wk5h0sRihJB9e09LnevaV4lJukNGuZ5lno1kFXKLmY=",
-    "last_login": "2020-10-29T09:11:05.328Z",
+    "last_login": "2020-11-09T10:12:59.763Z",
     "is_superuser": true,
     "username": "wert",
     "is_staff": true,
@@ -53,6 +53,30 @@
   }
 },
 {
+  "model": "taggit.tag",
+  "pk": 3,
+  "fields": {
+    "name": "didattica",
+    "slug": "didattica"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 4,
+  "fields": {
+    "name": "eventi",
+    "slug": "eventi"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 5,
+  "fields": {
+    "name": "ricerca",
+    "slug": "ricerca"
+  }
+},
+{
   "model": "taggit.taggeditem",
   "pk": 1,
   "fields": {
@@ -68,6 +92,33 @@
     "tag": 2,
     "content_type": 22,
     "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 3,
+  "fields": {
+    "tag": 3,
+    "content_type": 27,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 4,
+  "fields": {
+    "tag": 4,
+    "content_type": 27,
+    "object_id": 2
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 5,
+  "fields": {
+    "tag": 5,
+    "content_type": 27,
+    "object_id": 3
   }
 },
 {
@@ -88,7 +139,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:33:34.047Z",
-    "modified": "2020-11-02T09:35:12.153Z",
+    "modified": "2020-11-02T10:45:06.229Z",
     "is_active": true,
     "name": "Portale Unical Home",
     "description": "Carosello principale di immagini e notizie",
@@ -101,7 +152,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:35:38.477Z",
-    "modified": "2020-11-02T09:35:12.157Z",
+    "modified": "2020-11-02T10:45:06.234Z",
     "order": 1,
     "is_active": true,
     "carousel": 1,
@@ -116,7 +167,7 @@
   "pk": 2,
   "fields": {
     "created": "2020-10-31T13:54:29.853Z",
-    "modified": "2020-11-02T09:35:12.159Z",
+    "modified": "2020-11-02T10:44:42.912Z",
     "order": 2,
     "is_active": true,
     "carousel": 1,
@@ -131,7 +182,7 @@
   "pk": 3,
   "fields": {
     "created": "2020-10-31T15:04:48.019Z",
-    "modified": "2020-11-02T09:35:12.155Z",
+    "modified": "2020-11-02T10:45:06.232Z",
     "order": 0,
     "is_active": true,
     "carousel": 1,
@@ -211,10 +262,26 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:11:39.008Z",
-    "modified": "2020-10-29T09:11:39.008Z",
+    "modified": "2020-11-07T14:55:20.868Z",
     "site": 2,
     "name": "Portale dell'Università della Calabria",
+    "parent": null,
     "path": "/",
+    "fullpath": "/",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_context.webpath",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-07T14:57:19.676Z",
+    "modified": "2020-11-07T14:58:52.545Z",
+    "site": 2,
+    "name": "banane",
+    "parent": 1,
+    "path": "didattica",
+    "fullpath": "/didattica",
     "is_active": true
   }
 },
@@ -529,7 +596,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-11-02T10:09:03.491Z",
+    "modified": "2020-11-02T10:51:04.751Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
     "context": 1,
@@ -540,7 +607,7 @@
     "state": "published",
     "created_by": null,
     "modified_by": null,
-    "type": "standard"
+    "type": "home"
   }
 },
 {
@@ -548,7 +615,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:37:39.528Z",
-    "modified": "2020-10-30T16:37:39.528Z",
+    "modified": "2020-11-02T10:46:46.503Z",
     "order": 10,
     "is_active": true,
     "section": "slider",
@@ -580,6 +647,175 @@
     "section": "menu-2",
     "page": 1,
     "menu": 2
+  }
+},
+{
+  "model": "cms.category",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-09T13:25:34.020Z",
+    "modified": "2020-11-09T13:25:34.020Z",
+    "name": "Didattica",
+    "description": "Didattica",
+    "image": "images/categories/inline_image_preview.jpg"
+  }
+},
+{
+  "model": "cms.category",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-09T13:26:39.646Z",
+    "modified": "2020-11-09T13:26:39.646Z",
+    "name": "Ricerca",
+    "description": "Ricerca",
+    "image": "images/categories/ricerca.png"
+  }
+},
+{
+  "model": "cms.category",
+  "pk": 3,
+  "fields": {
+    "created": "2020-11-09T13:27:51.975Z",
+    "modified": "2020-11-09T13:27:51.975Z",
+    "name": "Eventi",
+    "description": "Eventi",
+    "image": "images/categories/eventi.jpg"
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-09T13:33:21.852Z",
+    "modified": "2020-11-09T15:37:55.483Z",
+    "is_active": true,
+    "title": "Unical Campus 1",
+    "subheading": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "content": "<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>",
+    "presentation_image": null,
+    "state": "published",
+    "date_start": "2020-11-09T13:24:35Z",
+    "date_end": null,
+    "note": "",
+    "slug": "unical-campus-1",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      1
+    ]
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-09T13:36:12.360Z",
+    "modified": "2020-11-09T13:36:12.360Z",
+    "is_active": true,
+    "title": "Unical Campus esempio 2",
+    "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
+    "presentation_image": null,
+    "state": "published",
+    "date_start": "2020-11-09T13:35:44Z",
+    "date_end": null,
+    "note": "",
+    "slug": "unical-campus-esempio-2",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      3
+    ]
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 3,
+  "fields": {
+    "created": "2020-11-09T13:36:59.347Z",
+    "modified": "2020-11-09T13:36:59.347Z",
+    "is_active": true,
+    "title": "Unical Campus 3",
+    "subheading": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
+    "presentation_image": null,
+    "state": "published",
+    "date_start": "2020-11-09T13:36:39Z",
+    "date_end": null,
+    "note": "",
+    "slug": "unical-campus-3",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      2
+    ]
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-09T13:34:17.872Z",
+    "modified": "2020-11-09T13:34:26.064Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "publication": 1,
+    "context": 1,
+    "in_evidence_start": "2020-11-09T13:33:54Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-09T13:36:12.365Z",
+    "modified": "2020-11-09T13:36:12.365Z",
+    "order": 50,
+    "is_active": true,
+    "section": null,
+    "publication": 2,
+    "context": 1,
+    "in_evidence_start": "2020-11-09T13:36:10Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 3,
+  "fields": {
+    "created": "2020-11-09T13:36:59.352Z",
+    "modified": "2020-11-09T13:36:59.352Z",
+    "order": 90,
+    "is_active": true,
+    "section": null,
+    "publication": 3,
+    "context": 1,
+    "in_evidence_start": "2020-11-09T13:36:53Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationlocalization",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-09T15:37:55.487Z",
+    "modified": "2020-11-09T15:37:55.488Z",
+    "is_active": true,
+    "title": "gdfg",
+    "publication": 1,
+    "language": "en",
+    "subheading": "dfgdfgdf",
+    "content": "<p>dfgdfgdfg</p>",
+    "created_by": null,
+    "modified_by": null
   }
 }
 ]
