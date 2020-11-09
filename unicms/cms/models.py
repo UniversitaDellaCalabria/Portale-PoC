@@ -292,7 +292,7 @@ class Publication(AbstractPublication):
 
 
 class PublicationContext(TimeStampedModel, ActivableModel, 
-                         SectionAbstractModel):
+                         SectionAbstractModel, SortableModel):
     publication = models.ForeignKey(Publication, null=False, blank=False,
                                     on_delete=models.CASCADE)
     context = models.ForeignKey(WebPath, on_delete=models.CASCADE)
