@@ -42,7 +42,9 @@ class PublicationAdmin(AbstractCreateModifiedBy):
                      PublicationContextInline,
                      PublicationRelatedInline,
                      PublicationLinkInline,
-                     PublicationAttachmentInline)
+                     PublicationAttachmentInline,
+                     PublicationGalleryInline)
+    raw_id_fields = ('presentation_image',)
 
 
 @admin.register(PublicationLocalization)

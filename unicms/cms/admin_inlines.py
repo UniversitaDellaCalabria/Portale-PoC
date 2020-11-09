@@ -68,6 +68,13 @@ class PublicationLinkInline(admin.StackedInline):
     classes = ['collapse']
 
 
+class PublicationGalleryInline(admin.StackedInline):
+    model = PublicationGallery
+    extra = 0
+    classes = ['collapse']
+    raw_id_fields = ['collection']
+
+
 class PageCarouselInline(admin.TabularInline):
     model = PageCarousel
     extra = 0

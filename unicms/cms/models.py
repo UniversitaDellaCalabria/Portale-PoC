@@ -7,6 +7,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from cms_context.models import *
+from cms_medias.models import Media, MediaCollection
 from cms_menus.models import NavigationBar
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   AbstractPageBlock,
@@ -204,6 +205,8 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
                                          help_text=_("Strap line (press)"))
     content           =  tinymce_models.HTMLField(null=True,blank=True,
                                                   help_text=_('Content'))
+    presentation_image = models.ForeignKey(Media, null=True, blank=True,
+                                           on_delete=models.CASCADE)
     state             = models.CharField(choices=PAGE_STATES,
                                          max_length=33,
                                          default='draft')
@@ -255,7 +258,7 @@ class Category(TimeStampedModel):
 
 
 class Publication(AbstractPublication):
-    slug              = models.SlugField(null=True, blank=True)
+    slug = models.SlugField(null=True, blank=True)
     tags = TaggableManager()
 
     created_by = models.ForeignKey(get_user_model(),
@@ -323,6 +326,19 @@ class PublicationLink(TimeStampedModel):
 
     def __str__(self):
         return '{} {}' % (self.publication, self.name)
+
+
+class PublicationGallery(TimeStampedModel, ActivableModel, SortableModel):
+    publication = models.ForeignKey(Publication, 
+                                    on_delete=models.CASCADE)
+    collection = models.ForeignKey(MediaCollection,
+                                    on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name_plural = _("Publication Image Gallery")
+
+    def __str__(self):
+        return '{} {}' % (self.publication, self.collection)
 
 
 class PublicationRelated(TimeStampedModel, SortableModel, ActivableModel):
