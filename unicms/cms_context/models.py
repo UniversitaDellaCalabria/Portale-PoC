@@ -73,13 +73,9 @@ class WebPath(TimeStampedModel):
             self.fullpath = fullpath
 
         return super(WebPath, self).save(*args, **kwargs)
-
         # update also its childs
         for child_path in WebPath.objects.filter(parent=self):
             child_path.save()
-
-
-        return super(WebPath, self).save(*args, **kwargs)
 
     def __str__(self):
         return '{}: {} ({})'.format(self.site, self.name, self.path)
