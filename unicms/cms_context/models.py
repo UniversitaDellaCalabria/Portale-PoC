@@ -61,18 +61,26 @@ class WebPath(TimeStampedModel):
         if self.parent:
             # update fullpath
             fullpath = f'{self.parent.path}/{self.path}'.replace('//', '/')
-            if fullpath != self.fullpath: 
-                self.fullpath = fullpath
-            
-            return super(WebPath, self).save(*args, **kwargs)
-            
-            # update also its childs
-            for child_path in WebPath.objects.filter(parent=self):
-                child_path.save()
         else:
-            self.fullpath = self.path
-            return super(WebPath, self).save(*args, **kwargs)
-        
+            fullpath = self.path
+
+        for reserved_word in settings.CMS_RESERVED_WORDS:
+            if reserved_word in full_path:
+                _msg = f'{fullpath} matches with the reserved word: {reserved_word}'
+                raise ReservedWordException(_msg)
+
+        if fullpath != self.fullpath:
+            self.fullpath = fullpath
+
+        return super(WebPath, self).save(*args, **kwargs)
+
+        # update also its childs
+        for child_path in WebPath.objects.filter(parent=self):
+            child_path.save()
+
+
+        return super(WebPath, self).save(*args, **kwargs)
+
     def __str__(self):
         return '{}: {} ({})'.format(self.site, self.name, self.path)
 

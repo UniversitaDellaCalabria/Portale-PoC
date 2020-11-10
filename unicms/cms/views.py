@@ -1,5 +1,7 @@
+import logging
 import re
 
+from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import (HttpResponse,
                          Http404,
@@ -12,6 +14,8 @@ from cms_context.models import WebSite, WebPath
 from cms_context.utils import detect_user_language
 from urllib.parse import urlparse
 from . models import Page
+
+logger = logging.getLogger(__name__)
 
 
 @detect_language
@@ -27,6 +31,13 @@ def cms_content(request):
     path = urlparse(request.get_full_path()).path
 
     # detect if webpath is referred to a specialized app
+    for k,v in settings.CMS_APP_REGEXP_URLPATHS.items():
+        logger.debug(k, v)
+        match = re.match(v, path)
+        if not match: continue
+
+        query = match.groupdict()
+        logger.warning(query)
 
 
     # go further with webpath matching

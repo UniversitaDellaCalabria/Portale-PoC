@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'taggit',
     'tinymce',
     'nested_admin',
-    
+
     'cms_templates',
     'cms_carousels',
     'cms_context',
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'cms_medias',
     'cms',
     'cms_previews',
-    
+
     'unical_templates',
 
 ]
@@ -171,3 +171,13 @@ TINYMCE_DEFAULT_CONFIG = {
         # ...
     # ],
 # }
+
+
+CMS_PUBLICATION_PREFIX_RESERVED_WORD = 'content/posts/'
+CMS_PUBLICATION_URL_REGEXP = f'(?:[\/a-zA-Z0-9\.\-\_]*)({CMS_PUBLICATION_PREFIX_RESERVED_WORD})(?P<slug>[a-z0-9\-]*)'
+
+
+CMS_RESERVED_WORDS = [CMS_PUBLICATION_PREFIX_RESERVED_WORD,]
+CMS_APP_REGEXP_URLPATHS = {
+    'cms.models.Publication' : CMS_PUBLICATION_URL_REGEXP,
+}
