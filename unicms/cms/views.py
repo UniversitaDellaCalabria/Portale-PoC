@@ -25,6 +25,11 @@ def cms_content(request):
         return HttpResponseBadRequest()
 
     path = urlparse(request.get_full_path()).path
+
+    # detect if webpath is referred to a specialized app
+
+
+    # go further with webpath matching
     context = get_object_or_404(WebPath, fullpath=path, site=website)
     page = Page.objects.filter(context = context,
                                is_active = True,
@@ -38,5 +43,5 @@ def cms_content(request):
         'context': context,
         'page': page,
     }
-    return render(request, 
+    return render(request,
                   page.base_template.template_file, context_vars)

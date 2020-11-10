@@ -68,18 +68,18 @@ path (url). Each context has users (Editorial Board Editors) with one
 of the following permissions (see `cms_context.settings.CMS_CONTEXT_PERMISSIONS`):
 
 ````
-CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her')),
+CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her in his/her context')),
                            ('2', _('can edit all pages in his/her context')),
                            ('3', _('can edit all pages in his/her context and descendants')),
                            ('4', _('can translate all pages in his/her context')),
                            ('5', _('can translate all pages in his/her context and descendants')),
-                           ('6', _('can publish created by him/her')),
+                           ('6', _('can publish created by him/her in his/her context')),
                            ('7', _('can publish all pages in his/her context')),
                            ('8', _('can publish all pages in his/her context and descendants')),
                            )
 ````
 
-`cms` is the model where we've defined how we build a Page.
+`cms` is the model where we've defined how we build a Page or post a Publication.
 For us, a Page, is anything else than a composition of blocks, rendered in a
 HTML template. This means that a page is a block container, in which we can
 define many blocks with different order. For every page we must define
@@ -127,6 +127,16 @@ Here the templatetags we use:
 `cms_context`
 - `breadcrumbs`: `{% breadcrumbs template="breadcrumbs.html" %}`
 
+`cms`
+- `load_publications_preview`: `{% load_publications_preview template="publications_preview.html" %}`
+    - additional paramenters:
+        template,
+        section
+        number=5
+        in_evidence=False
+        categories_csv="Didattica,Ricerca"
+        tags_csv="eventi,ricerca"
+
 
 Page Blocks
 -------------
@@ -147,6 +157,30 @@ Context Menu
 [WiP]
 
 A WebPath (context) can have multiple Menus or inherits them from its superior context.
+
+
+Urls
+----
+
+[WiP]
+
+All the urls that matches the namespace configured in the `urls.py` of the master project
+will be handled by uniCMS. uniCMS can match two kind of resources:
+
+1. WebPath (Context) corresponsing at a single Page (Home page and its childs)
+2. Applications, an example would be Pubblication List and Views resources
+
+for these latter uniCMS uses some reserved words, as prefix, to deal with specialized url routings.
+in the settings file we would configure these, as follows:
+
+````
+CMS_APP_REGEXP_URLPATHS = {
+    'app_to_be_used_to manage_the_contents': 'regexp_to_be_applied_to_the_urlpath_requested'
+
+}
+````
+
+See `cms.settings` as example.
 
 
 Search Engine

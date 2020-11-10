@@ -111,7 +111,7 @@ class PageCarousel(SectionAbstractModel, ActivableModel, SortableModel,
                              on_delete=models.CASCADE)
     carousel = models.ForeignKey(Carousel, null=False, blank=False,
                                  on_delete=models.CASCADE)
-    
+
 
     class Meta:
         verbose_name_plural = _("Page Carousel")
@@ -139,7 +139,7 @@ class PageMenu(SectionAbstractModel, ActivableModel, SortableModel,
 class PageBlock(AbstractPageBlock):
     page = models.ForeignKey(Page, null=False, blank=False,
                              on_delete=models.CASCADE)
-                               
+
     class Meta:
         verbose_name_plural = _("Page Block")
 
@@ -297,7 +297,7 @@ class Publication(AbstractPublication):
         trans = PublicationLocalization.objects.filter(publication=self,
                                                        language=lang,
                                                        is_active=True).first()
-        if trans: 
+        if trans:
             self.title = trans.title
             self.subheading = trans.subheading
             self.content = trans.content
@@ -311,7 +311,7 @@ class Publication(AbstractPublication):
             result = True
         if self.date_end and self.date_end < now:
             result = False
-        
+
         return result
 
     def title2slug(self):
@@ -326,7 +326,7 @@ class Publication(AbstractPublication):
         return '{} {}'.format(self.title, self.state)
 
 
-class PublicationContext(TimeStampedModel, ActivableModel, 
+class PublicationContext(TimeStampedModel, ActivableModel,
                          SectionAbstractModel, SortableModel):
     publication = models.ForeignKey(Publication, null=False, blank=False,
                                     on_delete=models.CASCADE)
@@ -346,6 +346,14 @@ class PublicationContext(TimeStampedModel, ActivableModel,
     class Meta:
         verbose_name_plural = _("Publication Contexts")
 
+    @property
+    def url(self):
+        prefix = getattr(settings, 'CMS_PUBLICATION_PREFIX_RESERVED_WORD',
+                                    CMS_PUBLICATION_PREFIX_RESERVED_WORD)
+        url = f'{self.context.fullpath}/{prefix}/{self.publication.slug}'
+        return url.replace('//', '/')
+
+
     def __str__(self):
         return '{} {}'.format(self.publication, self.context)
 
@@ -364,11 +372,11 @@ class PublicationLink(TimeStampedModel):
 
 
 class PublicationGallery(TimeStampedModel, ActivableModel, SortableModel):
-    publication = models.ForeignKey(Publication, 
+    publication = models.ForeignKey(Publication,
                                     on_delete=models.CASCADE)
     collection = models.ForeignKey(MediaCollection,
                                     on_delete=models.CASCADE)
-    
+
     class Meta:
         verbose_name_plural = _("Publication Image Gallery")
 

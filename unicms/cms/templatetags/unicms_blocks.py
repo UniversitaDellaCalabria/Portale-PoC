@@ -14,14 +14,14 @@ register = template.Library()
 
 @detect_language
 @register.simple_tag(takes_context=True)
-def load_publications_preview(context, template, 
+def load_publications_preview(context, template,
                               section = None,
                               number=5,
                               in_evidence=False,
                               categories_csv=None, tags_csv=None):
     request = context['request']
     now = timezone.localtime()
-    
+
     query_params = dict(context=context['context'],
                         is_active=True,
                         publication__is_active=True,
@@ -41,16 +41,14 @@ def load_publications_preview(context, template,
     pub_in_context = PublicationContext.objects.\
                         filter(**query_params).\
                         order_by('order')[0:number]
-    
+
     if not pub_in_context: return ''
-    else: pubs = [i.publication 
-                  for i in pub_in_context 
-                  if i.publication.is_publicable]
+
     # i18n
     language = request.LANGUAGE_CODE
-    for i in pubs:
-        i.translate_as(lang=language)
-    
-    data = {'publications': pubs}
-    return handle_faulty_templates(template, data, 
+    for i in pub_in_context:
+        i.publication.translate_as(lang=language)
+
+    data = {'publications': pub_in_context}
+    return handle_faulty_templates(template, data,
                                    name='load_publications_preview')
