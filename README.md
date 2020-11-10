@@ -123,6 +123,9 @@ Here the templatetags we use:
 `cms_carousels`
 - `load_carousel`: similar to `load_menu`
 
+`cms_context`
+- `breadcrumbs`: `{% breadcrumbs template="breadcrumbs.html" %}`
+
 
 Page Blocks
 -------------
