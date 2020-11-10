@@ -42,12 +42,14 @@ class PublicationAdmin(AbstractCreateModifiedBy):
                      PublicationContextInline,
                      PublicationRelatedInline,
                      PublicationLinkInline,
-                     PublicationAttachmentInline)
+                     PublicationAttachmentInline,
+                     PublicationGalleryInline)
+    raw_id_fields = ('presentation_image',)
 
 
 @admin.register(PublicationLocalization)
 class PublicationLocalizationAdmin(AbstractCreateModifiedBy):
-    search_fields = ('context_publication__title',)
-    list_display  = ('context_publication', 'language', 'is_active',)
-    list_filter   = ('context_publication__state', 'is_active',
+    search_fields = ('publication__title',)
+    list_display  = ('publication', 'language', 'is_active',)
+    list_filter   = ('publication__state', 'is_active',
                      'created', 'modified', 'language')

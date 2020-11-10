@@ -18,7 +18,7 @@ bootstrap-italia-base.html
 {% load unicms_context %}
 {% load unicms_menus %}
 {% load unicms_templates %}
-
+{% load unicms_blocks %}
 
 <!-- Return to Agid native template -->
 {% block extra_head %}
@@ -39,7 +39,7 @@ bootstrap-italia-base.html
 
 .owl-nav {
     display: none;
-    }
+}
 
 .navbar .navbar-collapsable .navbar-nav li a.nav-link {
     color: #000;
@@ -267,7 +267,9 @@ bootstrap-italia-base.html
 
     <div class="row">
         <div class="col-12 col-lg-9">
-            {% include "unical_portale_home_news.html" %}
+
+            {% load_publications_preview template="publications_preview.html" %}
+
         </div>
         <div class="col-12 col-lg-3">
             {% include "unical_portale_agenda.html" %}

@@ -34,7 +34,16 @@ class WebPath(TimeStampedModel):
     """
     site = models.ForeignKey(WebSite, on_delete=models.CASCADE)
     name = models.CharField(max_length=254, blank=False, null=False)
+    parent = models.ForeignKey('WebPath',
+                               null=True, blank=True,
+                               on_delete=models.CASCADE,
+                               related_name="related_path",
+                               help_text=_('path be prefixed with '
+                                           'the parent one, on save'))
     path = models.TextField(max_length=2048, null=False, blank=False)
+    fullpath = models.TextField(max_length=2048, null=True, blank=True,
+                                help_text=_("final path prefixed with the "
+                                            "parent path"))
     is_active   = models.BooleanField()
 
     class Meta:
@@ -48,6 +57,22 @@ class WebPath(TimeStampedModel):
             return ['/']
         return self.path.split('/')
 
+    def save(self, *args, **kwargs):
+        if self.parent:
+            # update fullpath
+            fullpath = f'{self.parent.path}/{self.path}'.replace('//', '/')
+            if fullpath != self.fullpath: 
+                self.fullpath = fullpath
+            
+            return super(WebPath, self).save(*args, **kwargs)
+            
+            # update also its childs
+            for child_path in WebPath.objects.filter(parent=self):
+                child_path.save()
+        else:
+            self.fullpath = self.path
+            return super(WebPath, self).save(*args, **kwargs)
+        
     def __str__(self):
         return '{}: {} ({})'.format(self.site, self.name, self.path)
 

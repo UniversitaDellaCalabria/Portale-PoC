@@ -3,10 +3,13 @@ import logging
 from django.contrib.auth import get_user_model
 # from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.utils import timezone
+from django.utils.text import slugify
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from cms_context.models import *
+from cms_medias.models import Media, MediaCollection
 from cms_menus.models import NavigationBar
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   AbstractPageBlock,
@@ -191,7 +194,7 @@ class PageLink(TimeStampedModel):
         verbose_name_plural = _("Page Links")
 
     def __str__(self):
-        return '{} {}' % (self.page, self.name)
+        return '{} {}'.format(self.page, self.name)
 
 
 class AbstractPublication(TimeStampedModel, ActivableModel):
@@ -204,6 +207,8 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
                                          help_text=_("Strap line (press)"))
     content           =  tinymce_models.HTMLField(null=True,blank=True,
                                                   help_text=_('Content'))
+    presentation_image = models.ForeignKey(Media, null=True, blank=True,
+                                           on_delete=models.CASCADE)
     state             = models.CharField(choices=PAGE_STATES,
                                          max_length=33,
                                          default='draft')
@@ -255,7 +260,7 @@ class Category(TimeStampedModel):
 
 
 class Publication(AbstractPublication):
-    slug              = models.SlugField(null=True, blank=True)
+    slug = models.SlugField(null=True, blank=True)
     tags = TaggableManager()
 
     created_by = models.ForeignKey(get_user_model(),
@@ -271,24 +276,58 @@ class Publication(AbstractPublication):
         verbose_name_plural = _("Publications")
 
     def active_translations(self):
-        return PublicationLocalization.objects.filter(item=self,
+        return PublicationLocalization.objects.filter(publication=self,
                                                       is_active=True)
+
+    def image_url(self):
+        if self.presentation_image:
+            image_path =  self.presentation_image
+        else:
+            image_path = self.category.first().image
+        return f'{settings.MEDIA_URL}/{image_path}'
+
+    @property
+    def categories(self):
+        return self.category.all()
 
     def translate_as(self, lang):
         """
         returns translation if available
         """
-        trans = PublicationLocalization.objects.filter(item=self,
-                                                       lang=lang,
-                                                       is_active=True)
-        if trans: return trans.first()
-        else: return self
+        trans = PublicationLocalization.objects.filter(publication=self,
+                                                       language=lang,
+                                                       is_active=True).first()
+        if trans: 
+            self.title = trans.title
+            self.subheading = trans.subheading
+            self.content = trans.content
+
+    @property
+    def is_publicable(self) -> bool:
+        now = timezone.localtime()
+        result = False
+        if self.is_active and \
+           self.date_start <= now:
+            result = True
+        if self.date_end and self.date_end < now:
+            result = False
+        
+        return result
+
+    def title2slug(self):
+        return slugify(self.title)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self.title2slug()
+        return super(Publication, self).save(*args, **kwargs)
 
     def __str__(self):
-        return '{} {}' % (self.context, self.title)
+        return '{} {}'.format(self.title, self.state)
 
 
-class PublicationContext(TimeStampedModel, ActivableModel):
+class PublicationContext(TimeStampedModel, ActivableModel, 
+                         SectionAbstractModel, SortableModel):
     publication = models.ForeignKey(Publication, null=False, blank=False,
                                     on_delete=models.CASCADE)
     context = models.ForeignKey(WebPath, on_delete=models.CASCADE)
@@ -308,7 +347,7 @@ class PublicationContext(TimeStampedModel, ActivableModel):
         verbose_name_plural = _("Publication Contexts")
 
     def __str__(self):
-        return '{} {}' % (self.publication, self.context)
+        return '{} {}'.format(self.publication, self.context)
 
 
 class PublicationLink(TimeStampedModel):
@@ -321,7 +360,20 @@ class PublicationLink(TimeStampedModel):
         verbose_name_plural = _("Publication Links")
 
     def __str__(self):
-        return '{} {}' % (self.publication, self.name)
+        return '{} {}'.format(self.publication, self.name)
+
+
+class PublicationGallery(TimeStampedModel, ActivableModel, SortableModel):
+    publication = models.ForeignKey(Publication, 
+                                    on_delete=models.CASCADE)
+    collection = models.ForeignKey(MediaCollection,
+                                    on_delete=models.CASCADE)
+    
+    class Meta:
+        verbose_name_plural = _("Publication Image Gallery")
+
+    def __str__(self):
+        return '{} {}'.format(self.publication, self.collection)
 
 
 class PublicationRelated(TimeStampedModel, SortableModel, ActivableModel):
@@ -368,9 +420,9 @@ class PublicationLocalization(TimeStampedModel, ActivableModel):
     title   = models.CharField(max_length=256,
                                null=False, blank=False,
                                help_text=_("Heading, Headline"))
-    context_publication = models.ForeignKey(Publication,
-                                            null=False, blank=False,
-                                            on_delete=models.CASCADE)
+    publication = models.ForeignKey(Publication,
+                                    null=False, blank=False,
+                                    on_delete=models.CASCADE)
     language   = models.CharField(choices=settings.LANGUAGES,
                                   max_length=12, null=False,blank=False,
                                   default='en')
@@ -391,4 +443,4 @@ class PublicationLocalization(TimeStampedModel, ActivableModel):
         verbose_name_plural = _("Publication Localizations")
 
     def __str__(self):
-        return '{} {}'.format(self.context, self.language)
+        return '{} {}'.format(self.publication, self.language)

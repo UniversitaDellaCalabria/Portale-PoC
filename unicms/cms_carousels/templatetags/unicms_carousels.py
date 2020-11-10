@@ -1,9 +1,6 @@
 import logging
 
 from django import template
-from django.conf import settings
-from django.utils import timezone
-from django.utils.safestring import mark_safe
 
 from cms.models import PageCarousel
 from cms_context.decorators import detect_language
