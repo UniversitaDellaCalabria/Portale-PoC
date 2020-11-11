@@ -1,0 +1,125 @@
+/**
+ * Università della Calabria
+ * Portale Style SCSS
+ */
+
+/**
+ * Università della Calabria COLORS
+ */
+$bordeaux_unical: #b71918;
+$dark_grey_unical: #383838;
+$light_grey_unical: #9d9d9c;
+$white: #ffffff;
+$cyan: #176fc1;
+
+@font-face {
+  font-family: TitilliumWeb-Black;
+  src: url(../fonts/TitilliumWeb-Black.ttf);
+}
+
+a {
+    text-decoration: none;
+}
+
+.super-bold {
+    font-family: TitilliumWeb-Black;
+}
+
+.icon-light {
+    fill: #fff !important;
+}
+
+.negative-mt-5 {
+    margin-top: -48px;
+}
+
+.dark-grey-background {
+    background: #d3d2cf;
+}
+
+.it-header-center-wrapper {
+    background: $bordeaux_unical;
+}
+
+@media (min-width: 992px) {
+    .it-header-wrapper .it-nav-wrapper .it-header-navbar-wrapper {
+        padding-top: 1.7rem;
+    }
+}
+
+.it-header-center-wrapper .it-header-center-content-wrapper .it-right-zone {
+    color: #fff;
+}
+
+input.top-input {
+    background: none;
+    border: 1px solid #fff;
+    height: 1.7rem;
+    width: 80%;
+    color: $white;
+}
+
+@media (min-width: 992px) {
+    .navbar .navbar-collapsable .navbar-nav li.nav-item {
+        font-size: 1.2rem;
+    }
+}
+
+.it-hero-wrapper .it-hero-text-wrapper h1 {
+    background: #fff;
+    color: $dark_grey_unical;
+    padding: 1rem;
+    font-family: TitilliumWeb-Black;
+}
+
+.section-title-label {
+    background: #fff;
+}
+
+.card .etichetta {
+    font-size: 1rem;
+    text-transform: lowercase;
+    color: #435a70;
+    margin-bottom: 15px;
+    color: $cyan;
+}
+.card-title {
+    font-weight: bold;
+}
+.card .card-title {
+    line-height: 1;
+}
+.card .card-body .card-text {
+    font-family: Titillium Web;
+    font-size: 1rem;
+}
+
+
+
+/**
+ * De Marco
+ */
+.menu-wrapper {
+    z-index: 1 !important;
+    }
+
+.owl-carousel {
+    z-index: 0;
+}
+
+.it-header-navbar-wrapper {
+    background: #fff;
+}
+
+.owl-nav {
+    display: none;
+}
+
+.navbar .navbar-collapsable .navbar-nav li a.nav-link {
+    color: #000;
+}
+
+.it-carousel-wrapper .owl-stage-outer {
+    padding-top: 0px;
+    padding-bottom: 0;
+}

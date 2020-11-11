@@ -21,12 +21,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
 ROOT_URLCONF = 'unicms.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/pages', 
+        'DIRS': ['templates/pages',
                  'templates/blocks'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -43,7 +49,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'unicms.wsgi.application'
 
 # SECURITY
-X_FRAME_OPTIONS = 'SAMEORIGIN' 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 # Password validation
