@@ -24,7 +24,6 @@ bootstrap-italia-base.html
 {% block extra_head %}
 {{ block.super }}
 <style>
-
 .menu-wrapper {
     z-index: 1 !important;
     }
@@ -54,12 +53,12 @@ bootstrap-italia-base.html
 
 <!-- Page Title -->
 {% block page_title %}
-{% trans "Università della Calabria" %}
+{{ website.name }}
 {% endblock page_title %}
 
 <!-- Meta Description (for all pages if not overrided) -->
 {% block page_meta_description %}
-{% trans "Sito istituzionale dell'Università della Calabria" %}
+{{ website.name }}
 {% endblock page_meta_description %}
 
 {% block header_slim_top_left %}
@@ -160,7 +159,7 @@ bootstrap-italia-base.html
 {% block header_center_right_zone %}
 <div class="it-right-zone">
 <div class="it-socials d-none d-md-flex">
-  <span>Seguici su</span>
+  <span>{% trans "Seguici su" %}</span>
   <ul>
     <li>
       <a href="#" aria-label="Facebook" target="_blank">
@@ -186,7 +185,7 @@ bootstrap-italia-base.html
   </ul>
 </div>
 <div class="it-search-wrapper">
-  <span class="d-none d-md-block">Cerca</span>
+  <span class="d-none d-md-block">{% trans "Search" %}</span>
   <a class="search-link rounded-icon" aria-label="Cerca" href="#">
     <svg class="icon">
       <use xlink:href="{% static '/svg/sprite.svg' %}#it-search"></use>
@@ -234,33 +233,14 @@ bootstrap-italia-base.html
 <!-- Container -->
 {% block container %}
 
-{% block hero %}
+{% block carousel %}
 {% load_carousel section='slider' template="unical_portale_hero.html" %}
-{% endblock hero %}
+{% endblock carousel %}
 
 <!-- menu secondario diretto -->
 {% block middle-section %}
 {% load_menu section='menu-2' template="unical_portale_menu_secondario.html" %}
 {% endblock middle-section %}
-
-<!--
-<div class="container">
-    {% block content_title %}
-    {% if title %}
-    <div class="py-md-5 bd-content clearfix">
-        {% include 'title_display.html' %}
-        {% block right_button %}
-        {% endblock right_button %}
-    </div>
-    {% endif %}
-    {% endblock content_title %}
-
-    {% block under_content_title %}{% endblock under_content_title %}
-
-    <div class="py-md-5 bd-content clearfix">
-    </div>
-</div>
--->
 
 <div class="row pt-2 mt-2" style="background-color: #eeeeee;">
     <div class="container">
@@ -302,6 +282,7 @@ bootstrap-italia-base.html
         </main>
         {% endblock content_rows %}
     </div>
+    
     <a href="#" aria-hidden="true"
        data-attribute="back-to-top"
        class="back-to-top back-to-top-small">
@@ -314,7 +295,7 @@ bootstrap-italia-base.html
 
 </div>
 
-
+{% block cookiebar %}
 <div class="cookiebar">
     <p>{% trans "Questo sito utilizza cookie tecnici, analytics e di terze parti." %}
        <br>
@@ -329,6 +310,8 @@ bootstrap-italia-base.html
         </button>
     </div>
 </div>
+{% endblock cookiebar %}
+
 {% endblock container %}
 
 {% block footer_menu_section %}
