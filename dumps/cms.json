@@ -596,7 +596,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-11-02T10:51:04.751Z",
+    "modified": "2020-11-11T14:19:36.837Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
     "context": 1,
@@ -647,6 +647,36 @@
     "section": "menu-2",
     "page": 1,
     "menu": 2
+  }
+},
+{
+  "model": "cms.pageblock",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-11T13:24:49.497Z",
+    "modified": "2020-11-11T13:56:12.581Z",
+    "order": 10,
+    "is_active": true,
+    "section": "1",
+    "name": "publication-main-preview",
+    "type": "cms_templates.blocks.HtmlBlock",
+    "content": "{% load unicms_blocks %}\r\n<div class=\"row pt-2 mt-2\" style=\"background-color: #eeeeee;\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-12 col-lg-9\">\r\n                {% load_publications_preview template=\"publications_preview.html\" %}\r\n            </div>\r\n            <div class=\"col-12 col-lg-3\">\r\n                {% include \"unical_portale_agenda.html\" %}\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>",
+    "page": 1
+  }
+},
+{
+  "model": "cms.pageblock",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-11T14:16:54.794Z",
+    "modified": "2020-11-11T14:19:36.841Z",
+    "order": 1,
+    "is_active": true,
+    "section": "slider",
+    "name": "main-carousel",
+    "type": "cms_templates.blocks.HtmlBlock",
+    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"unical_portale_hero.html\" %}",
+    "page": 1
   }
 },
 {

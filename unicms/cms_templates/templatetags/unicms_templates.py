@@ -7,9 +7,7 @@ from django.template.exceptions import (TemplateDoesNotExist,
                                         TemplateSyntaxError)
 from django.utils import timezone
 from django.utils.safestring import mark_safe
-# WARNING - import circolare - decidere di migrare blocchi e menu in cms_pages
-from cms_menus.models import NavigationBarItem
-from cms.views import detect_user_language
+
 
 logger = logging.getLogger(__name__)
 register = template.Library()

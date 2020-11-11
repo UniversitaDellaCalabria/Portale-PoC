@@ -3,13 +3,35 @@ import logging
 from django import template
 from django.conf import settings
 from django.utils import timezone
+from django.utils.module_loading import import_string
+
 from cms_context.decorators import detect_language
 from cms_context.utils import handle_faulty_templates
-
 from cms.models import Category, PublicationContext
 
 logger = logging.getLogger(__name__)
 register = template.Library()
+
+
+@detect_language
+@register.simple_tag(takes_context=True)
+def load_blocks(context, section=None):
+    request = context['request']
+    page = context['page']
+    webpath = context['context']
+    blocks = page.get_blocks(section=section)
+    
+    result = ''
+    for block in blocks:
+        obj = import_string(block.type)(content=block.content,
+                                        request=request,
+                                        page=page,
+                                        webpath=webpath)
+        # context = Context({'request': request})
+        # result = template.render(context)
+        result = obj.render()
+            
+    return result
 
 
 @detect_language

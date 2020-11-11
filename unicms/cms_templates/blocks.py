@@ -1,6 +1,7 @@
 import json
 
-from django.utils.safestring import make_safe
+from django.template import Context, Template
+from django.utils.safestring import mark_safe
 
 
 class AbstractBlock(object):
@@ -18,13 +19,15 @@ class NullBlock(AbstractBlock):
     """
     clean up the inheritance from a parent page
     """
-    def __init__(self, content=''):
-        self.content = content
+    pass
 
 
 class HtmlBlock(AbstractBlock):
-    def __init__(self, content=''):
-        self.content = content
+    def render(self):
+        template = Template(self.content)
+        context = Context({'request': self.request,
+                           'context': self.webpath})
+        return template.render(context)
 
 
 class JSONBlock(AbstractBlock):

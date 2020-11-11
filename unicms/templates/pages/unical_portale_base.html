@@ -234,7 +234,7 @@ bootstrap-italia-base.html
 {% block container %}
 
 {% block carousel %}
-{% load_carousel section='slider' template="unical_portale_hero.html" %}
+{% load_blocks section=slider %}
 {% endblock carousel %}
 
 <!-- menu secondario diretto -->
@@ -242,23 +242,24 @@ bootstrap-italia-base.html
 {% load_menu section='menu-2' template="unical_portale_menu_secondario.html" %}
 {% endblock middle-section %}
 
+{% comment %}
 <div class="row pt-2 mt-2" style="background-color: #eeeeee;">
     <div class="container">
-
-    <div class="row">
-        <div class="col-12 col-lg-9">
-
-            {% load_publications_preview template="publications_preview.html" %}
-
-        </div>
-        <div class="col-12 col-lg-3">
-            {% include "unical_portale_agenda.html" %}
+        <div class="row">
+            <div class="col-12 col-lg-9">
+                {% load_publications_preview template="publications_preview.html" %}
+            </div>
+            <div class="col-12 col-lg-3">
+                {% include "unical_portale_agenda.html" %}
+            </div>
         </div>
     </div>
 </div>
-</div>
+{% endcomment %}
 
-    <div class="container">
+{% load_blocks section=1 %}
+
+<div class="container">
     <div class="row">
         <div class="col-12 col-lg-3">
             <button type="button" class="btn btn-primary btn-block btn-lg mb-2">AVVISI</button>
@@ -292,7 +293,6 @@ bootstrap-italia-base.html
     </a>
 
     </div>
-
 </div>
 
 {% block cookiebar %}

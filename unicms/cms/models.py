@@ -80,7 +80,17 @@ class Page(TimeStampedModel, ActivableModel):
                                      ('home', _('Home Page'))))
 
     tags = TaggableManager()
-
+    
+    
+    def get_blocks(self, section=None):
+        blocks = PageBlock.objects.filter(is_active=True)
+        thirdparty_blocks = PageThirdPartyBlock.objects.filter(is_active=True)
+        if section:
+            blocks = blocks.filter(section=section)
+        
+        # TODO - ordering together with thirdparty blocks
+        return [i for i in blocks]
+        
     def delete(self, *args, **kwargs):
         PageRelated.objects.filter(related_page=self).delete()
         super(Page, self).delete(*args, **kwargs)
@@ -145,6 +155,7 @@ class PageBlock(AbstractPageBlock):
 
     def __str__(self):
         return '{} {} {}:{}'.format(self.page,
+                                    self.name,
                                     self.order or '#',
                                     self.section or '#')
 
