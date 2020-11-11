@@ -14,6 +14,14 @@ class AbstractBlock(object):
         return mark_safe(self.content)
 
 
+class NullBlock(AbstractBlock):
+    """
+    clean up the inheritance from a parent page
+    """
+    def __init__(self, content=''):
+        self.content = content
+
+
 class HtmlBlock(AbstractBlock):
     def __init__(self, content=''):
         self.content = content

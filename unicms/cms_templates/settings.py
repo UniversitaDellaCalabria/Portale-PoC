@@ -37,6 +37,7 @@ CMS_TEMPLATE_BLOCK_SECTIONS = (('pre-head', _('Pre-Header')),
                               )
 
 CMS_BLOCK_TYPES = (
+                       ('unicms.cms_templates.NullBlock', 'Null Block'),
                        ('unicms.cms_templates.HTMLBlock', 'HTML Block'),
                        ('unicms.cms_templates.JSONBlock', 'JSON Block'),
                        ('unical.flescaTeam.custom_blocks.AngularJSONBlock', 'Angular JSON Block'),
