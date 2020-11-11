@@ -32,8 +32,7 @@ class BaseContentHandler(object):
         """
         self.context = context
         self.path = path
-        self.template = get_template(template_fname) \
-                        if template_fname else get_template(self.template)
+        self.template = template_fname or self.template
         for k,v in kwargs.items():
             setattr(self, k, v)
 
@@ -60,7 +59,7 @@ class BaseContentHandler(object):
         raise NotImplementedError()
 
 
-    def render(self):
+    def as_view(self):
         """
             get the template configured for this resources (self.template)
             open

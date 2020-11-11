@@ -33,18 +33,19 @@ def cms_content(request):
 
     # detect if webpath is referred to a specialized app
     for k,v in settings.CMS_APP_REGEXP_URLPATHS.items():
-        logger.debug(k, v)
+        logger.debug('APP REGEXP URL HANDLERS: {}: {}'.format(k, v))
         match = re.match(v, path)
-        if not match: continue
-
+        if not match:
+            continue
         query = match.groupdict()
         logger.warning(query)
         params = {'request': request,
                   'website': website,
-                  'path': path}
+                  'path': path,
+                  'match': match}
         params.update(query)
         handler = import_string(k)(**params)
-        return handler.render()
+        return handler.as_view()
 
     # go further with webpath matching
     context = get_object_or_404(WebPath, fullpath=path, site=website)
