@@ -26,13 +26,13 @@
                 {% endif %}
                 <h4 class="card-title">
                     <a style="text-decoration: none; color: #17324d;" href="{{ pub.url }}">
-                        {{ pub.publication.title|truncatechars_html:35 }}
+                        {{ pub.publication.title }}
                     </a>
                 </h4>
                 {% if not pub.publication.presentation_image %}
-                <div class="card-text">
-                    {{ pub.publication.content|safe|truncatechars:66 }}
-                </div>
+                <p class="card-text">
+                    {{ pub.publication.subheading }}
+                </p>
                 {% endif %}
                 <a href="#">
                     <svg class="icon">
@@ -66,7 +66,7 @@
                 </a>
             </h4>
             {% if not pub.publication.presentation_image %}
-            <p class="card-text">{{ pub.publication.content|safe|truncatechars:368 }}</p>
+            <p class="card-text">{{ pub.publication.subheading|truncatechars:368 }}</p>
             {% endif %}
             <a href="#">
                 <svg class="icon">

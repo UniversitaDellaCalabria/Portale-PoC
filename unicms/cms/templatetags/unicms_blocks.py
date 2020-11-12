@@ -4,6 +4,7 @@ from django import template
 from django.conf import settings
 from django.utils import timezone
 from django.utils.module_loading import import_string
+from django.utils.safestring import SafeString
 
 from cms_context.decorators import detect_language
 from cms_context.utils import handle_faulty_templates
@@ -20,8 +21,8 @@ def load_blocks(context, section=None):
     page = context['page']
     webpath = context['context']
     blocks = page.get_blocks(section=section)
-    
-    result = ''
+
+    result = SafeString('')
     for block in blocks:
         obj = import_string(block.type)(content=block.content,
                                         request=request,
@@ -29,8 +30,8 @@ def load_blocks(context, section=None):
                                         webpath=webpath)
         # context = Context({'request': request})
         # result = template.render(context)
-        result = obj.render()
-            
+        result += obj.render()
+
     return result
 
 
