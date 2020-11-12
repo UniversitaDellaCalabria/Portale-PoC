@@ -31,7 +31,7 @@
                 </h4>
                 {% if not pub.publication.presentation_image %}
                 <p class="card-text">
-                    {{ pub.publication.subheading }}
+                    {{ pub.publication.subheading|truncatechars:135 }}
                 </p>
                 {% endif %}
                 <a href="#">

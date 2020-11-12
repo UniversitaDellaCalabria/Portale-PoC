@@ -1,0 +1,1052 @@
+[
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$aL1y4It24fXT$1Wk5h0sRihJB9e09LnevaV4lJukNGuZ5lno1kFXKLmY=",
+    "last_login": "2020-11-09T10:12:59.763Z",
+    "is_superuser": true,
+    "username": "wert",
+    "is_staff": true,
+    "date_joined": "2020-10-29T09:08:47.271Z",
+    "first_name": null,
+    "last_name": null,
+    "is_active": true,
+    "email": "that@mail.org",
+    "taxpayer_id": null,
+    "matricola_studente": null,
+    "matricola_dipendente": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$VdsaV1CyuN6i$KmQ+lOwEGhP5WGh9Kaspel/M9jfseZKMOfrVydcaKVg=",
+    "last_login": "2020-11-11T15:01:47.955Z",
+    "is_superuser": true,
+    "username": "felix",
+    "is_staff": true,
+    "date_joined": "2020-11-11T14:58:29.557Z",
+    "first_name": null,
+    "last_name": null,
+    "is_active": true,
+    "email": "",
+    "taxpayer_id": null,
+    "matricola_studente": null,
+    "matricola_dipendente": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sites.site",
+  "pk": 1,
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  }
+},
+{
+  "model": "sites.site",
+  "pk": 2,
+  "fields": {
+    "domain": "test.unical.it",
+    "name": "Portale dell'Università della Calabria"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 1,
+  "fields": {
+    "name": "home",
+    "slug": "home"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 2,
+  "fields": {
+    "name": "unical",
+    "slug": "unical"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 3,
+  "fields": {
+    "name": "didattica",
+    "slug": "didattica"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 4,
+  "fields": {
+    "name": "eventi",
+    "slug": "eventi"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 5,
+  "fields": {
+    "name": "ricerca",
+    "slug": "ricerca"
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 1,
+  "fields": {
+    "tag": 1,
+    "content_type": 22,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 2,
+  "fields": {
+    "tag": 2,
+    "content_type": 22,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 3,
+  "fields": {
+    "tag": 3,
+    "content_type": 27,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 4,
+  "fields": {
+    "tag": 4,
+    "content_type": 27,
+    "object_id": 2
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 5,
+  "fields": {
+    "tag": 5,
+    "content_type": 27,
+    "object_id": 3
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 6,
+  "fields": {
+    "tag": 2,
+    "content_type": 28,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 7,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 4
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 8,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 3
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 9,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 10,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 11,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 2
+  }
+},
+{
+  "model": "cms_templates.pagetemplate",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-29T09:12:00.088Z",
+    "modified": "2020-11-11T16:18:22.835Z",
+    "is_active": true,
+    "name": "Portale dell'Università della Calabria",
+    "template_file": "portale_home_v3.html",
+    "note": "",
+    "blocks": []
+  }
+},
+{
+  "model": "cms_carousels.carousel",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:33:34.047Z",
+    "modified": "2020-11-02T10:45:06.229Z",
+    "is_active": true,
+    "name": "Portale Unical Home",
+    "description": "Carosello principale di immagini e notizie",
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_carousels.carouselitem",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:35:38.477Z",
+    "modified": "2020-11-02T10:45:06.234Z",
+    "order": 1,
+    "is_active": true,
+    "carousel": 1,
+    "image": 1,
+    "pre_heading": "Benvenuti",
+    "heading": "Questa è una Intestazione",
+    "description": "Questo è il corpo del messaggio."
+  }
+},
+{
+  "model": "cms_carousels.carouselitem",
+  "pk": 2,
+  "fields": {
+    "created": "2020-10-31T13:54:29.853Z",
+    "modified": "2020-11-02T10:44:42.912Z",
+    "order": 2,
+    "is_active": true,
+    "carousel": 1,
+    "image": 2,
+    "pre_heading": "Studenti",
+    "heading": "Altro elemento",
+    "description": "La foto di background viene automaticamente rivestita di un overlay grigio per migliorare il contrasto con il testo in sovraimpressione. In caso di assenza di testo la foto non verrà scurita."
+  }
+},
+{
+  "model": "cms_carousels.carouselitem",
+  "pk": 3,
+  "fields": {
+    "created": "2020-10-31T15:04:48.019Z",
+    "modified": "2020-11-02T10:45:06.232Z",
+    "order": 0,
+    "is_active": true,
+    "carousel": 1,
+    "image": 3,
+    "pre_heading": "Per gli studenti",
+    "heading": "Innovare non è un'opzione",
+    "description": "E possibile definire l'ordine di apparizione degli elementi di carousel con un semplice drag and drop"
+  }
+},
+{
+  "model": "cms_carousels.carouselitemlocalization",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:43:19.241Z",
+    "modified": "2020-10-30T16:43:19.241Z",
+    "order": 0,
+    "is_active": true,
+    "carousel_item": 1,
+    "language": "en",
+    "pre_heading": "Welcome",
+    "heading": "that thing",
+    "description": ""
+  }
+},
+{
+  "model": "cms_carousels.carouselitemlocalization",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-02T09:34:48.487Z",
+    "modified": "2020-11-02T09:34:48.487Z",
+    "order": 0,
+    "is_active": true,
+    "carousel_item": 3,
+    "language": "en",
+    "pre_heading": "Students first",
+    "heading": "Innovation is not an option",
+    "description": "We can even control the order of the carousel items and modify it with a simple drag and drop, via backend"
+  }
+},
+{
+  "model": "cms_carousels.carouselitemlink",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-31T14:05:01.913Z",
+    "modified": "2020-10-31T14:14:51.624Z",
+    "order": 0,
+    "is_active": true,
+    "carousel_item": 1,
+    "title_preset": "read more",
+    "title": null,
+    "url": "#"
+  }
+},
+{
+  "model": "cms_carousels.carouselitemlink",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-02T09:32:19.175Z",
+    "modified": "2020-11-02T09:32:19.175Z",
+    "order": 0,
+    "is_active": true,
+    "carousel_item": 3,
+    "title_preset": "read more",
+    "title": null,
+    "url": "#"
+  }
+},
+{
+  "model": "cms_context.website",
+  "pk": 2,
+  "fields": {
+    "is_active": true
+  }
+},
+{
+  "model": "cms_context.webpath",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-29T09:11:39.008Z",
+    "modified": "2020-11-07T14:55:20.868Z",
+    "site": 2,
+    "name": "Portale dell'Università della Calabria",
+    "parent": null,
+    "path": "/",
+    "fullpath": "/",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_context.webpath",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-07T14:57:19.676Z",
+    "modified": "2020-11-07T14:58:52.545Z",
+    "site": 2,
+    "name": "banane",
+    "parent": 1,
+    "path": "didattica",
+    "fullpath": "/didattica",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_menus.navigationbar",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T14:06:46.447Z",
+    "modified": "2020-10-30T14:22:35.013Z",
+    "is_active": true,
+    "name": "Unical Portale - Menu principale",
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbar",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-02T09:42:43.659Z",
+    "modified": "2020-11-02T09:43:31.256Z",
+    "is_active": true,
+    "name": "Unical Portale Menu Secondario",
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-29T09:18:53.178Z",
+    "modified": "2020-11-11T16:12:56.297Z",
+    "order": 10,
+    "is_active": false,
+    "menu": 1,
+    "name": "Ateneo",
+    "page": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 2,
+  "fields": {
+    "created": "2020-10-29T09:19:21.186Z",
+    "modified": "2020-10-30T14:26:06.714Z",
+    "order": 20,
+    "is_active": true,
+    "menu": 1,
+    "name": "Didattica",
+    "page": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 3,
+  "fields": {
+    "created": "2020-10-29T09:19:36.099Z",
+    "modified": "2020-10-30T14:26:01.176Z",
+    "order": 30,
+    "is_active": true,
+    "menu": 1,
+    "name": "Campus e Servizi",
+    "page": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 4,
+  "fields": {
+    "created": "2020-10-29T09:19:48.538Z",
+    "modified": "2020-10-30T14:25:53.615Z",
+    "order": 40,
+    "is_active": true,
+    "menu": 1,
+    "name": "Ricerca",
+    "page": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 5,
+  "fields": {
+    "created": "2020-10-29T09:20:02.598Z",
+    "modified": "2020-10-30T14:25:48.843Z",
+    "order": 50,
+    "is_active": true,
+    "menu": 1,
+    "name": "Terza Missione",
+    "page": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 6,
+  "fields": {
+    "created": "2020-10-29T09:20:19.287Z",
+    "modified": "2020-10-30T14:25:43.847Z",
+    "order": 60,
+    "is_active": true,
+    "menu": 1,
+    "name": "Internazionale",
+    "page": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 7,
+  "fields": {
+    "created": "2020-10-29T09:27:04.167Z",
+    "modified": "2020-10-30T14:25:39.166Z",
+    "order": 10,
+    "is_active": true,
+    "menu": 1,
+    "name": "Lauree",
+    "page": null,
+    "parent": 2,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 8,
+  "fields": {
+    "created": "2020-10-29T09:28:17.305Z",
+    "modified": "2020-10-30T14:25:33.448Z",
+    "order": 20,
+    "is_active": true,
+    "menu": 1,
+    "name": "Lauree Magistrali a ciclo unico",
+    "page": null,
+    "parent": 2,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 9,
+  "fields": {
+    "created": "2020-10-29T09:29:16.363Z",
+    "modified": "2020-10-30T14:25:27.588Z",
+    "order": 30,
+    "is_active": true,
+    "menu": 1,
+    "name": "Lauree Magistrali",
+    "page": null,
+    "parent": 2,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 12,
+  "fields": {
+    "created": "2020-11-02T09:43:31.257Z",
+    "modified": "2020-11-02T09:43:31.257Z",
+    "order": 0,
+    "is_active": true,
+    "menu": 2,
+    "name": "my Unical",
+    "page": null,
+    "parent": null,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 13,
+  "fields": {
+    "created": "2020-11-02T09:43:31.258Z",
+    "modified": "2020-11-02T09:43:31.258Z",
+    "order": 1,
+    "is_active": true,
+    "menu": 2,
+    "name": "Orienta Unical",
+    "page": null,
+    "parent": null,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 14,
+  "fields": {
+    "created": "2020-11-02T09:43:31.258Z",
+    "modified": "2020-11-02T09:43:31.258Z",
+    "order": 2,
+    "is_active": true,
+    "menu": 2,
+    "name": "Unical Store",
+    "page": null,
+    "parent": null,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritemlocalization",
+  "pk": 1,
+  "fields": {
+    "item": 4,
+    "language": "en",
+    "name": "Research"
+  }
+},
+{
+  "model": "cms_menus.navigationbaritemlocalization",
+  "pk": 2,
+  "fields": {
+    "item": 1,
+    "language": "en",
+    "name": "Home"
+  }
+},
+{
+  "model": "cms_medias.media",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:32:21.019Z",
+    "modified": "2020-10-30T16:32:21.019Z",
+    "is_active": true,
+    "title": "Unical Campus",
+    "file": "medias/2020/campus_khrzwfL.jpg",
+    "description": "Vista con panorama",
+    "file_size": null,
+    "file_format": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_medias.media",
+  "pk": 2,
+  "fields": {
+    "created": "2020-10-31T13:53:43.251Z",
+    "modified": "2020-10-31T14:35:45.239Z",
+    "is_active": true,
+    "title": "Unical Campus esempio 2",
+    "file": "medias/2020/students1.jpg",
+    "description": "Esempio di immagine promozionale di campus",
+    "file_size": null,
+    "file_format": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_medias.media",
+  "pk": 3,
+  "fields": {
+    "created": "2020-10-31T15:04:12.200Z",
+    "modified": "2020-10-31T15:04:12.200Z",
+    "is_active": true,
+    "title": "studenti 3",
+    "file": "medias/2020/students2.jpg",
+    "description": "studenti 3",
+    "file_size": null,
+    "file_format": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_medias.media",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-11T17:14:02.849Z",
+    "modified": "2020-11-11T17:14:02.849Z",
+    "is_active": true,
+    "title": "Banner test 1",
+    "file": "medias/2020/test_news_1.jpg",
+    "description": "test",
+    "file_size": null,
+    "file_format": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.page",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-29T09:12:44.427Z",
+    "modified": "2020-11-12T10:33:04.693Z",
+    "is_active": true,
+    "name": "Portale dell'Università della Calabria",
+    "context": 1,
+    "base_template": 1,
+    "note": "",
+    "date_start": "2020-10-29T09:12:02Z",
+    "date_end": null,
+    "state": "published",
+    "created_by": null,
+    "modified_by": null,
+    "type": "home"
+  }
+},
+{
+  "model": "cms.pagecarousel",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-30T16:37:39.528Z",
+    "modified": "2020-11-02T10:46:46.503Z",
+    "order": 10,
+    "is_active": true,
+    "section": "slider",
+    "page": 1,
+    "carousel": 1
+  }
+},
+{
+  "model": "cms.pagemenu",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-02T10:08:40.122Z",
+    "modified": "2020-11-02T10:08:40.122Z",
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 1,
+    "menu": 1
+  }
+},
+{
+  "model": "cms.pagemenu",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-02T10:09:03.494Z",
+    "modified": "2020-11-02T10:09:03.494Z",
+    "order": 11,
+    "is_active": true,
+    "section": "menu-2",
+    "page": 1,
+    "menu": 2
+  }
+},
+{
+  "model": "cms.pageblock",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-11T13:24:49.497Z",
+    "modified": "2020-11-12T09:52:00.587Z",
+    "order": 10,
+    "is_active": true,
+    "section": "1",
+    "name": "publication-main-preview",
+    "type": "cms_templates.blocks.HtmlBlock",
+    "content": "{% load unicms_blocks %}\r\n\r\n\r\n            <div class=\"row negative-mt-5 mb-3\" >\r\n                <div class=\"col-12 col-md-3\">\r\n                    <div class=\"section-title-label px-3 py-1\">\r\n                        <h3>Unical <span class=\"super-bold\">world</span></h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12 col-lg-9\">\r\n                    {% load_publications_preview template=\"publications_preview_v3.html\" %}\r\n                </div>\r\n                <div class=\"col-12 col-lg-3\">\r\n                    {% include \"unical_portale_agenda.html\" %}\r\n                </div>\r\n            </div>",
+    "page": 1
+  }
+},
+{
+  "model": "cms.pageblock",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-11T14:16:54.794Z",
+    "modified": "2020-11-12T10:33:04.702Z",
+    "order": 1,
+    "is_active": true,
+    "section": "slider",
+    "name": "main-carousel",
+    "type": "cms_templates.blocks.HtmlBlock",
+    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"unical_portale_hero.html\" %}\r\n\r\n<script>\r\n$(document).ready(function() {\r\n  $(\"#my-slider\").owlCarousel({\r\n      navigation : true, // Show next and prev buttons\r\n      loop: true,\r\n      slideSpeed : 300,\r\n      paginationSpeed : 400,\r\n      items : 1,\r\n      itemsDesktop : false,\r\n      itemsDesktopSmall : false,\r\n      itemsTablet: false,\r\n      itemsMobile : false,\r\n      dots: false\r\n  });\r\n});\r\n</script>",
+    "page": 1
+  }
+},
+{
+  "model": "cms.pageblock",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-12T09:14:54.559Z",
+    "modified": "2020-11-12T09:22:40.295Z",
+    "order": 10,
+    "is_active": true,
+    "section": "2",
+    "name": "avvisi",
+    "type": "cms_templates.blocks.HtmlBlock",
+    "content": "{% load static %}\r\n\r\n<div class=\"container py-5\">\r\n        <div class=\"row\">\r\n            <div class=\"col-12 col-lg-3\">\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">AVVISI</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">In evidenza</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Ricerca</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Didattica</button>\r\n            </div>\r\n            <div class=\"col-12 col-lg-9\">\r\n                {% include \"unical_portale_home_avvisi_v3.html\" %}\r\n            </div>\r\n        </div>\r\n\r\n        <a href=\"#\" aria-hidden=\"true\"\r\n           data-attribute=\"back-to-top\"\r\n           class=\"back-to-top back-to-top-small\">\r\n            <svg class=\"icon icon-light\">\r\n              <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-arrow-up\"></use>\r\n            </svg>\r\n        </a>\r\n\r\n    </div>",
+    "page": 1
+  }
+},
+{
+  "model": "cms.pageblock",
+  "pk": 5,
+  "fields": {
+    "created": "2020-11-12T09:52:00.588Z",
+    "modified": "2020-11-12T09:52:07.990Z",
+    "order": 5,
+    "is_active": true,
+    "section": "1",
+    "name": "video",
+    "type": "cms_templates.blocks.HtmlBlock",
+    "content": "<div class=\"row\">\r\n           <div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n <div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/xrjjJGqZpcU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n           </div>",
+    "page": 1
+  }
+},
+{
+  "model": "cms.category",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-09T13:25:34.020Z",
+    "modified": "2020-11-09T13:25:34.020Z",
+    "name": "Didattica",
+    "description": "Didattica",
+    "image": "images/categories/inline_image_preview.jpg"
+  }
+},
+{
+  "model": "cms.category",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-09T13:26:39.646Z",
+    "modified": "2020-11-09T13:26:39.646Z",
+    "name": "Ricerca",
+    "description": "Ricerca",
+    "image": "images/categories/ricerca.png"
+  }
+},
+{
+  "model": "cms.category",
+  "pk": 3,
+  "fields": {
+    "created": "2020-11-09T13:27:51.975Z",
+    "modified": "2020-11-09T13:27:51.975Z",
+    "name": "Eventi",
+    "description": "Eventi",
+    "image": "images/categories/eventi.jpg"
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-09T13:33:21.852Z",
+    "modified": "2020-11-11T17:21:06.891Z",
+    "is_active": true,
+    "title": "Papiri, Codex, Libri. La attraverso labora lorem ipsum",
+    "subheading": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "content": "<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>",
+    "presentation_image": 4,
+    "state": "published",
+    "date_start": "2020-11-09T13:24:35Z",
+    "date_end": null,
+    "note": "",
+    "slug": "unical-campus-1",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      1
+    ]
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-09T13:36:12.360Z",
+    "modified": "2020-11-12T07:37:35.574Z",
+    "is_active": true,
+    "title": "Unical Campus esempio 2",
+    "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+    "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
+    "presentation_image": null,
+    "state": "published",
+    "date_start": "2020-11-09T13:35:44Z",
+    "date_end": null,
+    "note": "",
+    "slug": "unical-campus-esempio-2",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      3
+    ]
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 3,
+  "fields": {
+    "created": "2020-11-09T13:36:59.347Z",
+    "modified": "2020-11-11T17:08:15.895Z",
+    "is_active": true,
+    "title": "Unical Campus 3",
+    "subheading": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
+    "presentation_image": 2,
+    "state": "published",
+    "date_start": "2020-11-09T13:36:39Z",
+    "date_end": null,
+    "note": "",
+    "slug": "unical-campus-3",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      2
+    ]
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-11T16:49:38.838Z",
+    "modified": "2020-11-12T10:24:37.270Z",
+    "is_active": true,
+    "title": "Studiare online è sempre più semplice",
+    "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>",
+    "presentation_image": null,
+    "state": "published",
+    "date_start": "2020-11-11T16:56:21Z",
+    "date_end": null,
+    "note": "",
+    "slug": "studiare-online-e-sempre-piu-semplice",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      2
+    ]
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 5,
+  "fields": {
+    "created": "2020-11-11T17:18:19.297Z",
+    "modified": "2020-11-12T10:24:15.932Z",
+    "is_active": true,
+    "title": "Il cinema è Unical",
+    "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>",
+    "presentation_image": 3,
+    "state": "published",
+    "date_start": "2020-11-11T17:18:08Z",
+    "date_end": null,
+    "note": "",
+    "slug": "il-cinema-e-unical",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      3
+    ]
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-09T13:34:17.872Z",
+    "modified": "2020-11-09T13:34:26.064Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "publication": 1,
+    "context": 1,
+    "in_evidence_start": "2020-11-09T13:33:54Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-09T13:36:12.365Z",
+    "modified": "2020-11-09T13:36:12.365Z",
+    "order": 50,
+    "is_active": true,
+    "section": null,
+    "publication": 2,
+    "context": 1,
+    "in_evidence_start": "2020-11-09T13:36:10Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 3,
+  "fields": {
+    "created": "2020-11-09T13:36:59.352Z",
+    "modified": "2020-11-09T13:36:59.352Z",
+    "order": 90,
+    "is_active": true,
+    "section": null,
+    "publication": 3,
+    "context": 1,
+    "in_evidence_start": "2020-11-09T13:36:53Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-11T16:50:10.775Z",
+    "modified": "2020-11-11T16:50:30.389Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "publication": 4,
+    "context": 1,
+    "in_evidence_start": "2020-11-11T16:50:08Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 5,
+  "fields": {
+    "created": "2020-11-11T17:18:19.304Z",
+    "modified": "2020-11-12T07:25:17.712Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "publication": 5,
+    "context": 1,
+    "in_evidence_start": "2020-11-11T17:18:17Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationlocalization",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-09T15:37:55.487Z",
+    "modified": "2020-11-09T15:37:55.488Z",
+    "is_active": true,
+    "title": "gdfg",
+    "publication": 1,
+    "language": "en",
+    "subheading": "dfgdfgdf",
+    "content": "<p>dfgdfgdfg</p>",
+    "created_by": null,
+    "modified_by": null
+  }
+}
+]

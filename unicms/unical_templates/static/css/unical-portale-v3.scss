@@ -11,6 +11,7 @@ $dark_grey_unical: #383838;
 $light_grey_unical: #9d9d9c;
 $white: #ffffff;
 $cyan: #176fc1;
+$grey_presta: #d3d2cf;
 
 @font-face {
   font-family: TitilliumWeb-Black;
@@ -34,7 +35,7 @@ a {
 }
 
 .dark-grey-background {
-    background: #d3d2cf;
+    background: $grey_presta;
 }
 
 .it-header-center-wrapper {
@@ -92,6 +93,20 @@ input.top-input {
 .card .card-body .card-text {
     font-family: Titillium Web;
     font-size: 16px;
+}
+
+.btn-grey-presta {
+    background: $grey_presta;
+}
+.btn-grey-presta:hover {
+    color: $white;
+    background: $dark_grey_unical;
+}
+.bg-dark .btn-secondary {
+    background: $bordeaux_unical;
+}
+.bg-dark .btn-secondary:hover {
+    background: $dark_grey_unical;
 }
 
 
