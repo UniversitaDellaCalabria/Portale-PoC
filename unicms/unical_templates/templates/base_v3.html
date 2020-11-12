@@ -46,40 +46,9 @@ bootstrap-italia-base.html
 </div>
 {% endblock header_center_logo %}
 
-<!-- URL link top left -->
-{% block header_slim_org_url %}
-{% endblock header_slim_org_url %}
-
 <!-- URL link logo and org name -->
 {% block header_center_url %}
 {% endblock header_center_url %}
-
-{% block header_slim_sub_menu %}
-<div class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-
-        <span>{{ request.LANGUAGE_CODE }}</span>
-        <svg class="icon d-none d-lg-block">
-            <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
-        </svg>
-    </a>
-    <div class="dropdown-menu">
-        <div class="row">
-            <div class="col-12">
-                <div class="link-list-wrapper">
-                    <ul class="link-list">
-                        {% supported_languages as languages %}
-                        {% for lang,language in languages %}
-                        <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
-                        <li><a class="list-item" href="?lang={{ lang }}"><span>{{ language }}</span></a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock header_slim_sub_menu %}
 
 <!-- Mobile slim_org_name -->
 {% block header_slim_mobile_org_name %}
@@ -95,21 +64,38 @@ bootstrap-italia-base.html
 {% block header_center_right_zone %}
 <div class="it-right-zone">
     <div class="row">
-        <div class="col-9">
+        <div class="col-10">
              <svg class="icon icon-light mr-1">
               <use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use>
             </svg>
             <input type="text" class="top-input" />
         </div>
-        <div class="col-2">
+        <div class="col-1">
             <svg class="icon icon-light">
               <use xlink:href="{% static 'svg/sprite.svg' %}#it-card"></use>
             </svg>
         </div>
         <div class="col-1">
-            <svg class="icon icon-light">
-              <use xlink:href="{% static 'svg/sprite.svg' %}#it-minus-circle"></use>
-            </svg>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle py-0" href="#" data-toggle="dropdown" aria-expanded="false">
+                    <span>{{ request.LANGUAGE_CODE }}</span>
+                </a>
+                <div class="dropdown-menu">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="link-list-wrapper">
+                                <ul class="link-list">
+                                    {% supported_languages as languages %}
+                                    {% for lang,language in languages %}
+                                    <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
+                                    <li><a class="list-item" href="?lang={{ lang }}"><span>{{ language }}</span></a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
