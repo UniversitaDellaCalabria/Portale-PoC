@@ -21,7 +21,7 @@
     {% endblock middle-section %}
 
     <!-- blocks in section 1 -->
-    {% load_blocks section=1 as blocks_1%}
+    {% load_blocks section=1 as blocks_1 %}
     {% if blocks_1 %}
     <div class="row py-5 dark-grey-background">
         <div class="container">
@@ -40,10 +40,10 @@
         </p>
         <div class="cookiebar-buttons">
             <a href="#" class="cookiebar-btn">
-                {% trans "Preferenze" %} <span class="sr-only">cookies</span>
+                {% trans "Preferenze" %}
             </a>
             <button data-accept="cookiebar" class="cookiebar-btn cookiebar-confirm">
-                {% trans "Accetto" %}<span class="sr-only"> i cookies</span>
+                {% trans "Accetto" %}
             </button>
         </div>
     </div>
