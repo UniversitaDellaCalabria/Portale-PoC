@@ -2,12 +2,12 @@
 {% load static %}
 
 {% if carousel_items %}
-<div class="it-carousel-wrapper it-full-carousel">
-  <div class="it-carousel-all owl-carousel it-img-card it-standard-image">
+
+<div id="my-slider" class="owl-carousel owl-theme">
 
     {% for item in carousel_items %}
-    <div class="it-single-slide-wrapper">
-      <div class="it-hero-wrapper {% if item.heading %} it-dark {% endif %} it-overlay">
+    <div class="item">
+        <div class="it-hero-wrapper {% if item.heading %} it-dark {% endif %} it-overlay">
 
           <!-- - img-->
           <div class="img-responsive-wrapper">
@@ -39,9 +39,17 @@
           </div>
 
         </div>
-     </div>
-     {% endfor %}
+    </div>
+    {% endfor %}
 
-  </div>
+
 </div>
+
+
+
+
+
+
+
+
 {% endif %}

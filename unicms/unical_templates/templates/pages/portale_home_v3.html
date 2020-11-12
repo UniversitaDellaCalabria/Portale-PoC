@@ -62,27 +62,18 @@
 {% endblock container %}
 
 {% block extra_scripts %}
-{{ block.super }}
 <script>
-$(document).ready(function() {
-
-  $("#my-slider").owlCarousel({
-
-      navigation : true, // Show next and prev buttons
-
-      loop: true,
-
+$(function() {
+  $(".it-full-carousel").owlCarousel({
       slideSpeed : 300,
       paginationSpeed : 400,
 
       items : 1,
-      itemsDesktop : false,
-      itemsDesktopSmall : false,
-      itemsTablet: false,
-      itemsMobile : false
-
+      //itemsDesktop : false,
+      //itemsDesktopSmall : false,
+      itemsTablet: true,
+      itemsMobile : true,
   });
-
 });
 </script>
 {% endblock extra_scripts %}
