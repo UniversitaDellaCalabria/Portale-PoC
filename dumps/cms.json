@@ -21,6 +21,27 @@
   }
 },
 {
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$VdsaV1CyuN6i$KmQ+lOwEGhP5WGh9Kaspel/M9jfseZKMOfrVydcaKVg=",
+    "last_login": "2020-11-11T15:01:47.955Z",
+    "is_superuser": true,
+    "username": "felix",
+    "is_staff": true,
+    "date_joined": "2020-11-11T14:58:29.557Z",
+    "first_name": null,
+    "last_name": null,
+    "is_active": true,
+    "email": "",
+    "taxpayer_id": null,
+    "matricola_studente": null,
+    "matricola_dipendente": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
   "model": "sites.site",
   "pk": 1,
   "fields": {
@@ -122,14 +143,68 @@
   }
 },
 {
+  "model": "taggit.taggeditem",
+  "pk": 6,
+  "fields": {
+    "tag": 2,
+    "content_type": 28,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 7,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 4
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 8,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 3
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 9,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 10,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 11,
+  "fields": {
+    "tag": 2,
+    "content_type": 33,
+    "object_id": 2
+  }
+},
+{
   "model": "cms_templates.pagetemplate",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:00.088Z",
-    "modified": "2020-10-29T09:12:22.048Z",
+    "modified": "2020-11-11T16:18:22.835Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
-    "template_file": "unical_portale_base.html",
+    "template_file": "portale_home_v3.html",
     "note": "",
     "blocks": []
   }
@@ -314,9 +389,9 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:18:53.178Z",
-    "modified": "2020-10-30T15:29:00.576Z",
+    "modified": "2020-11-11T16:12:56.297Z",
     "order": 10,
-    "is_active": true,
+    "is_active": false,
     "menu": 1,
     "name": "Ateneo",
     "page": null,
@@ -592,11 +667,27 @@
   }
 },
 {
+  "model": "cms_medias.media",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-11T17:14:02.849Z",
+    "modified": "2020-11-11T17:14:02.849Z",
+    "is_active": true,
+    "title": "Banner test 1",
+    "file": "medias/2020/test_news_1.jpg",
+    "description": "test",
+    "file_size": null,
+    "file_format": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
   "model": "cms.page",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-11-11T14:19:36.837Z",
+    "modified": "2020-11-12T11:37:00.187Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
     "context": 1,
@@ -654,13 +745,13 @@
   "pk": 1,
   "fields": {
     "created": "2020-11-11T13:24:49.497Z",
-    "modified": "2020-11-11T13:56:12.581Z",
+    "modified": "2020-11-12T09:52:00.587Z",
     "order": 10,
     "is_active": true,
     "section": "1",
     "name": "publication-main-preview",
     "type": "cms_templates.blocks.HtmlBlock",
-    "content": "{% load unicms_blocks %}\r\n<div class=\"row pt-2 mt-2\" style=\"background-color: #eeeeee;\">\r\n    <div class=\"container\">\r\n        <div class=\"row\">\r\n            <div class=\"col-12 col-lg-9\">\r\n                {% load_publications_preview template=\"publications_preview.html\" %}\r\n            </div>\r\n            <div class=\"col-12 col-lg-3\">\r\n                {% include \"unical_portale_agenda.html\" %}\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>",
+    "content": "{% load unicms_blocks %}\r\n\r\n\r\n            <div class=\"row negative-mt-5 mb-3\" >\r\n                <div class=\"col-12 col-md-3\">\r\n                    <div class=\"section-title-label px-3 py-1\">\r\n                        <h3>Unical <span class=\"super-bold\">world</span></h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12 col-lg-9\">\r\n                    {% load_publications_preview template=\"publications_preview_v3.html\" %}\r\n                </div>\r\n                <div class=\"col-12 col-lg-3\">\r\n                    {% include \"unical_portale_agenda.html\" %}\r\n                </div>\r\n            </div>",
     "page": 1
   }
 },
@@ -669,13 +760,43 @@
   "pk": 2,
   "fields": {
     "created": "2020-11-11T14:16:54.794Z",
-    "modified": "2020-11-11T14:19:36.841Z",
+    "modified": "2020-11-12T10:58:49.984Z",
     "order": 1,
     "is_active": true,
     "section": "slider",
     "name": "main-carousel",
     "type": "cms_templates.blocks.HtmlBlock",
-    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"unical_portale_hero.html\" %}",
+    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"unical_portale_hero.html\" %}\r\n\r\n<script>\r\n$(document).ready(function() {\r\n  $(\"#my-slider\").owlCarousel({\r\n      navigation : true, // Show next and prev buttons\r\n      loop: true,\r\n      slideSpeed : 300,\r\n      paginationSpeed : 400,\r\n      autoplay: true,\r\n      items : 1,\r\n      itemsDesktop : false,\r\n      itemsDesktopSmall : false,\r\n      itemsTablet: false,\r\n      itemsMobile : false,\r\n      dots: false\r\n  });\r\n});\r\n</script>",
+    "page": 1
+  }
+},
+{
+  "model": "cms.pageblock",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-12T09:14:54.559Z",
+    "modified": "2020-11-12T11:37:00.191Z",
+    "order": 10,
+    "is_active": true,
+    "section": "2",
+    "name": "avvisi",
+    "type": "cms_templates.blocks.HtmlBlock",
+    "content": "{% load static %}\r\n\r\n<div class=\"container py-5\">\r\n<div class=\"row\">\r\n<div class=\"d-none d-md-block col-md-3\">&nbsp;</div>\r\n<div class=\"col-12 col-md-9\"><h3 class=\"super-bold\" style=\"padding-left:24px\">avvisi</h3></div>\r\n</div>\r\n        <div class=\"row\">\r\n            <div class=\"col-12 col-lg-3\" style=\"margin-top: 24px\">\r\n<button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Tutti gli avvisi</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">URP</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Amministrazione trasparente</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Sostieni Unical</button>\r\n            </div>\r\n            <div class=\"col-12 col-lg-9\">\r\n                {% include \"unical_portale_home_avvisi_v3.html\" %}\r\n            </div>\r\n        </div>\r\n\r\n        <a href=\"#\" aria-hidden=\"true\"\r\n           data-attribute=\"back-to-top\"\r\n           class=\"back-to-top back-to-top-small\">\r\n            <svg class=\"icon icon-light\">\r\n              <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-arrow-up\"></use>\r\n            </svg>\r\n        </a>\r\n\r\n    </div>",
+    "page": 1
+  }
+},
+{
+  "model": "cms.pageblock",
+  "pk": 5,
+  "fields": {
+    "created": "2020-11-12T09:52:00.588Z",
+    "modified": "2020-11-12T09:52:07.990Z",
+    "order": 5,
+    "is_active": true,
+    "section": "1",
+    "name": "video",
+    "type": "cms_templates.blocks.HtmlBlock",
+    "content": "<div class=\"row\">\r\n           <div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n <div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/xrjjJGqZpcU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n           </div>",
     "page": 1
   }
 },
@@ -717,12 +838,12 @@
   "pk": 1,
   "fields": {
     "created": "2020-11-09T13:33:21.852Z",
-    "modified": "2020-11-09T15:37:55.483Z",
+    "modified": "2020-11-11T17:21:06.891Z",
     "is_active": true,
-    "title": "Unical Campus 1",
+    "title": "Papiri, Codex, Libri. La attraverso labora lorem ipsum",
     "subheading": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
     "content": "<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>",
-    "presentation_image": null,
+    "presentation_image": 4,
     "state": "published",
     "date_start": "2020-11-09T13:24:35Z",
     "date_end": null,
@@ -740,10 +861,10 @@
   "pk": 2,
   "fields": {
     "created": "2020-11-09T13:36:12.360Z",
-    "modified": "2020-11-09T13:36:12.360Z",
+    "modified": "2020-11-12T07:37:35.574Z",
     "is_active": true,
     "title": "Unical Campus esempio 2",
-    "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
     "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
     "presentation_image": null,
     "state": "published",
@@ -763,12 +884,12 @@
   "pk": 3,
   "fields": {
     "created": "2020-11-09T13:36:59.347Z",
-    "modified": "2020-11-09T13:36:59.347Z",
+    "modified": "2020-11-11T17:08:15.895Z",
     "is_active": true,
     "title": "Unical Campus 3",
     "subheading": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
-    "presentation_image": null,
+    "presentation_image": 2,
     "state": "published",
     "date_start": "2020-11-09T13:36:39Z",
     "date_end": null,
@@ -778,6 +899,52 @@
     "modified_by": null,
     "category": [
       2
+    ]
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-11T16:49:38.838Z",
+    "modified": "2020-11-12T10:24:37.270Z",
+    "is_active": true,
+    "title": "Studiare online è sempre più semplice",
+    "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>",
+    "presentation_image": null,
+    "state": "published",
+    "date_start": "2020-11-11T16:56:21Z",
+    "date_end": null,
+    "note": "",
+    "slug": "studiare-online-e-sempre-piu-semplice",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      2
+    ]
+  }
+},
+{
+  "model": "cms.publication",
+  "pk": 5,
+  "fields": {
+    "created": "2020-11-11T17:18:19.297Z",
+    "modified": "2020-11-12T10:24:15.932Z",
+    "is_active": true,
+    "title": "Il cinema è Unical",
+    "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>",
+    "presentation_image": 3,
+    "state": "published",
+    "date_start": "2020-11-11T17:18:08Z",
+    "date_end": null,
+    "note": "",
+    "slug": "il-cinema-e-unical",
+    "created_by": null,
+    "modified_by": null,
+    "category": [
+      3
     ]
   }
 },
@@ -827,6 +994,40 @@
     "publication": 3,
     "context": 1,
     "in_evidence_start": "2020-11-09T13:36:53Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-11T16:50:10.775Z",
+    "modified": "2020-11-11T16:50:30.389Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "publication": 4,
+    "context": 1,
+    "in_evidence_start": "2020-11-11T16:50:08Z",
+    "in_evidence_end": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationcontext",
+  "pk": 5,
+  "fields": {
+    "created": "2020-11-11T17:18:19.304Z",
+    "modified": "2020-11-12T07:25:17.712Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "publication": 5,
+    "context": 1,
+    "in_evidence_start": "2020-11-11T17:18:17Z",
     "in_evidence_end": null,
     "created_by": null,
     "modified_by": null
