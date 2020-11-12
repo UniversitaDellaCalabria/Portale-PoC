@@ -13,10 +13,9 @@ class NavigationBarItemLocalizationInline(nested_admin.NestedStackedInline):
 
 class NavigationBarItemInline(nested_admin.NestedStackedInline):
     model = NavigationBarItem
-    autosearch_fields = ('parent', )
-    raw_id_fields = ('publication',)
+    raw_id_fields = ('parent', 'page', 'publication')
     extra = 0
-    classes = ['collapse']
+    # classes = ['collapse']
     inlines = (NavigationBarItemLocalizationInline,)
     sortable_field_name = "order"
     readonly_fields = ('created_by', 'modified_by',)

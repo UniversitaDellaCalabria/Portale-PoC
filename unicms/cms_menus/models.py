@@ -69,10 +69,11 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                     related_name='menu_item_modified_by')
     class Meta:
         verbose_name_plural = _("Context Navigation Menu Items")
+        ordering = ('order',)
 
     @property
     def link(self):
-        return self.url or self.page or self.publication or '#'
+        return self.url or self.page or self.publication or ''
 
     def localized(self, lang=settings.LANGUAGE, **kwargs):
         i18n = NavigationBarItemLocalization.objects.filter(item=self,

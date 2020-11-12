@@ -365,7 +365,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T14:06:46.447Z",
-    "modified": "2020-10-30T14:22:35.013Z",
+    "modified": "2020-11-12T16:38:06.921Z",
     "is_active": true,
     "name": "Unical Portale - Menu principale",
     "created_by": null,
@@ -389,9 +389,9 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:18:53.178Z",
-    "modified": "2020-11-11T16:12:56.297Z",
-    "order": 10,
-    "is_active": false,
+    "modified": "2020-11-12T16:39:01.142Z",
+    "order": 38,
+    "is_active": true,
     "menu": 1,
     "name": "Ateneo",
     "page": null,
@@ -407,8 +407,8 @@
   "pk": 2,
   "fields": {
     "created": "2020-10-29T09:19:21.186Z",
-    "modified": "2020-10-30T14:26:06.714Z",
-    "order": 20,
+    "modified": "2020-11-12T16:35:29.106Z",
+    "order": 0,
     "is_active": true,
     "menu": 1,
     "name": "Didattica",
@@ -425,8 +425,8 @@
   "pk": 3,
   "fields": {
     "created": "2020-10-29T09:19:36.099Z",
-    "modified": "2020-10-30T14:26:01.176Z",
-    "order": 30,
+    "modified": "2020-11-12T16:35:29.108Z",
+    "order": 1,
     "is_active": true,
     "menu": 1,
     "name": "Campus e Servizi",
@@ -443,8 +443,8 @@
   "pk": 4,
   "fields": {
     "created": "2020-10-29T09:19:48.538Z",
-    "modified": "2020-10-30T14:25:53.615Z",
-    "order": 40,
+    "modified": "2020-11-12T16:35:29.110Z",
+    "order": 2,
     "is_active": true,
     "menu": 1,
     "name": "Ricerca",
@@ -461,8 +461,8 @@
   "pk": 5,
   "fields": {
     "created": "2020-10-29T09:20:02.598Z",
-    "modified": "2020-10-30T14:25:48.843Z",
-    "order": 50,
+    "modified": "2020-11-12T16:35:29.112Z",
+    "order": 3,
     "is_active": true,
     "menu": 1,
     "name": "Terza Missione",
@@ -479,8 +479,8 @@
   "pk": 6,
   "fields": {
     "created": "2020-10-29T09:20:19.287Z",
-    "modified": "2020-10-30T14:25:43.847Z",
-    "order": 60,
+    "modified": "2020-11-12T16:35:29.114Z",
+    "order": 4,
     "is_active": true,
     "menu": 1,
     "name": "Internazionale",
@@ -497,14 +497,14 @@
   "pk": 7,
   "fields": {
     "created": "2020-10-29T09:27:04.167Z",
-    "modified": "2020-10-30T14:25:39.166Z",
-    "order": 10,
+    "modified": "2020-11-12T16:35:29.117Z",
+    "order": 6,
     "is_active": true,
     "menu": 1,
     "name": "Lauree",
     "page": null,
     "parent": 2,
-    "url": null,
+    "url": "#",
     "publication": null,
     "created_by": null,
     "modified_by": null
@@ -515,14 +515,14 @@
   "pk": 8,
   "fields": {
     "created": "2020-10-29T09:28:17.305Z",
-    "modified": "2020-10-30T14:25:33.448Z",
-    "order": 20,
+    "modified": "2020-11-12T16:35:29.119Z",
+    "order": 7,
     "is_active": true,
     "menu": 1,
     "name": "Lauree Magistrali a ciclo unico",
     "page": null,
     "parent": 2,
-    "url": null,
+    "url": "#",
     "publication": null,
     "created_by": null,
     "modified_by": null
@@ -533,14 +533,14 @@
   "pk": 9,
   "fields": {
     "created": "2020-10-29T09:29:16.363Z",
-    "modified": "2020-10-30T14:25:27.588Z",
-    "order": 30,
+    "modified": "2020-11-12T16:35:29.121Z",
+    "order": 8,
     "is_active": true,
     "menu": 1,
     "name": "Lauree Magistrali",
     "page": null,
     "parent": 2,
-    "url": null,
+    "url": "#",
     "publication": null,
     "created_by": null,
     "modified_by": null
@@ -601,6 +601,672 @@
   }
 },
 {
+  "model": "cms_menus.navigationbaritem",
+  "pk": 15,
+  "fields": {
+    "created": "2020-11-12T15:59:19.881Z",
+    "modified": "2020-11-12T16:35:29.115Z",
+    "order": 5,
+    "is_active": true,
+    "menu": 1,
+    "name": "Offerta Formativa",
+    "page": null,
+    "parent": 2,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 16,
+  "fields": {
+    "created": "2020-11-12T16:09:30.409Z",
+    "modified": "2020-11-12T16:35:29.123Z",
+    "order": 9,
+    "is_active": true,
+    "menu": 1,
+    "name": "Dottorati",
+    "page": null,
+    "parent": 2,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 17,
+  "fields": {
+    "created": "2020-11-12T16:09:30.409Z",
+    "modified": "2020-11-12T16:35:29.125Z",
+    "order": 10,
+    "is_active": true,
+    "menu": 1,
+    "name": "Master",
+    "page": null,
+    "parent": 2,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 18,
+  "fields": {
+    "created": "2020-11-12T16:09:30.409Z",
+    "modified": "2020-11-12T16:35:29.127Z",
+    "order": 11,
+    "is_active": true,
+    "menu": 1,
+    "name": "Corsi alta formazione",
+    "page": null,
+    "parent": 2,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 19,
+  "fields": {
+    "created": "2020-11-12T16:09:30.410Z",
+    "modified": "2020-11-12T16:35:29.128Z",
+    "order": 12,
+    "is_active": true,
+    "menu": 1,
+    "name": "Formazione per gli insegnanti",
+    "page": null,
+    "parent": 2,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 20,
+  "fields": {
+    "created": "2020-11-12T16:16:05.494Z",
+    "modified": "2020-11-12T16:35:29.130Z",
+    "order": 13,
+    "is_active": true,
+    "menu": 1,
+    "name": "Servizi e Diritto allo studio",
+    "page": null,
+    "parent": 2,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 21,
+  "fields": {
+    "created": "2020-11-12T16:26:45.451Z",
+    "modified": "2020-11-12T16:35:29.132Z",
+    "order": 14,
+    "is_active": false,
+    "menu": 1,
+    "name": "Iscrizioni e servizi",
+    "page": null,
+    "parent": 2,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 22,
+  "fields": {
+    "created": "2020-11-12T16:26:45.451Z",
+    "modified": "2020-11-12T16:35:29.134Z",
+    "order": 15,
+    "is_active": true,
+    "menu": 1,
+    "name": "Ammissione",
+    "page": null,
+    "parent": 2,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 23,
+  "fields": {
+    "created": "2020-11-12T16:26:45.451Z",
+    "modified": "2020-11-12T16:35:29.136Z",
+    "order": 16,
+    "is_active": true,
+    "menu": 1,
+    "name": "Trasferimenti e passaggi di corso",
+    "page": null,
+    "parent": 2,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 24,
+  "fields": {
+    "created": "2020-11-12T16:26:45.452Z",
+    "modified": "2020-11-12T16:35:29.137Z",
+    "order": 17,
+    "is_active": true,
+    "menu": 1,
+    "name": "Borse e servizi di supporto",
+    "page": null,
+    "parent": 2,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 25,
+  "fields": {
+    "created": "2020-11-12T16:26:45.452Z",
+    "modified": "2020-11-12T16:35:29.139Z",
+    "order": 18,
+    "is_active": true,
+    "menu": 1,
+    "name": "Servizi per studenti con disabili",
+    "page": null,
+    "parent": 2,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 26,
+  "fields": {
+    "created": "2020-11-12T16:28:25.860Z",
+    "modified": "2020-11-12T16:35:29.141Z",
+    "order": 19,
+    "is_active": true,
+    "menu": 1,
+    "name": "Visita il Campus",
+    "page": null,
+    "parent": 3,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 27,
+  "fields": {
+    "created": "2020-11-12T16:28:25.860Z",
+    "modified": "2020-11-12T16:35:29.143Z",
+    "order": 20,
+    "is_active": true,
+    "menu": 1,
+    "name": "Vivere il Campus",
+    "page": null,
+    "parent": 3,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 28,
+  "fields": {
+    "created": "2020-11-12T16:29:52.952Z",
+    "modified": "2020-11-12T16:35:29.144Z",
+    "order": 21,
+    "is_active": true,
+    "menu": 1,
+    "name": "Servizi Per",
+    "page": null,
+    "parent": 3,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 29,
+  "fields": {
+    "created": "2020-11-12T16:29:52.953Z",
+    "modified": "2020-11-12T16:35:29.147Z",
+    "order": 22,
+    "is_active": true,
+    "menu": 1,
+    "name": "Futuri studenti",
+    "page": null,
+    "parent": 3,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 30,
+  "fields": {
+    "created": "2020-11-12T16:29:52.953Z",
+    "modified": "2020-11-12T16:35:29.149Z",
+    "order": 23,
+    "is_active": true,
+    "menu": 1,
+    "name": "Studenti iscritti",
+    "page": null,
+    "parent": 3,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 31,
+  "fields": {
+    "created": "2020-11-12T16:29:52.953Z",
+    "modified": "2020-11-12T16:35:29.151Z",
+    "order": 24,
+    "is_active": true,
+    "menu": 1,
+    "name": "Laureati",
+    "page": null,
+    "parent": 3,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 32,
+  "fields": {
+    "created": "2020-11-12T16:30:49.005Z",
+    "modified": "2020-11-12T16:35:29.153Z",
+    "order": 25,
+    "is_active": true,
+    "menu": 1,
+    "name": "Strutture della Ricerca",
+    "page": null,
+    "parent": 4,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 33,
+  "fields": {
+    "created": "2020-11-12T16:30:49.006Z",
+    "modified": "2020-11-12T16:35:29.155Z",
+    "order": 26,
+    "is_active": true,
+    "menu": 1,
+    "name": "Ambiti",
+    "page": null,
+    "parent": 4,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 34,
+  "fields": {
+    "created": "2020-11-12T16:30:49.006Z",
+    "modified": "2020-11-12T16:35:29.157Z",
+    "order": 27,
+    "is_active": true,
+    "menu": 1,
+    "name": "Dottorati",
+    "page": null,
+    "parent": 4,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 35,
+  "fields": {
+    "created": "2020-11-12T16:32:46.287Z",
+    "modified": "2020-11-12T16:35:29.158Z",
+    "order": 28,
+    "is_active": true,
+    "menu": 1,
+    "name": "Unical e",
+    "page": null,
+    "parent": 5,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 36,
+  "fields": {
+    "created": "2020-11-12T16:32:46.287Z",
+    "modified": "2020-11-12T16:35:29.160Z",
+    "order": 29,
+    "is_active": true,
+    "menu": 1,
+    "name": "Imprese",
+    "page": null,
+    "parent": 5,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 37,
+  "fields": {
+    "created": "2020-11-12T16:32:46.288Z",
+    "modified": "2020-11-12T16:35:29.162Z",
+    "order": 30,
+    "is_active": true,
+    "menu": 1,
+    "name": "Culture",
+    "page": null,
+    "parent": 5,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 38,
+  "fields": {
+    "created": "2020-11-12T16:32:46.288Z",
+    "modified": "2020-11-12T16:35:29.165Z",
+    "order": 31,
+    "is_active": true,
+    "menu": 1,
+    "name": "Società",
+    "page": null,
+    "parent": 5,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 39,
+  "fields": {
+    "created": "2020-11-12T16:32:46.289Z",
+    "modified": "2020-11-12T16:35:29.167Z",
+    "order": 32,
+    "is_active": true,
+    "menu": 1,
+    "name": "Reti",
+    "page": null,
+    "parent": 5,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 40,
+  "fields": {
+    "created": "2020-11-12T16:34:22.931Z",
+    "modified": "2020-11-12T16:35:29.169Z",
+    "order": 33,
+    "is_active": true,
+    "menu": 1,
+    "name": "Accordi internazionali",
+    "page": null,
+    "parent": 6,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 41,
+  "fields": {
+    "created": "2020-11-12T16:34:22.932Z",
+    "modified": "2020-11-12T16:35:29.170Z",
+    "order": 34,
+    "is_active": true,
+    "menu": 1,
+    "name": "Studiare all’estero",
+    "page": null,
+    "parent": 6,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 42,
+  "fields": {
+    "created": "2020-11-12T16:34:22.932Z",
+    "modified": "2020-11-12T16:35:29.172Z",
+    "order": 35,
+    "is_active": true,
+    "menu": 1,
+    "name": "Studiare all’Unical",
+    "page": null,
+    "parent": 6,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 43,
+  "fields": {
+    "created": "2020-11-12T16:34:22.932Z",
+    "modified": "2020-11-12T16:35:29.174Z",
+    "order": 36,
+    "is_active": true,
+    "menu": 1,
+    "name": "Offerta formativa internazionale",
+    "page": null,
+    "parent": 6,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 44,
+  "fields": {
+    "created": "2020-11-12T16:34:22.933Z",
+    "modified": "2020-11-12T16:35:29.176Z",
+    "order": 37,
+    "is_active": true,
+    "menu": 1,
+    "name": "Mobilità docenti e ricercatori",
+    "page": null,
+    "parent": 6,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 45,
+  "fields": {
+    "created": "2020-11-12T16:38:06.977Z",
+    "modified": "2020-11-12T16:38:06.977Z",
+    "order": 39,
+    "is_active": true,
+    "menu": 1,
+    "name": "Storia e Missione",
+    "page": null,
+    "parent": 1,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 46,
+  "fields": {
+    "created": "2020-11-12T16:38:06.978Z",
+    "modified": "2020-11-12T16:38:06.978Z",
+    "order": 40,
+    "is_active": true,
+    "menu": 1,
+    "name": "Organizzazione",
+    "page": null,
+    "parent": 1,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 47,
+  "fields": {
+    "created": "2020-11-12T16:38:06.978Z",
+    "modified": "2020-11-12T16:38:06.978Z",
+    "order": 41,
+    "is_active": true,
+    "menu": 1,
+    "name": "Organi",
+    "page": null,
+    "parent": 1,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 48,
+  "fields": {
+    "created": "2020-11-12T16:38:06.978Z",
+    "modified": "2020-11-12T16:38:06.978Z",
+    "order": 42,
+    "is_active": true,
+    "menu": 1,
+    "name": "Linee strategiche",
+    "page": null,
+    "parent": 1,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 49,
+  "fields": {
+    "created": "2020-11-12T16:38:06.979Z",
+    "modified": "2020-11-12T16:38:06.979Z",
+    "order": 43,
+    "is_active": true,
+    "menu": 1,
+    "name": "Qualità ricerca",
+    "page": null,
+    "parent": 1,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 50,
+  "fields": {
+    "created": "2020-11-12T16:38:06.979Z",
+    "modified": "2020-11-12T16:38:06.979Z",
+    "order": 44,
+    "is_active": true,
+    "menu": 1,
+    "name": "Strutture",
+    "page": null,
+    "parent": 1,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 51,
+  "fields": {
+    "created": "2020-11-12T16:38:06.979Z",
+    "modified": "2020-11-12T16:38:06.979Z",
+    "order": 45,
+    "is_active": true,
+    "menu": 1,
+    "name": "Amministrazione Trasparente",
+    "page": null,
+    "parent": 1,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
   "model": "cms_menus.navigationbaritemlocalization",
   "pk": 1,
   "fields": {
@@ -615,7 +1281,7 @@
   "fields": {
     "item": 1,
     "language": "en",
-    "name": "Home"
+    "name": "Campus"
   }
 },
 {

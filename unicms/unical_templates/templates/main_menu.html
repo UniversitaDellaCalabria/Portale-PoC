@@ -11,29 +11,41 @@
         </a>
         {% if item.get_childs %}
         <div class="dropdown-menu">
-            <div class="link-list-wrapper">
-                <ul class="link-list">
-                <li>
-                    <h3 class="no_toc" id="heading">{{ item.name }}</h3>
-                </li>
-                {% for subitem in item.get_childs %}
-                    {% if subitem.link %}
-                    <li>
-                        <a class="list-item" href={% if subitem.link %}"{{ subitem.get_link}}"{% else %}"#"{% endif %}>
-                            <span>{{ subitem.name }}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-
-                {% endfor %}
-                </ul>
-            </div>
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <div class="link-list-wrapper">
+                        <ul class="link-list">
+                        {% for subitem in item.get_childs %}
+                        
+                            {% if not subitem.link %}
+                                {% if not forloop.first %}
+                                    </div> <!-- link-list-wrapper -->
+                                </div> <!-- link-list -->
+                                <div class="link-list-wrapper">
+                                    <ul class="link-list">
+                                {% endif %}
+                            <li>
+                                <h3 class="no_toc" id="heading">{{ subitem.name }}</h3>
+                            </li>
+                        
+                            {% else %}
+                            
+                            <li>
+                                <a class="list-item" href={% if subitem.link %}"{{ subitem.get_link}}"{% else %}"#"{% endif %}>
+                                    <span>{{ subitem.name }}</span>
+                                </a>
+                            </li>
+                            {% endif %}
+        
+                        {% endfor %}
+                        </ul>
+                    </div>
         </div>
         {% endif %}
     </li>
 {% endfor %}
 
-    {% comment %}
+{% comment %}
     <li class="nav-item dropdown megamenu">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
             <span>Esempio di Megamenu</span>
@@ -82,4 +94,4 @@
             </div>
         </div>
     </li>
-    {% endcomment %}
+{% endcomment %}
