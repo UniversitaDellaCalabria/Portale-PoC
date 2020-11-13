@@ -1,3 +1,5 @@
+import re 
+
 from django.http import (HttpResponse,
                          Http404,
                          HttpResponseBadRequest,
@@ -34,13 +36,15 @@ class PublicationViewHandler(BaseContentHandler):
         template_sources = template_obj.template.source
 
         # do additional preprocessing on the template here ...
-        # ...
+        # get/extends the base template of the page context
+        base_template_tag = f'{{% extends "{page.base_template.template_file}" %}}'
+        regexp = "\{\%\s*extends\s*\t*[\'\"a-zA-Z0-9\_\-\.]*\s*\%\}"
+        ext_template_sources = re.sub(regexp, base_template_tag, template_sources)
         # end string processing
 
-        template = Template(template_sources)
+        template = Template(ext_template_sources)
         context = Context(data)
-        return HttpResponse(template.render(context),
-                            status=200)
+        return HttpResponse(template.render(context), status=200)
 
 
 class PublicationListHandler(BaseContentHandler):
