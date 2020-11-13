@@ -28,7 +28,7 @@ def breadcrumbs(context, template=None, leaf=None):
         url = f'{root}/{i}'
         crumbs.append((url, i))
         root = url
-    crumbs[0] = ('/', _('Home'))
+    crumbs[0] = ('/', context['context'].name)
     if leaf:
         crumbs.append((leaf.url, getattr(leaf, 'name', _('Here'))))
     data = {'breadcrumbs': crumbs}

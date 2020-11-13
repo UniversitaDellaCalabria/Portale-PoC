@@ -381,7 +381,7 @@ class PublicationContext(TimeStampedModel, ActivableModel,
 
     @property
     def name(self):
-        return self.publication.title2slug
+        return self.publication.title
 
     def __str__(self):
         return '{} {}'.format(self.publication, self.context)
