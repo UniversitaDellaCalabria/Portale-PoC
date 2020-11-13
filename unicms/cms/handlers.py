@@ -12,14 +12,14 @@ from cms_context.models import WebPath
 from . models import PublicationContext, Category, Page
 
 
-class ContentViewHandler(BaseContentHandler):
+class PublicationViewHandler(BaseContentHandler):
     template = "publication_view.html"
 
     def as_view(self):
         match_dict = self.match.groupdict()
         pub_context = PublicationContext.objects.filter(
                         is_active = True,
-                        context__site=self.website, 
+                        context__site=self.website,
                         context__fullpath=match_dict.get('context', '/'),
                         publication__slug=match_dict.get('slug', '')).first()
         page = Page.objects.filter(is_active=True,
@@ -28,20 +28,20 @@ class ContentViewHandler(BaseContentHandler):
                 'context': pub_context.context,
                 'website': self.website,
                 'page': page,
-                'path': match_dict.get('context', '/')}
-        
+                'path': match_dict.get('context', '/'),
+                'publication': pub_context.publication}
         template_obj = get_template(self.template)
         template_sources = template_obj.template.source
-        
+
         # do additional preprocessing on the template here ...
         # ...
         # end string processing
-        
+
         template = Template(template_sources)
         context = Context(data)
         return HttpResponse(template.render(context),
                             status=200)
 
 
-class ContentListHandler(BaseContentHandler):
+class PublicationListHandler(BaseContentHandler):
     template = "publication_list.html"

@@ -301,6 +301,21 @@ class Publication(AbstractPublication):
     def categories(self):
         return self.category.all()
 
+    @property
+    def related_publications(self):
+        related = PublicationRelated.objects.filter(publication=self,
+                                                    related__is_active=True)
+        return [i for i in related if i.related.is_publicable]
+
+    @property
+    def related_contexts(self):
+        return PublicationContext.objects.filter(publication=self,
+                                                 context__is_active=True)
+
+    @property
+    def related_links(self):
+        return self.publicationlink_set.all()
+
     def translate_as(self, lang):
         """
         returns translation if available
