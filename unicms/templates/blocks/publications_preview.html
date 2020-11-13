@@ -48,7 +48,9 @@
             <use xlink:href="{% static 'svg/sprite.svg' %}#it-settings"></use>
           </svg>
           <span>
-              {% for cat in pub.publication.categories %}{{ cat }} {% endfor %}
+              {% for cat in pub.publication.categories %}
+              <a href='#'>{{ cat }} </a>
+              {% endfor %}
           </span>
         </div>
         <div class="card-body">

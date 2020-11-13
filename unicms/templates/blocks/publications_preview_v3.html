@@ -11,9 +11,11 @@
         <div class="card card-bg no-after">
             <div class="card-body">
                 <div class="etichetta">
-                    <span>
-                        {% for cat in pub.publication.categories %}{{ cat }} {% endfor %}
-                    </span>
+                      {% for cat in pub.publication.categories %}
+                      <a href='#' style="color: #176fc1";>
+                          <span>{{ cat }} </span>
+                      </a>
+                      {% endfor %}
                 </div>
                 {% if pub.publication.presentation_image %}
                 <div class="img-responsive-wrapper mb-3">

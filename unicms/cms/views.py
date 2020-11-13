@@ -38,7 +38,6 @@ def cms_content(request):
         if not match:
             continue
         query = match.groupdict()
-        logger.warning(query)
         params = {'request': request,
                   'website': website,
                   'path': path,
