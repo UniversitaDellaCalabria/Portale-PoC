@@ -1,16 +1,6 @@
-<!-- Extends default Bootstrap Unical Italia template -->
-<!--
-base-setup.html
-bootstrap-italia-base.html
--->
-{% extends 'base-setup.html' %}
+{% extends "base_v_original.html" %}
 
 {% load i18n %}
-
-<!-- From app django-sass-processor -->
-{% if debug %}
-    {% load sass_tags %}
-{% endif %}
 {% load static %}
 
 <!-- load custom template tags -->
@@ -20,227 +10,117 @@ bootstrap-italia-base.html
 {% load unicms_templates %}
 {% load unicms_blocks %}
 
-<!-- Return to Agid native template -->
-{% block extra_head %}
-{{ block.super }}
-<style>
 
-.menu-wrapper {
-    z-index: 1 !important;
-    }
-
-.owl-carousel {
-    z-index: 0;
-}
-
-.it-header-navbar-wrapper {
-    background: #fff;
-}
-
-.owl-nav {
-    display: none;
-}
-
-.navbar .navbar-collapsable .navbar-nav li a.nav-link {
-    color: #000;
-}
-
-.it-carousel-wrapper .owl-stage-outer {
-    padding-top: 0px;
-    padding-bottom: 0;
-}
-</style>
-{% endblock extra_head %}
-
-<!-- Page Title -->
-{% block page_title %}
-{% trans "Università della Calabria" %}
-{% endblock page_title %}
-
-<!-- Meta Description (for all pages if not overrided) -->
-{% block page_meta_description %}
-{% trans "Sito istituzionale dell'Università della Calabria" %}
-{% endblock page_meta_description %}
-
-{% block header_slim_top_left %}
-<!--
-<div style="" class="header-slim-left-zone">
-<div class="it-access-top-wrapper">
-    <form class="form-inline d-flex justify-content-center md-form form-sm">
-        <svg class="icon icon-white"><use xlink:href="{% static '/svg/sprite.svg' %}#it-search"></use></svg>
-        <input class="form-control form-control-sm ml-3 w-175 h-2" type="text" placeholder="Search" aria-label="Search">
-    </form>
-</div>
-</div>
--->
-
-<div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-            <span>{% trans "Rubrica telefonica" %}
-                <svg class="icon icon-white"><use xlink:href="{% static '/svg/sprite.svg' %}#it-telephone"></use></svg>
-            </span>
-            <svg class="icon d-none d-lg-block">
-                <use xlink:href="{% static '/svg/sprite.svg' %}#it-expand"></use>
-            </svg>
-        </a>
-        <div class="dropdown-menu">
-            <div class="row">
-                <div class="col-12">
-                    <div class="link-list-wrapper">
-                        <ul class="link-list">
-                            <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
-                            <li><a class="list-item" href="?lang=ar"><span>Shortcut 1</span></a></li>
-
-                            <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
-                            <li><a class="list-item" href="?lang=en"><span>Shortcut 2</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-<div style="" class="header-slim-left-zone">
-    <p class="text-white">
-    </p>
-</div>
-{% endblock header_slim_top_left %}
-
-<!-- Logo in Header -->
-{% block header_center_logo %}
-<div class="col-10 col-md-12 offset-1 offset-md-0">
-    <image src="{% static 'images/logo1.svg' %}" style="width: 100%;"/>
-</div>
-{% endblock header_center_logo %}
-
-<!-- URL link top left -->
-{% block header_slim_org_url %}
-{% endblock header_slim_org_url %}
-
-<!-- URL link logo and org name -->
-{% block header_center_url %}
-{% endblock header_center_url %}
-
-    {% block header_slim_sub_menu %}
-    <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-
-            <span>{{ request.LANGUAGE_CODE }}</span>
-            <svg class="icon d-none d-lg-block">
-                <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>
-            </svg>
-        </a>
-        <div class="dropdown-menu">
-            <div class="row">
-                <div class="col-12">
-                    <div class="link-list-wrapper">
-                        <ul class="link-list">
-                            {% supported_languages as languages %}
-                            {% for lang,language in languages %}
-                            <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
-                            <li><a class="list-item" href="?lang={{ lang }}"><span>{{ language }}</span></a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endblock header_slim_sub_menu %}
-
-<!-- Mobile slim_org_name -->
-{% block header_slim_mobile_org_name %}
-{% endblock header_slim_mobile_org_name %}
-
-<!-- Make empty areas -->
-{% block header_mobile_arrow %}{% endblock header_mobile_arrow %}
-{% block header_mobile_slim_menu %}{% endblock header_mobile_slim_menu %}
-
-{% block header_center_search %}{% endblock header_center_search %}
-
-<!-- Container -->
 {% block container %}
+<div class="it-hero-wrapper it-dark it-overlay publication-hero">
+  <!-- - img-->
+  <div class="img-responsive-wrapper">
+    <div class="img-responsive">
+        <div class="img-wrapper"><img src="{{ publication.image_url }}" title="img title" alt="imagealt"></div>
+    </div>
+  </div>
+  <!-- - texts-->
+  <div class="container">
+    <div class="row">
+        <div class="col-12">
+          <div class="it-hero-text-wrapper bg-dark">
+              <span class="it-category">
+                {% for cat in publication.categories %}{{ cat }} {% endfor %}
+              </span>
+              <h1 class="no_toc">{{ publication.title }}</h1>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
 
-{% block hero %}
-{% endblock hero %}
 
-<!-- menu secondario diretto -->
-{% block middle-section %}
-{% load_menu section='menu-2' template="unical_portale_menu_secondario.html" %}
-{% endblock middle-section %}
 
-<!--
+
 <div class="container">
-    {% block content_title %}
-    {% if title %}
-    <div class="py-md-5 bd-content clearfix">
-        {% include 'title_display.html' %}
-        {% block right_button %}
-        {% endblock right_button %}
-    </div>
-    {% endif %}
-    {% endblock content_title %}
+    <div class="col-12 py-5 bd-content">
+        {% block centered_container %}
 
-    {% block under_content_title %}{% endblock under_content_title %}
 
-    <div class="py-md-5 bd-content clearfix">
-    </div>
-</div>
--->
 
-<div class="row pt-2 mt-2" style="background-color: #eeeeee;">
-    <div class="container">
-
-    <div class="row">
-        <div class="col-12 col-lg-9">
-
-            {% load_publications_preview template="publications_preview.html" %}
-
-        </div>
-        <div class="col-12 col-lg-3">
-            {% include "unical_portale_agenda.html" %}
-        </div>
-    </div>
-</div>
-</div>
-
-    <div class="container">
-    <div class="row">
-        <div class="col-12 col-lg-3">
-            <button type="button" class="btn btn-primary btn-block btn-lg mb-2">AVVISI</button>
-            <button type="button" class="btn btn-secondary btn-block btn-lg mb-2">In evidenza</button>
-            <button type="button" class="btn btn-secondary btn-block btn-lg mb-2">Ricerca</button>
-            <button type="button" class="btn btn-secondary btn-block btn-lg mb-2">Didattica</button>
-        </div>
-        <div class="col-12 col-lg-9">
 <!--
-            <h3 class="mb-5 mt-4">{% trans "avvisi" %}</h3>
+            <p><img src="{{ publication.image_url }}" width="100%"></p>
 -->
-            {% include "unical_portale_home_avvisi.html" %}
-        </div>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <p class="text-muted">
+                        <svg class="icon icon-xs">
+                            <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>
+                        </svg> {% trans "Published" %} {{ publication.created }}
+                    </p>
+                    <p><i>{{ publication.subheading }}</i></p>
+                    <hr />
+                    {{ publication.content|safe }}
+                    <h6>{% trans "Tags" %}</h6>
+                    <p style="font-size: 1.2rem">
+                    {% for tag in publication.tags.all %}
+                        <span class="badge badge-grey-unical square-corners">{{ tag.name }}</span>
+                    {% endfor %}
+                    </p>
+                </div>
+                <div class="col-12 col-md-3 offset-md-1">
+                    {% if publication.related_publications %}
+                    <div class="card-wrapper auto-height mb-3">
+                        <div class="card card-border no-after">
+                            <div class="card-body">
+                                <h5 class="card-title">{% trans "It might interest you" %}</h5>
+                                <ul class="pl-0" style="list-style: none">
+                                {% for related_pub in publication.related_publications %}
+                                    <li class="mb-3">
+                                        <a href="#">{{ related_pub.related }}</a>
+                                        <br>
+                                        <svg class="icon icon-xs">
+                                            <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>
+                                        </svg> <small class="text-muted">{{ related_pub.related.created|date:"d M Y" }}</small>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="card-wrapper auto-height mb-3">
+                        <div class="card card-border no-after">
+                            <div class="card-body">
+                                <h5 class="card-title">{% trans "Contexts" %}</h5>
+                                <ul class="pl-0" style="list-style: none">
+                                {% for pub_context in publication.related_contexts %}
+                                    <li class="mb-3">
+                                        <a href="#">{{ pub_context.context }}</a>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if publication.related_links %}
+                    <div class="card-wrapper auto-height mb-3">
+                        <div class="card card-border no-after">
+                            <div class="card-body">
+                                <h5 class="card-title">{% trans "Links" %}</h5>
+                                <ul class="pl-0" style="list-style: none">
+                                {% for link in publication.related_links %}
+                                    <li class="mb-3">
+                                        <a href="{{ link.url }}">{{ link.name }}</a>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+        {% endblock %}
     </div>
-
-
-    <div class="row">
-        {% block content_rows %}
-        <main class="col mb-5">
-        {% block container_inner %}{% endblock container_inner %}
-        </main>
-        {% endblock content_rows %}
-    </div>
-    <a href="#" aria-hidden="true"
-       data-attribute="back-to-top"
-       class="back-to-top back-to-top-small">
-        <svg class="icon icon-light">
-          <use xlink:href="{% static 'svg/sprite.svg' %}#it-arrow-up"></use>
-        </svg>
-    </a>
-
-    </div>
-
 </div>
 {% endblock container %}
-
-{% block footer_menu_section %}
-{% endblock footer_menu_section %}
