@@ -10,9 +10,7 @@
 {% load unicms_templates %}
 {% load unicms_blocks %}
 
-
 {% block container %}
-
     {% load_blocks section='slider' %}
 
     <!-- menu secondario diretto -->
@@ -32,7 +30,8 @@
     <!-- end blocks in section 1 -->
 
     {% load_blocks section=2 %}
-
+    
+    {% block cookiebar %}
     <div class="cookiebar">
         <p>{% trans "Questo sito utilizza cookie tecnici, analytics e di terze parti." %}
            <br>
@@ -47,4 +46,5 @@
             </button>
         </div>
     </div>
+    {% endblock cookiebar %}
 {% endblock container %}
