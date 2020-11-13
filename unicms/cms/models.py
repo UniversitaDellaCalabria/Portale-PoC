@@ -379,6 +379,9 @@ class PublicationContext(TimeStampedModel, ActivableModel,
         url = f'{self.context.fullpath}/{prefix}/{self.publication.slug}'
         return url.replace('//', '/')
 
+    @property
+    def name(self):
+        return self.publication.title2slug
 
     def __str__(self):
         return '{} {}'.format(self.publication, self.context)

@@ -29,7 +29,7 @@ class PublicationViewHandler(BaseContentHandler):
                 'website': self.website,
                 'page': page,
                 'path': match_dict.get('context', '/'),
-                'publication': pub_context.publication}
+                'publication_context': pub_context}
         template_obj = get_template(self.template)
         template_sources = template_obj.template.source
 

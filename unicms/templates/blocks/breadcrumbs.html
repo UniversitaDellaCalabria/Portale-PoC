@@ -1,0 +1,25 @@
+{% load i18n %}
+{% load static %}
+
+
+<nav class="breadcrumb-container" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    
+    
+    {% for k,v in breadcrumbs %}
+        {% if forloop.last %}
+        <li class="breadcrumb-item active" aria-current="page">
+            <a href="{{ k }}">{{ v }}</a>
+        </li>
+        {% else %}
+        <li class="breadcrumb-item">
+            <a href="{{ k }}">{{ v }}</a>
+            <span class="separator">/</span>
+        </li>
+        {% endif %}
+    {% endfor %}
+  
+  </ol>
+</nav>
+
+
