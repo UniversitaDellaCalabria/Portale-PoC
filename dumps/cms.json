@@ -201,10 +201,10 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:00.088Z",
-    "modified": "2020-11-11T16:18:22.835Z",
+    "modified": "2020-11-13T08:15:04.828Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
-    "template_file": "portale_home_v3.html",
+    "template_file": "portale_home_v_original.html",
     "note": "",
     "blocks": []
   }
