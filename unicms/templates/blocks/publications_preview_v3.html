@@ -21,7 +21,9 @@
                 <div class="img-responsive-wrapper mb-3">
                     <div class="img-responsive img-responsive-panoramic">
                         <figure class="img-wrapper">
+                          <a style="" href="{{ pub.url }}">
                             <img src="{{ pub.publication.image_url }}" title="img title" alt="imagealt">
+                          </a>                        
                         </figure>
                     </div>
                 </div>
@@ -53,7 +55,9 @@
     <div class="card-wrapper card-space">
       <div class="card card-bg no-after">
           {% if pub.publication.presentation_image %}
-            <img src="{{ pub.publication.image_url }}" title="img title" alt="imagealt" style="width: 100%">
+            <a style="" href="{{ pub.url }}">
+                <img src="{{ pub.publication.image_url }}" title="img title" alt="imagealt" style="width: 100%">
+            </a>    
             {% endif %}
         <div class="card-body">
             <div class="etichetta">
