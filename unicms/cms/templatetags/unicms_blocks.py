@@ -28,10 +28,10 @@ def load_blocks(context, section=None):
                                         request=request,
                                         page=page,
                                         webpath=webpath)
-        # context = Context({'request': request})
-        # result = template.render(context)
-        result += obj.render()
-
+        try:
+            result += obj.render()
+        except Exception as e:
+            logger.exception('Block {} failed rendering: {}'.format(block, e))
     return result
 
 
