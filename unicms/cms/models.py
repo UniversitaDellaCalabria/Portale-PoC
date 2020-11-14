@@ -8,7 +8,7 @@ from django.utils.text import slugify
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from cms_context.models import *
+from cms_contexts.models import *
 from cms_medias.models import Media, MediaCollection
 from cms_menus.models import NavigationBar
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,

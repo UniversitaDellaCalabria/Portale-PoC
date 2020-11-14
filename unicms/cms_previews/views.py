@@ -1,9 +1,9 @@
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render, get_object_or_404
 
-from cms_context.decorators import detect_language
-from cms_context.models import WebPath
-from cms_context.utils import detect_user_language
+from cms_contexts.decorators import detect_language
+from cms_contexts.models import WebPath
+from cms_contexts.utils import detect_user_language
 from urllib.parse import urlparse
 from . models import Page
 

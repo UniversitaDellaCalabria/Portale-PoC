@@ -14,7 +14,7 @@ class BaseContentHandler(object):
                  **kwargs):
         """
         Checks if a path belongs to a CMS specialized application
-        :type context: cms_context.model.WebPath
+        :type webpath: cms_context.model.WebPath
         :type path: String
         :type template_fname: String.
         :param webpath: the context where it should belong to.

@@ -12,7 +12,7 @@ from cms_templates.models import (ActivableModel,
                                   
 from taggit.managers import TaggableManager
 
-from cms_context.models import WebPath
+from cms_contexts.models import WebPath
 # from . utils import remove_file
 from . settings import *
 

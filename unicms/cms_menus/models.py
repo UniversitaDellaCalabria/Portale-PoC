@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from cms_context.models import *
+from cms_contexts.models import *
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   ActivableModel,
                                   SectionAbstractModel,

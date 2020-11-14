@@ -3,8 +3,8 @@ import logging
 from django import template
 
 from cms.models import PageCarousel
-from cms_context.decorators import detect_language
-from cms_context.utils import handle_faulty_templates
+from cms_contexts.decorators import detect_language
+from cms_contexts.utils import handle_faulty_templates
 
 
 logger = logging.getLogger(__name__)

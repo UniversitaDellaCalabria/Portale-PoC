@@ -9,7 +9,7 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from cms_context.utils import build_breadcrumbs, handle_faulty_templates
+from cms_contexts.utils import build_breadcrumbs, handle_faulty_templates
 # WARNING - import circolare - decidere di migrare blocchi e menu in cms_pages
 from cms_menus.models import NavigationBarItem
 from cms.views import detect_user_language

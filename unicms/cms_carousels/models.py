@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from cms_context.models import WebPath
+from cms_contexts.models import WebPath
 from cms_medias.models import Media
 from cms_templates.models import (CMS_LINKS_LABELS,
                                   ActivableModel, 

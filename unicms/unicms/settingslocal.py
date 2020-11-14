@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'cms_templates',
     'cms_carousels',
-    'cms_context',
+    'cms_contexts',
     'cms_menus',
     'cms_medias',
     'cms',

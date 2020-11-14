@@ -4,8 +4,8 @@ from django import template
 from django.template.exceptions import (TemplateDoesNotExist,
                                         TemplateSyntaxError)
 from django.utils import timezone
-from cms_context.decorators import detect_language
-from cms_context.utils import handle_faulty_templates
+from cms_contexts.decorators import detect_language
+from cms_contexts.utils import handle_faulty_templates
 
 from cms.models import PageMenu
 

@@ -9,9 +9,9 @@ from django.template import Template, Context
 from django.template.loader import get_template, render_to_string
 from django.utils.translation import gettext_lazy as _
 
-from cms_context.handlers import BaseContentHandler
-from cms_context.models import WebPath
-from cms_context.utils import contextualize_template
+from cms_contexts.handlers import BaseContentHandler
+from cms_contexts.models import WebPath
+from cms_contexts.utils import contextualize_template
 
 from . models import PublicationContext, Category, Page
 

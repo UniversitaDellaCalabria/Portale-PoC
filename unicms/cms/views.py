@@ -10,9 +10,9 @@ from django.http import (HttpResponse,
 from django.shortcuts import render, get_object_or_404
 from django.utils.module_loading import import_string
 
-from cms_context.decorators import detect_language
-from cms_context.models import WebSite, WebPath
-from cms_context.utils import detect_user_language
+from cms_contexts.decorators import detect_language
+from cms_contexts.models import WebSite, WebPath
+from cms_contexts.utils import detect_user_language
 from urllib.parse import urlparse
 from . models import Page
 
