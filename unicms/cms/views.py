@@ -39,14 +39,8 @@ def cms_dispatch(request):
         if not match:
             logger.debug(f'{_msg_head} - {k}: {v} -> UNMATCH with {path}')
             continue
-        # TODO: some more checks
-        # elif len(match.groupdict()) > 1:
-            # ## if something collides takes only the first for resielence
-            # breakpoint()
-            # query = dict(list(match.groupdict().items())[0])
-            # logger.warning(f'{_msg_head} - Multiple regexp collision: {match}')
-        else:
-            query = match.groupdict()
+        
+        query = match.groupdict()
         params = {'request': request,
                   'website': website,
                   'path': path,
