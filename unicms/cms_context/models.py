@@ -91,7 +91,7 @@ class EditorialBoardEditors(TimeStampedModel):
                              on_delete=models.CASCADE)
     permission = models.CharField(max_length=5, blank=False, null=False,
                                   choices=CMS_CONTEXT_PERMISSIONS)
-    context = models.ForeignKey(WebPath,
+    webpath = models.ForeignKey(WebPath,
                                 on_delete=models.CASCADE,
                                 null=True, blank=True)
     is_active   = models.BooleanField()
@@ -100,7 +100,7 @@ class EditorialBoardEditors(TimeStampedModel):
         verbose_name_plural = _("Editorial Board Users")
 
     def __str__(self):
-        if getattr(self, 'context'):
-            return '{} {} in {}'.format(self.user, self.permission, self.context)
+        if getattr(self, 'webpath'):
+            return '{} {} in {}'.format(self.user, self.permission, self.webpath)
         else:
             return '{} {}'.format(self.user, self.permission)

@@ -11,21 +11,9 @@ from django.utils.translation import gettext_lazy as _
 
 from cms_context.handlers import BaseContentHandler
 from cms_context.models import WebPath
+from cms_context.utils import contextualize_template
 
 from . models import PublicationContext, Category, Page
-
-
-def contextualize_template(template_fname, page):
-    template_obj = get_template(template_fname)
-    template_sources = template_obj.template.source
-
-    # do additional preprocessing on the template here ...
-    # get/extends the base template of the page context
-    base_template_tag = f'{{% extends "{page.base_template.template_file}" %}}'
-    regexp = "\{\%\s*extends\s*\t*[\'\"a-zA-Z0-9\_\-\.]*\s*\%\}"
-    ext_template_sources = re.sub(regexp, base_template_tag, template_sources)
-    # end string processing
-    return ext_template_sources
 
 
 class PublicationViewHandler(BaseContentHandler):
@@ -35,16 +23,16 @@ class PublicationViewHandler(BaseContentHandler):
         match_dict = self.match.groupdict()
         pub_context = PublicationContext.objects.filter(
                         is_active = True,
-                        context__site=self.website,
-                        context__fullpath=match_dict.get('context', '/'),
+                        webpath__site=self.website,
+                        webpath__fullpath=match_dict.get('webpath', '/'),
                         publication__slug=match_dict.get('slug', '')).first()
         page = Page.objects.filter(is_active=True,
-                                   context=pub_context.context).first()
+                                   webpath=pub_context.webpath).first()
         data = {'request': self.request,
-                'context': pub_context.context,
+                'webpath': pub_context.webpath,
                 'website': self.website,
                 'page': page,
-                'path': match_dict.get('context', '/'),
+                'path': match_dict.get('webpath', '/'),
                 'publication_context': pub_context}
         
         ext_template_sources = contextualize_template(self.template, page)
@@ -64,16 +52,14 @@ class PublicationListHandler(BaseContentHandler):
     def as_view(self):
         match_dict = self.match.groupdict()
         page = Page.objects.filter(is_active=True,
-                                   context__site=self.website,
-                                   context__fullpath=match_dict.get('context', '/'),).first()
-        handler = self
+                                   webpath__site=self.website,
+                                   webpath__fullpath=match_dict.get('webpath', '/'),).first()
         data = {'request': self.request,
-                'context': page.context,
+                'webpath': page.webpath,
                 'website': self.website,
                 'page': page,
-                'path': match_dict.get('context', '/'),
-                'handler': handler,
-                # 'publication_context': pub_context
+                'path': match_dict.get('webpath', '/'),
+                'handler': self,
                 }
         
         ext_template_sources = contextualize_template(self.template, page)

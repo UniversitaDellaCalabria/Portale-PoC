@@ -12,7 +12,7 @@ class AbstractCreateModifiedBy(admin.ModelAdmin):
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
     search_fields = ('name',)
-    list_display  = ('context', 'name',
+    list_display  = ('webpath', 'name',
                      'date_start', 'date_end',
                      'is_active',)
     list_filter   = ('state', 'is_active', 'type',

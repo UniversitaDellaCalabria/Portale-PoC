@@ -1,4 +1,5 @@
 import logging
+import re
 
 from django.conf import settings
 from django.utils import translation
@@ -35,12 +36,26 @@ def handle_faulty_templates(template: str, data: dict, name='', ):
 
 
 def build_breadcrumbs(context):
-    nodes = context['context'].split()
+    webpath = context['webpath']
+    nodes = webpath.split()
     crumbs = []
     root = '/'
     for i in nodes:
         url = f'{root}/{i}'
         crumbs.append((url, i))
         root = url
-    crumbs[0] = ('/', context['context'].name) 
+    crumbs[0] = ('/', webpath.name) 
     return crumbs
+
+
+def contextualize_template(template_fname, page):
+    template_obj = get_template(template_fname)
+    template_sources = template_obj.template.source
+
+    # do additional preprocessing on the template here ...
+    # get/extends the base template of the page context
+    base_template_tag = f'{{% extends "{page.base_template.template_file}" %}}'
+    regexp = "\{\%\s*extends\s*\t*[\'\"a-zA-Z0-9\_\-\.]*\s*\%\}"
+    ext_template_sources = re.sub(regexp, base_template_tag, template_sources)
+    # end string processing
+    return ext_template_sources

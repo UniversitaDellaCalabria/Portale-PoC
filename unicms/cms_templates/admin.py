@@ -20,6 +20,6 @@ class PageBlockTemplateAdmin(admin.ModelAdmin):
 
 #  @admin.register(PageTemplateThirdPartyBlock)
 class PageTemplateThirdPartyBlockAdmin(admin.ModelAdmin):
-    list_display  = ('context', 'block', 'section', 'is_active')
+    list_display  = ('webpath', 'block', 'section', 'is_active')
     #  search_fields   = ('context', 'name', 'parent',)
-    list_filter = ('context', 'created', 'modified')
+    list_filter = ('webpath', 'created', 'modified')

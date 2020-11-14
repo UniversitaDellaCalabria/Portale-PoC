@@ -11,10 +11,9 @@
         <div class="card card-bg no-after">
             <div class="card-body">
                 <div class="etichetta">
-                      {% for cat in pub.publication.categories %}
-                      <a href='#' style="color: #176fc1";>
-                          <span>{{ cat }} </span>
-                      </a>
+                      {% for cat in pub.publication.categories|slice:":3" %}
+                      {% if forloop.counter > 1 %}&nbsp;&middot;&nbsp;{% endif %}
+                      <a href='#' style="color: #176fc1;">{{ cat }} </a>                      
                       {% endfor %}
                 </div>
                 {% if pub.publication.presentation_image %}

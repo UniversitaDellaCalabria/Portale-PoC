@@ -20,7 +20,7 @@ def load_menu(context, section, template):
     request = context['request']
     page_menu = PageMenu.objects.filter(section=section,
                                         menu__is_active=True,
-                                        page__context=context['context']).first()
+                                        page__webpath=context['webpath']).first()
     if not page_menu: return ''
     language = request.LANGUAGE_CODE
     menu_items = page_menu.menu.get_localized_items(lang=language, 

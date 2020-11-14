@@ -18,7 +18,7 @@ def load_carousel(context, section, template):
     
     page = PageCarousel.objects.filter(section=section,
                                        is_active=True,
-                                       page__context=context['context']).first()
+                                       page__webpath=context['webpath']).first()
     if not page: return ''
     else: carousel = page.carousel    
     

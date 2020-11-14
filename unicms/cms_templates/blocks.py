@@ -26,7 +26,7 @@ class HtmlBlock(AbstractBlock):
     def render(self):
         template = Template(self.content)
         context = Context({'request': self.request,
-                           'context': self.webpath})
+                           'webpath': self.webpath})
         return template.render(context)
 
 

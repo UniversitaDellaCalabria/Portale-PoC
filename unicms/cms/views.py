@@ -59,18 +59,17 @@ def cms_dispatch(request):
             logger.exception(f'{path}:{e}')
 
     # go further with webpath matching
-    context = get_object_or_404(WebPath, fullpath=path, site=website)
-    page = Page.objects.filter(context = context,
+    webpath = get_object_or_404(WebPath, fullpath=path, site=website)
+    page = Page.objects.filter(webpath = webpath,
                                is_active = True,
                                state = 'published').first()
     if not page:
         raise Http404()
 
-    context_vars = {
+    context = {
         'website': website,
         'path': path,
-        'context': context,
+        'webpath': webpath,
         'page': page,
     }
-    return render(request,
-                  page.base_template.template_file, context_vars)
+    return render(request, page.base_template.template_file, context)

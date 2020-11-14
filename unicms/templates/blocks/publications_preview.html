@@ -50,7 +50,8 @@
             <use xlink:href="{% static 'svg/sprite.svg' %}#it-settings"></use>
           </svg>
           <span>
-              {% for cat in pub.publication.categories %}
+              {% for cat in publication_context.publication.categories %}
+              {% if forloop.counter > 1 %} &middot {% endif %}
               <a href='#'>{{ cat }} </a>
               {% endfor %}
           </span>

@@ -28,7 +28,7 @@ class EditorialBoardEditorsAdminInline(admin.TabularInline):
     model = EditorialBoardEditors
     extra = 0
     readonly_fields = ('created', 'modified')
-    autocomplete_fields = ('user', 'context')
+    raw_id_fields = ('user', 'webpath')
 
 
 @admin.register(WebPath)
@@ -42,7 +42,7 @@ class WebPathAdmin(admin.ModelAdmin):
 
 @admin.register(EditorialBoardEditors)
 class EditorialBoardEditorsAdmin(admin.ModelAdmin):
-    list_display = ('user', 'permission', 'context', 'is_active')
+    list_display = ('user', 'permission', 'webpath', 'is_active')
     list_filter = ('permission', 'created', 'modified', 'is_active')
     search_fields = ('user', )
     readonly_fields = ('created', 'modified')

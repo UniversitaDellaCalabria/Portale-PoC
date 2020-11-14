@@ -40,8 +40,8 @@ CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
 
 def context_publication_attachment_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return '{}/{}/{}/{}'.format(instance.context.site,
-                                instance.context.pk,
+    return '{}/{}/{}/{}'.format(instance.webpath.site,
+                                instance.webpath.pk,
                                 instance.pk,
                                 filename)
 
@@ -49,7 +49,7 @@ def context_publication_attachment_path(instance, filename):
 class Page(TimeStampedModel, ActivableModel):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
-    context = models.ForeignKey(WebPath,
+    webpath = models.ForeignKey(WebPath,
                                 on_delete=models.CASCADE,
                                 limit_choices_to={'is_active': True},)
     base_template = models.ForeignKey(PageTemplate,
@@ -310,7 +310,7 @@ class Publication(AbstractPublication):
     @property
     def related_contexts(self):
         return PublicationContext.objects.filter(publication=self,
-                                                 context__is_active=True)
+                                                 webpath__is_active=True)
 
     @property
     def related_links(self):
@@ -356,7 +356,7 @@ class PublicationContext(TimeStampedModel, ActivableModel,
                          SectionAbstractModel, SortableModel):
     publication = models.ForeignKey(Publication, null=False, blank=False,
                                     on_delete=models.CASCADE)
-    context = models.ForeignKey(WebPath, on_delete=models.CASCADE)
+    webpath = models.ForeignKey(WebPath, on_delete=models.CASCADE)
     in_evidence_start = models.DateTimeField(null=True,blank=True)
     in_evidence_end   = models.DateTimeField(null=True,blank=True)
 
@@ -384,12 +384,12 @@ class PublicationContext(TimeStampedModel, ActivableModel,
     
     @property
     def parent_url(self):
-        url = f'{self.context.fullpath}/{self.parent_path_prefix}/'
+        url = f'{self.webpath.fullpath}/{self.parent_path_prefix}/'
         return url.replace('//', '/')
 
     @property
     def url(self):
-        url = f'{self.context.fullpath}/{self.path_prefix}/{self.publication.slug}'
+        url = f'{self.webpath.fullpath}/{self.path_prefix}/{self.publication.slug}'
         return url.replace('//', '/')
     
     @property
@@ -403,7 +403,7 @@ class PublicationContext(TimeStampedModel, ActivableModel,
         return self.publication.title
 
     def __str__(self):
-        return '{} {}'.format(self.publication, self.context)
+        return '{} {}'.format(self.publication, self.webpath)
 
 
 class PublicationLink(TimeStampedModel):

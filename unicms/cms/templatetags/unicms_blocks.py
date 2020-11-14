@@ -19,7 +19,7 @@ register = template.Library()
 def load_blocks(context, section=None):
     request = context['request']
     page = context['page']
-    webpath = context['context']
+    webpath = context['webpath']
     blocks = page.get_blocks(section=section)
 
     result = SafeString('')
@@ -31,7 +31,7 @@ def load_blocks(context, section=None):
         try:
             result += obj.render()
         except Exception as e:
-            logger.exception('Block {} failed rendering: {}'.format(block, e))
+            logger.exception('Block {} failed rendering ({}): {}'.format(block, obj, e))
     return result
 
 
@@ -45,7 +45,7 @@ def load_publications_preview(context, template,
     request = context['request']
     now = timezone.localtime()
 
-    query_params = dict(context=context['context'],
+    query_params = dict(webpath=context['webpath'],
                         is_active=True,
                         publication__is_active=True,
                         publication__date_start__lte=now)

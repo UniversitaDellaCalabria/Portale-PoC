@@ -9,7 +9,7 @@ class BaseContentHandler(object):
     template = "default_template.html"
 
     def __init__(self, path:str,
-                 context:WebPath = None,
+                 webpath:WebPath = None,
                  template_fname:str = None,
                  **kwargs):
         """
@@ -17,7 +17,7 @@ class BaseContentHandler(object):
         :type context: cms_context.model.WebPath
         :type path: String
         :type template_fname: String.
-        :param context: the context where it should belong to.
+        :param webpath: the context where it should belong to.
                         Its fullpath should be a kind of prefix of
                         settings.CMS_PUBLICATION_URLPATH_REGEXP
         :param path:
@@ -30,7 +30,7 @@ class BaseContentHandler(object):
                          template.render(context)
         :return: render the HTML page
         """
-        self.webpath = context
+        self.webpath = webpath
         self.path = path
         self.template = template_fname or self.template
         for k,v in kwargs.items():

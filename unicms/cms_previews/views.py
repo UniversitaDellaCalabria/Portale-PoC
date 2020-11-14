@@ -18,16 +18,15 @@ def preview(request, webpath_pk, app_label, model, pk):
                                            model=model)
     content = content_type.get_object_for_this_type(pk=pk)
 
-    context = get_object_or_404(WebPath, pk=webpath_pk)
-    page = Page.objects.filter(context = context).first()
+    webpath = get_object_or_404(WebPath, pk=webpath_pk)
+    page = Page.objects.filter(webpath = webpath).first()
     if not page:
         raise Http404()
 
-    context_vars = {
+    context = {
         'website': website,
         'path': path,
-        'context': context,
+        'webpath': webpath,
         'page': page,
     }
-    return render(request, 
-                  page.base_template.template_file, context_vars)
+    return render(request, page.base_template.template_file, context)
