@@ -1,0 +1,56 @@
+{% extends "base_v_original.html" %}
+
+{% load i18n %}
+{% load static %}
+
+<!-- load custom template tags -->
+{% load unicms_carousels %}
+{% load unicms_context %}
+{% load unicms_menus %}
+{% load unicms_templates %}
+{% load unicms_blocks %}
+
+
+
+{% block container %}
+<div class="it-hero-wrapper it-dark it-overlay publication-hero">
+  <!-- - img-->
+  <div class="img-responsive-wrapper">
+    <div class="img-responsive">
+        <div class="img-wrapper"><img src="{% static 'images/ponte-bucci-1.jpg' %}" title="img title" alt="imagealt"></div>
+    </div>
+  </div>
+  <!-- - texts-->
+  <div class="container">
+    <div class="row">
+        <div class="col-12">
+          <div class="it-hero-text-wrapper bg-dark">
+              <span class="it-category">
+                {% trans "Tutte" %}
+              </span>
+              <h1 class="no_toc">{% trans "Le Notizie" %}</h1>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+    <div class="col-12 py-5 bd-content">       
+        {% block centered_container %}
+<!--
+        <p><img src="{{ publication_context.publication.image_url }}" width="100%"></p>
+-->
+        <div class="row">
+            <div class="col-12 col-md-8">
+                {% breadcrumbs %}
+                
+        </div>
+        {% endblock centered_container %}
+
+
+    </div>
+</div>
+{% endblock container %}
+

@@ -30,7 +30,7 @@ class BaseContentHandler(object):
                          template.render(context)
         :return: render the HTML page
         """
-        self.context = context
+        self.webpath = context
         self.path = path
         self.template = template_fname or self.template
         for k,v in kwargs.items():
