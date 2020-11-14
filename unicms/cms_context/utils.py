@@ -32,3 +32,15 @@ def handle_faulty_templates(template: str, data: dict, name='', ):
         logger.error(_error_msg.format(name, e))
 
     return mark_safe(_error_msg_pub)
+
+
+def build_breadcrumbs(context):
+    nodes = context['context'].split()
+    crumbs = []
+    root = '/'
+    for i in nodes:
+        url = f'{root}/{i}'
+        crumbs.append((url, i))
+        root = url
+    crumbs[0] = ('/', context['context'].name) 
+    return crumbs

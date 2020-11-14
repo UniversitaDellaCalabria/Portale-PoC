@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 
 @detect_language
-def cms_content(request):
+def cms_dispatch(request):
     requested_site = re.match('^[a-zA-Z0-9\.\-\_]*',
                               # request.headers.get('Host', '')
                               request.get_host()).group()
@@ -30,21 +30,33 @@ def cms_content(request):
         return HttpResponseBadRequest()
 
     path = urlparse(request.get_full_path()).path
-
+    
+    _msg_head = 'APP REGEXP URL HANDLERS:'
     # detect if webpath is referred to a specialized app
     for k,v in settings.CMS_APP_REGEXP_URLPATHS.items():
-        logger.debug('APP REGEXP URL HANDLERS: {}: {}'.format(k, v))
+        logger.debug(f'{_msg_head} - {k}: {v}')
         match = re.match(v, path)
         if not match:
+            logger.debug(f'{_msg_head} - {k}: {v} -> UNMATCH with {path}')
             continue
-        query = match.groupdict()
+        # TODO: some more checks
+        # elif len(match.groupdict()) > 1:
+            # ## if something collides takes only the first for resielence
+            # breakpoint()
+            # query = dict(list(match.groupdict().items())[0])
+            # logger.warning(f'{_msg_head} - Multiple regexp collision: {match}')
+        else:
+            query = match.groupdict()
         params = {'request': request,
                   'website': website,
                   'path': path,
                   'match': match}
         params.update(query)
         handler = import_string(k)(**params)
-        return handler.as_view()
+        try:
+            return handler.as_view()
+        except Exception as e:
+            logger.exception(f'{path}:{e}')
 
     # go further with webpath matching
     context = get_object_or_404(WebPath, fullpath=path, site=website)

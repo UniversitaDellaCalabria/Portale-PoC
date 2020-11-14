@@ -371,14 +371,33 @@ class PublicationContext(TimeStampedModel, ActivableModel,
 
     class Meta:
         verbose_name_plural = _("Publication Contexts")
+    
+    @property
+    def path_prefix(self):
+        return getattr(settings, 'CMS_PUBLICATION_VIEW_PREFIX_PATH',
+                                 CMS_PUBLICATION_VIEW_PREFIX_PATH)
+    
+    @property
+    def parent_path_prefix(self):
+        return getattr(settings, 'CMS_PUBLICATION_LIST_PREFIX_PATH',
+                                  CMS_PUBLICATION_LIST_PREFIX_PATH)
+    
+    @property
+    def parent_url(self):
+        url = f'{self.context.fullpath}/{self.parent_path_prefix}/'
+        return url.replace('//', '/')
 
     @property
     def url(self):
-        prefix = getattr(settings, 'CMS_PUBLICATION_PREFIX_RESERVED_WORD',
-                                    CMS_PUBLICATION_PREFIX_RESERVED_WORD)
-        url = f'{self.context.fullpath}/{prefix}/{self.publication.slug}'
+        url = f'{self.context.fullpath}/{self.path_prefix}/{self.publication.slug}'
         return url.replace('//', '/')
-
+    
+    @property
+    def breadcrumbs(self):
+        leaf = (self.url, getattr(self, 'name', _('Here')))
+        parent = (self.parent_url, _('News'))
+        return (parent, leaf)
+    
     @property
     def name(self):
         return self.publication.title
