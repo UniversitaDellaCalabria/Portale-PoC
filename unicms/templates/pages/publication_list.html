@@ -39,16 +39,12 @@
 <div class="container">
     <div class="col-12 py-5 bd-content">       
         {% block centered_container %}
-<!--
-        <p><img src="{{ publication_context.publication.image_url }}" width="100%"></p>
--->
         <div class="row">
             <div class="col-12 col-md-8">
-                {% breadcrumbs %}
+                {% breadcrumbs leaf=handler %}
                 
         </div>
         {% endblock centered_container %}
-
 
     </div>
 </div>

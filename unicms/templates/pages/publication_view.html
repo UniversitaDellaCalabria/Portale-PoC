@@ -50,9 +50,13 @@
                         <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>
                     </svg> {% trans "Published" %} {{ publication_context.publication.created }}
                 </p>
-                <p><i>{{ publication_context.publication.subheading }}</i></p>
+                <div style="text-align: justify;">
+                    <p><i>{{ publication_context.publication.subheading }}</i></p>
+                </div>
                 <br>
-                {{ publication_context.publication.content|safe }}
+                <div style="text-align: justify;">
+                    {{ publication_context.publication.content|safe }}
+                </div>
                 <span class="text-muted">{% trans "tags" %}</span>
                 <p style="font-size: 1.2rem">
                 {% for tag in publication_context.publication.tags.all %}

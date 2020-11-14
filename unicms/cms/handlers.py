@@ -7,6 +7,7 @@ from django.http import (HttpResponse,
 from django.shortcuts import render, get_object_or_404
 from django.template import Template, Context
 from django.template.loader import get_template, render_to_string
+from django.utils.translation import gettext_lazy as _
 
 from cms_context.handlers import BaseContentHandler
 from cms_context.models import WebPath
@@ -55,16 +56,23 @@ class PublicationViewHandler(BaseContentHandler):
 class PublicationListHandler(BaseContentHandler):
     template = "publication_list.html"
 
+    @property
+    def breadcrumbs(self):
+        leaf = (self.path, _('News'))
+        return (leaf,)
+    
     def as_view(self):
         match_dict = self.match.groupdict()
         page = Page.objects.filter(is_active=True,
                                    context__site=self.website,
                                    context__fullpath=match_dict.get('context', '/'),).first()
+        handler = self
         data = {'request': self.request,
                 'context': page.context,
                 'website': self.website,
                 'page': page,
                 'path': match_dict.get('context', '/'),
+                'handler': handler,
                 # 'publication_context': pub_context
                 }
         
