@@ -98,6 +98,22 @@
   }
 },
 {
+  "model": "taggit.tag",
+  "pk": 6,
+  "fields": {
+    "name": "cultura",
+    "slug": "cultura"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 7,
+  "fields": {
+    "name": "cinema",
+    "slug": "cinema"
+  }
+},
+{
   "model": "taggit.taggeditem",
   "pk": 1,
   "fields": {
@@ -180,20 +196,38 @@
 },
 {
   "model": "taggit.taggeditem",
-  "pk": 10,
+  "pk": 11,
   "fields": {
     "tag": 2,
+    "content_type": 33,
+    "object_id": 2
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 12,
+  "fields": {
+    "tag": 4,
     "content_type": 33,
     "object_id": 5
   }
 },
 {
   "model": "taggit.taggeditem",
-  "pk": 11,
+  "pk": 13,
   "fields": {
-    "tag": 2,
+    "tag": 6,
     "content_type": 33,
-    "object_id": 2
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 14,
+  "fields": {
+    "tag": 7,
+    "content_type": 33,
+    "object_id": 5
   }
 },
 {
@@ -1500,6 +1534,17 @@
   }
 },
 {
+  "model": "cms.category",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-14T15:11:08.755Z",
+    "modified": "2020-11-14T15:11:08.755Z",
+    "name": "Cultura",
+    "description": "Cultura",
+    "image": ""
+  }
+},
+{
   "model": "cms.publication",
   "pk": 1,
   "fields": {
@@ -1596,7 +1641,7 @@
   "pk": 5,
   "fields": {
     "created": "2020-11-11T17:18:19.297Z",
-    "modified": "2020-11-12T10:24:15.932Z",
+    "modified": "2020-11-14T15:11:11.363Z",
     "is_active": true,
     "title": "Il cinema è Unical",
     "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -1610,6 +1655,7 @@
     "created_by": null,
     "modified_by": null,
     "category": [
+      4,
       3
     ]
   }
