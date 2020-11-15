@@ -43,10 +43,42 @@
             <div class="col-12 col-md-8">
                 {% breadcrumbs leaf=handler %}
                 
+                <div id="news">
+                </div>
+                
         </div>
         {% endblock centered_container %}
 
     </div>
 </div>
+
+<script>
+var news = new Vue({
+  el: '#news',
+    template: `
+    <ul id="ni-vue-news">
+        <p>Number of packages: <b>[[ items.total ]]</b></p>
+        <li v-for="item in items.results">
+         <div>
+           [[ item.package ]]
+         </div>
+        </li>
+    </ul>
+    `,
+  data () {
+    return {
+      items: null
+    }
+  },
+  beforeMount () {
+    axios
+      // response must be a JSON content
+      //.get('{% static "json/example.json" %}')
+      .get('https://api.npms.io/v2/search?q=vue')
+      .then(response => (this.items = response.data))
+  }
+})
+</script>
 {% endblock container %}
+
 
