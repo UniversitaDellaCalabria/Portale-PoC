@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$aL1y4It24fXT$1Wk5h0sRihJB9e09LnevaV4lJukNGuZ5lno1kFXKLmY=",
-    "last_login": "2020-11-09T10:12:59.763Z",
+    "last_login": "2020-11-14T17:08:30.404Z",
     "is_superuser": true,
     "username": "wert",
     "is_staff": true,
@@ -227,6 +227,33 @@
   "fields": {
     "tag": 7,
     "content_type": 33,
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 15,
+  "fields": {
+    "tag": 4,
+    "content_type": 35,
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 16,
+  "fields": {
+    "tag": 6,
+    "content_type": 35,
+    "object_id": 5
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 17,
+  "fields": {
+    "tag": 7,
+    "content_type": 35,
     "object_id": 5
   }
 },
@@ -1641,7 +1668,7 @@
   "pk": 5,
   "fields": {
     "created": "2020-11-11T17:18:19.297Z",
-    "modified": "2020-11-14T15:11:11.363Z",
+    "modified": "2020-11-15T18:21:56.809Z",
     "is_active": true,
     "title": "Il cinema è Unical",
     "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
