@@ -21,4 +21,7 @@ class PublicationSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['date_start',
                   'title',
                   'subheading',
-                  'content']
+                  'content',
+                  # 'tags',
+                  # 'categories'
+                  ]

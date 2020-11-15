@@ -285,7 +285,17 @@ class Publication(AbstractPublication):
 
     class Meta:
         verbose_name_plural = _("Publications")
-
+    
+    def serialize(self):
+        return {'slug': self.slug,
+                'title': self.title,
+                'published': self.date_start,
+                'subheading': self.subheading,
+                'categories': (i.name for i in self.categories),
+                'tags': (i.name for i in self.tags.all()),
+                'published_in': (f'{i.webpath.site}{i.webpath.fullpath}'
+                                 for i in self.publicationcontext_set.all())}
+    
     def active_translations(self):
         return PublicationLocalization.objects.filter(publication=self,
                                                       is_active=True)

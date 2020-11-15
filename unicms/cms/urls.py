@@ -10,11 +10,16 @@ urlpatterns = []
 
 
 # Public API Resources
-urlpatterns += path(f'api/news/by-context',
-                    api_views.PublicationContextList.as_view()),
+urlpatterns += path(f'api/contexts',
+                    api_views.api_contexts,
+                    name='api_contexts'),
 
-urlpatterns += path(f'api/news/list',
-                    api_views.PublicationList.as_view()),
+urlpatterns += path(f'api/news/by-context/<int:webpath_id>',
+                    api_views.api_publications_by_context),
+
+# too wide for us!
+# urlpatterns += path(f'api/news/list',
+                    # api_views.PublicationList.as_view()),
 
 urlpatterns += path(f'api/news/detail/<str:slug>',
                     api_views.PublicationDetail.as_view(),

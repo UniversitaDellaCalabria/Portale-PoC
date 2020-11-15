@@ -188,12 +188,12 @@ CMS_APP_REGEXP_URLPATHS = {
 }
 
 
-OAS3_CONFIG = {'title': "Unical - Ricerca",
+OAS3_CONFIG = {'title': "Portale dell'Università della Calabria",
                # 'permission_classes': (permissions.AllowAny,),
                'description': "Portale dell'Università della Calabria",
                'termsOfService': 'https://tos.unical.it',
-               'x-api-id': '00000000-0000-0000-0000-000000000003',
-               'x-summary': 'OpenData per la Ricerca in Unical',
+               'x-api-id': '00000000-0000-0000-0000-000000000024',
+               'x-summary': "Portale dell'Università della Calabria",
                'license': dict(name='apache2',
                                url='http://www.apache.org/licenses/LICENSE-2.0.html'),
                'servers': [dict(description='description',
