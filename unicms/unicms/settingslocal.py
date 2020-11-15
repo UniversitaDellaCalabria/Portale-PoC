@@ -187,6 +187,11 @@ CMS_APP_REGEXP_URLPATHS = {
     'cms.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
 }
 
+REST_FRAMEWORK = {
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
 
 OAS3_CONFIG = {'title': "Portale dell'Università della Calabria",
                # 'permission_classes': (permissions.AllowAny,),

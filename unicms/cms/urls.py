@@ -15,7 +15,7 @@ urlpatterns += path(f'api/contexts',
                     name='api_contexts'),
 
 urlpatterns += path(f'api/news/by-context/<int:webpath_id>',
-                    api_views.api_publications_by_context),
+                    api_views.ApiPublicationByContext.as_view()),
 
 # too wide for us!
 # urlpatterns += path(f'api/news/list',

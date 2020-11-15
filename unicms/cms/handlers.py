@@ -60,7 +60,7 @@ class PublicationViewHandler(BaseContentHandler):
     
     @property
     def breadcrumbs(self):
-        leaf = (self.pub_context.url, getattr(self, 'name', _('Here')))
+        leaf = (self.pub_context.url, getattr(self.pub_context.publication, 'title'))
         parent = (self.parent_url, _('News'))
         return (parent, leaf)
 
