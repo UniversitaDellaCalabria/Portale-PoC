@@ -11,3 +11,11 @@ pillow
 
 # mongo
 pymongo>=3.11.0
+
+
+# Rest
+#djangorestframework
+git+https://github.com/peppelinux/django-rest-framework@agid_oas3
+# openAPI schema v3
+uritemplate
+pyyaml

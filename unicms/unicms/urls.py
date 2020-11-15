@@ -18,6 +18,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
 
+from rest_framework import routers, permissions
+from rest_framework.renderers import JSONOpenAPIRenderer
+from rest_framework.schemas import get_schema_view
+from rest_framework.schemas.agid_schema_views import get_schema_view
+from rest_framework.schemas.openapi_agid import AgidSchemaGenerator as openapi_agid_generator
+
+
 ADMIN_PATH = getattr(settings, 'ADMIN_PATH', 'admin')
 
 urlpatterns = [
@@ -28,6 +35,20 @@ if settings.DEBUG:
     # static files (images, css, javascript, etc.)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# API
+router = routers.DefaultRouter()
+urlpatterns += re_path('^api', include(router.urls)),
+
+# API schemas
+urlpatterns += re_path('^openapi$',
+                        get_schema_view(**settings.OAS3_CONFIG),
+                        name='openapi-schema'),
+urlpatterns += re_path('^openapi.json$',
+                       get_schema_view(renderer_classes = [JSONOpenAPIRenderer],
+                                    **settings.OAS3_CONFIG),
+                    name='openapi-schema-json'),
+
+
 if 'cms' in settings.INSTALLED_APPS:
     urlpatterns += path('tinymce/', include('tinymce.urls')),
-    urlpatterns += re_path('.*', include('cms.urls')),
+    urlpatterns += path('', include('cms.urls')),

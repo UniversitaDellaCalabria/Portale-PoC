@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'cms_previews',
 
     'unical_templates',
+    
+    'rest_framework',
 
 ]
 
@@ -183,4 +185,27 @@ CMS_HANDLERS_PATHS = [CMS_PUBLICATION_VIEW_PREFIX_PATH,
 CMS_APP_REGEXP_URLPATHS = {
     'cms.handlers.PublicationViewHandler' : CMS_PUBLICATION_URL_VIEW_REGEXP,
     'cms.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
+}
+
+
+OAS3_CONFIG = {'title': "Unical - Ricerca",
+               # 'permission_classes': (permissions.AllowAny,),
+               'description': "Portale dell'Università della Calabria",
+               'termsOfService': 'https://tos.unical.it',
+               'x-api-id': '00000000-0000-0000-0000-000000000003',
+               'x-summary': 'OpenData per la Ricerca in Unical',
+               'license': dict(name='apache2',
+                               url='http://www.apache.org/licenses/LICENSE-2.0.html'),
+               'servers': [dict(description='description',
+                                url='https://www.unical.it'),
+                           dict(description='description',
+                                url='https://www.unical.it')],
+               'tags': [dict(description='description',
+                             name='api'),
+                        dict(description='description',
+                             name='public')],
+               'contact': dict(email = 'giuseppe.demarco@unical.it',
+                               name = 'Giuseppe De Marco',
+                               url = 'https://github.com/UniversitaDellaCalabria'),
+               'version': "0.1.2"
 }
