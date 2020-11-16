@@ -56,7 +56,7 @@ input.top-input {
     background: none;
     border: 1px solid #fff;
     height: 1.7rem;
-    width: 80%;
+    width: 100%;
     color: $white;
 }
 
@@ -113,10 +113,28 @@ input.top-input {
     color: $white;
 }
 
+@media (max-width: 991px) {
+    .custom-navbar-toggler svg {
+        fill: $white;
+    }
+}
+@media (min-width: 992px) {
+    .it-header-navbar-wrapper {
+        background: $white;
+    }
+}
 
+.nav-mobile {
+    width: 100%;
+}
 
-
-
+.it-header-slim-wrapper .container {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+}
 
 
 
@@ -129,10 +147,6 @@ input.top-input {
 
 .owl-carousel {
     z-index: 0;
-}
-
-.it-header-navbar-wrapper {
-    background: #fff;
 }
 
 .owl-nav {

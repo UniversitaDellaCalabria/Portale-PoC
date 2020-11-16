@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'cms_previews',
 
     'unical_templates',
-    
+
     'rest_framework',
 
 ]

@@ -36,23 +36,34 @@ bootstrap-italia-base.html
 {% trans "Sito istituzionale dell'Università della Calabria" %}
 {% endblock page_meta_description %}
 
-{% block header_slim_wrapper %}
-{% endblock header_slim_wrapper %}
+{% block header_brand_wrapper %}
+<div class="d-none d-lg-inline col-lg-6">
+    {{ block.super }}
+</div>
+{% endblock header_brand_wrapper %}
 
 <!-- Logo in Header -->
 {% block header_center_logo %}
-<div class="col-10 col-md-12 offset-1 offset-md-0">
+<div class="d-none d-lg-flex col-lg-12">
     <image src="{% static 'images/logo-unical-white.svg' %}" style="width: 100%;"/>
 </div>
 {% endblock header_center_logo %}
 
-<!-- URL link logo and org name -->
-{% block header_center_url %}
-{% endblock header_center_url %}
+{% block header_slim_wrapper %}
+<div class="d-lg-none">{{ block.super }}</div>
+{% endblock header_slim_wrapper %}
 
 <!-- Mobile slim_org_name -->
 {% block header_slim_mobile_org_name %}
+<image src="{% static 'images/logo-unical-white.svg' %}" style="width: 100%;"/>
 {% endblock header_slim_mobile_org_name %}
+
+{% block header_slim_right_zone %}
+{% endblock header_slim_right_zone %}
+
+<!-- URL link logo and org name -->
+{% block header_center_url %}
+{% endblock header_center_url %}
 
 <!-- Make empty areas -->
 {% block header_mobile_arrow %}
@@ -61,23 +72,42 @@ bootstrap-italia-base.html
 {% block header_mobile_slim_menu %}
 {% endblock header_mobile_slim_menu %}
 
+{% block header_center_wrapper_columns %}
+col-10 offset-2 col-lg-12 offset-lg-0
+{% endblock header_center_wrapper_columns %}
+
 {% block header_center_right_zone %}
-<div class="it-right-zone">
-    <div class="row">
-        <div class="col-10">
-             <svg class="icon icon-light mr-1">
-              <use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use>
+<div class="it-right-zone col-12 col-lg-5 offset-lg-1">
+    <div class="row" style="width: 100%">
+
+        <div class="col-2 offset-3 offset-md-0 col-md-6">
+            <svg class="icon d-md-none icon-sm icon-light">
+                <use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use>
             </svg>
-            <input type="text" class="top-input" />
+            <div class="row d-none d-md-flex">
+                <div class="col-2 col-lg-3 text-right">
+                    <svg class="icon icon-md icon-light">
+                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use>
+                    </svg>
+                </div>
+                <div class="col-9 col-lg-8">
+                    <input type="text" class="top-input" />
+                </div>
+            </div>
         </div>
-        <div class="col-1">
-            <svg class="icon icon-light">
+
+        <div class="col-2 col-md-2 text-center">
+            <svg class="icon icon-sm d-lg-none icon-light align-middle">
+              <use xlink:href="{% static 'svg/sprite.svg' %}#it-card"></use>
+            </svg>
+            <svg class="icon icon-md d-none d-lg-inline icon-light align-middle">
               <use xlink:href="{% static 'svg/sprite.svg' %}#it-card"></use>
             </svg>
         </div>
-        <div class="col-1">
+
+        <div class="col-2 col-md-2 text-center">
             <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle py-0" href="#" data-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle p-0 text-center" href="#" data-toggle="dropdown" aria-expanded="false">
                     <span>{{ request.LANGUAGE_CODE }}</span>
                 </a>
                 <div class="dropdown-menu">
@@ -96,6 +126,12 @@ bootstrap-italia-base.html
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="col-3 col-md-2 text-center">
+            <span>
+                {% trans "Login" %}
+            </span>
         </div>
     </div>
 </div>
