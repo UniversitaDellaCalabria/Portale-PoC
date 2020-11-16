@@ -114,6 +114,22 @@
   }
 },
 {
+  "model": "taggit.tag",
+  "pk": 8,
+  "fields": {
+    "name": "campus",
+    "slug": "campus"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 9,
+  "fields": {
+    "name": "studiare",
+    "slug": "studiare"
+  }
+},
+{
   "model": "taggit.taggeditem",
   "pk": 1,
   "fields": {
@@ -258,14 +274,50 @@
   }
 },
 {
+  "model": "taggit.taggeditem",
+  "pk": 18,
+  "fields": {
+    "tag": 8,
+    "content_type": 35,
+    "object_id": 2
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 19,
+  "fields": {
+    "tag": 5,
+    "content_type": 35,
+    "object_id": 3
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 20,
+  "fields": {
+    "tag": 9,
+    "content_type": 35,
+    "object_id": 4
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 21,
+  "fields": {
+    "tag": 9,
+    "content_type": 35,
+    "object_id": 1
+  }
+},
+{
   "model": "cms_templates.pagetemplate",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:00.088Z",
-    "modified": "2020-11-13T08:15:04.828Z",
+    "modified": "2020-11-16T16:38:02.121Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
-    "template_file": "portale_home_v_original.html",
+    "template_file": "portale_home_v3.html",
     "note": "",
     "blocks": []
   }
@@ -1414,7 +1466,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-11-12T11:37:00.187Z",
+    "modified": "2020-11-16T16:53:14.634Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
     "webpath": 1,
@@ -1472,13 +1524,13 @@
   "pk": 1,
   "fields": {
     "created": "2020-11-11T13:24:49.497Z",
-    "modified": "2020-11-12T09:52:00.587Z",
+    "modified": "2020-11-16T16:52:32.873Z",
     "order": 10,
     "is_active": true,
     "section": "1",
     "name": "publication-main-preview",
     "type": "cms_templates.blocks.HtmlBlock",
-    "content": "{% load unicms_blocks %}\r\n\r\n\r\n            <div class=\"row negative-mt-5 mb-3\" >\r\n                <div class=\"col-12 col-md-3\">\r\n                    <div class=\"section-title-label px-3 py-1\">\r\n                        <h3>Unical <span class=\"super-bold\">world</span></h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12 col-lg-9\">\r\n                    {% load_publications_preview template=\"publications_preview_v3.html\" %}\r\n                </div>\r\n                <div class=\"col-12 col-lg-3\">\r\n                    {% include \"unical_portale_agenda.html\" %}\r\n                </div>\r\n            </div>",
+    "content": "{% load unicms_blocks %}\r\n\r\n            <div class=\"row negative-mt-5 mb-3\" >\r\n                <div class=\"col-12 col-md-3\">\r\n                    <div class=\"section-title-label px-3 py-1\">\r\n                        <h3>Unical <span class=\"super-bold\">world</span></h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12 col-lg-9\">\r\n                    {% load_publications_preview template=\"publications_preview_v3.html\" %}\r\n                </div>\r\n                <div class=\"col-12 col-lg-3\">\r\n                    {% include \"unical_portale_agenda.html\" %}\r\n                </div>\r\n            </div>",
     "page": 1
   }
 },
@@ -1502,8 +1554,8 @@
   "pk": 4,
   "fields": {
     "created": "2020-11-12T09:14:54.559Z",
-    "modified": "2020-11-12T11:37:00.191Z",
-    "order": 10,
+    "modified": "2020-11-16T16:49:26.968Z",
+    "order": 11,
     "is_active": true,
     "section": "2",
     "name": "avvisi",
@@ -1517,13 +1569,13 @@
   "pk": 5,
   "fields": {
     "created": "2020-11-12T09:52:00.588Z",
-    "modified": "2020-11-12T09:52:07.990Z",
+    "modified": "2020-11-16T16:53:14.637Z",
     "order": 5,
     "is_active": true,
     "section": "1",
     "name": "video",
     "type": "cms_templates.blocks.HtmlBlock",
-    "content": "<div class=\"row\">\r\n           <div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n <div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/xrjjJGqZpcU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n           </div>",
+    "content": "<div class=\"row\">\r\n<div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n <div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/xrjjJGqZpcU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n </div>",
     "page": 1
   }
 },
@@ -1576,15 +1628,15 @@
   "pk": 1,
   "fields": {
     "created": "2020-11-09T13:33:21.852Z",
-    "modified": "2020-11-11T17:21:06.891Z",
+    "modified": "2020-11-16T14:46:46.976Z",
     "is_active": true,
     "title": "Papiri, Codex, Libri. La attraverso labora lorem ipsum",
     "subheading": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-    "content": "<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>",
+    "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>",
     "presentation_image": 4,
     "state": "published",
     "date_start": "2020-11-09T13:24:35Z",
-    "date_end": null,
+    "date_end": "2022-11-30T14:31:20Z",
     "note": "",
     "slug": "unical-campus-1",
     "created_by": null,
@@ -1599,7 +1651,7 @@
   "pk": 2,
   "fields": {
     "created": "2020-11-09T13:36:12.360Z",
-    "modified": "2020-11-12T07:37:35.574Z",
+    "modified": "2020-11-16T14:29:56.271Z",
     "is_active": true,
     "title": "Unical Campus esempio 2",
     "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
@@ -1607,7 +1659,7 @@
     "presentation_image": null,
     "state": "published",
     "date_start": "2020-11-09T13:35:44Z",
-    "date_end": null,
+    "date_end": "2022-11-30T14:29:43Z",
     "note": "",
     "slug": "unical-campus-esempio-2",
     "created_by": null,
@@ -1622,7 +1674,7 @@
   "pk": 3,
   "fields": {
     "created": "2020-11-09T13:36:59.347Z",
-    "modified": "2020-11-11T17:08:15.895Z",
+    "modified": "2020-11-16T14:30:18.991Z",
     "is_active": true,
     "title": "Unical Campus 3",
     "subheading": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
@@ -1630,7 +1682,7 @@
     "presentation_image": 2,
     "state": "published",
     "date_start": "2020-11-09T13:36:39Z",
-    "date_end": null,
+    "date_end": "2022-11-30T14:30:13Z",
     "note": "",
     "slug": "unical-campus-3",
     "created_by": null,
@@ -1645,7 +1697,7 @@
   "pk": 4,
   "fields": {
     "created": "2020-11-11T16:49:38.838Z",
-    "modified": "2020-11-12T10:24:37.270Z",
+    "modified": "2020-11-16T14:31:08.449Z",
     "is_active": true,
     "title": "Studiare online è sempre più semplice",
     "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -1653,7 +1705,7 @@
     "presentation_image": null,
     "state": "published",
     "date_start": "2020-11-11T16:56:21Z",
-    "date_end": null,
+    "date_end": "2022-11-30T14:31:00Z",
     "note": "",
     "slug": "studiare-online-e-sempre-piu-semplice",
     "created_by": null,
@@ -1668,7 +1720,7 @@
   "pk": 5,
   "fields": {
     "created": "2020-11-11T17:18:19.297Z",
-    "modified": "2020-11-15T18:21:56.809Z",
+    "modified": "2020-11-16T14:30:26.727Z",
     "is_active": true,
     "title": "Il cinema è Unical",
     "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -1676,7 +1728,7 @@
     "presentation_image": 3,
     "state": "published",
     "date_start": "2020-11-11T17:18:08Z",
-    "date_end": null,
+    "date_end": "2022-11-30T14:30:24Z",
     "note": "",
     "slug": "il-cinema-e-unical",
     "created_by": null,

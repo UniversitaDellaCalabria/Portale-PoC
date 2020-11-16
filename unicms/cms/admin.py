@@ -22,7 +22,12 @@ class PageAdmin(admin.ModelAdmin):
                      PageCarouselInline, PageBlockInline, 
                      PageThirdPartyBlockInline,
                      PageRelatedInline, PageLinkInline)
-
+    
+    # def save_model(self, request, obj, form, change):
+        # super(PageAdmin, self).save_model(request, obj, form, change)
+        # for block in obj.pageblocks_set.filter(is_active=True):
+            # TODO: blcok render validation
+    
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
