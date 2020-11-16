@@ -55,27 +55,38 @@
 <script>
 var news = new Vue({
   el: '#news',
-    template: `
-    <ul id="ni-vue-news">
-        <p>Number of packages: <b>[[ items.total ]]</b></p>
-        <li v-for="item in items.results">
-         <div>
-           [[ item.package ]]
-         </div>
-        </li>
-    </ul>
+  template: `
+    <div v-if="items">
+        <h3>[[ head ]]</h3>
+        <ul class="ni-vue-news">
+            <li v-for="item in items.results" :key="item.id">
+             <div>
+               [[ item ]]
+             </div>
+            </li>
+        </ul>
+        <div>
+            <p>Total entries: <b>[[ items.total ]]</b></p>
+            <p>Current page: <b>[[ items.page_number ]]</b></p>
+            <p>Current entries: <b>[[ items.count ]]</b></p>
+            <p>Next: <b>[[ items.next_url ]]</b></p>
+            <p>Previous: <b>[[ items.previous_url ]]</b></p>
+        </div>
+    </div>
     `,
   data () {
     return {
-      items: null
+      items: [],
+      head: 'Questa è una intestazione'
     }
   },
   beforeMount () {
     axios
       // response must be a JSON content
       // .get('https://api.npms.io/v2/search?q=vue')
-      .get('{% url "api-news-by-contexts" webpath_id=webpath.pk %}')
+      .get('{% url "api-news-by-contexts" webpath_id=webpath.pk %}?lang={{ request.LANGUAGE_CODE }}')
       .then(response => (this.items = response.data))
+      .then(this.total = "suka")      
   }
 })
 </script>
