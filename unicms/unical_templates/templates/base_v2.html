@@ -25,6 +25,9 @@ bootstrap-italia-base.html
 {% block extra_head %}
 {{ block.super }}
 <link rel="stylesheet" href="{% sass_src 'css/unical-portale-v2.scss' %}" type="text/css">
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>Vue.options.delimiters = ['[[', ']]'];</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 {% endblock extra_head %}
 
 <!-- Page Title -->

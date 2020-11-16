@@ -12,10 +12,11 @@ urlpatterns = []
 # Public API Resources
 urlpatterns += path(f'api/contexts',
                     api_views.api_contexts,
-                    name='api_contexts'),
+                    name='api-contexts'),
 
 urlpatterns += path(f'api/news/by-context/<int:webpath_id>',
-                    api_views.ApiPublicationsByContext.as_view()),
+                    api_views.ApiPublicationsByContext.as_view(),
+                    name='api-news-by-contexts'),
 
 # too wide for us!
 # urlpatterns += path(f'api/news/list',
