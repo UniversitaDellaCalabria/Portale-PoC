@@ -88,13 +88,9 @@ class PublicationListHandler(BaseContentHandler):
     
     def as_view(self):
         match_dict = self.match.groupdict()
-        
-        query = publication_base_filter()
-        query.update(dict(webpath__site=self.website,
-                          webpath__fullpath=match_dict.get('webpath', '/')
-                    )
-        )
-        page = Page.objects.filter(**query).first()
+        page = Page.objects.filter(is_active=True,
+                           webpath__site=self.website,
+                           webpath__fullpath=match_dict.get('webpath', '/'),).first()
         data = {'request': self.request,
                 'webpath': page.webpath,
                 'website': self.website,
