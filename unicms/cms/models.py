@@ -396,6 +396,9 @@ class PublicationContext(TimeStampedModel, ActivableModel,
     def name(self):
         return self.publication.title
     
+    def translate_as(self, *args, **kwargs):
+        self.publication.translate_as(*args, **kwargs)
+    
     def serialize(self):
         result = self.publication.serialize()
         result['url'] = self.url

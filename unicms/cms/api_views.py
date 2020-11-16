@@ -36,11 +36,6 @@ class ApiPublicationsByContext(APIView):
         query_params.update({'webpath__pk': webpath_id})
         pubcontx = PublicationContext.objects.filter(**query_params)
         count = pubcontx.count()
-        # serialized = []
-        # for i in pubcontx:
-            # i.publication.translate_as(lang=request.LANGUAGE_CODE)
-            # if i.publication.is_publicable:
-                # serialized.append(i.serialize())
         paginator = Paginator(queryset=pubcontx, request=request)
         
         try:

@@ -32,18 +32,7 @@ class Page(object):
         
         self.queryset = queryset
         self.request = request
-        for i in self.queryset:
-            if self.request:
-                # i18n
-                if hasattr(i, 'translate_as'):
-                    i = i.translate_as(language=request.LANGUAGE_CODE)
 
-            if hasattr(i, 'serialize'):
-                self.results.append(i.serialize())
-            else:
-                self.results.append(i)
-            self.count += 1
-        
     def has_next(self):
         return self.next_url
     
@@ -62,6 +51,17 @@ class Page(object):
             return self.page_number - 1
     
     def serialize(self):
+        for i in self.queryset:
+            if self.request:
+                # i18n
+                if hasattr(i, 'translate_as'):
+                    i.translate_as(lang=self.request.LANGUAGE_CODE)
+
+            if hasattr(i, 'serialize'):
+                self.results.append(i.serialize())
+            else:
+                self.results.append(i)
+            self.count += 1
         return {k:getattr(self, k) for k in self.schema.keys()}
             
 
