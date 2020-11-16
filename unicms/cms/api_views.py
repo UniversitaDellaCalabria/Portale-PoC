@@ -42,7 +42,7 @@ class ApiPublicationsByContext(APIView):
             page_num = int(request.GET.get('page_number', 1))
         except:
             raise ValidationError('Wrong page_number value')
-        # breakpoint()
+
         paged = paginator.get_page(page_num)
         result = paged.serialize()
         return Response(result)

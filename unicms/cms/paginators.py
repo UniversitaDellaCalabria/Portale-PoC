@@ -1,3 +1,5 @@
+import re
+import urllib
 from copy import deepcopy as copy
 
 from django.conf import settings
@@ -11,16 +13,14 @@ CMS_PAGE_SIZE = getattr(settings, 'CMS_PAGE_SIZE',
 
 class Page(object):
     schema = {'results': [],
+              'total': 0,
+              'total_pages': 0,
               'count': 0,
               'page_number': 1,
                   
-              'current_url': '',
-              'next_url': '',
-              'previous_url': '',
-              
-              'current_url_api': '',
-              'next_url_api': '',
-              'previous_url_api': '',
+              'current_url': None,
+              'next_url': None,
+              'previous_url': None,
     }
     
     def __init__(self, queryset, request=None, **kwargs):
@@ -32,7 +32,32 @@ class Page(object):
         
         self.queryset = queryset
         self.request = request
-
+        
+        if self.request:
+            self.build_urls()
+            
+    def build_urls(self):
+        self.current_url = self.request.get_full_path()
+        # smart but useless ?
+        urlparse = urllib.parse.urlparse(self.current_url)
+        if urlparse.query and 'page_number' in urlparse.query:
+            urlquery = urllib.parse.parse_qs(urlparse.query)
+            page_number = re.findall('page_number=([0-9]+)', urlparse.query)
+            if self.page_number > 1:
+                prev_num = self.page_number - 1
+                self.previous_url = self.current_url.replace(f'page_number={self.page_number}',
+                                                             f'page_number={prev_num}',)
+            if self.page_number < self.total_pages:
+                next_num = self.page_number + 1
+                self.next_url = self.current_url.replace(f'page_number={self.page_number}',
+                                                             f'page_number={next_num}',)
+        elif self.total_pages > 1:
+            self.next_num = 2
+            if not urlparse.query:
+                self.next_url = f'{self.current_url}?page_number={self.next_num}'
+            else:
+                self.next_url = f'{self.current_url}&page_number={self.next_num}'
+        
     def has_next(self):
         return self.next_url
     
@@ -104,5 +129,7 @@ class Paginator(object):
             page_number = int(end / CMS_PAGE_SIZE)
             
         return Page(queryset=self.queryset[start:end], 
+                    total=self.count,
+                    total_pages=self.num_pages,
                     page_number=page_number,
                     request=self.request)

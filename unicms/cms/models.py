@@ -401,7 +401,7 @@ class PublicationContext(TimeStampedModel, ActivableModel,
     
     def serialize(self):
         result = self.publication.serialize()
-        result['url'] = self.url
+        result['path'] = self.url
         return result
     
     def __str__(self):
