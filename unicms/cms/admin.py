@@ -1,8 +1,15 @@
+import logging
+
 from django.contrib import admin
+from django.contrib import messages
+from django.utils.module_loading import import_string
 
 from . admin_inlines import *
 from . models import *
 from . forms import *
+
+
+logger = logging.getLogger(__name__)
 
 
 class AbstractCreateModifiedBy(admin.ModelAdmin):
@@ -23,10 +30,21 @@ class PageAdmin(admin.ModelAdmin):
                      PageThirdPartyBlockInline,
                      PageRelatedInline, PageLinkInline)
     
-    # def save_model(self, request, obj, form, change):
-        # super(PageAdmin, self).save_model(request, obj, form, change)
-        # for block in obj.pageblocks_set.filter(is_active=True):
-            # TODO: blcok render validation
+    def save_model(self, request, obj, form, change):
+        super(PageAdmin, self).save_model(request, obj, form, change)
+        for block_entry in obj.pageblock_set.filter(is_active=True):
+            # Block rendering validation
+            block = import_string(block_entry.type)(content=block_entry.content,
+                                                    request=request,
+                                                    page=obj,
+                                                    webpath=obj.webpath)
+            try:
+                block.render()
+            except Exception as e:
+                block_entry.is_active = False
+                block_entry.save()
+                messages.add_message(request, messages.ERROR, f'{block_entry} failed validation on save')
+                logger.exception('ADMIN VALIDATION: Block {} failed rendering ({}): {}'.format(block_entry, obj, e))
     
 
 @admin.register(Category)

@@ -68,7 +68,7 @@ def load_publications_preview(context, template,
     if not pub_in_context: return ''
 
     # i18n
-    language = request.LANGUAGE_CODE
+    language = getattr(request, 'LANGUAGE_CODE', '')
     for i in pub_in_context:
         i.publication.translate_as(lang=language)
 
