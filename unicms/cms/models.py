@@ -223,8 +223,8 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
     state             = models.CharField(choices=PAGE_STATES,
                                          max_length=33,
                                          default='draft')
-    date_start        = models.DateTimeField(null=True,blank=True)
-    date_end          = models.DateTimeField(null=True,blank=True)
+    date_start        = models.DateTimeField()
+    date_end          = models.DateTimeField()
     category          = models.ManyToManyField('Category')
 
     note    = models.TextField(null=True,blank=True,
@@ -395,7 +395,12 @@ class PublicationContext(TimeStampedModel, ActivableModel,
     @property
     def name(self):
         return self.publication.title
-
+    
+    def serialize(self):
+        result = self.publication.serialize()
+        result['url'] = self.url
+        return result
+    
     def __str__(self):
         return '{} {}'.format(self.publication, self.webpath)
 

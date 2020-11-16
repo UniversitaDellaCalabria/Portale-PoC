@@ -35,7 +35,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Publication)
 class PublicationAdmin(AbstractCreateModifiedBy):
     search_fields = ('title',)
-    list_display  = ('title', 'slug', 'is_active',)
+    list_display  = ('title', 'slug', 'date_start', 'date_end', 'is_active',)
     list_filter   = ('state', 'is_active',
                      'created', 'modified', 'date_start', 'date_end')
     inlines       = (PublicationLocalizationInline,

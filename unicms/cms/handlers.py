@@ -8,14 +8,16 @@ from django.http import (HttpResponse,
 from django.shortcuts import render, get_object_or_404
 from django.template import Template, Context
 from django.template.loader import get_template, render_to_string
+from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 
 from cms_contexts.handlers import BaseContentHandler
 from cms_contexts.models import WebPath
-from cms_contexts.utils import contextualize_template
+from cms_contexts.utils import contextualize_template, detect_user_language
 
 from . models import PublicationContext, Category, Page
 from . settings import *
+from . utils import publication_base_filter, publication_context_base_filter
 
 
 class PublicationViewHandler(BaseContentHandler):
@@ -24,16 +26,27 @@ class PublicationViewHandler(BaseContentHandler):
     def __init__(self, **kwargs):
         super(PublicationViewHandler, self).__init__(**kwargs)
         self.match_dict = self.match.groupdict()
-        self.pub_context = PublicationContext.objects.filter(
-                            is_active = True,
-                            webpath__site=self.website,
-                            webpath__fullpath=self.match_dict.get('webpath', '/'),
-                            publication__slug=self.match_dict.get('slug', '')).first()
+        
+        query = publication_context_base_filter()
+        query.update(dict(webpath__site=self.website,
+                          webpath__fullpath=self.match_dict.get('webpath', '/'),
+                          publication__slug=self.match_dict.get('slug', '')
+                    )
+        )
+        self.pub_context = PublicationContext.objects.filter(**query).first()
         self.page = Page.objects.filter(is_active=True,
                                    webpath=self.pub_context.webpath).first()
+        if not self.pub_context.publication.is_publicable:
+            self.pub_context = None
         self.webpath = self.pub_context.webpath
     
     def as_view(self):
+        if not self.pub_context: return Http404()
+        
+        # i18n
+        detect_user_language(self.request)
+        self.pub_context.publication.translate_as(lang=self.request.LANGUAGE_CODE)
+        
         data = {'request': self.request,
                 'webpath': self.pub_context.webpath,
                 'website': self.website,
@@ -75,9 +88,13 @@ class PublicationListHandler(BaseContentHandler):
     
     def as_view(self):
         match_dict = self.match.groupdict()
-        page = Page.objects.filter(is_active=True,
-                                   webpath__site=self.website,
-                                   webpath__fullpath=match_dict.get('webpath', '/'),).first()
+        
+        query = publication_base_filter()
+        query.update(dict(webpath__site=self.website,
+                          webpath__fullpath=match_dict.get('webpath', '/')
+                    )
+        )
+        page = Page.objects.filter(**query).first()
         data = {'request': self.request,
                 'webpath': page.webpath,
                 'website': self.website,

@@ -29,3 +29,6 @@ CMS_APP_REGEXP_URLPATHS = {
 
 # .groupdict()
 # {'slug': 'yessa-man-again-20'}
+
+
+CMS_PAGE_SIZE = 2
