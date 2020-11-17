@@ -3,6 +3,14 @@
 {% load i18n %}
 {% load static %}
 
+<!-- Return to Agid native template -->
+{% block extra_head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% sass_src 'css/unical-portale-v3.scss' %}" type="text/css">
+{% include "vue-init.html" %}
+{% endblock extra_head %}
+
+
 {% block container_inner %}
     {% block top_buttons_surround %}
     <div class="pb-4">

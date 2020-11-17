@@ -10,8 +10,6 @@
 {% load unicms_templates %}
 {% load unicms_blocks %}
 
-
-
 {% block container %}
 <div class="it-hero-wrapper it-dark it-overlay publication-hero">
   <!-- - img-->
@@ -53,17 +51,6 @@
 
 
 <script>
-/* thanks to: https://gist.github.com/1c7/2b61ed28a639fcb48c8a4db5b48c3ff7 */
-Vue.filter('fm-truncate', function (value, length) {
-  if (!value) return ''
-  value = value.toString()
-  if(value.length > length){
-    return value.substring(0, length) + "..."
-  }else{
-    return value
-  }
-})
-
 Vue.component('list-panel', {
   props: {
       data: Array,
@@ -82,22 +69,18 @@ Vue.component('list-panel', {
                 
             <div class="col">
                 <button class="btn btn-primary btn-icon" v-if="data.previous_url" @click="news.CallURL( [[ data.previous_url]] )">
-                <span class="rounded-icon">
-                <svg class="icon icon-primary">
+                <svg class="icon icon-md icon-light">
                 <use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-left-circle"></use>
                 </svg>
-                </span>
                 <span>{% trans "Previous page" %}</span>
                 </button>
             </div>
             
             <div class="col">
                 <button class="btn btn-primary btn-icon" v-if="data.next_url" @click="news.CallURL( [[ data.next_url ]] )">
-                <span class="rounded-icon">
-                <svg class="icon icon-primary">
+                <svg class="icon icon-light">
                 <use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-right-circle"></use>
                 </svg>
-                </span>
                 <span>{% trans "Next page " %}([[ data.count ]])</span>
                 </button>
                 
@@ -109,42 +92,11 @@ Vue.component('list-panel', {
 })
 
 
-Vue.component('button-counter', {
-  data: function () {
-    return {
-      count: 0
-    }
-  },
-  template: '<button v-on:click="count++">You clicked me [[ count ]] times.</button>'
-})
-
 var news = new Vue({
   el: '#news',
   template: `
     <div v-if="newsLoaded == false">
-      <div class="it-hero-wrapper it-dark it-overlay publication-hero mb-4 ">
-          <!-- - img-->
-          <div class="img-responsive-wrapper">
-            <div class="img-responsive">
-                <div class="img-wrapper w-50 center-block"><img src="{% static 'images/loading.gif' %}"/></div>
-            </div>
-          </div>
-          <!-- - texts-->
-          <div class="container">
-            <div class="row">
-                <div class="col-12">
-                  <div class="it-hero-text-wrapper bg-dark">
-                      <span class="it-category">
-                        {% trans "please wait" %}
-                      </span>
-                      <h1 class="no_toc"><h2>{% trans "Unical News are loading" %} ...</h2></h1>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
-
-    </div>
+      {% include "loading-jumbo.html" %}
     <div v-else>
         <h2>{% trans "All the News" %}</span></h2>
 
@@ -172,13 +124,12 @@ var news = new Vue({
                                     [[ cat ]] &nbsp;&middot&nbsp;
                                 </a>
                             </div>
-                            
                             <h4 class="card-title">
                                 <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ item.path ]]">
                                     <p>[[ item.title ]]</p>
                                 </a>
                             </h4>
-                            <p>[[ item.subheading | fm-truncate(128) ]]</p>
+                            <p>[[ item.subheading | truncate(128) ]]</p>
                         </div>
                     </div>
                 </div>

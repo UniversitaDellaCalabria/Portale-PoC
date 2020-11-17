@@ -1,0 +1,16 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<script>Vue.options.delimiters = ['[[', ']]'];</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+/* thanks to: https://gist.github.com/1c7/2b61ed28a639fcb48c8a4db5b48c3ff7 */
+Vue.filter('truncate', function (value, length) {
+  if (!value) return ''
+  value = value.toString()
+  if(value.length > length){
+    return value.substring(0, length) + "..."
+  }else{
+    return value
+  }
+})
+</script>
