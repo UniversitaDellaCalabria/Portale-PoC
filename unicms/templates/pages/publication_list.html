@@ -42,31 +42,60 @@
         <div class="row">
             <div class="col-12 col-md-8">
                 {% breadcrumbs leaf=handler %}
-                
-                <div id="news">
-                </div>
-                
         </div>
         {% endblock centered_container %}
-
     </div>
 </div>
+
+<div id="news">
+</div>
+
 
 <script>
 var news = new Vue({
   el: '#news',
   template: `
     <div v-if="items">
-        <h3>[[ head ]]</h3>
-        <ul class="ni-vue-news">
-            <li v-for="item in items.results" :key="item.id">
-             <div>
-               [[ item ]]
-             </div>
-            </li>
-        </ul>
+        <h2>[[ head ]]</h2>
+        <div class="row">
+         <div class="col-12 col-lg-4" v-for="item in items.results" :key="item.id">
+            <!--start card-->
+                <div class="card-wrapper card-space">
+                    <div class="card card-bg no-after">
+
+                         <div class="img-responsive-wrapper mb-3">
+                            <div class="img-responsive img-responsive-panoramic">
+                                <figure class="img-wrapper">
+                                  <a style="" v-bind:href="[[ item.path ]]">
+                                    <img  v-bind:src="item.image" />
+                                  </a>
+                                </figure>
+                            </div>
+                        </div>
+
+                        <div class="card-body">                            
+                            <div class="etichetta">
+                                <a href="#" style="color: #176fc1;" v-for="cat in item.categories">
+                                    [[ cat ]] &nbsp;&middot&nbsp;
+                                </a>
+                            </div>
+                            
+                            <h4 class="card-title">
+                                <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ item.path ]]">
+                                    <p>[[ item.title ]]</p>
+                                </a>
+                            </h4>
+                            <p>[[ item.subheading ]]</p>
+                        </div>
+                    </div>
+                </div>
+            <!--end card-->
+         </div>
+        </div>
+        
         <div>
             <p>Total entries: <b>[[ items.total ]]</b></p>
+            <p>Total pages: <b>[[ items.total_pages ]]</b></p>
             <p>Current page: <b>[[ items.page_number ]]</b></p>
             <p>Current entries: <b>[[ items.count ]]</b></p>
             <p>Next: <b>[[ items.next_url ]]</b></p>
@@ -77,16 +106,17 @@ var news = new Vue({
   data () {
     return {
       items: [],
-      head: 'Questa è una intestazione'
+      head: "{% trans 'All the news' %}"
     }
   },
   beforeMount () {
+    let get_args = "?page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else%}1{% endif %}&lang={{ request.LANGUAGE_CODE }}"
+    
     axios
       // response must be a JSON content
       // .get('https://api.npms.io/v2/search?q=vue')
-      .get('{% url "api-news-by-contexts" webpath_id=webpath.pk %}?lang={{ request.LANGUAGE_CODE }}')
+      .get('{% url "api-news-by-contexts" webpath_id=webpath.pk %}'+get_args)
       .then(response => (this.items = response.data))
-      .then(this.total = "suka")      
   }
 })
 </script>

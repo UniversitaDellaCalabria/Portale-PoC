@@ -38,25 +38,17 @@ class Page(object):
             
     def build_urls(self):
         self.current_url = self.request.get_full_path()
-        # smart but useless ?
-        urlparse = urllib.parse.urlparse(self.current_url)
-        if urlparse.query and 'page_number' in urlparse.query:
-            urlquery = urllib.parse.parse_qs(urlparse.query)
-            page_number = re.findall('page_number=([0-9]+)', urlparse.query)
-            if self.page_number > 1:
+        if self.request.GET.get('page_number'):
+            page_number = int(self.request.GET['page_number'][0])
+            if page_number > 1:
                 prev_num = self.page_number - 1
                 self.previous_url = self.current_url.replace(f'page_number={self.page_number}',
-                                                             f'page_number={prev_num}',)
-            if self.page_number < self.total_pages:
-                next_num = self.page_number + 1
-                self.next_url = self.current_url.replace(f'page_number={self.page_number}',
-                                                             f'page_number={next_num}',)
-        elif self.total_pages > 1:
-            self.next_num = 2
-            if not urlparse.query:
-                self.next_url = f'{self.current_url}?page_number={self.next_num}'
-            else:
-                self.next_url = f'{self.current_url}&page_number={self.next_num}'
+                                                              f'page_number={prev_num}',)
+        if self.page_number < self.total_pages:
+            next_num = self.page_number + 1
+            self.next_url = self.current_url.replace(f'page_number={self.page_number}',
+                                                     f'page_number={next_num}',)
+            
         
     def has_next(self):
         return self.next_url
@@ -96,7 +88,7 @@ class Paginator(object):
     }
 
     def __init__(self, queryset, request=None, **kwargs):
-        for k,v in self.schema.items():
+        for k,v in copy(self.schema).items():
             setattr(self, k, v)
         
         for k,v in kwargs.items():
@@ -112,8 +104,7 @@ class Paginator(object):
     def paginate(self):
         start = 0
         end = CMS_PAGE_SIZE
-        self.num_pages = int(self.count / CMS_PAGE_SIZE)
-
+        self.num_pages = round(self.count / CMS_PAGE_SIZE)
 
     def get_page(self, num):
         if num > self.num_pages:
@@ -122,7 +113,6 @@ class Paginator(object):
             raise ValidationError('Wrong page_number value')
         end = CMS_PAGE_SIZE * num
         start = end - CMS_PAGE_SIZE
-        
         if num == self.num_pages:
             page_number = num
         else:

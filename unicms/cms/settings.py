@@ -31,4 +31,4 @@ CMS_APP_REGEXP_URLPATHS = {
 # {'slug': 'yessa-man-again-20'}
 
 
-CMS_PAGE_SIZE = 2
+CMS_PAGE_SIZE = 3

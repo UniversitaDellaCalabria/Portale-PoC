@@ -288,6 +288,7 @@ class Publication(AbstractPublication):
     
     def serialize(self):
         return {'slug': self.slug,
+                'image': self.image_url(),
                 'title': self.title,
                 'published': self.date_start,
                 'subheading': self.subheading,
@@ -305,7 +306,7 @@ class Publication(AbstractPublication):
             image_path =  self.presentation_image.file
         else:
             image_path = self.category.first().image
-        return f'{settings.MEDIA_URL}/{image_path}'
+        return f'{settings.MEDIA_URL}/{image_path}'.replace('//', '/')
 
     @property
     def categories(self):

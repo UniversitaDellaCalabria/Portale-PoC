@@ -28,6 +28,7 @@ class PublicationDetail(generics.RetrieveAPIView):
 class ApiPublicationsByContext(APIView):
     """
     """
+    description = 'ApiPublicationsByContext'
     # authentication_classes = [authentication.TokenAuthentication]
     # permission_classes = [permissions.IsAdminUser]
     
@@ -48,8 +49,15 @@ class ApiPublicationsByContext(APIView):
         return Response(result)
 
 
-@api_view(['GET'])
-def api_contexts(request):
-    webpaths = WebPath.objects.filter(is_active=True)
-    pubs = ({i.pk: f'{i.site.domain}{i.fullpath}'} for i in webpaths)
-    return Response(pubs)
+
+@method_decorator(detect_language, name='dispatch')
+class ApiContext(APIView):
+    """
+    """
+    description = 'Get publications in Context (WebPath)'
+    
+    def get(self, request, webpath_id):
+        webpaths = WebPath.objects.filter(is_active=True)
+        pubs = ({i.pk: f'{i.site.domain}{i.fullpath}'} for i in webpaths)
+        return Response(pubs)
+    
