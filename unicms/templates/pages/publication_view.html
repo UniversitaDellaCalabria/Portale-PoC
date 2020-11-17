@@ -93,7 +93,7 @@
                             <ul class="pl-0" style="list-style: none">
                             {% for pub_context in publication_context.publication.related_contexts %}
                                 <li class="mb-3">
-                                    <a href="/{{ pub_context.webpath.get_full_path }}">{{ pub_context.webpath.name }}</a>
+                                    <a href="{{ pub_context.webpath.get_full_path }}">{{ pub_context.webpath.name }}</a>
                                 </li>
                             {% endfor %}
                             </ul>

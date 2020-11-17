@@ -173,7 +173,8 @@ TINYMCE_DEFAULT_CONFIG = {
         # ...
     # ],
 # }
-CMS_PATH_PREFIX = 'portale/'
+
+# CMS_PATH_PREFIX = 'portale/'
 
 CMS_PUBLICATION_VIEW_PREFIX_PATH = 'contents/news/view/'
 CMS_PUBLICATION_LIST_PREFIX_PATH = 'contents/news/list'

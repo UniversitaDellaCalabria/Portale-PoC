@@ -59,7 +59,14 @@ This project is composed by the following applications:
 - cms, where Editorial boards can write post and publish content in one or more contexts.
 - cms_previews, menus, pages, publications and carousel previews
 
-> :warning: **If you are a pure Djangoer**: You should know that templates and urls would be managed with cms_context, entirely through admin interface. We can even load third-party django applications, it is necessary to take into account configuring the url paths before defining uniCMS ones, otherwise uniCMS will intercept them and with a good chance will return to the user a page of 404.
+
+> :warning: **If you are a pure Djangoer**: 
+
+You should know that templates and urls would be managed with cms_context, entirely through admin interface. 
+We can even load third-party django applications, it is necessary to take into account configuring the url 
+paths before defining uniCMS ones, otherwise uniCMS will intercept them and with a good chance will 
+return to the user a page of 404. You can even set `CMS_PATH_PREFIX` to a desidered value, to 
+restrict uniCMS url matching to a specified namespace.
 
 
 The first one, called `cms_context`, defines the multi web site logic (multi context) we adopted.

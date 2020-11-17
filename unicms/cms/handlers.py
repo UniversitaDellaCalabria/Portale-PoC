@@ -34,10 +34,11 @@ class PublicationViewHandler(BaseContentHandler):
                     )
         )
         self.pub_context = PublicationContext.objects.filter(**query).first()
+        if not hasattr(self.pub_context, 'webpath'):
+            raise Http404('Unknown WebPath') 
+
         self.page = Page.objects.filter(is_active=True,
-                                   webpath=self.pub_context.webpath).first()
-        if not self.pub_context.publication.is_publicable:
-            self.pub_context = None
+                                   webpath=self.pub_context.webpath).first()        
         self.webpath = self.pub_context.webpath
     
     def as_view(self):
@@ -68,7 +69,7 @@ class PublicationViewHandler(BaseContentHandler):
     
     @property
     def parent_url(self):
-        url = f'/{self.webpath.get_full_path}/{self.parent_path_prefix}/'
+        url = f'{self.webpath.get_full_path}/{self.parent_path_prefix}/'
         return url.replace('//', '/')
     
     @property
@@ -83,7 +84,8 @@ class PublicationListHandler(BaseContentHandler):
 
     @property
     def breadcrumbs(self):
-        leaf = (self.path, _('News'))
+        path = self.path
+        leaf = (path, _('News'))
         return (leaf,)
     
     def as_view(self):

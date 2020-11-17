@@ -54,13 +54,14 @@ class WebPath(TimeStampedModel):
         """
         return splitted nodes in a list
         """
-        if self.path == '/':
+        if self.path.replace('//', '/') == '/':
             return ['/']
         return self.path.split('/')
 
     @property
     def get_full_path(self):
-        return f'{CMS_PATH_PREFIX}{self.fullpath}'.replace('//', '/')
+        url = f'/{CMS_PATH_PREFIX}{self.fullpath}'
+        return url.replace('//', '/')
 
     def save(self, *args, **kwargs):
         if self.parent:
