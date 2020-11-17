@@ -39,12 +39,12 @@ def build_breadcrumbs(context):
     webpath = context['webpath']
     nodes = webpath.split()
     crumbs = []
-    root = CMS_PATH_PREFIX or '/' 
+    root = '/' 
     for i in nodes:
-        url = f'{root}/{i}'
+        url = f'{root}/{i}'.replace('//', '/')
         crumbs.append((url, i))
         root = url
-    crumbs[0] = ('/', webpath.name) 
+    crumbs[0] = (f'/{CMS_PATH_PREFIX}', webpath.name) 
     return crumbs
 
 

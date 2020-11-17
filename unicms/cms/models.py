@@ -391,7 +391,7 @@ class PublicationContext(TimeStampedModel, ActivableModel,
 
     @property
     def url(self):
-        url = f'/{self.webpath.get_full_path}/{self.path_prefix}/{self.publication.slug}'
+        url = f'/{self.webpath.get_full_path}{self.path_prefix}/{self.publication.slug}'
         return url.replace('//', '/')
 
     @property

@@ -60,7 +60,7 @@ class WebPath(TimeStampedModel):
 
     @property
     def get_full_path(self):
-        return f'{CMS_PATH_PREFIX}{self.fullpath}'
+        return f'{CMS_PATH_PREFIX}{self.fullpath}'.replace('//', '/')
 
     def save(self, *args, **kwargs):
         if self.parent:
