@@ -314,7 +314,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:00.088Z",
-    "modified": "2020-11-16T16:38:02.121Z",
+    "modified": "2020-11-17T09:36:33.911Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
     "template_file": "portale_home_v3.html",
@@ -1466,7 +1466,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-11-16T16:53:14.634Z",
+    "modified": "2020-11-16T17:12:48.694Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
     "webpath": 1,
@@ -1539,7 +1539,7 @@
   "pk": 2,
   "fields": {
     "created": "2020-11-11T14:16:54.794Z",
-    "modified": "2020-11-12T10:58:49.984Z",
+    "modified": "2020-11-16T17:12:48.716Z",
     "order": 1,
     "is_active": true,
     "section": "slider",
@@ -1554,13 +1554,13 @@
   "pk": 4,
   "fields": {
     "created": "2020-11-12T09:14:54.559Z",
-    "modified": "2020-11-16T16:49:26.968Z",
+    "modified": "2020-11-16T16:59:34.022Z",
     "order": 11,
     "is_active": true,
     "section": "2",
     "name": "avvisi",
     "type": "cms_templates.blocks.HtmlBlock",
-    "content": "{% load static %}\r\n\r\n<div class=\"container py-5\">\r\n<div class=\"row\">\r\n<div class=\"d-none d-md-block col-md-3\">&nbsp;</div>\r\n<div class=\"col-12 col-md-9\"><h3 class=\"super-bold\" style=\"padding-left:24px\">avvisi</h3></div>\r\n</div>\r\n        <div class=\"row\">\r\n            <div class=\"col-12 col-lg-3\" style=\"margin-top: 24px\">\r\n<button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Tutti gli avvisi</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">URP</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Amministrazione trasparente</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Sostieni Unical</button>\r\n            </div>\r\n            <div class=\"col-12 col-lg-9\">\r\n                {% include \"unical_portale_home_avvisi_v3.html\" %}\r\n            </div>\r\n        </div>\r\n\r\n        <a href=\"#\" aria-hidden=\"true\"\r\n           data-attribute=\"back-to-top\"\r\n           class=\"back-to-top back-to-top-small\">\r\n            <svg class=\"icon icon-light\">\r\n              <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-arrow-up\"></use>\r\n            </svg>\r\n        </a>\r\n\r\n    </div>",
+    "content": "{% load static %}\r\n\r\n<div class=\"container py-5\">\r\n<div class=\"row\">\r\n<div class=\"d-none d-md-block col-md-3\">&nbsp;</div>\r\n<div class=\"col-12 col-md-9\">\r\n  <h3 class=\"super-bold\" style=\"padding-left:24px\">\r\n     Avvisi\r\n  </h3>\r\n</div>\r\n</div>\r\n        <div class=\"row\">\r\n            <div class=\"col-12 col-lg-3\" style=\"margin-top: 24px\">\r\n<button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Tutti gli avvisi</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">URP</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Amministrazione trasparente</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Sostieni Unical</button>\r\n            </div>\r\n            <div class=\"col-12 col-lg-9\">\r\n                {% include \"unical_portale_home_avvisi_v3.html\" %}\r\n            </div>\r\n        </div>\r\n\r\n        <a href=\"#\" aria-hidden=\"true\"\r\n           data-attribute=\"back-to-top\"\r\n           class=\"back-to-top back-to-top-small\">\r\n            <svg class=\"icon icon-light\">\r\n              <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-arrow-up\"></use>\r\n            </svg>\r\n        </a>\r\n\r\n    </div>",
     "page": 1
   }
 },
