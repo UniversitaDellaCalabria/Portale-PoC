@@ -11,7 +11,7 @@ from django.template.exceptions import (TemplateDoesNotExist,
 
 
 logger = logging.getLogger(__name__)
-
+CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 def detect_user_language(request):
     lang = request.GET.get('lang',
@@ -39,7 +39,7 @@ def build_breadcrumbs(context):
     webpath = context['webpath']
     nodes = webpath.split()
     crumbs = []
-    root = '/'
+    root = CMS_PATH_PREFIX or '/' 
     for i in nodes:
         url = f'{root}/{i}'
         crumbs.append((url, i))

@@ -14,6 +14,7 @@ from . import settings as app_settings
 logger = logging.getLogger(__name__)
 CMS_CONTEXT_PERMISSIONS = getattr(settings, 'CMS_CONTEXT_PERMISSIONS',
                                   app_settings.CMS_CONTEXT_PERMISSIONS)
+CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 
 class WebSite(Site):
@@ -56,6 +57,10 @@ class WebPath(TimeStampedModel):
         if self.path == '/':
             return ['/']
         return self.path.split('/')
+
+    @property
+    def get_full_path(self):
+        return f'{CMS_PATH_PREFIX}{self.fullpath}'
 
     def save(self, *args, **kwargs):
         if self.parent:

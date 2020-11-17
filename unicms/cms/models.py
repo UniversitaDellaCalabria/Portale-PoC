@@ -36,6 +36,7 @@ PAGE_STATES = (('draft', _('Draft')),
                ('published', _('Published')),)
 CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
                                   CMS_IMAGE_CATEGORY_SIZE)
+CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 
 def context_publication_attachment_path(instance, filename):
@@ -390,7 +391,7 @@ class PublicationContext(TimeStampedModel, ActivableModel,
 
     @property
     def url(self):
-        url = f'{self.webpath.fullpath}/{self.path_prefix}/{self.publication.slug}'
+        url = f'/{self.webpath.get_full_path}/{self.path_prefix}/{self.publication.slug}'
         return url.replace('//', '/')
 
     @property

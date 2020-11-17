@@ -68,7 +68,7 @@ class PublicationViewHandler(BaseContentHandler):
     
     @property
     def parent_url(self):
-        url = f'{self.webpath.fullpath}/{self.parent_path_prefix}/'
+        url = f'/{self.webpath.get_full_path}/{self.parent_path_prefix}/'
         return url.replace('//', '/')
     
     @property

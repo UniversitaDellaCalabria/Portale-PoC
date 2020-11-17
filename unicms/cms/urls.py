@@ -8,6 +8,7 @@ from . views import *
 
 urlpatterns = []
 
+CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 # Public API Resources
 urlpatterns += path(f'api/contexts',
@@ -27,4 +28,4 @@ urlpatterns += path(f'api/news/detail/<str:slug>',
                     name='publication-detail'),
 
 # uniCMS dispatcher
-urlpatterns += re_path('.*', cms_dispatch, name='cms_dispatch'),
+urlpatterns += re_path(f'{CMS_PATH_PREFIX}.*', cms_dispatch, name='cms_dispatch'),

@@ -18,6 +18,8 @@ from . models import Page
 
 logger = logging.getLogger(__name__)
 
+CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
+
 
 @detect_language
 def cms_dispatch(request):
@@ -29,7 +31,7 @@ def cms_dispatch(request):
     if not website:
         return HttpResponseBadRequest()
 
-    path = urlparse(request.get_full_path()).path
+    path = urlparse(request.get_full_path()).path.replace(CMS_PATH_PREFIX, '')
     
     _msg_head = 'APP REGEXP URL HANDLERS:'
     # detect if webpath is referred to a specialized app

@@ -60,6 +60,6 @@ class ApiContext(APIView):
     
     def get(self, request, webpath_id):
         webpaths = WebPath.objects.filter(is_active=True)
-        pubs = ({i.pk: f'{i.site.domain}{i.fullpath}'} for i in webpaths)
+        pubs = ({i.pk: f'{i.site.domain}{i.get_full_path}'} for i in webpaths)
         return Response(pubs)
     
