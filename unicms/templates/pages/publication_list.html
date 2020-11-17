@@ -37,7 +37,7 @@
 
 
 <div class="container">
-    <div class="col-12 py-5 bd-content">       
+    <div class="col-12 py-2 bd-content">       
         {% block centered_container %}
         <div class="row">
             <div class="col-12 col-md-8">
@@ -56,7 +56,7 @@ var news = new Vue({
   el: '#news',
   template: `
     <div v-if="items">
-        <h2>[[ head ]]</h2>
+        <h2 id="new-heading">[[ head ]] <span class="small">([[ items.total ]])</span></h2>
         <div class="row">
          <div class="col-12 col-lg-4" v-for="item in items.results" :key="item.id">
             <!--start card-->
@@ -92,15 +92,44 @@ var news = new Vue({
             <!--end card-->
          </div>
         </div>
-        
-        <div>
-            <p>Total entries: <b>[[ items.total ]]</b></p>
-            <p>Total pages: <b>[[ items.total_pages ]]</b></p>
-            <p>Current page: <b>[[ items.page_number ]]</b></p>
-            <p>Current entries: <b>[[ items.count ]]</b></p>
-            <p>Next: <b>[[ items.next_url ]]</b></p>
-            <p>Previous: <b>[[ items.previous_url ]]</b></p>
+
+        <div class="container">
+          <div class="row">
+            <div class="col">
+                <p>{% trans "Pages" %}: <b>[[ items.page_number ]] / [[ items.total_pages ]]</b></p>
+            </div>
+            <div class="col">
+                <!-- ... -->
+            </div>
+            <div class="col mb-4">                
+                  <div class="row">
+                        
+                    <div class="col">
+                        <button class="btn btn-primary btn-icon" v-if="items.previous_url" @click="CallURL( [[ items.previous_url]] )">
+                        <span class="rounded-icon">
+                        <svg class="icon icon-primary">
+                        <use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-left-circle"></use>
+                        </svg>
+                        </span>
+                        <span>{% trans "Previous page" %}</span>
+                        </button>
+                    </div>
+                    
+                    <div class="col">
+                        <button class="btn btn-primary btn-icon" v-if="items.next_url" @click="CallURL( [[ items.next_url ]] )">
+                        <span class="rounded-icon">
+                        <svg class="icon icon-primary">
+                        <use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-right-circle"></use>
+                        </svg>
+                        </span>
+                        <span>{% trans "Next page " %}([[ items.count ]])</span>
+                        </button>
+                        
+                    </div>
+            </div>
+          </div>
         </div>
+    
     </div>
     `,
   data () {
@@ -117,7 +146,20 @@ var news = new Vue({
       // .get('https://api.npms.io/v2/search?q=vue')
       .get('{% url "api-news-by-contexts" webpath_id=webpath.pk %}'+get_args)
       .then(response => (this.items = response.data))
-  }
+  },
+
+  methods: {
+    CallURL ( url ) {
+        axios
+          .get( url )
+          .then(response => (this.items = response.data))
+        
+        this.scrollToTop();
+      },
+   scrollToTop() {
+        window.scrollTo({top:this.$el.offsetHeight, left:0, behavior: 'smooth'});
+        }
+    }
 })
 </script>
 {% endblock container %}
