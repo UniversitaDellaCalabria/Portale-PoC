@@ -23,6 +23,12 @@ bootstrap-italia-base.html
 <!-- Return to Agid native template -->
 {% block extra_head %}
 {{ block.super }}
+<style>
+.it-hero-wrapper {
+    background-color: #fff !important;
+    }
+</style>
+
 <link rel="stylesheet" href="{% sass_src 'css/unical-portale-v3.scss' %}" type="text/css">
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
 <script>Vue.options.delimiters = ['[[', ']]'];</script>

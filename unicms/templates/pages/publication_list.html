@@ -47,7 +47,8 @@
     </div>
 </div>
 
-<div id="news">
+
+<div class="row" id="news">
 </div>
 
 
@@ -66,9 +67,33 @@ Vue.filter('fm-truncate', function (value, length) {
 var news = new Vue({
   el: '#news',
   template: `
-    <div v-if="items">
-        <h2 id="new-heading">[[ head ]] <span class="small">([[ items.total ]])</span></h2>
-        <div class="row">
+    <div v-if="newsLoaded == false">
+      <div class="it-hero-wrapper it-dark it-overlay publication-hero mb-4 ">
+          <!-- - img-->
+          <div class="img-responsive-wrapper">
+            <div class="img-responsive">
+                <div class="img-wrapper w-50 center-block"><img src="{% static 'images/loading.gif' %}"/></div>
+            </div>
+          </div>
+          <!-- - texts-->
+          <div class="container">
+            <div class="row">
+                <div class="col-12">
+                  <div class="it-hero-text-wrapper bg-dark">
+                      <span class="it-category">
+                        {% trans "please wait" %}
+                      </span>
+                      <h1 class="no_toc"><h2>{% trans "Unical News are loading" %} ...</h2></h1>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div v-else>
+        <h2>{% trans "All the News" %}</span></h2>
+        <div class="row" v-if="items">
          <div class="col-12 col-lg-4" v-for="item in items.results" :key="item.id">
             <!--start card-->
                 <div class="card-wrapper card-space">
@@ -107,7 +132,8 @@ var news = new Vue({
         <div class="container">
           <div class="row">
             <div class="col">
-                <p>{% trans "Pages" %}: <b>[[ items.page_number ]] / [[ items.total_pages ]]</b></p>
+                <span>{% trans "Page" %}: <b>[[ items.page_number ]] / [[ items.total_pages ]]</span><br>
+                <span class="">{% trans "Total News" %}: <b>[[ items.total ]]</b></span>
             </div>
             <div class="col">
                 <!-- ... -->
@@ -142,32 +168,38 @@ var news = new Vue({
         </div>
     
     </div>
-    <div v-else>
-      News are loading ...
+
+
     </div>
     `,
   data () {
     return {
       items: [],
-      head: "{% trans 'All the news' %}"
+      newsLoaded: false,
     }
   },
+  
   beforeMount () {
+    },
+  
+  mounted () {
     let get_args = "?page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else%}1{% endif %}&lang={{ request.LANGUAGE_CODE }}"
     
     axios
       // .get('https://api.npms.io/v2/search?q=vue')
       .get('{% url "api-news-by-contexts" webpath_id=webpath.pk %}'+get_args)
       .then(response => (this.items = response.data))
+      .then(response => (this.newsLoaded = true))
   },
-
   methods: {
     CallURL ( url ) {
+        this.newsLoaded = false;
+        
         axios
           .get( url )
           .then(response => (this.items = response.data))
-        
-        this.scrollToTop();
+          .then(response => (this.newsLoaded = true))
+          .then(response => (this.scrollToTop()))
       },
    scrollToTop () {
         window.scrollTo({top:this.$el.offsetHeight, left:0, behavior: 'smooth'});
