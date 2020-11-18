@@ -14,3 +14,17 @@ Vue.filter('truncate', function (value, length) {
   }
 })
 </script>
+
+
+<script>
+/* thanks to: https://gist.github.com/1c7/2b61ed28a639fcb48c8a4db5b48c3ff7 */
+Vue.filter('formatDate', function(value) {
+  if (value) {
+    dt = new Date(value)
+    const offsetMs = dt.getTimezoneOffset() * 60 * 1000;
+    const dateLocal = new Date(dt.getTime() - offsetMs);
+    const str = dateLocal.toISOString().slice(0, 19).replace(/-/g, "/").replace("T", " ");
+    return str
+  }
+});
+</script>

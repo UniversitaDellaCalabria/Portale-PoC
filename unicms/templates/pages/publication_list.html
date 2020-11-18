@@ -107,7 +107,7 @@ var news = new Vue({
                 <div class="card-wrapper card-space">
                     <div class="card card-bg no-after">
 
-                         <div class="img-responsive-wrapper mb-3">
+                         <div class="img-responsive-wrapper mb-1">
                             <div class="img-responsive img-responsive-panoramic">
                                 <figure class="img-wrapper">
                                   <a style="" v-bind:href="item.path">
@@ -116,15 +116,15 @@ var news = new Vue({
                                 </figure>
                             </div>
                         </div>
-
-                        <div class="card-body">                            
-                            <div class="etichetta">
+                        <div class="card-body">            
+                            <div class="etichetta mb-0">
                                 <span v-for="cat in item.categories">
                                 <a v-bind:href="'?category_name=' + cat" style="color: #176fc1;">
                                     [[ cat ]] &nbsp;&middot&nbsp;
                                 </a>
                                 </span>
                             </div>
+                            <span class="small text-muted mb-2">[[ item.published|formatDate ]]</span> 
                             <h4 class="card-title">
                                 <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ item.path ]]">
                                     <p>[[ item.title ]]</p>
