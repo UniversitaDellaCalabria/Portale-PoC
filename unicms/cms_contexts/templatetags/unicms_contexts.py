@@ -1,4 +1,5 @@
 import logging
+import urllib
 
 from django import template
 from django.conf import settings
@@ -17,6 +18,17 @@ from cms.views import detect_user_language
 logger = logging.getLogger(__name__)
 register = template.Library()
 
+
+@register.simple_tag(takes_context=True)
+def language_menu(context, template=None, leaf=None):
+    request = context['request']
+    languages = {k:v for k,v in dict(settings.LANGUAGES).items()}
+    current_args = urllib.parse.urlencode(request.GET)
+    data = {v:f'?{current_args}&lang={k}' for k,v in languages.items()}
+    if template:
+        return handle_faulty_templates(template, data, name='language_menu')
+    return data
+    
     
 @register.simple_tag(takes_context=True)
 def breadcrumbs(context, template=None, leaf=None):

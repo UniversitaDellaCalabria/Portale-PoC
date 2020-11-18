@@ -124,11 +124,10 @@ col-10 offset-2 col-lg-12 offset-lg-0
                         <div class="col-12">
                             <div class="link-list-wrapper">
                                 <ul class="link-list">
-                                    {% supported_languages as languages %}
-                                    {% for lang,language in languages %}
-                                    <!-- TODO: caricare Lingua + Flag image per tutte le lingue abilitate a sistema -->
-                                    <li><a class="list-item" href="?lang={{ lang }}"><span>{{ language }}</span></a></li>
-                                    {% endfor %}
+                                    {% language_menu as language_urls %}
+                                    {% for lang,url in language_urls.items %}
+                                    <li><a class="list-item" href="{{ url }}"><span>{{ lang }}</span></a></li>
+                                    {% endfor %}                                   
                                 </ul>
                             </div>
                         </div>
