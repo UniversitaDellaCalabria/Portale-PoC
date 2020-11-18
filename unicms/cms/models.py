@@ -389,6 +389,14 @@ class PublicationContext(TimeStampedModel, ActivableModel,
         return getattr(settings, 'CMS_PUBLICATION_VIEW_PREFIX_PATH',
                                  CMS_PUBLICATION_VIEW_PREFIX_PATH)
 
+    def get_url_list(self, category_name=None):
+        list_prefix = getattr(settings, 'CMS_PUBLICATION_LIST_PREFIX_PATH',
+                                         CMS_PUBLICATION_LIST_PREFIX_PATH)
+        url = f'{self.webpath.get_full_path}{list_prefix}'
+        if category_name:
+            url += f'/?category_name={category_name}'
+        return url.replace('//', '/')
+
     @property
     def url(self):
         url = f'{self.webpath.get_full_path}{self.path_prefix}/{self.publication.slug}'

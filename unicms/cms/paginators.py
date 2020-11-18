@@ -104,7 +104,10 @@ class Paginator(object):
     def paginate(self):
         start = 0
         end = CMS_PAGE_SIZE
-        self.num_pages = round(self.count / CMS_PAGE_SIZE)
+        if self.count >= CMS_PAGE_SIZE:
+            self.num_pages = round(self.count / CMS_PAGE_SIZE)
+        elif self.count:
+            self.num_pages = 1
 
     def get_page(self, num):
         if num > self.num_pages:

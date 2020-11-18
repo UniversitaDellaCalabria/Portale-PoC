@@ -133,6 +133,8 @@ Here the templatetags we use:
 
 `cms_context`
 - `breadcrumbs`: `{% breadcrumbs template="breadcrumbs.html" %}`
+- `call`: `{% call obj=pub method='get_url_list' category_name=cat %}`
+    It can call any objects method and also pass to it whatever `**kwargs`.
 
 `cms`
 - `load_publications_preview`: `{% load_publications_preview template="publications_preview.html" %}`

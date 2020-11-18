@@ -15,9 +15,15 @@ urlpatterns += path(f'api/contexts',
                     api_views.ApiContext.as_view(),
                     name='api-contexts'),
 
+# I would have preferred a regexp .. but openapi schema generator ...
+# re_path('api/news/by-context/(?P<webpath_id>\d+)/?(?P<category_name>[a-zA-Z0-9]*)?'
 urlpatterns += path(f'api/news/by-context/<int:webpath_id>',
                     api_views.ApiPublicationsByContext.as_view(),
                     name='api-news-by-contexts'),
+urlpatterns += path(f'api/news/by-context/<int:webpath_id>/<str:catogory_name>',
+                    api_views.ApiPublicationsByContext.as_view(),
+                    name='api-news-by-contexts-category'),
+
 
 # too wide for us!
 # urlpatterns += path(f'api/news/list',

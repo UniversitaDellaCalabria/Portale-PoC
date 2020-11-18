@@ -34,9 +34,13 @@ class ApiPublicationsByContext(APIView):
     # authentication_classes = [authentication.TokenAuthentication]
     # permission_classes = [permissions.IsAdminUser]
     
-    def get(self, request, webpath_id):
+    def get(self, request, webpath_id, category_name=None):
         query_params = publication_context_base_filter()
         query_params.update({'webpath__pk': webpath_id})
+        
+        category_name = category_name or request.GET.get('category_name')
+        if category_name:
+            query_params['publication__category__name__iexact'] = category_name
         pubcontx = PublicationContext.objects.filter(**query_params)
         count = pubcontx.count()
         paginator = Paginator(queryset=pubcontx, request=request)

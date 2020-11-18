@@ -97,7 +97,7 @@ var news = new Vue({
     <div v-if="newsLoaded == false">
       {% include "loading-jumbo.html" %}
     <div v-else>
-        <h2>{% trans "All the News" %}</span></h2>
+        <h2 id="news-head">{% trans "All the News" %}</span></h2>
 
         <list-panel v-bind:data="items"></list-panel>
         
@@ -119,9 +119,11 @@ var news = new Vue({
 
                         <div class="card-body">                            
                             <div class="etichetta">
-                                <a href="#" style="color: #176fc1;" v-for="cat in item.categories">
+                                <span v-for="cat in item.categories">
+                                <a v-bind:href="'?category_name=' + cat" style="color: #176fc1;">
                                     [[ cat ]] &nbsp;&middot&nbsp;
                                 </a>
+                                </span>
                             </div>
                             <h4 class="card-title">
                                 <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ item.path ]]">
@@ -152,7 +154,9 @@ var news = new Vue({
     },
   
   beforeMount () {
-    let get_args = "?page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else%}1{% endif %}&lang={{ request.LANGUAGE_CODE }}"
+    let get_args = `?{% if request.GET.category_name %}category_name={{ request.GET.category_name }}&{% endif %}
+page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else%}1{% endif %}
+&lang={{ request.LANGUAGE_CODE }}`
     
     axios
       // .get('https://api.npms.io/v2/search?q=vue')
@@ -171,6 +175,7 @@ var news = new Vue({
           .then(response => (this.scrollToTop()))
       },
    scrollToTop () {
+        // faulty on mobile ...
         window.scrollTo({top:this.$el.offsetHeight, left:0, behavior: 'smooth'});
         }
     }

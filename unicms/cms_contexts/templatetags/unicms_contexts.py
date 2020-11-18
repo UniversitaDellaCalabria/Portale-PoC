@@ -27,4 +27,8 @@ def breadcrumbs(context, template=None, leaf=None):
             crumbs.append(i)
     data = {'breadcrumbs': crumbs}
     return handle_faulty_templates(template, data, name='breadcrumbs')
-    
+
+
+@register.simple_tag(takes_context=True)
+def call(context, obj, method, **kwargs):
+    return getattr(obj, method)(**kwargs)
