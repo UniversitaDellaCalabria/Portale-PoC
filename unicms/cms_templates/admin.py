@@ -8,18 +8,18 @@ from . models import *
 class PageTemplateAdmin(admin.ModelAdmin):
     list_display  = ('name', 'template_file', 'created', 'is_active')
     search_fields   = ('name', 'template_file',)
-    inlines       = (PageTemplateThirdPartyBlockInline,)
+    inlines       = (PageTemplateBlockInline,)
 
 
-@admin.register(PageBlockTemplate)
-class PageBlockTemplateAdmin(admin.ModelAdmin):
-    list_display  = ('name', 'type', 'template_file', 'is_active')
-    search_fields   = ('name', 'template_file',)
+# @admin.register(PageTemplateBlock)
+class PageTemplateBlockAdmin(admin.ModelAdmin):
+    list_display  = ('block', 'section', 'order', 'is_active')
+    # search_fields   = ('block__name')
+    # list_filter = ('type', 'section')
+
+
+@admin.register(TemplateBlock)
+class TemplateBlockAdmin(admin.ModelAdmin):
+    list_display  = ('name', 'description', 'type', 'is_active')
+    search_fields   = ('name',)
     list_filter = ('type',)
-
-
-#  @admin.register(PageTemplateThirdPartyBlock)
-class PageTemplateThirdPartyBlockAdmin(admin.ModelAdmin):
-    list_display  = ('webpath', 'block', 'section', 'is_active')
-    #  search_fields   = ('context', 'name', 'parent',)
-    list_filter = ('webpath', 'created', 'modified')

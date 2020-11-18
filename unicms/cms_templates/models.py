@@ -53,8 +53,7 @@ class SectionAbstractModel(models.Model):
         abstract = True
 
 
-class AbstractPageBlock(TimeStampedModel, SortableModel, ActivableModel,
-                        SectionAbstractModel):
+class AbstractPageBlock(TimeStampedModel, ActivableModel):
     name = models.CharField(max_length=60, blank=True, null=True,
                             help_text=_("Specify the container "
                                         "section in the template where "
@@ -76,8 +75,6 @@ class PageTemplate(TimeStampedModel, ActivableModel):
                                      blank=False, null=False,
                                      choices=CMS_PAGE_TEMPLATES or \
                                      (('', 'No templates found'),))
-    blocks = models.ManyToManyField('PageBlockTemplate',
-                                    blank=True)
     note = models.TextField(null=True, blank=True,
                             help_text=_("Editorial Board Notes, "
                                         "not visible by public."))
@@ -90,37 +87,52 @@ class PageTemplate(TimeStampedModel, ActivableModel):
         return '{} ({})'.format(self.name, self.template_file)
 
 
-class PageTemplateThirdPartyBlock(TimeStampedModel,
-                                  SortableModel, ActivableModel):
+class TemplateBlock(AbstractPageBlock):
+    name = models.CharField(max_length=60, blank=True, null=True,
+                            help_text=_("Specify the container "
+                                        "section in the template where "
+                                        "this block would be rendered."))
+    description = models.TextField(null=True,blank=True,
+                                   help_text=_('Description of this block'))
+    type = models.TextField(choices=CMS_BLOCK_TYPES,
+                            blank=False, null=False)
+    content = models.TextField(help_text=_("according to the "
+                                           "block template schema"),
+                               blank=True, null=True)
+    
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = _("Template Blocks")
+
+    def __str__(self):
+        return self.name if self.name else self.path
+
+
+class PageTemplateBlock(TimeStampedModel,
+                        SortableModel, ActivableModel):
     template = models.ForeignKey(PageTemplate,
                                  on_delete=models.CASCADE,
                                  limit_choices_to={'is_active': True},)
-    block = models.ForeignKey('cms.PageBlock', null=False, blank=False,
+    block = models.ForeignKey(TemplateBlock, null=False, blank=False,
                               on_delete=models.CASCADE)
     section = models.CharField(max_length=33, blank=True, null=True,
                                help_text=_("Specify the container "
                                            "section in the template where "
                                            "this block would be rendered."),
                                choices=CMS_TEMPLATE_BLOCK_SECTIONS)
-
+    
+    @property
+    def type(self):
+        return self.block.type
+    
+    @property
+    def content(self):
+        return self.block.content
+    
     class Meta:
-        verbose_name_plural = _("Page Template Third-Party Blocks")
+        verbose_name_plural = _("Page Template Blocks")
 
     def __str__(self):
         return '({}) {} {}:{}'.format(self.template, self.block,
-                                      self.order or '#',
-                                      self.section or '#')
-
-
-class PageBlockTemplate(AbstractPageBlock):
-    template_file = models.CharField(max_length=1024,
-                                     blank=False, null=False,
-                                     choices=CMS_BLOCK_TEMPLATES or \
-                                     (('', 'No templates found'),))
-
-    class Meta:
-        ordering = ['name']
-        verbose_name_plural = _("Block Templates")
-
-    def __str__(self):
-        return self.name if self.name else self.path
+                                      self.order or 0,
+                                      self.section or '')

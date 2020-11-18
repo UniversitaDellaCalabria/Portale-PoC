@@ -22,7 +22,7 @@ def load_carousel(context, section, template):
     if not page: return ''
     else: carousel = page.carousel    
     
-    language = request.LANGUAGE_CODE
+    language = getattr(request, 'LANGUAGE_CODE', '')
     carousel_items = carousel.get_localized_items(lang=language)
     data = {'carousel_items': carousel_items}
     return handle_faulty_templates(template, data, name='load_carousel')

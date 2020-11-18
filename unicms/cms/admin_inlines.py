@@ -26,18 +26,14 @@ class PageRelatedInline(admin.TabularInline):
 class PageBlockInline(admin.TabularInline):
     model = PageBlock
     extra = 0
+    raw_id_fields = ('block',)
+    
 
 class PublicationContextInline(admin.TabularInline):
     model = PublicationContext
     extra = 0
     classes = ['collapse']
     readonly_fields = ('created_by', 'modified_by')
-    
-
-class PageThirdPartyBlockInline(admin.TabularInline):
-    model = PageThirdPartyBlock
-    extra = 0
-    classes = ['collapse']
 
 
 class PublicationLocalizationInline(admin.StackedInline):

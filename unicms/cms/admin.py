@@ -27,17 +27,16 @@ class PageAdmin(admin.ModelAdmin):
     readonly_fields = ('created_by', 'modified_by')
     inlines       = (PageMenuInline,
                      PageCarouselInline, PageBlockInline, 
-                     PageThirdPartyBlockInline,
                      PageRelatedInline, PageLinkInline)
     
     def save_model(self, request, obj, form, change):
         super(PageAdmin, self).save_model(request, obj, form, change)
         for block_entry in obj.pageblock_set.filter(is_active=True):
             # Block rendering validation
-            block = import_string(block_entry.type)(content=block_entry.content,
-                                                    request=request,
-                                                    page=obj,
-                                                    webpath=obj.webpath)
+            block = import_string(block_entry.block.type)(content=block_entry.block.content,
+                                                          request=request,
+                                                          page=obj,
+                                                          webpath=obj.webpath)
             try:
                 block.render()
             except Exception as e:

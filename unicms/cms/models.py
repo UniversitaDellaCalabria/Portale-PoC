@@ -12,7 +12,7 @@ from cms_contexts.models import *
 from cms_medias.models import Media, MediaCollection
 from cms_menus.models import NavigationBar
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
-                                  AbstractPageBlock,
+                                  TemplateBlock,
                                   ActivableModel,
                                   PageTemplate,
                                   SectionAbstractModel,
@@ -84,13 +84,32 @@ class Page(TimeStampedModel, ActivableModel):
 
 
     def get_blocks(self, section=None):
-        blocks = PageBlock.objects.filter(is_active=True)
-        thirdparty_blocks = PageThirdPartyBlock.objects.filter(is_active=True)
+        query_params = dict(is_active=True)        
         if section:
-            blocks = blocks.filter(section=section)
-
-        # TODO - ordering together with thirdparty blocks
-        return [i for i in blocks]
+            query_params['section'] = section
+        blocks = PageBlock.objects.filter(**query_params).\
+                                   order_by('section', 'order').\
+                                   values_list('order', 'block__pk')
+        template_blocks = self.base_template.\
+                            pagetemplateblock_set.\
+                            filter(**query_params).\
+                            order_by('section', 'order').\
+                            values_list('order', 'block__pk')
+        order_pk = []
+        # CHECK concurrent ordering sorting
+        for i in blocks:
+            order_pk.append(i)
+        for i in template_blocks:
+            order_pk.append(i)
+        ordered = sorted(order_pk)
+        unique = []
+        for i in ordered:
+            if i[1] not in unique:
+                unique.append(i)
+        final_blocks = [TemplateBlock.objects.get(pk=v)
+                        for k,v in unique]
+        return final_blocks
+    
 
     def delete(self, *args, **kwargs):
         PageRelated.objects.filter(related_page=self).delete()
@@ -147,38 +166,20 @@ class PageMenu(SectionAbstractModel, ActivableModel, SortableModel,
                                   self.section or '#')
 
 
-class PageBlock(AbstractPageBlock):
+class PageBlock(ActivableModel, SectionAbstractModel, SortableModel):
     page = models.ForeignKey(Page, null=False, blank=False,
                              on_delete=models.CASCADE)
-
+    block = models.ForeignKey(TemplateBlock, null=False, blank=False,
+                              on_delete=models.CASCADE)
     class Meta:
         verbose_name_plural = _("Page Block")
 
     def __str__(self):
         return '{} {} {}:{}'.format(self.page,
-                                    self.name,
+                                    self.block.name,
                                     self.order or '#',
                                     self.section or '#')
 
-
-class PageThirdPartyBlock(TimeStampedModel, SortableModel, ActivableModel):
-    page = models.ForeignKey(Page, null=False, blank=False,
-                             on_delete=models.CASCADE)
-    block = models.ForeignKey(PageBlock, null=False, blank=False,
-                             on_delete=models.CASCADE)
-    section = models.CharField(max_length=60, blank=True, null=True,
-                               help_text=_("Specify the container "
-                                           "section in the template where "
-                                           "this block will be rendered."),
-                               choices=CMS_TEMPLATE_BLOCK_SECTIONS)
-
-    class Meta:
-        verbose_name_plural = _("Page Third-Party Block")
-
-    def __str__(self):
-        return '{} {} {}:{}'.format(self.page, self.block,
-                                    self.order or '#',
-                                    self.section or '#')
 
 class PageRelated(TimeStampedModel, SortableModel, ActivableModel):
     page = models.ForeignKey(Page, null=False, blank=False,
