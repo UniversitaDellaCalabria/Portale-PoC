@@ -19,7 +19,15 @@ class NavigationBarItemInline(nested_admin.NestedStackedInline):
     inlines = (NavigationBarItemLocalizationInline,)
     sortable_field_name = "order"
     readonly_fields = ('created_by', 'modified_by',)
-
+    fieldsets = (
+                (None, {'fields': (('name', 'parent', 'order', 'is_active'),
+                                   )}),
+                ('weblink', {'fields': (('page', 'url', 'publication'),
+                                                            ),
+                                                  'classes':('collapse',),
+                                                  }),
+                )
+    
 
 @admin.register(NavigationBar)
 class NavigationBarAdmin(nested_admin.NestedModelAdmin):
