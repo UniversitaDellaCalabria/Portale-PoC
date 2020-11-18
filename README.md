@@ -14,9 +14,11 @@ The final goal is to achieve as much as possible, writing as little code as poss
 2. [Model](#model)
 3. [Template tags](#template-tags)
 4. [Page Blocks](#fourth-examplehttpwwwfourthexamplecom)
+5. [Handlers](#handlers)
 5. [Context Menu](#context-menu)
 6. [Search Engine](#search-engine)
-7. [Todo](#todo)
+7. [Urls](#urls)
+8. [Todo](#todo)
 
 
 Setup
@@ -147,6 +149,35 @@ Here the templatetags we use:
         tags_csv="eventi,ricerca"
 
 
+Handlers
+--------
+
+There are cases in which it is necessary to create specialized applications, complete 
+with templates and templatetags, detached from the pages configured within the CMS. 
+Think for example of `cms.handlers` which manages the pages for navigating 
+publications (List) and opening a publication (View).
+
+In this case the handlers have to be registered in `settings.py`, as follow:
+
+````
+CMS_PUBLICATION_VIEW_PREFIX_PATH = 'contents/news/view/'
+CMS_PUBLICATION_LIST_PREFIX_PATH = 'contents/news/list'
+CMS_PUBLICATION_URL_LIST_REGEXP = f'^(?P<context>[\/a-zA-Z0-9\.\-\_]*)({CMS_PUBLICATION_LIST_PREFIX_PATH})/?$'
+CMS_PUBLICATION_URL_VIEW_REGEXP = f'^(?P<context>[\/a-zA-Z0-9\.\-\_]*)({CMS_PUBLICATION_VIEW_PREFIX_PATH})(?P<slug>[a-z0-9\-]*)'
+
+CMS_HANDLERS_PATHS = [CMS_PUBLICATION_VIEW_PREFIX_PATH,
+                      CMS_PUBLICATION_LIST_PREFIX_PATH]
+CMS_APP_REGEXP_URLPATHS = {
+    'cms.handlers.PublicationViewHandler' : CMS_PUBLICATION_URL_VIEW_REGEXP,
+    'cms.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
+}
+````
+
+The paths defined in `CMS_HANDLERS_PATHS`  make up the list of 
+reserved words, to be considered when saving (model.save) of `cms_context.models.WebPath`. 
+They then compose a list of reserved words that cannot be used 
+as path value in `cms_context.models.WebPath`.
+
 Page Blocks
 -------------
 
@@ -157,7 +188,73 @@ It can take a long Text as argument, a json objects or whatever, it dependes by 
 Examples:
 
 - A pure HTML renderer
-- A complex element that take a json object in its object constructor
+- A Specialized Block element that take a json object in its object constructor
+
+These are some HTML block.
+As we can see the HTML blocks in uniCMS has the full support of Django templatetags and template context.
+
+
+*Load Image slider (Carousel) configured for the Page*
+````
+{% load unicms_carousels %}
+{% load_carousel section='slider' template="unical_portale_hero.html" %}
+
+<script>
+$(document).ready(function() {
+  $("#my-slider").owlCarousel({
+      navigation : true, // Show next and prev buttons
+      loop: true,
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      autoplay: true,
+      items : 1,
+      itemsDesktop : false,
+      itemsDesktopSmall : false,
+      itemsTablet: false,
+      itemsMobile : false,
+      dots: false
+  });
+});
+</script>
+````
+
+*Load Publication preview in a Page*
+it widely use the load_publications_preview templatetag, this 
+template tags loads all the pubblication related to the WebPath (CMS Context) 
+of the Page.
+
+````
+{% load unicms_blocks %}
+
+            <div class="row negative-mt-5 mb-3" >
+                <div class="col-12 col-md-3">
+                    <div class="section-title-label px-3 py-1">
+                        <h3>Unical <span class="super-bold">world</span></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-9">
+                    {% load_publications_preview template="publications_preview_v3.html" %}
+                </div>
+                <div class="col-12 col-lg-3">
+                    {% include "unical_portale_agenda.html" %}
+                </div>
+            </div>
+````
+
+*Youtube iframes*
+````
+<div class="row">
+<div class="col-12 col-md-6">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/ArpMSujC8mM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+ <div class="col-12 col-md-6">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/xrjjJGqZpcU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+ </div>
+````
 
 
 Context Menu
@@ -180,14 +277,7 @@ will be handled by uniCMS. uniCMS can match two kind of resources:
 2. Applications, an example would be Pubblication List and Views resources
 
 for these latter uniCMS uses some reserved words, as prefix, to deal with specialized url routings.
-in the settings file we would configure these, as follows:
-
-````
-CMS_APP_REGEXP_URLPATHS = {
-    'app_to_be_used_to manage_the_contents': 'regexp_to_be_applied_to_the_urlpath_requested'
-
-}
-````
+in the settings file we would configure these. See [Handlers](#handlers) for example.
 
 See `cms.settings` as example.
 
