@@ -12,32 +12,22 @@
 
 
 {% block container %}
-<div class="it-hero-wrapper it-dark it-overlay publication-hero">
-  <!-- - img-->
-  <div class="img-responsive-wrapper">
-    <div class="img-responsive">
-        <div class="img-wrapper"><img src="{% static 'images/ponte-bucci-1.jpg' %}" title="img title" alt="imagealt"></div>
-    </div>
-  </div>
-  <!-- - texts-->
-  <div class="container">
-    <div class="row">
-        <div class="col-12">
-          <div class="it-hero-text-wrapper bg-dark">
-              <span class="it-category">
-                {% trans "Tutte" %}
-              </span>
-              <h1 class="no_toc">{% trans "Le Notizie" %}</h1>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
 
 {% breadcrumbs leaf=handler %}
 
 <div class="container">
+    <br>
+    <div class="col-12 mb-4">
+        <div class="pt-2 pb-3 pl-3 background-yellow">
+            <h2 class="m-0 p-0">
+                <span style="font-weight: 500">unical</span>
+                <span class="super-bold">world</span>
+            </h2>
+        </div>
+    </div>
+
     <div class="col-12 py-2 bd-content">
+        
         {% block centered_container %}
         <div class="row">
             <div class="col-12 col-md-8">
@@ -64,28 +54,21 @@ Vue.component('list-panel', {
     </div>
     <div class="col">
     </div>
-    <div class="col mb-4">
-
-  </div>
 
   <div class="row">
-<nav class="pagination-wrapper" aria-label="Esempio di navigazione con link testuali">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.previous_url]] )" :disabled="!data.previous_url"><span class="sr-only">{% trans "Page" %} </span>{% trans "Previous" %}</a>
-    </li>
-    <li class="page-item"><span class="page-link">...</span></li>
-    <li class="page-item active">
-      <a class="page-link" href="#" style="color:#050b12; border-color: #050b12;" aria-current="page">
-        <span class="d-inline-block d-sm-none">{% trans "Page" %} </span> [[ data.page_number ]] / [[ data.total_pages ]]
-      </a>
-    </li>
-    <li class="page-item"><span class="page-link">...</span></li>
-    <li class="page-item">
-      <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.next_url ]] )" :disabled="!data.next_url""><span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %}</a>
-    </li>
-  </ul>
-</nav>
+    <nav class="pagination-wrapper" aria-label="Esempio di navigazione con link testuali">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.previous_url]] )" v-if="data.previous_url"><span class="sr-only">{% trans "Page" %} </span>{% trans "Previous" %}</a>
+        </li>
+        <li class="page-item">
+          <span class="page-link" style="color:#050b12;">[[ data.page_number ]] / <b>[[ data.total_pages ]]</b></span>
+        </li>
+        <li class="page-item">
+          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.next_url ]] )"  v-if="data.next_url"><span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %}</a>
+        </li>
+      </ul>
+    </nav>
 
   </div>
 
@@ -100,7 +83,9 @@ var news = new Vue({
     <div v-if="newsLoaded == false">
       {% include "loading-jumbo.html" %}
     <div v-else>
+<!--
         <h1 class="mb-4" id="news-head">{% trans "All the News" %}</h1>
+-->
 
         <list-panel v-bind:data="items"></list-panel>
 
@@ -180,7 +165,7 @@ page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else
       },
    scrollToTop () {
         // faulty on mobile ...
-        window.scrollTo({top:this.$el.offsetHeight, left:0, behavior: 'smooth'});
+        window.scrollTo({top:100, left:0, behavior: 'smooth'});
         }
     }
 })
