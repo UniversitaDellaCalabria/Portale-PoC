@@ -14,10 +14,10 @@
     <li class="nav-item
                {% if forloop.first %}active{% endif %}
                {% if item.have_childs %}dropdown{% endif %}
-               {% if item.have_childs > 9 %}megamenu{% endif %}
-               {% if not forloop.counter0 %}pl-lg-2{% endif %}">
+               {% if item.have_childs > 9 %}megamenu{% endif %}">
         <a class="nav-link
-                 {% if item.have_childs %}dropdown_toggle{% endif %}"
+                 {% if item.have_childs %}dropdown_toggle{% endif %}
+                 {% if not forloop.counter0 %}pl-lg-2{% endif %}"
                  href={% if subitem.link %}"{{ subitem.get_link}}"{% else %}"#"{% endif %}
                  {% if item.have_childs %} data-toggle="dropdown" aria-expanded="false"{% endif %}>
             <span>{{ item.name }}</span>
