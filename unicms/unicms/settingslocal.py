@@ -63,6 +63,8 @@ DATABASES = {
     }
 }
 
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 100 * 100
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
