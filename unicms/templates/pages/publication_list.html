@@ -89,9 +89,6 @@ var news = new Vue({
     <div v-if="newsLoaded == false">
       {% include "loading-jumbo.html" %}
     <div v-else>
-<!--
-        <h1 class="mb-4" id="news-head">{% trans "All the News" %}</h1>
--->
 
         <list-panel v-bind:data="items"></list-panel>
 
@@ -110,6 +107,7 @@ var news = new Vue({
                                 </figure>
                             </div>
                         </div>
+                        
                         <div class="card-body">
                             <div class="etichetta mb-0">
                                 <span v-for="(cat, index) in item.categories">
@@ -127,6 +125,7 @@ var news = new Vue({
                             </h4>
                             <p>[[ item.subheading | truncate(128) ]]</p>
                         </div>
+                        
                     </div>
                 </div>
             <!--end card-->
@@ -154,7 +153,6 @@ page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else
 &lang={{ request.LANGUAGE_CODE }}`
 
     axios
-      // .get('https://api.npms.io/v2/search?q=vue')
       .get('{% url "unicms:api-news-by-contexts" webpath_id=webpath.pk %}'+get_args)
       .then(response => (this.items = response.data))
       .then(response => (this.newsLoaded = true))
