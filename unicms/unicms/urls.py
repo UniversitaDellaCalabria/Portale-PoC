@@ -46,9 +46,11 @@ urlpatterns += re_path('^openapi$',
 urlpatterns += re_path('^openapi.json$',
                        get_schema_view(renderer_classes = [JSONOpenAPIRenderer],
                                     **settings.OAS3_CONFIG),
-                    name='openapi-schema-json'),
+                       name='openapi-schema-json'),
 
 
 if 'cms' in settings.INSTALLED_APPS:
     urlpatterns += path('tinymce/', include('tinymce.urls')),
-    urlpatterns += path('', include('cms.urls')),
+    urlpatterns += path('', 
+                        include(('cms.urls', 'cms'), namespace="unicms"), 
+                        name="unicms"),
