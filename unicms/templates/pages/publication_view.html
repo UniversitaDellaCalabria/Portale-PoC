@@ -41,7 +41,38 @@
                 {% endfor %}
                 </p>
             </div>
-            <div class="col-12 col-md-3">
+
+            <div class="col-12 col-lg-8">
+
+                <p class="text-muted">
+                    <svg class="icon icon-xs">
+                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>
+                    </svg> {% trans "Published" %} {{ publication_context.publication.created }}
+                </p>
+                <h1 class="mb-4">{{ publication_context.publication.title }}</h1>
+                <p class="bigger-font">{{ publication_context.publication.subheading }}</p>
+                {% if publication_context.publication.presentation_image %}
+                <div class="img-wrapper pb-3">
+                    <img src="{{ publication_context.publication.presentation_image }}"
+                         title="img title"
+                         alt="imagealt"
+                         style="width: 100%">
+                </div>
+                {% endif %}
+                <div>
+                    {{ publication_context.publication.content|safe }}
+                </div>
+                {% if publication_context.publication.tags.all %}
+                    <span class="text-muted">{% trans "tags" %}</span>
+                    <p style="font-size: 1.2rem">
+                    {% for tag in publication_context.publication.tags.all %}
+                        <span class="badge badge-grey-unical square-corners">{{ tag.name }}</span>
+                    {% endfor %}
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="col-12 col-lg-3 offset-lg-1">
                 {% if publication_context.publication.related_publications %}
                 <h5 class="card-title">{% trans "It might interest you" %}</h5>
                 <ul class="pl-0" style="list-style: none">
@@ -83,34 +114,6 @@
                 </div>
                 {% endif %}
 
-            </div>
-
-            <div class="col-12 col-md-8 offset-md-1">
-
-                <p class="text-muted">
-                    <svg class="icon icon-xs">
-                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>
-                    </svg> {% trans "Published" %} {{ publication_context.publication.created }}
-                </p>
-                <h1 class="mb-4">{{ publication_context.publication.title }}</h1>
-                <p class="bigger-font">{{ publication_context.publication.subheading }}</p>
-                <div class="img-wrapper pb-3">
-                    <img src="{{ publication_context.publication.image_url }}"
-                         title="img title"
-                         alt="imagealt"
-                         style="max-width: 100%">
-                </div>
-                <div>
-                    {{ publication_context.publication.content|safe }}
-                </div>
-                {% if publication_context.publication.tags.all %}
-                    <span class="text-muted">{% trans "tags" %}</span>
-                    <p style="font-size: 1.2rem">
-                    {% for tag in publication_context.publication.tags.all %}
-                        <span class="badge badge-grey-unical square-corners">{{ tag.name }}</span>
-                    {% endfor %}
-                    </p>
-                {% endif %}
             </div>
 
         </div>
