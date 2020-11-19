@@ -65,9 +65,9 @@ Vue.component('list-panel', {
     <div class="col">
     </div>
     <div class="col mb-4">
-          
+
   </div>
-  
+
   <div class="row">
 <nav class="pagination-wrapper" aria-label="Esempio di navigazione con link testuali">
   <ul class="pagination">
@@ -86,9 +86,9 @@ Vue.component('list-panel', {
     </li>
   </ul>
 </nav>
-  
+
   </div>
-  
+
 </div>
   `
 })
@@ -122,12 +122,13 @@ var news = new Vue({
                         <div class="card-body">
                             <div class="etichetta mb-0">
                                 <span v-for="(cat, index) in item.categories">
-                                <a v-bind:href="'?category_name=' + cat" style="color: #176fc1;">
-                                     <span v-if="index>0">&nbsp;&middot&nbsp;</span> [[ cat ]]
-                                </a>
+                                    <span v-if="index>0">&nbsp;&middot</span>
+                                    <a v-bind:href="'?category_name=' + cat" style="color: #176fc1;">
+                                        [[ cat ]]
+                                    </a>
                                 </span>
                             </div>
-                            <span class="small text-muted mb-2">[[ item.published|formatDate ]]</span> 
+                            <span class="small text-muted mb-2">[[ item.published|formatDate ]]</span>
                             <h4 class="card-title mt-3">
                                 <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ item.path ]]">
                                     <p>[[ item.title ]]</p>
