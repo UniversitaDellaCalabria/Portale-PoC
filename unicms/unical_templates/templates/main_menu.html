@@ -15,6 +15,22 @@
         border-bottom: none;
     }
     
+    .menu-wrapper > ul > li.nav-item.dropdown.megamenu.show > div
+    {       
+        border-style: solid;
+        border-width: thin;
+        border: 0.5px 0.5px 0.5px 0.5px solid #000;
+        border-bottom: none;
+    }
+
+    .menu-wrapper > ul > li.nav-item.dropdown.show > div
+    {       
+        border-style: solid;
+        border-width: thin;
+        border: 0.5px 0.5px 0.5px 0.5px solid #000;
+        border-bottom: none;
+    }
+
 </style>
 
 {% for item in menu %}
@@ -37,9 +53,11 @@
 
             {% if item.have_childs > 9 %}
             <!-- head-->
+<!--
             <div class="col-12 pb-2">
               <h3 style="margin: .5em 18px;" class="it-heading-megacolumn no_toc">{{ item.name }}</h3>
             </div>
+-->
             {% endif %}
 
             <div class="row p-3">
