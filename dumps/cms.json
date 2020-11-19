@@ -594,7 +594,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T14:06:46.447Z",
-    "modified": "2020-11-19T09:51:34.067Z",
+    "modified": "2020-11-19T10:10:56.028Z",
     "is_active": true,
     "name": "Unical Portale - Menu principale",
     "created_by": null,
@@ -1844,15 +1844,6 @@
     "item": 4,
     "language": "en",
     "name": "Research"
-  }
-},
-{
-  "model": "cms_menus.navigationbaritemlocalization",
-  "pk": 2,
-  "fields": {
-    "item": 1,
-    "language": "en",
-    "name": "Campus"
   }
 },
 {
