@@ -22,8 +22,8 @@ def load_menu(context, section, template):
                                         menu__is_active=True,
                                         page__webpath=context['webpath']).first()
     if not page_menu: return ''
-    language = request.LANGUAGE_CODE
-    menu_items = page_menu.menu.get_localized_items(lang=language, 
-                                                    parent__isnull=True)
+    language = getattr(request, 'LANGUAGE_CODE', '')
+    menu_items = page_menu.menu.get_items(lang=language, 
+                                          parent__isnull=True)
     data = {'menu': menu_items}
     return handle_faulty_templates(template, data, name='load_menu')

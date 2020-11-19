@@ -32,7 +32,7 @@ class Carousel(ActivableModel, TimeStampedModel):
         verbose_name_plural = _("Carousels")
 
 
-    def get_localized_items(self, lang=settings.LANGUAGE):
+    def get_items(self, lang=settings.LANGUAGE):
         items = []
         for i in self.carouselitem_set.filter(carousel=self,
                                               is_active=True,).\

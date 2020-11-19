@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -7,6 +9,7 @@ from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   SectionAbstractModel,
                                   SortableModel,
                                   TimeStampedModel)
+
 
 class NavigationBar(TimeStampedModel, ActivableModel):
     name = models.CharField(max_length=33, blank=False, null=False)
@@ -23,7 +26,7 @@ class NavigationBar(TimeStampedModel, ActivableModel):
         verbose_name_plural = _("Context Navigation Menus")
 
 
-    def get_localized_items(self, lang=settings.LANGUAGE, **kwargs):
+    def get_items(self, lang=settings.LANGUAGE, **kwargs):
         items = []
         for i in NavigationBarItem.objects.filter(menu=self,
                                                   is_active=True,
@@ -32,6 +35,31 @@ class NavigationBar(TimeStampedModel, ActivableModel):
             items.append(i.localized(lang=lang))
         return items
     
+    def serialize(self, lang=settings.LANGUAGE):
+        data = []
+        for child in NavigationBarItem.objects.filter(is_active=True,
+                                                      menu = self,
+                                                      parent = None):
+            data.append(child.serialize(deep=True, lang=lang))
+        return dict(name=self.name, is_active=self.is_active, childs=data)
+
+
+    def import_items(self, item_list) -> bool:
+        """
+        create menu items importing a dictionary
+        """
+        items = deepcopy(item_list)
+        for item in item_list:
+            for i in 'link', 'parent_id', 'webpath_id', 'menu_id':
+                item.pop(i, None)
+            item['menu'] = self
+            childs = item.pop('childs', None)
+            obj = NavigationBarItem.objects.create(**item)
+            if childs:
+                obj.import_childs(childs)
+        return True                                                  
+
+
     def __str__(self):
         return '{}'.format(self.name)
 
@@ -45,7 +73,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                              on_delete=models.CASCADE,
                              related_name="related_menu")
     name = models.CharField(max_length=60, blank=False, null=False)
-    page = models.ForeignKey('cms.Page',
+    webpath = models.ForeignKey(WebPath,
                              null=True, blank=True,
                              on_delete=models.CASCADE,
                              related_name="linked_page")
@@ -70,10 +98,13 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
     class Meta:
         verbose_name_plural = _("Context Navigation Menu Items")
         ordering = ('order',)
-
+    
+    
     @property
     def link(self):
-        return self.url or self.page or self.publication or ''
+        return self.url or \
+               getattr(self.webpath, 'full_path', None) or \
+               self.publication or ''
 
     def localized(self, lang=settings.LANGUAGE, **kwargs):
         i18n = NavigationBarItemLocalization.objects.filter(item=self,
@@ -85,6 +116,25 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
             self.language = None
         return self
 
+    def serialize(self, lang=settings.LANGUAGE, deep=False):
+        data = dict(
+                    menu_id = self.menu.pk,
+                    parent_id = getattr(self.parent, 'pk', None), 
+                    name = self.name,
+                    url = self.url,
+                    publication_id = self.publication,
+                    webpath_id = self.webpath,
+                    link = self.link,
+                    is_active = self.is_active,
+                    order = self.order
+        )
+        if deep:
+            data['childs'] = []
+            for child in self.get_childs(lang=lang):
+                data['childs'].append(child.serialize())
+        return data
+
+
     def get_childs(self, lang=settings.LANGUAGE):
         items = NavigationBarItem.objects.filter(is_active=True,
                                                  parent=self,
@@ -94,7 +144,25 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
             for item in items:
                 item.localized(lang)
         return items
-    
+
+
+    def import_childs(self, child_list) -> bool:
+        """
+        create menu items importing a dictionary
+        """
+        items = deepcopy(child_list)
+        for item in child_list:
+            for i in 'link', 'parent_id', 'webpath_id', 'menu_id':
+                item.pop(i, None)
+            item['menu'] = self.menu
+            item['parent'] = self
+            childs = item.pop('childs', None)
+            obj = NavigationBarItem.objects.create(**item)
+            if childs:
+                obj.import_childs(childs)
+        return True  
+
+
     def have_childs(self):
         return NavigationBarItem.objects.filter(is_active=True,
                                                  parent=self,

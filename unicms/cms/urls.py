@@ -3,6 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import re_path, path, include
 
+from cms_menus.api_views import ApiMenu
 from . import api_views
 from . views import *
 
@@ -23,7 +24,9 @@ urlpatterns += path(f'api/news/by-context/<int:webpath_id>',
 urlpatterns += path(f'api/news/by-context/<int:webpath_id>/<str:catogory_name>',
                     api_views.ApiPublicationsByContext.as_view(),
                     name='api-news-by-contexts-category'),
-
+urlpatterns += path(f'api/menu/<int:menu_id>',
+                    ApiMenu.as_view(),
+                    name='api-menu'),
 
 # too wide for us!
 # urlpatterns += path(f'api/news/list',
