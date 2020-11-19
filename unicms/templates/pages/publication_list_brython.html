@@ -89,7 +89,7 @@ from browser.template import Template
 
 # browser.console.log(browser.__dict__)
 get_args = "?page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else%}1{% endif %}&lang={{ request.LANGUAGE_CODE }}"
-url = '{% url "api-news-by-contexts" webpath_id=webpath.pk %}' + get_args
+url = '{% url "unicms:api-news-by-contexts" webpath_id=webpath.pk %}' + get_args
 
 
 def on_complete(f):
