@@ -7,7 +7,7 @@
             min-width: 20rem !important;
             padding: 16px 2px !important;
         }
-
+    
 </style>
 
 {% for item in menu %}
@@ -35,37 +35,38 @@
             </div>
             {% endif %}
 
-            <div class="row">
-                <div class="col-md-auto {% if item.have_childs > 7 %} col-lg-4 {% endif %}">
+            <div class="row p-3">
+                <div class="col-md-auto ">
                     <div class="link-list-wrapper">
                         <ul class="link-list">
-                        {% for subitem in item.get_childs %}
+            {% for subitem in item.get_childs %}
 
-                        {% if not subitem.link %}
-                            {% if not forloop.first %}
-                                    </ul>
-                                </div> <!-- link-list-wrapper -->
-                            </div> <!-- link-list -->
+            {% if not subitem.link %}
+            
+                {% if not forloop.first %}
+                        </ul> <!-- link-list -->
+                        <br>
+                    </div> <!-- link-list-wrapper -->
+                </div> 
 
-                            <div class="col-md-auto {% if item.have_childs > 7 %} col-lg-3 {% endif %}">
-                            <div class="link-list-wrapper">
-                                <ul class="link-list">
-                        {% endif %}
-                            <li>
-                                <h3 class="no_toc" id="heading">{{ subitem.name }}</h3>
-                            </li>
+                <div class="col-md-auto ">
+                <div class="link-list-wrapper">
+                    <ul class="link-list">
+                {% endif %}
+                    <li>
+                        <h3 class="no_toc" id="heading">{{ subitem.name }}</h3>
+                    </li>
+                {% else %}
+                    <li>
+                        <a class="list-item" href={% if subitem.link %}"{{ subitem.get_link}}"{% else %}"#"{% endif %}>
+                            <span class="text-dark">{{ subitem.name }}</span>
+                        </a>
+                    </li>
+            {% endif %}
 
-                            {% else %}
-
-                            <li>
-                                <a class="list-item" href={% if subitem.link %}"{{ subitem.get_link}}"{% else %}"#"{% endif %}>
-                                    <span class="text-dark">{{ subitem.name }}</span>
-                                </a>
-                            </li>
-                            {% endif %}
-
-                        {% endfor %}
+        {% endfor %}
                         </ul>
+                        
                     </div>
         </div>
         {% endif %}
