@@ -12,94 +12,59 @@
 
 
 {% block container %}
-<div class="it-hero-wrapper it-dark it-overlay publication-hero">
-  <!-- - img-->
-  <div class="img-responsive-wrapper">
-    <div class="img-responsive">
-        <div class="img-wrapper"><img src="{{ publication_context.publication.image_url }}" title="img title" alt="imagealt"></div>
-    </div>
-  </div>
-  <!-- - texts-->
-  <div class="container">
-    <div class="row">
-        <div class="col-12">
-          <div class="it-hero-text-wrapper bg-dark">
-              <span class="it-category">
-                {% for cat in publication_context.publication.categories %}{% if forloop.counter > 1 %} &middot {% endif %}{{ cat }}{% endfor %}
-              </span>
-              <h1 class="no_toc">{{ publication_context.publication.title }}</h1>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
 
+{% breadcrumbs leaf=handler %}
 
 <div class="container">
-    <div class="col-12 py-5 bd-content">       
+    <div class="col-12 py-5 bd-content">
         {% block centered_container %}
 <!--
         <p><img src="{{ publication_context.publication.image_url }}" width="100%"></p>
 -->
         <div class="row">
-            <div class="col-12 col-md-8">
-                {% breadcrumbs leaf=handler %}
-                
-                <p class="text-muted">
-                    <svg class="icon icon-xs">
-                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>
-                    </svg> {% trans "Published" %} {{ publication_context.publication.created }}
-                </p>
-                <div style="text-align: justify;">
-                    <p><i>{{ publication_context.publication.subheading }}</i></p>
+
+            <div class="col-12 mb-4">
+                <div class="pt-2 pb-3 pl-3 background-yellow">
+                    <h2 class="m-0 p-0">
+                        <span style="font-weight: 500">unical</span>
+                        <span class="super-bold">world</span>
+                    </h2>
                 </div>
-                <br>
-                <div style="text-align: justify;">
-                    {{ publication_context.publication.content|safe }}
-                </div>
-                <span class="text-muted">{% trans "tags" %}</span>
-                <p style="font-size: 1.2rem">
-                {% for tag in publication_context.publication.tags.all %}
-                    <span class="badge badge-grey-unical square-corners">{{ tag.name }}</span>
+            </div>
+
+            <div class="col-12 mb-5">
+                <p style="font-size: 2rem">
+                {% for category in publication_context.publication.categories %}
+                    <span class="badge badge-grey-unical square-corners">
+                        <a href="#">{{ category }}</a>
+                    </span>
                 {% endfor %}
                 </p>
             </div>
-            <div class="col-12 col-md-3 offset-md-1">
+            <div class="col-12 col-md-3">
                 {% if publication_context.publication.related_publications %}
-                <div class="card-wrapper auto-height mb-3">
-                    <div class="card card-border no-after">
-                        <div class="card-body">
-                            <h5 class="card-title">{% trans "It might interest you" %}</h5>
-                            <ul class="pl-0" style="list-style: none">
-                            {% for related_pub in publication_context.publication.related_publications %}
-                                <li class="mb-3">
-                                    <a href="#">{{ related_pub.related }}</a>
-                                    <br>
-                                    <svg class="icon icon-xs">
-                                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>
-                                    </svg> <small class="text-muted">{{ related_pub.related.created|date:"d M Y" }}</small>
-                                </li>
-                            {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <h5 class="card-title">{% trans "It might interest you" %}</h5>
+                <ul class="pl-0" style="list-style: none">
+                {% for related_pub in publication_context.publication.related_publications %}
+                    <li class="mb-3">
+                        <a href="#">{{ related_pub.related }}</a>
+                        <br>
+                        <svg class="icon icon-xs">
+                            <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>
+                        </svg> <small class="text-muted">{{ related_pub.related.created|date:"d M Y" }}</small>
+                    </li>
+                {% endfor %}
+                </ul>
                 {% endif %}
 
-                <div class="card-wrapper auto-height mb-3">
-                    <div class="card card-border no-after">
-                        <div class="card-body">
-                            <h5 class="card-title">{% trans "Published in" %}</h5>
-                            <ul class="pl-0" style="list-style: none">
-                            {% for pub_context in publication_context.publication.related_contexts %}
-                                <li class="mb-3">
-                                    <a href="{{ pub_context.webpath.get_full_path }}">{{ pub_context.webpath.name }}</a>
-                                </li>
-                            {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <h5 class="card-title">{% trans "Published in" %}</h5>
+                <ul class="pl-0" style="list-style: none">
+                {% for pub_context in publication_context.publication.related_contexts %}
+                    <li class="mb-3">
+                        <a href="{{ pub_context.webpath.get_full_path }}">{{ pub_context.webpath.name }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
 
                 {% if publication_context.publication.related_links %}
                 <div class="card-wrapper auto-height mb-3">
@@ -119,6 +84,35 @@
                 {% endif %}
 
             </div>
+
+            <div class="col-12 col-md-8 offset-md-1">
+
+                <p class="text-muted">
+                    <svg class="icon icon-xs">
+                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>
+                    </svg> {% trans "Published" %} {{ publication_context.publication.created }}
+                </p>
+                <h1 class="mb-4">{{ publication_context.publication.title }}</h1>
+                <p class="bigger-font">{{ publication_context.publication.subheading }}</p>
+                <div class="img-wrapper pb-3">
+                    <img src="{{ publication_context.publication.image_url }}"
+                         title="img title"
+                         alt="imagealt"
+                         style="max-width: 100%">
+                </div>
+                <div>
+                    {{ publication_context.publication.content|safe }}
+                </div>
+                {% if publication_context.publication.tags.all %}
+                    <span class="text-muted">{% trans "tags" %}</span>
+                    <p style="font-size: 1.2rem">
+                    {% for tag in publication_context.publication.tags.all %}
+                        <span class="badge badge-grey-unical square-corners">{{ tag.name }}</span>
+                    {% endfor %}
+                    </p>
+                {% endif %}
+            </div>
+
         </div>
 
         {% endblock %}
