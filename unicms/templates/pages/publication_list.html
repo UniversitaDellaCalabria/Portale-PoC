@@ -10,6 +10,7 @@
 {% load unicms_templates %}
 {% load unicms_blocks %}
 
+
 {% block container %}
 <div class="it-hero-wrapper it-dark it-overlay publication-hero">
   <!-- - img-->
@@ -33,13 +34,14 @@
   </div>
 </div>
 
+{% breadcrumbs leaf=handler %}
 
 <div class="container">
-    <div class="col-12 py-2 bd-content">       
+    <div class="col-12 py-2 bd-content">
         {% block centered_container %}
         <div class="row">
             <div class="col-12 col-md-8">
-                {% breadcrumbs leaf=handler %}
+
         </div>
         {% endblock centered_container %}
     </div>
@@ -58,34 +60,35 @@ Vue.component('list-panel', {
   <div class="container">
   <div class="row">
     <div class="col">
-        <span>{% trans "Page" %}: <b>[[ data.page_number ]] / [[ data.total_pages ]]</span><br>
-        <span class="">{% trans "Total News" %}: <b>[[ data.total ]]</b></span>
+        <span class="page-link" style="color:#050b12;">{% trans "Total News" %}: <b>[[ data.total ]]</b></span>
     </div>
     <div class="col">
     </div>
-    <div class="col mb-4">                
-          <div class="row">
-                
-            <div class="col">
-                <button class="btn btn-primary btn-icon" @click="news.CallURL( [[ data.previous_url]] )" :disabled="!data.previous_url">
-                <svg class="icon icon-md icon-light">
-                <use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-left-circle"></use>
-                </svg>
-                <span>{% trans "Previous" %}</span>
-                </button>
-            </div>
-            
-            <div class="col">
-                <button class="btn btn-primary btn-icon" @click="news.CallURL( [[ data.next_url ]] )" :disabled="!data.next_url">
-                <svg class="icon icon-light">
-                <use xlink:href="{% static '/svg/sprite.svg' %}#it-arrow-right-circle"></use>
-                </svg>
-                <span>{% trans "Next" %}</span>
-                </button>
-                
-            </div>
-    </div>
+    <div class="col mb-4">
+          
   </div>
+  
+  <div class="row">
+<nav class="pagination-wrapper" aria-label="Esempio di navigazione con link testuali">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.previous_url]] )" :disabled="!data.previous_url"><span class="sr-only">{% trans "Page" %} </span>{% trans "Previous" %}</a>
+    </li>
+    <li class="page-item"><span class="page-link">...</span></li>
+    <li class="page-item active">
+      <a class="page-link" href="#" style="color:#050b12; border-color: #050b12;" aria-current="page">
+        <span class="d-inline-block d-sm-none">{% trans "Page" %} </span> [[ data.page_number ]] / [[ data.total_pages ]]
+      </a>
+    </li>
+    <li class="page-item"><span class="page-link">...</span></li>
+    <li class="page-item">
+      <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.next_url ]] )" :disabled="!data.next_url""><span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %}</a>
+    </li>
+  </ul>
+</nav>
+  
+  </div>
+  
 </div>
   `
 })
@@ -97,12 +100,12 @@ var news = new Vue({
     <div v-if="newsLoaded == false">
       {% include "loading-jumbo.html" %}
     <div v-else>
-        <h2 id="news-head">{% trans "All the News" %}</span></h2>
+        <h1 class="mb-4" id="news-head">{% trans "All the News" %}</h1>
 
         <list-panel v-bind:data="items"></list-panel>
-        
+
         <div class="row" v-if="items">
-         <div class="col-12 col-lg-4" v-for="item in items.results" :key="item.id">
+         <div class="col-12 col-lg-4 " v-for="item in items.results" :key="item.id">
             <!--start card-->
                 <div class="card-wrapper card-space">
                     <div class="card card-bg no-after">
@@ -116,7 +119,7 @@ var news = new Vue({
                                 </figure>
                             </div>
                         </div>
-                        <div class="card-body">            
+                        <div class="card-body">
                             <div class="etichetta mb-0">
                                 <span v-for="cat in item.categories">
                                 <a v-bind:href="'?category_name=' + cat" style="color: #176fc1;">
@@ -137,9 +140,9 @@ var news = new Vue({
             <!--end card-->
          </div>
         </div>
-        
+
         <list-panel v-bind:data="items"></list-panel>
-    
+
     </div>
     </div>
     `,
@@ -149,15 +152,15 @@ var news = new Vue({
       newsLoaded: false,
     }
   },
-  
+
   mounted () {
     },
-  
+
   beforeMount () {
     let get_args = `?{% if request.GET.category_name %}category_name={{ request.GET.category_name }}&{% endif %}
 page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else%}1{% endif %}
 &lang={{ request.LANGUAGE_CODE }}`
-    
+
     axios
       // .get('https://api.npms.io/v2/search?q=vue')
       .get('{% url "api-news-by-contexts" webpath_id=webpath.pk %}'+get_args)
@@ -167,7 +170,7 @@ page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else
   methods: {
     CallURL ( url ) {
         this.newsLoaded = false;
-        
+
         axios
           .get( url )
           .then(response => (this.items = response.data))

@@ -53,7 +53,7 @@ bootstrap-italia-base.html
 
 <!-- Logo in Header -->
 {% block header_center_logo %}
-<div class="d-none d-lg-flex col-lg-12">
+<div class="d-none d-lg-flex col-lg-12 px-0">
     <image src="{% static 'images/logo-unical-white.svg' %}" style="width: 100%;"/>
 </div>
 {% endblock header_center_logo %}
@@ -66,6 +66,16 @@ bootstrap-italia-base.html
 {% block header_slim_mobile_org_name %}
 <image src="{% static 'images/logo-unical-white.svg' %}" style="max-width: 100%;"/>
 {% endblock header_slim_mobile_org_name %}
+
+{% block footer_logo %}
+<div class="col-12 col-md-4 px-0">
+    <image src="{% static 'images/logo-unical-white.svg' %}" style="max-width: 100%"/>
+</div>
+
+{% endblock footer_logo %}
+
+{% block footer_org_text %}
+{% endblock footer_org_text %}
 
 {% block header_slim_right_zone %}
 {% endblock header_slim_right_zone %}
@@ -127,7 +137,7 @@ col-10 offset-2 col-lg-12 offset-lg-0
                                     {% language_menu as language_urls %}
                                     {% for lang,url in language_urls.items %}
                                     <li><a class="list-item" href="{{ url }}"><span>{{ lang }}</span></a></li>
-                                    {% endfor %}                                   
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>

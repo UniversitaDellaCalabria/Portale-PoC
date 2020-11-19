@@ -12,6 +12,7 @@ $light_grey_unical: #9d9d9c;
 $white: #ffffff;
 $cyan: #176fc1;
 $grey_presta: #d3d2cf;
+$light_grey_presta: #e3e9ec;
 
 @font-face {
   font-family: TitilliumWeb-Black;
@@ -20,14 +21,23 @@ $grey_presta: #d3d2cf;
 
 a {
     text-decoration: none;
+    color: $dark_grey_unical;
 }
 
 .super-bold {
     font-family: TitilliumWeb-Black;
 }
 
+.background-yellow {
+    background: #ffed00;
+}
+
 .icon-light {
     fill: #fff !important;
+}
+
+.bigger-font {
+    font-size: 1.5rem;
 }
 
 .negative-mt-5 {
@@ -136,6 +146,42 @@ input.top-input {
     max-width: 100%;
 }
 
+.badge-grey-unical {
+    background: $light_grey_presta;
+    color: $dark_grey_unical;
+    font-weight: 500;
+}
+
+.square-corners {
+    border-radius: 0;
+}
+
+.publication-hero {
+    min-height: 300px;
+}
+
+.breadcrumb-container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 2px solid $bordeaux_unical;
+    border-bottom: 2px solid $bordeaux_unical;
+}
+.breadcrumb-container .breadcrumb {
+    margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+    .it-header-center-wrapper .it-header-center-content-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+@media (min-width: 992px) {
+    .it-header-wrapper .it-nav-wrapper .it-header-navbar-wrapper nav {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 
 
 /**
