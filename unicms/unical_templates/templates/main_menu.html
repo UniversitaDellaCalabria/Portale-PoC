@@ -2,8 +2,12 @@
 {% load static %}
 
 {% for item in menu %}
-    <li class="nav-item {% if forloop.first %}active {% endif %}{% if item.get_childs %}dropdown megamenu{% endif %}">
-        <a class="nav-link {% if item.get_childs %}dropdown_toggle{% endif %}" href={% if subitem.link %}"{{ subitem.get_link}}"{% else %}"#"{% endif %} {% if item.get_childs %}data-toggle="dropdown" aria-expanded="false"{% endif %}>
+    <li class="nav-item 
+               {% if item.have_childs %}dropdown megamenu{% endif %}">
+        <a class="nav-link 
+                 {% if item.have_childs %}dropdown_toggle{% endif %}" 
+                 href={% if subitem.link %}"{{ subitem.get_link}}"{% else %}"#"{% endif %} 
+                 {% if item.have_childs %} data-toggle="dropdown" aria-expanded="false"{% endif %}>
             <span>{{ item.name }}</span>
             {% if item.get_childs %}<svg class="icon icon-xs">
                 <use xlink:href="{% static 'svg/sprite.svg' %}#it-expand"></use>

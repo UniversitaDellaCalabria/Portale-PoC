@@ -44,7 +44,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                              null=True, blank=True,
                              on_delete=models.CASCADE,
                              related_name="related_menu")
-    name = models.CharField(max_length=33, blank=False, null=False)
+    name = models.CharField(max_length=60, blank=False, null=False)
     page = models.ForeignKey('cms.Page',
                              null=True, blank=True,
                              on_delete=models.CASCADE,
@@ -92,16 +92,23 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                           order_by('order')
         if getattr(self, 'language', lang):
             for item in items:
-                i18n = NavigationBarItemLocalization.objects.filter(item=self,
-                                                                    language=lang).first()
-                if i18n:
-                    item.name = i18n
+                item.localized(lang)
         return items
-
+    
+    def have_childs(self):
+        return NavigationBarItem.objects.filter(is_active=True,
+                                                 parent=self,
+                                                 menu=self.menu).count()
+    
+    def get_siblings_count(self):
+        count = NavigationBarItem.objects.filter(parent=self.parent,
+                                                 is_active=True).count()
+        return count
 
     def __str__(self):
-        return '{} - {} {}'.format(self.menu,
-                                   self.name, self.parent or '')
+        return '{}: {} ({})'.format(self.menu,
+                                    self.name, 
+                                    getattr(self.parent, 'name', ''))
 
 
 class NavigationBarItemLocalization(models.Model):
