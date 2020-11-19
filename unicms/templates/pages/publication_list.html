@@ -50,7 +50,9 @@ Vue.component('list-panel', {
   <div class="container">
   <div class="row">
     <div class="col">
-        <span class="page-link" style="color:#050b12;">{% trans "Total News" %}: <b>[[ data.total ]]</b></span>
+        <span class="page-link" style="color:#050b12;">
+            <b>[[ data.total ]] {% trans "news" %}</b> in <b>[[ data.total_pages ]] {% trans "pages" %}</b>
+        </span>
     </div>
     <div class="col">
     </div>
@@ -59,13 +61,17 @@ Vue.component('list-panel', {
     <nav class="pagination-wrapper" aria-label="Esempio di navigazione con link testuali">
       <ul class="pagination">
         <li class="page-item">
-          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.previous_url]] )" v-if="data.previous_url"><span class="sr-only">{% trans "Page" %} </span>{% trans "Previous" %}</a>
+          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.previous_url]] )" v-if="data.previous_url">
+              <span class="sr-only"> {% trans "Page" %} </span> &lt; {% trans "Previous" %}
+          </a>
         </li>
         <li class="page-item">
           <span class="page-link" style="color:#050b12;">[[ data.page_number ]] / <b>[[ data.total_pages ]]</b></span>
         </li>
         <li class="page-item">
-          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.next_url ]] )"  v-if="data.next_url"><span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %}</a>
+          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.next_url ]] )"  v-if="data.next_url">
+              <span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %} &gt;
+          </a>
         </li>
       </ul>
     </nav>
