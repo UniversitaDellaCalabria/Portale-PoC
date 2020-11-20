@@ -66,7 +66,7 @@ class WebPath(TimeStampedModel):
     def save(self, *args, **kwargs):
         if self.parent:
             # update fullpath
-            fullpath = f'{self.parent.path}/{self.path}'.replace('//', '/')
+            fullpath = f'{self.parent.fullpath}/{self.path}'.replace('//', '/')
         else:
             fullpath = self.path
 
