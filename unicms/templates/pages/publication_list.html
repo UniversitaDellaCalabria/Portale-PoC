@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-12 py-2 bd-content">
-        
+
         {% block centered_container %}
         <div class="row">
             <div class="col-12 col-md-8">
@@ -39,7 +39,6 @@
 
 <div class="row" id="news">
 </div>
-
 
 <script>
 Vue.component('list-panel', {
@@ -92,44 +91,46 @@ var news = new Vue({
 
         <list-panel v-bind:data="items"></list-panel>
 
-        <div class="row" v-if="items">
-         <div class="col-12 col-lg-4 " v-for="item in items.results" :key="item.id">
-            <!--start card-->
-                <div class="card-wrapper card-space">
-                    <div class="card card-bg no-after">
+        <div class="container" v-if="items">
+            <div class="row">
+             <div class="col-12 col-lg-4 " v-for="item in items.results" :key="item.id">
+                <!--start card-->
+                    <div class="card-wrapper card-space">
+                        <div class="card card-bg no-after">
 
-                         <div class="img-responsive-wrapper mb-1">
-                            <div class="img-responsive img-responsive-panoramic">
-                                <figure class="img-wrapper">
-                                  <a style="" v-bind:href="item.path">
-                                    <img  v-bind:src="item.image" />
-                                  </a>
-                                </figure>
+                             <div class="img-responsive-wrapper mb-1">
+                                <div class="img-responsive img-responsive-panoramic">
+                                    <figure class="img-wrapper">
+                                      <a style="" v-bind:href="item.path">
+                                        <img  v-bind:src="item.image" />
+                                      </a>
+                                    </figure>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="card-body">
-                            <div class="etichetta mb-0">
-                                <span v-for="(cat, index) in item.categories">
-                                    <span v-if="index>0">&nbsp;&middot</span>
-                                    <a v-bind:href="'?category_name=' + cat" style="color: #176fc1;">
-                                        [[ cat ]]
+
+                            <div class="card-body">
+                                <div class="etichetta mb-0">
+                                    <span v-for="(cat, index) in item.categories">
+                                        <span v-if="index>0">&nbsp;&middot</span>
+                                        <a v-bind:href="'?category_name=' + cat" style="color: #176fc1;">
+                                            [[ cat ]]
+                                        </a>
+                                    </span>
+                                </div>
+                                <span class="small text-muted mb-2">[[ item.published|formatDate ]]</span>
+                                <h4 class="card-title mt-3">
+                                    <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ item.path ]]">
+                                        <p>[[ item.title ]]</p>
                                     </a>
-                                </span>
+                                </h4>
+                                <p>[[ item.subheading | truncate(128) ]]</p>
                             </div>
-                            <span class="small text-muted mb-2">[[ item.published|formatDate ]]</span>
-                            <h4 class="card-title mt-3">
-                                <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ item.path ]]">
-                                    <p>[[ item.title ]]</p>
-                                </a>
-                            </h4>
-                            <p>[[ item.subheading | truncate(128) ]]</p>
+
                         </div>
-                        
                     </div>
-                </div>
-            <!--end card-->
-         </div>
+                <!--end card-->
+             </div>
+            </div>
         </div>
 
         <list-panel v-bind:data="items"></list-panel>
