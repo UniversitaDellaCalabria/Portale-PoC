@@ -27,11 +27,11 @@ class NavigationBarItemInline(nested_admin.NestedStackedInline):
                                                   'classes':('collapse',),
                                                   }),
                 )
-    
+
 
 @admin.register(NavigationBar)
 class NavigationBarAdmin(nested_admin.NestedModelAdmin):
-    list_display  = ('name', 'is_active')
+    list_display  = ('name', 'is_active', 'created')
     search_fields   = ('name',)
     list_filter = ('created', 'modified')
     readonly_fields = ('created_by', 'modified_by')
