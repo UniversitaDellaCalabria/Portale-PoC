@@ -1,6 +1,7 @@
 import re
 
 from django.conf import settings
+from django.db.models import Q
 from django.http import (HttpResponse,
                          Http404,
                          HttpResponseBadRequest,
@@ -91,7 +92,7 @@ class PublicationListHandler(BaseContentHandler):
         match_dict = self.match.groupdict()
         page = Page.objects.filter(is_active=True,
                            webpath__site=self.website,
-                           webpath__fullpath=match_dict.get('webpath', '/'),).first()
+                           webpath__fullpath=match_dict.get('webpath', '/')).first()
         data = {'request': self.request,
                 'webpath': page.webpath,
                 'website': self.website,

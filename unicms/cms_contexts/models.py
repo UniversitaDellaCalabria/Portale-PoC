@@ -86,6 +86,7 @@ class WebPath(TimeStampedModel):
         return sanitize_path(url)
 
     def save(self, *args, **kwargs):
+        self.path = self.path if self.path[-1] == '/' else f'{self.path}/'
         if self.parent:
             # update fullpath
             fullpath = sanitize_path(f'{self.parent.fullpath}/{self.path}')

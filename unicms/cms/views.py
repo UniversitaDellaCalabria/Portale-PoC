@@ -27,7 +27,7 @@ def cms_dispatch(request):
     website = get_object_or_404(WebSite, domain = requested_site)
 
     path = urlparse(request.get_full_path()).path.replace(CMS_PATH_PREFIX, '')
-
+    
     _msg_head = 'APP REGEXP URL HANDLERS:'
     # detect if webpath is referred to a specialized app
     for k,v in settings.CMS_APP_REGEXP_URLPATHS.items():
@@ -50,11 +50,10 @@ def cms_dispatch(request):
             logger.exception(f'{path}:{e}')
 
     # go further with webpath matching
-    alt_path = f'{path}/' if path[-1] != '/' else path
+    path = f'{path}/' if path[-1] != '/' else path
     # webpath = get_object_or_404(WebPath, fullpath=path, site=website)
-    webpath = WebPath.objects.filter(site=website).\
-                              filter(Q(fullpath=path) |
-                                     Q(fullpath=alt_path)).first()
+    webpath = WebPath.objects.filter(site=website,
+                                     fullpath=path).first()
     if not webpath:
         raise Http404()
     if webpath.is_alias:

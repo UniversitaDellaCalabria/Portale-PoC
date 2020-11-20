@@ -38,7 +38,7 @@ def handle_faulty_templates(template: str, data: dict, name='', ):
 
 def build_breadcrumbs(context):
     webpath = context['webpath']
-    nodes = webpath.get_full_path.split()
+    nodes = webpath.get_full_path().split()
     crumbs = []
     root = '/'
     for i in nodes:
@@ -46,7 +46,7 @@ def build_breadcrumbs(context):
         crumbs.append((url, i))
         root = url.replace('//','/')
     # crumbs[0] = (f'/{CMS_PATH_PREFIX}', webpath.name)
-    crumbs[0] = (webpath.get_full_path, webpath.name)
+    crumbs[0] = (webpath.get_full_path(), webpath.name)
     return crumbs
 
 
@@ -65,3 +65,4 @@ def contextualize_template(template_fname, page):
 
 def sanitize_path(path):
     return re.sub('/[/]+', '/', path)
+
