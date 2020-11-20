@@ -48,7 +48,7 @@ class WebPath(TimeStampedModel):
                            related_name="alias_path",
                            help_text=_('Alias that would be '
                                        'redirected to ...'))
-    alias_url = models.TextField(max_length=2048, 
+    alias_url = models.TextField(max_length=2048,
                                  null=True, blank=True)
     path = models.TextField(max_length=2048, null=False, blank=False)
     fullpath = models.TextField(max_length=2048, null=True, blank=True,
@@ -67,16 +67,17 @@ class WebPath(TimeStampedModel):
         if path == '/':
             return ['/']
         return path.split('/')
-    
+
     @property
     def is_alias(self):
         return True if (self.alias or self.alias_url) else False
-    
+
     @property
     def redirect_url(self):
         if self.alias:
             return self.alias.fullpath
         return self.alias_url
+
 
     def get_full_path(self):
         if self.is_alias:

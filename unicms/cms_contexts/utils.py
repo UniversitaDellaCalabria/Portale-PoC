@@ -25,7 +25,7 @@ def detect_user_language(request):
 def handle_faulty_templates(template: str, data: dict, name='', ):
     _error_msg = 'ERROR: {} template tags: {}'
     _error_msg_pub = '<!-- Error {} template tags. See log file. -->'
-    
+
     try:
         return render_to_string(template, data)
     except TemplateDoesNotExist as e:
@@ -38,14 +38,15 @@ def handle_faulty_templates(template: str, data: dict, name='', ):
 
 def build_breadcrumbs(context):
     webpath = context['webpath']
-    nodes = webpath.split()
+    nodes = webpath.get_full_path.split()
     crumbs = []
-    root = '/' 
+    root = '/'
     for i in nodes:
         url = f'{root}/{i}'
         crumbs.append((url, i))
-        root = url
-    crumbs[0] = (f'/{CMS_PATH_PREFIX}', webpath.name) 
+        root = url.replace('//','/')
+    # crumbs[0] = (f'/{CMS_PATH_PREFIX}', webpath.name)
+    crumbs[0] = (webpath.get_full_path, webpath.name)
     return crumbs
 
 
