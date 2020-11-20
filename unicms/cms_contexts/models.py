@@ -78,6 +78,8 @@ class WebPath(TimeStampedModel):
         
     @property
     def get_full_path(self):
+        if self.is_alias:
+            return self.redirect_url
         url = f'/{CMS_PATH_PREFIX}{self.fullpath}'
         return url.replace('//', '/')
 
