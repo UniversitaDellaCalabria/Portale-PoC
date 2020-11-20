@@ -21,7 +21,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     #unicms
-    'cms_contexts.middleware.detect_language_middleware'
+    'cms_contexts.middleware.detect_language_middleware',
 ]
 
 STATICFILES_FINDERS = [
