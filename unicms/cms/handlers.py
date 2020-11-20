@@ -13,7 +13,7 @@ from django.utils.translation import gettext_lazy as _
 
 from cms_contexts.handlers import BaseContentHandler
 from cms_contexts.models import WebPath
-from cms_contexts.utils import contextualize_template, detect_user_language
+from cms_contexts.utils import contextualize_template
 
 from . models import PublicationContext, Category, Page
 from . settings import *
@@ -45,7 +45,6 @@ class PublicationViewHandler(BaseContentHandler):
         if not self.pub_context: return Http404()
         
         # i18n
-        detect_user_language(self.request)
         self.pub_context.publication.translate_as(lang=self.request.LANGUAGE_CODE)
         
         data = {'request': self.request,

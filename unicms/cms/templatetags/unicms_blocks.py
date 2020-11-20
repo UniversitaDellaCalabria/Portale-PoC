@@ -14,7 +14,6 @@ logger = logging.getLogger(__name__)
 register = template.Library()
 
 
-@detect_language
 @register.simple_tag(takes_context=True)
 def load_blocks(context, section=None):
     request = context['request']
@@ -31,11 +30,11 @@ def load_blocks(context, section=None):
         try:
             result += obj.render()
         except Exception as e:
-            logger.exception('Block {} failed rendering ({}): {}'.format(block, obj, e))
+            logger.exception(('Block {} failed rendering '
+                              '({}): {}').format(block, obj, e))
     return result
 
 
-@detect_language
 @register.simple_tag(takes_context=True)
 def load_publications_preview(context, template,
                               section = None,
