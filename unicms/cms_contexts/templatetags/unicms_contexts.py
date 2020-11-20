@@ -27,8 +27,8 @@ def language_menu(context, template=None, leaf=None):
     if template:
         return handle_faulty_templates(template, data, name='language_menu')
     return data
-    
-    
+
+
 @register.simple_tag(takes_context=True)
 def breadcrumbs(context, template=None, leaf=None):
     template = template or 'breadcrumbs.html'
