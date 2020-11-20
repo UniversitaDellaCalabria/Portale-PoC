@@ -71,7 +71,7 @@ class WebPath(TimeStampedModel):
             fullpath = self.path
 
         for reserved_word in settings.CMS_HANDLERS_PATHS:
-            if reserved_word in full_path:
+            if reserved_word in fullpath:
                 _msg = f'{fullpath} matches with the reserved word: {reserved_word}'
                 raise ReservedWordException(_msg)
 
