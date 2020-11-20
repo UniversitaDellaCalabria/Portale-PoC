@@ -36,7 +36,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': ['templates/pages',
-                 'templates/blocks'],
+                 'templates/blocks',
+                 'templates/admin'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.contrib import messages
 from django.utils.module_loading import import_string
 
+from cms_contexts.admin import AbstractPreviewableAdmin
 from . admin_inlines import *
 from . models import *
 from . forms import *
@@ -17,7 +18,7 @@ class AbstractCreateModifiedBy(admin.ModelAdmin):
 
 
 @admin.register(Page)
-class PageAdmin(admin.ModelAdmin):
+class PageAdmin(AbstractPreviewableAdmin):
     search_fields = ('name',)
     list_display  = ('webpath', 'name',
                      'date_start', 'date_end',
@@ -44,7 +45,7 @@ class PageAdmin(admin.ModelAdmin):
                 block_entry.save()
                 messages.add_message(request, messages.ERROR, f'{block_entry} failed validation on save')
                 logger.exception('ADMIN VALIDATION: Block {} failed rendering ({}): {}'.format(block_entry, obj, e))
-    
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

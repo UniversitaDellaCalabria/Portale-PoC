@@ -3,6 +3,10 @@ import json
 from django.contrib import admin
 from django.contrib import messages
 from django.forms.utils import ErrorList
+from django.http import (HttpResponse,
+                         Http404,
+                         HttpResponseBadRequest,
+                         HttpResponseRedirect)
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext, gettext_lazy as _
 
@@ -15,6 +19,24 @@ admin.site.unregister(Site)
 class WebPathAdminInline(admin.TabularInline):
     model = WebPath
     extra = 0
+
+
+class AbstractPreviewableAdmin(admin.ModelAdmin):
+    change_form_template = "change_form_preview.html"
+
+    def response_change(self, request, obj):
+        if "_save_draft" in request.POST:
+            self.message_user(request, "Draft has been created at ...")
+            return HttpResponseRedirect(".")  
+        
+        elif "_preview" in request.POST:
+            # matching_names_except_this = self.get_queryset(request).filter(name=obj.name).exclude(pk=obj.id)
+            # matching_names_except_this.delete()
+            # obj.is_unique = True
+            # obj.save()
+            self.message_user(request, "Preview is available at ...")
+            return HttpResponseRedirect(".")
+        return super().response_change(request, obj)
 
 
 @admin.register(WebSite)
