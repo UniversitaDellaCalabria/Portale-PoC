@@ -56,6 +56,8 @@ def cms_dispatch(request):
 
     # go further with webpath matching
     webpath = get_object_or_404(WebPath, fullpath=path, site=website)
+    if webpath.is_alias:
+        return HttpResponseRedirect(webpath.redirect_url)
     page = Page.objects.filter(webpath = webpath,
                                is_active = True,
                                state = 'published').first()
