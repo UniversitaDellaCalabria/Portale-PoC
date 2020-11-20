@@ -3,7 +3,6 @@ import re
 
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
-from django.db.models import Q
 from django.http import (HttpResponse,
                          Http404,
                          HttpResponseBadRequest,
@@ -51,7 +50,6 @@ def cms_dispatch(request):
 
     # go further with webpath matching
     path = f'{path}/' if path[-1] != '/' else path
-    # webpath = get_object_or_404(WebPath, fullpath=path, site=website)
     webpath = WebPath.objects.filter(site=website,
                                      fullpath=path).first()
     if not webpath:

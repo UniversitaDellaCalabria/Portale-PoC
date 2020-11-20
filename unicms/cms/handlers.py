@@ -1,7 +1,6 @@
 import re
 
 from django.conf import settings
-from django.db.models import Q
 from django.http import (HttpResponse,
                          Http404,
                          HttpResponseBadRequest,
