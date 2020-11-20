@@ -10,9 +10,7 @@ from django.http import (HttpResponse,
 from django.shortcuts import render, get_object_or_404
 from django.utils.module_loading import import_string
 
-from cms_contexts.decorators import detect_language
 from cms_contexts.models import WebSite, WebPath
-from cms_contexts.utils import detect_user_language
 from urllib.parse import urlparse
 from . models import Page
 
@@ -21,7 +19,6 @@ logger = logging.getLogger(__name__)
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 
-@detect_language
 def cms_dispatch(request):
     requested_site = re.match('^[a-zA-Z0-9\.\-\_]*',
                               # request.headers.get('Host', '')
@@ -56,6 +53,8 @@ def cms_dispatch(request):
 
     # go further with webpath matching
     webpath = get_object_or_404(WebPath, fullpath=path, site=website)
+    if webpath.is_alias:
+        return HttpResponseRedirect(webpath.redirect_url)
     page = Page.objects.filter(webpath = webpath,
                                is_active = True,
                                state = 'published').first()

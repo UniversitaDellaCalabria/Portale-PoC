@@ -19,6 +19,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    #unicms
+    'cms_contexts.middleware.detect_language_middleware',
 ]
 
 STATICFILES_FINDERS = [

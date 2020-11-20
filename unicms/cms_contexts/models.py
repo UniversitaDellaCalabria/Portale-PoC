@@ -41,6 +41,14 @@ class WebPath(TimeStampedModel):
                                related_name="related_path",
                                help_text=_('path be prefixed with '
                                            'the parent one, on save'))
+    alias = models.ForeignKey('WebPath',
+                           null=True, blank=True,
+                           on_delete=models.CASCADE,
+                           related_name="alias_path",
+                           help_text=_('Alias that would be '
+                                       'redirected to ...'))
+    alias_url = models.TextField(max_length=2048, 
+                                 null=True, blank=True)
     path = models.TextField(max_length=2048, null=False, blank=False)
     fullpath = models.TextField(max_length=2048, null=True, blank=True,
                                 help_text=_("final path prefixed with the "
@@ -57,9 +65,21 @@ class WebPath(TimeStampedModel):
         if self.path.replace('//', '/') == '/':
             return ['/']
         return self.path.split('/')
-
+    
+    @property
+    def is_alias(self):
+        return True if (self.alias or self.alias_url) else False
+    
+    @property
+    def redirect_url(self):
+        if self.alias:
+            return self.alias.fullpath
+        return self.alias_url
+        
     @property
     def get_full_path(self):
+        if self.is_alias:
+            return self.redirect_url
         url = f'/{CMS_PATH_PREFIX}{self.fullpath}'
         return url.replace('//', '/')
 

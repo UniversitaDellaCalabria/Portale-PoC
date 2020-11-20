@@ -13,6 +13,7 @@ from django.template.exceptions import (TemplateDoesNotExist,
 logger = logging.getLogger(__name__)
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
+
 def detect_user_language(request):
     lang = request.GET.get('lang',
                            translation.get_language_from_request(request))

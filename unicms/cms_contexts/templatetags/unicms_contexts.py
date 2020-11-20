@@ -13,7 +13,6 @@ from django.utils.translation import gettext_lazy as _
 from cms_contexts.utils import build_breadcrumbs, handle_faulty_templates
 # WARNING - import circolare - decidere di migrare blocchi e menu in cms_pages
 from cms_menus.models import NavigationBarItem
-from cms.views import detect_user_language
 
 logger = logging.getLogger(__name__)
 register = template.Library()

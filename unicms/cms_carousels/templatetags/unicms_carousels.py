@@ -3,7 +3,6 @@ import logging
 from django import template
 
 from cms.models import PageCarousel
-from cms_contexts.decorators import detect_language
 from cms_contexts.utils import handle_faulty_templates
 
 
@@ -11,7 +10,6 @@ logger = logging.getLogger(__name__)
 register = template.Library()
 
 
-@detect_language
 @register.simple_tag(takes_context=True)
 def load_carousel(context, section, template):
     request = context['request']

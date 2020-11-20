@@ -15,10 +15,11 @@ The final goal is to achieve as much as possible, writing as little code as poss
 3. [Template tags](#template-tags)
 4. [Page Blocks](#fourth-examplehttpwwwfourthexamplecom)
 5. [Handlers](#handlers)
-5. [Context Menu](#context-menu)
-6. [Search Engine](#search-engine)
-7. [Urls](#urls)
-8. [Todo](#todo)
+6. [Middlewares](#middlewares)
+7. [Menu and Navigation Bars](#menu)
+8. [Search Engine](#search-engine)
+9. [Urls](#urls)
+10. [Todo](#todo)
 
 
 Setup
@@ -178,6 +179,16 @@ reserved words, to be considered when saving (model.save) of `cms_context.models
 They then compose a list of reserved words that cannot be used 
 as path value in `cms_context.models.WebPath`.
 
+
+Middlewares
+-----------
+
+`cms_contexts.middleware.detect_language_middleware`:
+   detects the browser user language checking both `?lang=` request arg 
+   and the web browser default language. It's only needed if you want to 
+   handle Menu, Carousel and Publication localizations.
+
+
 Page Blocks
 -------------
 
@@ -257,12 +268,12 @@ of the Page.
 ````
 
 
-Context Menu
-------------
-
+Menu
+----
 [WiP]
 
 A WebPath (context) can have multiple Menus or inherits them from its superior context.
+Menu can be fetched through Rest API `/api/menu/<menu_id:int>` and also created through this.
 
 
 Urls
