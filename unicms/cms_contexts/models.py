@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.sites.models import Site
 from django.utils.translation import gettext_lazy as _
 
+from cms_contexts.utils import sanitize_path
 from cms_templates.models import TimeStampedModel
 
 from . import settings as app_settings
@@ -62,9 +63,10 @@ class WebPath(TimeStampedModel):
         """
         return splitted nodes in a list
         """
-        if self.path.replace('//', '/') == '/':
+        path = sanitize_path(self.path)
+        if path == '/':
             return ['/']
-        return self.path.split('/')
+        return path.split('/')
     
     @property
     def is_alias(self):
@@ -75,18 +77,17 @@ class WebPath(TimeStampedModel):
         if self.alias:
             return self.alias.fullpath
         return self.alias_url
-        
-    @property
+
     def get_full_path(self):
         if self.is_alias:
             return self.redirect_url
         url = f'/{CMS_PATH_PREFIX}{self.fullpath}'
-        return url.replace('//', '/')
+        return sanitize_path(url)
 
     def save(self, *args, **kwargs):
         if self.parent:
             # update fullpath
-            fullpath = f'{self.parent.fullpath}/{self.path}'.replace('//', '/')
+            fullpath = sanitize_path(f'{self.parent.fullpath}/{self.path}')
         else:
             fullpath = self.path
 

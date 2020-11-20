@@ -9,6 +9,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from cms_contexts.models import *
+from cms_contexts.utils import sanitize_path
 from cms_medias.models import Media, MediaCollection
 from cms_menus.models import NavigationBar
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
@@ -308,7 +309,7 @@ class Publication(AbstractPublication):
             image_path =  self.presentation_image.file
         else:
             image_path = self.category.first().image
-        return f'{settings.MEDIA_URL}/{image_path}'.replace('//', '/')
+        return sanitize_path(f'{settings.MEDIA_URL}/{image_path}')
 
     @property
     def categories(self):
@@ -393,15 +394,15 @@ class PublicationContext(TimeStampedModel, ActivableModel,
     def get_url_list(self, category_name=None):
         list_prefix = getattr(settings, 'CMS_PUBLICATION_LIST_PREFIX_PATH',
                                          CMS_PUBLICATION_LIST_PREFIX_PATH)
-        url = f'{self.webpath.get_full_path}{list_prefix}'
+        url = f'{self.webpath.get_full_path()}{list_prefix}'
         if category_name:
             url += f'/?category_name={category_name}'
-        return url.replace('//', '/')
+        return sanitize_path(url)
 
     @property
     def url(self):
-        url = f'{self.webpath.get_full_path}{self.path_prefix}/{self.publication.slug}'
-        return url.replace('//', '/')
+        url = f'{self.webpath.get_full_path()}{self.path_prefix}/{self.publication.slug}'
+        return sanitize_path(url)
 
     @property
     def name(self):

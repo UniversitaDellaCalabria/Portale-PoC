@@ -13,7 +13,7 @@ from django.utils.translation import gettext_lazy as _
 
 from cms_contexts.handlers import BaseContentHandler
 from cms_contexts.models import WebPath
-from cms_contexts.utils import contextualize_template
+from cms_contexts.utils import contextualize_template, sanitize_path
 
 from . models import PublicationContext, Category, Page
 from . settings import *
@@ -68,8 +68,8 @@ class PublicationViewHandler(BaseContentHandler):
     
     @property
     def parent_url(self):
-        url = f'{self.webpath.get_full_path}/{self.parent_path_prefix}/'
-        return url.replace('//', '/')
+        url = f'{self.webpath.get_full_path()}/{self.parent_path_prefix}/'
+        return sanitize_path(url)
     
     @property
     def breadcrumbs(self):

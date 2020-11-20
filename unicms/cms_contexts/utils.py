@@ -60,3 +60,7 @@ def contextualize_template(template_fname, page):
     ext_template_sources = re.sub(regexp, base_template_tag, template_sources)
     # end string processing
     return ext_template_sources
+
+
+def sanitize_path(path):
+    return re.sub('/[/]+', '/', path)
