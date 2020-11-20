@@ -3,6 +3,7 @@ import re
 
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
+from django.db.models import Q
 from django.http import (HttpResponse,
                          Http404,
                          HttpResponseBadRequest,
@@ -25,11 +26,8 @@ def cms_dispatch(request):
                               request.get_host()).group()
     website = get_object_or_404(WebSite, domain = requested_site)
 
-    if not website:
-        return HttpResponseBadRequest()
-
     path = urlparse(request.get_full_path()).path.replace(CMS_PATH_PREFIX, '')
-    
+
     _msg_head = 'APP REGEXP URL HANDLERS:'
     # detect if webpath is referred to a specialized app
     for k,v in settings.CMS_APP_REGEXP_URLPATHS.items():
@@ -38,7 +36,7 @@ def cms_dispatch(request):
         if not match:
             logger.debug(f'{_msg_head} - {k}: {v} -> UNMATCH with {path}')
             continue
-        
+
         query = match.groupdict()
         params = {'request': request,
                   'website': website,
@@ -52,7 +50,13 @@ def cms_dispatch(request):
             logger.exception(f'{path}:{e}')
 
     # go further with webpath matching
-    webpath = get_object_or_404(WebPath, fullpath=path, site=website)
+    alt_path = f'{path}/' if path[-1] != '/' else path
+    # webpath = get_object_or_404(WebPath, fullpath=path, site=website)
+    webpath = WebPath.objects.filter(site=website).\
+                              filter(Q(fullpath=path) |
+                                     Q(fullpath=alt_path)).first()
+    if not webpath:
+        raise Http404()
     if webpath.is_alias:
         return HttpResponseRedirect(webpath.redirect_url)
     page = Page.objects.filter(webpath = webpath,
