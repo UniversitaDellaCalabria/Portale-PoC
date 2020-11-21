@@ -309,10 +309,41 @@ See `cms.views.cms_dispatcher` to see how an http request is intercepted and han
 Search Engine
 -------------
 
-[WiP]
+uniCMS uses MongoDB as search engine, it was adopted in place of others search engines like Elastic Search or Sorl, for the following reasons:
 
-An external storage (RDBMS or MongoDB) that takes metainformations on each
-creation or modification of a page or a publication or whatever needed to be searchable.
+- The documents stored are really small, fwe kilobytes
+- collections would be populated on each creation/change event by on_save hooks
+- each entry is composed following a small schema, this would reduce storage usage increasing the performances at the same time
+
+Technical spectifications are available in [MongoDB Official Documentation](https://docs.mongodb.com/manual/core/index-text/).
+
+An document would be as follows
+
+````
+entry = {"title": "that name that likes you",
+         "description": "My first blog post!",
+         "content-type": "cms.",
+         "content-id": "",
+         "site": "www.unical.it",
+         "webpath": "/"
+         "url": "http://sdfsdf",
+         "tags": ["mongodb", "python", "pymongo"],
+         "published": timezone.now(),
+         "viewed": 0,
+         "relevance": 10,
+         "translations":
+          [
+            {
+              language: "english",
+              quote: "There is nothing more surreal than reality."
+            },
+            {
+              language: "french",
+              quote: "Il n'y a rien de plus surréaliste que la réalité."
+            }
+          ]
+}}
+````
 
 Installing MongoDB on Debian10
 ````
@@ -346,15 +377,7 @@ db = mdb.search
 # check version to understand which pymongo documentation you should use!
 pymongo.version
 
-entry = {"title": "that name that likes you",
-         "description": "My first blog post!",
-         "content-type": "cms.",
-         "content-id": "",
-         "site": "www.unical.it",
-         "context": "/"
-         "url": "http://sdfsdf",
-         "tags": ["mongodb", "python", "pymongo"],
-         "date": timezone.now()}
+
 
 db.insert_one(entry)
 
