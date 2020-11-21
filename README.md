@@ -1,13 +1,12 @@
 (uniCMS) Portale PoC
 --------------------
 
-This project (uniCMS) aims to exemplify the design of a common University portal.
+This project (uniCMS) aims to exemplify the design of a common University WebSite Portal.
 In it you'll find an simplified generalization of all
 the entities that usually make up a Content Management System (CMS).
 
 This platform was built on top of Django Framework, with few specialized libraries as well.
-
-The final goal is to achieve as much as possible, writing as little code as possible and working even less!
+The final goal is to achieve as much as possible, writing as little code as possible and working even less, when possibile.
 
 # Table of Contents
 1. [Setup](#setup)
@@ -19,7 +18,7 @@ The final goal is to achieve as much as possible, writing as little code as poss
 7. [Menu and Navigation Bars](#menu)
 8. [Search Engine](#search-engine)
 9. [Urls](#urls)
-10. [Todo](#todo)
+10.[Todo](#todo)
 
 
 Setup
@@ -43,7 +42,7 @@ cd unicms
 ./manage.py runserver
 ````
 
-go to `/admin` and submit the superuser credential to start putting some data into the model.
+Go to `/admin` and submit the superuser credential to start putting some data into the model.
 
 If you want to share your example data
 ````
@@ -56,25 +55,25 @@ Model
 This project is composed by the following applications:
 - websites, where multiple sites can be defined.
 - cms_context, where webpaths and EditorialBoard Users and Permissions can be defined
-- cms_templates, where multiple page templates can be managed
+- cms_templates, where multiple page templates and page blocks can be managed
+- cms_medias, specialized app for management, upload and navigation of media files.
 - cms_menus, specialized app for navigation bar creation and management.
 - cms_carousels, specialized app for Carousel and Slider creation and management.
-- cms, where Editorial boards can write post and publish content in one or more contexts.
+- cms, where Editorial boards can create Pages and News to be published in one or more Contexts.
 - cms_previews, menus, pages, publications and carousel previews
 
 
 > :warning: **If you are a pure Djangoer**: 
 
 You should know that templates and urls would be managed with cms_context, entirely through admin interface. 
-We can even load third-party django applications, it is necessary to take into account configuring the url 
+We can even load third-party django applications, it'ss necessary to take into account configuring the url 
 paths before defining uniCMS ones, otherwise uniCMS will intercept them and with a good chance will 
-return to the user a page of 404. You can even set `CMS_PATH_PREFIX` to a desidered value, to 
+return to the user a page of 404. You can even set `CMS_PATH_PREFIX` to a desidered value, eg: `portale/`, to 
 restrict uniCMS url matching to a specified namespace.
 
-
-The first one, called `cms_context`, defines the multi web site logic (multi context) we adopted.
+The module `cms_context` defines the multiple website management (multi context) we have adopted.
 Each context, or website, is nothing more than a
-path (url). Each context has users (Editorial Board Editors) with one
+webpath. Each context has users (Editorial Board Editors) with one or more
 of the following permissions (see `cms_context.settings.CMS_CONTEXT_PERMISSIONS`):
 
 ````
@@ -91,15 +90,17 @@ CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her in his/her conte
 
 `cms` is the model where we've defined how we build a Page or post a Publication.
 For us, a Page, is anything else than a composition of blocks, rendered in a
-HTML template. This means that a page is a block container, in which we can
+HTML base template. This means that a page is a block container, in which we can
 define many blocks with different order. For every page we must define
-to which context it belong to and also the template that we want to adopt for HTML rendering.
+to which context (webpath) it belong to and also the template that we want to adopt for HTML rendering.
 Nothing prevents us from using something other than HTML, it's just python, you know.
 
-Every block can also be localized in one or many languages, if a client browser have a
-the Spanish localization the rendering system will render all the spanish
+Menus, Carosules, Publications and Categories can also be localized in one or many languages via Web 
+Backend, if a client browser have a Spanish localization the rendering system will render all the spanish
 localized block, if they occour, otherwise it will switch to default
 language, that's English.
+
+All the gettext values defined in our static html template will be handled as django localization use to do.
 
 Following this approach a WebSite's Home Page is nothing more than a Page object, as a container
 of many Block objects, that's rendered in a fancy HTML template.
@@ -111,19 +112,17 @@ Template tags
 [WiP]
 
 A cms template can also adopt some of the template tags that come with uniCMS.
-These takes as argument the following objects:
+These takes as argument at least the following objects:
 
 ````
     'website': WebSite object (cms_context.models.Website)
     'path': request.get_full_path(), eg: "/that/resource/slug-or-whatever"
-    'context': Context object (cms_context.models.WebPath)
+    'webpath': Context object (cms_contexts.models.WebPath)
     'page': Page object (cms.models.Page)
 ````
 
-Standing on the information taked from these objects the uniCMS template tag
-can create additional blocks and render many other informations.
-
-Here the templatetags we use:
+Standing on the informations taken from these objects uniCMS adopts also some other custom templatetags, as follows.
+These templatetags will also work in Page Blocks that would take a html template as argument.
 
 `cms_templates`
 - supported_languages: get settings.LANGUAGES_CODE to templates
@@ -137,7 +136,7 @@ Here the templatetags we use:
 `cms_context`
 - `breadcrumbs`: `{% breadcrumbs template="breadcrumbs.html" %}`
 - `call`: `{% call obj=pub method='get_url_list' category_name=cat %}`
-    It can call any objects method and also pass to it whatever `**kwargs`.
+    It can call any object method and also pass to it whatever `**kwargs`.
 
 `cms`
 - `load_publications_preview`: `{% load_publications_preview template="publications_preview.html" %}`
