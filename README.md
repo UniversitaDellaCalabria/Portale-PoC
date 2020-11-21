@@ -18,7 +18,8 @@ The final goal is to achieve as much as possible, writing as little code as poss
 7. [Menu and Navigation Bars](#menu)
 8. [Search Engine](#search-engine)
 9. [Urls](#urls)
-10. [Todo](#todo)
+10. [Api OAS3](#api)
+11. [Todo](#todo)
 
 
 Setup
@@ -403,12 +404,16 @@ res = db.find(search_filter)
 for i in res[0:count]: print(i)
 ````
 
+Api
+---
+
+see `/openapi.json` and `/openapi` for OpenAPI v3 Schema.
+
+
 Todo
 ----
 
 - SiteMap exporter
-- Api OAS3
 - Search Engine
-- Custom blocks (examples and working ones)
 - EditorialBoard UI with permissions
 - EditorialBoard Workflow
