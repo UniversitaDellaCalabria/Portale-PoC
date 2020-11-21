@@ -185,8 +185,8 @@ CMS_APP_REGEXP_URLPATHS = {
 ````
 
 The paths defined in `CMS_HANDLERS_PATHS`  make up the list of 
-reserved words, to be considered when saving (model.save) of `cms_context.models.WebPath`. 
-They then compose a list of reserved words that cannot be used 
+reserved words, to be considered during validation on save, in `cms_context.models.WebPath`. 
+They compose a list of reserved words that cannot be used 
 as path value in `cms_context.models.WebPath`.
 
 
@@ -195,7 +195,7 @@ Middlewares
 
 `cms_contexts.middleware.detect_language_middleware`:
    detects the browser user language checking both `?lang=` request arg 
-   and the web browser default language. It's only needed if you want to 
+   and the web browser default language. It's needed to 
    handle Menu, Carousel and Publication localizations.
 
 
@@ -204,14 +204,14 @@ Page Blocks
 
 [WiP]
 
-A configurable object that would be rendered in a specified setion of the page (as defined in template).
-It can take a long Text as argument, a json objects or whatever, it dependes by Block Type.
+A configurable object that would be rendered in a specified section of the page (as defined in its base template).
+It can take a long Text as content, a json objects or whatever, it dependes by Block Type.
 Examples:
 
 - A pure HTML renderer
 - A Specialized Block element that take a json object in its object constructor
 
-These are some HTML block.
+The following descriptions covers some HTML blocks.
 As we can see the HTML blocks in uniCMS has the full support of Django templatetags and template context.
 
 
@@ -266,6 +266,7 @@ of the Page.
 ````
 
 *Youtube iframes*
+A simple as possibile bunch of HTML lines.
 ````
 <div class="row">
 <div class="col-12 col-md-6">
@@ -282,8 +283,8 @@ Menu
 ----
 [WiP]
 
-A WebPath (context) can have multiple Menus or inherits them from its superior context.
-Menu can be fetched through Rest API `/api/menu/<menu_id:int>` and also created through this.
+A WebPath (context) can have multiple Menus and Navigation bars, but also Footers.
+Menu can be fetched through Rest API `/api/menu/<menu_id:int>` and also created through this resources.
 
 
 Urls
@@ -295,12 +296,13 @@ All the urls that matches the namespace configured in the `urls.py` of the maste
 will be handled by uniCMS. uniCMS can match two kind of resources:
 
 1. WebPath (Context) corresponsing at a single Page (Home page and its childs)
-2. Applications, an example would be Pubblication List and Views resources
+2. Application Handlers, an example would be Pubblication List and Views resources
 
 for these latter uniCMS uses some reserved words, as prefix, to deal with specialized url routings.
 in the settings file we would configure these. See [Handlers](#handlers) for example.
 
 See `cms.settings` as example.
+See `cms.views.cms_dispatcher` to see how an http request is intercepted and handled by uniCMS to know if use an Handler or a Standard Page as response.
 
 
 Search Engine
