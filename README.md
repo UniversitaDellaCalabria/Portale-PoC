@@ -18,7 +18,7 @@ The final goal is to achieve as much as possible, writing as little code as poss
 7. [Menu and Navigation Bars](#menu)
 8. [Search Engine](#search-engine)
 9. [Urls](#urls)
-10.[Todo](#todo)
+10. [Todo](#todo)
 
 
 Setup
@@ -133,12 +133,23 @@ These templatetags will also work in Page Blocks that would take a html template
 `cms_carousels`
 - `load_carousel`: similar to `load_menu`
 
-`cms_context`
+`cms_contexts`
+- `language_menu`: an usage example here:
+   ````
+       {% language_menu as language_urls %}
+       {% for lang,url in language_urls.items %}
+       <li><a class="list-item" href="{{ url }}"><span>{{ lang }}</span></a></li>
+       {% endfor %}
+   ````
 - `breadcrumbs`: `{% breadcrumbs template="breadcrumbs.html" %}`
+   if template argument will be absent it will rely on `breadcrumbs.html` template.
 - `call`: `{% call obj=pub method='get_url_list' category_name=cat %}`
-    It can call any object method and also pass to it whatever `**kwargs`.
+    Call any object method and also pass to it whatever `**kwargs`.
 
 `cms`
+- `load_blocks`: `{% load_blocks section='slider' %}`
+  it would be configured in the base templates and defines where the blocks would be rendered.
+  it takes `section` as argument, to query/filter only the blocks that belongs to that section.
 - `load_publications_preview`: `{% load_publications_preview template="publications_preview.html" %}`
     - additional paramenters:
         template,
