@@ -315,15 +315,17 @@ uniCMS uses MongoDB as search engine, it was adopted in place of others search e
 - collections would be populated on each creation/change event by on_save hooks
 - each entry is composed following a small schema, this would reduce storage usage increasing the performances at the same time
 
-Technical spectifications are available in [MongoDB Official Documentation](https://docs.mongodb.com/manual/core/index-text/).
+Technical specifications are available in [MongoDB Official Documentation](https://docs.mongodb.com/manual/core/index-text/).
+Some usage example also have been posted [here](https://code.tutsplus.com/tutorials/full-text-search-in-mongodb--cms-24835).
 
 An document would be as follows
 
 ````
 entry = {"title": "that name that likes you",
-         "description": "My first blog post!",
+         "heading": "My first blog post!",
          "content-type": "cms.",
          "content-id": "",
+         "content": "that long full text"
          "site": "www.unical.it",
          "webpath": "/"
          "url": "http://sdfsdf",
@@ -335,14 +337,23 @@ entry = {"title": "that name that likes you",
           [
             {
               language: "english",
-              quote: "There is nothing more surreal than reality."
+              title: "that title",
+              heading: "that head",
+              content: "There is nothing more surreal than reality."
             },
             {
               language: "french",
-              quote: "Il n'y a rien de plus surréaliste que la réalité."
+              content: "Il n'y a rien de plus surréaliste que la réalité."
             }
           ]
 }}
+````
+A full-text index would be created on top of this schema.
+````
+db.quotes.createIndex( { title: "text", 
+                         heading: "text",
+                         content: "text",
+                         "translations.*": "text" } )
 ````
 
 Installing MongoDB on Debian10
