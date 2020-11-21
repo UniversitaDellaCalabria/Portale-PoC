@@ -1,13 +1,12 @@
 (uniCMS) Portale PoC
 --------------------
 
-This project (uniCMS) aims to exemplify the design of a common University portal.
+This project (uniCMS) aims to exemplify the design of a common University WebSite Portal.
 In it you'll find an simplified generalization of all
 the entities that usually make up a Content Management System (CMS).
 
 This platform was built on top of Django Framework, with few specialized libraries as well.
-
-The final goal is to achieve as much as possible, writing as little code as possible and working even less!
+The final goal is to achieve as much as possible, writing as little code as possible and working even less, when possibile.
 
 # Table of Contents
 1. [Setup](#setup)
@@ -19,7 +18,8 @@ The final goal is to achieve as much as possible, writing as little code as poss
 7. [Menu and Navigation Bars](#menu)
 8. [Search Engine](#search-engine)
 9. [Urls](#urls)
-10. [Todo](#todo)
+10. [Api OAS3](#api)
+11. [Todo](#todo)
 
 
 Setup
@@ -43,7 +43,7 @@ cd unicms
 ./manage.py runserver
 ````
 
-go to `/admin` and submit the superuser credential to start putting some data into the model.
+Go to `/admin` and submit the superuser credential to start putting some data into the model.
 
 If you want to share your example data
 ````
@@ -56,25 +56,25 @@ Model
 This project is composed by the following applications:
 - websites, where multiple sites can be defined.
 - cms_context, where webpaths and EditorialBoard Users and Permissions can be defined
-- cms_templates, where multiple page templates can be managed
+- cms_templates, where multiple page templates and page blocks can be managed
+- cms_medias, specialized app for management, upload and navigation of media files.
 - cms_menus, specialized app for navigation bar creation and management.
 - cms_carousels, specialized app for Carousel and Slider creation and management.
-- cms, where Editorial boards can write post and publish content in one or more contexts.
+- cms, where Editorial boards can create Pages and News to be published in one or more Contexts.
 - cms_previews, menus, pages, publications and carousel previews
 
 
 > :warning: **If you are a pure Djangoer**: 
 
 You should know that templates and urls would be managed with cms_context, entirely through admin interface. 
-We can even load third-party django applications, it is necessary to take into account configuring the url 
+We can even load third-party django applications, it'ss necessary to take into account configuring the url 
 paths before defining uniCMS ones, otherwise uniCMS will intercept them and with a good chance will 
-return to the user a page of 404. You can even set `CMS_PATH_PREFIX` to a desidered value, to 
+return to the user a page of 404. You can even set `CMS_PATH_PREFIX` to a desidered value, eg: `portale/`, to 
 restrict uniCMS url matching to a specified namespace.
 
-
-The first one, called `cms_context`, defines the multi web site logic (multi context) we adopted.
+The module `cms_context` defines the multiple website management (multi context) we have adopted.
 Each context, or website, is nothing more than a
-path (url). Each context has users (Editorial Board Editors) with one
+webpath. Each context has users (Editorial Board Editors) with one or more
 of the following permissions (see `cms_context.settings.CMS_CONTEXT_PERMISSIONS`):
 
 ````
@@ -91,15 +91,17 @@ CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her in his/her conte
 
 `cms` is the model where we've defined how we build a Page or post a Publication.
 For us, a Page, is anything else than a composition of blocks, rendered in a
-HTML template. This means that a page is a block container, in which we can
+HTML base template. This means that a page is a block container, in which we can
 define many blocks with different order. For every page we must define
-to which context it belong to and also the template that we want to adopt for HTML rendering.
+to which context (webpath) it belong to and also the template that we want to adopt for HTML rendering.
 Nothing prevents us from using something other than HTML, it's just python, you know.
 
-Every block can also be localized in one or many languages, if a client browser have a
-the Spanish localization the rendering system will render all the spanish
+Menus, Carosules, Publications and Categories can also be localized in one or many languages via Web 
+Backend, if a client browser have a Spanish localization the rendering system will render all the spanish
 localized block, if they occour, otherwise it will switch to default
 language, that's English.
+
+All the gettext values defined in our static html template will be handled as django localization use to do.
 
 Following this approach a WebSite's Home Page is nothing more than a Page object, as a container
 of many Block objects, that's rendered in a fancy HTML template.
@@ -111,19 +113,17 @@ Template tags
 [WiP]
 
 A cms template can also adopt some of the template tags that come with uniCMS.
-These takes as argument the following objects:
+These takes as argument at least the following objects:
 
 ````
     'website': WebSite object (cms_context.models.Website)
     'path': request.get_full_path(), eg: "/that/resource/slug-or-whatever"
-    'context': Context object (cms_context.models.WebPath)
+    'webpath': Context object (cms_contexts.models.WebPath)
     'page': Page object (cms.models.Page)
 ````
 
-Standing on the information taked from these objects the uniCMS template tag
-can create additional blocks and render many other informations.
-
-Here the templatetags we use:
+Standing on the informations taken from these objects uniCMS adopts also some other custom templatetags, as follows.
+These templatetags will also work in Page Blocks that would take a html template as argument.
 
 `cms_templates`
 - supported_languages: get settings.LANGUAGES_CODE to templates
@@ -134,12 +134,23 @@ Here the templatetags we use:
 `cms_carousels`
 - `load_carousel`: similar to `load_menu`
 
-`cms_context`
+`cms_contexts`
+- `language_menu`: an usage example here:
+   ````
+       {% language_menu as language_urls %}
+       {% for lang,url in language_urls.items %}
+       <li><a class="list-item" href="{{ url }}"><span>{{ lang }}</span></a></li>
+       {% endfor %}
+   ````
 - `breadcrumbs`: `{% breadcrumbs template="breadcrumbs.html" %}`
+   if template argument will be absent it will rely on `breadcrumbs.html` template.
 - `call`: `{% call obj=pub method='get_url_list' category_name=cat %}`
-    It can call any objects method and also pass to it whatever `**kwargs`.
+    Call any object method and also pass to it whatever `**kwargs`.
 
 `cms`
+- `load_blocks`: `{% load_blocks section='slider' %}`
+  it would be configured in the base templates and defines where the blocks would be rendered.
+  it takes `section` as argument, to query/filter only the blocks that belongs to that section.
 - `load_publications_preview`: `{% load_publications_preview template="publications_preview.html" %}`
     - additional paramenters:
         template,
@@ -175,8 +186,8 @@ CMS_APP_REGEXP_URLPATHS = {
 ````
 
 The paths defined in `CMS_HANDLERS_PATHS`  make up the list of 
-reserved words, to be considered when saving (model.save) of `cms_context.models.WebPath`. 
-They then compose a list of reserved words that cannot be used 
+reserved words, to be considered during validation on save, in `cms_context.models.WebPath`. 
+They compose a list of reserved words that cannot be used 
 as path value in `cms_context.models.WebPath`.
 
 
@@ -185,7 +196,7 @@ Middlewares
 
 `cms_contexts.middleware.detect_language_middleware`:
    detects the browser user language checking both `?lang=` request arg 
-   and the web browser default language. It's only needed if you want to 
+   and the web browser default language. It's needed to 
    handle Menu, Carousel and Publication localizations.
 
 
@@ -194,14 +205,14 @@ Page Blocks
 
 [WiP]
 
-A configurable object that would be rendered in a specified setion of the page (as defined in template).
-It can take a long Text as argument, a json objects or whatever, it dependes by Block Type.
+A configurable object that would be rendered in a specified section of the page (as defined in its base template).
+It can take a long Text as content, a json objects or whatever, it dependes by Block Type.
 Examples:
 
 - A pure HTML renderer
 - A Specialized Block element that take a json object in its object constructor
 
-These are some HTML block.
+The following descriptions covers some HTML blocks.
 As we can see the HTML blocks in uniCMS has the full support of Django templatetags and template context.
 
 
@@ -256,6 +267,7 @@ of the Page.
 ````
 
 *Youtube iframes*
+A simple as possibile bunch of HTML lines.
 ````
 <div class="row">
 <div class="col-12 col-md-6">
@@ -272,8 +284,8 @@ Menu
 ----
 [WiP]
 
-A WebPath (context) can have multiple Menus or inherits them from its superior context.
-Menu can be fetched through Rest API `/api/menu/<menu_id:int>` and also created through this.
+A WebPath (context) can have multiple Menus and Navigation bars, but also Footers.
+Menu can be fetched through Rest API `/api/menu/<menu_id:int>` and also created through this resources.
 
 
 Urls
@@ -285,21 +297,64 @@ All the urls that matches the namespace configured in the `urls.py` of the maste
 will be handled by uniCMS. uniCMS can match two kind of resources:
 
 1. WebPath (Context) corresponsing at a single Page (Home page and its childs)
-2. Applications, an example would be Pubblication List and Views resources
+2. Application Handlers, an example would be Pubblication List and Views resources
 
 for these latter uniCMS uses some reserved words, as prefix, to deal with specialized url routings.
 in the settings file we would configure these. See [Handlers](#handlers) for example.
 
 See `cms.settings` as example.
+See `cms.views.cms_dispatcher` to see how an http request is intercepted and handled by uniCMS to know if use an Handler or a Standard Page as response.
 
 
 Search Engine
 -------------
 
-[WiP]
+uniCMS uses MongoDB as search engine, it was adopted in place of others search engines like Elastic Search or Sorl, for the following reasons:
 
-An external storage (RDBMS or MongoDB) that takes metainformations on each
-creation or modification of a page or a publication or whatever needed to be searchable.
+- The documents stored are really small, fwe kilobytes
+- collections would be populated on each creation/change event by on_save hooks
+- each entry is composed following a small schema, this would reduce storage usage increasing the performances at the same time
+
+Technical specifications are available in [MongoDB Official Documentation](https://docs.mongodb.com/manual/core/index-text/).
+Some usage example also have been posted [here](https://code.tutsplus.com/tutorials/full-text-search-in-mongodb--cms-24835).
+
+An document would be as follows
+
+````
+entry = {"title": "that name that likes you",
+         "heading": "My first blog post!",
+         "content-type": "cms.",
+         "content-id": "",
+         "content": "that long full text"
+         "site": "www.unical.it",
+         "webpath": "/"
+         "url": "http://sdfsdf",
+         "tags": ["mongodb", "python", "pymongo"],
+         "published": timezone.now(),
+         "viewed": 0,
+         "relevance": 10,
+         "translations":
+          [
+            {
+              language: "english",
+              title: "that title",
+              heading: "that head",
+              content: "There is nothing more surreal than reality."
+            },
+            {
+              language: "french",
+              content: "Il n'y a rien de plus surréaliste que la réalité."
+            }
+          ]
+}}
+````
+A full-text index would be created on top of this schema.
+````
+db.quotes.createIndex( { title: "text", 
+                         heading: "text",
+                         content: "text",
+                         "translations.*": "text" } )
+````
 
 Installing MongoDB on Debian10
 ````
@@ -333,15 +388,7 @@ db = mdb.search
 # check version to understand which pymongo documentation you should use!
 pymongo.version
 
-entry = {"title": "that name that likes you",
-         "description": "My first blog post!",
-         "content-type": "cms.",
-         "content-id": "",
-         "site": "www.unical.it",
-         "context": "/"
-         "url": "http://sdfsdf",
-         "tags": ["mongodb", "python", "pymongo"],
-         "date": timezone.now()}
+
 
 db.insert_one(entry)
 
@@ -391,12 +438,16 @@ res = db.find(search_filter)
 for i in res[0:count]: print(i)
 ````
 
+Api
+---
+
+see `/openapi.json` and `/openapi` for OpenAPI v3 Schema.
+
+
 Todo
 ----
 
 - SiteMap exporter
-- Api OAS3
 - Search Engine
-- Custom blocks (examples and working ones)
 - EditorialBoard UI with permissions
 - EditorialBoard Workflow
