@@ -10,8 +10,11 @@ from django.utils.translation import gettext_lazy as _
 
 from cms_contexts.models import *
 from cms_contexts.utils import sanitize_path
+from cms_carousels.models import Carousel
+from cms_medias import settings as cms_media_settings
 from cms_medias.models import Media, MediaCollection
 from cms_menus.models import NavigationBar
+from cms_previews.models import AbstractPreviewable
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   TemplateBlock,
                                   ActivableModel,
@@ -23,8 +26,7 @@ from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
 from taggit.managers import TaggableManager
 from tinymce import models as tinymce_models
 
-from cms_carousels.models import Carousel
-from cms_medias import settings as cms_media_settings
+
 from . settings import *
 from . utils import remove_file
 
@@ -48,7 +50,7 @@ def context_publication_attachment_path(instance, filename):
                                 filename)
 
 
-class Page(TimeStampedModel, ActivableModel):
+class Page(TimeStampedModel, ActivableModel, AbstractPreviewable):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
     webpath = models.ForeignKey(WebPath,
@@ -78,9 +80,14 @@ class Page(TimeStampedModel, ActivableModel):
     type = models.CharField(max_length=33,
                             default="standard",
                             choices=(('standard', _('Standard Page')),
-                                     ('custom', _('Custom Page')),
                                      ('home', _('Home Page'))))
-
+    
+    
+    draft_of = models.IntegerField(null=True, blank=True)
+    
+    locked_by = models.ForeignKey(get_user_model(), null=True, blank=True)
+    locked_time = models.DateTimeField(null=True, blank=True)
+    
     tags = TaggableManager()
 
 
@@ -273,7 +280,7 @@ class Category(TimeStampedModel):
     image_as_html.allow_tags = True
 
 
-class Publication(AbstractPublication):
+class Publication(AbstractPublication, AbstractPreviewable):
     slug = models.SlugField(null=True, blank=True)
     tags = TaggableManager()
 

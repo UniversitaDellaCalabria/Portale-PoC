@@ -40,12 +40,12 @@ INSTALLED_APPS = [
     'nested_admin',
 
     'cms_templates',
+    'cms_previews',
     'cms_carousels',
-    'cms_contexts',
     'cms_menus',
+    'cms_contexts',
     'cms_medias',
     'cms',
-    'cms_previews',
 
     'unical_templates',
 

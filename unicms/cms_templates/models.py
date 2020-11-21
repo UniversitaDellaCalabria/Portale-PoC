@@ -20,6 +20,7 @@ CMS_PAGE_TEMPLATES = getattr(settings, 'CMS_PAGE_TEMPLATES',
 CMS_LINKS_LABELS = getattr(settings, 'CMS_LINKS_LABELS',
                            app_settings.CMS_LINKS_LABELS)
 
+
 class TimeStampedModel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified =  models.DateTimeField(auto_now=True)
