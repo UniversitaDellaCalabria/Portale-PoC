@@ -3,7 +3,10 @@ import logging
 from django.db import models
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from cms_contexts.utils import sanitize_path
@@ -134,3 +137,32 @@ class EditorialBoardEditors(TimeStampedModel):
             return '{} {} in {}'.format(self.user, self.permission, self.webpath)
         else:
             return '{} {}'.format(self.user, self.permission)
+
+
+class EditorialBoardLocks(models.Model):
+    content_type = models.ForeignKey(
+        ContentType,
+        on_delete=models.CASCADE,
+        verbose_name=_("content type"),
+        related_name="%(app_label)s_%(class)s_locked_items",
+    )
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey()
+    
+    locked_by = models.ForeignKey(get_user_model(), 
+                                  on_delete=models.CASCADE,
+                                  null=True, blank=True)
+    locked_time = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = _("Editorial Board Locks")
+        ordering = ('-locked_time',)
+        
+    @property
+    def is_active(self):
+        now = timezone.localtime() 
+        unlock_time = self.locked_time + timezone.timedelta(minutes = 1)
+        return now < unlock_time
+    
+    def __str__(self):
+        return f'{self.content_type} {self.object_id}'

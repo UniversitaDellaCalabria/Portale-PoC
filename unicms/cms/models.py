@@ -10,8 +10,11 @@ from django.utils.translation import gettext_lazy as _
 
 from cms_contexts.models import *
 from cms_contexts.utils import sanitize_path
+from cms_carousels.models import Carousel
+from cms_medias import settings as cms_media_settings
 from cms_medias.models import Media, MediaCollection
 from cms_menus.models import NavigationBar
+from cms_previews.models import AbstractDraftable
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   TemplateBlock,
                                   ActivableModel,
@@ -23,8 +26,7 @@ from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
 from taggit.managers import TaggableManager
 from tinymce import models as tinymce_models
 
-from cms_carousels.models import Carousel
-from cms_medias import settings as cms_media_settings
+
 from . settings import *
 from . utils import remove_file
 
@@ -33,7 +35,6 @@ logger = logging.getLogger(__name__)
 FILETYPE_ALLOWED = getattr(settings, 'FILETYPE_ALLOWED',
                            cms_media_settings.FILETYPE_ALLOWED)
 PAGE_STATES = (('draft', _('Draft')),
-               ('wait', _('Wait for a revision')),
                ('published', _('Published')),)
 CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
                                   CMS_IMAGE_CATEGORY_SIZE)
@@ -48,7 +49,7 @@ def context_publication_attachment_path(instance, filename):
                                 filename)
 
 
-class Page(TimeStampedModel, ActivableModel):
+class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
     webpath = models.ForeignKey(WebPath,
@@ -78,9 +79,8 @@ class Page(TimeStampedModel, ActivableModel):
     type = models.CharField(max_length=33,
                             default="standard",
                             choices=(('standard', _('Standard Page')),
-                                     ('custom', _('Custom Page')),
                                      ('home', _('Home Page'))))
-
+        
     tags = TaggableManager()
 
 
@@ -212,6 +212,9 @@ class PageLink(TimeStampedModel):
 
 
 class AbstractPublication(TimeStampedModel, ActivableModel):
+    CONTENT_TYPES = (('markdown', 'markdown'),
+                     ('html', 'html'))
+    
     title   = models.CharField(max_length=256,
                                null=False, blank=False,
                                help_text=_("Heading, Headline"))
@@ -221,6 +224,9 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
                                          help_text=_("Strap line (press)"))
     content           =  tinymce_models.HTMLField(null=True,blank=True,
                                                   help_text=_('Content'))
+    content_types     = models.CharField(choices=CONTENT_TYPES,
+                                         null=True, blank=True,
+                                         max_length=33)
     presentation_image = models.ForeignKey(Media, null=True, blank=True,
                                            on_delete=models.CASCADE)
     state             = models.CharField(choices=PAGE_STATES,
