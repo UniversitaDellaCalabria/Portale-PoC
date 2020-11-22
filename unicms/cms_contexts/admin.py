@@ -68,3 +68,10 @@ class EditorialBoardEditorsAdmin(admin.ModelAdmin):
     list_filter = ('permission', 'created', 'modified', 'is_active')
     search_fields = ('user', )
     readonly_fields = ('created', 'modified')
+
+
+@admin.register(EditorialBoardLocks)
+class EditorialBoardLocksAdmin(admin.ModelAdmin):
+    list_filter = ('locked_time', )
+    list_display = ('content_type', 'object_id', 
+                    'is_active', 'locked_time', 'locked_by')
