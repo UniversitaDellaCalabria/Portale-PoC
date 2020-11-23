@@ -1,5 +1,6 @@
 import json
 
+from copy import deepcopy
 from django.contrib import admin
 from django.contrib import messages
 from django.forms.utils import ErrorList
@@ -26,7 +27,17 @@ class AbstractPreviewableAdmin(admin.ModelAdmin):
 
     def response_change(self, request, obj):
         if "_save_draft" in request.POST:
-            self.message_user(request, "Draft has been created at ...")
+            _msg = ("Draft of '{}' [{}] been created. You can preview it if is_active=True "
+                    "and 'Draft view mode' is set on.").format(obj, obj.pk)
+            draft = obj.__dict__.copy()
+            draft['state'] = 'draft'
+            draft['draft_of'] = obj.pk
+            for attr in "id pk _state created_by modified_by created modified".split(' '):
+                if draft.get(attr):
+                    draft.pop(attr)
+                
+            obj.__class__.objects.create(**draft)
+            self.message_user(request, _msg)
             return HttpResponseRedirect(".")  
         
         elif "_preview" in request.POST:

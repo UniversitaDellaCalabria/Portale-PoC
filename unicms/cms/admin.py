@@ -22,10 +22,10 @@ class PageAdmin(AbstractPreviewableAdmin):
     search_fields = ('name',)
     list_display  = ('webpath', 'name',
                      'date_start', 'date_end',
-                     'is_active',)
+                     'is_active', 'state')
     list_filter   = ('state', 'is_active', 'type',
                      'created', 'modified', 'date_start', 'date_end')
-    readonly_fields = ('created_by', 'modified_by')
+    readonly_fields = ('created_by', 'modified_by', 'draft_of')
     inlines       = (PageMenuInline,
                      PageCarouselInline, PageBlockInline, 
                      PageRelatedInline, PageLinkInline)
