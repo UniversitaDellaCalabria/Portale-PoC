@@ -52,9 +52,20 @@ bootstrap-italia-base.html
 </div>
 {% endblock header_center_logo %}
 
+
 {% block header_slim_wrapper %}
+{% if request.user.is_staff %}
+<div class="container bg-white">
+    <div class="row">
+        {% include "editorialboard_frontend_menu.html" %}
+    </div>
+</div>
+{% endif %}
+
 <div class="d-lg-none">{{ block.super }}</div>
+    
 {% endblock header_slim_wrapper %}
+
 
 <!-- Mobile slim_org_name -->
 {% block header_slim_mobile_org_name %}
