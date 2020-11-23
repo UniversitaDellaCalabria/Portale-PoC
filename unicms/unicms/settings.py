@@ -19,7 +19,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
     #unicms
     'cms_contexts.middleware.detect_language_middleware',
 ]
@@ -29,6 +29,12 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'sass_processor.finders.CssFinder',
 ]
+
+# SASS processor settings
+# can include files not starting with "_"
+SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.scss$'
+# css output compact style
+SASS_OUTPUT_STYLE = 'compact'
 
 ROOT_URLCONF = 'unicms.urls'
 
