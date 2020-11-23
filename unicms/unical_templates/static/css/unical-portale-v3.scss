@@ -207,3 +207,40 @@ input.top-input {
     padding-top: 0px;
     padding-bottom: 0;
 }
+
+
+.it-hero-wrapper {
+    background-color: #fff !important;
+}
+
+
+/**
+ * Main Menu
+ */
+.dropdown-menu {
+    min-width: 20rem !important;
+    padding: 16px 2px !important;
+}
+.menu-wrapper > ul > li.nav-item.dropdown.show
+{
+    border-style: solid;
+    border-width: thin;
+    border: 0.5px 0.5px 0.5px 0.5px solid #000;
+    border-bottom: none;
+}
+
+.menu-wrapper > ul > li.nav-item.dropdown.megamenu.show > div
+{
+    border-style: solid;
+    border-width: thin;
+    border: 0.5px 0.5px 0.5px 0.5px solid #000;
+    border-bottom: none;
+}
+
+.menu-wrapper > ul > li.nav-item.dropdown.show > div
+{
+    border-style: solid;
+    border-width: thin;
+    border: 0.5px 0.5px 0.5px 0.5px solid #000;
+    border-bottom: none;
+}
