@@ -24,7 +24,8 @@ class User(AbstractUser):
         return '{} {} [{}]'.format(self.first_name, self.last_name,
                                    self.taxpayer_id or \
                                    self.matricola_studente or \
-                                   self.matricola_dipendente)
+                                   self.matricola_dipendente or \
+                                   self.email)
     
     class Meta:
         ordering = ['username']
