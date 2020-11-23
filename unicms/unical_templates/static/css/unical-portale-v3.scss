@@ -6,10 +6,9 @@
 /**
  * Università della Calabria COLORS
  */
-$bordeaux_unical: #b71918;
-$dark_grey_unical: #383838;
-$light_grey_unical: #9d9d9c;
-$white: #ffffff;
+
+@import "css/unical-style";
+
 $cyan: #176fc1;
 $grey_presta: #d3d2cf;
 $light_grey_presta: #e3e9ec;
@@ -52,12 +51,6 @@ a {
     background: $bordeaux_unical;
 }
 
-@media (min-width: 992px) {
-    .it-header-wrapper .it-nav-wrapper .it-header-navbar-wrapper {
-        padding-top: 1.7rem;
-    }
-}
-
 .it-header-center-wrapper .it-header-center-content-wrapper .it-right-zone {
     color: #fff;
 }
@@ -68,12 +61,6 @@ input.top-input {
     height: 1.7rem;
     width: 100%;
     color: $white;
-}
-
-@media (min-width: 992px) {
-    .navbar .navbar-collapsable .navbar-nav li.nav-item {
-        font-size: 1.2rem;
-    }
 }
 
 .it-hero-wrapper .it-hero-text-wrapper h1 {
@@ -128,11 +115,6 @@ input.top-input {
         fill: $white;
     }
 }
-@media (min-width: 992px) {
-    .it-header-navbar-wrapper {
-        background: $white;
-    }
-}
 
 .nav-mobile {
     width: 100%;
@@ -170,17 +152,30 @@ input.top-input {
     margin-bottom: 0;
 }
 
+
+
+/**
+ * Medium with
+ */
 @media (min-width: 992px) {
-    .it-header-center-wrapper .it-header-center-content-wrapper {
-        padding-left: 0;
-        padding-right: 0;
+    .it-header-wrapper .it-nav-wrapper .it-header-navbar-wrapper {
+        padding-top: 1.7rem;
     }
-}
-@media (min-width: 992px) {
     .it-header-wrapper .it-nav-wrapper .it-header-navbar-wrapper nav {
         padding-left: 0;
         padding-right: 0;
     }
+    .it-header-center-wrapper .it-header-center-content-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .navbar .navbar-collapsable .navbar-nav li.nav-item {
+        font-size: 1.2rem;
+    }
+    .it-header-navbar-wrapper {
+        background: $white;
+    }
+
 }
 
 
