@@ -2,7 +2,7 @@ import logging
 import json
 
 from django.conf import settings
-from . utils import detect_user_language
+from . utils import detect_user_language, toggle_session_state
 
 logger = logging.getLogger(__name__)
 
@@ -22,21 +22,20 @@ def detect_language_middleware(get_response):
 def show_template_blocks_sections(get_response):
     def blocks_sections_visibility(request):
         if request.user.is_staff:
-            arg = 'show_template_blocks_sections'
-            state = request.GET.get(arg)
-            if state in ('1', 'true', 'True'):
-                state = True
-            elif state in ('0', 'false', 'False'):
-                state = False
-            elif arg in request.GET:
-                state = True
-                state_session = request.session.get(arg, False)
-                if state_session == None: 
-                    state_session = False
-                state ^= state_session
-            
-            request.session[arg] = state
+            arg_name = 'show_template_blocks_sections'
+            toggle_session_state(request, arg_name)
             response = get_response(request)
             return response
     
     return blocks_sections_visibility
+
+
+def show_cms_draft_mode(get_response):
+    def draft_view_mode(request):
+        if request.user.is_staff:
+            arg_name = 'draft_view_mode'
+            toggle_session_state(request, arg_name)
+            response = get_response(request)
+            return response
+    
+    return draft_view_mode

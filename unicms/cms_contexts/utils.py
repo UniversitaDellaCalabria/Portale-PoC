@@ -66,3 +66,23 @@ def contextualize_template(template_fname, page):
 def sanitize_path(path):
     return re.sub('/[/]+', '/', path)
 
+
+def toggle_session_state(request, arg_name) -> None:
+    state_session = request.session.get(arg_name)
+    state_request = request.GET.get(arg_name, 'not-set')
+    
+    if state_request in ('1', 'true', 'True'):
+        state_request = True
+    elif state_request in ('0', 'false', 'False'):
+        state_request = False
+    elif state_request in ('', None):
+        state_request = 'toggle'
+    
+    if state_request in (True, False): 
+        request.session[arg_name] = state_request
+    elif state_request == 'toggle':
+        if state_session:
+            request.session[arg_name] = False
+        else:
+            request.session[arg_name] = True
+    

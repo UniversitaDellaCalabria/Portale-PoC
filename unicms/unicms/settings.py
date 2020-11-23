@@ -23,6 +23,7 @@ MIDDLEWARE = [
     #unicms
     'cms_contexts.middleware.detect_language_middleware',
     'cms_contexts.middleware.show_template_blocks_sections',
+    'cms_contexts.middleware.show_cms_draft_mode',
 ]
 
 STATICFILES_FINDERS = [

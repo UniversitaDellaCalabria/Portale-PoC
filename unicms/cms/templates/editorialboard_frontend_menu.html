@@ -34,9 +34,13 @@
                                     <hr>
                                 </li>
                                 <li>
-                                    <a class="list-item" href="">
+                                    <a class="list-item" href="{{ webpath.get_full_path }}?draft_view_mode">
                                       <svg class="icon icon-md icon-dark">
-                                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-tool"></use>
+                                        {% if request.session.draft_view_mode %}
+                                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-password-visible"></use>
+                                        {% else %}
+                                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-password-invisible"></use>
+                                        {% endif %}
                                       </svg>  
                                         <span class="m-2">{% trans "Draft Navigation Mode" %}</span>
                                     </a>
@@ -45,7 +49,11 @@
                                 <li>
                                     <a class="list-item" href="{{ webpath.get_full_path }}?show_template_blocks_sections">
                                       <svg class="icon icon-md icon-dark">
+                                        {% if request.session.show_template_blocks_sections %}
                                         <use xlink:href="{% static 'svg/sprite.svg' %}#it-password-visible"></use>
+                                        {% else %}
+                                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-password-invisible"></use>
+                                        {% endif %}
                                       </svg> 
                                         <span class="m-2">{% trans "Show/Hide section blocks" %}</span>
                                     </a>
