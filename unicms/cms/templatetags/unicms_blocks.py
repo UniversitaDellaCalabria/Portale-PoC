@@ -2,6 +2,7 @@ import logging
 
 from django import template
 from django.conf import settings
+from django.template.loader import render_to_string
 from django.utils import timezone
 from django.utils.module_loading import import_string
 from django.utils.safestring import SafeString
@@ -22,6 +23,9 @@ def load_blocks(context, section=None):
     blocks = page.get_blocks(section=section)
 
     result = SafeString('')
+    if request.user.is_staff:
+        result += render_to_string('load_blocks_head.html', {'section': section})
+        
     for block in blocks:
         obj = import_string(block.type)(content=block.content,
                                         request=request,
