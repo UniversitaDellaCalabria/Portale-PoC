@@ -23,7 +23,7 @@ def load_blocks(context, section=None):
     blocks = page.get_blocks(section=section)
 
     result = SafeString('')
-    if request.user.is_staff:
+    if request.user.is_staff and request.session.get('show_template_blocks_sections'):
         result += render_to_string('load_blocks_head.html', {'section': section})
         
     for block in blocks:
