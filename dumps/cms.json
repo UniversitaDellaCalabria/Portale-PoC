@@ -25,7 +25,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$216000$VdsaV1CyuN6i$KmQ+lOwEGhP5WGh9Kaspel/M9jfseZKMOfrVydcaKVg=",
-    "last_login": "2020-11-20T08:37:27.938Z",
+    "last_login": "2020-11-23T08:08:41.423Z",
     "is_superuser": true,
     "username": "felix",
     "is_staff": true,
@@ -358,7 +358,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:00.088Z",
-    "modified": "2020-11-18T15:17:44.075Z",
+    "modified": "2020-11-23T10:25:09.184Z",
     "is_active": true,
     "name": "Portale dell'Università della Calabria",
     "template_file": "portale_home_v3.html",
@@ -370,10 +370,10 @@
   "pk": 2,
   "fields": {
     "created": "2020-11-20T09:31:57.345Z",
-    "modified": "2020-11-20T11:52:46.128Z",
+    "modified": "2020-11-23T10:25:14.442Z",
     "is_active": true,
     "name": "Sito dipartimento - DIMES",
-    "template_file": "portale_home_dipartimento_v3_dimes.html",
+    "template_file": "dipartimento_home_v3_dimes.html",
     "note": ""
   }
 },
@@ -650,84 +650,6 @@
   }
 },
 {
-  "model": "cms_contexts.website",
-  "pk": 3,
-  "fields": {
-    "is_active": true
-  }
-},
-{
-  "model": "cms_contexts.website",
-  "pk": 2,
-  "fields": {
-    "is_active": true
-  }
-},
-{
-  "model": "cms_contexts.webpath",
-  "pk": 1,
-  "fields": {
-    "created": "2020-10-29T09:11:39.008Z",
-    "modified": "2020-11-20T17:58:25.415Z",
-    "site": 2,
-    "name": "Portale dell'Università della Calabria",
-    "parent": null,
-    "alias": null,
-    "alias_url": "",
-    "path": "/",
-    "fullpath": "/",
-    "is_active": true
-  }
-},
-{
-  "model": "cms_contexts.webpath",
-  "pk": 3,
-  "fields": {
-    "created": "2020-11-20T08:50:48.265Z",
-    "modified": "2020-11-20T08:50:48.265Z",
-    "site": 3,
-    "name": "Home page DIMES",
-    "parent": null,
-    "alias": null,
-    "alias_url": null,
-    "path": "/",
-    "fullpath": "/",
-    "is_active": true
-  }
-},
-{
-  "model": "cms_contexts.webpath",
-  "pk": 4,
-  "fields": {
-    "created": "2020-11-20T09:14:17.710Z",
-    "modified": "2020-11-20T17:58:11.196Z",
-    "site": 2,
-    "name": "Home page DIMES",
-    "parent": 5,
-    "alias": null,
-    "alias_url": "",
-    "path": "dimes/",
-    "fullpath": "/dipartimenti/dimes/",
-    "is_active": true
-  }
-},
-{
-  "model": "cms_contexts.webpath",
-  "pk": 5,
-  "fields": {
-    "created": "2020-11-20T12:29:06.360Z",
-    "modified": "2020-11-20T17:58:19.106Z",
-    "site": 2,
-    "name": "dipartimenti",
-    "parent": 1,
-    "alias": null,
-    "alias_url": "",
-    "path": "dipartimenti/",
-    "fullpath": "/dipartimenti/",
-    "is_active": true
-  }
-},
-{
   "model": "cms_menus.navigationbar",
   "pk": 1,
   "fields": {
@@ -753,192 +675,24 @@
 },
 {
   "model": "cms_menus.navigationbar",
-  "pk": 3,
-  "fields": {
-    "created": "2020-11-19T13:46:22.202Z",
-    "modified": "2020-11-19T13:46:22.202Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 4,
-  "fields": {
-    "created": "2020-11-19T13:57:00.938Z",
-    "modified": "2020-11-19T13:57:00.938Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 5,
-  "fields": {
-    "created": "2020-11-19T13:57:34.257Z",
-    "modified": "2020-11-19T13:57:34.257Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 6,
-  "fields": {
-    "created": "2020-11-19T13:58:00.956Z",
-    "modified": "2020-11-19T13:58:00.956Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 7,
-  "fields": {
-    "created": "2020-11-19T13:58:30.950Z",
-    "modified": "2020-11-19T13:58:30.950Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 8,
-  "fields": {
-    "created": "2020-11-19T14:00:43.519Z",
-    "modified": "2020-11-19T14:00:43.519Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 9,
-  "fields": {
-    "created": "2020-11-19T14:10:48.178Z",
-    "modified": "2020-11-19T14:10:48.178Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 10,
-  "fields": {
-    "created": "2020-11-19T14:11:06.087Z",
-    "modified": "2020-11-19T14:11:06.087Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 11,
-  "fields": {
-    "created": "2020-11-19T14:15:06.818Z",
-    "modified": "2020-11-19T14:15:06.818Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 12,
-  "fields": {
-    "created": "2020-11-19T14:15:52.547Z",
-    "modified": "2020-11-19T14:15:52.547Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 13,
-  "fields": {
-    "created": "2020-11-19T14:16:41.196Z",
-    "modified": "2020-11-19T14:16:41.196Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 14,
-  "fields": {
-    "created": "2020-11-19T14:18:48.197Z",
-    "modified": "2020-11-19T14:18:48.197Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 15,
-  "fields": {
-    "created": "2020-11-19T14:27:11.011Z",
-    "modified": "2020-11-19T14:27:11.011Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 16,
-  "fields": {
-    "created": "2020-11-19T14:27:16.570Z",
-    "modified": "2020-11-19T14:27:16.570Z",
-    "is_active": true,
-    "name": "Unical Portale - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
-  "pk": 17,
-  "fields": {
-    "created": "2020-11-20T09:53:34.193Z",
-    "modified": "2020-11-20T09:54:12.474Z",
-    "is_active": true,
-    "name": "DIMES - Menu principale",
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbar",
   "pk": 18,
   "fields": {
     "created": "2020-11-20T10:28:27.095Z",
     "modified": "2020-11-20T10:28:27.095Z",
     "is_active": true,
     "name": "DIMES - Menu secondario",
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbar",
+  "pk": 19,
+  "fields": {
+    "created": "2020-11-20T17:15:19.394Z",
+    "modified": "2020-11-20T17:15:35.907Z",
+    "is_active": true,
+    "name": "DIMES - Menu Principale",
     "created_by": null,
     "modified_by": null
   }
@@ -2169,1464 +1923,6 @@
 },
 {
   "model": "cms_menus.navigationbaritem",
-  "pk": 105,
-  "fields": {
-    "created": "2020-11-19T13:46:22.227Z",
-    "modified": "2020-11-19T13:46:22.227Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 3,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 106,
-  "fields": {
-    "created": "2020-11-19T13:57:00.954Z",
-    "modified": "2020-11-19T13:57:00.954Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 4,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 107,
-  "fields": {
-    "created": "2020-11-19T13:57:34.274Z",
-    "modified": "2020-11-19T13:57:34.274Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 5,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 108,
-  "fields": {
-    "created": "2020-11-19T13:57:34.291Z",
-    "modified": "2020-11-19T13:57:34.291Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 5,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 107,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 109,
-  "fields": {
-    "created": "2020-11-19T13:58:00.967Z",
-    "modified": "2020-11-19T13:58:00.967Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 6,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 110,
-  "fields": {
-    "created": "2020-11-19T13:58:00.977Z",
-    "modified": "2020-11-19T13:58:00.977Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 6,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 109,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 111,
-  "fields": {
-    "created": "2020-11-19T13:58:30.960Z",
-    "modified": "2020-11-19T13:58:30.960Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 7,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 112,
-  "fields": {
-    "created": "2020-11-19T13:58:30.970Z",
-    "modified": "2020-11-19T13:58:30.970Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 7,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 111,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 113,
-  "fields": {
-    "created": "2020-11-19T13:58:30.986Z",
-    "modified": "2020-11-19T13:58:30.986Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 7,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 111,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 114,
-  "fields": {
-    "created": "2020-11-19T13:58:30.997Z",
-    "modified": "2020-11-19T13:58:30.997Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 7,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 115,
-  "fields": {
-    "created": "2020-11-19T13:58:31.014Z",
-    "modified": "2020-11-19T13:58:31.015Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 7,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 114,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 116,
-  "fields": {
-    "created": "2020-11-19T13:58:31.025Z",
-    "modified": "2020-11-19T13:58:31.025Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 7,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 114,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 117,
-  "fields": {
-    "created": "2020-11-19T13:58:31.035Z",
-    "modified": "2020-11-19T13:58:31.035Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 7,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 114,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 118,
-  "fields": {
-    "created": "2020-11-19T14:00:43.531Z",
-    "modified": "2020-11-19T14:00:43.531Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 8,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 119,
-  "fields": {
-    "created": "2020-11-19T14:00:43.541Z",
-    "modified": "2020-11-19T14:00:43.541Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 8,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 118,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 120,
-  "fields": {
-    "created": "2020-11-19T14:00:43.558Z",
-    "modified": "2020-11-19T14:00:43.558Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 8,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 118,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 121,
-  "fields": {
-    "created": "2020-11-19T14:00:43.582Z",
-    "modified": "2020-11-19T14:00:43.582Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 8,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 122,
-  "fields": {
-    "created": "2020-11-19T14:00:43.593Z",
-    "modified": "2020-11-19T14:00:43.593Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 8,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 121,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 123,
-  "fields": {
-    "created": "2020-11-19T14:00:43.604Z",
-    "modified": "2020-11-19T14:00:43.604Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 8,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 121,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 124,
-  "fields": {
-    "created": "2020-11-19T14:00:43.620Z",
-    "modified": "2020-11-19T14:00:43.620Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 8,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 121,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 125,
-  "fields": {
-    "created": "2020-11-19T14:10:48.190Z",
-    "modified": "2020-11-19T14:10:48.190Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 9,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 126,
-  "fields": {
-    "created": "2020-11-19T14:10:48.206Z",
-    "modified": "2020-11-19T14:10:48.206Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 9,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 125,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 127,
-  "fields": {
-    "created": "2020-11-19T14:10:48.228Z",
-    "modified": "2020-11-19T14:10:48.228Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 9,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 125,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 128,
-  "fields": {
-    "created": "2020-11-19T14:10:48.238Z",
-    "modified": "2020-11-19T14:10:48.238Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 9,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 129,
-  "fields": {
-    "created": "2020-11-19T14:10:48.249Z",
-    "modified": "2020-11-19T14:10:48.249Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 9,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 128,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 130,
-  "fields": {
-    "created": "2020-11-19T14:10:48.260Z",
-    "modified": "2020-11-19T14:10:48.260Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 9,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 128,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 131,
-  "fields": {
-    "created": "2020-11-19T14:10:48.271Z",
-    "modified": "2020-11-19T14:10:48.271Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 9,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 128,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 132,
-  "fields": {
-    "created": "2020-11-19T14:11:06.101Z",
-    "modified": "2020-11-19T14:11:06.101Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 10,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 133,
-  "fields": {
-    "created": "2020-11-19T14:11:06.111Z",
-    "modified": "2020-11-19T14:11:06.111Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 10,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 132,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 134,
-  "fields": {
-    "created": "2020-11-19T14:11:06.129Z",
-    "modified": "2020-11-19T14:11:06.129Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 10,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 132,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 135,
-  "fields": {
-    "created": "2020-11-19T14:11:06.140Z",
-    "modified": "2020-11-19T14:11:06.140Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 10,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 136,
-  "fields": {
-    "created": "2020-11-19T14:11:06.149Z",
-    "modified": "2020-11-19T14:11:06.149Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 10,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 135,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 137,
-  "fields": {
-    "created": "2020-11-19T14:11:06.164Z",
-    "modified": "2020-11-19T14:11:06.164Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 10,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 135,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 138,
-  "fields": {
-    "created": "2020-11-19T14:11:06.188Z",
-    "modified": "2020-11-19T14:11:06.188Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 10,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 135,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 139,
-  "fields": {
-    "created": "2020-11-19T14:15:06.829Z",
-    "modified": "2020-11-19T14:15:06.829Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 11,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 140,
-  "fields": {
-    "created": "2020-11-19T14:15:06.839Z",
-    "modified": "2020-11-19T14:15:06.839Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 11,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 139,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 141,
-  "fields": {
-    "created": "2020-11-19T14:15:06.862Z",
-    "modified": "2020-11-19T14:15:06.862Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 11,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 139,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 142,
-  "fields": {
-    "created": "2020-11-19T14:15:06.885Z",
-    "modified": "2020-11-19T14:15:06.885Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 11,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 143,
-  "fields": {
-    "created": "2020-11-19T14:15:06.902Z",
-    "modified": "2020-11-19T14:15:06.902Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 11,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 142,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 144,
-  "fields": {
-    "created": "2020-11-19T14:15:06.913Z",
-    "modified": "2020-11-19T14:15:06.913Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 11,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 142,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 145,
-  "fields": {
-    "created": "2020-11-19T14:15:06.924Z",
-    "modified": "2020-11-19T14:15:06.924Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 11,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 142,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 146,
-  "fields": {
-    "created": "2020-11-19T14:15:52.563Z",
-    "modified": "2020-11-19T14:15:52.563Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 12,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 147,
-  "fields": {
-    "created": "2020-11-19T14:15:52.573Z",
-    "modified": "2020-11-19T14:15:52.573Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 12,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 146,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 148,
-  "fields": {
-    "created": "2020-11-19T14:15:52.590Z",
-    "modified": "2020-11-19T14:15:52.590Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 12,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 146,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 149,
-  "fields": {
-    "created": "2020-11-19T14:15:52.600Z",
-    "modified": "2020-11-19T14:15:52.600Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 12,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 150,
-  "fields": {
-    "created": "2020-11-19T14:15:52.610Z",
-    "modified": "2020-11-19T14:15:52.610Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 12,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 149,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 151,
-  "fields": {
-    "created": "2020-11-19T14:15:52.634Z",
-    "modified": "2020-11-19T14:15:52.634Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 12,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 149,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 152,
-  "fields": {
-    "created": "2020-11-19T14:15:52.650Z",
-    "modified": "2020-11-19T14:15:52.651Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 12,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 149,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 153,
-  "fields": {
-    "created": "2020-11-19T14:16:41.214Z",
-    "modified": "2020-11-19T14:16:41.214Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 13,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 154,
-  "fields": {
-    "created": "2020-11-19T14:16:41.231Z",
-    "modified": "2020-11-19T14:16:41.231Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 13,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 153,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 155,
-  "fields": {
-    "created": "2020-11-19T14:16:41.249Z",
-    "modified": "2020-11-19T14:16:41.249Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 13,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 153,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 156,
-  "fields": {
-    "created": "2020-11-19T14:16:41.267Z",
-    "modified": "2020-11-19T14:16:41.267Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 13,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 157,
-  "fields": {
-    "created": "2020-11-19T14:16:41.278Z",
-    "modified": "2020-11-19T14:16:41.278Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 13,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 156,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 158,
-  "fields": {
-    "created": "2020-11-19T14:16:41.289Z",
-    "modified": "2020-11-19T14:16:41.289Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 13,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 156,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 159,
-  "fields": {
-    "created": "2020-11-19T14:16:41.301Z",
-    "modified": "2020-11-19T14:16:41.301Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 13,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 156,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 160,
-  "fields": {
-    "created": "2020-11-19T14:18:48.214Z",
-    "modified": "2020-11-19T14:18:48.214Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 14,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 161,
-  "fields": {
-    "created": "2020-11-19T14:18:48.229Z",
-    "modified": "2020-11-19T14:18:48.229Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 14,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 160,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 162,
-  "fields": {
-    "created": "2020-11-19T14:18:48.240Z",
-    "modified": "2020-11-19T14:18:48.240Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 14,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 160,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 163,
-  "fields": {
-    "created": "2020-11-19T14:18:48.259Z",
-    "modified": "2020-11-19T14:18:48.259Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 14,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 164,
-  "fields": {
-    "created": "2020-11-19T14:18:48.269Z",
-    "modified": "2020-11-19T14:18:48.269Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 14,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 163,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 165,
-  "fields": {
-    "created": "2020-11-19T14:18:48.286Z",
-    "modified": "2020-11-19T14:18:48.286Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 14,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 163,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 166,
-  "fields": {
-    "created": "2020-11-19T14:18:48.297Z",
-    "modified": "2020-11-19T14:18:48.297Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 14,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 163,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 167,
-  "fields": {
-    "created": "2020-11-19T14:27:11.024Z",
-    "modified": "2020-11-19T14:27:11.024Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 15,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 168,
-  "fields": {
-    "created": "2020-11-19T14:27:11.048Z",
-    "modified": "2020-11-19T14:27:11.048Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 15,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 167,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 169,
-  "fields": {
-    "created": "2020-11-19T14:27:11.058Z",
-    "modified": "2020-11-19T14:27:11.058Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 15,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 167,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 170,
-  "fields": {
-    "created": "2020-11-19T14:27:11.068Z",
-    "modified": "2020-11-19T14:27:11.068Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 15,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 171,
-  "fields": {
-    "created": "2020-11-19T14:27:11.079Z",
-    "modified": "2020-11-19T14:27:11.079Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 15,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 170,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 172,
-  "fields": {
-    "created": "2020-11-19T14:27:11.092Z",
-    "modified": "2020-11-19T14:27:11.092Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 15,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 170,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 173,
-  "fields": {
-    "created": "2020-11-19T14:27:11.102Z",
-    "modified": "2020-11-19T14:27:11.102Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 15,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 170,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 174,
-  "fields": {
-    "created": "2020-11-19T14:27:16.579Z",
-    "modified": "2020-11-19T14:27:16.579Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 16,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 175,
-  "fields": {
-    "created": "2020-11-19T14:27:16.595Z",
-    "modified": "2020-11-19T14:27:16.595Z",
-    "order": 6,
-    "is_active": true,
-    "menu": 16,
-    "name": "Offerta Formativa",
-    "webpath": null,
-    "parent": 174,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 176,
-  "fields": {
-    "created": "2020-11-19T14:27:16.612Z",
-    "modified": "2020-11-19T14:27:16.612Z",
-    "order": 7,
-    "is_active": true,
-    "menu": 16,
-    "name": "Lauree Triennali",
-    "webpath": null,
-    "parent": 174,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 177,
-  "fields": {
-    "created": "2020-11-19T14:27:16.628Z",
-    "modified": "2020-11-19T14:27:16.628Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 16,
-    "name": "Campus",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 178,
-  "fields": {
-    "created": "2020-11-19T14:27:16.639Z",
-    "modified": "2020-11-19T14:27:16.639Z",
-    "order": 17,
-    "is_active": true,
-    "menu": 16,
-    "name": "visita il campus",
-    "webpath": null,
-    "parent": 177,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 179,
-  "fields": {
-    "created": "2020-11-19T14:27:16.649Z",
-    "modified": "2020-11-19T14:27:16.649Z",
-    "order": 18,
-    "is_active": true,
-    "menu": 16,
-    "name": "Storia e architettura",
-    "webpath": null,
-    "parent": 177,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 180,
-  "fields": {
-    "created": "2020-11-19T14:27:16.664Z",
-    "modified": "2020-11-19T14:27:16.664Z",
-    "order": 19,
-    "is_active": true,
-    "menu": 16,
-    "name": "Come raggiungerci",
-    "webpath": null,
-    "parent": 177,
-    "url": "#",
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 181,
-  "fields": {
-    "created": "2020-11-20T09:54:12.475Z",
-    "modified": "2020-11-20T09:54:12.475Z",
-    "order": 0,
-    "is_active": true,
-    "menu": 17,
-    "name": "Dipartimento",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 182,
-  "fields": {
-    "created": "2020-11-20T09:54:12.476Z",
-    "modified": "2020-11-20T09:54:12.476Z",
-    "order": 1,
-    "is_active": true,
-    "menu": 17,
-    "name": "Didattica",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 183,
-  "fields": {
-    "created": "2020-11-20T09:54:12.476Z",
-    "modified": "2020-11-20T09:54:12.476Z",
-    "order": 2,
-    "is_active": true,
-    "menu": 17,
-    "name": "Persone",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 184,
-  "fields": {
-    "created": "2020-11-20T09:54:12.476Z",
-    "modified": "2020-11-20T09:54:12.476Z",
-    "order": 3,
-    "is_active": true,
-    "menu": 17,
-    "name": "Ricerca",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
-  "pk": 185,
-  "fields": {
-    "created": "2020-11-20T09:54:12.476Z",
-    "modified": "2020-11-20T09:54:12.477Z",
-    "order": 4,
-    "is_active": true,
-    "menu": 17,
-    "name": "Innovazione",
-    "webpath": null,
-    "parent": null,
-    "url": null,
-    "publication": null,
-    "created_by": null,
-    "modified_by": null
-  }
-},
-{
-  "model": "cms_menus.navigationbaritem",
   "pk": 186,
   "fields": {
     "created": "2020-11-20T10:28:27.095Z",
@@ -3662,12 +1958,574 @@
   }
 },
 {
+  "model": "cms_menus.navigationbaritem",
+  "pk": 188,
+  "fields": {
+    "created": "2020-11-20T17:15:19.414Z",
+    "modified": "2020-11-20T17:15:19.414Z",
+    "order": 0,
+    "is_active": true,
+    "menu": 19,
+    "name": "Dipartimento",
+    "webpath": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 189,
+  "fields": {
+    "created": "2020-11-20T17:15:19.427Z",
+    "modified": "2020-11-20T17:15:35.933Z",
+    "order": 5,
+    "is_active": true,
+    "menu": 19,
+    "name": "presentazione",
+    "webpath": null,
+    "parent": 188,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 190,
+  "fields": {
+    "created": "2020-11-20T17:15:19.439Z",
+    "modified": "2020-11-20T17:15:35.938Z",
+    "order": 6,
+    "is_active": true,
+    "menu": 19,
+    "name": "organizzazione",
+    "webpath": null,
+    "parent": 188,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 191,
+  "fields": {
+    "created": "2020-11-20T17:15:19.450Z",
+    "modified": "2020-11-20T17:15:35.943Z",
+    "order": 7,
+    "is_active": true,
+    "menu": 19,
+    "name": "qualità e miglioramento",
+    "webpath": null,
+    "parent": 188,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 192,
+  "fields": {
+    "created": "2020-11-20T17:15:19.462Z",
+    "modified": "2020-11-20T17:15:35.949Z",
+    "order": 8,
+    "is_active": true,
+    "menu": 19,
+    "name": "bandi e concorsi",
+    "webpath": null,
+    "parent": 188,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 193,
+  "fields": {
+    "created": "2020-11-20T17:15:19.474Z",
+    "modified": "2020-11-20T17:15:35.953Z",
+    "order": 9,
+    "is_active": true,
+    "menu": 19,
+    "name": "dove siamo",
+    "webpath": null,
+    "parent": 188,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 194,
+  "fields": {
+    "created": "2020-11-20T17:15:19.488Z",
+    "modified": "2020-11-20T17:15:19.488Z",
+    "order": 1,
+    "is_active": true,
+    "menu": 19,
+    "name": "Didattica",
+    "webpath": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 195,
+  "fields": {
+    "created": "2020-11-20T17:15:19.528Z",
+    "modified": "2020-11-20T17:15:35.957Z",
+    "order": 10,
+    "is_active": true,
+    "menu": 19,
+    "name": "lauree triennali",
+    "webpath": null,
+    "parent": 194,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 196,
+  "fields": {
+    "created": "2020-11-20T17:15:19.554Z",
+    "modified": "2020-11-20T17:15:35.966Z",
+    "order": 11,
+    "is_active": true,
+    "menu": 19,
+    "name": "lauree magistrali",
+    "webpath": null,
+    "parent": 194,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 197,
+  "fields": {
+    "created": "2020-11-20T17:15:19.572Z",
+    "modified": "2020-11-20T17:15:35.971Z",
+    "order": 12,
+    "is_active": true,
+    "menu": 19,
+    "name": "corsi post laurea",
+    "webpath": null,
+    "parent": 194,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 198,
+  "fields": {
+    "created": "2020-11-20T17:15:19.585Z",
+    "modified": "2020-11-20T17:15:35.977Z",
+    "order": 13,
+    "is_active": true,
+    "menu": 19,
+    "name": "dottorati di ricerca",
+    "webpath": null,
+    "parent": 194,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 199,
+  "fields": {
+    "created": "2020-11-20T17:15:19.596Z",
+    "modified": "2020-11-20T17:15:19.596Z",
+    "order": 2,
+    "is_active": true,
+    "menu": 19,
+    "name": "Persone",
+    "webpath": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 200,
+  "fields": {
+    "created": "2020-11-20T17:15:19.613Z",
+    "modified": "2020-11-20T17:15:36.026Z",
+    "order": 22,
+    "is_active": true,
+    "menu": 19,
+    "name": "docenti",
+    "webpath": null,
+    "parent": 199,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 201,
+  "fields": {
+    "created": "2020-11-20T17:15:19.625Z",
+    "modified": "2020-11-20T17:15:36.031Z",
+    "order": 23,
+    "is_active": true,
+    "menu": 19,
+    "name": "personale tecnico amministrativo",
+    "webpath": null,
+    "parent": 199,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 202,
+  "fields": {
+    "created": "2020-11-20T17:15:19.636Z",
+    "modified": "2020-11-20T17:15:36.034Z",
+    "order": 24,
+    "is_active": true,
+    "menu": 19,
+    "name": "dottorandi",
+    "webpath": null,
+    "parent": 199,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 203,
+  "fields": {
+    "created": "2020-11-20T17:15:19.648Z",
+    "modified": "2020-11-20T17:15:36.037Z",
+    "order": 25,
+    "is_active": true,
+    "menu": 19,
+    "name": "assegnisti - collaboratori",
+    "webpath": null,
+    "parent": 199,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 204,
+  "fields": {
+    "created": "2020-11-20T17:15:19.659Z",
+    "modified": "2020-11-20T17:15:19.659Z",
+    "order": 3,
+    "is_active": true,
+    "menu": 19,
+    "name": "Ricerca",
+    "webpath": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 205,
+  "fields": {
+    "created": "2020-11-20T17:15:19.671Z",
+    "modified": "2020-11-20T17:15:35.994Z",
+    "order": 17,
+    "is_active": true,
+    "menu": 19,
+    "name": "ambiti",
+    "webpath": null,
+    "parent": 204,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 206,
+  "fields": {
+    "created": "2020-11-20T17:15:19.683Z",
+    "modified": "2020-11-20T17:15:35.998Z",
+    "order": 18,
+    "is_active": true,
+    "menu": 19,
+    "name": "progetti",
+    "webpath": null,
+    "parent": 204,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 207,
+  "fields": {
+    "created": "2020-11-20T17:15:19.694Z",
+    "modified": "2020-11-20T17:15:36.003Z",
+    "order": 19,
+    "is_active": true,
+    "menu": 19,
+    "name": "laboratori",
+    "webpath": null,
+    "parent": 204,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 208,
+  "fields": {
+    "created": "2020-11-20T17:15:19.706Z",
+    "modified": "2020-11-20T17:15:36.011Z",
+    "order": 20,
+    "is_active": true,
+    "menu": 19,
+    "name": "dottorati",
+    "webpath": null,
+    "parent": 204,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 209,
+  "fields": {
+    "created": "2020-11-20T17:15:19.718Z",
+    "modified": "2020-11-20T17:15:36.020Z",
+    "order": 21,
+    "is_active": true,
+    "menu": 19,
+    "name": "attività- risultati",
+    "webpath": null,
+    "parent": 204,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 210,
+  "fields": {
+    "created": "2020-11-20T17:15:19.732Z",
+    "modified": "2020-11-20T17:15:19.732Z",
+    "order": 4,
+    "is_active": true,
+    "menu": 19,
+    "name": "Innovazione",
+    "webpath": null,
+    "parent": null,
+    "url": null,
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 211,
+  "fields": {
+    "created": "2020-11-20T17:15:19.744Z",
+    "modified": "2020-11-20T17:15:35.984Z",
+    "order": 14,
+    "is_active": true,
+    "menu": 19,
+    "name": "imprese",
+    "webpath": null,
+    "parent": 210,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 212,
+  "fields": {
+    "created": "2020-11-20T17:15:19.757Z",
+    "modified": "2020-11-20T17:15:35.987Z",
+    "order": 15,
+    "is_active": true,
+    "menu": 19,
+    "name": "cultura",
+    "webpath": null,
+    "parent": 210,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 213,
+  "fields": {
+    "created": "2020-11-20T17:15:19.771Z",
+    "modified": "2020-11-20T17:15:35.990Z",
+    "order": 16,
+    "is_active": true,
+    "menu": 19,
+    "name": "società",
+    "webpath": null,
+    "parent": 210,
+    "url": "#",
+    "publication": null,
+    "created_by": null,
+    "modified_by": null
+  }
+},
+{
   "model": "cms_menus.navigationbaritemlocalization",
   "pk": 1,
   "fields": {
     "item": 4,
     "language": "en",
     "name": "Research"
+  }
+},
+{
+  "model": "cms_contexts.website",
+  "pk": 3,
+  "fields": {
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.website",
+  "pk": 2,
+  "fields": {
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.webpath",
+  "pk": 1,
+  "fields": {
+    "created": "2020-10-29T09:11:39.008Z",
+    "modified": "2020-11-07T14:55:20.868Z",
+    "site": 2,
+    "name": "Portale dell'Università della Calabria",
+    "parent": null,
+    "alias": null,
+    "alias_url": null,
+    "path": "/",
+    "fullpath": "/",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.webpath",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-07T14:57:19.676Z",
+    "modified": "2020-11-07T14:58:52.545Z",
+    "site": 2,
+    "name": "banane",
+    "parent": 1,
+    "alias": null,
+    "alias_url": null,
+    "path": "didattica",
+    "fullpath": "/didattica",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.webpath",
+  "pk": 3,
+  "fields": {
+    "created": "2020-11-20T08:50:48.265Z",
+    "modified": "2020-11-23T08:09:16.220Z",
+    "site": 3,
+    "name": "DIMES (subdomain)",
+    "parent": null,
+    "alias": null,
+    "alias_url": "//test.unical.it:8000/portale/dipartimenti/dimes/",
+    "path": "/",
+    "fullpath": "/",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.webpath",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-20T09:14:17.710Z",
+    "modified": "2020-11-23T08:08:52.725Z",
+    "site": 2,
+    "name": "DIMES",
+    "parent": 5,
+    "alias": null,
+    "alias_url": "",
+    "path": "dimes/",
+    "fullpath": "/dipartimenti/dimes/",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.webpath",
+  "pk": 5,
+  "fields": {
+    "created": "2020-11-20T12:29:06.360Z",
+    "modified": "2020-11-20T16:39:05.276Z",
+    "site": 2,
+    "name": "dipartimenti",
+    "parent": 1,
+    "alias": null,
+    "alias_url": "",
+    "path": "dipartimenti/",
+    "fullpath": "/dipartimenti/",
+    "is_active": true
   }
 },
 {
@@ -3741,6 +2599,7 @@
     "created": "2020-10-29T09:12:44.427Z",
     "modified": "2020-11-18T17:04:36.561Z",
     "is_active": true,
+    "draft_of": null,
     "name": "Portale dell'Università della Calabria",
     "webpath": 1,
     "base_template": 1,
@@ -3758,8 +2617,9 @@
   "pk": 2,
   "fields": {
     "created": "2020-11-20T09:15:53.481Z",
-    "modified": "2020-11-20T12:30:24.250Z",
+    "modified": "2020-11-20T17:16:02.000Z",
     "is_active": true,
+    "draft_of": null,
     "name": "Dimes",
     "webpath": 4,
     "base_template": 2,
@@ -3826,19 +2686,6 @@
 },
 {
   "model": "cms.pagemenu",
-  "pk": 3,
-  "fields": {
-    "created": "2020-11-20T09:56:30.415Z",
-    "modified": "2020-11-20T09:56:30.415Z",
-    "order": 10,
-    "is_active": true,
-    "section": "menu-1",
-    "page": 2,
-    "menu": 17
-  }
-},
-{
-  "model": "cms.pagemenu",
   "pk": 6,
   "fields": {
     "created": "2020-11-20T10:29:42.578Z",
@@ -3848,6 +2695,19 @@
     "section": "menu-2",
     "page": 2,
     "menu": 18
+  }
+},
+{
+  "model": "cms.pagemenu",
+  "pk": 7,
+  "fields": {
+    "created": "2020-11-20T17:16:02.007Z",
+    "modified": "2020-11-20T17:16:02.007Z",
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 2,
+    "menu": 19
   }
 },
 {
@@ -3904,6 +2764,7 @@
     "title": "Papiri, Codex, Libri. La attraverso labora lorem ipsum",
     "subheading": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
     "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>",
+    "content_types": null,
     "presentation_image": 4,
     "state": "published",
     "date_start": "2020-11-09T13:24:35Z",
@@ -3927,6 +2788,7 @@
     "title": "Unical Campus esempio 2",
     "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
     "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
+    "content_types": null,
     "presentation_image": null,
     "state": "published",
     "date_start": "2020-11-09T13:35:44Z",
@@ -3950,6 +2812,7 @@
     "title": "Unical Campus 3",
     "subheading": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
+    "content_types": null,
     "presentation_image": 2,
     "state": "published",
     "date_start": "2020-11-09T13:36:39Z",
@@ -3973,6 +2836,7 @@
     "title": "Studiare online è sempre più semplice",
     "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>",
+    "content_types": null,
     "presentation_image": null,
     "state": "published",
     "date_start": "2020-11-11T16:56:21Z",
@@ -3996,6 +2860,7 @@
     "title": "Il cinema è Unical",
     "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>",
+    "content_types": null,
     "presentation_image": 3,
     "state": "published",
     "date_start": "2020-11-11T17:18:08Z",
