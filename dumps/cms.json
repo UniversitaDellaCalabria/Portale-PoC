@@ -354,6 +354,24 @@
   }
 },
 {
+  "model": "taggit.taggeditem",
+  "pk": 27,
+  "fields": {
+    "tag": 2,
+    "content_type": 25,
+    "object_id": 1
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 28,
+  "fields": {
+    "tag": 2,
+    "content_type": 28,
+    "object_id": 3
+  }
+},
+{
   "model": "cms_templates.pagetemplate",
   "pk": 1,
   "fields": {
@@ -395,12 +413,12 @@
   "pk": 2,
   "fields": {
     "created": "2020-11-18T15:13:34.250Z",
-    "modified": "2020-11-18T15:45:29.102Z",
+    "modified": "2020-11-24T09:45:10.299Z",
     "is_active": true,
     "name": "main-carousel",
     "description": "",
     "type": "cms_templates.blocks.HtmlBlock",
-    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"unical_portale_hero.html\" %}\r\n\r\n<script>\r\n$(document).ready(function() {\r\n  $(\"#my-slider\").owlCarousel({\r\n      navigation : true, // Show next and prev buttons\r\n      loop: true,\r\n      slideSpeed : 300,\r\n      paginationSpeed : 400,\r\n      autoplay: true,\r\n      items : 1,\r\n      itemsDesktop : false,\r\n      itemsDesktopSmall : false,\r\n      itemsTablet: false,\r\n      itemsMobile : false,\r\n      dots: false\r\n  });\r\n});\r\n</script>"
+    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"hero_slider.html\" %}\r\n\r\n<script>\r\n$(document).ready(function() {\r\n  $(\"#my-slider\").owlCarousel({\r\n      navigation : true, // Show next and prev buttons\r\n      loop: true,\r\n      slideSpeed : 300,\r\n      paginationSpeed : 400,\r\n      autoplay: true,\r\n      items : 1,\r\n      itemsDesktop : false,\r\n      itemsDesktopSmall : false,\r\n      itemsTablet: false,\r\n      itemsMobile : false,\r\n      dots: false\r\n  });\r\n});\r\n</script>"
   }
 },
 {
@@ -2529,6 +2547,17 @@
   }
 },
 {
+  "model": "cms_medias.mediacollection",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-24T09:33:24.719Z",
+    "modified": "2020-11-24T10:13:50.234Z",
+    "is_active": true,
+    "name": "Unical gallery",
+    "description": "Galleria foto unical"
+  }
+},
+{
   "model": "cms_medias.media",
   "pk": 1,
   "fields": {
@@ -2593,11 +2622,59 @@
   }
 },
 {
+  "model": "cms_medias.mediacollectionitem",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-24T09:33:24.727Z",
+    "modified": "2020-11-24T09:33:24.727Z",
+    "order": 10,
+    "is_active": true,
+    "media": 1,
+    "collection": 1
+  }
+},
+{
+  "model": "cms_medias.mediacollectionitem",
+  "pk": 2,
+  "fields": {
+    "created": "2020-11-24T09:33:24.727Z",
+    "modified": "2020-11-24T09:33:24.727Z",
+    "order": 20,
+    "is_active": true,
+    "media": 2,
+    "collection": 1
+  }
+},
+{
+  "model": "cms_medias.mediacollectionitem",
+  "pk": 3,
+  "fields": {
+    "created": "2020-11-24T10:13:09.157Z",
+    "modified": "2020-11-24T10:13:09.157Z",
+    "order": 30,
+    "is_active": true,
+    "media": 4,
+    "collection": 1
+  }
+},
+{
+  "model": "cms_medias.mediacollectionitem",
+  "pk": 4,
+  "fields": {
+    "created": "2020-11-24T10:13:50.240Z",
+    "modified": "2020-11-24T10:13:50.240Z",
+    "order": 10,
+    "is_active": true,
+    "media": 3,
+    "collection": 1
+  }
+},
+{
   "model": "cms.page",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-11-18T17:04:36.561Z",
+    "modified": "2020-11-24T10:58:04.194Z",
     "is_active": true,
     "draft_of": null,
     "name": "Portale dell'Università della Calabria",
@@ -2627,6 +2704,26 @@
     "date_start": "2020-11-20T09:15:51Z",
     "date_end": null,
     "state": "published",
+    "created_by": null,
+    "modified_by": null,
+    "type": "home"
+  }
+},
+{
+  "model": "cms.page",
+  "pk": 3,
+  "fields": {
+    "created": "2020-11-24T10:58:04.207Z",
+    "modified": "2020-11-24T11:02:11.987Z",
+    "is_active": true,
+    "draft_of": 1,
+    "name": "Portale dell'Università della Calabria",
+    "webpath": 1,
+    "base_template": 1,
+    "note": "",
+    "date_start": "2020-10-29T09:12:02Z",
+    "date_end": null,
+    "state": "draft",
     "created_by": null,
     "modified_by": null,
     "type": "home"
@@ -2711,6 +2808,17 @@
   }
 },
 {
+  "model": "cms.pageblock",
+  "pk": 1,
+  "fields": {
+    "order": 10,
+    "is_active": false,
+    "section": "1",
+    "page": 3,
+    "block": 1
+  }
+},
+{
   "model": "cms.category",
   "pk": 1,
   "fields": {
@@ -2759,7 +2867,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-11-09T13:33:21.852Z",
-    "modified": "2020-11-20T14:47:59.177Z",
+    "modified": "2020-11-24T10:52:29.879Z",
     "is_active": true,
     "title": "Papiri, Codex, Libri. La attraverso labora lorem ipsum",
     "subheading": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
@@ -3009,6 +3117,29 @@
     "in_evidence_end": null,
     "created_by": null,
     "modified_by": null
+  }
+},
+{
+  "model": "cms.publicationlink",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-24T10:52:29.885Z",
+    "modified": "2020-11-24T10:52:29.885Z",
+    "publication": 1,
+    "name": "test",
+    "url": "https://auditorium.unical.it"
+  }
+},
+{
+  "model": "cms.publicationgallery",
+  "pk": 1,
+  "fields": {
+    "created": "2020-11-24T09:33:26.374Z",
+    "modified": "2020-11-24T09:33:26.374Z",
+    "order": 10,
+    "is_active": true,
+    "publication": 1,
+    "collection": 1
   }
 },
 {
