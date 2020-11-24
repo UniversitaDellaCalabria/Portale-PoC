@@ -8,6 +8,7 @@ from django.http import (HttpResponse,
                          Http404,
                          HttpResponseBadRequest,
                          HttpResponseRedirect)
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext, gettext_lazy as _
 
@@ -36,9 +37,29 @@ class AbstractPreviewableAdmin(admin.ModelAdmin):
                 if draft.get(attr):
                     draft.pop(attr)
                 
-            obj.__class__.objects.create(**draft)
+            new_obj = obj.__class__.objects.create(**draft)
+            tags = [i for i in obj.tags.values_list('name', flat=1)]
+            new_obj.tags.add(*tags)
+            
             self.message_user(request, _msg)
-            return HttpResponseRedirect(".")  
+            url = reverse('admin:cms_page_change', 
+                          kwargs={'object_id': new_obj.pk})
+            return HttpResponseRedirect(url)  
+        
+        elif request.POST.get('state') == 'published' and obj.draft_of:
+            published = obj.__class__.filter(pk=obj.draft_of).first()
+            if not published:
+                self.message_user(request, 
+                                  "Draft missed its parent page ... ",
+                                  level = messages.ERROR)
+            published.is_active = False
+            obj.is_active = True
+            obj.draft_of = None
+            published.save()
+            obj.save()
+            
+            self.message_user(request, "Draft being published succesfully")
+            
         
         elif "_preview" in request.POST:
             # matching_names_except_this = self.get_queryset(request).filter(name=obj.name).exclude(pk=obj.id)
@@ -47,6 +68,7 @@ class AbstractPreviewableAdmin(admin.ModelAdmin):
             # obj.save()
             self.message_user(request, "Preview is available at ...")
             return HttpResponseRedirect(".")
+            
         return super().response_change(request, obj)
 
 

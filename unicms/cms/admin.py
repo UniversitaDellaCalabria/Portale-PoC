@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.utils.module_loading import import_string
 
 from cms_contexts.admin import AbstractPreviewableAdmin
+
 from . admin_inlines import *
 from . models import *
 from . forms import *
