@@ -9,6 +9,7 @@ from django.http import (HttpResponse,
                          HttpResponseRedirect)
 from django.shortcuts import render, get_object_or_404
 from django.utils.module_loading import import_string
+from django.utils.translation import gettext_lazy as _
 
 from cms_contexts.models import WebSite, WebPath
 from urllib.parse import urlparse
@@ -56,12 +57,17 @@ def cms_dispatch(request):
         raise Http404()
     if webpath.is_alias:
         return HttpResponseRedirect(webpath.redirect_url)
-    page = Page.objects.filter(webpath = webpath,
-                               is_active = True,
-                               state = 'published').first()
+    
+    page = Page.objects.filter(webpath = webpath, is_active = True)
+    published_page = page.filter(state = 'published').first()
+    
+    if request.session.get('draft_view_mode'):
+        page = page.filter(state = 'draft').last() or published_page
+    else:
+        page = published_page
+    
     if not page:
-        raise Http404()
-
+        raise Http404("CMS Page not found")
     context = {
         'website': website,
         'path': path,

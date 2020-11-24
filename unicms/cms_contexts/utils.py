@@ -2,6 +2,7 @@ import logging
 import re
 
 from django.conf import settings
+from django.contrib import messages
 from django.utils import translation
 from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
@@ -86,3 +87,6 @@ def toggle_session_state(request, arg_name) -> None:
         else:
             request.session[arg_name] = True
     
+    if state_request in (True, 'toggle') and request.session[arg_name]:
+        messages.add_message(request, messages.INFO, 
+                             _('You entered in {}').format(arg_name.upper()))

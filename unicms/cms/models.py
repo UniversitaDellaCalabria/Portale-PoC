@@ -88,7 +88,8 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
         query_params = dict(is_active=True)
         if section:
             query_params['section'] = section
-        blocks = PageBlock.objects.filter(**query_params).\
+        blocks = PageBlock.objects.filter(page=self,
+                                          **query_params).\
                                    order_by('section', 'order').\
                                    values_list('order', 'block__pk')
         template_blocks = self.base_template.\
@@ -96,12 +97,17 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
                             filter(**query_params).\
                             order_by('section', 'order').\
                             values_list('order', 'block__pk')
+        excluded_blocks = PageBlock.objects.filter(page=self,
+                                                   is_active=False).\
+                                   values_list('block__pk', flat=True)
         order_pk = []
         # CHECK concurrent ordering sorting
         for i in blocks:
             order_pk.append(i)
         for i in template_blocks:
-            order_pk.append(i)
+            # check if a template blocks has not been disabled in the page
+            if i[1] not in excluded_blocks:
+                order_pk.append(i)
         ordered = sorted(order_pk)
         unique = []
         for i in ordered:
