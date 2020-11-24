@@ -228,12 +228,12 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
     subheading        = models.TextField(max_length=1024,
                                          null=True,blank=True,
                                          help_text=_("Strap line (press)"))
-    content           =  tinymce_models.HTMLField(null=True,blank=True,
-                                                  help_text=_('Content'))
-    content_types     = models.CharField(choices=CONTENT_TYPES,
-                                         null=True, blank=True,
-                                         max_length=33,
-                                         default='markdown')
+    content           =  models.TextField(null=True,blank=True,
+                                          help_text=_('Content'))
+    content_type     = models.CharField(choices=CONTENT_TYPES,
+                                        null=False, blank=False,
+                                        max_length=33,
+                                        default='markdown')
     presentation_image = models.ForeignKey(Media, null=True, blank=True,
                                            on_delete=models.CASCADE)
     state             = models.CharField(choices=PAGE_STATES,

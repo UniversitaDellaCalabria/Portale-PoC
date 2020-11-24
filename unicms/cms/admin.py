@@ -120,7 +120,13 @@ class PublicationAdmin(AbstractCreateModifiedBy):
                      PublicationAttachmentInline,
                      PublicationGalleryInline)
     raw_id_fields = ('presentation_image',)
-
+    
+    class Media:
+        js = ("js/ckeditor5/23.1.0/classic/ckeditor.js",
+              "js/ckeditor-init.js",)
+        # css = {
+            # "all": ("my_styles.css",)
+        # }
 
 @admin.register(PublicationLocalization)
 class PublicationLocalizationAdmin(AbstractCreateModifiedBy):

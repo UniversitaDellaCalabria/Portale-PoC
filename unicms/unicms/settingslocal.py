@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django_unical_bootstrap_italia',
 
     'taggit',
-    'tinymce',
+    # 'tinymce',
     'nested_admin',
 
     'cms_templates',
