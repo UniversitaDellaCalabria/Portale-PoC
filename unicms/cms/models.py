@@ -80,12 +80,12 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
                             default="standard",
                             choices=(('standard', _('Standard Page')),
                                      ('home', _('Home Page'))))
-        
+
     tags = TaggableManager()
 
 
     def get_blocks(self, section=None):
-        query_params = dict(is_active=True)        
+        query_params = dict(is_active=True)
         if section:
             query_params['section'] = section
         blocks = PageBlock.objects.filter(**query_params).\
@@ -110,7 +110,7 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
         final_blocks = [TemplateBlock.objects.get(pk=v)
                         for k,v in unique]
         return final_blocks
-    
+
 
     def delete(self, *args, **kwargs):
         PageRelated.objects.filter(related_page=self).delete()
@@ -214,7 +214,7 @@ class PageLink(TimeStampedModel):
 class AbstractPublication(TimeStampedModel, ActivableModel):
     CONTENT_TYPES = (('markdown', 'markdown'),
                      ('html', 'html'))
-    
+
     title   = models.CharField(max_length=256,
                                null=False, blank=False,
                                help_text=_("Heading, Headline"))
@@ -295,7 +295,7 @@ class Publication(AbstractPublication):
 
     class Meta:
         verbose_name_plural = _("Publications")
-    
+
     def serialize(self):
         return {'slug': self.slug,
                 'image': self.image_url(),
@@ -306,7 +306,7 @@ class Publication(AbstractPublication):
                 'tags': (i.name for i in self.tags.all()),
                 'published_in': (f'{i.webpath.site}{i.webpath.fullpath}'
                                  for i in self.publicationcontext_set.all())}
-    
+
     def active_translations(self):
         return PublicationLocalization.objects.filter(publication=self,
                                                       is_active=True)
@@ -336,6 +336,11 @@ class Publication(AbstractPublication):
     @property
     def related_links(self):
         return self.publicationlink_set.all()
+
+    @property
+    def related_galleries(self):
+        return PublicationGallery.objects.filter(publication=self,
+                                                 is_active=True)
 
     def translate_as(self, lang):
         """
@@ -414,15 +419,15 @@ class PublicationContext(TimeStampedModel, ActivableModel,
     @property
     def name(self):
         return self.publication.title
-    
+
     def translate_as(self, *args, **kwargs):
         self.publication.translate_as(*args, **kwargs)
-    
+
     def serialize(self):
         result = self.publication.serialize()
         result['path'] = self.url
         return result
-    
+
     def __str__(self):
         return '{} {}'.format(self.publication, self.webpath)
 

@@ -59,9 +59,11 @@
                          style="width: 100%">
                 </div>
                 {% endif %}
+
                 <div>
                     {{ publication_context.publication.content|safe }}
                 </div>
+
                 {% if publication_context.publication.tags.all %}
                     <span class="text-muted">{% trans "tags" %}</span>
                     <p style="font-size: 1.2rem">
@@ -70,6 +72,17 @@
                     {% endfor %}
                     </p>
                 {% endif %}
+
+                {% if publication_context.publication.related_galleries %}
+                    {% for gallery in publication_context.publication.related_galleries %}
+
+                        {% include "carousel_media_gallery.html" with media_items=gallery.collection.mediacollectionitem_set.all %}
+
+                        {% include "grid_media_gallery.html" with media_items=gallery.collection.mediacollectionitem_set.all %}
+
+                    {% endfor %}
+                {% endif %}
+
             </div>
 
             <div class="col-12 col-lg-3 offset-lg-1">

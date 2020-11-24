@@ -6,10 +6,10 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from cms_templates.models import (ActivableModel, 
+from cms_templates.models import (ActivableModel,
                                   SortableModel,
                                   TimeStampedModel)
-                                  
+
 from taggit.managers import TaggableManager
 
 from cms_contexts.models import WebPath
@@ -33,7 +33,7 @@ class MediaCollection(ActivableModel, TimeStampedModel):
     description = models.TextField(max_length=1024,
                                    null=False, blank=False)
     tags = TaggableManager()
-    
+
     class Meta:
         ordering = ['name']
         verbose_name_plural = _("Media Collections")
@@ -51,7 +51,7 @@ class Media(ActivableModel, TimeStampedModel):
     file_format = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
                                    max_length=256,
                                    blank=True, null=True)
-    
+
     created_by = models.ForeignKey(get_user_model(),
                                    null=True, blank=True,
                                    on_delete=models.CASCADE,
@@ -60,9 +60,12 @@ class Media(ActivableModel, TimeStampedModel):
                                     null=True, blank=True,
                                     on_delete=models.CASCADE,
                                     related_name='media_modified_by')
-    
+
     class Meta:
         verbose_name_plural = _("Media")
+
+    def get_media_path(self):
+        return f'{settings.MEDIA_URL}{self.file}'
 
     def __str__(self):
         return '{} {}'.format(self.title, self.file_format)
@@ -73,7 +76,7 @@ class Media(ActivableModel, TimeStampedModel):
     # title = models.CharField(max_length=60, blank=True, null=True,
                              # help_text=_("Link title"))
     # url = models.TextField()
-    
+
     # class Meta:
         # verbose_name_plural = _("Media Links")
 
@@ -84,10 +87,10 @@ class Media(ActivableModel, TimeStampedModel):
 class MediaCollectionItem(ActivableModel, SortableModel, TimeStampedModel):
     media = models.ForeignKey(Media, on_delete=models.CASCADE,
                               limit_choices_to={'is_active': True},)
-    collection = models.ForeignKey(MediaCollection, 
+    collection = models.ForeignKey(MediaCollection,
                                    on_delete=models.CASCADE,
                                    limit_choices_to={'is_active': True},)
-    
+
     class Meta:
         ordering = ['order']
         verbose_name_plural = _("Media Collection Items")
