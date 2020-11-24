@@ -26,7 +26,7 @@ def load_menu(context, section, template):
         page = context['page']
     
     page_menu = PageMenu.objects.filter(section=section,
-                                        menu__is_active=True,
+                                        is_active=True,
                                         page=page).first()
     if not page_menu: return ''
     language = getattr(request, 'LANGUAGE_CODE', '')

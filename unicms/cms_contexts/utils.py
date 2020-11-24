@@ -71,7 +71,6 @@ def sanitize_path(path):
 def toggle_session_state(request, arg_name) -> None:
     state_session = request.session.get(arg_name)
     state_request = request.GET.get(arg_name, 'not-set')
-    
     if state_request in ('1', 'true', 'True'):
         state_request = True
     elif state_request in ('0', 'false', 'False'):
