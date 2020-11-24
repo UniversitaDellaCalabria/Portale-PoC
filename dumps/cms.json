@@ -9,8 +9,8 @@
     "username": "wert",
     "is_staff": true,
     "date_joined": "2020-10-29T09:08:47.271Z",
-    "first_name": null,
-    "last_name": null,
+    "first_name": "Giuseppe",
+    "last_name": "De Marco",
     "is_active": true,
     "email": "that@mail.org",
     "taxpayer_id": null,
@@ -30,8 +30,8 @@
     "username": "felix",
     "is_staff": true,
     "date_joined": "2020-11-11T14:58:29.557Z",
-    "first_name": null,
-    "last_name": null,
+    "first_name": "Francesco",
+    "last_name": "Filicetti",
     "is_active": true,
     "email": "",
     "taxpayer_id": null,
@@ -360,15 +360,6 @@
     "tag": 2,
     "content_type": 25,
     "object_id": 1
-  }
-},
-{
-  "model": "taggit.taggeditem",
-  "pk": 28,
-  "fields": {
-    "tag": 2,
-    "content_type": 28,
-    "object_id": 3
   }
 },
 {
@@ -2710,26 +2701,6 @@
   }
 },
 {
-  "model": "cms.page",
-  "pk": 3,
-  "fields": {
-    "created": "2020-11-24T10:58:04.207Z",
-    "modified": "2020-11-24T11:02:11.987Z",
-    "is_active": true,
-    "draft_of": 1,
-    "name": "Portale dell'Università della Calabria",
-    "webpath": 1,
-    "base_template": 1,
-    "note": "",
-    "date_start": "2020-10-29T09:12:02Z",
-    "date_end": null,
-    "state": "draft",
-    "created_by": null,
-    "modified_by": null,
-    "type": "home"
-  }
-},
-{
   "model": "cms.pagecarousel",
   "pk": 1,
   "fields": {
@@ -2805,17 +2776,6 @@
     "section": "menu-1",
     "page": 2,
     "menu": 19
-  }
-},
-{
-  "model": "cms.pageblock",
-  "pk": 1,
-  "fields": {
-    "order": 10,
-    "is_active": false,
-    "section": "1",
-    "page": 3,
-    "block": 1
   }
 },
 {
