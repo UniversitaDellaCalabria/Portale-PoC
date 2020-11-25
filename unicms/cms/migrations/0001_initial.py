@@ -163,7 +163,7 @@ class Migration(migrations.Migration):
                 ('order', models.IntegerField(blank=True, default=10, null=True)),
                 ('is_active', models.BooleanField()),
                 ('name', models.CharField(blank=True, help_text='Specify the container section in the template where this block would be rendered.', max_length=60, null=True)),
-                ('file', models.FileField(upload_to=cms.models.context_publication_attachment_path)),
+                ('file', models.FileField(upload_to=cms.models.publication_attachment_path)),
                 ('description', models.TextField()),
                 ('file_size', models.IntegerField(blank=True, null=True)),
                 ('file_format', models.CharField(blank=True, choices=[('text/plain', 'text/plain'), ('application/vnd.oasis.opendocument.text', 'application/vnd.oasis.opendocument.text'), ('application/msword', 'application/msword'), ('application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'), ('text/csv', 'text/csv'), ('application/json', 'application/json'), ('application/vnd.ms-excel', 'application/vnd.ms-excel'), ('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'), ('application/vnd.oasis.opendocument.spreadsheet', 'application/vnd.oasis.opendocument.spreadsheet'), ('application/wps-office.xls', 'application/wps-office.xls'), ('image/jpeg', 'image/jpeg'), ('image/png', 'image/png'), ('image/gif', 'image/gif'), ('image/x-ms-bmp', 'image/x-ms-bmp'), ('application/pdf', 'application/pdf'), ('application/pkcs7-mime', 'application/pkcs7-mime')], max_length=256, null=True)),

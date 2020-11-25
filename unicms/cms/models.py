@@ -41,14 +41,6 @@ CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 
-def context_publication_attachment_path(instance, filename):
-    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return '{}/{}/{}/{}'.format(instance.webpath.site,
-                                instance.webpath.pk,
-                                instance.pk,
-                                filename)
-
-
 class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
@@ -371,7 +363,15 @@ class Publication(AbstractPublication):
             result = False
 
         return result
-
+    
+    @property
+    def available_in_languages(self) -> list:
+        return [(i, i.get_language_display()) 
+                for i in 
+                PublicationLocalization.objects.filter(publication=self,
+                                                       is_active=True)]
+                
+    
     def title2slug(self):
         return slugify(self.title)
 
@@ -379,7 +379,12 @@ class Publication(AbstractPublication):
         if not self.slug:
             self.slug = self.title2slug()
         return super(Publication, self).save(*args, **kwargs)
-
+    
+    def get_attachments(self):
+        return PublicationAttachment.objects.filter(publication=self,
+                                                    is_active=True).\
+                                             order_by('order')
+    
     def __str__(self):
         return '{} {}'.format(self.title, self.state)
 
@@ -480,7 +485,13 @@ class PublicationRelated(TimeStampedModel, SortableModel, ActivableModel):
         return '{} {}'.format(self.publication, self.related)
 
 
+def publication_attachment_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    return 'publications_attachments/{}/{}'.format(instance.publication.pk,
+                                                   filename)
+
 class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
+
     publication = models.ForeignKey(Publication, null=False, blank=False,
                                     related_name='page_attachment',
                                     on_delete=models.CASCADE)
@@ -488,14 +499,14 @@ class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
                     help_text=_("Specify the container "
                                 "section in the template where "
                                 "this block would be rendered."))
-    file = models.FileField(upload_to=context_publication_attachment_path)
+    file = models.FileField(upload_to=publication_attachment_path)
     description = models.TextField()
 
     file_size = models.IntegerField(blank=True, null=True)
     file_format = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
                                    max_length=256,
                                    blank=True, null=True)
-
+    
     class Meta:
         verbose_name_plural = _("Publication Attachments")
 

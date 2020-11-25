@@ -61,18 +61,49 @@
                 {% endif %}
 
                 <div>
-                    {{ publication_context.publication.content|safe }}
+                    {% if publication.content_type == html %}
+                        {{ publication_context.publication.content|safe }}
+                    {% else %}
+                        {{ publication_context.publication.content }}
+                    {% endif %}
                 </div>
 
                 {% if publication_context.publication.tags.all %}
-                    <span class="text-muted">{% trans "tags" %}</span>
-                    <p style="font-size: 1.2rem">
-                    {% for tag in publication_context.publication.tags.all %}
-                        <span class="badge badge-grey-unical square-corners">{{ tag.name }}</span>
-                    {% endfor %}
-                    </p>
+                <h4>{% trans "tags" %}</h4>
+                <p style="font-size: 1.2rem">
+                {% for tag in publication_context.publication.tags.all %}
+                    <span class="badge badge-grey-unical square-corners">{{ tag.name }}</span>
+                {% endfor %}
+                </p>
                 {% endif %}
+                
+                <hr>
+                <br>
+                <h4>{% trans "attachments" %}</h4>
+                {% if publication_context.publication.get_attachments %}
+                <!-- ATTACHMENTS -->
+                <ul class="upload-file-list">
+                    
+                    {% for item in publication_context.publication.get_attachments %}
+                    <li class="upload-file success">
+                      <a href="{{ item.file.url }}" >
+                      <span  style="color: #000;">
+                        <svg class="icon icon-secondary" aria-hidden="true"><use xlink:href="{% static '/svg/sprite.svg' %}#it-file"></use></svg>
+                        <span class="sr-only">{% trans "Allegato" %}:</span> {{ item.name }} 
+                        <span class="text-muted small"> &nbsp; {{ item.file_format }} ({{ item.file_size }})</span>
+                      </span>
+                      </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+              <!-- END ATTACHMENTS -->
 
+            {% endif %}
+                <hr>
+                
+                <br>
+                <h4>{% trans "photo gallery" %}</h4>
+                
                 {% if publication_context.publication.related_galleries %}
                     {% for gallery in publication_context.publication.related_galleries %}
 
@@ -83,11 +114,22 @@
                     {% endfor %}
                 {% endif %}
 
+            <!-- END PUBLICATION BODY -->
             </div>
-
+            
             <div class="col-12 col-lg-3 offset-lg-1">
+
+                <h5 class="card-title">{% trans "Published in" %}</h5>
+                <ul class="pl-0" style="list-style: none">
+                {% for pub_context in publication_context.publication.related_contexts %}
+                    <li class="mb-3">
+                        <a href="{{ pub_context.webpath.get_full_path }}">{{ pub_context.webpath.name }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+
                 {% if publication_context.publication.related_publications %}
-                <h5 class="card-title">{% trans "It might interest you" %}</h5>
+                <h5 class="card-title">{% trans "Related pages" %}</h5>
                 <ul class="pl-0" style="list-style: none">
                 {% for related_pub in publication_context.publication.related_publications %}
                     <li class="mb-3">
@@ -101,30 +143,30 @@
                 </ul>
                 {% endif %}
 
-                <h5 class="card-title">{% trans "Published in" %}</h5>
-                <ul class="pl-0" style="list-style: none">
-                {% for pub_context in publication_context.publication.related_contexts %}
-                    <li class="mb-3">
-                        <a href="{{ pub_context.webpath.get_full_path }}">{{ pub_context.webpath.name }}</a>
-                    </li>
-                {% endfor %}
-                </ul>
-
                 {% if publication_context.publication.related_links %}
-                <div class="card-wrapper auto-height mb-3">
-                    <div class="card card-border no-after">
-                        <div class="card-body">
-                            <h5 class="card-title">{% trans "Links" %}</h5>
-                            <ul class="pl-0" style="list-style: none">
-                            {% for link in publication_context.publication.related_links %}
-                                <li class="mb-3">
-                                    <a href="{{ link.url }}">{{ link.name }}</a>
-                                </li>
-                            {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                    <h5 class="card-title">{% trans "Links" %}</h5>
+                    <ul class="pl-0" style="list-style: none">
+                    {% for link in publication_context.publication.related_links %}
+                        <li class="mb-3">
+                            <a href="{{ link.url }}">
+                                <svg class="icon icon-xs">
+                                    <use xlink:href="{% static 'svg/sprite.svg' %}#it-link"></use>
+                                </svg>
+                                {{ link.name }}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% if publication_context.publication.available_in_languages %}
+                    <h5 class="card-title">{% trans "Available in languages" %}</h5>
+                    <ul class="pl-0" style="list-style: none">
+                    {% for lang,language in publication_context.publication.available_in_languages %}
+                        <li class="mb-3">
+                            <p>{{ language }}</p>
+                        </li>
+                    {% endfor %}
+                    </ul>
                 {% endif %}
 
             </div>
