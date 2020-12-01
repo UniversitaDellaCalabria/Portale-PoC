@@ -35,7 +35,6 @@ class ApiPublicationsByContext(APIView):
     # permission_classes = [permissions.IsAdminUser]
     
     def get(self, request, webpath_id, category_name=None):
-        time.sleep(5)
         query_params = publication_context_base_filter()
         query_params.update({'webpath__pk': webpath_id})
         

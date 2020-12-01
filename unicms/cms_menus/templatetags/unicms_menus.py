@@ -16,7 +16,6 @@ register = template.Library()
 @register.simple_tag(takes_context=True)
 def load_menu(context, section, template):
     request = context['request']
-    
     # draft mode
     if request.session.get('draft_view_mode'):
         page = Page.objects.filter(webpath = context['webpath'], 
