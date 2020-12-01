@@ -28,6 +28,8 @@ def show_template_blocks_sections(get_response):
             toggle_session_state(request, arg_name)
             response = get_response(request)
             return response
+        else:
+            return get_response(request)
     return blocks_sections_visibility
 
 
@@ -38,4 +40,6 @@ def show_cms_draft_mode(get_response):
             toggle_session_state(request, arg_name)
             response = get_response(request)
             return response
+        else:
+            return get_response(request)
     return draft_view_mode
