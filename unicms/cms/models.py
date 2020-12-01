@@ -456,6 +456,21 @@ class PublicationLink(TimeStampedModel):
         return '{} {}'.format(self.publication, self.name)
 
 
+class PublicationBlock(TimeStampedModel, ActivableModel, SortableModel):
+    publication = models.ForeignKey(Publication, null=False, blank=False,
+                                    on_delete=models.CASCADE)
+    block = models.ForeignKey(TemplateBlock, null=False, blank=False,
+                              on_delete=models.CASCADE)
+    class Meta:
+        verbose_name_plural = _("Publication Page Block")
+
+    def __str__(self):
+        return '{} {} {}:{}'.format(self.publication,
+                                    self.block.name,
+                                    self.order or '#',
+                                    self.section or '#')
+
+
 class PublicationGallery(TimeStampedModel, ActivableModel, SortableModel):
     publication = models.ForeignKey(Publication,
                                     on_delete=models.CASCADE)
@@ -489,6 +504,7 @@ def publication_attachment_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'publications_attachments/{}/{}'.format(instance.publication.pk,
                                                    filename)
+
 
 class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
 

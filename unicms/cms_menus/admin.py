@@ -13,7 +13,8 @@ class NavigationBarItemLocalizationInline(nested_admin.NestedStackedInline):
 
 class NavigationBarItemInline(nested_admin.NestedStackedInline):
     model = NavigationBarItem
-    raw_id_fields = ('parent', 'webpath', 'publication')
+    raw_id_fields = ('parent', 'webpath', 
+                     'publication', 'inherited_content')
     extra = 0
     # classes = ['collapse']
     inlines = (NavigationBarItemLocalizationInline,)
@@ -22,10 +23,14 @@ class NavigationBarItemInline(nested_admin.NestedStackedInline):
     fieldsets = (
                 (None, {'fields': (('name', 'parent', 'order', 'is_active'),
                                    )}),
-                ('weblink', {'fields': (('webpath', 'url', 'publication'),
-                                                            ),
-                                                  'classes':('collapse',),
-                                                  }),
+                ('weblink', {'fields': (('webpath', 'url', 'publication')),
+                             'classes':('collapse',),
+                             }
+                ),
+                ('inherited_content', {'fields': (('inherited_content'),),
+                                       'classes':('collapse',)
+                                      }
+                )
                 )
 
 

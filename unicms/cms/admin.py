@@ -118,7 +118,8 @@ class PublicationAdmin(AbstractCreateModifiedBy):
                      PublicationRelatedInline,
                      PublicationLinkInline,
                      PublicationAttachmentInline,
-                     PublicationGalleryInline)
+                     PublicationGalleryInline,
+                     PublicationBlockInline)
     raw_id_fields = ('presentation_image',)
     
     class Media:

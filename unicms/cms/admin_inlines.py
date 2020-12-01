@@ -71,6 +71,13 @@ class PublicationGalleryInline(admin.StackedInline):
     raw_id_fields = ['collection']
 
 
+class PublicationBlockInline(admin.TabularInline):
+    model = PublicationBlock
+    extra = 0
+    classes = ['collapse']
+    raw_id_fields = ['block']
+
+
 class PageCarouselInline(admin.TabularInline):
     model = PageCarousel
     extra = 0

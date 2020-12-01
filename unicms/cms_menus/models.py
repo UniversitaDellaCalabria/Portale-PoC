@@ -87,6 +87,13 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                     null=True, blank=True,
                                     related_name='pub',
                                     on_delete=models.CASCADE)
+    inherited_content = models.ForeignKey('cms.Publication',
+                                          null=True, blank=True,
+                                          related_name='inherited_content',
+                                          on_delete=models.CASCADE,
+                                          help_text=_("Takes additional "
+                                                      "contents from a "
+                                                      "publication"))
     created_by = models.ForeignKey(get_user_model(),
                                    null=True, blank=True,
                                    on_delete=models.CASCADE,
