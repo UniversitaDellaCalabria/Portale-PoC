@@ -41,7 +41,20 @@ CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 
-class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
+class MetaTagDescription(models.Model):
+    description = models.TextField(max_length=155,
+                                   null=True, blank=True,
+                                   help_text=_("SEO HTTP meta description"))
+    keys = models.CharField(max_length=256,
+                            null=True, blank=True,
+                            help_text=_("SEO HTTP meta keys"))
+    
+    class Meta:
+        abstract = True
+
+
+class Page(MetaTagDescription, TimeStampedModel, ActivableModel, 
+           AbstractDraftable):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
     webpath = models.ForeignKey(WebPath,
@@ -209,7 +222,7 @@ class PageLink(TimeStampedModel):
         return '{} {}'.format(self.page, self.name)
 
 
-class AbstractPublication(TimeStampedModel, ActivableModel):
+class AbstractPublication(MetaTagDescription, TimeStampedModel, ActivableModel):
     CONTENT_TYPES = (('markdown', 'markdown'),
                      ('html', 'html'))
 

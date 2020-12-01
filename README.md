@@ -285,7 +285,12 @@ Menu
 [WiP]
 
 A WebPath (context) can have multiple Menus and Navigation bars, but also Footers.
-Menu can be fetched through Rest API `/api/menu/<menu_id:int>` and also created through this resources.
+Menu can be fetched through Rest API `/api/menu/<menu_id:int>` and also updated/created through this resources.
+
+Each menu items can have three kinds of links: url, page, publication.
+Each menu items can get additional contents (`inherited_contents`) from a publication, this means that
+a presentation url, or a subheading or whatever belonging to a publication can be made accessible during a 
+menu items representation.
 
 
 Urls
@@ -328,9 +333,10 @@ entry = {"title": "that name that likes you",
          "content": "that long full text"
          "site": "www.unical.it",
          "webpath": "/"
-         "url": "http://sdfsdf",
+         "urls": ["http://sdfsdf"],
          "tags": ["mongodb", "python", "pymongo"],
-         "published": timezone.now(),
+         "indexed": timezone.now(),
+         "published": "2020-11-09T13:35:44Z",
          "viewed": 0,
          "relevance": 10,
          "translations":
