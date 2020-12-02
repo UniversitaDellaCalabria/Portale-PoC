@@ -61,7 +61,6 @@ This project is composed by the following applications:
 - cms_menus, specialized app for navigation bar creation and management.
 - cms_carousels, specialized app for Carousel and Slider creation and management.
 - cms, where Editorial boards can create Pages and News to be published in one or more Contexts.
-- cms_previews, menus, pages, publications and carousel previews
 
 
 > :warning: **If you are a pure Djangoer**: 
@@ -316,7 +315,7 @@ Search Engine
 
 uniCMS uses MongoDB as search engine, it was adopted in place of others search engines like Elastic Search or Sorl, for the following reasons:
 
-- The documents stored are really small, fwe kilobytes
+- The documents stored are really small, few kilobytes (BSON storage)
 - collections would be populated on each creation/change event by on_save hooks
 - each entry is composed following a small schema, this would reduce storage usage increasing the performances at the same time
 
@@ -339,6 +338,7 @@ entry = {"title": "that name that likes you",
          "published": "2020-11-09T13:35:44Z",
          "viewed": 0,
          "relevance": 10,
+         "language": "italian",
          "translations":
           [
             {
@@ -352,97 +352,29 @@ entry = {"title": "that name that likes you",
               content: "Il n'y a rien de plus surréaliste que la réalité."
             }
           ]
-}}
-````
-A full-text index would be created on top of this schema.
-````
-db.quotes.createIndex( { title: "text", 
-                         heading: "text",
-                         content: "text",
-                         "translations.*": "text" } )
-````
-
-Installing MongoDB on Debian10
-````
-apt install -y mongodb-org
-wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
-echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-apt update
-apt install -y mongodb-org
-````
-
-Start MongoDB
-````
-systemctl daemon-reload
-systemctl enable mongod
-systemctl start mongod
-````
-
-Gettings started with MongoDB
-````
-from django.utils import timezone
-import pymongo
-
-client = pymongo.MongoClient('10.0.3.217', 27017)
-
-# get database
-mdb = client.unicms
-
-# get collection
-db = mdb.search
-
-# check version to understand which pymongo documentation you should use!
-pymongo.version
-
-
-
-db.insert_one(entry)
-
-entries = [{"title": "hahaha",
-            "description": "asdasd blog post!",
-            "content-type": "cms.",
-            "content-id": "",
-            "site": "www.unical.it",
-            "context": "/"
-            "url": "http://sdfsdf",
-            "tags": ["mongodb", "python"],
-            "date": timezone.now()},
-            {"title": "23423",
-            "description": "a234234 blog post!",
-            "content-type": "cms.",
-            "content-id": "",
-            "site": "www.unical.it",
-            "context": "/"
-            "url": "My 234blog post!",
-            "tags": ["mongodb", "python"],
-            "date": timezone.now()}]
-db.insert_many(entries)
-
-
-# how many entries do we have?
-db.count_documents({})
-
-# regexp filters
-import re
-regexp = re.compile('^h', re.I)
-search_filter = {"title": regexp}
-
-# date range filter
-search_filter = {
-        "date": {
-            "$gte": timezone.datetime(2010, 4, 29),
-            "$lt": timezone.datetime(2021, 4, 29)
-            }
 }
-
-# exec query
-for i in db.find(search_filter): print(i)
-
-# result sliced (for pagination)
-count = 1
-res = db.find(search_filter)
-for i in res[0:count]: print(i)
 ````
+
+### Behavior
+
+Let's suppose we are searching these words upon the previous entry.
+These all matches:
+
+- "my blog"
+- "than reality"
+- "rien la reliti"
+- "my!"
+
+These will not match:
+
+- 'rien -"de plus"'
+- '"my!"'
+- '-nothing'
+
+As we can see symbols like `+` and `-` will exlude or include words.
+Specifying "some bunch of words" will match the entire sequence.
+That's something very similar to Google!
+
 
 Api
 ---

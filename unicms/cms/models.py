@@ -14,7 +14,6 @@ from cms_carousels.models import Carousel
 from cms_medias import settings as cms_media_settings
 from cms_medias.models import Media, MediaCollection
 from cms_menus.models import NavigationBar
-from cms_previews.models import AbstractDraftable
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   TemplateBlock,
                                   ActivableModel,
@@ -41,20 +40,14 @@ CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 
-class MetaTagDescription(models.Model):
-    description = models.TextField(max_length=155,
-                                   null=True, blank=True,
-                                   help_text=_("SEO HTTP meta description"))
-    keys = models.CharField(max_length=256,
-                            null=True, blank=True,
-                            help_text=_("SEO HTTP meta keys"))
-    
+class AbstractDraftable(models.Model):
+    draft_of = models.IntegerField(null=True, blank=True)
+       
     class Meta:
         abstract = True
 
 
-class Page(MetaTagDescription, TimeStampedModel, ActivableModel, 
-           AbstractDraftable):
+class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
     webpath = models.ForeignKey(WebPath,
@@ -63,9 +56,9 @@ class Page(MetaTagDescription, TimeStampedModel, ActivableModel,
     base_template = models.ForeignKey(PageTemplate,
                                       on_delete=models.CASCADE,
                                       limit_choices_to={'is_active': True},)
-    note = models.TextField(null=True, blank=True,
-                            help_text=_("Editorial Board Notes, "
-                                        "not visible by public."))
+    description = models.TextField(null=True, blank=True,
+                                    help_text=_("Description"
+                                                "used for SEO."))
 
     date_start = models.DateTimeField()
     date_end = models.DateTimeField(null=True, blank=True)
@@ -222,7 +215,7 @@ class PageLink(TimeStampedModel):
         return '{} {}'.format(self.page, self.name)
 
 
-class AbstractPublication(MetaTagDescription, TimeStampedModel, ActivableModel):
+class AbstractPublication(TimeStampedModel, ActivableModel):
     CONTENT_TYPES = (('markdown', 'markdown'),
                      ('html', 'html'))
 
