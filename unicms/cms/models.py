@@ -254,7 +254,7 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
     date_start        = models.DateTimeField()
     date_end          = models.DateTimeField()
     category          = models.ManyToManyField('Category')
-
+    
     note    = models.TextField(null=True,blank=True,
                                help_text=_('Editorial Board notes'))
 
