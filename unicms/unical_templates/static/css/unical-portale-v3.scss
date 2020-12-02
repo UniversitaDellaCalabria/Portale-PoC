@@ -239,3 +239,8 @@ input.top-input {
     border: 0.5px 0.5px 0.5px 0.5px solid #000;
     border-bottom: none;
 }
+
+
+.navbar .dropdown-menu:before {
+    display: none;
+}

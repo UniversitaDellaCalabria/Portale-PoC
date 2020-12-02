@@ -132,7 +132,10 @@ col-10 offset-2 col-lg-12 offset-lg-0
 
         <div class="col-2 col-md-2 text-center">
             <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle p-0 text-center" href="#" data-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle p-0 text-center"
+                   href="#"
+                   data-toggle="dropdown"
+                   aria-expanded="false">
                     <span>{{ request.LANGUAGE_CODE }}</span>
                 </a>
                 <div class="dropdown-menu">
@@ -168,7 +171,12 @@ col-10 offset-2 col-lg-12 offset-lg-0
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg has-megamenu">
-                    <button class="custom-navbar-toggler" type="button" aria-controls="nav10" aria-expanded="false" aria-label="Toggle navigation" data-target="#nav10">
+                    <button class="custom-navbar-toggler"
+                            type="button"
+                            aria-controls="nav10"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                            data-target="#nav10">
                         <svg class="icon">
                             <use xlink:href="{% static 'svg/sprite.svg' %}#it-burger"></use>
                         </svg>
@@ -176,7 +184,9 @@ col-10 offset-2 col-lg-12 offset-lg-0
                     <div class="navbar-collapsable" id="nav10">
                         <div class="overlay"></div>
                         <div class="close-div sr-only">
-                            <button class="btn close-menu" type="button"><span class="it-close"></span>{% trans "close" %}</button>
+                            <button class="btn close-menu" type="button">
+                                <span class="it-close"></span>{% trans "close" %}
+                            </button>
                         </div>
                         <div class="menu-wrapper">
                             <ul class="navbar-nav">

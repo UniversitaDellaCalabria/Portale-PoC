@@ -29,7 +29,7 @@ def cms_dispatch(request):
     website = get_object_or_404(WebSite, domain = requested_site)
 
     path = urlparse(request.get_full_path()).path.replace(CMS_PATH_PREFIX, '')
-    
+
     _msg_head = 'APP REGEXP URL HANDLERS:'
     # detect if webpath is referred to a specialized app
     for cls,v in CMS_APP_REGEXP_URLPATHS_LOADED.items():
@@ -59,15 +59,15 @@ def cms_dispatch(request):
         raise Http404()
     if webpath.is_alias:
         return HttpResponseRedirect(webpath.redirect_url)
-    
+
     page = Page.objects.filter(webpath = webpath, is_active = True)
     published_page = page.filter(state = 'published').first()
-    
+
     if request.session.get('draft_view_mode'):
         page = page.filter(state = 'draft').last() or published_page
     else:
         page = published_page
-    
+
     if not page:
         raise Http404("CMS Page not found")
     context = {
