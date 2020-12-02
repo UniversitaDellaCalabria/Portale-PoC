@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$aL1y4It24fXT$1Wk5h0sRihJB9e09LnevaV4lJukNGuZ5lno1kFXKLmY=",
-    "last_login": "2020-11-14T17:08:30.404Z",
+    "last_login": "2020-12-02T16:50:23.977Z",
     "is_superuser": true,
     "username": "wert",
     "is_staff": true,
@@ -39,30 +39,6 @@
     "matricola_dipendente": null,
     "groups": [],
     "user_permissions": []
-  }
-},
-{
-  "model": "sites.site",
-  "pk": 1,
-  "fields": {
-    "domain": "example.com",
-    "name": "example.com"
-  }
-},
-{
-  "model": "sites.site",
-  "pk": 2,
-  "fields": {
-    "domain": "test.unical.it",
-    "name": "Portale dell'Università della Calabria"
-  }
-},
-{
-  "model": "sites.site",
-  "pk": 3,
-  "fields": {
-    "domain": "test.dimes.unical.it",
-    "name": "Dipartimento DIMES"
   }
 },
 {
@@ -768,6 +744,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -786,6 +763,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -804,6 +782,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -822,6 +801,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -840,6 +820,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -858,6 +839,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -876,6 +858,7 @@
     "parent": 2,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -894,6 +877,7 @@
     "parent": 2,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -912,6 +896,7 @@
     "parent": 2,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -930,6 +915,7 @@
     "parent": null,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -948,6 +934,7 @@
     "parent": null,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -966,6 +953,7 @@
     "parent": null,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -984,6 +972,7 @@
     "parent": 2,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1002,6 +991,7 @@
     "parent": 2,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1020,6 +1010,7 @@
     "parent": 2,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1038,6 +1029,7 @@
     "parent": 2,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1056,6 +1048,7 @@
     "parent": 2,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1074,6 +1067,7 @@
     "parent": 2,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1092,6 +1086,7 @@
     "parent": 2,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1110,6 +1105,7 @@
     "parent": 2,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1128,6 +1124,7 @@
     "parent": 3,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1146,6 +1143,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1164,6 +1162,7 @@
     "parent": 3,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1182,6 +1181,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1200,6 +1200,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1218,6 +1219,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1236,6 +1238,7 @@
     "parent": 4,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1254,6 +1257,7 @@
     "parent": 4,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1272,6 +1276,7 @@
     "parent": 4,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1290,6 +1295,7 @@
     "parent": 5,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1308,6 +1314,7 @@
     "parent": 5,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1326,6 +1333,7 @@
     "parent": 5,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1344,6 +1352,7 @@
     "parent": 5,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1362,6 +1371,7 @@
     "parent": 5,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1380,6 +1390,7 @@
     "parent": 6,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1398,6 +1409,7 @@
     "parent": 6,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1416,6 +1428,7 @@
     "parent": 6,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1434,6 +1447,7 @@
     "parent": 6,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1452,6 +1466,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1470,6 +1485,7 @@
     "parent": 1,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1488,6 +1504,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1506,6 +1523,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1524,6 +1542,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1542,6 +1561,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1560,6 +1580,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1578,6 +1599,7 @@
     "parent": 1,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1596,6 +1618,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1614,6 +1637,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1632,6 +1656,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1650,6 +1675,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1668,6 +1694,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1686,6 +1713,7 @@
     "parent": 3,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1704,6 +1732,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1722,6 +1751,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1740,6 +1770,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1758,6 +1789,7 @@
     "parent": 3,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1776,6 +1808,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1794,6 +1827,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1812,6 +1846,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1830,6 +1865,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1848,6 +1884,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1866,6 +1903,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1884,6 +1922,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1902,6 +1941,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1920,6 +1960,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1938,6 +1979,7 @@
     "parent": 1,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1956,6 +1998,7 @@
     "parent": 6,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1974,6 +2017,7 @@
     "parent": 4,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -1992,6 +2036,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2010,6 +2055,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2028,6 +2074,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2046,6 +2093,7 @@
     "parent": 188,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2064,6 +2112,7 @@
     "parent": 188,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2082,6 +2131,7 @@
     "parent": 188,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2100,6 +2150,7 @@
     "parent": 188,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2118,6 +2169,7 @@
     "parent": 188,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2136,6 +2188,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2154,6 +2207,7 @@
     "parent": 194,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2172,6 +2226,7 @@
     "parent": 194,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2190,6 +2245,7 @@
     "parent": 194,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2208,6 +2264,7 @@
     "parent": 194,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2226,6 +2283,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2244,6 +2302,7 @@
     "parent": 199,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2262,6 +2321,7 @@
     "parent": 199,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2280,6 +2340,7 @@
     "parent": 199,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2298,6 +2359,7 @@
     "parent": 199,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2316,6 +2378,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2334,6 +2397,7 @@
     "parent": 204,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2352,6 +2416,7 @@
     "parent": 204,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2370,6 +2435,7 @@
     "parent": 204,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2388,6 +2454,7 @@
     "parent": 204,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2406,6 +2473,7 @@
     "parent": 204,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2424,6 +2492,7 @@
     "parent": null,
     "url": null,
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2442,6 +2511,7 @@
     "parent": 210,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2460,6 +2530,7 @@
     "parent": 210,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2478,6 +2549,7 @@
     "parent": 210,
     "url": "#",
     "publication": null,
+    "inherited_content": null,
     "created_by": null,
     "modified_by": null
   }
@@ -2493,15 +2565,28 @@
 },
 {
   "model": "cms_contexts.website",
-  "pk": 3,
+  "pk": 1,
   "fields": {
-    "is_active": true
+    "name": "example.com",
+    "domain": "example.com",
+    "is_active": false
   }
 },
 {
   "model": "cms_contexts.website",
   "pk": 2,
   "fields": {
+    "name": "Portale dell'Università della Calabria",
+    "domain": "test.unical.it",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.website",
+  "pk": 3,
+  "fields": {
+    "name": "Dipartimento DIMES",
+    "domain": "test.dimes.unical.it",
     "is_active": true
   }
 },
@@ -2755,7 +2840,7 @@
     "name": "Portale dell'Università della Calabria",
     "webpath": 1,
     "base_template": 1,
-    "note": "",
+    "description": "",
     "date_start": "2020-10-29T09:12:02Z",
     "date_end": null,
     "state": "published",
@@ -2775,7 +2860,7 @@
     "name": "Dimes",
     "webpath": 4,
     "base_template": 2,
-    "note": "",
+    "description": "",
     "date_start": "2020-11-20T09:15:51Z",
     "date_end": null,
     "state": "published",
@@ -2795,7 +2880,7 @@
     "name": "Portale dell'Università della Calabria",
     "webpath": 1,
     "base_template": 1,
-    "note": "",
+    "description": "",
     "date_start": "2020-11-24T12:52:00Z",
     "date_end": null,
     "state": "draft",

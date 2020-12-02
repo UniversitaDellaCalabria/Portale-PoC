@@ -15,11 +15,55 @@ systemctl start mongod
 ````
 
 Gettings started with MongoDB
+
+Setup ACL and permissions, using mongo CLI
+````
+use admin
+db.createUser(
+  {
+    user: "admin",
+    pwd: passwordPrompt(), // or cleartext password
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+exit
+
+#restart mongodb
+mongo --port 27017  --authenticationDatabase "admin" -u "admin" -p
+
+# add development/usage roles
+use unicms
+db.createUser(
+  {
+    user: "unicms",
+    pwd:  "thatpassword",
+    roles: [{ role: "readWrite", db: "unicms" }]
+  }
+)
+
+db.createUser(
+  {
+    user: "unicms_search",
+    pwd:  "thatpassword",
+    roles: [{ role: "read", db: "unicms" }]
+  }
+)
+
+# try to connect
+mongo --port 27017  --authenticationDatabase "unicms" -u "unicms_search" -p thatpassword
+````
+
+Setup pymongo and run your first connection
 ````
 from django.utils import timezone
 import pymongo
 
-client = pymongo.MongoClient('10.0.3.217', 27017)
+client_params = dict(username='admin',
+                     password='thatpassword',
+                     connectTimeoutMS=5000,
+                     socketTimeoutMS=5000,
+                     serverSelectionTimeoutMS=5000)
+client = pymongo.MongoClient('mongodb://10.0.3.217:27017', **client_params)
 
 # get database
 mdb = client.unicms
@@ -48,18 +92,18 @@ entries = [{"title": "that name that likes you",
             "relevance": 10,
             "language": "italian",
             "translations":
-                      [
-                        {
-                          "language": "english",
-                          "title": "that title",
-                          "heading": "that head",
-                          "content": "There is nothing more surreal than reality."
-                        },
-                        {
-                          "language": "french",
-                          "content": "Il n'y a rien de plus surréaliste que la réalité."
-                        }
-                      ],
+              [
+                {
+                  "language": "english",
+                  "title": "that title",
+                  "heading": "that head",
+                  "content": "There is nothing more surreal than reality."
+                },
+                {
+                  "language": "french",
+                  "content": "Il n'y a rien de plus surréaliste que la réalité."
+                }
+              ],
             "year": 2020
             },
             {"title": "Hot summer",
@@ -111,7 +155,7 @@ collection.create_index([('title', TEXT),
 # drop indexes
 collection.drop_indexes()
 
-collection.find_one({"$text": {"$search": "post"}}
+collection.find_one({"$text": {"$search": "post"}})
 
 collection.find_one({'year': 2018, $text: {$search: "my blog"}}, {'relevanceì: {$meta: "textRelevance"}})
 

@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 # from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils import timezone
+from django.utils.module_loading import import_string
 from django.utils.text import slugify
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -39,6 +40,11 @@ CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
                                   CMS_IMAGE_CATEGORY_SIZE)
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
+CMS_PRESAVE_HOOKS = {k:[import_string(i) for i in v] 
+                     for k,v in getattr(settings, 'CMS_PRESAVE_HOOKS', {}).items()}
+CMS_POSTSAVE_HOOKS = {k:[import_string(i) for i in v]
+                      for k,v in getattr(settings, 'CMS_POSTSAVE_HOOKS', {}).items()}
+
 
 class AbstractDraftable(models.Model):
     draft_of = models.IntegerField(null=True, blank=True)
@@ -59,7 +65,6 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
     description = models.TextField(null=True, blank=True,
                                     help_text=_("Description"
                                                 "used for SEO."))
-
     date_start = models.DateTimeField()
     date_end = models.DateTimeField(null=True, blank=True)
     state = models.CharField(choices=PAGE_STATES, max_length=33,
@@ -122,7 +127,16 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
 
 
     def save(self, *args, **kwargs):
+        # pre-Save HOOKS call
+        for hook in CMS_PRESAVE_HOOKS.get(self.__class__.__name__, {}):
+            hook(self)
+            
         super(Page, self).save(*args, **kwargs)
+        
+        # post-Save HOOKS call
+        for hook in CMS_POSTSAVE_HOOKS.get(self.__class__.__name__, {}):
+            hook(self)
+
         for rel in PageRelated.objects.filter(page=self):
             if not PageRelated.objects.\
                     filter(page=rel.related_page, related_page=self):

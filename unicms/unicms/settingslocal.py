@@ -29,8 +29,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django.contrib.sites',
-
     'sass_processor',
     'bootstrap_italia_template',
     'django_unical_bootstrap_italia',
@@ -210,3 +208,10 @@ OAS3_CONFIG = {'title': "Portale dell'Università della Calabria",
                                url = 'https://github.com/UniversitaDellaCalabria'),
                'version': "0.1.2"
 }
+
+
+CMS_POSTSAVE_HOOKS = {
+    'Publication': ['cms_search.hooks.publication_se_index',],
+    'Page': ['cms_search.hooks.page_se_index',],
+}
+    

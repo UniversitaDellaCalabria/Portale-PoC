@@ -5,7 +5,6 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.sites.models import Site
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
@@ -21,8 +20,10 @@ CMS_CONTEXT_PERMISSIONS = getattr(settings, 'CMS_CONTEXT_PERMISSIONS',
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 
-class WebSite(Site):
-    is_active   = models.BooleanField()
+class WebSite(models.Model):
+    name = models.CharField(max_length=254, blank=False, null=False)
+    domain = models.CharField(max_length=254, blank=False, null=False)
+    is_active   = models.BooleanField(default=False, blank=True)
 
     class Meta:
         verbose_name_plural = _("Sites")

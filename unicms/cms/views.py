@@ -18,6 +18,8 @@ from . models import Page
 logger = logging.getLogger(__name__)
 
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
+CMS_APP_REGEXP_URLPATHS_LOADED = {import_string(k):v
+                                  for k,v in getattr(settings, 'CMS_APP_REGEXP_URLPATHS', {}).items()}
 
 
 def cms_dispatch(request):
@@ -30,11 +32,11 @@ def cms_dispatch(request):
     
     _msg_head = 'APP REGEXP URL HANDLERS:'
     # detect if webpath is referred to a specialized app
-    for k,v in settings.CMS_APP_REGEXP_URLPATHS.items():
-        logger.debug(f'{_msg_head} - {k}: {v}')
+    for cls,v in CMS_APP_REGEXP_URLPATHS_LOADED.items():
+        logger.debug(f'{_msg_head} - {cls}: {v}')
         match = re.match(v, path)
         if not match:
-            logger.debug(f'{_msg_head} - {k}: {v} -> UNMATCH with {path}')
+            logger.debug(f'{_msg_head} - {cls}: {v} -> UNMATCH with {path}')
             continue
 
         query = match.groupdict()
@@ -43,7 +45,7 @@ def cms_dispatch(request):
                   'path': path,
                   'match': match}
         params.update(query)
-        handler = import_string(k)(**params)
+        handler = cls(**params)
         try:
             return handler.as_view()
         except Exception as e:
