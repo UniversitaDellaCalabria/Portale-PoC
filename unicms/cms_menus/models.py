@@ -130,8 +130,8 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                     parent_id = getattr(self.parent, 'pk', None),
                     name = self.name,
                     url = self.url,
-                    publication_id = self.publication,
-                    webpath_id = self.webpath,
+                    publication_id = self.publication.pk if self.publication else None,
+                    webpath_id = self.webpath.pk if self.webpath else None,
                     link = self.link,
                     is_active = self.is_active,
                     order = self.order
@@ -139,7 +139,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
         if deep:
             data['childs'] = []
             for child in self.get_childs(lang=lang):
-                data['childs'].append(child.serialize())
+                data['childs'].append(child.serialize(deep=deep))
         return data
 
 
