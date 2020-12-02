@@ -21,7 +21,7 @@ class NavigationBar(TimeStampedModel, ActivableModel):
                                     null=True, blank=True,
                                     on_delete=models.CASCADE,
                                     related_name='menu_modified_by')
-    
+
     class Meta:
         verbose_name_plural = _("Context Navigation Menus")
 
@@ -34,7 +34,7 @@ class NavigationBar(TimeStampedModel, ActivableModel):
                                            order_by('order'):
             items.append(i.localized(lang=lang))
         return items
-    
+
     def serialize(self, lang=settings.LANGUAGE):
         data = []
         for child in NavigationBarItem.objects.filter(is_active=True,
@@ -57,7 +57,7 @@ class NavigationBar(TimeStampedModel, ActivableModel):
             obj = NavigationBarItem.objects.create(**item)
             if childs:
                 obj.import_childs(childs)
-        return True                                                  
+        return True
 
 
     def __str__(self):
@@ -105,12 +105,13 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
     class Meta:
         verbose_name_plural = _("Context Navigation Menu Items")
         ordering = ('order',)
-    
-    
+
+
     @property
     def link(self):
+        # getattr(self.webpath, 'fullpath', None) or \
         return self.url or \
-               getattr(self.webpath, 'full_path', None) or \
+               self.webpath and self.webpath.get_full_path() or \
                self.publication or ''
 
     def localized(self, lang=settings.LANGUAGE, **kwargs):
@@ -126,7 +127,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
     def serialize(self, lang=settings.LANGUAGE, deep=False):
         data = dict(
                     menu_id = self.menu.pk,
-                    parent_id = getattr(self.parent, 'pk', None), 
+                    parent_id = getattr(self.parent, 'pk', None),
                     name = self.name,
                     url = self.url,
                     publication_id = self.publication,
@@ -167,14 +168,18 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
             obj = NavigationBarItem.objects.create(**item)
             if childs:
                 obj.import_childs(childs)
-        return True  
+        return True
 
+    def has_childs(self):
+        return True if NavigationBarItem.objects.filter(is_active=True,
+                                                        parent=self,
+                                                        menu=self.menu) else False
 
-    def have_childs(self):
+    def childs_count(self):
         return NavigationBarItem.objects.filter(is_active=True,
-                                                 parent=self,
-                                                 menu=self.menu).count()
-    
+                                                parent=self,
+                                                menu=self.menu).count()
+
     def get_siblings_count(self):
         count = NavigationBarItem.objects.filter(parent=self.parent,
                                                  is_active=True).count()
@@ -182,7 +187,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
 
     def __str__(self):
         return '{}: {} ({})'.format(self.menu,
-                                    self.name, 
+                                    self.name,
                                     getattr(self.parent, 'name', ''))
 
 

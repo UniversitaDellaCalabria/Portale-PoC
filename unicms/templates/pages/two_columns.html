@@ -1,0 +1,20 @@
+{% extends "bases/base_v3.html" %}
+
+{% load i18n %}
+{% load static %}
+
+<!-- load custom template tags -->
+{% load unicms_carousels %}
+{% load unicms_contexts %}
+{% load unicms_menus %}
+{% load unicms_templates %}
+{% load unicms_blocks %}
+
+
+{% block container %}
+
+{% breadcrumbs leaf=handler %}
+
+{{ page.name }}
+
+{% endblock container %}
