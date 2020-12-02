@@ -315,7 +315,7 @@ Search Engine
 
 uniCMS uses MongoDB as search engine, it was adopted in place of others search engines like Elastic Search or Sorl, for the following reasons:
 
-- The documents stored are really small, fwe kilobytes
+- The documents stored are really small, few kilobytes (BSON storage)
 - collections would be populated on each creation/change event by on_save hooks
 - each entry is composed following a small schema, this would reduce storage usage increasing the performances at the same time
 
@@ -372,7 +372,7 @@ These will not match:
 - '-nothing'
 
 As we can see symbols like `+` and `-` will exlude or include words.
-Specifying "some bunch of words" will match the words sequence.
+Specifying "some bunch of words" will match the entire sequence.
 That's something very similar to Google!
 
 
