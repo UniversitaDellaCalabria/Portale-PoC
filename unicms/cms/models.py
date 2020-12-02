@@ -398,7 +398,15 @@ class Publication(AbstractPublication):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = self.title2slug()
+        # pre-Save HOOKS call
+        for hook in CMS_PRESAVE_HOOKS.get(self.__class__.__name__, {}):
+            hook(self)
+            
         return super(Publication, self).save(*args, **kwargs)
+        
+        # post-Save HOOKS call
+        for hook in CMS_POSTSAVE_HOOKS.get(self.__class__.__name__, {}):
+            hook(self)
     
     def get_attachments(self):
         return PublicationAttachment.objects.filter(publication=self,

@@ -209,6 +209,12 @@ OAS3_CONFIG = {'title': "Portale dell'Università della Calabria",
                'version': "0.1.2"
 }
 
+MONGO_URL = 'mongodb://10.0.3.217:27017'
+MONGO_DB_PARAMS = dict(username='admin',
+                       password='thatpassword',
+                       connectTimeoutMS=5000,
+                       socketTimeoutMS=5000,
+                       serverSelectionTimeoutMS=5000)
 
 CMS_POSTSAVE_HOOKS = {
     'Publication': ['cms_search.hooks.publication_se_index',],
