@@ -28,7 +28,7 @@ from tinymce import models as tinymce_models
 
 
 from . settings import *
-from . utils import remove_file
+from . utils import remove_file, save_hooks
 
 
 logger = logging.getLogger(__name__)
@@ -40,11 +40,6 @@ CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
                                   CMS_IMAGE_CATEGORY_SIZE)
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
-CMS_PRESAVE_HOOKS = {k:[import_string(i) for i in v] 
-                     for k,v in getattr(settings, 'CMS_PRESAVE_HOOKS', {}).items()}
-CMS_POSTSAVE_HOOKS = {k:[import_string(i) for i in v]
-                      for k,v in getattr(settings, 'CMS_POSTSAVE_HOOKS', {}).items()}
-
 
 class AbstractDraftable(models.Model):
     draft_of = models.IntegerField(null=True, blank=True)
@@ -52,8 +47,26 @@ class AbstractDraftable(models.Model):
     class Meta:
         abstract = True
 
+class AbstractPublicable(models.Model):
 
-class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
+    @property
+    def is_publicable(self) -> bool:
+        now = timezone.localtime()
+        result = False
+        if self.is_active and \
+           self.date_start <= now:
+            result = True
+        if self.date_end and self.date_end < now:
+            result = False
+
+        return result
+    
+    class Meta:
+        abstract = True
+
+
+class Page(TimeStampedModel, ActivableModel, AbstractDraftable,
+           AbstractPublicable):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
     webpath = models.ForeignKey(WebPath,
@@ -86,6 +99,8 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
 
     tags = TaggableManager()
 
+    class Meta:
+        verbose_name_plural = _("Pages")
 
     def get_blocks(self, section=None):
         query_params = dict(is_active=True)
@@ -127,15 +142,8 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
 
 
     def save(self, *args, **kwargs):
-        # pre-Save HOOKS call
-        for hook in CMS_PRESAVE_HOOKS.get(self.__class__.__name__, {}):
-            hook(self)
-            
-        super(Page, self).save(*args, **kwargs)
-        
-        # post-Save HOOKS call
-        for hook in CMS_POSTSAVE_HOOKS.get(self.__class__.__name__, {}):
-            hook(self)
+        # hooks
+        save_hooks(self, *args, **kwargs)
 
         for rel in PageRelated.objects.filter(page=self):
             if not PageRelated.objects.\
@@ -143,9 +151,6 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
                 PageRelated.objects.\
                     create(page=rel.page, related_page=self,
                            is_active=True)
-
-    class Meta:
-        verbose_name_plural = _("Pages")
 
     def get_category_img(self):
         return [i.image_as_html() for i in self.category.all()]
@@ -298,7 +303,7 @@ class Category(TimeStampedModel):
     image_as_html.allow_tags = True
 
 
-class Publication(AbstractPublication):
+class Publication(AbstractPublication, AbstractPublicable):
     slug = models.SlugField(null=True, blank=True)
     tags = TaggableManager()
 
@@ -371,18 +376,6 @@ class Publication(AbstractPublication):
             self.title = trans.title
             self.subheading = trans.subheading
             self.content = trans.content
-
-    @property
-    def is_publicable(self) -> bool:
-        now = timezone.localtime()
-        result = False
-        if self.is_active and \
-           self.date_start <= now:
-            result = True
-        if self.date_end and self.date_end < now:
-            result = False
-
-        return result
     
     @property
     def available_in_languages(self) -> list:
@@ -398,15 +391,8 @@ class Publication(AbstractPublication):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = self.title2slug()
-        # pre-Save HOOKS call
-        for hook in CMS_PRESAVE_HOOKS.get(self.__class__.__name__, {}):
-            hook(self)
-            
-        return super(Publication, self).save(*args, **kwargs)
-        
-        # post-Save HOOKS call
-        for hook in CMS_POSTSAVE_HOOKS.get(self.__class__.__name__, {}):
-            hook(self)
+        # hooks
+        save_hooks(self, *args, **kwargs)
     
     def get_attachments(self):
         return PublicationAttachment.objects.filter(publication=self,

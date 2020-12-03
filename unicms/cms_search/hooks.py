@@ -17,8 +17,7 @@ def page_se_index(page_object):
     data = MONGO_SEARCH_DOC_SCHEMA.copy()
     collection = mongo_client.unicms.search
     app_label, model = page_object._meta.label_lower.split('.')
-    contentype = ContentType.objects.get(app_label=app_label,
-                                         model=model)
+    contentype = ContentType.objects.get(app_label=app_label, model=model)
     site = page_object.webpath.site.domain
     webpath = page_object.webpath.get_full_path()
     data = {
@@ -37,9 +36,17 @@ def page_se_index(page_object):
         "language": "italian",
         "year": page_object.date_start.year
     }
-    
     # check if it doesn't exists or remove it and recreate
-    collection.insert_one(data)
+    doc_query = {"content-type": page_object._meta.label, 
+                 "content-type-id": contentype.pk}
+    doc = collection.find_one(doc_query)
+    if doc:
+        collection.delete_many(doc_query)
+        logger.info(f'{page_object} removed from search engine')
+        
+    if page_object.is_publicable:
+        doc = collection.insert_one(data)
+    
     logger.info(f'{page_object} succesfully indexed in search engine')
 
 
