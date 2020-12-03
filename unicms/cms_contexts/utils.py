@@ -77,15 +77,15 @@ def toggle_session_state(request, arg_name) -> None:
         state_request = False
     elif state_request in ('', None):
         state_request = 'toggle'
-    
-    if state_request in (True, False): 
+
+    if state_request in (True, False):
         request.session[arg_name] = state_request
     elif state_request == 'toggle':
         if state_session:
             request.session[arg_name] = False
         else:
             request.session[arg_name] = True
-    
+
     if state_request in (True, 'toggle') and request.session[arg_name]:
-        messages.add_message(request, messages.INFO, 
+        messages.add_message(request, messages.INFO,
                              _('You entered in {}').format(arg_name.upper()))

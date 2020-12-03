@@ -40,7 +40,7 @@ CMS_IMAGE_CATEGORY_SIZE = getattr(settings, 'CMS_IMAGE_CATEGORY_SIZE',
                                   CMS_IMAGE_CATEGORY_SIZE)
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
-CMS_PRESAVE_HOOKS = {k:[import_string(i) for i in v] 
+CMS_PRESAVE_HOOKS = {k:[import_string(i) for i in v]
                      for k,v in getattr(settings, 'CMS_PRESAVE_HOOKS', {}).items()}
 CMS_POSTSAVE_HOOKS = {k:[import_string(i) for i in v]
                       for k,v in getattr(settings, 'CMS_POSTSAVE_HOOKS', {}).items()}
@@ -48,7 +48,7 @@ CMS_POSTSAVE_HOOKS = {k:[import_string(i) for i in v]
 
 class AbstractDraftable(models.Model):
     draft_of = models.IntegerField(null=True, blank=True)
-       
+
     class Meta:
         abstract = True
 
@@ -130,9 +130,9 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable):
         # pre-Save HOOKS call
         for hook in CMS_PRESAVE_HOOKS.get(self.__class__.__name__, {}):
             hook(self)
-            
+
         super(Page, self).save(*args, **kwargs)
-        
+
         # post-Save HOOKS call
         for hook in CMS_POSTSAVE_HOOKS.get(self.__class__.__name__, {}):
             hook(self)
@@ -254,7 +254,7 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
     date_start        = models.DateTimeField()
     date_end          = models.DateTimeField()
     category          = models.ManyToManyField('Category')
-    
+
     note    = models.TextField(null=True,blank=True,
                                help_text=_('Editorial Board notes'))
 
@@ -383,15 +383,15 @@ class Publication(AbstractPublication):
             result = False
 
         return result
-    
+
     @property
     def available_in_languages(self) -> list:
-        return [(i, i.get_language_display()) 
-                for i in 
+        return [(i, i.get_language_display())
+                for i in
                 PublicationLocalization.objects.filter(publication=self,
                                                        is_active=True)]
-                
-    
+
+
     def title2slug(self):
         return slugify(self.title)
 
@@ -399,12 +399,12 @@ class Publication(AbstractPublication):
         if not self.slug:
             self.slug = self.title2slug()
         return super(Publication, self).save(*args, **kwargs)
-    
+
     def get_attachments(self):
         return PublicationAttachment.objects.filter(publication=self,
                                                     is_active=True).\
                                              order_by('order')
-    
+
     def __str__(self):
         return '{} {}'.format(self.title, self.state)
 
@@ -542,7 +542,7 @@ class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
     file_format = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
                                    max_length=256,
                                    blank=True, null=True)
-    
+
     class Meta:
         verbose_name_plural = _("Publication Attachments")
 

@@ -76,20 +76,20 @@
                 {% endfor %}
                 </p>
                 {% endif %}
-                
+
                 <hr>
                 <br>
                 <h4>{% trans "attachments" %}</h4>
                 {% if publication_context.publication.get_attachments %}
                 <!-- ATTACHMENTS -->
                 <ul class="upload-file-list">
-                    
+
                     {% for item in publication_context.publication.get_attachments %}
                     <li class="upload-file success">
                       <a href="{{ item.file.url }}" >
                       <span  style="color: #000;">
                         <svg class="icon icon-secondary" aria-hidden="true"><use xlink:href="{% static '/svg/sprite.svg' %}#it-file"></use></svg>
-                        <span class="sr-only">{% trans "Allegato" %}:</span> {{ item.name }} 
+                        <span class="sr-only">{% trans "Allegato" %}:</span> {{ item.name }}
                         <span class="text-muted small"> &nbsp; {{ item.file_format }} ({{ item.file_size }})</span>
                       </span>
                       </a>
@@ -100,10 +100,10 @@
 
             {% endif %}
                 <hr>
-                
+
                 <br>
                 <h4>{% trans "photo gallery" %}</h4>
-                
+
                 {% if publication_context.publication.related_galleries %}
                     {% for gallery in publication_context.publication.related_galleries %}
 
@@ -116,7 +116,7 @@
 
             <!-- END PUBLICATION BODY -->
             </div>
-            
+
             <div class="col-12 col-lg-3 offset-lg-1">
 
                 <h5 class="card-title">{% trans "Published in" %}</h5>

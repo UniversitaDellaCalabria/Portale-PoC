@@ -15,6 +15,40 @@
 
 {% breadcrumbs leaf=handler %}
 
-{{ page.name }}
+<div class="container">
+    <div class="col-12 py-5 bd-content">
+        <h1 class="lighter mb-0">{{ page.name }}</h1>
+        <div class="row">
+            <div class="col-12 col-lg-8">
+
+                {% load_blocks section="menu-2" as menu_2 %}
+                {{ menu_2 }}
+
+                {% load_blocks section="menu-3" as menu_3 %}
+                {% if menu_3 %}
+                <div class="mb-5">
+                    {{ menu_3 }}
+                </div>
+                {% endif %}
+
+                {% load_blocks section=1 as blocks_1 %}
+                {{ blocks_1 }}
+            </div>
+            <div class="col-12 col-lg-3 offset-lg-1">
+                {% load_blocks section=2 as blocks_2 %}
+                {{ blocks_2 }}
+
+                {% load_blocks section=3 as blocks_3 %}
+                {{ blocks_3 }}
+
+                {% load_blocks section=4 as blocks_4 %}
+                {{ blocks_4 }}
+
+                {% load_blocks section=5 as blocks_5 %}
+                {{ blocks_5 }}
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock container %}

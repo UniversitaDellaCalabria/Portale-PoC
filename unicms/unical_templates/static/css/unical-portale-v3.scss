@@ -27,6 +27,10 @@ a {
     font-family: TitilliumWeb-Black;
 }
 
+.lighter {
+    font-weight: lighter;
+}
+
 .background-yellow {
     background: #ffed00;
 }
@@ -243,4 +247,12 @@ input.top-input {
 
 .navbar .dropdown-menu:before {
     display: none;
+}
+
+.bordeaux-unical-bg {
+    background: $bordeaux_unical;
+}
+
+.bordeaux-unical-color {
+    color: $bordeaux_unical;
 }
