@@ -4,7 +4,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$aL1y4It24fXT$1Wk5h0sRihJB9e09LnevaV4lJukNGuZ5lno1kFXKLmY=",
-    "last_login": "2020-12-02T16:50:23.977Z",
+    "last_login": "2020-12-04T11:00:11.855Z",
     "is_superuser": true,
     "username": "wert",
     "is_staff": true,
@@ -611,12 +611,12 @@
   "pk": 11,
   "fields": {
     "created": "2020-12-03T12:34:43.845Z",
-    "modified": "2020-12-03T15:50:28.094Z",
+    "modified": "2020-12-04T11:00:17.353Z",
     "is_active": true,
     "name": "OrientaUnical Logo",
     "description": "",
     "type": "cms_templates.blocks.HtmlBlock",
-    "content": "<h1 class=\"super-bold bordeaux-unical-color\" style=\"font-size: 6rem; margin-bottom: 0;line-height: 0.8;\">OU</h1>\r\n<b class=\"bordeaux-unical-color\">come accedere ai servizi</b>\r\n<br>\r\n<span class=\"bordeaux-unical-color super-bold\">Orienta-Unical</span>"
+    "content": "<h1 class=\"super-bold bordeaux-unical-color\" style=\"font-size: 6rem; margin-bottom: 5px;line-height: 0.8;\">OU</h1>\r\n\r\n<p class=\"ml-1\">\r\n<b class=\"bordeaux-unical-color\">come accedere ai servizi</b>\r\n<br>\r\n<span class=\"bordeaux-unical-color super-bold\">Orienta-Unical</span>\r\n</p>"
   }
 },
 {

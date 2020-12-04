@@ -375,23 +375,7 @@ class Publication(AbstractPublication, AbstractPublicable):
             self.title = trans.title
             self.subheading = trans.subheading
             self.content = trans.content
-<<<<<<< HEAD
 
-    @property
-    def is_publicable(self) -> bool:
-        now = timezone.localtime()
-        result = False
-        if self.is_active and \
-           self.date_start <= now:
-            result = True
-        if self.date_end and self.date_end < now:
-            result = False
-
-        return result
-
-=======
-    
->>>>>>> mongo
     @property
     def available_in_languages(self) -> list:
         return [(i, i.get_language_display())
