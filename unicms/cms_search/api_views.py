@@ -14,7 +14,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from cms.models import Page, Publication
-from cms.paginators import Paginator, Page
 from cms_contexts.decorators import detect_language
 from cms_contexts.models import WebPath
 
@@ -37,10 +36,8 @@ class ApiSearchEngine(APIView):
     description = 'Search Engine'
     
     def get(self, request):
-        # get database from client/connection
-        mdb = mongo_client.unicms
         # get collection
-        collection = mdb.search
+        collection = mongo_client.unicms.search
         
         # get only what's really needed
         search_regexp = re.match('^[\w\+\-\s\(\)\[\]\=\"\']*', 
@@ -74,5 +71,24 @@ class ApiSearchEngine(APIView):
         else:
             res = collection.find(query)
         
-        return Response(json.loads(dumps(res)))
+        # pagination
+        page = int(request.GET.get('page_num', 1))
+        breakpoint()
+        elements_in_page = 2
+        total_elements = res.count()
+        if total_elements >= elements_in_page:
+            total_pages = round(total_elements / elements_in_page)
+        else:
+            total_pages = 1
+        
+        # get page
+        end = elements_in_page * total_pages
+        start = end - elements_in_page
+        if total_elements == total_pages:
+            page_number = total_elements
+        else:
+            page_number = int(end / elements_in_page)
+        
+        result = res[start:end]
+        return Response(json.loads(dumps(result)))
     
