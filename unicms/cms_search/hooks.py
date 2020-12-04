@@ -18,7 +18,7 @@ def page_se_index(page_object):
     collection = mongo_client.unicms.search
     app_label, model = page_object._meta.label_lower.split('.')
     contentype = ContentType.objects.get(app_label=app_label, model=model)
-    sites = [page_object.webpath.site.domain]
+    sites = set([page_object.webpath.site.domain])
     data = {
         "title": page_object.name,
         "heading": page_object.description,
@@ -58,8 +58,8 @@ def publication_se_index(pub_object):
     if not contexts:
         # it doesn't have any real publication
         return
-    urls = [f'//{i.webpath.site.domain}{i.url}' for i in contexts]
-    sites = [f'//{i.webpath.site.domain}' for i in contexts]
+    urls = set([f'//{i.webpath.site.domain}{i.url}' for i in contexts])
+    sites = set([f'//{i.webpath.site.domain}' for i in contexts])
     
     data = {
         "title": pub_object.title,
@@ -67,8 +67,8 @@ def publication_se_index(pub_object):
         "content-type": pub_object._meta.label,
         "content-id": pub_object.pk,
         "content": pub_object.content,
-        "sites": sites,
-        "urls": urls,
+        "sites": list(sites),
+        "urls": list(urls),
         "tags": [i for i in pub_object.tags.values_list('name', flat=1)],
         "indexed": timezone.localtime(),
         "published": pub_object.date_start,

@@ -62,7 +62,7 @@ class ApiContext(APIView):
     """
     description = 'Get publications in Context (WebPath)'
     
-    def get(self, request, webpath_id):
+    def get(self, request):
         webpaths = WebPath.objects.filter(is_active=True)
         pubs = ({i.pk: f'{i.site.domain}{i.get_full_path()}'} for i in webpaths)
         return Response(pubs)

@@ -157,7 +157,7 @@ collection.drop_indexes()
 
 collection.find_one({"$text": {"$search": "post"}})
 
-collection.find_one({'year': 2018, $text: {$search: "my blog"}}, {'relevanceì: {$meta: "textRelevance"}})
+collection.find_one({'year': 2018, $text: {$search: "my blog"}}, {'relevance': {$meta: "textRelevance"}})
 
 ````
 Let's search for something ...

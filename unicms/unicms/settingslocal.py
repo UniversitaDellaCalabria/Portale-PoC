@@ -146,7 +146,7 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'cms_search.hooks': {
+        'cms_search': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': True,
