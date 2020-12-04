@@ -19,7 +19,8 @@ The final goal is to achieve as much as possible, writing as little code as poss
 8. [Search Engine](#search-engine)
 9. [Urls](#urls)
 10. [Api OAS3](#api)
-11. [Todo](#todo)
+11. [Post Pre Save Hooks](#post-pre-save-hooks)
+12. [Todo](#todo)
 
 
 Setup
@@ -374,6 +375,21 @@ These will not match:
 As we can see symbols like `+` and `-` will exlude or include words.
 Specifying "some bunch of words" will match the entire sequence.
 That's something very similar to Google!
+
+
+Post Pre Save Hooks
+-------------------
+By default Pages and Publications call pre and post save hooks.
+We preferred the following approach instead of django signals.
+in `settings.py` we can register as many as desidered hooks to one or more 
+models.
+
+````
+CMS_POSTSAVE_HOOKS = {
+    'Publication': ['cms_search.hooks.publication_se_index',],
+    'Page': ['cms_search.hooks.page_se_index',],
+}
+```` 
 
 
 Api
