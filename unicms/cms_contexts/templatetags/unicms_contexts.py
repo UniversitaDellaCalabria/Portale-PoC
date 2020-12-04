@@ -10,12 +10,34 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from cms_contexts.utils import build_breadcrumbs, handle_faulty_templates
+from cms_contexts.models import WebPath
+from cms_contexts.utils import handle_faulty_templates, sanitize_path
 # WARNING - import circolare - decidere di migrare blocchi e menu in cms_pages
 from cms_menus.models import NavigationBarItem
 
 logger = logging.getLogger(__name__)
 register = template.Library()
+
+
+def _build_breadcrumbs(context):
+    webpath = context['path']
+    nodes = webpath.split('/')
+    if nodes[-1] == '':
+        del nodes[-1]
+
+    crumbs = []
+    root = '/'
+    root_prefixed = f'/{settings.CMS_PATH_PREFIX}'
+
+    for i in nodes:
+        url = sanitize_path(f'{root}/{i}')
+        url_prefixed = sanitize_path(f'{root_prefixed}/{i}')
+        node_webpath = WebPath.objects.filter(fullpath=f'{url}/').first()
+        node_name = node_webpath.name if node_webpath else i
+        crumbs.append((url_prefixed, node_name))
+        root = url
+    crumbs[0] = [root_prefixed, _('Home')]
+    return crumbs
 
 
 @register.simple_tag(takes_context=True)
@@ -32,7 +54,7 @@ def language_menu(context, template=None, leaf=None):
 @register.simple_tag(takes_context=True)
 def breadcrumbs(context, template=None, leaf=None):
     template = template or 'breadcrumbs.html'
-    crumbs = build_breadcrumbs(context)
+    crumbs = _build_breadcrumbs(context)
     if leaf:
         for i in leaf.breadcrumbs:
             crumbs.append(i)

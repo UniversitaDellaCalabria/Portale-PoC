@@ -10,7 +10,6 @@ from django.template.loader import get_template, render_to_string
 from django.template.exceptions import (TemplateDoesNotExist,
                                         TemplateSyntaxError)
 
-
 logger = logging.getLogger(__name__)
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
@@ -35,20 +34,6 @@ def handle_faulty_templates(template: str, data: dict, name='', ):
         logger.error(_error_msg.format(name, e))
 
     return mark_safe(_error_msg_pub)
-
-
-def build_breadcrumbs(context):
-    webpath = context['webpath']
-    nodes = webpath.get_full_path().split()
-    crumbs = []
-    root = '/'
-    for i in nodes:
-        url = f'{root}/{i}'
-        crumbs.append((url, i))
-        root = url.replace('//','/')
-    # crumbs[0] = (f'/{CMS_PATH_PREFIX}', webpath.name)
-    crumbs[0] = (webpath.get_full_path(), webpath.name)
-    return crumbs
 
 
 def contextualize_template(template_fname, page):
