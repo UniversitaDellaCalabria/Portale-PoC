@@ -240,6 +240,10 @@ MONGO_CONNECTION_PARAMS = dict(username='admin',
                                serverSelectionTimeoutMS=5000)
 MONGO_DB_NAME = 'unicms'
 MONGO_COLLECTION_NAME = 'search'
+MODEL_TO_MONGO_MAP = {
+    'cms.Page': 'cms_search.models.page_to_entry',
+    'cms.Publication': 'cms_search.models.publication_to_entry'
+}
 
 CMS_POSTSAVE_HOOKS = {
     'Publication': ['cms_search.hooks.publication_se_index',],

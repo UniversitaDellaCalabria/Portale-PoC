@@ -323,17 +323,18 @@ uniCMS uses MongoDB as search engine, it was adopted in place of others search e
 Technical specifications are available in [MongoDB Official Documentation](https://docs.mongodb.com/manual/core/index-text/).
 Some usage example also have been posted [here](https://code.tutsplus.com/tutorials/full-text-search-in-mongodb--cms-24835).
 
-An document would be as follows
+An document would be as follows (see `cms_search.models`)
 
 ````
 entry = {"title": "that name that likes you",
          "heading": "My first blog post!",
-         "content-type": "cms.",
-         "content-id": "",
+         "content_type": "cms.",
+         "content_id": "",
          "content": "that long full text"
          "site": "www.unical.it",
          "webpath": "/"
          "urls": ["http://sdfsdf"],
+         "categories": [],
          "tags": ["mongodb", "python", "pymongo"],
          "indexed": timezone.now(),
          "published": "2020-11-09T13:35:44Z",
@@ -355,6 +356,25 @@ entry = {"title": "that name that likes you",
           ]
 }
 ````
+
+#### Search Engine CLI
+
+Publication and Page models (`cms.models`) configures by default some save_hooks, like the search engine indexers.
+Search Engine indexes can be rebuilt with a management command (SE cli):
+
+````
+./manage.py cms_search_content_sync -y 2020 -type cms.Publication -d 1 -y 2020 -m 11 -show
+````
+
+Purge all the entries and renew them
+````
+# an entire year
+./manage.py cms_search_content_sync -y 2020 -type cms.Publication -y 2020 -purge -insert
+
+# a single day
+./manage.py cms_search_content_sync -y 2020 -type cms.Publication -d 11 -m 12 -y 2020 -purge -insert
+````
+
 
 ### Behavior
 

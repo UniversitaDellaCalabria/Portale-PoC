@@ -1,7 +1,10 @@
 from cms.models import Page
 from cms_search import mongo_collection
+from cms_search.models import page_to_entry, publication_to_entry
+
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
+from django.utils.module_loading import import_string
 
 
 class Command(BaseCommand):
@@ -22,16 +25,22 @@ class Command(BaseCommand):
                             help="it only print out the entries")
         parser.add_argument('-purge', required=False, action="store_true",
                             help="purge all the entries")
-        parser.add_argument('-build', required=False, action="store_true",
+        parser.add_argument('-insert', required=False, action="store_true",
                             help="build entries indexes")
         parser.add_argument('-debug', required=False, action="store_true",
                             help="see debug messages")
 
     def handle(self, *args, **options):
         collection = mongo_collection()
-        query = {'content_type': options['type']}
-        count = collection.find(query).count()
+        content_type = options['type']
+        query = {'content_type': content_type}
         
+        for i in 'day', 'month', 'year':
+            opt = i[0]
+            if options.get(opt):
+                query[i] = options[opt]
+        
+        count = collection.find(query).count()
         # show
         if options['show']:
             for i in collection.find(query):
@@ -45,8 +54,14 @@ class Command(BaseCommand):
         
         # rebuild
         data = []
-        if options['build']:
-            for page in Page.objects.filter(is_active=true):
-                if page.is_publicable():
-                    entry = ''
+        if options['insert']:
+            app_label, model_name = content_type.split('.')
+            model = import_string(f'{app_label}.models.{model_name}')
+            _func = import_string(settings.MODEL_TO_MONGO_MAP[content_type])
+            for obj in model.objects.filter(is_active=True):
+                if obj.is_publicable:
+                    entry = _func(obj).__dict__
                     data.append(entry)
+            collection.insert_many(data, ordered=False)
+            count = collection.find(query).count()
+            print(f'-- Inserted {count} elements. --')

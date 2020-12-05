@@ -20,11 +20,12 @@ class SearchEntry(BaseModel):
     tags : Optional[list]
     categories : Optional[list]
     indexed : datetime
-    published : datetime
     viewed : Optional[int]
     relevance : Optional[int]
     language : Optional[str]
     translations : List[dict] = []
+    day : int
+    month : int
     year : int
     
     # class Config:
@@ -45,9 +46,10 @@ def page_to_entry(page_object):
         "urls": [f'{sites[0]}{page_object.webpath.get_full_path()}',],
         "tags": [i for i in page_object.tags.values_list('name', flat=1)],
         "indexed": timezone.localtime(),
-        "published": page_object.date_start,
         "viewed": 0,
         "language": DEFAULT_LANGUAGE,
+        "day": page_object.date_start.day,
+        "month": page_object.date_start.month,
         "year": page_object.date_start.year
     }
     search_entry = SearchEntry(**data)
@@ -76,6 +78,8 @@ def publication_to_entry(pub_object):
         "published": pub_object.date_start,
         "viewed": 0,
         "language": DEFAULT_LANGUAGE,
+        "day": pub_object.date_start.day,
+        "month": pub_object.date_start.month,
         "year": pub_object.date_start.year
     }
     search_entry = SearchEntry(**data)

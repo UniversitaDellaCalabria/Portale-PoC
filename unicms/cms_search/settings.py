@@ -7,33 +7,10 @@ MONGO_DB_PARAMS = dict(username='admin',
 MONGO_DB_NAME = 'unicms'
 MONGO_COLLECTION_NAME = 'search'
 
-MONGO_SEARCH_DOC_SCHEMA = {
-    "title": "",
-    "heading": "",
-    "content_type": "",
-    "content_id": "",
-    "content": "",
-    "sites": "",
-    "urls": [],
-    "tags": [],
-    "categories": [],
-    "indexed": "",
-    "published": "",
-    "viewed": 0,
-    "relevance": 0,
-    "language": "",
-    "translations":
-    [
-        {
-         "language": "",
-         "title": "",
-         "heading": "",
-         "content": ""
-       },
-    ],
-   "year": 0
+MODEL_TO_MONGO_MAP = {
+    'cms.Page': 'cms_search.models.page_to_entry',
+    'cms.Publication': 'cms_search.models.publication_to_entry'
 }
-
 
 CMS_POSTSAVE_HOOKS = {
     'Publication': 'cms_search.hooks.publication_se_index',
