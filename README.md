@@ -1,7 +1,7 @@
 (uniCMS) Portale PoC
 --------------------
 
-This project (uniCMS) aims to exemplify the design of a common University WebSite Portal.
+This project aims to exemplify the design of a common University WebSite Portal.
 You'll find an simplified generalization of all
 the entities that usually make up a Content Management System (CMS).
 
