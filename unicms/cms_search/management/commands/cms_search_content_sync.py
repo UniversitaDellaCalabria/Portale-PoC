@@ -39,18 +39,12 @@ class Command(BaseCommand):
             opt = i[0]
             if options.get(opt):
                 query[i] = options[opt]
-        
-        count = collection.find(query).count()
-        # show
-        if options['show']:
-            for i in collection.find(query):
-                print(i)
-            print(f'-- {count} elements. --')
-        
+              
         # purge
         if options['purge']:
-            collection.delete_many(query)
-            print(f'-- Deleted {count} elements. --')
+            del_res = collection.find(query)
+            del_count = del_res.count()
+            to_be_deleted = [i['_id'] for i in del_res]
         
         # rebuild
         data = []
@@ -64,4 +58,18 @@ class Command(BaseCommand):
                     data.append(entry)
             collection.insert_many(data, ordered=False)
             count = collection.find(query).count()
-            print(f'-- Inserted {count} elements. --')
+            print(f'-- Inserted {len(data)} elements. --')
+        
+        # purge
+        if options['purge']:
+            del_query = query.copy()
+            del_query.update({"_id": { "$in" : to_be_deleted}})
+            collection.delete_many(del_query)
+            print(f'-- Deleted {del_count} elements. --')
+        
+        # show
+        if options['show']:
+            count = collection.find(query).count()
+            for i in collection.find(query):
+                print(i)
+            print(f'-- {count} elements. --')
