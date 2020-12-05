@@ -4,12 +4,14 @@ MONGO_DB_PARAMS = dict(username='admin',
                        connectTimeoutMS=5000,
                        socketTimeoutMS=5000,
                        serverSelectionTimeoutMS=5000)
+MONGO_DB_NAME = 'unicms'
+MONGO_COLLECTION_NAME = 'search'
 
 MONGO_SEARCH_DOC_SCHEMA = {
     "title": "",
     "heading": "",
-    "content-type": "",
-    "content-id": "",
+    "content_type": "",
+    "content_id": "",
     "content": "",
     "sites": "",
     "urls": [],

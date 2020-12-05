@@ -22,3 +22,5 @@ pyyaml
 
 # search engine
 pymongo>=3.11.0
+
+pydantic

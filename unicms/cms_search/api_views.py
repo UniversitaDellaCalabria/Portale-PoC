@@ -33,7 +33,6 @@ class ServiceUnavailable(APIException):
     default_code = 'service_unavailable'
 
 
-
 def _handle_date_string(date_string):
     date = dateparse.parse_date(date_string)
     dt = timezone.datetime(date.year, date.month, date.day)
@@ -92,7 +91,8 @@ class ApiSearchEngine(APIView):
                 res = collection.find(query, {'relevance': {'$meta': "textScore"}}).\
                                  sort([('relevance', {'$meta': 'textScore'})])
             else:
-                res = collection.find(query).sort('published', pymongo.DESCENDING)
+                res = collection.find(query).sort('published', 
+                                                  pymongo.DESCENDING)
         except ServerSelectionTimeoutError as e:
             logger.critical(e)
             raise ServiceUnavailable()

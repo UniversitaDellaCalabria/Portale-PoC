@@ -233,11 +233,13 @@ OAS3_CONFIG = {'title': "Portale dell'Università della Calabria",
 }
 
 MONGO_URL = 'mongodb://10.0.3.217:27017'
-MONGO_DB_PARAMS = dict(username='admin',
-                       password='thatpassword',
-                       connectTimeoutMS=5000,
-                       socketTimeoutMS=5000,
-                       serverSelectionTimeoutMS=5000)
+MONGO_CONNECTION_PARAMS = dict(username='admin',
+                               password='thatpassword',
+                               connectTimeoutMS=5000,
+                               socketTimeoutMS=5000,
+                               serverSelectionTimeoutMS=5000)
+MONGO_DB_NAME = 'unicms'
+MONGO_COLLECTION_NAME = 'search'
 
 CMS_POSTSAVE_HOOKS = {
     'Publication': ['cms_search.hooks.publication_se_index',],
