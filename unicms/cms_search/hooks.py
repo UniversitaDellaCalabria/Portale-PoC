@@ -4,18 +4,19 @@ import cms_search.settings as app_settings
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
-from . import mongo_client
+from . import MongoClientFactory
 
 logger = logging.getLogger(__name__)
 
 
 MONGO_SEARCH_DOC_SCHEMA = getattr(settings, 'MONGO_SEARCH_DOC_SCHEMA',
                                   app_settings.MONGO_SEARCH_DOC_SCHEMA)
+DEFAULT_LANGUAGE = dict(settings.LANGUAGES)[settings.LANGUAGE].lower()
 
 
 def page_se_index(page_object):
     data = MONGO_SEARCH_DOC_SCHEMA.copy()
-    collection = mongo_client.unicms.search
+    collection = MongoClientFactory().unicms.search
     app_label, model = page_object._meta.label_lower.split('.')
     contentype = ContentType.objects.get(app_label=app_label, model=model)
     sites = set([page_object.webpath.site.domain])
@@ -31,7 +32,7 @@ def page_se_index(page_object):
         "indexed": timezone.localtime(),
         "published": page_object.date_start,
         "viewed": 0,
-        "language": "italian",
+        "language": DEFAULT_LANGUAGE,
         "year": page_object.date_start.year
     }
     # check if it doesn't exists or remove it and recreate
@@ -50,7 +51,7 @@ def page_se_index(page_object):
 
 def publication_se_index(pub_object):
     data = MONGO_SEARCH_DOC_SCHEMA.copy()
-    collection = mongo_client.unicms.search
+    collection = MongoClientFactory().unicms.search
     app_label, model = pub_object._meta.label_lower.split('.')
     contentype = ContentType.objects.get(app_label=app_label, model=model)
     
@@ -73,7 +74,7 @@ def publication_se_index(pub_object):
         "indexed": timezone.localtime(),
         "published": pub_object.date_start,
         "viewed": 0,
-        "language": "italian",
+        "language": DEFAULT_LANGUAGE,
         "year": pub_object.date_start.year
     }
     # check if it doesn't exists or remove it and recreate

@@ -14,11 +14,12 @@ MONGO_SEARCH_DOC_SCHEMA = {
     "sites": "",
     "urls": [],
     "tags": [],
+    "categories": [],
     "indexed": "",
     "published": "",
     "viewed": 0,
     "relevance": 0,
-    "language": "italian",
+    "language": "",
     "translations":
     [
         {
