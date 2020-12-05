@@ -2,7 +2,7 @@
 --------------------
 
 This project (uniCMS) aims to exemplify the design of a common University WebSite Portal.
-In it you'll find an simplified generalization of all
+You'll find an simplified generalization of all
 the entities that usually make up a Content Management System (CMS).
 
 This platform was built on top of Django Framework, with few specialized libraries as well.
@@ -56,7 +56,7 @@ Model
 
 This project is composed by the following applications:
 - websites, where multiple sites can be defined.
-- cms_context, where webpaths and EditorialBoard Users and Permissions can be defined
+- cms_contexts, where webpaths and EditorialBoard Users and Permissions can be defined
 - cms_templates, where multiple page templates and page blocks can be managed
 - cms_medias, specialized app for management, upload and navigation of media files.
 - cms_menus, specialized app for navigation bar creation and management.
@@ -67,13 +67,13 @@ This project is composed by the following applications:
 > :warning: **If you are a pure Djangoer**: 
 
 You should know that templates and urls would be managed with cms_context, entirely through admin interface. 
-We can even load third-party django applications, it'ss necessary to take into account configuring the url 
+We can even load third-party django applications, it's necessary to take into account that you should configured your django urls
 paths before defining uniCMS ones, otherwise uniCMS will intercept them and with a good chance will 
 return to the user a page of 404. You can even set `CMS_PATH_PREFIX` to a desidered value, eg: `portale/`, to 
 restrict uniCMS url matching to a specified namespace.
 
-The module `cms_context` defines the multiple website management (multi context) we have adopted.
-Each context, or website, is nothing more than a
+The module `cms_contexts` defines the multiple website management (multi contexts) we have adopted.
+Each context mail ches a Path and a web page, it's nothing more than a
 webpath. Each context has users (Editorial Board Editors) with one or more
 of the following permissions (see `cms_context.settings.CMS_CONTEXT_PERMISSIONS`):
 
@@ -89,7 +89,7 @@ CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her in his/her conte
                            )
 ````
 
-`cms` is the model where we've defined how we build a Page or post a Publication.
+`cms` is the model where we've defined how we build a Page or a Publication.
 For us, a Page, is anything else than a composition of blocks, rendered in a
 HTML base template. This means that a page is a block container, in which we can
 define many blocks with different order. For every page we must define
@@ -99,21 +99,17 @@ Nothing prevents us from using something other than HTML, it's just python, you 
 Menus, Carosules, Publications and Categories can also be localized in one or many languages via Web 
 Backend, if a client browser have a Spanish localization the rendering system will render all the spanish
 localized block, if they occour, otherwise it will switch to default
-language, that's English.
+language.
 
 All the gettext values defined in our static html template will be handled as django localization use to do.
-
-Following this approach a WebSite's Home Page is nothing more than a Page object, as a container
-of many Block objects, that's rendered in a fancy HTML template.
-
 
 Template tags
 -------------
 
 [WiP]
 
-A cms template can also adopt some of the template tags that come with uniCMS.
-These takes as argument at least the following objects:
+A cms template or a HTML page block can also adopt some of the template tags that come with uniCMS.
+UniCMS template context takes at least the following objects:
 
 ````
     'website': WebSite object (cms_context.models.Website)
@@ -122,8 +118,8 @@ These takes as argument at least the following objects:
     'page': Page object (cms.models.Page)
 ````
 
-Standing on the informations taken from these objects uniCMS adopts also some other custom templatetags, as follows.
-These templatetags will also work in Page Blocks that would take a html template as argument.
+Standing on the informations taken from these objects uniCMS also adopts some other custom templatetags, as follow.
+These templatetags will also work in Page Blocks that would take, optionally, a html template as argument.
 
 `cms_templates`
 - supported_languages: get settings.LANGUAGES_CODE to templates
@@ -164,9 +160,9 @@ These templatetags will also work in Page Blocks that would take a html template
 Handlers
 --------
 
-There are cases in which it is necessary to create specialized applications, complete 
+There are cases in which it is necessary to create specialized applications, 
 with templates and templatetags, detached from the pages configured within the CMS. 
-Think for example of `cms.handlers` which manages the pages for navigating 
+Think, for example, to `cms.handlers` which manages the pages for navigating 
 publications (List) and opening a publication (View).
 
 In this case the handlers have to be registered in `settings.py`, as follow:
@@ -213,7 +209,7 @@ Examples:
 - A Specialized Block element that take a json object in its object constructor
 
 The following descriptions covers some HTML blocks.
-As we can see the HTML blocks in uniCMS has the full support of Django templatetags and template context.
+As we can see the HTML blocks in uniCMS have a full support of Django templatetags and template context.
 
 
 *Load Image slider (Carousel) configured for the Page*
@@ -247,7 +243,6 @@ of the Page.
 
 ````
 {% load unicms_blocks %}
-
             <div class="row negative-mt-5 mb-3" >
                 <div class="col-12 col-md-3">
                     <div class="section-title-label px-3 py-1">
@@ -267,7 +262,7 @@ of the Page.
 ````
 
 *Youtube iframes*
-A simple as possibile bunch of HTML lines.
+As simple as possibile, that bunch of HTML lines.
 ````
 <div class="row">
 <div class="col-12 col-md-6">
@@ -290,7 +285,7 @@ Menu can be fetched through Rest API `/api/menu/<menu_id:int>` and also updated/
 Each menu items can have three kinds of links: url, page, publication.
 Each menu items can get additional contents (`inherited_contents`) from a publication, this means that
 a presentation url, or a subheading or whatever belonging to a publication can be made accessible during a 
-menu items representation.
+menu items representation. Think about presentati in images, additional links ...
 
 
 Urls
@@ -394,7 +389,7 @@ These will not match:
 
 As we can see symbols like `+` and `-` will exlude or include words.
 Specifying "some bunch of words" will match the entire sequence.
-That's something very similar to Google!
+That's something very similar to something professional 😎.
 
 
 Post Pre Save Hooks
