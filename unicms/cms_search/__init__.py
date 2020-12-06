@@ -4,6 +4,9 @@ from django.conf import settings as global_settings
 from django.utils import timezone
 
 
+default_app_config = 'cms_search.apps.CmsSearchConfig'
+
+
 class MongoClientFactory(object):
     mongo_client = None
     

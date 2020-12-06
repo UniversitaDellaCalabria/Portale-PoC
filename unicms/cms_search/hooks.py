@@ -48,7 +48,6 @@ def publication_se_insert(pub_object):
     logger.info(f'{pub_object} succesfully indexed in search engine')
 
 
-
 def searchengine_entry_remove(obj):
     collection = mongo_collection()   
     doc_query = {"content_type": obj._meta.label, 

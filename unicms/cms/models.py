@@ -136,16 +136,11 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable,
 
     def delete(self, *args, **kwargs):
         PageRelated.objects.filter(related_page=self).delete()
-        load_hooks(self, 'PREDELETE', *args, **kwargs)
         super(self.__class__, self).delete(*args, **kwargs)
-        load_hooks(self, 'POSTDELETE', *args, **kwargs)
 
 
     def save(self, *args, **kwargs):
-        # hooks
-        load_hooks(self, 'PRESAVE', *args, **kwargs)
         super(self.__class__, self).save(*args, **kwargs)
-        load_hooks(self, 'POSTSAVE', *args, **kwargs)
 
         for rel in PageRelated.objects.filter(page=self):
             if not PageRelated.objects.\
@@ -391,17 +386,12 @@ class Publication(AbstractPublication, AbstractPublicable):
         return slugify(self.title)
 
     def delete(self, *args, **kwargs):
-        load_hooks(self, 'PREDELETE', *args, **kwargs)
         super(self.__class__, self).delete(*args, **kwargs)
-        load_hooks(self, 'POSTDELETE', *args, **kwargs)
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = self.title2slug()
-        # hooks
-        load_hooks(self, 'PRESAVE', *args, **kwargs)
         super(self.__class__, self).save(*args, **kwargs)
-        load_hooks(self, 'POSTSAVE', *args, **kwargs)
         
         
     def get_attachments(self):
