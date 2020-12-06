@@ -33,7 +33,11 @@ def page_se_insert(page_object):
 
 def publication_se_insert(pub_object):
     collection = mongo_collection()   
-    search_entry = publication_to_entry(pub_object).__dict__
+    search_entry = publication_to_entry(pub_object)
+    if search_entry:
+        search_entry = search_entry.__dict__
+    else:
+        return
     # check if it doesn't exists or remove it and recreate
     doc_query = {"content_type": pub_object._meta.label, 
                  "content_id": search_entry['content_id']}

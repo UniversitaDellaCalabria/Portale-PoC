@@ -395,9 +395,9 @@ That's something very similar to something professional 😎.
 Post Pre Save Hooks
 -------------------
 By default Pages and Publications call pre and post save hooks.
-We preferred the following approach instead of django signals.
-in `settings.py` we can register as many as desidered hooks to one or more 
-models.
+Django signals are registered in `cms_search.signals`.
+In `settings.py` we can register as many as desidered hooks to one or more 
+models, Django signals will load them on each pre/post save/delete event.
 
 ````
 CMS_HOOKS = {
