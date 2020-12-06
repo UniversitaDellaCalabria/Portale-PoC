@@ -260,3 +260,4 @@ CMS_HOOKS = {
     }
 }
     
+SEARCH_ELEMENTS_IN_PAGE = 25

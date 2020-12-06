@@ -7,6 +7,7 @@ import time # debug wait
 from pymongo.errors import ServerSelectionTimeoutError
 
 from bson.json_util import dumps
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.utils import timezone, dateparse
 from django.utils.decorators import method_decorator
@@ -98,7 +99,7 @@ class ApiSearchEngine(APIView):
             raise ServiceUnavailable()
         
         # pagination
-        elements_in_page = 2
+        elements_in_page = getattr(settings, 'SEARCH_ELEMENTS_IN_PAGE', 25)
         total_elements = res.count()
         if total_elements >= elements_in_page:
             total_pages = round(total_elements / elements_in_page)
@@ -125,9 +126,9 @@ class ApiSearchEngine(APIView):
         data = [{k:v for k,v in entry.items() if k != '_id'} 
                 for entry in entries]
         result = {"results": data,
-                  "total": total_elements, 
+                  "count": total_elements, 
                   "total_pages": total_pages,
-                  "count": elements_in_page,
+                  "max_per_page": elements_in_page,
                   "page_number": page_number
         }
         return Response(result)
