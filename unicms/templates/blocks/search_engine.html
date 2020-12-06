@@ -80,7 +80,7 @@ Vue.component('search-panel', {
 })
 
 
-var news = new Vue({
+var search = new Vue({
   el: '#results',
   template: `
     <div v-if="newsLoaded == false">
@@ -156,6 +156,7 @@ var news = new Vue({
     return {
       items: [],
       newsLoaded: false,
+      params: ['asdas'],
     }
   },
 
