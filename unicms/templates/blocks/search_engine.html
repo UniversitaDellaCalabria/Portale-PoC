@@ -21,6 +21,10 @@
                         </div>
                     </div>
                     
+                    <div id="search-panel">
+                        <search-panel></search-panel>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -31,6 +35,48 @@
 </div>
 
 <script>
+
+Vue.component('search-panel', {
+  props: {
+      data: Array,
+    },
+  template: `
+  <div class="container">
+  <div class="row">
+    <div class="col">
+        <span class="page-link" style="color:#050b12;">
+            <b>[[ data.total ]] {% trans "news" %}</b> in <b>[[ data.total_pages ]] {% trans "pages" %}</b>
+        </span>
+    </div>
+    <div class="col">
+    </div>
+
+  <div class="row">
+    <nav class="pagination-wrapper" aria-label="News pagination">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.previous_url]] )" v-if="data.previous_url">
+              <span class="sr-only"> {% trans "Page" %} </span> &lt; {% trans "Previous" %}
+          </a>
+        </li>
+        <li class="page-item">
+          <span class="page-link" style="color:#050b12;">[[ data.page_number ]] / <b>[[ data.total_pages ]]</b></span>
+        </li>
+        <li class="page-item">
+          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.next_url ]] )"  v-if="data.next_url">
+              <span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %} &gt;
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+
+</div>
+  `
+})
+
+
 var news = new Vue({
   el: '#results',
   template: `
@@ -62,25 +108,37 @@ var news = new Vue({
                                     </a>
                                 </span>
                             </div>
+<!--
                             <span class="small text-muted mb-2">[[ item.indexed|formatDate ]]</span>
+-->
                             <h4 class="card-title mt-3">
                                     <p>[[ item.title ]]</p>
                             </h4>
                             <p>[[ item.heading | truncate(128) ]]</p>
                             
+<!--
                             <h6>{% trans "Published in" %}</h6>
-                            <ul v-for="url in item.urls">
+-->
+                            <div class="it-list-wrapper">
+                              <ul class="it-list"  v-for="url in item.urls">
                                 <li>
-                                    <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ url ]]">
-                                        [[ url | val_replace('//', '') ]]
-                                    </a>
+                                  <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ url ]]">
+                                    <div class="it-right-zone">
+                                      <span class="text">[[ url | val_replace('//', '') ]]</span>
+                                      <svg class="icon">
+                                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-chevron-right"></use>
+                                      </svg>
+                                    </div>
+                                  </a>
                                 </li>
-                            </ul>
+                              </ul>
+                            </div>
+                            <br>
                             
-                            <div v-if="item.translations">
+                            <div v-if="item.translations && item.translations.length >= 1">
                                 <h6>{% trans "Languages" %}</h6>
-                                <ul v-for="trans in item.translations">
-                                    <li>
+                                <ul class="list-group list-group-flush" v-for="trans in item.translations">
+                                    <li class="list-group-item">
                                             [[ trans.language ]]
                                     </li>
                                 </ul>

@@ -44,6 +44,7 @@ def page_to_entry(page_object):
         "content": "",
         "sites": sites,
         "urls": [f'{sites[0]}{page_object.webpath.get_full_path()}',],
+        "categories": [page_object.get_type_display()],
         "tags": [i for i in page_object.tags.values_list('name', flat=1)],
         "indexed": timezone.localtime(),
         "viewed": 0,
