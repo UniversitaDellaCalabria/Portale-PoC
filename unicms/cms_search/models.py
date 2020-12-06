@@ -18,7 +18,7 @@ class SearchEntry(BaseModel):
     sites : List[str]
     urls : List[str]
     tags : Optional[list]
-    categories : Optional[list]
+    categories : Optional[list] = []
     indexed : datetime
     viewed : Optional[int]
     relevance : Optional[int]
@@ -73,6 +73,7 @@ def publication_to_entry(pub_object):
         "content": pub_object.content,
         "sites": list(sites),
         "urls": list(urls),
+        "categories": [i.name for i in pub_object.categories.all()],
         "tags": [i for i in pub_object.tags.values_list('name', flat=1)],
         "indexed": timezone.localtime(),
         "published": pub_object.date_start,
