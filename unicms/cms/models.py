@@ -92,7 +92,7 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable,
 
     type = models.CharField(max_length=33,
                             default="standard",
-                            choices=(('standard', _('Standard Page')),
+                            choices=(('standard', _('Page')),
                                      ('home', _('Home Page'))))
 
     tags = TaggableManager()

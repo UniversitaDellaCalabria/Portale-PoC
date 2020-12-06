@@ -32,3 +32,11 @@ Vue.filter('val_replace', function (value, value1, value2) {
   return value.replace(value1, value2)
 })
 </script>
+
+<script>
+Vue.filter('capitalize', function (value) {
+    if (!value) return ''
+    new_value = value.toString()
+    return new_value.charAt(0).toUpperCase() + new_value.slice(1)
+})
+</script>

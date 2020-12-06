@@ -15,8 +15,11 @@
                           <label for="input-group-3">{% trans 'Write words and "phrases" that you are looking for' %}</label>
                           <input type="text" class="form-control" id="input-group-3" name="input-group-3">
                           <div class="input-group-append">
-                              <div class="input-group-text"><svg class="icon icon-sm icon-primary"><use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use></svg></div>
-                            <button class="btn btn-primary" type="button" id="button-3">{% trans "Search" %}</button>
+                              <div class="input-group-text">
+                                  <svg class="icon icon-sm icon-muted"><use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use></svg>
+                              </div>
+                            <button class="btn btn-primary" type="button" id="button-3">
+                                {% trans "Search" %}</button>
                           </div>
                         </div>
                     </div>
@@ -100,12 +103,10 @@ var news = new Vue({
 -->
 
                         <div class="card-body">
-                            <div class="etichetta mb-0">
+                            <div class="etichetta mb-0" style="text-transform: none;">
                                 <span v-for="(cat, index) in item.categories">
                                     <span v-if="index>0">&nbsp;&middot</span>
-                                    <a v-bind:href="'?category_name=' + cat" style="color: #176fc1;">
-                                        [[ cat ]]
-                                    </a>
+                                        [[ cat | capitalize ]]
                                 </span>
                             </div>
 <!--
@@ -114,34 +115,33 @@ var news = new Vue({
                             <h4 class="card-title mt-3">
                                     <p>[[ item.title ]]</p>
                             </h4>
-                            <p>[[ item.heading | truncate(128) ]]</p>
+                            <p>[[ item.heading | truncate(256) ]]</p>
                             
 <!--
                             <h6>{% trans "Published in" %}</h6>
 -->
-                            <div class="it-list-wrapper">
-                              <ul class="it-list"  v-for="url in item.urls">
-                                <li>
+                            <div class="">
+                              <ul class="list-unstyled">
+                                <li v-for="url in item.urls">
                                   <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ url ]]">
                                     <div class="it-right-zone">
-                                      <span class="text">[[ url | val_replace('//', '') ]]</span>
                                       <svg class="icon">
                                         <use xlink:href="{% static 'svg/sprite.svg' %}#it-chevron-right"></use>
                                       </svg>
+                                      <span class="text">[[ url | val_replace('//', '') ]]</span>
                                     </div>
                                   </a>
                                 </li>
                               </ul>
                             </div>
-                            <br>
                             
                             <div v-if="item.translations && item.translations.length >= 1">
-                                <h6>{% trans "Languages" %}</h6>
-                                <ul class="list-group list-group-flush" v-for="trans in item.translations">
-                                    <li class="list-group-item">
-                                            [[ trans.language ]]
-                                    </li>
-                                </ul>
+                                <h6>{% trans "Available in" %}</h6>
+                                <span v-for="(trans, index) in item.translations"">
+                                    <span v-if="index>0">&nbsp;&middot</span>
+                                        [[ trans.language ]]
+                                </span>
+                                
                             </div>
 
                         </div>
