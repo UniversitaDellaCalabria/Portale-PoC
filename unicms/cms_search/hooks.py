@@ -14,7 +14,7 @@ MONGO_DB_NAME = getattr(global_settings, 'MONGO_DB_NAME')
 MONGO_COLLECTION_NAME = getattr(global_settings, 'MONGO_COLLECTION_NAME')
 
 
-def page_se_index(page_object):
+def page_se_insert(page_object):
     collection = mongo_collection()
     search_entry = page_to_entry(page_object).__dict__
     # check if it doesn't exists or remove it and recreate
@@ -31,7 +31,7 @@ def page_se_index(page_object):
     logger.info(f'{page_object} succesfully indexed in search engine')
 
 
-def publication_se_index(pub_object):
+def publication_se_insert(pub_object):
     collection = mongo_collection()   
     search_entry = publication_to_entry(pub_object).__dict__
     # check if it doesn't exists or remove it and recreate
@@ -47,4 +47,11 @@ def publication_se_index(pub_object):
     
     logger.info(f'{pub_object} succesfully indexed in search engine')
 
-    
+
+
+def searchengine_entry_remove(obj):
+    collection = mongo_collection()   
+    doc_query = {"content_type": obj._meta.label, 
+                 "content_id": obj.pk}
+    collection.delete_many(doc_query)
+    logger.info(f'{obj} removed from search engine')

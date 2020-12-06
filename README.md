@@ -405,9 +405,19 @@ in `settings.py` we can register as many as desidered hooks to one or more
 models.
 
 ````
-CMS_POSTSAVE_HOOKS = {
-    'Publication': ['cms_search.hooks.publication_se_index',],
-    'Page': ['cms_search.hooks.page_se_index',],
+CMS_HOOKS = {
+    'Publication': {
+        'PRESAVE': [],
+        'POSTSAVE': ['cms_search.hooks.publication_se_insert',],
+        'PREDELETE': ['cms_search.hooks.searchengine_entry_remove',],
+        'POSTDELETE': []
+    },
+    'Page': {
+        'PRESAVE': [],
+        'POSTSAVE': ['cms_search.hooks.page_se_insert',],
+        'PREDELETE': ['cms_search.hooks.searchengine_entry_remove',],
+        'POSTDELETE': []
+    }
 }
 ```` 
 
