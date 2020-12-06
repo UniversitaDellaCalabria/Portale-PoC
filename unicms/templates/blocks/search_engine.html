@@ -1,0 +1,134 @@
+{% load i18n %}
+{% load static %}
+
+<div class="row pb-3">
+    <div class="col-12">
+        <div class="card-wrapper card-space">
+            <div class="card card-bg no-after">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <h4>{% trans "Motore di Ricerca" %}</h4>
+                    </h4>
+                    <br>
+                    <div class="form-group">
+                      <div class="input-group">
+                          <label for="input-group-3">{% trans 'Write words and "phrases" that you are looking for' %}</label>
+                          <input type="text" class="form-control" id="input-group-3" name="input-group-3">
+                          <div class="input-group-append">
+                              <div class="input-group-text"><svg class="icon icon-sm icon-primary"><use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use></svg></div>
+                            <button class="btn btn-primary" type="button" id="button-3">{% trans "Search" %}</button>
+                          </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="results">
+</div>
+
+<script>
+var news = new Vue({
+  el: '#results',
+  template: `
+    <div v-if="newsLoaded == false">
+      {% include "loading-jumbo.html" %}
+    <div v-else>
+         <div class="" v-if="items">
+            <!--start card-->
+                <div class="card-wrapper card-space"  v-for="item in items.results" :key="item.id">
+                    <div class="card card-bg no-after">
+<!--
+                         <div class="img-responsive-wrapper mb-1">
+                            <div class="img-responsive img-responsive-panoramic">
+                                <figure class="img-wrapper">
+                                  <a style="" v-bind:href="item.path">
+                                    <img  v-bind:src="item.image" />
+                                  </a>
+                                </figure>
+                            </div>
+                        </div>
+-->
+
+                        <div class="card-body">
+                            <div class="etichetta mb-0">
+                                <span v-for="(cat, index) in item.categories">
+                                    <span v-if="index>0">&nbsp;&middot</span>
+                                    <a v-bind:href="'?category_name=' + cat" style="color: #176fc1;">
+                                        [[ cat ]]
+                                    </a>
+                                </span>
+                            </div>
+                            <span class="small text-muted mb-2">[[ item.indexed|formatDate ]]</span>
+                            <h4 class="card-title mt-3">
+                                    <p>[[ item.title ]]</p>
+                            </h4>
+                            <p>[[ item.heading | truncate(128) ]]</p>
+                            
+                            <h6>{% trans "Published in" %}</h6>
+                            <ul v-for="url in item.urls">
+                                <li>
+                                    <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ url ]]">
+                                        [[ url | val_replace('//', '') ]]
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <div v-if="item.translations">
+                                <h6>{% trans "Languages" %}</h6>
+                                <ul v-for="trans in item.translations">
+                                    <li>
+                                            [[ trans.language ]]
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                </div>
+            <!--end card-->
+        </div>
+    </div>
+    `,
+  data () {
+    return {
+      items: [],
+      newsLoaded: false,
+    }
+  },
+
+  mounted () {
+    },
+
+  beforeMount () {
+    let get_args = ``
+
+    axios
+      .get('{% url "unicms_search:api-search-engine" %}'+get_args)
+      .then(response => (this.items = response.data))
+      .then(response => (this.newsLoaded = true))
+  },
+  methods: {
+    CallURL ( url ) {
+        this.newsLoaded = false;
+
+        axios
+          .get( url )
+          .then(response => (this.items = response.data))
+          .then(response => (this.newsLoaded = true))
+          .then(response => (this.scrollToTop()))
+      },
+   scrollToTop () {
+        // faulty on mobile ...
+        window.scrollTo({top:100, left:0, behavior: 'smooth'});
+        }
+    }
+})
+</script>
+</script>
+
+

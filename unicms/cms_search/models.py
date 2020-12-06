@@ -23,7 +23,7 @@ class SearchEntry(BaseModel):
     viewed : Optional[int]
     relevance : Optional[int]
     language : Optional[str]
-    translations : List[dict] = []
+    translations : List[dict] = None
     day : int
     month : int
     year : int
@@ -75,6 +75,12 @@ def publication_to_entry(pub_object):
         "urls": list(urls),
         "categories": [i.name for i in pub_object.categories.all()],
         "tags": [i for i in pub_object.tags.values_list('name', flat=1)],
+        "translations": [{'language': i[1].lower(),
+                          'title': i[0].title,
+                          'subheading': i[0].subheading,
+                          'content': i[0].content
+                         }
+                         for i in pub_object.available_in_languages],
         "indexed": timezone.localtime(),
         "published": pub_object.date_start,
         "viewed": 0,

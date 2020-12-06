@@ -3,7 +3,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script>
-/* thanks to: https://gist.github.com/1c7/2b61ed28a639fcb48c8a4db5b48c3ff7 */
 Vue.filter('truncate', function (value, length) {
   if (!value) return ''
   value = value.toString()
@@ -15,9 +14,7 @@ Vue.filter('truncate', function (value, length) {
 })
 </script>
 
-
 <script>
-/* thanks to: https://gist.github.com/1c7/2b61ed28a639fcb48c8a4db5b48c3ff7 */
 Vue.filter('formatDate', function(value) {
   if (value) {
     dt = new Date(value)
@@ -27,4 +24,11 @@ Vue.filter('formatDate', function(value) {
     return str
   }
 });
+</script>
+
+<script>
+Vue.filter('val_replace', function (value, value1, value2) {
+  if (!value1) return ''
+  return value.replace(value1, value2)
+})
 </script>

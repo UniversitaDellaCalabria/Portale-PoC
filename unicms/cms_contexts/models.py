@@ -112,7 +112,7 @@ class WebPath(TimeStampedModel):
             child_path.save()
 
     def __str__(self):
-        return '{}: {} ({})'.format(self.site, self.name, self.path)
+        return '{} @ {}{}'.format(self.name, self.site, self.get_full_path())
 
 
 class EditorialBoardEditors(TimeStampedModel):
