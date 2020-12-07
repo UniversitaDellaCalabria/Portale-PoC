@@ -4,15 +4,26 @@
 {% load unicms_contexts %}
 {% load unicms_blocks %}
 
+<div class="row">
+    <div class="col-4">
+            <div class="card-wrapper card-space  pb-0">
+            <div class="card card-bg no-after">
+                <div class="card-body">
+        <h4 class="card-title mb-0" style="">
+            {% trans "Search" %} in Unical
+        </h4>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+
 <div class="row pb-3">
     <div class="col-12">
         <div class="card-wrapper card-space">
             <div class="card card-bg no-after">
+                <br>
                 <div class="card-body">
-                    <h4 class="card-title">
-                        <h4>{% trans "Search" %}</h4>
-                    </h4>
-                    <br>
                     <div class="form-group">
                       <div class="input-group">
                           <label for="search">{% trans 'Write words and "phrases" that you are looking for' %}</label>
@@ -21,7 +32,7 @@
                               <div class="input-group-text">
                                   <svg class="icon icon-sm icon-muted"><use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use></svg>
                               </div>
-                            <button class="btn btn-primary" type="button" id="button-3" onclick="search.get_args=encodeQueryData(get_form_paramenters())">
+                            <button class="btn btn-primary" type="button" id="button-3" onclick="search.get_args=encodeQueryData(get_form_paramenters());">
                                 {% trans "Search" %}</button>
                           </div>
                         </div>
@@ -111,8 +122,8 @@ function get_form_paramenters(){
     // categories
     let cat_placeholder = document.getElementById('categories_input').dataset.placeholder
     let cat_obj = document.querySelectorAll("[data-id='categories_input']")[0]
-    let categories = cat_obj.textContent.trim().split('\n').filter(function(e) { return e !== cat_placeholder })
-    if (categories.length > 0) dict['categories'] = categories.join(',')
+    let categories = cat_obj.outerText.trim().split('\n').filter(function(e) { return e !== cat_placeholder })
+    dict['categories'] = categories.join(',')
     
     // date_from
     let date_from = document.getElementById('date_from').value
@@ -129,7 +140,7 @@ function get_form_paramenters(){
     // websites
     let site_placeholder = document.getElementById('websites_input').dataset.placeholder
     let site_obj = document.querySelectorAll("[data-id='websites_input']")[0]
-    let sites = site_obj.textContent.trim().split('\n').filter(function(e) { return e !== site_placeholder })
+    let sites = site_obj.outerText.trim().split('\n').filter(function(e) { return e !== site_placeholder })
     if (sites.length > 0) dict['sites'] = sites.join(',')
     
     return dict
@@ -148,13 +159,11 @@ Vue.component('list-panel', {
       data: Array,
     },
   template: `
-  <div class="row">
+  <div class="row ml-1">
     <div class="col">
         <span class="page-link" style="color:#050b12;">
             <b>[[ data.count || 0]] {% trans "results" %}</b> in <b>[[ data.total_pages || 0 ]] {% trans "pages" %}</b>
         </span>
-    </div>
-    <div class="col">
     </div>
   
       <div class="">
@@ -168,7 +177,7 @@ Vue.component('list-panel', {
             <li class="page-item">
               <span class="page-link" style="color:#050b12;">[[ data.page_number ]] / <b>[[ data.total_pages ]]</b></span>
             </li>
-            <li class="page-item" v-if="data.page_number <= data.total_pages">
+            <li class="page-item" v-if="data.page_number < data.total_pages">
               <a class="page-link text" style="color:#050b12;" @click="search.nextPage()">
                   <span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %} &gt;
               </a>
@@ -189,7 +198,7 @@ var search = new Vue({
     <div v-else>
          <div class="" v-if="items">
              
-            <list-panel v-bind:data="items"></list-panel>
+            <list-panel v-bind:data="items" v-if="items.results"></list-panel>
             
             <!--start card-->
             <div class="card-wrapper card-space"  v-for="item in items.results" :key="item.id">
@@ -210,7 +219,7 @@ var search = new Vue({
                             <div class="col-2">
                                 <!-- image preview -->
                                  <div style="width: 180px" class="img-responsive-wrapper mb-1" v-if="item.image">
-                                    <div class="img-responsive">
+                                    <div class="img-responsive mt-2">
                                         <figure class="img-wrapper">
                                             <img  v-bind:src="item.image" />
                                         </figure>
@@ -219,7 +228,7 @@ var search = new Vue({
                                 <!-- end image -->
                             </div>
                             <div class="col-lg">
-                                <p>[[ item.heading | truncate(256) ]]</p>
+                                <p>[[ item.heading | truncate(448) ]]</p>
                             </div>
                         </div>
 <!--
@@ -254,6 +263,9 @@ var search = new Vue({
                 </div>
             </div>
             <!--end card-->
+            
+            <list-panel v-bind:data="items" v-if="items.results"></list-panel>
+            
         </div>
     </div>
     `,
@@ -273,6 +285,12 @@ var search = new Vue({
   },
 
   mounted () {
+      window.addEventListener("keypress", function(e) {
+      // console.log(e.keyCode);
+      if (e.keyCode == 13) {
+        search.update_args();
+      }
+    });
     },
 
   beforeMount () {
@@ -284,24 +302,28 @@ var search = new Vue({
           .get( this.url + this.get_args)
           .then(response => (this.items = response.data))
           .then(response => (this.newsLoaded = true))
-          // .then(response => (this.scrollToTop()))
+          .then(response => (this.scrollToTop()))
       },
-   scrollToTop () {
+    scrollToTop () {
         // faulty on mobile ...
-        window.scrollTo({top:100, left:0, behavior: 'smooth'});
+        window.scrollTo({top:420, left:0, behavior: 'smooth'});
         },
-   update_args (values) {
+    update_args (values) {
         let base_args = encodeQueryData(get_form_paramenters());
         if (values) base_args += values
         this.get_args = base_args;
         },
     nextPage () {
         let num = this.items.page_number + 1;
-        this.update_args('page_num=' + num);
+        let sep = '';
+        if (this.get_args) sep = '&'
+        this.update_args(sep + 'page_num=' + num);
         },
     prevPage () {
         let num = this.items.page_number - 1;
-        this.update_args('page_num=' + num);
+        let sep = '';
+        if (this.get_args) sep = '&'
+        this.update_args(sep + 'page_num=' + num);
         },
     
     }
