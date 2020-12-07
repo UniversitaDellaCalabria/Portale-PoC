@@ -13,6 +13,7 @@ class SearchEntry(BaseModel):
     title : str
     heading : str
     content_type : str
+    image : str
     content_id : int
     content : Optional[str]
     sites : List[str]
@@ -20,6 +21,7 @@ class SearchEntry(BaseModel):
     tags : Optional[list]
     categories : Optional[list] = []
     indexed : datetime
+    published : datetime
     viewed : Optional[int]
     relevance : Optional[int]
     language : Optional[str]
@@ -47,6 +49,7 @@ def page_to_entry(page_object):
         "categories": [page_object.get_type_display()],
         "tags": [i for i in page_object.tags.values_list('name', flat=1)],
         "indexed": timezone.localtime(),
+        "published": page_object.date_start,
         "viewed": 0,
         "language": DEFAULT_LANGUAGE,
         "day": page_object.date_start.day,
@@ -70,6 +73,7 @@ def publication_to_entry(pub_object):
         "title": pub_object.title,
         "heading": pub_object.subheading,
         "content_type": pub_object._meta.label,
+        "image": pub_object.image_url(),
         "content_id": pub_object.pk,
         "content": pub_object.content,
         "sites": list(sites),

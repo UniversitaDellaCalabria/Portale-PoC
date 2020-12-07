@@ -10,7 +10,7 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from cms_contexts.models import WebPath
+from cms_contexts.models import WebPath, WebSite
 from cms_contexts.utils import handle_faulty_templates, sanitize_path
 # WARNING - import circolare - decidere di migrare blocchi e menu in cms_pages
 from cms_menus.models import NavigationBarItem
@@ -65,3 +65,8 @@ def breadcrumbs(context, template=None, leaf=None):
 @register.simple_tag(takes_context=True)
 def call(context, obj, method, **kwargs):
     return getattr(obj, method)(**kwargs)
+
+
+@register.simple_tag
+def cms_sites():
+    return WebSite.objects.filter(is_active=True).values_list('name', 'domain')

@@ -1,31 +1,93 @@
 {% load i18n %}
 {% load static %}
 
+{% load unicms_contexts %}
+{% load unicms_blocks %}
+
 <div class="row pb-3">
     <div class="col-12">
         <div class="card-wrapper card-space">
             <div class="card card-bg no-after">
                 <div class="card-body">
                     <h4 class="card-title">
-                        <h4>{% trans "Motore di Ricerca" %}</h4>
+                        <h4>{% trans "Search" %}</h4>
                     </h4>
                     <br>
                     <div class="form-group">
                       <div class="input-group">
-                          <label for="input-group-3">{% trans 'Write words and "phrases" that you are looking for' %}</label>
-                          <input type="text" class="form-control" id="input-group-3" name="input-group-3">
+                          <label for="search">{% trans 'Write words and "phrases" that you are looking for' %}</label>
+                          <input type="text" class="form-control" id="search" name="search">
                           <div class="input-group-append">
                               <div class="input-group-text">
                                   <svg class="icon icon-sm icon-muted"><use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use></svg>
                               </div>
-                            <button class="btn btn-primary" type="button" id="button-3">
+                            <button class="btn btn-primary" type="button" id="button-3" onclick="search.get_args='?'+encodeQueryData(get_form_paramenters())">
                                 {% trans "Search" %}</button>
                           </div>
                         </div>
                     </div>
-                    
-                    <div id="search-panel">
-                        <search-panel></search-panel>
+
+                    <div id="collapseDiv1" class="collapse-div" role="tablist">
+                      <div class="collapse-header" id="heading1">
+                        <button style="padding: 0px; color: #19191a;" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                          {% trans "Ricerca Avanzata" %}
+                        </button>
+                      </div>
+                      
+                      <div id="collapse1" class="collapse" role="tabpanel" aria-labelledby="heading1">
+                        <br>
+                        <div class="collapse-body" style="padding: 0px;">
+                          
+                            <!-- Date picker -->
+                            <div class="it-datepicker-wrapper">
+                              <div class="">
+                                  
+                                  <div class="row">
+                                    <div class="col-sm">
+                                        <label for="date_from"></label>
+                                        <input class="form-control it-date-datepicker" 
+                                               id="date_from" type="text" placeholder="{% trans 'dalla data publicazione' %}">
+                                    </div>
+                                    <div class="col-sm">
+                                        <label for="date_to"></label>
+                                        <input class="form-control it-date-datepicker" 
+                                               id="date_to" type="text" placeholder="{% trans 'alla data di publicazione' %}">
+                                    </div>
+                                  </div>
+                                
+                              </div>
+                            </div>  
+                          
+                          <!-- Categories -->
+                          <div class="row">
+                            <div class="col-sm">
+                                <div class="bootstrap-select-wrapper">
+                                  <select id="categories_input" title='{% trans "Categoria" %}' data-placeholder='{% trans "Categoria" %}' multiple="true" data-multiple-separator="">
+                                    {% cms_categories as categories %}
+                                    {% for cat in categories %}
+                                    <option value="{{ cat }}" data-content="<span class='select-pill'><span class='select-pill-text'>{{ cat }}</span></span>"></option>
+                                    {% endfor %}
+                                  </select>
+                                </div>
+                              </div>
+                          </div>
+                          
+                          <!-- web site -->
+                          <div class="row">
+                            <div class="col-sm">
+                                <div class="bootstrap-select-wrapper">
+                                  <select id="websites_input" title='{% trans "Web site" %}' data-placeholder='{% trans "Web site" %}' multiple="true" data-multiple-separator="">
+                                    {% cms_sites as sites %}
+                                    {% for site, domain in sites %}
+                                    <option value="{{ domain }}" data-content="<span class='select-pill'><span class='select-pill-text'>{{ domain }}</span></span>"></option>
+                                    {% endfor %}
+                                  </select>
+                                </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
                     </div>
                     
                 </div>
@@ -39,45 +101,47 @@
 
 <script>
 
-Vue.component('search-panel', {
-  props: {
-      data: Array,
-    },
-  template: `
-  <div class="container">
-  <div class="row">
-    <div class="col">
-        <span class="page-link" style="color:#050b12;">
-            <b>[[ data.total ]] {% trans "news" %}</b> in <b>[[ data.total_pages ]] {% trans "pages" %}</b>
-        </span>
-    </div>
-    <div class="col">
-    </div>
+function get_form_paramenters(){
+    let dict = {};
+    
+    // search
+    let search = document.getElementById('search').value
+    if (search) dict['search'] = search
+    
+    // categories
+    let cat_placeholder = document.getElementById('categories_input').dataset.placeholder
+    let cat_obj = document.querySelectorAll("[data-id='categories_input']")[0]
+    let categories = cat_obj.outerText.trim().split('\n').filter(function(e) { return e !== cat_placeholder })
+    if (categories.length > 0) dict['categories'] = categories.join(',')
+    
+    // date_from
+    let date_from = document.getElementById('date_from').value
+    if (date_from) {
+        date_from = date_from.split('/')
+        dict['date_from'] = date_from[2]+'-'+date_from[1]+'-'+date_from[0]
+    }
+    // date_to
+    let date_to = document.getElementById('date_to').value
+    if (date_to) {
+        date_to = date_to.split('/')
+        dict['date_to'] = date_to[2]+'-'+date_to[1]+'-'+date_to[0]
+    }
+    // websites
+    let site_placeholder = document.getElementById('websites_input').dataset.placeholder
+    let site_obj = document.querySelectorAll("[data-id='websites_input']")[0]
+    let sites = site_obj.outerText.trim().split('\n').filter(function(e) { return e !== site_placeholder })
+    if (sites.length > 0) dict['sites'] = sites.join(',')
+    
+    return dict
+    
+}
 
-  <div class="row">
-    <nav class="pagination-wrapper" aria-label="News pagination">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.previous_url]] )" v-if="data.previous_url">
-              <span class="sr-only"> {% trans "Page" %} </span> &lt; {% trans "Previous" %}
-          </a>
-        </li>
-        <li class="page-item">
-          <span class="page-link" style="color:#050b12;">[[ data.page_number ]] / <b>[[ data.total_pages ]]</b></span>
-        </li>
-        <li class="page-item">
-          <a class="page-link text" style="color:#050b12;" @click="news.CallURL( [[ data.next_url ]] )"  v-if="data.next_url">
-              <span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %} &gt;
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-  </div>
-
-</div>
-  `
-})
+function encodeQueryData(data) {
+   const ret = [];
+   for (let d in data)
+     ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+   return ret.join('&');
+}
 
 
 var search = new Vue({
@@ -90,18 +154,19 @@ var search = new Vue({
             <!--start card-->
                 <div class="card-wrapper card-space"  v-for="item in items.results" :key="item.id">
                     <div class="card card-bg no-after">
+
+                        <!-- image preview -->
 <!--
-                         <div class="img-responsive-wrapper mb-1">
-                            <div class="img-responsive img-responsive-panoramic">
+                         <div class="img-responsive-wrapper mb-1" v-if="item.image">
+                            <div class="img-responsive">
                                 <figure class="img-wrapper">
-                                  <a style="" v-bind:href="item.path">
                                     <img  v-bind:src="item.image" />
-                                  </a>
                                 </figure>
                             </div>
                         </div>
 -->
-
+                        <!-- end image -->
+                        
                         <div class="card-body">
                             <div class="etichetta mb-0" style="text-transform: none;">
                                 <span v-for="(cat, index) in item.categories">
@@ -156,7 +221,14 @@ var search = new Vue({
     return {
       items: [],
       newsLoaded: false,
-      params: ['asdas'],
+      get_args: '',
+      url: '{% url "unicms_search:api-search-engine" %}'
+    }
+  },
+
+ watch: {
+    get_args: function (val) {
+      this.CallURL()
     }
   },
 
@@ -164,22 +236,23 @@ var search = new Vue({
     },
 
   beforeMount () {
-    let get_args = ``
-
+    this.newsLoaded = true
+    /*
     axios
-      .get('{% url "unicms_search:api-search-engine" %}'+get_args)
+      .get( this.url + this.get_args)
       .then(response => (this.items = response.data))
       .then(response => (this.newsLoaded = true))
+    */
   },
   methods: {
-    CallURL ( url ) {
+    CallURL () {
         this.newsLoaded = false;
 
         axios
-          .get( url )
+          .get( this.url + this.get_args)
           .then(response => (this.items = response.data))
           .then(response => (this.newsLoaded = true))
-          .then(response => (this.scrollToTop()))
+          // .then(response => (this.scrollToTop()))
       },
    scrollToTop () {
         // faulty on mobile ...
