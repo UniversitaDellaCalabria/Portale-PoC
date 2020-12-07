@@ -94,6 +94,15 @@ class ApiSearchEngine(APIView):
             except ValueError as e:
                 logger.debug(f'API Search: Bad sites: {sites}')
 
+        # categories
+        categories = request.GET.get('categories')
+        if categories:
+            try:
+                categories = [i.strip() for i in categories.split(',')]
+                query['categories'] = {'$all': categories}
+            except ValueError as e:
+                logger.debug(f'API Search: Bad categories: {categories}')
+
         # run query
         logger.debug('Search query: {}'.format(query))
         try:
