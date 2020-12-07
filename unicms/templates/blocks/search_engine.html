@@ -21,7 +21,7 @@
                               <div class="input-group-text">
                                   <svg class="icon icon-sm icon-muted"><use xlink:href="{% static 'svg/sprite.svg' %}#it-search"></use></svg>
                               </div>
-                            <button class="btn btn-primary" type="button" id="button-3" onclick="search.get_args='?'+encodeQueryData(get_form_paramenters())">
+                            <button class="btn btn-primary" type="button" id="button-3" onclick="search.get_args=encodeQueryData(get_form_paramenters())">
                                 {% trans "Search" %}</button>
                           </div>
                         </div>
@@ -140,9 +140,46 @@ function encodeQueryData(data) {
    const ret = [];
    for (let d in data)
      ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
-   return ret.join('&');
+   return '?'+ret.join('&');
 }
 
+Vue.component('list-panel', {
+  props: {
+      data: Array,
+    },
+  template: `
+  <div class="row">
+    <div class="col">
+        <span class="page-link" style="color:#050b12;">
+            <b>[[ data.count || 0]] {% trans "results" %}</b> in <b>[[ data.total_pages || 0 ]] {% trans "pages" %}</b>
+        </span>
+    </div>
+    <div class="col">
+    </div>
+  
+      <div class="">
+        <nav class="pagination-wrapper" aria-label="News pagination">
+          <ul class="pagination">
+            <li class="page-item" v-if="data.page_number > 1">
+              <a class="page-link text" style="color:#050b12;" @click="search.prevPage()">
+                  <span class="sr-only"> {% trans "Page" %} </span> &lt; {% trans "Previous" %}
+              </a>
+            </li>
+            <li class="page-item">
+              <span class="page-link" style="color:#050b12;">[[ data.page_number ]] / <b>[[ data.total_pages ]]</b></span>
+            </li>
+            <li class="page-item" v-if="data.page_number <= data.total_pages">
+              <a class="page-link text" style="color:#050b12;" @click="search.nextPage()">
+                  <span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %} &gt;
+              </a>
+            </li>
+          </ul>
+        </nav>
+    
+      </div>
+  </div>
+  `
+})
 
 var search = new Vue({
   el: '#results',
@@ -151,69 +188,71 @@ var search = new Vue({
       {% include "loading-jumbo.html" %}
     <div v-else>
          <div class="" v-if="items">
+             
+            <list-panel v-bind:data="items"></list-panel>
+            
             <!--start card-->
-                <div class="card-wrapper card-space"  v-for="item in items.results" :key="item.id">
-                    <div class="card card-bg no-after">
-
-                        <div class="card-body">
-                            <div class="etichetta mb-0" style="text-transform: none;">
-                                <span v-for="(cat, index) in item.categories">
-                                    <span v-if="index>0">&nbsp;&middot</span>
-                                        <small class="text-muted">[[ cat | capitalize ]]</small>
-                                </span>
-                            </div>
+            <div class="card-wrapper card-space"  v-for="item in items.results" :key="item.id">
+                <div class="card card-bg no-after">
+                    <div class="card-body">
+                        <div class="etichetta mb-0" style="text-transform: none;">
+                            <span v-for="(cat, index) in item.categories">
+                                <span v-if="index>0">&nbsp;&middot</span>
+                                    <small class="text-muted">[[ cat | capitalize ]]</small>
+                            </span>
+                        </div>
 <!--
-                            <span class="small text-muted mb-2">[[ item.indexed|formatDate ]]</span>
+                        <span class="small text-muted mb-2">[[ item.indexed|formatDate ]]</span>
 -->
-                            <p><b>[[ item.title ]]</b></p>
-                            
-                            <div class="row" v-if="item.heading">
-                                <div class="col-2">
-                                    <!-- image preview -->
-                                     <div style="width: 180px" class="img-responsive-wrapper mb-1" v-if="item.image">
-                                        <div class="img-responsive">
-                                            <figure class="img-wrapper">
-                                                <img  v-bind:src="item.image" />
-                                            </figure>
-                                        </div>
+                        <p><b>[[ item.title ]]</b></p>
+                        
+                        <div class="row" v-if="item.heading">
+                            <div class="col-2">
+                                <!-- image preview -->
+                                 <div style="width: 180px" class="img-responsive-wrapper mb-1" v-if="item.image">
+                                    <div class="img-responsive">
+                                        <figure class="img-wrapper">
+                                            <img  v-bind:src="item.image" />
+                                        </figure>
                                     </div>
-                                    <!-- end image -->
                                 </div>
-                                <div class="col-lg">
-                                    <p>[[ item.heading | truncate(256) ]]</p>
-                                </div>
+                                <!-- end image -->
                             </div>
+                            <div class="col-lg">
+                                <p>[[ item.heading | truncate(256) ]]</p>
+                            </div>
+                        </div>
 <!--
-                            <h6>{% trans "Published in" %}</h6>
+                        <h6>{% trans "Published in" %}</h6>
 -->
-                            <div class="mt-2">
-                              <ul class="list-unstyled">
-                                <li v-for="url in item.urls">
-                                  <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ url ]]">
-                                    <div class="it-right-zone">
-                                      <svg class="icon icon-xs">
-                                        <use xlink:href="{% static 'svg/sprite.svg' %}#it-chevron-right"></use>
-                                      </svg>
-                                      <span class="text">[[ url | val_replace('//', '') ]]</span>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                            
-                            <div v-if="item.translations && item.translations.length >= 1">
-                                <h6>{% trans "Available in" %}</h6>
-                                <span v-for="(trans, index) in item.translations"">
-                                    <span v-if="index>0">&nbsp;&middot</span>
-                                        [[ trans.language ]]
-                                </span>
-                                
-                            </div>
-
+                        <div class="mt-2">
+                          <ul class="list-unstyled">
+                            <li v-for="url in item.urls">
+                              <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ url ]]">
+                                <div class="it-right-zone">
+                                  <svg class="icon icon-xs">
+                                    <use xlink:href="{% static 'svg/sprite.svg' %}#it-chevron-right"></use>
+                                  </svg>
+                                  <span class="text">[[ url | val_replace('//', '') ]]</span>
+                                </div>
+                              </a>
+                            </li>
+                          </ul>
                         </div>
                         
+                        <div v-if="item.translations && item.translations.length >= 1">
+                            <h6>{% trans "Available in" %}</h6>
+                            <span v-for="(trans, index) in item.translations"">
+                                <span v-if="index>0">&nbsp;&middot</span>
+                                    [[ trans.language ]]
+                            </span>
+                            
+                        </div>
+
                     </div>
+                    
                 </div>
+            </div>
             <!--end card-->
         </div>
     </div>
@@ -221,7 +260,7 @@ var search = new Vue({
   data () {
     return {
       items: [],
-      newsLoaded: false,
+      newsLoaded: true,
       get_args: '',
       url: '{% url "unicms_search:api-search-engine" %}'
     }
@@ -237,18 +276,10 @@ var search = new Vue({
     },
 
   beforeMount () {
-    this.newsLoaded = true
-    /*
-    axios
-      .get( this.url + this.get_args)
-      .then(response => (this.items = response.data))
-      .then(response => (this.newsLoaded = true))
-    */
   },
   methods: {
     CallURL () {
         this.newsLoaded = false;
-
         axios
           .get( this.url + this.get_args)
           .then(response => (this.items = response.data))
@@ -258,7 +289,21 @@ var search = new Vue({
    scrollToTop () {
         // faulty on mobile ...
         window.scrollTo({top:100, left:0, behavior: 'smooth'});
-        }
+        },
+   update_args (values) {
+        let base_args = encodeQueryData(get_form_paramenters());
+        if (values) base_args += values
+        this.get_args = base_args;
+        },
+    nextPage () {
+        let num = this.items.page_number + 1;
+        this.update_args('page_num=' + num);
+        },
+    prevPage () {
+        let num = this.items.page_number - 1;
+        this.update_args('page_num=' + num);
+        },
+    
     }
 })
 </script>
