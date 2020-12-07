@@ -111,7 +111,7 @@ function get_form_paramenters(){
     // categories
     let cat_placeholder = document.getElementById('categories_input').dataset.placeholder
     let cat_obj = document.querySelectorAll("[data-id='categories_input']")[0]
-    let categories = cat_obj.outerText.trim().split('\n').filter(function(e) { return e !== cat_placeholder })
+    let categories = cat_obj.textContent.trim().split('\n').filter(function(e) { return e !== cat_placeholder })
     if (categories.length > 0) dict['categories'] = categories.join(',')
     
     // date_from
@@ -129,7 +129,7 @@ function get_form_paramenters(){
     // websites
     let site_placeholder = document.getElementById('websites_input').dataset.placeholder
     let site_obj = document.querySelectorAll("[data-id='websites_input']")[0]
-    let sites = site_obj.outerText.trim().split('\n').filter(function(e) { return e !== site_placeholder })
+    let sites = site_obj.textContent.trim().split('\n').filter(function(e) { return e !== site_placeholder })
     if (sites.length > 0) dict['sites'] = sites.join(',')
     
     return dict
@@ -155,42 +155,43 @@ var search = new Vue({
                 <div class="card-wrapper card-space"  v-for="item in items.results" :key="item.id">
                     <div class="card card-bg no-after">
 
-                        <!-- image preview -->
-<!--
-                         <div class="img-responsive-wrapper mb-1" v-if="item.image">
-                            <div class="img-responsive">
-                                <figure class="img-wrapper">
-                                    <img  v-bind:src="item.image" />
-                                </figure>
-                            </div>
-                        </div>
--->
-                        <!-- end image -->
-                        
                         <div class="card-body">
                             <div class="etichetta mb-0" style="text-transform: none;">
                                 <span v-for="(cat, index) in item.categories">
                                     <span v-if="index>0">&nbsp;&middot</span>
-                                        [[ cat | capitalize ]]
+                                        <small class="text-muted">[[ cat | capitalize ]]</small>
                                 </span>
                             </div>
 <!--
                             <span class="small text-muted mb-2">[[ item.indexed|formatDate ]]</span>
 -->
-                            <h4 class="card-title mt-3">
-                                    <p>[[ item.title ]]</p>
-                            </h4>
-                            <p>[[ item.heading | truncate(256) ]]</p>
+                            <p><b>[[ item.title ]]</b></p>
                             
+                            <div class="row" v-if="item.heading">
+                                <div class="col-2">
+                                    <!-- image preview -->
+                                     <div style="width: 180px" class="img-responsive-wrapper mb-1" v-if="item.image">
+                                        <div class="img-responsive">
+                                            <figure class="img-wrapper">
+                                                <img  v-bind:src="item.image" />
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <!-- end image -->
+                                </div>
+                                <div class="col-lg">
+                                    <p>[[ item.heading | truncate(256) ]]</p>
+                                </div>
+                            </div>
 <!--
                             <h6>{% trans "Published in" %}</h6>
 -->
-                            <div class="">
+                            <div class="mt-2">
                               <ul class="list-unstyled">
                                 <li v-for="url in item.urls">
                                   <a style="text-decoration: none; color: #17324d;" v-bind:href="[[ url ]]">
                                     <div class="it-right-zone">
-                                      <svg class="icon">
+                                      <svg class="icon icon-xs">
                                         <use xlink:href="{% static 'svg/sprite.svg' %}#it-chevron-right"></use>
                                       </svg>
                                       <span class="text">[[ url | val_replace('//', '') ]]</span>
