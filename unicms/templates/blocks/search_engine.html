@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div class="row pb-3">
+<div class="row">
     <div class="col-12">
         <div class="card-wrapper card-space">
             <div class="card card-bg no-after">
@@ -51,18 +51,18 @@
                           
                             <!-- Date picker -->
                             <div class="it-datepicker-wrapper">
-                              <div class="">
+                              <div class="form-group">
                                   
                                   <div class="row">
                                     <div class="col-sm">
                                         <label for="date_from"></label>
                                         <input class="form-control it-date-datepicker" 
-                                               id="date_from" type="text" placeholder="{% trans 'dalla data publicazione' %}">
+                                               id="date_from" type="text" placeholder="{% trans 'Dalla data publicazione' %}">
                                     </div>
                                     <div class="col-sm">
                                         <label for="date_to"></label>
                                         <input class="form-control it-date-datepicker" 
-                                               id="date_to" type="text" placeholder="{% trans 'alla data di publicazione' %}">
+                                               id="date_to" type="text" placeholder="{% trans 'Alla data di publicazione' %}">
                                     </div>
                                   </div>
                                 
@@ -70,31 +70,37 @@
                             </div>  
                           
                           <!-- Categories -->
+                          <div class="form-group">
                           <div class="row">
                             <div class="col-sm">
                                 <div class="bootstrap-select-wrapper">
-                                  <select id="categories_input" title='{% trans "Categoria" %}' data-placeholder='{% trans "Categoria" %}' multiple="true" data-multiple-separator="">
+                                  <label for="categories_input">{% trans "Categoria" %}</label>
+                                  <select id="categories_input" multiple="true" data-multiple-separator="">
                                     {% cms_categories as categories %}
                                     {% for cat in categories %}
-                                    <option value="{{ cat }}" data-content="<span class='select-pill'><span class='select-pill-text'>{{ cat }}</span></span>"></option>
+                                    <option value="{{ cat }}" title="" placeholder="" data-content="<span class='select-pill'><span class='select-pill-text'>{{ cat }}</span></span>"></option>
                                     {% endfor %}
                                   </select>
                                 </div>
                               </div>
                           </div>
+                          </div>
                           
                           <!-- web site -->
+                          <div class="form-group">
                           <div class="row">
                             <div class="col-sm">
                                 <div class="bootstrap-select-wrapper">
-                                  <select id="websites_input" title='{% trans "Web site" %}' data-placeholder='{% trans "Web site" %}' multiple="true" data-multiple-separator="">
+                                  <label for="websites_input">{% trans "Web Site" %}</label>
+                                  <select id="websites_input" multiple="true" data-multiple-separator="">
                                     {% cms_sites as sites %}
                                     {% for site, domain in sites %}
-                                    <option value="{{ domain }}" data-content="<span class='select-pill'><span class='select-pill-text'>{{ domain }}</span></span>"></option>
+                                    <option value="{{ domain }}" title="" placeholder="" data-content="<span class='select-pill'><span class='select-pill-text'>{{ domain }}</span></span>"></option>
                                     {% endfor %}
                                   </select>
                                 </div>
                             </div>
+                          </div>
                           </div>
                           
                         </div>
@@ -120,31 +126,30 @@ function get_form_paramenters(){
     if (search) dict['search'] = search
     
     // categories
-    let cat_placeholder = document.getElementById('categories_input').dataset.placeholder
+    let cat_placeholder = jQuery.fn.selectpicker.defaults['noneSelectedText'] // document.getElementById('categories_input').dataset.placeholder
     let cat_obj = document.querySelectorAll("[data-id='categories_input']")[0]
-    let categories = cat_obj.outerText.trim().split('\n').filter(function(e) { return e !== cat_placeholder })
+    let categories = cat_obj.innerText.trim().split('\n').filter(function(e) { return e !== cat_placeholder })
     dict['categories'] = categories.join(',')
     
     // date_from
     let date_from = document.getElementById('date_from').value
     if (date_from) {
         date_from = date_from.split('/')
-        dict['date_from'] = date_from[2]+'-'+date_from[1]+'-'+date_from[0]
+        dict['date_start'] = date_from[2]+'-'+date_from[1]+'-'+date_from[0]
     }
     // date_to
     let date_to = document.getElementById('date_to').value
     if (date_to) {
         date_to = date_to.split('/')
-        dict['date_to'] = date_to[2]+'-'+date_to[1]+'-'+date_to[0]
+        dict['date_end'] = date_to[2]+'-'+date_to[1]+'-'+date_to[0]
     }
     // websites
-    let site_placeholder = document.getElementById('websites_input').dataset.placeholder
+    let site_placeholder = jQuery.fn.selectpicker.defaults['noneSelectedText'] //document.getElementById('websites_input').dataset.placeholder
     let site_obj = document.querySelectorAll("[data-id='websites_input']")[0]
-    let sites = site_obj.outerText.trim().split('\n').filter(function(e) { return e !== site_placeholder })
+    let sites = site_obj.innerText.trim().split('\n').filter(function(e) { return e !== site_placeholder })
     if (sites.length > 0) dict['sites'] = sites.join(',')
     
     return dict
-    
 }
 
 function encodeQueryData(data) {
@@ -159,34 +164,36 @@ Vue.component('list-panel', {
       data: Array,
     },
   template: `
-  <div class="row ml-1">
-    <div class="col">
-        <span class="page-link" style="color:#050b12;">
-            <b>[[ data.count || 0]] {% trans "results" %}</b> in <b>[[ data.total_pages || 0 ]] {% trans "pages" %}</b>
-        </span>
+    <div class="card-wrapper card-space" >
+        <div class="card card-bg no-after">
+          <div class="card-body py-1">
+            
+            <div class="row">
+                <div class="col w-50">
+                    <span style="color:#050b12;">
+                        <b>[[ data.count || 0]] {% trans "results" %}</b> in <b>[[ data.total_pages || 0 ]] {% trans "pages" %}</b>
+                    </span>
+                </div>
+            
+                <div class="col w-50 ">
+                  <div class="float-right">
+                  <span>
+                      <a class="" style="color:#050b12;" v-if="data.page_number > 1" @click="search.prevPage()">
+                          <span class="sr-only"> {% trans "Page" %} </span> &lt; <small>{% trans "Previous" %}</small>
+                      </a>
+                  </span>
+
+                  <span class="mr-2 ml-2" >[[ data.page_number ]] / <b>[[ data.total_pages ]]</b></span>
+                      <a class="" style="color:#050b12;" @click="search.nextPage()" v-if="data.page_number < data.total_pages">
+                          <span class="sr-only"><small>{% trans "Page" %} </span>{% trans "Next" %} &gt;</small>
+                      </a>
+                  </div>
+                </div>
+            </div>
+            
+          </div>
+        </div>
     </div>
-  
-      <div class="">
-        <nav class="pagination-wrapper" aria-label="News pagination">
-          <ul class="pagination">
-            <li class="page-item" v-if="data.page_number > 1">
-              <a class="page-link text" style="color:#050b12;" @click="search.prevPage()">
-                  <span class="sr-only"> {% trans "Page" %} </span> &lt; {% trans "Previous" %}
-              </a>
-            </li>
-            <li class="page-item">
-              <span class="page-link" style="color:#050b12;">[[ data.page_number ]] / <b>[[ data.total_pages ]]</b></span>
-            </li>
-            <li class="page-item" v-if="data.page_number < data.total_pages">
-              <a class="page-link text" style="color:#050b12;" @click="search.nextPage()">
-                  <span class="sr-only">{% trans "Page" %} </span>{% trans "Next" %} &gt;
-              </a>
-            </li>
-          </ul>
-        </nav>
-    
-      </div>
-  </div>
   `
 })
 

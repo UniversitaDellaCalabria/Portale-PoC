@@ -68,7 +68,7 @@ def publication_to_entry(pub_object):
         # it doesn't have any real publication
         return
     urls = set([f'//{i.webpath.site.domain}{i.url}' for i in contexts])
-    sites = set([f'//{i.webpath.site.domain}' for i in contexts])
+    sites = set([f'{i.webpath.site.domain}' for i in contexts])
     data = {
         "title": pub_object.title,
         "heading": pub_object.subheading,

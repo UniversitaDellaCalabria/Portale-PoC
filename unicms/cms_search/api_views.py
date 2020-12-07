@@ -84,7 +84,16 @@ class ApiSearchEngine(APIView):
                 query['tags'] = {'$all': tags}
             except ValueError as e:
                 logger.debug(f'API Search: Bad tags: {tags}')
-        
+
+        # web site
+        sites = request.GET.get('sites')
+        if sites:
+            try:
+                sites = [i.strip() for i in sites.split(',')]
+                query['sites'] = {'$all': sites}
+            except ValueError as e:
+                logger.debug(f'API Search: Bad sites: {sites}')
+
         # run query
         logger.debug('Search query: {}'.format(query))
         try:
