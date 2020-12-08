@@ -1,0 +1,13 @@
+<script>
+window.onload = function() {
+  window.addEventListener("keypress", function(e) {
+      // console.log(e.keyCode);
+      if (e.keyCode == 13) {
+        search_value = document.getElementById("search-input").value;
+        if (search_value) {
+            window.location = '/portale/search?search=' + search_value;
+        }
+      }
+  }
+)};
+</script>
