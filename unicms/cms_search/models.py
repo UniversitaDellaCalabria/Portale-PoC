@@ -29,9 +29,6 @@ class SearchEntry(BaseModel):
     day : int
     month : int
     year : int
-    
-    # class Config:
-        # arbitrary_types_allowed = True
 
 
 def page_to_entry(page_object):
