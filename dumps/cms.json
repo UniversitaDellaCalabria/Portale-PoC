@@ -3879,7 +3879,7 @@
     "file": "medias/2020/campus_khrzwfL.jpg",
     "description": "Vista con panorama",
     "file_size": null,
-    "file_format": null,
+    "file_type": null,
     "created_by": null,
     "modified_by": null
   }
@@ -3895,7 +3895,7 @@
     "file": "medias/2020/students1.jpg",
     "description": "Esempio di immagine promozionale di campus",
     "file_size": null,
-    "file_format": null,
+    "file_type": null,
     "created_by": null,
     "modified_by": null
   }
@@ -3911,7 +3911,7 @@
     "file": "medias/2020/students2.jpg",
     "description": "studenti 3",
     "file_size": null,
-    "file_format": null,
+    "file_type": null,
     "created_by": null,
     "modified_by": null
   }
@@ -3927,7 +3927,7 @@
     "file": "medias/2020/test_news_1.jpg",
     "description": "test",
     "file_size": null,
-    "file_format": null,
+    "file_type": null,
     "created_by": null,
     "modified_by": null
   }
@@ -5553,7 +5553,7 @@
     "file": "publications_attachments/1/Schermata_da_2020-09-09_11-57-00.png",
     "description": "Descrizione dell'allegato",
     "file_size": null,
-    "file_format": null
+    "file_type": null
   }
 },
 {
