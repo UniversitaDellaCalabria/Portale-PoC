@@ -87,10 +87,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    #unicms
-    # 'cms.contexts.middleware.detect_language_middleware',
-    # 'cms.contexts.middleware.show_template_blocks_sections',
-    # 'cms.contexts.middleware.show_cms_draft_mode',
+    # unicms
+    'cms.contexts.middleware.detect_language_middleware',
+    'cms.contexts.middleware.show_template_blocks_sections',
+    'cms.contexts.middleware.show_cms_draft_mode',
 ]
 
 # Static files (CSS, JavaScript, Images)
