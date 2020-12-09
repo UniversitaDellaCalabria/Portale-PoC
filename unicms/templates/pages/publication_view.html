@@ -77,10 +77,11 @@
                 </p>
                 {% endif %}
 
+                {% if publication_context.publication.get_attachments %}
                 <hr>
                 <br>
                 <h4>{% trans "attachments" %}</h4>
-                {% if publication_context.publication.get_attachments %}
+                
                 <!-- ATTACHMENTS -->
                 <ul class="upload-file-list">
 
@@ -99,12 +100,15 @@
               <!-- END ATTACHMENTS -->
 
             {% endif %}
+            
+            
+                {% if publication_context.publication.related_galleries %}
                 <hr>
 
                 <br>
                 <h4>{% trans "photo gallery" %}</h4>
 
-                {% if publication_context.publication.related_galleries %}
+                
                     {% for gallery in publication_context.publication.related_galleries %}
 
                         {% include "carousel_media_gallery.html" with media_items=gallery.collection.mediacollectionitem_set.all %}
