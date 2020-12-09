@@ -94,7 +94,7 @@
                       <span  style="color: #000;">
                         <svg class="icon icon-secondary" aria-hidden="true"><use xlink:href="{% static '/svg/sprite.svg' %}#it-file"></use></svg>
                         <span class="sr-only">{% trans "Allegato" %}:</span> {{ item.name }}
-                        <span class="text-muted small"> &nbsp; {{ item.file_format }} ({{ item.file_size }})</span>
+                        <span class="text-muted small"> &nbsp; {{ item.file_type }} ({{ item.file_size_kb }} KB)</span>
                       </span>
                       </a>
                     </li>

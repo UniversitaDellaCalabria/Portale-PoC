@@ -26,6 +26,20 @@ def context_media_path(instance, filename):
     return 'medias/{}/{}'.format(timezone.now().year,
                                  filename)
 
+class AbstractMedia(models.Model):
+    file_size = models.IntegerField(blank=True, null=True)
+    file_type = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
+                                   max_length=256,
+                                   blank=True, null=True)
+
+    @property
+    def file_size_kb(self):
+        if isinstance(self.file_size, int):
+            return round(self.file_size / 1024)
+    
+    class Meta:
+        abstract = True
+
 
 class MediaCollection(ActivableModel, TimeStampedModel):
     name        = models.CharField(max_length=160, blank=False,
@@ -42,15 +56,11 @@ class MediaCollection(ActivableModel, TimeStampedModel):
         return self.name
 
 
-class Media(ActivableModel, TimeStampedModel):
+class Media(ActivableModel, TimeStampedModel, AbstractMedia):
     title = models.CharField(max_length=60, blank=True, null=True,
                              help_text=_("Media file title"))
     file = models.FileField(upload_to=context_media_path)
     description = models.TextField()
-    file_size = models.IntegerField(blank=True, null=True)
-    file_format = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
-                                   max_length=256,
-                                   blank=True, null=True)
 
     created_by = models.ForeignKey(get_user_model(),
                                    null=True, blank=True,
@@ -68,7 +78,7 @@ class Media(ActivableModel, TimeStampedModel):
         return f'{settings.MEDIA_URL}{self.file}'
 
     def __str__(self):
-        return '{} {}'.format(self.title, self.file_format)
+        return '{} {}'.format(self.title, self.file_type)
 
 
 # class MediaLink(TimeStampedModel):

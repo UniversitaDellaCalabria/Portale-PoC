@@ -268,6 +268,12 @@ CMS_HOOKS = {
         'POSTSAVE': [],
         'PREDELETE': [],
         'POSTDELETE': []
+    },
+    'PublicationAttachment': {
+        'PRESAVE': ['cms_medias.hooks.set_file_meta',],
+        'POSTSAVE': [],
+        'PREDELETE': [],
+        'POSTDELETE': []
     }
 }
     

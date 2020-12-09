@@ -17,14 +17,15 @@ class MediaCollectionItemInline(admin.TabularInline):
 @admin.register(Media)
 class MediaAdmin(admin.ModelAdmin):
     search_fields = ('title',)
-    list_display  = ('title', 'file_size', 'file_format', 'preview_image')
-    list_filter   = ('file_format', 
+    list_display  = ('title', 'file_size', 'file_type', 'preview_image')
+    list_filter   = ('file_type', 
                      'created', 'modified')
     readonly_fields = ('created_by', 'modified_by', 
-                       'file_size', 'file_format')
+                       'file_size', 'file_type')
     inlines = (MediaCollectionItemInline,) # MediaLinkInline)
 
-    readonly_fields = ["headshot_image", "preview_image"]
+    readonly_fields = ["headshot_image", "preview_image", 
+                       "file_type", "file_size"]
 
     def headshot_image(self, obj):
         width="55"

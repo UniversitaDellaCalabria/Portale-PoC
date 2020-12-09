@@ -12,7 +12,7 @@ from cms_contexts.models import *
 from cms_contexts.utils import sanitize_path
 from cms_carousels.models import Carousel
 from cms_medias import settings as cms_media_settings
-from cms_medias.models import Media, MediaCollection
+from cms_medias.models import Media, MediaCollection, AbstractMedia
 from cms_menus.models import NavigationBar
 from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   TemplateBlock,
@@ -520,7 +520,8 @@ def publication_attachment_path(instance, filename):
                                                    filename)
 
 
-class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
+class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel,
+                            AbstractMedia):
 
     publication = models.ForeignKey(Publication, null=False, blank=False,
                                     related_name='page_attachment',
@@ -532,17 +533,14 @@ class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel):
     file = models.FileField(upload_to=publication_attachment_path)
     description = models.TextField()
 
-    file_size = models.IntegerField(blank=True, null=True)
-    file_format = models.CharField(choices=((i,i) for i in FILETYPE_ALLOWED),
-                                   max_length=256,
-                                   blank=True, null=True)
 
     class Meta:
         verbose_name_plural = _("Publication Attachments")
 
+    
     def __str__(self):
         return '{} {} ({})'.format(self.publication, self.name,
-                                   self.file_format)
+                                   self.file_type)
 
 
 class PublicationLocalization(TimeStampedModel, ActivableModel):
