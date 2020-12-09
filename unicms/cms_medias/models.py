@@ -23,7 +23,7 @@ FILETYPE_ALLOWED = getattr(settings, 'FILETYPE_ALLOWED',
 
 
 def context_media_path(instance, filename):
-    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    # file will be uploaded to MEDIA_ROOT/<year>/<filename>
     return 'medias/{}/{}'.format(timezone.now().year,
                                  filename)
 
@@ -37,6 +37,11 @@ class AbstractMedia(models.Model):
     def file_size_kb(self):
         if isinstance(self.file_size, int):
             return round(self.file_size / 1024)
+   
+    @property
+    def file_size_mb(self):
+        if isinstance(self.file_size, int):
+            return round(self.file_size_kb / 1024)
     
     class Meta:
         abstract = True
@@ -44,8 +49,8 @@ class AbstractMedia(models.Model):
 
 class MediaCollection(ActivableModel, TimeStampedModel, 
                       CreatedModifiedBy):
-    name        = models.CharField(max_length=160, blank=False,
-                                   null=False, unique=False)
+    name = models.CharField(max_length=160, blank=False,
+                            null=False, unique=False)
     description = models.TextField(max_length=1024,
                                    null=False, blank=False)
     tags = TaggableManager()
@@ -65,7 +70,6 @@ class Media(ActivableModel, TimeStampedModel, AbstractMedia,
     file = models.FileField(upload_to=context_media_path)
     description = models.TextField()
 
-
     class Meta:
         verbose_name_plural = _("Media")
 
@@ -76,21 +80,8 @@ class Media(ActivableModel, TimeStampedModel, AbstractMedia,
         return '{} {}'.format(self.title, self.file_type)
 
 
-# class MediaLink(TimeStampedModel):
-    # media = models.ForeignKey(Media, on_delete=models.CASCADE)
-    # title = models.CharField(max_length=60, blank=True, null=True,
-                             # help_text=_("Link title"))
-    # url = models.TextField()
-
-    # class Meta:
-        # verbose_name_plural = _("Media Links")
-
-    # def __str__(self):
-        # return '{} {}' % (self.media, self.title)
-
-
-class MediaCollectionItem(ActivableModel, SortableModel, TimeStampedModel,
-                          CreatedModifiedBy):
+class MediaCollectionItem(ActivableModel, SortableModel, 
+                          TimeStampedModel, CreatedModifiedBy):
     media = models.ForeignKey(Media, on_delete=models.CASCADE,
                               limit_choices_to={'is_active': True},)
     collection = models.ForeignKey(MediaCollection,

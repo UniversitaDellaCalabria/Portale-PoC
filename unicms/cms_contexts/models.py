@@ -96,7 +96,6 @@ class WebPath(TimeStampedModel, CreatedModifiedBy):
             return self.alias.fullpath
         return self.alias_url
 
-
     def get_full_path(self):
         if self.is_alias:
             return self.redirect_url

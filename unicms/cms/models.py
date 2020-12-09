@@ -45,6 +45,7 @@ class AbstractDraftable(models.Model):
     class Meta:
         abstract = True
 
+
 class AbstractPublicable(models.Model):
 
     @property
@@ -85,11 +86,11 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable,
                             default="standard",
                             choices=(('standard', _('Page')),
                                      ('home', _('Home Page'))))
-
     tags = TaggableManager()
 
     class Meta:
         verbose_name_plural = _("Pages")
+
 
     def get_blocks(self, section=None):
         query_params = dict(is_active=True)
