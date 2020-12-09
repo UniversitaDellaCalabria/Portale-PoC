@@ -370,6 +370,14 @@ Purge all the entries and renew them
 ./manage.py cms_search_content_sync -y 2020 -type cms.Publication -d 11 -m 12 -y 2020 -purge -insert
 ````
 
+`cms_search_content_sync` rely on `settings.MODEL_TO_MONGO_MAP`:
+```
+MODEL_TO_MONGO_MAP = {
+    'cms.Page': 'cms_search.models.page_to_entry',
+    'cms.Publication': 'cms_search.models.publication_to_entry'
+}
+````
+
 
 ### Behavior
 
