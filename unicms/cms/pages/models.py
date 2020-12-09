@@ -296,7 +296,8 @@ class Publication(AbstractPublication, AbstractPublicable,
                   CreatedModifiedBy):
     slug = models.SlugField(null=True, blank=True)
     tags = TaggableManager()
-
+    relevance = models.IntegerField(default=0, blank=True)
+    
     class Meta:
         verbose_name_plural = _("Publications")
 
