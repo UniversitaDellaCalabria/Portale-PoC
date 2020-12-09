@@ -20,6 +20,20 @@ CMS_CONTEXT_PERMISSIONS = getattr(settings, 'CMS_CONTEXT_PERMISSIONS',
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 
+class CreatedModifiedBy(models.Model):
+    created_by = models.ForeignKey(get_user_model(),
+                                   null=True, blank=True,
+                                   on_delete=models.CASCADE,
+                                   related_name='%(class)s_created_by')
+    modified_by = models.ForeignKey(get_user_model(),
+                                    null=True, blank=True,
+                                    on_delete=models.CASCADE,
+                                    related_name='%(class)s_modified_by')
+    
+    class Meta:
+        abstract = True
+
+
 class WebSite(models.Model):
     name = models.CharField(max_length=254, blank=False, null=False)
     domain = models.CharField(max_length=254, blank=False, null=False)
@@ -32,7 +46,7 @@ class WebSite(models.Model):
         return self.domain
 
 
-class WebPath(TimeStampedModel):
+class WebPath(TimeStampedModel, CreatedModifiedBy):
     """
     A Page can belong to one or more Context
     A editor/moderator can belong to one or more Context
@@ -115,7 +129,7 @@ class WebPath(TimeStampedModel):
         return '{} @ {}{}'.format(self.name, self.site, self.get_full_path())
 
 
-class EditorialBoardEditors(TimeStampedModel):
+class EditorialBoardEditors(TimeStampedModel, CreatedModifiedBy):
     """
     A Page can belong to one or more Context
     A editor/moderator can belong to one or more Context

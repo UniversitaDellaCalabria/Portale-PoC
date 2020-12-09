@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from cms_contexts.models import WebPath
+from cms_contexts.models import WebPath, CreatedModifiedBy
 from cms_medias.models import Media
 from cms_templates.models import (CMS_LINKS_LABELS,
                                   ActivableModel, 
@@ -12,20 +12,11 @@ from cms_templates.models import (CMS_LINKS_LABELS,
                                   TimeStampedModel)
 
 
-class Carousel(ActivableModel, TimeStampedModel):
+class Carousel(ActivableModel, TimeStampedModel, CreatedModifiedBy):
     name        = models.CharField(max_length=160, blank=False,
                                    null=False, unique=False)
     description = models.TextField(max_length=2048,
                                    null=False, blank=False)
-
-    created_by = models.ForeignKey(get_user_model(),
-                                   null=True, blank=True,
-                                   on_delete=models.CASCADE,
-                                   related_name='carousel_created_by')
-    modified_by = models.ForeignKey(get_user_model(),
-                                    null=True, blank=True,
-                                    on_delete=models.CASCADE,
-                                    related_name='carousel_modified_by')
 
     class Meta:
         ordering = ['name']
@@ -45,7 +36,8 @@ class Carousel(ActivableModel, TimeStampedModel):
         return self.name
 
 
-class CarouselItem(ActivableModel, TimeStampedModel, SortableModel):
+class CarouselItem(ActivableModel, TimeStampedModel, 
+                   SortableModel, CreatedModifiedBy):
     carousel = models.ForeignKey(Carousel,
                                  on_delete=models.CASCADE)
     image = models.ForeignKey(Media, on_delete=models.CASCADE)
@@ -76,7 +68,9 @@ class CarouselItem(ActivableModel, TimeStampedModel, SortableModel):
         return '{} {}'.format(self.carousel, self.heading)
 
 
-class CarouselItemLocalization(ActivableModel, TimeStampedModel, SortableModel):
+class CarouselItemLocalization(ActivableModel, 
+                               TimeStampedModel, SortableModel,
+                               CreatedModifiedBy):
     carousel_item = models.ForeignKey(CarouselItem,
                                       on_delete=models.CASCADE)
     language   = models.CharField(choices=settings.LANGUAGES,
@@ -117,7 +111,8 @@ class CarouselItemLink(ActivableModel, TimeStampedModel, SortableModel):
         return '{} {}'.format(self.carousel_item, self.url)
 
 
-class CarouselItemLinkLocalization(ActivableModel, TimeStampedModel, SortableModel):
+class CarouselItemLinkLocalization(ActivableModel, TimeStampedModel, 
+                                   SortableModel, CreatedModifiedBy):
     carousel_item_link = models.ForeignKey(CarouselItemLink,
                                            on_delete=models.CASCADE)
     language   = models.CharField(choices=settings.LANGUAGES,

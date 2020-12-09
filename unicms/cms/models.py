@@ -64,7 +64,7 @@ class AbstractPublicable(models.Model):
 
 
 class Page(TimeStampedModel, ActivableModel, AbstractDraftable,
-           AbstractPublicable):
+           AbstractPublicable, CreatedModifiedBy):
     name = models.CharField(max_length=160,
                             blank=False, null=False)
     webpath = models.ForeignKey(WebPath,
@@ -80,15 +80,6 @@ class Page(TimeStampedModel, ActivableModel, AbstractDraftable,
     date_end = models.DateTimeField(null=True, blank=True)
     state = models.CharField(choices=PAGE_STATES, max_length=33,
                              default='draft')
-
-    created_by = models.ForeignKey(get_user_model(),
-                                   null=True, blank=True,
-                                   on_delete=models.CASCADE,
-                                   related_name='created_by')
-    modified_by = models.ForeignKey(get_user_model(),
-                                    null=True, blank=True,
-                                    on_delete=models.CASCADE,
-                                    related_name='modified_by')
 
     type = models.CharField(max_length=33,
                             default="standard",
@@ -267,7 +258,7 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
         ]
 
 
-class Category(TimeStampedModel):
+class Category(TimeStampedModel, CreatedModifiedBy):
     name        = models.CharField(max_length=160, blank=False,
                                    null=False, unique=False)
     description = models.TextField(max_length=1024,
@@ -300,18 +291,10 @@ class Category(TimeStampedModel):
     image_as_html.allow_tags = True
 
 
-class Publication(AbstractPublication, AbstractPublicable):
+class Publication(AbstractPublication, AbstractPublicable, 
+                  CreatedModifiedBy):
     slug = models.SlugField(null=True, blank=True)
     tags = TaggableManager()
-
-    created_by = models.ForeignKey(get_user_model(),
-                                   null=True, blank=True,
-                                   on_delete=models.CASCADE,
-                                   related_name='pub_created_by')
-    modified_by = models.ForeignKey(get_user_model(),
-                                    null=True, blank=True,
-                                    on_delete=models.CASCADE,
-                                    related_name='pub_modified_by')
 
     class Meta:
         verbose_name_plural = _("Publications")
@@ -404,21 +387,13 @@ class Publication(AbstractPublication, AbstractPublicable):
 
 
 class PublicationContext(TimeStampedModel, ActivableModel,
-                         SectionAbstractModel, SortableModel):
+                         SectionAbstractModel, SortableModel,
+                         CreatedModifiedBy):
     publication = models.ForeignKey(Publication, null=False, blank=False,
                                     on_delete=models.CASCADE)
     webpath = models.ForeignKey(WebPath, on_delete=models.CASCADE)
     in_evidence_start = models.DateTimeField(null=True,blank=True)
     in_evidence_end   = models.DateTimeField(null=True,blank=True)
-
-    created_by = models.ForeignKey(get_user_model(),
-                                   null=True, blank=True,
-                                   on_delete=models.CASCADE,
-                                   related_name='contpub_created_by')
-    modified_by = models.ForeignKey(get_user_model(),
-                                    null=True, blank=True,
-                                    on_delete=models.CASCADE,
-                                    related_name='contpub_modified_by')
 
     class Meta:
         verbose_name_plural = _("Publication Contexts")
@@ -543,7 +518,8 @@ class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel,
                                    self.file_type)
 
 
-class PublicationLocalization(TimeStampedModel, ActivableModel):
+class PublicationLocalization(TimeStampedModel, ActivableModel,
+                              CreatedModifiedBy):
     title   = models.CharField(max_length=256,
                                null=False, blank=False,
                                help_text=_("Heading, Headline"))
@@ -558,14 +534,6 @@ class PublicationLocalization(TimeStampedModel, ActivableModel):
                                   help_text=_("Strap line (press)"))
     content =  models.TextField(null=True,blank=True,
                                         help_text=_('Content'))
-    created_by = models.ForeignKey(get_user_model(),
-                                   null=True, blank=True,
-                                   on_delete=models.CASCADE,
-                                   related_name='publoc_created_by')
-    modified_by = models.ForeignKey(get_user_model(),
-                                    null=True, blank=True,
-                                    on_delete=models.CASCADE,
-                                    related_name='publoc_modified_by')
     class Meta:
         verbose_name_plural = _("Publication Localizations")
 

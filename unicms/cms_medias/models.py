@@ -6,6 +6,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+from cms_contexts.models import CreatedModifiedBy
 from cms_templates.models import (ActivableModel,
                                   SortableModel,
                                   TimeStampedModel)
@@ -41,7 +42,8 @@ class AbstractMedia(models.Model):
         abstract = True
 
 
-class MediaCollection(ActivableModel, TimeStampedModel):
+class MediaCollection(ActivableModel, TimeStampedModel, 
+                      CreatedModifiedBy):
     name        = models.CharField(max_length=160, blank=False,
                                    null=False, unique=False)
     description = models.TextField(max_length=1024,
@@ -56,20 +58,13 @@ class MediaCollection(ActivableModel, TimeStampedModel):
         return self.name
 
 
-class Media(ActivableModel, TimeStampedModel, AbstractMedia):
+class Media(ActivableModel, TimeStampedModel, AbstractMedia, 
+            CreatedModifiedBy):
     title = models.CharField(max_length=60, blank=True, null=True,
                              help_text=_("Media file title"))
     file = models.FileField(upload_to=context_media_path)
     description = models.TextField()
 
-    created_by = models.ForeignKey(get_user_model(),
-                                   null=True, blank=True,
-                                   on_delete=models.CASCADE,
-                                   related_name='media_created_by')
-    modified_by = models.ForeignKey(get_user_model(),
-                                    null=True, blank=True,
-                                    on_delete=models.CASCADE,
-                                    related_name='media_modified_by')
 
     class Meta:
         verbose_name_plural = _("Media")
@@ -94,7 +89,8 @@ class Media(ActivableModel, TimeStampedModel, AbstractMedia):
         # return '{} {}' % (self.media, self.title)
 
 
-class MediaCollectionItem(ActivableModel, SortableModel, TimeStampedModel):
+class MediaCollectionItem(ActivableModel, SortableModel, TimeStampedModel,
+                          CreatedModifiedBy):
     media = models.ForeignKey(Media, on_delete=models.CASCADE,
                               limit_choices_to={'is_active': True},)
     collection = models.ForeignKey(MediaCollection,

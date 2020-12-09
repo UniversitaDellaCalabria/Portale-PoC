@@ -11,16 +11,8 @@ from cms_templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   TimeStampedModel)
 
 
-class NavigationBar(TimeStampedModel, ActivableModel):
+class NavigationBar(TimeStampedModel, ActivableModel, CreatedModifiedBy):
     name = models.CharField(max_length=33, blank=False, null=False)
-    created_by = models.ForeignKey(get_user_model(),
-                                   null=True, blank=True,
-                                   on_delete=models.CASCADE,
-                                   related_name='menu_created_by')
-    modified_by = models.ForeignKey(get_user_model(),
-                                    null=True, blank=True,
-                                    on_delete=models.CASCADE,
-                                    related_name='menu_modified_by')
 
     class Meta:
         verbose_name_plural = _("Context Navigation Menus")
@@ -64,7 +56,8 @@ class NavigationBar(TimeStampedModel, ActivableModel):
         return '{}'.format(self.name)
 
 
-class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
+class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel,
+                        CreatedModifiedBy):
     """
     elements that builds up the navigation menu
     """
@@ -94,14 +87,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                           help_text=_("Takes additional "
                                                       "contents from a "
                                                       "publication"))
-    created_by = models.ForeignKey(get_user_model(),
-                                   null=True, blank=True,
-                                   on_delete=models.CASCADE,
-                                   related_name='menu_item_created_by')
-    modified_by = models.ForeignKey(get_user_model(),
-                                    null=True, blank=True,
-                                    on_delete=models.CASCADE,
-                                    related_name='menu_item_modified_by')
+
     class Meta:
         verbose_name_plural = _("Context Navigation Menu Items")
         ordering = ('order',)
@@ -191,7 +177,7 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel):
                                     getattr(self.parent, 'name', ''))
 
 
-class NavigationBarItemLocalization(models.Model):
+class NavigationBarItemLocalization(CreatedModifiedBy):
     item = models.ForeignKey(NavigationBarItem,
                              on_delete=models.CASCADE)
     language   = models.CharField(choices=settings.LANGUAGES,
