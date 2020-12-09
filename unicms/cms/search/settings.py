@@ -8,8 +8,8 @@ MONGO_DB_NAME = 'unicms'
 MONGO_COLLECTION_NAME = 'search'
 
 MODEL_TO_MONGO_MAP = {
-    'cms.Page': 'cms.search.models.page_to_entry',
-    'cms.Publication': 'cms.search.models.publication_to_entry'
+    'cmspages.Page': 'cms.search.models.page_to_entry',
+    'cmspublications.Publication': 'cms.search.models.publication_to_entry'
 }
 
 CMS_HOOKS = {

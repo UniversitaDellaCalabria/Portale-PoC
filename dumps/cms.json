@@ -735,7 +735,7 @@
     "name": "Menu Childs in tags (menu-3)",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicmsm_enus %}\r\n{% load_menu section=\"menu-3\" template=\"menu_tags_expanded_v3.html\" %}"
+    "content": "{% load unicms_menus %}\r\n{% load_menu section=\"menu-3\" template=\"menu_tags_expanded_v3.html\" %}"
   }
 },
 {
