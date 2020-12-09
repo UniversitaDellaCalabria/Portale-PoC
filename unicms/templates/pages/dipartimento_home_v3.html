@@ -11,3 +11,22 @@
 {% load unicms_blocks %}
 
 
+{% block header_center_logo %}
+    <div class="d-none d-lg-flex col-lg-12 px-0">
+        <image src="{% static 'images/unical_logo_bullet_white.svg' %}" />
+        {% block header_center_logo_side %}
+        {% endblock header_center_logo_side %}
+    </div>
+{% endblock header_center_logo %}
+
+{% block header_slim_mobile_org_name %}
+    <div class="row">
+        <div class="col-2 col-md-1" style="margin: auto 0">
+            <image src="{% static 'images/unical_logo_bullet_white.svg' %}" width="100%"/>
+        </div>
+        <div class="col-10 col-md-11">
+            {% block header_slim_mobile_org_name_side %}
+            {% endblock header_slim_mobile_org_name_side %}
+        </div>
+    </div>
+{% endblock header_slim_mobile_org_name %}
