@@ -102,6 +102,20 @@ MIDDLEWARE = [
 HTML_MINIFY = True
 EXCLUDE_FROM_MINIFYING = ('^admin/',)
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://10.0.3.89:6379/unicms",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",
+            # improve resilience
+            "IGNORE_EXCEPTIONS": True,
+        }
+    }
+}
+DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
+
 # Static files (CSS, JavaScript, Images)
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
