@@ -51,6 +51,73 @@ If you want to share your example data
 ./manage.py dumpdata --exclude auth.permission --exclude contenttypes --exclude sessions --exclude admin --indent 2 > ../dumps/cms.json
 ````
 
+#### MongoDB
+uniCMS default search engine is built on top of mongodb.
+Install and configure mongodb
+````
+apt install -y gnupg wget
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+apt update
+apt install -y mongodb-org
+
+systemctl daemon-reload
+systemctl enable mongod
+systemctl start mongod
+````
+
+Create your defaults users, using mongo CLI
+````
+use admin
+db.createUser(
+  {
+    user: "admin",
+    pwd: "thatpassword"
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
+
+use unicms
+db.createUser(
+  {
+    user: "unicms",
+    pwd:  "thatpassword",
+    roles: [{ role: "readWrite", db: "unicms" }]
+  }
+)
+
+db.createUser(
+  {
+    user: "unicms_search",
+    pwd:  "thatpassword",
+    roles: [{ role: "read", db: "unicms" }]
+  }
+)
+
+exit
+````
+Configure connection and defaults in settings.py
+````
+MONGO_URL = 'mongodb://10.0.3.217:27017'
+MONGO_CONNECTION_PARAMS = dict(username='admin',
+                               password='thatpassword',
+                               connectTimeoutMS=5000,
+                               socketTimeoutMS=5000,
+                               serverSelectionTimeoutMS=5000)
+MONGO_DB_NAME = 'unicms'
+MONGO_COLLECTION_NAME = 'search'
+MODEL_TO_MONGO_MAP = {
+    'cms.Page': 'cms_search.models.page_to_entry',
+    'cms.Publication': 'cms_search.models.publication_to_entry'
+}
+````
+
+
+Create your fulltext indexes. Default_language is italian by default.
+````
+./manage.py cms_search_create_mongo_index -default_language english
+````
+
 Model
 -----
 

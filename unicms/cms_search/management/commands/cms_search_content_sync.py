@@ -1,6 +1,4 @@
-from cms.models import Page
 from cms_search import mongo_collection
-from cms_search.models import page_to_entry, publication_to_entry
 
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
