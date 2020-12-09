@@ -11,21 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 from . settingslocal import *
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    #unicms
-    'cms_contexts.middleware.detect_language_middleware',
-    'cms_contexts.middleware.show_template_blocks_sections',
-    'cms_contexts.middleware.show_cms_draft_mode',
-]
-
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

@@ -49,12 +49,12 @@ urlpatterns += re_path('^openapi.json$',
                        name='openapi-schema-json'),
 
 
-if 'cms' in settings.INSTALLED_APPS:
+if 'cms.pages' in settings.INSTALLED_APPS:
     urlpatterns += path('', 
-                        include(('cms.urls', 'cms'), namespace="unicms"), 
+                        include(('cms.pages.urls', 'cms'), namespace="unicms"), 
                         name="unicms"),
 
-if 'cms_search' in settings.INSTALLED_APPS:
+if 'cms.search' in settings.INSTALLED_APPS:
     urlpatterns += path('', 
-                        include(('cms_search.urls', 'cms_search'), namespace="unicms_search"), 
+                        include(('cms.search.urls', 'cms_search'), namespace="unicms_search"), 
                         name="unicms_search"),

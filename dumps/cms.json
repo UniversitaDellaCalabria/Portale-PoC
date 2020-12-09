@@ -471,7 +471,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplate",
+  "model": "cmstemplates.pagetemplate",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:00.088Z",
@@ -483,7 +483,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplate",
+  "model": "cmstemplates.pagetemplate",
   "pk": 2,
   "fields": {
     "created": "2020-11-20T09:31:57.345Z",
@@ -495,7 +495,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplate",
+  "model": "cmstemplates.pagetemplate",
   "pk": 3,
   "fields": {
     "created": "2020-12-03T07:22:34.774Z",
@@ -507,7 +507,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplate",
+  "model": "cmstemplates.pagetemplate",
   "pk": 4,
   "fields": {
     "created": "2020-12-03T14:49:37.539Z",
@@ -519,7 +519,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplate",
+  "model": "cmstemplates.pagetemplate",
   "pk": 6,
   "fields": {
     "created": "2020-12-06T15:27:09.964Z",
@@ -531,7 +531,7 @@
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 1,
   "fields": {
     "created": "2020-11-18T14:57:16.531Z",
@@ -539,12 +539,12 @@
     "is_active": true,
     "name": "publication-main-preview",
     "description": null,
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load unicms_blocks %}\r\n\r\n            <div class=\"row negative-mt-5 mb-3\" >\r\n                <div class=\"col-12 col-md-3\">\r\n                    <div class=\"section-title-label px-3 py-1\">\r\n                        <h3>Unical <span class=\"super-bold\">world</span></h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12 col-lg-9\">\r\n                    {% load_publications_preview template=\"publications_preview_v3.html\" %}\r\n                </div>\r\n                <div class=\"col-12 col-lg-3\">\r\n                    {% include \"unical_portale_agenda.html\" %}\r\n                </div>\r\n            </div>"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 2,
   "fields": {
     "created": "2020-11-18T15:13:34.250Z",
@@ -552,12 +552,12 @@
     "is_active": true,
     "name": "main-carousel",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"hero_slider.html\" %}\r\n\r\n<script>\r\n$(document).ready(function() {\r\n  $(\"#my-slider\").owlCarousel({\r\n      navigation : true, // Show next and prev buttons\r\n      loop: true,\r\n      slideSpeed : 300,\r\n      paginationSpeed : 400,\r\n      autoplay: true,\r\n      items : 1,\r\n      itemsDesktop : false,\r\n      itemsDesktopSmall : false,\r\n      itemsTablet: false,\r\n      itemsMobile : false,\r\n      dots: false\r\n  });\r\n});\r\n</script>"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 3,
   "fields": {
     "created": "2020-11-18T15:13:52.548Z",
@@ -565,12 +565,12 @@
     "is_active": true,
     "name": "avvisi",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load static %}\r\n\r\n<div class=\"container py-5\">\r\n<div class=\"row\">\r\n<div class=\"d-none d-md-block col-md-3\">&nbsp;</div>\r\n<div class=\"col-12 col-md-9\">\r\n  <h3 class=\"super-bold\" style=\"padding-left:24px\">\r\n     Avvisi\r\n  </h3>\r\n</div>\r\n</div>\r\n        <div class=\"row\">\r\n            <div class=\"col-12 col-lg-3\" style=\"margin-top: 24px\">\r\n<button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Tutti gli avvisi</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">URP</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Amministrazione trasparente</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Sostieni Unical</button>\r\n            </div>\r\n            <div class=\"col-12 col-lg-9\">\r\n                {% include \"unical_portale_home_avvisi_v3.html\" %}\r\n            </div>\r\n        </div>\r\n\r\n        <a href=\"#\" aria-hidden=\"true\"\r\n           data-attribute=\"back-to-top\"\r\n           class=\"back-to-top back-to-top-small\">\r\n            <svg class=\"icon icon-light\">\r\n              <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-arrow-up\"></use>\r\n            </svg>\r\n        </a>\r\n\r\n    </div>"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 4,
   "fields": {
     "created": "2020-11-18T15:14:07.509Z",
@@ -578,12 +578,12 @@
     "is_active": true,
     "name": "youtube",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "<div class=\"row\">\r\n<div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n <div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/xrjjJGqZpcU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n </div>"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 5,
   "fields": {
     "created": "2020-11-18T15:45:36.383Z",
@@ -591,12 +591,12 @@
     "is_active": true,
     "name": "sadasd",
     "description": "asd",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "<h1>HAAAAAAAAAAAAAAa</h1>"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 6,
   "fields": {
     "created": "2020-11-20T11:52:23.855Z",
@@ -604,12 +604,12 @@
     "is_active": true,
     "name": "publication-main-preview-DIPARTIMENTO",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load i18n %}\r\n{% load unicms_blocks %}\r\n\r\n<div class=\"row\">\r\n\r\n    <div class=\"col-12 col-lg-6\">\r\n        <div class=\"row negative-mt-5 mb-3\" >\r\n            <div class=\"col-12 col-md-6\">\r\n                <div class=\"section-title-label px-3 pt-3 pb-1\">\r\n                    <h5>{% trans \"tutto per gli studenti\" %}</h5>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        {% load_publications_preview template=\"publications_preview_dipartimento_v3.html\" %}\r\n    </div>\r\n    \r\n    <div class=\"col-12 col-lg-3\">\r\n       <div class=\"row negative-mt-5 mb-3\" >\r\n            <div class=\"col-12\">\r\n                <div class=\"section-title-label px-3 pt-3 pb-1\">\r\n                    <h5>{% trans \"primo piano\" %}</h5>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        {% load_publications_preview template=\"unical_portale_dipartimento_primo_piano_v3.html\" %}\r\n    </div>\r\n\r\n    <div class=\"col-12 col-lg-3\">\r\n        <div class=\"row negative-mt-5 mb-3\" >\r\n            <div class=\"col-12\">\r\n                <div class=\"px-3 pt-3 pb-1\">\r\n                    <h5>&nbsp;</h5>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        {% include \"unical_portale_agenda.html\" %}\r\n    </div>\r\n    \r\n</div>"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 7,
   "fields": {
     "created": "2020-12-01T14:08:42.924Z",
@@ -617,12 +617,12 @@
     "is_active": true,
     "name": "Main Menu",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load unicms_menus %}\r\n{% load_menu section='menu-1' template=\"main_menu.html\" %}"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 8,
   "fields": {
     "created": "2020-12-03T07:50:54.509Z",
@@ -630,12 +630,12 @@
     "is_active": true,
     "name": "Publications Stacked",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load unicms_blocks %}\r\n\r\n{% load_publications_preview template=\"publications_preview_stacked_v3.html\" %}"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 9,
   "fields": {
     "created": "2020-12-03T11:25:38.126Z",
@@ -643,12 +643,12 @@
     "is_active": true,
     "name": "Side Menu (section 2)",
     "description": "menu in side column",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load unicms_menus %}\r\n{% load_menu section=\"2\" template=\"side_menu.html\" %}"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 10,
   "fields": {
     "created": "2020-12-03T12:31:24.582Z",
@@ -656,12 +656,12 @@
     "is_active": true,
     "name": "Side Menu (section 3)",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load unicms_menus %}\r\n{% load_menu section=\"3\" template=\"side_menu.html\" %}"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 11,
   "fields": {
     "created": "2020-12-03T12:34:43.845Z",
@@ -669,12 +669,12 @@
     "is_active": true,
     "name": "OrientaUnical Logo",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "<h1 class=\"super-bold bordeaux-unical-color\" style=\"font-size: 6rem; margin-bottom: 5px;line-height: 0.8;\">OU</h1>\r\n\r\n<p class=\"ml-1\">\r\n<b class=\"bordeaux-unical-color\">come accedere ai servizi</b>\r\n<br>\r\n<span class=\"bordeaux-unical-color super-bold\">Orienta-Unical</span>\r\n</p>"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 12,
   "fields": {
     "created": "2020-12-03T14:50:37.338Z",
@@ -682,12 +682,12 @@
     "is_active": true,
     "name": "Publications Stacked Expanded",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load unicms_blocks %}\r\n\r\n{% load_publications_preview template=\"publications_preview_stacked_big_v3.html\" %}"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 13,
   "fields": {
     "created": "2020-12-03T15:15:44.561Z",
@@ -695,12 +695,12 @@
     "is_active": true,
     "name": "Side Menu (section 4)",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load unicms_menus %}\r\n{% load_menu section=\"4\" template=\"side_menu.html\" %}"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 14,
   "fields": {
     "created": "2020-12-03T15:51:10.374Z",
@@ -708,12 +708,12 @@
     "is_active": true,
     "name": "HR line Bordeaux",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "<hr class=\"my-5 bordeaux-unical-bg\">"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 15,
   "fields": {
     "created": "2020-12-03T17:19:12.700Z",
@@ -721,12 +721,12 @@
     "is_active": true,
     "name": "Menu Childs in tags (menu-2)",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% load unicms_menus %}\r\n{% load_menu section=\"menu-2\" template=\"menu_tags_expanded_v3.html\" %}"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 16,
   "fields": {
     "created": "2020-12-03T17:32:17.772Z",
@@ -734,12 +734,12 @@
     "is_active": true,
     "name": "Menu Childs in tags (menu-3)",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n{% load_menu section=\"menu-3\" template=\"menu_tags_expanded_v3.html\" %}"
+    "type": "cms.templates.blocks.HtmlBlock",
+    "content": "{% load unicmsm_enus %}\r\n{% load_menu section=\"menu-3\" template=\"menu_tags_expanded_v3.html\" %}"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 17,
   "fields": {
     "created": "2020-12-03T17:48:34.475Z",
@@ -747,12 +747,12 @@
     "is_active": true,
     "name": "Futuri studenti - ammissione",
     "description": "",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "<div class=\"mb-3\"><b>Lauree Magistrali - Bandi a.a. 2020-21</b></div>\r\n<div>\r\nLM Gestione e conservazione dei documenti digitali: graduatoria definitiva\r\n<br>\r\nLM DIMES: riapertura domande di ammissione\r\n<br>\r\nLM Ingegneria per l'ambiente e il territorio: riapertura domande di ammissione\r\n<br>\r\nLM Ingegneria Civile: riapertura domande di ammissione\r\n<br>\r\nLM DISU: immatricolazione laureati ottobre 2020\r\n<br>\r\nLM Scienza della Nutrizione: incremento posti\r\n<br>\r\nImmatricolazioni LM Economia aziendale e management: laureandi idonei in graduatoria\r\n</div>\r\n<div class=\"my-3\"><b>Bandi Corsi di laurea magistrale a ciclo unico con vincoli ministeriali/d'ateneo</b></div>\r\n\r\n<div>\r\nCONCORSO AMMISSIONE A.A. 2020/2021\r\n<br>\r\nLAUREA MAGISTRALE IN SCIENZA DELLA NUTRIZIONE\r\n<br>\r\nGRADUATORIE DEFINITIVE E GRADUATORIA BORSE DI STUDIO\r\n<br>\r\nPERCORSO IN INGLESE NUTRITIONAL SCIENCES\r\n\r\n<br>\r\n<br>\r\nBANDO DI AMMISSIONE SCIENZE DELLA FORMAZIONE PRIMARIA 2020/2021\r\n<br>\r\nGRADUATORIA DEFINITIVA SFP 2020/2021\r\n<br>\r\nPRIMO SCORRIMENTO SFP\r\n<br>\r\n3/11/2020 - SECONDO SCORRIMENTO SFP\r\n<br>\r\n<br>\r\nQ&A\r\n<br>\r\nQuando sarà possibile compilare la domanda di ammissione per l'Università della Calabria?\r\nTrovi le date di apertura/chiusura delle domande di ammissione nel bando di tuo interesse.\r\nuali sono i requisiti per l'ammissione?\r\n<br>\r\nTrovi i requisiti di ammissione per ogni corso di studi negli allegati dei singoli dipartimenti.\r\n<br>\r\nQuando saprò se sono ammesso?\r\n<br>\r\nAttendi la pubblicazione delle graduatorie, consulta le date nel Bando di Ammissione.\r\n<br>\r\nCosa dovrò fare se risulto vincitore?\r\n<br>\r\nQuanto pagherò di tasse?\r\n<br>\r\n<br>\r\nLEGGI LA GUIDA SINTETICA\r\n</div>"
   }
 },
 {
-  "model": "cms_templates.templateblock",
+  "model": "cmstemplates.templateblock",
   "pk": 18,
   "fields": {
     "created": "2020-12-06T15:12:04.343Z",
@@ -760,12 +760,12 @@
     "is_active": true,
     "name": "Motore di Ricerca",
     "description": "search engine",
-    "type": "cms_templates.blocks.HtmlBlock",
+    "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% include \"search_engine.html\" %}"
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 1,
   "fields": {
     "created": "2020-11-18T14:59:39.901Z",
@@ -778,7 +778,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 2,
   "fields": {
     "created": "2020-11-18T15:15:05.043Z",
@@ -791,7 +791,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 3,
   "fields": {
     "created": "2020-11-18T15:15:05.043Z",
@@ -804,7 +804,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 4,
   "fields": {
     "created": "2020-11-18T15:15:05.043Z",
@@ -817,7 +817,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 5,
   "fields": {
     "created": "2020-11-20T09:59:33.051Z",
@@ -830,7 +830,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 6,
   "fields": {
     "created": "2020-11-20T11:52:46.129Z",
@@ -843,7 +843,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 7,
   "fields": {
     "created": "2020-12-01T14:08:55.143Z",
@@ -856,7 +856,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 8,
   "fields": {
     "created": "2020-12-01T14:59:28.480Z",
@@ -869,7 +869,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 9,
   "fields": {
     "created": "2020-12-03T07:23:32.508Z",
@@ -882,7 +882,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 10,
   "fields": {
     "created": "2020-12-03T07:51:02.326Z",
@@ -895,7 +895,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 12,
   "fields": {
     "created": "2020-12-03T14:50:39.474Z",
@@ -908,7 +908,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 13,
   "fields": {
     "created": "2020-12-03T14:50:39.475Z",
@@ -921,7 +921,7 @@
   }
 },
 {
-  "model": "cms_templates.pagetemplateblock",
+  "model": "cmstemplates.pagetemplateblock",
   "pk": 15,
   "fields": {
     "created": "2020-12-06T15:27:09.964Z",
@@ -934,7 +934,7 @@
   }
 },
 {
-  "model": "cms_carousels.carousel",
+  "model": "cmscarousels.carousel",
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:33:34.047Z",
@@ -947,7 +947,7 @@
   }
 },
 {
-  "model": "cms_carousels.carouselitem",
+  "model": "cmscarousels.carouselitem",
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:35:38.477Z",
@@ -962,7 +962,7 @@
   }
 },
 {
-  "model": "cms_carousels.carouselitem",
+  "model": "cmscarousels.carouselitem",
   "pk": 2,
   "fields": {
     "created": "2020-10-31T13:54:29.853Z",
@@ -977,7 +977,7 @@
   }
 },
 {
-  "model": "cms_carousels.carouselitem",
+  "model": "cmscarousels.carouselitem",
   "pk": 3,
   "fields": {
     "created": "2020-10-31T15:04:48.019Z",
@@ -992,7 +992,7 @@
   }
 },
 {
-  "model": "cms_carousels.carouselitemlocalization",
+  "model": "cmscarousels.carouselitemlocalization",
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:43:19.241Z",
@@ -1007,7 +1007,7 @@
   }
 },
 {
-  "model": "cms_carousels.carouselitemlocalization",
+  "model": "cmscarousels.carouselitemlocalization",
   "pk": 2,
   "fields": {
     "created": "2020-11-02T09:34:48.487Z",
@@ -1022,7 +1022,7 @@
   }
 },
 {
-  "model": "cms_carousels.carouselitemlink",
+  "model": "cmscarousels.carouselitemlink",
   "pk": 1,
   "fields": {
     "created": "2020-10-31T14:05:01.913Z",
@@ -1036,7 +1036,7 @@
   }
 },
 {
-  "model": "cms_carousels.carouselitemlink",
+  "model": "cmscarousels.carouselitemlink",
   "pk": 2,
   "fields": {
     "created": "2020-11-02T09:32:19.175Z",
@@ -1050,7 +1050,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbar",
+  "model": "cmsmenus.navigationbar",
   "pk": 1,
   "fields": {
     "created": "2020-10-30T14:06:46.447Z",
@@ -1062,7 +1062,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbar",
+  "model": "cmsmenus.navigationbar",
   "pk": 2,
   "fields": {
     "created": "2020-11-02T09:42:43.659Z",
@@ -1074,7 +1074,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbar",
+  "model": "cmsmenus.navigationbar",
   "pk": 18,
   "fields": {
     "created": "2020-11-20T10:28:27.095Z",
@@ -1086,7 +1086,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbar",
+  "model": "cmsmenus.navigationbar",
   "pk": 19,
   "fields": {
     "created": "2020-11-20T17:15:19.394Z",
@@ -1098,7 +1098,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbar",
+  "model": "cmsmenus.navigationbar",
   "pk": 20,
   "fields": {
     "created": "2020-12-03T12:09:16.230Z",
@@ -1110,7 +1110,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbar",
+  "model": "cmsmenus.navigationbar",
   "pk": 21,
   "fields": {
     "created": "2020-12-03T12:30:13.023Z",
@@ -1122,7 +1122,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbar",
+  "model": "cmsmenus.navigationbar",
   "pk": 22,
   "fields": {
     "created": "2020-12-03T15:16:35.412Z",
@@ -1134,7 +1134,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbar",
+  "model": "cmsmenus.navigationbar",
   "pk": 23,
   "fields": {
     "created": "2020-12-03T17:30:13.858Z",
@@ -1146,7 +1146,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:18:53.178Z",
@@ -1165,7 +1165,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 2,
   "fields": {
     "created": "2020-10-29T09:19:21.186Z",
@@ -1184,7 +1184,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 3,
   "fields": {
     "created": "2020-10-29T09:19:36.099Z",
@@ -1203,7 +1203,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 4,
   "fields": {
     "created": "2020-10-29T09:19:48.538Z",
@@ -1222,7 +1222,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 5,
   "fields": {
     "created": "2020-10-29T09:20:02.598Z",
@@ -1241,7 +1241,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 6,
   "fields": {
     "created": "2020-10-29T09:20:19.287Z",
@@ -1260,7 +1260,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 7,
   "fields": {
     "created": "2020-10-29T09:27:04.167Z",
@@ -1279,7 +1279,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 8,
   "fields": {
     "created": "2020-10-29T09:28:17.305Z",
@@ -1298,7 +1298,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 9,
   "fields": {
     "created": "2020-10-29T09:29:16.363Z",
@@ -1317,7 +1317,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 12,
   "fields": {
     "created": "2020-11-02T09:43:31.257Z",
@@ -1336,7 +1336,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 13,
   "fields": {
     "created": "2020-11-02T09:43:31.258Z",
@@ -1355,7 +1355,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 14,
   "fields": {
     "created": "2020-11-02T09:43:31.258Z",
@@ -1374,7 +1374,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 15,
   "fields": {
     "created": "2020-11-12T15:59:19.881Z",
@@ -1393,7 +1393,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 16,
   "fields": {
     "created": "2020-11-12T16:09:30.409Z",
@@ -1412,7 +1412,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 19,
   "fields": {
     "created": "2020-11-12T16:09:30.410Z",
@@ -1431,7 +1431,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 21,
   "fields": {
     "created": "2020-11-12T16:26:45.451Z",
@@ -1450,7 +1450,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 22,
   "fields": {
     "created": "2020-11-12T16:26:45.451Z",
@@ -1469,7 +1469,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 23,
   "fields": {
     "created": "2020-11-12T16:26:45.451Z",
@@ -1488,7 +1488,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 24,
   "fields": {
     "created": "2020-11-12T16:26:45.452Z",
@@ -1507,7 +1507,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 25,
   "fields": {
     "created": "2020-11-12T16:26:45.452Z",
@@ -1526,7 +1526,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 26,
   "fields": {
     "created": "2020-11-12T16:28:25.860Z",
@@ -1545,7 +1545,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 27,
   "fields": {
     "created": "2020-11-12T16:28:25.860Z",
@@ -1564,7 +1564,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 28,
   "fields": {
     "created": "2020-11-12T16:29:52.952Z",
@@ -1583,7 +1583,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 29,
   "fields": {
     "created": "2020-11-12T16:29:52.953Z",
@@ -1602,7 +1602,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 30,
   "fields": {
     "created": "2020-11-12T16:29:52.953Z",
@@ -1621,7 +1621,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 31,
   "fields": {
     "created": "2020-11-12T16:29:52.953Z",
@@ -1640,7 +1640,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 32,
   "fields": {
     "created": "2020-11-12T16:30:49.005Z",
@@ -1659,7 +1659,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 33,
   "fields": {
     "created": "2020-11-12T16:30:49.006Z",
@@ -1678,7 +1678,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 34,
   "fields": {
     "created": "2020-11-12T16:30:49.006Z",
@@ -1697,7 +1697,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 35,
   "fields": {
     "created": "2020-11-12T16:32:46.287Z",
@@ -1716,7 +1716,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 36,
   "fields": {
     "created": "2020-11-12T16:32:46.287Z",
@@ -1735,7 +1735,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 37,
   "fields": {
     "created": "2020-11-12T16:32:46.288Z",
@@ -1754,7 +1754,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 38,
   "fields": {
     "created": "2020-11-12T16:32:46.288Z",
@@ -1773,7 +1773,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 39,
   "fields": {
     "created": "2020-11-12T16:32:46.289Z",
@@ -1792,7 +1792,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 40,
   "fields": {
     "created": "2020-11-12T16:34:22.931Z",
@@ -1811,7 +1811,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 41,
   "fields": {
     "created": "2020-11-12T16:34:22.932Z",
@@ -1830,7 +1830,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 42,
   "fields": {
     "created": "2020-11-12T16:34:22.932Z",
@@ -1849,7 +1849,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 45,
   "fields": {
     "created": "2020-11-12T16:38:06.977Z",
@@ -1868,7 +1868,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 46,
   "fields": {
     "created": "2020-11-12T16:38:06.978Z",
@@ -1887,7 +1887,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 47,
   "fields": {
     "created": "2020-11-12T16:38:06.978Z",
@@ -1906,7 +1906,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 48,
   "fields": {
     "created": "2020-11-12T16:38:06.978Z",
@@ -1925,7 +1925,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 49,
   "fields": {
     "created": "2020-11-12T16:38:06.979Z",
@@ -1944,7 +1944,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 50,
   "fields": {
     "created": "2020-11-12T16:38:06.979Z",
@@ -1963,7 +1963,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 51,
   "fields": {
     "created": "2020-11-12T16:38:06.979Z",
@@ -1982,7 +1982,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 53,
   "fields": {
     "created": "2020-11-18T17:56:03.148Z",
@@ -2001,7 +2001,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 54,
   "fields": {
     "created": "2020-11-18T17:56:03.149Z",
@@ -2020,7 +2020,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 55,
   "fields": {
     "created": "2020-11-18T17:56:03.149Z",
@@ -2039,7 +2039,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 56,
   "fields": {
     "created": "2020-11-18T17:56:03.149Z",
@@ -2058,7 +2058,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 57,
   "fields": {
     "created": "2020-11-18T17:56:03.149Z",
@@ -2077,7 +2077,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 58,
   "fields": {
     "created": "2020-11-18T18:15:07.072Z",
@@ -2096,7 +2096,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 59,
   "fields": {
     "created": "2020-11-18T18:15:07.073Z",
@@ -2115,7 +2115,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 60,
   "fields": {
     "created": "2020-11-18T18:15:07.073Z",
@@ -2134,7 +2134,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 61,
   "fields": {
     "created": "2020-11-18T18:15:07.073Z",
@@ -2153,7 +2153,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 62,
   "fields": {
     "created": "2020-11-18T18:15:07.073Z",
@@ -2172,7 +2172,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 103,
   "fields": {
     "created": "2020-11-19T09:49:06.005Z",
@@ -2191,7 +2191,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 104,
   "fields": {
     "created": "2020-11-19T09:50:43.823Z",
@@ -2210,7 +2210,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 186,
   "fields": {
     "created": "2020-11-20T10:28:27.095Z",
@@ -2229,7 +2229,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 187,
   "fields": {
     "created": "2020-11-20T10:28:27.096Z",
@@ -2248,7 +2248,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 188,
   "fields": {
     "created": "2020-11-20T17:15:19.414Z",
@@ -2267,7 +2267,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 189,
   "fields": {
     "created": "2020-11-20T17:15:19.427Z",
@@ -2286,7 +2286,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 190,
   "fields": {
     "created": "2020-11-20T17:15:19.439Z",
@@ -2305,7 +2305,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 191,
   "fields": {
     "created": "2020-11-20T17:15:19.450Z",
@@ -2324,7 +2324,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 192,
   "fields": {
     "created": "2020-11-20T17:15:19.462Z",
@@ -2343,7 +2343,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 193,
   "fields": {
     "created": "2020-11-20T17:15:19.474Z",
@@ -2362,7 +2362,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 194,
   "fields": {
     "created": "2020-11-20T17:15:19.488Z",
@@ -2381,7 +2381,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 195,
   "fields": {
     "created": "2020-11-20T17:15:19.528Z",
@@ -2400,7 +2400,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 196,
   "fields": {
     "created": "2020-11-20T17:15:19.554Z",
@@ -2419,7 +2419,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 197,
   "fields": {
     "created": "2020-11-20T17:15:19.572Z",
@@ -2438,7 +2438,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 198,
   "fields": {
     "created": "2020-11-20T17:15:19.585Z",
@@ -2457,7 +2457,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 199,
   "fields": {
     "created": "2020-11-20T17:15:19.596Z",
@@ -2476,7 +2476,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 200,
   "fields": {
     "created": "2020-11-20T17:15:19.613Z",
@@ -2495,7 +2495,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 201,
   "fields": {
     "created": "2020-11-20T17:15:19.625Z",
@@ -2514,7 +2514,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 202,
   "fields": {
     "created": "2020-11-20T17:15:19.636Z",
@@ -2533,7 +2533,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 203,
   "fields": {
     "created": "2020-11-20T17:15:19.648Z",
@@ -2552,7 +2552,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 204,
   "fields": {
     "created": "2020-11-20T17:15:19.659Z",
@@ -2571,7 +2571,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 205,
   "fields": {
     "created": "2020-11-20T17:15:19.671Z",
@@ -2590,7 +2590,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 206,
   "fields": {
     "created": "2020-11-20T17:15:19.683Z",
@@ -2609,7 +2609,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 207,
   "fields": {
     "created": "2020-11-20T17:15:19.694Z",
@@ -2628,7 +2628,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 208,
   "fields": {
     "created": "2020-11-20T17:15:19.706Z",
@@ -2647,7 +2647,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 209,
   "fields": {
     "created": "2020-11-20T17:15:19.718Z",
@@ -2666,7 +2666,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 210,
   "fields": {
     "created": "2020-11-20T17:15:19.732Z",
@@ -2685,7 +2685,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 211,
   "fields": {
     "created": "2020-11-20T17:15:19.744Z",
@@ -2704,7 +2704,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 212,
   "fields": {
     "created": "2020-11-20T17:15:19.757Z",
@@ -2723,7 +2723,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 213,
   "fields": {
     "created": "2020-11-20T17:15:19.771Z",
@@ -2742,7 +2742,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 214,
   "fields": {
     "created": "2020-12-02T07:57:48.514Z",
@@ -2761,7 +2761,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 215,
   "fields": {
     "created": "2020-12-02T08:00:46.214Z",
@@ -2780,7 +2780,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 216,
   "fields": {
     "created": "2020-12-02T08:07:45.119Z",
@@ -2799,7 +2799,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 217,
   "fields": {
     "created": "2020-12-02T08:25:07.773Z",
@@ -2818,7 +2818,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 218,
   "fields": {
     "created": "2020-12-02T15:21:53.964Z",
@@ -2837,7 +2837,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 219,
   "fields": {
     "created": "2020-12-02T15:23:13.931Z",
@@ -2856,7 +2856,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 220,
   "fields": {
     "created": "2020-12-02T15:23:13.932Z",
@@ -2875,7 +2875,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 221,
   "fields": {
     "created": "2020-12-02T15:23:13.932Z",
@@ -2894,7 +2894,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 222,
   "fields": {
     "created": "2020-12-02T15:23:13.932Z",
@@ -2913,7 +2913,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 223,
   "fields": {
     "created": "2020-12-02T15:24:06.726Z",
@@ -2932,7 +2932,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 224,
   "fields": {
     "created": "2020-12-02T15:24:44.360Z",
@@ -2951,7 +2951,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 225,
   "fields": {
     "created": "2020-12-02T15:24:44.360Z",
@@ -2970,7 +2970,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 226,
   "fields": {
     "created": "2020-12-02T15:24:44.361Z",
@@ -2989,7 +2989,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 227,
   "fields": {
     "created": "2020-12-02T15:32:24.343Z",
@@ -3008,7 +3008,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 228,
   "fields": {
     "created": "2020-12-02T15:32:59.902Z",
@@ -3027,7 +3027,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 229,
   "fields": {
     "created": "2020-12-02T15:32:59.903Z",
@@ -3046,7 +3046,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 230,
   "fields": {
     "created": "2020-12-02T15:32:59.903Z",
@@ -3065,7 +3065,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 231,
   "fields": {
     "created": "2020-12-03T12:10:40.004Z",
@@ -3084,7 +3084,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 232,
   "fields": {
     "created": "2020-12-03T12:26:14.094Z",
@@ -3103,7 +3103,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 233,
   "fields": {
     "created": "2020-12-03T12:26:14.095Z",
@@ -3122,7 +3122,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 234,
   "fields": {
     "created": "2020-12-03T12:26:14.096Z",
@@ -3141,7 +3141,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 235,
   "fields": {
     "created": "2020-12-03T12:28:43.081Z",
@@ -3160,7 +3160,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 236,
   "fields": {
     "created": "2020-12-03T12:30:36.592Z",
@@ -3179,7 +3179,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 237,
   "fields": {
     "created": "2020-12-03T12:30:36.593Z",
@@ -3198,7 +3198,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 238,
   "fields": {
     "created": "2020-12-03T12:30:54.978Z",
@@ -3217,7 +3217,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 239,
   "fields": {
     "created": "2020-12-03T12:30:54.979Z",
@@ -3236,7 +3236,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 240,
   "fields": {
     "created": "2020-12-03T12:33:44.439Z",
@@ -3255,7 +3255,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 241,
   "fields": {
     "created": "2020-12-03T12:33:44.440Z",
@@ -3274,7 +3274,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 242,
   "fields": {
     "created": "2020-12-03T12:33:44.440Z",
@@ -3293,7 +3293,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 243,
   "fields": {
     "created": "2020-12-03T12:33:44.440Z",
@@ -3312,7 +3312,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 244,
   "fields": {
     "created": "2020-12-03T12:33:44.441Z",
@@ -3331,7 +3331,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 245,
   "fields": {
     "created": "2020-12-03T12:33:44.441Z",
@@ -3350,7 +3350,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 246,
   "fields": {
     "created": "2020-12-03T12:33:44.441Z",
@@ -3369,7 +3369,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 247,
   "fields": {
     "created": "2020-12-03T12:33:44.441Z",
@@ -3388,7 +3388,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 248,
   "fields": {
     "created": "2020-12-03T15:16:35.412Z",
@@ -3407,7 +3407,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 249,
   "fields": {
     "created": "2020-12-03T15:17:01.417Z",
@@ -3426,7 +3426,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 250,
   "fields": {
     "created": "2020-12-03T15:17:01.417Z",
@@ -3445,7 +3445,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 251,
   "fields": {
     "created": "2020-12-03T15:17:01.418Z",
@@ -3464,7 +3464,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 252,
   "fields": {
     "created": "2020-12-03T17:30:20.957Z",
@@ -3483,7 +3483,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 253,
   "fields": {
     "created": "2020-12-03T17:31:27.091Z",
@@ -3502,7 +3502,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 254,
   "fields": {
     "created": "2020-12-03T17:31:27.092Z",
@@ -3521,7 +3521,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 255,
   "fields": {
     "created": "2020-12-03T17:31:27.092Z",
@@ -3540,7 +3540,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 256,
   "fields": {
     "created": "2020-12-03T17:31:27.093Z",
@@ -3559,7 +3559,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 257,
   "fields": {
     "created": "2020-12-03T17:31:27.093Z",
@@ -3578,7 +3578,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 258,
   "fields": {
     "created": "2020-12-03T17:31:27.093Z",
@@ -3597,7 +3597,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 259,
   "fields": {
     "created": "2020-12-03T17:31:27.094Z",
@@ -3616,7 +3616,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritem",
+  "model": "cmsmenus.navigationbaritem",
   "pk": 260,
   "fields": {
     "created": "2020-12-03T17:31:27.094Z",
@@ -3635,7 +3635,7 @@
   }
 },
 {
-  "model": "cms_menus.navigationbaritemlocalization",
+  "model": "cmsmenus.navigationbaritemlocalization",
   "pk": 1,
   "fields": {
     "item": 4,
@@ -3644,7 +3644,7 @@
   }
 },
 {
-  "model": "cms_contexts.website",
+  "model": "cmscontexts.website",
   "pk": 2,
   "fields": {
     "name": "Portale dell'Università della Calabria",
@@ -3653,7 +3653,7 @@
   }
 },
 {
-  "model": "cms_contexts.website",
+  "model": "cmscontexts.website",
   "pk": 3,
   "fields": {
     "name": "Dipartimento DIMES",
@@ -3662,7 +3662,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:11:39.008Z",
@@ -3678,7 +3678,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 2,
   "fields": {
     "created": "2020-11-07T14:57:19.676Z",
@@ -3694,7 +3694,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 3,
   "fields": {
     "created": "2020-11-20T08:50:48.265Z",
@@ -3710,7 +3710,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 4,
   "fields": {
     "created": "2020-11-20T09:14:17.710Z",
@@ -3726,7 +3726,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 5,
   "fields": {
     "created": "2020-11-20T12:29:06.360Z",
@@ -3742,7 +3742,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 6,
   "fields": {
     "created": "2020-11-30T16:43:00.111Z",
@@ -3758,7 +3758,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 7,
   "fields": {
     "created": "2020-12-03T07:22:04.219Z",
@@ -3774,7 +3774,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 8,
   "fields": {
     "created": "2020-12-03T10:46:38.760Z",
@@ -3790,7 +3790,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 9,
   "fields": {
     "created": "2020-12-03T14:52:05.979Z",
@@ -3806,7 +3806,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 10,
   "fields": {
     "created": "2020-12-03T15:56:23.454Z",
@@ -3822,7 +3822,7 @@
   }
 },
 {
-  "model": "cms_contexts.webpath",
+  "model": "cmscontexts.webpath",
   "pk": 11,
   "fields": {
     "created": "2020-12-06T15:04:22.135Z",
@@ -3838,7 +3838,7 @@
   }
 },
 {
-  "model": "cms_contexts.editorialboardlocks",
+  "model": "cmscontexts.editorialboardlocks",
   "pk": 1,
   "fields": {
     "content_type": 28,
@@ -3848,7 +3848,7 @@
   }
 },
 {
-  "model": "cms_contexts.editorialboardlocks",
+  "model": "cmscontexts.editorialboardlocks",
   "pk": 2,
   "fields": {
     "content_type": 21,
@@ -3858,7 +3858,7 @@
   }
 },
 {
-  "model": "cms_medias.mediacollection",
+  "model": "cmsmedias.mediacollection",
   "pk": 1,
   "fields": {
     "created": "2020-11-24T09:33:24.719Z",
@@ -3869,7 +3869,7 @@
   }
 },
 {
-  "model": "cms_medias.media",
+  "model": "cmsmedias.media",
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:32:21.019Z",
@@ -3885,7 +3885,7 @@
   }
 },
 {
-  "model": "cms_medias.media",
+  "model": "cmsmedias.media",
   "pk": 2,
   "fields": {
     "created": "2020-10-31T13:53:43.251Z",
@@ -3901,7 +3901,7 @@
   }
 },
 {
-  "model": "cms_medias.media",
+  "model": "cmsmedias.media",
   "pk": 3,
   "fields": {
     "created": "2020-10-31T15:04:12.200Z",
@@ -3917,7 +3917,7 @@
   }
 },
 {
-  "model": "cms_medias.media",
+  "model": "cmsmedias.media",
   "pk": 4,
   "fields": {
     "created": "2020-11-11T17:14:02.849Z",
@@ -3933,7 +3933,7 @@
   }
 },
 {
-  "model": "cms_medias.mediacollectionitem",
+  "model": "cmsmedias.mediacollectionitem",
   "pk": 1,
   "fields": {
     "created": "2020-11-24T09:33:24.727Z",
@@ -3945,7 +3945,7 @@
   }
 },
 {
-  "model": "cms_medias.mediacollectionitem",
+  "model": "cmsmedias.mediacollectionitem",
   "pk": 2,
   "fields": {
     "created": "2020-11-24T09:33:24.727Z",
@@ -3957,7 +3957,7 @@
   }
 },
 {
-  "model": "cms_medias.mediacollectionitem",
+  "model": "cmsmedias.mediacollectionitem",
   "pk": 3,
   "fields": {
     "created": "2020-11-24T10:13:09.157Z",
@@ -3969,7 +3969,7 @@
   }
 },
 {
-  "model": "cms_medias.mediacollectionitem",
+  "model": "cmsmedias.mediacollectionitem",
   "pk": 4,
   "fields": {
     "created": "2020-11-24T10:13:50.240Z",
@@ -3981,7 +3981,7 @@
   }
 },
 {
-  "model": "cms.page",
+  "model": "cmspages.page",
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
@@ -4001,7 +4001,7 @@
   }
 },
 {
-  "model": "cms.page",
+  "model": "cmspages.page",
   "pk": 2,
   "fields": {
     "created": "2020-11-20T09:15:53.481Z",
@@ -4021,7 +4021,7 @@
   }
 },
 {
-  "model": "cms.page",
+  "model": "cmspages.page",
   "pk": 15,
   "fields": {
     "created": "2020-11-24T12:52:00.324Z",
@@ -4041,7 +4041,7 @@
   }
 },
 {
-  "model": "cms.page",
+  "model": "cmspages.page",
   "pk": 16,
   "fields": {
     "created": "2020-12-03T07:23:10.854Z",
@@ -4061,7 +4061,7 @@
   }
 },
 {
-  "model": "cms.page",
+  "model": "cmspages.page",
   "pk": 17,
   "fields": {
     "created": "2020-12-03T10:47:08.171Z",
@@ -4081,7 +4081,7 @@
   }
 },
 {
-  "model": "cms.page",
+  "model": "cmspages.page",
   "pk": 18,
   "fields": {
     "created": "2020-12-03T14:52:21.564Z",
@@ -4101,7 +4101,7 @@
   }
 },
 {
-  "model": "cms.page",
+  "model": "cmspages.page",
   "pk": 19,
   "fields": {
     "created": "2020-12-03T15:56:59.313Z",
@@ -4121,7 +4121,7 @@
   }
 },
 {
-  "model": "cms.page",
+  "model": "cmspages.page",
   "pk": 20,
   "fields": {
     "created": "2020-12-06T15:07:13.649Z",
@@ -4141,7 +4141,7 @@
   }
 },
 {
-  "model": "cms.pagecarousel",
+  "model": "cmspages.pagecarousel",
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:37:39.528Z",
@@ -4154,7 +4154,7 @@
   }
 },
 {
-  "model": "cms.pagecarousel",
+  "model": "cmspages.pagecarousel",
   "pk": 2,
   "fields": {
     "created": "2020-11-20T10:12:41.157Z",
@@ -4167,7 +4167,7 @@
   }
 },
 {
-  "model": "cms.pagecarousel",
+  "model": "cmspages.pagecarousel",
   "pk": 6,
   "fields": {
     "created": "2020-11-24T12:52:00.366Z",
@@ -4180,7 +4180,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 1,
   "fields": {
     "created": "2020-11-02T10:08:40.122Z",
@@ -4193,7 +4193,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 2,
   "fields": {
     "created": "2020-11-02T10:09:03.494Z",
@@ -4206,7 +4206,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 6,
   "fields": {
     "created": "2020-11-20T10:29:42.578Z",
@@ -4219,7 +4219,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 7,
   "fields": {
     "created": "2020-11-20T17:16:02.007Z",
@@ -4232,7 +4232,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 15,
   "fields": {
     "created": "2020-11-24T12:52:00.379Z",
@@ -4245,7 +4245,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 16,
   "fields": {
     "created": "2020-11-24T12:52:00.395Z",
@@ -4258,7 +4258,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 17,
   "fields": {
     "created": "2020-12-03T07:23:10.866Z",
@@ -4271,7 +4271,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 18,
   "fields": {
     "created": "2020-12-03T10:47:08.181Z",
@@ -4284,7 +4284,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 21,
   "fields": {
     "created": "2020-12-03T12:14:58.261Z",
@@ -4297,7 +4297,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 22,
   "fields": {
     "created": "2020-12-03T12:31:47.234Z",
@@ -4310,7 +4310,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 23,
   "fields": {
     "created": "2020-12-03T15:09:55.724Z",
@@ -4323,7 +4323,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 24,
   "fields": {
     "created": "2020-12-03T15:14:50.295Z",
@@ -4336,7 +4336,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 25,
   "fields": {
     "created": "2020-12-03T15:17:53.563Z",
@@ -4349,7 +4349,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 26,
   "fields": {
     "created": "2020-12-03T15:56:59.324Z",
@@ -4362,7 +4362,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 27,
   "fields": {
     "created": "2020-12-03T15:59:24.496Z",
@@ -4375,7 +4375,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 28,
   "fields": {
     "created": "2020-12-03T15:59:24.496Z",
@@ -4388,7 +4388,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 33,
   "fields": {
     "created": "2020-12-03T17:14:11.072Z",
@@ -4401,7 +4401,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 34,
   "fields": {
     "created": "2020-12-03T17:32:50.805Z",
@@ -4414,7 +4414,7 @@
   }
 },
 {
-  "model": "cms.pagemenu",
+  "model": "cmspages.pagemenu",
   "pk": 35,
   "fields": {
     "created": "2020-12-06T15:25:55.179Z",
@@ -4427,7 +4427,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 3,
   "fields": {
     "order": 20,
@@ -4438,7 +4438,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 4,
   "fields": {
     "order": 15,
@@ -4449,7 +4449,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 5,
   "fields": {
     "order": 10,
@@ -4460,7 +4460,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 7,
   "fields": {
     "order": 10,
@@ -4471,7 +4471,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 8,
   "fields": {
     "order": 20,
@@ -4482,7 +4482,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 9,
   "fields": {
     "order": 10,
@@ -4493,7 +4493,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 10,
   "fields": {
     "order": 15,
@@ -4504,7 +4504,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 11,
   "fields": {
     "order": 10,
@@ -4515,7 +4515,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 12,
   "fields": {
     "order": 15,
@@ -4526,7 +4526,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 13,
   "fields": {
     "order": 5,
@@ -4537,7 +4537,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 14,
   "fields": {
     "order": 10,
@@ -4548,7 +4548,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 15,
   "fields": {
     "order": 15,
@@ -4559,7 +4559,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 16,
   "fields": {
     "order": 20,
@@ -4570,7 +4570,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 17,
   "fields": {
     "order": 30,
@@ -4581,7 +4581,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 18,
   "fields": {
     "order": 40,
@@ -4592,7 +4592,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 29,
   "fields": {
     "order": 50,
@@ -4603,7 +4603,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 30,
   "fields": {
     "order": 60,
@@ -4614,7 +4614,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 31,
   "fields": {
     "order": 70,
@@ -4625,7 +4625,7 @@
   }
 },
 {
-  "model": "cms.pageblock",
+  "model": "cmspages.pageblock",
   "pk": 33,
   "fields": {
     "order": 10,
@@ -4636,7 +4636,7 @@
   }
 },
 {
-  "model": "cms.category",
+  "model": "cmspages.category",
   "pk": 1,
   "fields": {
     "created": "2020-11-09T13:25:34.020Z",
@@ -4647,7 +4647,7 @@
   }
 },
 {
-  "model": "cms.category",
+  "model": "cmspages.category",
   "pk": 2,
   "fields": {
     "created": "2020-11-09T13:26:39.646Z",
@@ -4658,7 +4658,7 @@
   }
 },
 {
-  "model": "cms.category",
+  "model": "cmspages.category",
   "pk": 3,
   "fields": {
     "created": "2020-11-09T13:27:51.975Z",
@@ -4669,7 +4669,7 @@
   }
 },
 {
-  "model": "cms.category",
+  "model": "cmspages.category",
   "pk": 4,
   "fields": {
     "created": "2020-11-14T15:11:08.755Z",
@@ -4680,7 +4680,7 @@
   }
 },
 {
-  "model": "cms.category",
+  "model": "cmspages.category",
   "pk": 5,
   "fields": {
     "created": "2020-12-03T10:45:29.559Z",
@@ -4691,7 +4691,7 @@
   }
 },
 {
-  "model": "cms.category",
+  "model": "cmspages.category",
   "pk": 6,
   "fields": {
     "created": "2020-12-03T15:04:27.918Z",
@@ -4702,7 +4702,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 1,
   "fields": {
     "created": "2020-11-09T13:33:21.852Z",
@@ -4726,7 +4726,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 2,
   "fields": {
     "created": "2020-11-09T13:36:12.360Z",
@@ -4750,7 +4750,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 3,
   "fields": {
     "created": "2020-11-09T13:36:59.347Z",
@@ -4774,7 +4774,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 4,
   "fields": {
     "created": "2020-11-11T16:49:38.838Z",
@@ -4798,7 +4798,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 5,
   "fields": {
     "created": "2020-11-11T17:18:19.297Z",
@@ -4823,7 +4823,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 6,
   "fields": {
     "created": "2020-12-03T07:45:16.807Z",
@@ -4847,7 +4847,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 7,
   "fields": {
     "created": "2020-12-03T10:33:49.701Z",
@@ -4871,7 +4871,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 8,
   "fields": {
     "created": "2020-12-03T10:51:16.034Z",
@@ -4895,7 +4895,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 9,
   "fields": {
     "created": "2020-12-03T10:52:35.844Z",
@@ -4919,7 +4919,7 @@
   }
 },
 {
-  "model": "cms.publication",
+  "model": "cmspages.publication",
   "pk": 10,
   "fields": {
     "created": "2020-12-03T15:04:45.980Z",
@@ -4943,7 +4943,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 1,
   "fields": {
     "created": "2020-11-09T13:34:17.872Z",
@@ -4960,7 +4960,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 2,
   "fields": {
     "created": "2020-11-09T13:36:12.365Z",
@@ -4977,7 +4977,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 3,
   "fields": {
     "created": "2020-11-09T13:36:59.352Z",
@@ -4994,7 +4994,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 4,
   "fields": {
     "created": "2020-11-11T16:50:10.775Z",
@@ -5011,7 +5011,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 5,
   "fields": {
     "created": "2020-11-11T17:18:19.304Z",
@@ -5028,7 +5028,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 6,
   "fields": {
     "created": "2020-11-20T09:17:52.876Z",
@@ -5045,7 +5045,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 7,
   "fields": {
     "created": "2020-11-20T14:47:36.495Z",
@@ -5062,7 +5062,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 8,
   "fields": {
     "created": "2020-11-20T14:47:59.186Z",
@@ -5079,7 +5079,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 9,
   "fields": {
     "created": "2020-12-03T07:46:20.349Z",
@@ -5096,7 +5096,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 10,
   "fields": {
     "created": "2020-12-03T10:34:07.755Z",
@@ -5113,7 +5113,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 11,
   "fields": {
     "created": "2020-12-03T10:51:16.043Z",
@@ -5130,7 +5130,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 12,
   "fields": {
     "created": "2020-12-03T10:52:35.853Z",
@@ -5147,7 +5147,7 @@
   }
 },
 {
-  "model": "cms.publicationcontext",
+  "model": "cmspages.publicationcontext",
   "pk": 13,
   "fields": {
     "created": "2020-12-03T15:04:45.986Z",
@@ -5164,7 +5164,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 1,
   "fields": {
     "created": "2020-11-24T10:52:29.885Z",
@@ -5175,7 +5175,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 2,
   "fields": {
     "created": "2020-12-03T07:45:16.816Z",
@@ -5186,7 +5186,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 3,
   "fields": {
     "created": "2020-12-03T07:45:16.816Z",
@@ -5197,7 +5197,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 4,
   "fields": {
     "created": "2020-12-03T07:45:16.816Z",
@@ -5208,7 +5208,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 5,
   "fields": {
     "created": "2020-12-03T10:33:49.709Z",
@@ -5219,7 +5219,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 6,
   "fields": {
     "created": "2020-12-03T10:33:49.709Z",
@@ -5230,7 +5230,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 7,
   "fields": {
     "created": "2020-12-03T10:33:49.710Z",
@@ -5241,7 +5241,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 8,
   "fields": {
     "created": "2020-12-03T10:33:49.710Z",
@@ -5252,7 +5252,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 9,
   "fields": {
     "created": "2020-12-03T10:33:49.710Z",
@@ -5263,7 +5263,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 10,
   "fields": {
     "created": "2020-12-03T10:51:16.044Z",
@@ -5274,7 +5274,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 11,
   "fields": {
     "created": "2020-12-03T10:51:16.044Z",
@@ -5285,7 +5285,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 12,
   "fields": {
     "created": "2020-12-03T10:51:16.045Z",
@@ -5296,7 +5296,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 13,
   "fields": {
     "created": "2020-12-03T10:51:16.045Z",
@@ -5307,7 +5307,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 14,
   "fields": {
     "created": "2020-12-03T10:51:16.046Z",
@@ -5318,7 +5318,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 15,
   "fields": {
     "created": "2020-12-03T10:51:16.046Z",
@@ -5329,7 +5329,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 16,
   "fields": {
     "created": "2020-12-03T10:51:16.046Z",
@@ -5340,7 +5340,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 17,
   "fields": {
     "created": "2020-12-03T10:51:16.047Z",
@@ -5351,7 +5351,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 18,
   "fields": {
     "created": "2020-12-03T10:51:16.047Z",
@@ -5362,7 +5362,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 19,
   "fields": {
     "created": "2020-12-03T10:51:16.047Z",
@@ -5373,7 +5373,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 20,
   "fields": {
     "created": "2020-12-03T10:51:16.048Z",
@@ -5384,7 +5384,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 21,
   "fields": {
     "created": "2020-12-03T10:53:12.129Z",
@@ -5395,7 +5395,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 22,
   "fields": {
     "created": "2020-12-03T10:53:12.129Z",
@@ -5406,7 +5406,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 23,
   "fields": {
     "created": "2020-12-03T10:53:12.130Z",
@@ -5417,7 +5417,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 24,
   "fields": {
     "created": "2020-12-03T10:53:12.130Z",
@@ -5428,7 +5428,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 25,
   "fields": {
     "created": "2020-12-03T10:54:05.307Z",
@@ -5439,7 +5439,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 26,
   "fields": {
     "created": "2020-12-03T10:54:05.307Z",
@@ -5450,7 +5450,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 27,
   "fields": {
     "created": "2020-12-03T10:54:05.308Z",
@@ -5461,7 +5461,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 28,
   "fields": {
     "created": "2020-12-03T15:08:36.026Z",
@@ -5472,7 +5472,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 29,
   "fields": {
     "created": "2020-12-03T15:08:36.026Z",
@@ -5483,7 +5483,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 30,
   "fields": {
     "created": "2020-12-03T15:08:36.027Z",
@@ -5494,7 +5494,7 @@
   }
 },
 {
-  "model": "cms.publicationlink",
+  "model": "cmspages.publicationlink",
   "pk": 31,
   "fields": {
     "created": "2020-12-03T15:08:36.027Z",
@@ -5505,7 +5505,7 @@
   }
 },
 {
-  "model": "cms.publicationgallery",
+  "model": "cmspages.publicationgallery",
   "pk": 1,
   "fields": {
     "created": "2020-11-24T09:33:26.374Z",
@@ -5517,7 +5517,7 @@
   }
 },
 {
-  "model": "cms.publicationrelated",
+  "model": "cmspages.publicationrelated",
   "pk": 1,
   "fields": {
     "created": "2020-11-25T09:10:42.440Z",
@@ -5529,7 +5529,7 @@
   }
 },
 {
-  "model": "cms.publicationrelated",
+  "model": "cmspages.publicationrelated",
   "pk": 2,
   "fields": {
     "created": "2020-11-25T09:11:11.987Z",
@@ -5541,7 +5541,7 @@
   }
 },
 {
-  "model": "cms.publicationattachment",
+  "model": "cmspages.publicationattachment",
   "pk": 1,
   "fields": {
     "created": "2020-11-25T09:51:03.248Z",
@@ -5557,7 +5557,7 @@
   }
 },
 {
-  "model": "cms.publicationlocalization",
+  "model": "cmspages.publicationlocalization",
   "pk": 1,
   "fields": {
     "created": "2020-11-09T15:37:55.487Z",

@@ -34,19 +34,17 @@ INSTALLED_APPS = [
     'django_unical_bootstrap_italia',
 
     'taggit',
-    # 'tinymce',
     'nested_admin',
 
-    'cms_templates',
-    'cms_carousels',
-    'cms_menus',
-    'cms_contexts',
-    'cms_medias',
-    'cms',
-    'cms_search',
+    'cms.templates',
+    'cms.contexts',
+    'cms.carousels',
+    'cms.menus',
+    'cms.medias',
+    'cms.pages',
+    'cms.search',
 
     'unical_templates',
-
     'rest_framework',
 
 ]
@@ -79,6 +77,21 @@ LANGUAGES = [('ar', 'Arabic'),
              ('fr', 'French'),
              ('it', 'Italian'),
              ('pt', 'Portuguese')]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    #unicms
+    # 'cms.contexts.middleware.detect_language_middleware',
+    # 'cms.contexts.middleware.show_template_blocks_sections',
+    # 'cms.contexts.middleware.show_cms_draft_mode',
+]
 
 # Static files (CSS, JavaScript, Images)
 STATICFILES_FINDERS = [
@@ -146,12 +159,12 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'cms_search': {
+        'cms.search': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': True,
         },
-        'cms_medias': {
+        'cms.medias': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': True,
@@ -211,8 +224,8 @@ CMS_PUBLICATION_URL_VIEW_REGEXP = f'^(?P<webpath>[\/a-zA-Z0-9\.\-\_]*)({CMS_PUBL
 CMS_HANDLERS_PATHS = [CMS_PUBLICATION_VIEW_PREFIX_PATH,
                       CMS_PUBLICATION_LIST_PREFIX_PATH]
 CMS_APP_REGEXP_URLPATHS = {
-    'cms.handlers.PublicationViewHandler' : CMS_PUBLICATION_URL_VIEW_REGEXP,
-    'cms.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
+    'cms.pages.handlers.PublicationViewHandler' : CMS_PUBLICATION_URL_VIEW_REGEXP,
+    'cms.pages.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
 }
 
 OAS3_CONFIG = {'title': "Portale dell'Università della Calabria",
@@ -246,31 +259,31 @@ MONGO_CONNECTION_PARAMS = dict(username='admin',
 MONGO_DB_NAME = 'unicms'
 MONGO_COLLECTION_NAME = 'search'
 MODEL_TO_MONGO_MAP = {
-    'cms.Page': 'cms_search.models.page_to_entry',
-    'cms.Publication': 'cms_search.models.publication_to_entry'
+    'cms.Page': 'cms.search.models.page_to_entry',
+    'cms.Publication': 'cms.search.models.publication_to_entry'
 }
 
 CMS_HOOKS = {
     'Publication': {
         'PRESAVE': [],
-        'POSTSAVE': ['cms_search.hooks.publication_se_insert',],
-        'PREDELETE': ['cms_search.hooks.searchengine_entry_remove',],
+        'POSTSAVE': ['cms.search.hooks.publication_se_insert',],
+        'PREDELETE': ['cms.search.hooks.searchengine_entry_remove',],
         'POSTDELETE': []
     },
     'Page': {
         'PRESAVE': [],
-        'POSTSAVE': ['cms_search.hooks.page_se_insert',],
-        'PREDELETE': ['cms_search.hooks.searchengine_entry_remove',],
+        'POSTSAVE': ['cms.search.hooks.page_se_insert',],
+        'PREDELETE': ['cms.search.hooks.searchengine_entry_remove',],
         'POSTDELETE': []
     },
     'Media': {
-        'PRESAVE': ['cms_medias.hooks.set_file_meta',],
+        'PRESAVE': ['cms.medias.hooks.set_file_meta',],
         'POSTSAVE': [],
         'PREDELETE': [],
         'POSTDELETE': []
     },
     'PublicationAttachment': {
-        'PRESAVE': ['cms_medias.hooks.set_file_meta',],
+        'PRESAVE': ['cms.medias.hooks.set_file_meta',],
         'POSTSAVE': [],
         'PREDELETE': [],
         'POSTDELETE': []
