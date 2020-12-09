@@ -16,6 +16,10 @@ from django.utils.translation import gettext, gettext_lazy as _
 from . models import *
 
 
+class AbstractCreatedModifiedBy(admin.ModelAdmin):
+    readonly_fields = ('created_by', 'modified_by')
+
+
 class WebPathAdminInline(admin.TabularInline):
     model = WebPath
     extra = 0
@@ -31,7 +35,7 @@ class WebSiteAdmin(admin.ModelAdmin):
 class EditorialBoardEditorsAdminInline(admin.TabularInline):
     model = EditorialBoardEditors
     extra = 0
-    readonly_fields = ('created', 'modified')
+    readonly_fields = ('created', 'modified', 'created_by', 'modified_by')
     raw_id_fields = ('user', 'webpath')
 
 
@@ -46,7 +50,7 @@ class WebPathAdmin(admin.ModelAdmin):
 
 
 @admin.register(EditorialBoardEditors)
-class EditorialBoardEditorsAdmin(admin.ModelAdmin):
+class EditorialBoardEditorsAdmin(AbstractCreatedModifiedBy):
     list_display = ('user', 'permission', 'webpath', 'is_active')
     list_filter = ('permission', 'created', 'modified', 'is_active')
     search_fields = ('user', )

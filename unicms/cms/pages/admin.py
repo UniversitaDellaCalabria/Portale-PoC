@@ -11,16 +11,13 @@ from django.utils import timezone
 from django.utils.module_loading import import_string
 from django.utils.translation import gettext, gettext_lazy as _
 
+from cms.contexts.admin import AbstractCreatedModifiedBy
 from . admin_inlines import *
 from . models import *
 from . forms import *
 from . utils import copy_page_as_draft
 
 logger = logging.getLogger(__name__)
-
-
-class AbstractCreateModifiedBy(admin.ModelAdmin):
-    readonly_fields = ('created_by', 'modified_by')
 
 
 class AbstractPreviewableAdmin(admin.ModelAdmin):
@@ -69,7 +66,7 @@ make_page_draft.short_description = _("Make page Draft")
 
 
 @admin.register(Page)
-class PageAdmin(AbstractPreviewableAdmin):
+class PageAdmin(AbstractCreatedModifiedBy):
     search_fields = ('name',)
     list_display  = ('webpath', 'name',
                      'date_start', 'date_end',
@@ -109,7 +106,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Publication)
-class PublicationAdmin(AbstractCreateModifiedBy):
+class PublicationAdmin(AbstractCreatedModifiedBy):
     search_fields = ('title',)
     list_display  = ('title', 'slug', 'date_start', 'date_end', 'is_active',)
     list_filter   = ('state', 'is_active',
@@ -131,7 +128,7 @@ class PublicationAdmin(AbstractCreateModifiedBy):
         # }
 
 @admin.register(PublicationLocalization)
-class PublicationLocalizationAdmin(AbstractCreateModifiedBy):
+class PublicationLocalizationAdmin(AbstractCreatedModifiedBy):
     search_fields = ('publication__title',)
     list_display  = ('publication', 'language', 'is_active',)
     list_filter   = ('publication__state', 'is_active',

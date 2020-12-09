@@ -61,10 +61,11 @@ class ApiSearchEngine(APIView):
                 query = {"$text": {"$search": search}}            
         
         # year
-        year = request.GET.get('year', timezone.now().year)
-        if isinstance(year, str):
-            year = int(year)
-        query['year'] = year
+        year = request.GET.get('year', None)
+        if year:
+            if isinstance(year, str):
+                year = int(year)
+            query['year'] = year
         
         # date range
         date_start = request.GET.get('date_start')
