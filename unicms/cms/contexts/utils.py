@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.utils import translation
+from django.utils.module_loading import import_string
 from django.utils.translation import gettext as _
 from django.utils.safestring import mark_safe
 from django.template.loader import get_template, render_to_string
@@ -12,6 +13,9 @@ from django.template.exceptions import (TemplateDoesNotExist,
                                         TemplateSyntaxError)
 
 logger = logging.getLogger(__name__)
+
+CMS_HOOKS = {k:{kk:[import_string(i) for i in vv] for kk,vv in v.items()}
+             for k,v in getattr(settings, 'CMS_HOOKS', {}).items()}
 CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 
@@ -81,3 +85,16 @@ def set_created_modified_by(obj, user):
     if not obj.created_by:
         obj.created_by = user
     obj.modified_by = user
+
+
+def load_hooks(obj, flow_type, *args, **kwargs):
+    _msg_hook_exp = '{} Hook {} failed with: {}'
+    type_hooks = CMS_HOOKS.get(obj.__class__.__name__, {})
+    flow_hooks = type_hooks.get(flow_type, [])
+    
+    # pre-Save HOOKS call
+    for hook in flow_hooks:
+        try:
+            hook(obj)
+        except Exception as e:
+            logger.exception(_msg_hook_exp.format(flow_type, hook, e))

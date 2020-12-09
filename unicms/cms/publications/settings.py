@@ -5,10 +5,6 @@ from django.utils.translation import gettext_lazy as _
 
 logger = logging.getLogger(__name__)
 
-CMS_IMAGE_CATEGORY_SIZE = 128
-CMS_IMAGE_THUMBSIZE = 128
-
-
 # as documentation reference or default
 CMS_PUBLICATION_VIEW_PREFIX_PATH = 'contents/news/view/'
 CMS_PUBLICATION_LIST_PREFIX_PATH = 'contents/news/list'

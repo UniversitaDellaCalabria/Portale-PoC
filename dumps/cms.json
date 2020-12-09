@@ -540,7 +540,7 @@
     "name": "publication-main-preview",
     "description": null,
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_blocks %}\r\n\r\n            <div class=\"row negative-mt-5 mb-3\" >\r\n                <div class=\"col-12 col-md-3\">\r\n                    <div class=\"section-title-label px-3 py-1\">\r\n                        <h3>Unical <span class=\"super-bold\">world</span></h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12 col-lg-9\">\r\n                    {% load_publications_preview template=\"publications_preview_v3.html\" %}\r\n                </div>\r\n                <div class=\"col-12 col-lg-3\">\r\n                    {% include \"unical_portale_agenda.html\" %}\r\n                </div>\r\n            </div>"
+    "content": "{% load unicms_pages %}{% load unicms_publications %}\r\n\r\n            <div class=\"row negative-mt-5 mb-3\" >\r\n                <div class=\"col-12 col-md-3\">\r\n                    <div class=\"section-title-label px-3 py-1\">\r\n                        <h3>Unical <span class=\"super-bold\">world</span></h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12 col-lg-9\">\r\n                    {% load_publications_preview template=\"publications_preview_v3.html\" %}\r\n                </div>\r\n                <div class=\"col-12 col-lg-3\">\r\n                    {% include \"unical_portale_agenda.html\" %}\r\n                </div>\r\n            </div>"
   }
 },
 {
@@ -605,7 +605,7 @@
     "name": "publication-main-preview-DIPARTIMENTO",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load i18n %}\r\n{% load unicms_blocks %}\r\n\r\n<div class=\"row\">\r\n\r\n    <div class=\"col-12 col-lg-6\">\r\n        <div class=\"row negative-mt-5 mb-3\" >\r\n            <div class=\"col-12 col-md-6\">\r\n                <div class=\"section-title-label px-3 pt-3 pb-1\">\r\n                    <h5>{% trans \"tutto per gli studenti\" %}</h5>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        {% load_publications_preview template=\"publications_preview_dipartimento_v3.html\" %}\r\n    </div>\r\n    \r\n    <div class=\"col-12 col-lg-3\">\r\n       <div class=\"row negative-mt-5 mb-3\" >\r\n            <div class=\"col-12\">\r\n                <div class=\"section-title-label px-3 pt-3 pb-1\">\r\n                    <h5>{% trans \"primo piano\" %}</h5>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        {% load_publications_preview template=\"unical_portale_dipartimento_primo_piano_v3.html\" %}\r\n    </div>\r\n\r\n    <div class=\"col-12 col-lg-3\">\r\n        <div class=\"row negative-mt-5 mb-3\" >\r\n            <div class=\"col-12\">\r\n                <div class=\"px-3 pt-3 pb-1\">\r\n                    <h5>&nbsp;</h5>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        {% include \"unical_portale_agenda.html\" %}\r\n    </div>\r\n    \r\n</div>"
+    "content": "{% load i18n %}\r\n{% load unicms_pages %}{% load unicms_publications %}\r\n\r\n<div class=\"row\">\r\n\r\n    <div class=\"col-12 col-lg-6\">\r\n        <div class=\"row negative-mt-5 mb-3\" >\r\n            <div class=\"col-12 col-md-6\">\r\n                <div class=\"section-title-label px-3 pt-3 pb-1\">\r\n                    <h5>{% trans \"tutto per gli studenti\" %}</h5>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        {% load_publications_preview template=\"publications_preview_dipartimento_v3.html\" %}\r\n    </div>\r\n    \r\n    <div class=\"col-12 col-lg-3\">\r\n       <div class=\"row negative-mt-5 mb-3\" >\r\n            <div class=\"col-12\">\r\n                <div class=\"section-title-label px-3 pt-3 pb-1\">\r\n                    <h5>{% trans \"primo piano\" %}</h5>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        {% load_publications_preview template=\"unical_portale_dipartimento_primo_piano_v3.html\" %}\r\n    </div>\r\n\r\n    <div class=\"col-12 col-lg-3\">\r\n        <div class=\"row negative-mt-5 mb-3\" >\r\n            <div class=\"col-12\">\r\n                <div class=\"px-3 pt-3 pb-1\">\r\n                    <h5>&nbsp;</h5>\r\n                </div>\r\n            </div>\r\n        </div>\r\n        {% include \"unical_portale_agenda.html\" %}\r\n    </div>\r\n    \r\n</div>"
   }
 },
 {
@@ -631,7 +631,7 @@
     "name": "Publications Stacked",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_blocks %}\r\n\r\n{% load_publications_preview template=\"publications_preview_stacked_v3.html\" %}"
+    "content": "{% load unicms_pages %}{% load unicms_publications %}\r\n\r\n{% load_publications_preview template=\"publications_preview_stacked_v3.html\" %}"
   }
 },
 {
@@ -683,7 +683,7 @@
     "name": "Publications Stacked Expanded",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_blocks %}\r\n\r\n{% load_publications_preview template=\"publications_preview_stacked_big_v3.html\" %}"
+    "content": "{% load unicms_pages %}{% load unicms_publications %}\r\n\r\n{% load_publications_preview template=\"publications_preview_stacked_big_v3.html\" %}"
   }
 },
 {
@@ -4702,7 +4702,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 1,
   "fields": {
     "created": "2020-11-09T13:33:21.852Z",
@@ -4726,7 +4726,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 2,
   "fields": {
     "created": "2020-11-09T13:36:12.360Z",
@@ -4750,7 +4750,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 3,
   "fields": {
     "created": "2020-11-09T13:36:59.347Z",
@@ -4774,7 +4774,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 4,
   "fields": {
     "created": "2020-11-11T16:49:38.838Z",
@@ -4798,7 +4798,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 5,
   "fields": {
     "created": "2020-11-11T17:18:19.297Z",
@@ -4823,7 +4823,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 6,
   "fields": {
     "created": "2020-12-03T07:45:16.807Z",
@@ -4847,7 +4847,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 7,
   "fields": {
     "created": "2020-12-03T10:33:49.701Z",
@@ -4871,7 +4871,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 8,
   "fields": {
     "created": "2020-12-03T10:51:16.034Z",
@@ -4895,7 +4895,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 9,
   "fields": {
     "created": "2020-12-03T10:52:35.844Z",
@@ -4919,7 +4919,7 @@
   }
 },
 {
-  "model": "cmspages.publication",
+  "model": "cmspublications.publication",
   "pk": 10,
   "fields": {
     "created": "2020-12-03T15:04:45.980Z",
@@ -4943,7 +4943,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 1,
   "fields": {
     "created": "2020-11-09T13:34:17.872Z",
@@ -4960,7 +4960,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 2,
   "fields": {
     "created": "2020-11-09T13:36:12.365Z",
@@ -4977,7 +4977,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 3,
   "fields": {
     "created": "2020-11-09T13:36:59.352Z",
@@ -4994,7 +4994,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 4,
   "fields": {
     "created": "2020-11-11T16:50:10.775Z",
@@ -5011,7 +5011,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 5,
   "fields": {
     "created": "2020-11-11T17:18:19.304Z",
@@ -5028,7 +5028,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 6,
   "fields": {
     "created": "2020-11-20T09:17:52.876Z",
@@ -5045,7 +5045,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 7,
   "fields": {
     "created": "2020-11-20T14:47:36.495Z",
@@ -5062,7 +5062,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 8,
   "fields": {
     "created": "2020-11-20T14:47:59.186Z",
@@ -5079,7 +5079,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 9,
   "fields": {
     "created": "2020-12-03T07:46:20.349Z",
@@ -5096,7 +5096,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 10,
   "fields": {
     "created": "2020-12-03T10:34:07.755Z",
@@ -5113,7 +5113,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 11,
   "fields": {
     "created": "2020-12-03T10:51:16.043Z",
@@ -5130,7 +5130,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 12,
   "fields": {
     "created": "2020-12-03T10:52:35.853Z",
@@ -5147,7 +5147,7 @@
   }
 },
 {
-  "model": "cmspages.publicationcontext",
+  "model": "cmspublications.publicationcontext",
   "pk": 13,
   "fields": {
     "created": "2020-12-03T15:04:45.986Z",
@@ -5164,7 +5164,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 1,
   "fields": {
     "created": "2020-11-24T10:52:29.885Z",
@@ -5175,7 +5175,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 2,
   "fields": {
     "created": "2020-12-03T07:45:16.816Z",
@@ -5186,7 +5186,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 3,
   "fields": {
     "created": "2020-12-03T07:45:16.816Z",
@@ -5197,7 +5197,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 4,
   "fields": {
     "created": "2020-12-03T07:45:16.816Z",
@@ -5208,7 +5208,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 5,
   "fields": {
     "created": "2020-12-03T10:33:49.709Z",
@@ -5219,7 +5219,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 6,
   "fields": {
     "created": "2020-12-03T10:33:49.709Z",
@@ -5230,7 +5230,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 7,
   "fields": {
     "created": "2020-12-03T10:33:49.710Z",
@@ -5241,7 +5241,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 8,
   "fields": {
     "created": "2020-12-03T10:33:49.710Z",
@@ -5252,7 +5252,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 9,
   "fields": {
     "created": "2020-12-03T10:33:49.710Z",
@@ -5263,7 +5263,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 10,
   "fields": {
     "created": "2020-12-03T10:51:16.044Z",
@@ -5274,7 +5274,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 11,
   "fields": {
     "created": "2020-12-03T10:51:16.044Z",
@@ -5285,7 +5285,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 12,
   "fields": {
     "created": "2020-12-03T10:51:16.045Z",
@@ -5296,7 +5296,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 13,
   "fields": {
     "created": "2020-12-03T10:51:16.045Z",
@@ -5307,7 +5307,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 14,
   "fields": {
     "created": "2020-12-03T10:51:16.046Z",
@@ -5318,7 +5318,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 15,
   "fields": {
     "created": "2020-12-03T10:51:16.046Z",
@@ -5329,7 +5329,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 16,
   "fields": {
     "created": "2020-12-03T10:51:16.046Z",
@@ -5340,7 +5340,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 17,
   "fields": {
     "created": "2020-12-03T10:51:16.047Z",
@@ -5351,7 +5351,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 18,
   "fields": {
     "created": "2020-12-03T10:51:16.047Z",
@@ -5362,7 +5362,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 19,
   "fields": {
     "created": "2020-12-03T10:51:16.047Z",
@@ -5373,7 +5373,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 20,
   "fields": {
     "created": "2020-12-03T10:51:16.048Z",
@@ -5384,7 +5384,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 21,
   "fields": {
     "created": "2020-12-03T10:53:12.129Z",
@@ -5395,7 +5395,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 22,
   "fields": {
     "created": "2020-12-03T10:53:12.129Z",
@@ -5406,7 +5406,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 23,
   "fields": {
     "created": "2020-12-03T10:53:12.130Z",
@@ -5417,7 +5417,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 24,
   "fields": {
     "created": "2020-12-03T10:53:12.130Z",
@@ -5428,7 +5428,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 25,
   "fields": {
     "created": "2020-12-03T10:54:05.307Z",
@@ -5439,7 +5439,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 26,
   "fields": {
     "created": "2020-12-03T10:54:05.307Z",
@@ -5450,7 +5450,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 27,
   "fields": {
     "created": "2020-12-03T10:54:05.308Z",
@@ -5461,7 +5461,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 28,
   "fields": {
     "created": "2020-12-03T15:08:36.026Z",
@@ -5472,7 +5472,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 29,
   "fields": {
     "created": "2020-12-03T15:08:36.026Z",
@@ -5483,7 +5483,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 30,
   "fields": {
     "created": "2020-12-03T15:08:36.027Z",
@@ -5494,7 +5494,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlink",
+  "model": "cmspublications.publicationlink",
   "pk": 31,
   "fields": {
     "created": "2020-12-03T15:08:36.027Z",
@@ -5505,7 +5505,7 @@
   }
 },
 {
-  "model": "cmspages.publicationgallery",
+  "model": "cmspublications.publicationgallery",
   "pk": 1,
   "fields": {
     "created": "2020-11-24T09:33:26.374Z",
@@ -5517,7 +5517,7 @@
   }
 },
 {
-  "model": "cmspages.publicationrelated",
+  "model": "cmspublications.publicationrelated",
   "pk": 1,
   "fields": {
     "created": "2020-11-25T09:10:42.440Z",
@@ -5529,7 +5529,7 @@
   }
 },
 {
-  "model": "cmspages.publicationrelated",
+  "model": "cmspublications.publicationrelated",
   "pk": 2,
   "fields": {
     "created": "2020-11-25T09:11:11.987Z",
@@ -5541,7 +5541,7 @@
   }
 },
 {
-  "model": "cmspages.publicationattachment",
+  "model": "cmspublications.publicationattachment",
   "pk": 1,
   "fields": {
     "created": "2020-11-25T09:51:03.248Z",
@@ -5557,7 +5557,7 @@
   }
 },
 {
-  "model": "cmspages.publicationlocalization",
+  "model": "cmspublications.publicationlocalization",
   "pk": 1,
   "fields": {
     "created": "2020-11-09T15:37:55.487Z",

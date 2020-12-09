@@ -8,7 +8,8 @@
 {% load unicms_contexts %}
 {% load unicms_menus %}
 {% load unicms_templates %}
-{% load unicms_blocks %}
+{% load unicms_pages %}
+{% load unicms_publications %}
 
 
 {% block container %}
@@ -154,7 +155,7 @@ page_number={% if request.GET.page_number %}{{ request.GET.page_number }}{% else
 &lang={{ request.LANGUAGE_CODE }}`
 
     axios
-      .get('{% url "unicms:api-news-by-contexts" webpath_id=webpath.pk %}'+get_args)
+      .get('{% url "unicms_api:api-news-by-contexts" webpath_id=webpath.pk %}'+get_args)
       .then(response => (this.items = response.data))
       .then(response => (this.newsLoaded = true))
   },

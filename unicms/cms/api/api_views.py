@@ -12,10 +12,10 @@ from rest_framework.views import APIView
 from cms.contexts.decorators import detect_language
 from cms.contexts.models import WebPath
 
-from . models import *
-from . paginators import Paginator, Page
-from . serializers import *
-from . utils import publication_context_base_filter
+from cms.publications.models import Publication, PublicationContext
+from cms.publications.paginators import Paginator
+from cms.api.serializers import *
+from cms.publications.utils import publication_context_base_filter
 
 
 class PublicationDetail(generics.RetrieveAPIView):

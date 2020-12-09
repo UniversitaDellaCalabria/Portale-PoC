@@ -14,8 +14,9 @@ from django.utils.translation import gettext_lazy as _
 from cms.contexts.handlers import BaseContentHandler
 from cms.contexts.models import WebPath
 from cms.contexts.utils import contextualize_template, sanitize_path
+from cms.pages.models import Category, Page
 
-from . models import PublicationContext, Category, Page
+from . models import PublicationContext
 from . settings import *
 from . utils import publication_base_filter, publication_context_base_filter
 

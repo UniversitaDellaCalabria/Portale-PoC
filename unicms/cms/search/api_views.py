@@ -18,9 +18,10 @@ from rest_framework.exceptions import APIException
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from cms.pages.models import Page, Publication
 from cms.contexts.decorators import detect_language
 from cms.contexts.models import WebPath
+from cms.pages.models import Page
+from cms.publications.models import Publication
 
 from . import MongoClientFactory
 

@@ -76,11 +76,11 @@ class NavigationBarItem(TimeStampedModel, SortableModel, ActivableModel,
                                related_name="related_parent")
     url = models.CharField(help_text=_("url"),
                            null=True, blank=True, max_length=2048)
-    publication = models.ForeignKey('cmspages.Publication',
+    publication = models.ForeignKey('cmspublications.Publication',
                                     null=True, blank=True,
                                     related_name='pub',
                                     on_delete=models.CASCADE)
-    inherited_content = models.ForeignKey('cmspages.Publication',
+    inherited_content = models.ForeignKey('cmspublications.Publication',
                                           null=True, blank=True,
                                           related_name='inherited_content',
                                           on_delete=models.CASCADE,

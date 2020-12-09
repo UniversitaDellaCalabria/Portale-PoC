@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'cms.menus',
     'cms.medias',
     'cms.pages',
+    'cms.publications',
+    'cms.api',
     'cms.search',
 
     'unical_templates',
@@ -224,8 +226,8 @@ CMS_PUBLICATION_URL_VIEW_REGEXP = f'^(?P<webpath>[\/a-zA-Z0-9\.\-\_]*)({CMS_PUBL
 CMS_HANDLERS_PATHS = [CMS_PUBLICATION_VIEW_PREFIX_PATH,
                       CMS_PUBLICATION_LIST_PREFIX_PATH]
 CMS_APP_REGEXP_URLPATHS = {
-    'cms.pages.handlers.PublicationViewHandler' : CMS_PUBLICATION_URL_VIEW_REGEXP,
-    'cms.pages.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
+    'cms.publications.handlers.PublicationViewHandler' : CMS_PUBLICATION_URL_VIEW_REGEXP,
+    'cms.publications.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
 }
 
 OAS3_CONFIG = {'title': "Portale dell'Università della Calabria",

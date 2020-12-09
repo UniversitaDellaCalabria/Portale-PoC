@@ -1,4 +1,4 @@
-from cms.pages.utils import load_hooks
+from cms.contexts.utils import load_hooks
 from django.db.models.signals import (pre_save, post_save,
                                       pre_delete, post_delete)
 

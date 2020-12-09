@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from . models import *
+from cms.publications.models import *
 
 
 class PublicationContextSerializer(serializers.HyperlinkedModelSerializer):

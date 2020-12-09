@@ -5,11 +5,8 @@ from django.urls import re_path, path, include
 
 from cms.menus.api_views import ApiMenu
 from . import api_views
-from . views import *
 
 urlpatterns = []
-
-CMS_PATH_PREFIX = getattr(settings, 'CMS_PATH_PREFIX', '')
 
 # Public API Resources
 urlpatterns += path(f'api/contexts',
@@ -31,6 +28,3 @@ urlpatterns += path(f'api/menu/<int:menu_id>',
 urlpatterns += path(f'api/news/detail/<str:slug>',
                     api_views.PublicationDetail.as_view(),
                     name='publication-detail'),
-
-# uniCMS dispatcher
-urlpatterns += re_path(f'{CMS_PATH_PREFIX}.*', cms_dispatch, name='cms_dispatch'),

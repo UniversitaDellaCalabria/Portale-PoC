@@ -1,3 +1,6 @@
+CMS_IMAGE_CATEGORY_SIZE = 128
+CMS_IMAGE_THUMBSIZE = 128
+
 # file validation
 FILETYPE_PDF = ('application/pdf',)
 FILETYPE_DATA = ('text/csv', 'application/json',
