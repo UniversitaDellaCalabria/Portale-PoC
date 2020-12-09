@@ -1,8 +1,8 @@
 Installing MongoDB on Debian10
 ````
-apt install -y mongodb-org
-wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
-echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+apt -y install gnupg wget
+wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
+echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 apt update
 apt install -y mongodb-org
 ````
@@ -164,7 +164,7 @@ Let's search for something ...
 ````
 # fulltext search
 
-search_q = {'year': 2018, 
+search_q = {'year': 2018,
             '$text': {'$search': "e via"}}
 collection.find_one(search_q, {'relevance': {'$meta': "textScore"}})
 
