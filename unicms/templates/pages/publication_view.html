@@ -140,7 +140,7 @@
                 <ul class="pl-0" style="list-style: none">
                 {% for related_pub in publication_context.publication.related_publications %}
                     <li class="mb-3">
-                        <a href="#">{{ related_pub.related }}</a>
+                        <a href="{{ related_pub.first_available_url }}">{{ related_pub.related }}</a>
                         <br>
                         <svg class="icon icon-xs">
                             <use xlink:href="{% static 'svg/sprite.svg' %}#it-clock"></use>

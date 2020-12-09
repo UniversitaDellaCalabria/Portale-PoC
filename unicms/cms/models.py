@@ -336,7 +336,14 @@ class Publication(AbstractPublication, AbstractPublicable,
     def related_contexts(self):
         return PublicationContext.objects.filter(publication=self,
                                                  webpath__is_active=True)
-
+    
+    @property
+    def first_available_url(self):
+        pubcontx = PublicationContext.objects.filter(publication=self,
+                                                     webpath__is_active=True)
+        if pubcontx:
+            return pubcontx.first().url
+    
     @property
     def related_links(self):
         return self.publicationlink_set.all()
