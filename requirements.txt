@@ -27,3 +27,4 @@ pyyaml
 pymongo>=3.11.0
 
 pydantic
+django-htmlmin>=0.11.0

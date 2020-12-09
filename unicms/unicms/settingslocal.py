@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'bootstrap_italia_template',
     'django_unical_bootstrap_italia',
-
+    
     'taggit',
     'nested_admin',
 
@@ -88,11 +88,19 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    # html minify
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
+
     # unicms
     'cms.contexts.middleware.detect_language_middleware',
     'cms.contexts.middleware.show_template_blocks_sections',
     'cms.contexts.middleware.show_cms_draft_mode',
 ]
+
+# HTML MINIFY
+HTML_MINIFY = True
+EXCLUDE_FROM_MINIFYING = ('^admin/',)
 
 # Static files (CSS, JavaScript, Images)
 STATICFILES_FINDERS = [
