@@ -10,9 +10,11 @@
 {% load unicms_templates %}
 {% load unicms_blocks %}
 
+<!-- SEO  -->
+{% block page_meta_description %}{{ publication_context.publication.subheading }}{% endblock page_meta_description %}
+{% block page_meta_keywords %}{% for tag in publication_context.publication.tags.all %}{{ tag }},{% endfor %}{% endblock page_meta_keywords %}
 
 {% block container %}
-
 {% breadcrumbs leaf=handler %}
 
 <div class="container">
