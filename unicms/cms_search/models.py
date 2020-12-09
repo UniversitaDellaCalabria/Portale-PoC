@@ -3,18 +3,25 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
 
 from datetime import datetime
-from typing import List, Optional
+from typing import Dict, List, Optional
 from pydantic import BaseModel
 
 DEFAULT_LANGUAGE = dict(settings.LANGUAGES)[settings.LANGUAGE].lower()
+
+
+class SearchTranslationEntry(BaseModel):
+    language : str
+    title : str
+    subheading : str
+    content : str
 
 
 class SearchEntry(BaseModel):
     title : str
     heading : str
     content_type : str
-    image : str
-    content_id : int
+    content_id : str
+    image : Optional[str]
     content : Optional[str]
     sites : List[str]
     urls : List[str]
@@ -24,8 +31,8 @@ class SearchEntry(BaseModel):
     published : datetime
     viewed : Optional[int]
     relevance : Optional[int]
-    language : Optional[str]
-    translations : List[dict] = None
+    language : str
+    translations : List[SearchTranslationEntry] = None
     day : int
     month : int
     year : int
@@ -54,7 +61,7 @@ def page_to_entry(page_object):
         "year": page_object.date_start.year
     }
     search_entry = SearchEntry(**data)
-    return search_entry
+    return search_entry.dict()
 
 
 def publication_to_entry(pub_object):
@@ -92,4 +99,4 @@ def publication_to_entry(pub_object):
         "year": pub_object.date_start.year
     }
     search_entry = SearchEntry(**data)
-    return search_entry
+    return search_entry.dict()

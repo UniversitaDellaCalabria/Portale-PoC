@@ -54,7 +54,7 @@ class Command(BaseCommand):
             _func = import_string(settings.MODEL_TO_MONGO_MAP[content_type])
             for obj in model.objects.filter(is_active=True):
                 if obj.is_publicable:
-                    entry = _func(obj).__dict__
+                    entry = _func(obj)
                     data.append(entry)
             collection.insert_many(data, ordered=False)
             count = collection.find(query).count()

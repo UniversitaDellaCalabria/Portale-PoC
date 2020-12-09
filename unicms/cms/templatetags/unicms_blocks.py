@@ -51,7 +51,8 @@ def load_publications_preview(context, template,
     query_params = dict(webpath=context['webpath'],
                         is_active=True,
                         publication__is_active=True,
-                        publication__date_start__lte=now)
+                        publication__date_start__lte=now,
+                        publication__state="published")
     if section:
         query_params['section'] = section
     if in_evidence:
