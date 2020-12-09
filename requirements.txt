@@ -8,7 +8,10 @@ django-nested-admin>=3.3.2
 # django-filebrowser>=3.13.1
 
 django-taggit
-pillow
+
+# content type
+pillow>=7.2.0
+magic>=0.4.18
 
 # mongo
 pymongo>=3.11.0
