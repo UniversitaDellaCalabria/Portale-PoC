@@ -42,6 +42,7 @@ class WebPathAdmin(admin.ModelAdmin):
     search_fields = ('name', 'path',)
     readonly_fields = ('fullpath', 'created', 'modified')
     inlines = (EditorialBoardEditorsAdminInline,)
+    raw_id_fields = ['parent', 'alias']
 
 
 @admin.register(EditorialBoardEditors)

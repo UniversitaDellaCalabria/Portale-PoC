@@ -74,13 +74,14 @@ class PageAdmin(AbstractPreviewableAdmin):
     list_display  = ('webpath', 'name',
                      'date_start', 'date_end',
                      'is_active', 'state')
-    list_filter   = ('state', 'is_active', 'type',
+    list_filter   = ('webpath__site', 'state', 'is_active', 'type',
                      'created', 'modified', 'date_start', 'date_end')
     readonly_fields = ('created_by', 'modified_by', 'draft_of')
     inlines       = (PageMenuInline,
                      PageCarouselInline, PageBlockInline, 
                      PageRelatedInline, PageLinkInline)
     actions = AbstractPreviewableAdmin.actions + [make_page_draft,]
+    raw_id_fields = ['webpath', 'base_template']
     
     def save_model(self, request, obj, form, change):
         super(PageAdmin, self).save_model(request, obj, form, change)

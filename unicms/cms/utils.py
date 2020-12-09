@@ -10,10 +10,8 @@ from . import settings as app_settings
 logger = logging.getLogger(__name__)
 
 
-CMS_PRESAVE_HOOKS = {k:[import_string(i) for i in v] 
-                     for k,v in getattr(settings, 'CMS_PRESAVE_HOOKS', {}).items()}
-CMS_POSTSAVE_HOOKS = {k:[import_string(i) for i in v]
-                      for k,v in getattr(settings, 'CMS_POSTSAVE_HOOKS', {}).items()}
+CMS_HOOKS = {k:{kk:[import_string(i) for i in vv] for kk,vv in v.items()}
+             for k,v in getattr(settings, 'CMS_HOOKS', {}).items()}
 
 
 def load_app_settings():
@@ -72,20 +70,14 @@ def copy_page_as_draft(obj):
     return new_obj
 
 
-def save_hooks(obj, *args, **kwargs):
-    _msg_hook_exp = 'Save Hook {} failed with: {}'
-    # pre-Save HOOKS call
-    for hook in CMS_PRESAVE_HOOKS.get(obj.__class__.__name__, {}):
-        try:
-            hook(obj)
-        except Exception as e:
-            logger.exception(_msg_hook_exp.format(hook, e))
-        
-    super(obj.__class__, obj).save(*args, **kwargs)
+def load_hooks(obj, flow_type, *args, **kwargs):
+    _msg_hook_exp = '{} Hook {} failed with: {}'
+    type_hooks = CMS_HOOKS.get(obj.__class__.__name__, {})
+    flow_hooks = type_hooks.get(flow_type, [])
     
-    # post-Save HOOKS call
-    for hook in CMS_POSTSAVE_HOOKS.get(obj.__class__.__name__, {}):
+    # pre-Save HOOKS call
+    for hook in flow_hooks:
         try:
             hook(obj)
         except Exception as e:
-            logger.exception(_msg_hook_exp.format(hook, e))
+            logger.exception(_msg_hook_exp.format(flow_type, hook, e))

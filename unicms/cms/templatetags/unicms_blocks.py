@@ -78,3 +78,8 @@ def load_publications_preview(context, template,
     data = {'publications': pub_in_context}
     return handle_faulty_templates(template, data,
                                    name='load_publications_preview')
+
+
+@register.simple_tag
+def cms_categories():
+    return Category.objects.values_list('name', flat=1)

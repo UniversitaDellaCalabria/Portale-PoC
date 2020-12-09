@@ -114,6 +114,30 @@
   }
 },
 {
+  "model": "taggit.tag",
+  "pk": 10,
+  "fields": {
+    "name": "magnam",
+    "slug": "magnam"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 11,
+  "fields": {
+    "name": "motore di ricerca",
+    "slug": "motore-di-ricerca"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 12,
+  "fields": {
+    "name": "search",
+    "slug": "search"
+  }
+},
+{
   "model": "taggit.taggeditem",
   "pk": 1,
   "fields": {
@@ -429,6 +453,24 @@
   }
 },
 {
+  "model": "taggit.taggeditem",
+  "pk": 45,
+  "fields": {
+    "tag": 11,
+    "content_type": 28,
+    "object_id": 20
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 46,
+  "fields": {
+    "tag": 12,
+    "content_type": 28,
+    "object_id": 20
+  }
+},
+{
   "model": "cms_templates.pagetemplate",
   "pk": 1,
   "fields": {
@@ -473,6 +515,18 @@
     "is_active": true,
     "name": "Portale Università - Menu Publications Expanded Stack",
     "template_file": "two_columns.html",
+    "note": ""
+  }
+},
+{
+  "model": "cms_templates.pagetemplate",
+  "pk": 6,
+  "fields": {
+    "created": "2020-12-06T15:27:09.964Z",
+    "modified": "2020-12-06T15:27:09.964Z",
+    "is_active": true,
+    "name": "Motore di Ricerca",
+    "template_file": "portale_home_v3.html",
     "note": ""
   }
 },
@@ -698,6 +752,19 @@
   }
 },
 {
+  "model": "cms_templates.templateblock",
+  "pk": 18,
+  "fields": {
+    "created": "2020-12-06T15:12:04.343Z",
+    "modified": "2020-12-06T15:29:12.483Z",
+    "is_active": true,
+    "name": "Motore di Ricerca",
+    "description": "search engine",
+    "type": "cms_templates.blocks.HtmlBlock",
+    "content": "{% include \"search_engine.html\" %}"
+  }
+},
+{
   "model": "cms_templates.pagetemplateblock",
   "pk": 1,
   "fields": {
@@ -850,6 +917,19 @@
     "is_active": true,
     "template": 4,
     "block": 12,
+    "section": "1"
+  }
+},
+{
+  "model": "cms_templates.pagetemplateblock",
+  "pk": 15,
+  "fields": {
+    "created": "2020-12-06T15:27:09.964Z",
+    "modified": "2020-12-06T15:27:09.964Z",
+    "order": 10,
+    "is_active": true,
+    "template": 6,
+    "block": 18,
     "section": "1"
   }
 },
@@ -3565,15 +3645,6 @@
 },
 {
   "model": "cms_contexts.website",
-  "pk": 1,
-  "fields": {
-    "name": "example.com",
-    "domain": "example.com",
-    "is_active": false
-  }
-},
-{
-  "model": "cms_contexts.website",
   "pk": 2,
   "fields": {
     "name": "Portale dell'Università della Calabria",
@@ -3747,6 +3818,22 @@
     "alias_url": "",
     "path": "futuri-studenti/",
     "fullpath": "/campus/servizi/futuri-studenti/",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.webpath",
+  "pk": 11,
+  "fields": {
+    "created": "2020-12-06T15:04:22.135Z",
+    "modified": "2020-12-06T15:08:57.658Z",
+    "site": 2,
+    "name": "Motore di Ricerca",
+    "parent": 1,
+    "alias": null,
+    "alias_url": "",
+    "path": "search/",
+    "fullpath": "/search/",
     "is_active": true
   }
 },
@@ -4034,6 +4121,26 @@
   }
 },
 {
+  "model": "cms.page",
+  "pk": 20,
+  "fields": {
+    "created": "2020-12-06T15:07:13.649Z",
+    "modified": "2020-12-06T15:38:49.821Z",
+    "is_active": true,
+    "draft_of": null,
+    "name": "Motore di Ricerca Portale Unical",
+    "webpath": 11,
+    "base_template": 6,
+    "description": "",
+    "date_start": "2020-12-06T15:06:53Z",
+    "date_end": null,
+    "state": "published",
+    "created_by": null,
+    "modified_by": null,
+    "type": "standard"
+  }
+},
+{
   "model": "cms.pagecarousel",
   "pk": 1,
   "fields": {
@@ -4307,6 +4414,19 @@
   }
 },
 {
+  "model": "cms.pagemenu",
+  "pk": 35,
+  "fields": {
+    "created": "2020-12-06T15:25:55.179Z",
+    "modified": "2020-12-06T15:38:12.107Z",
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 20,
+    "menu": 1
+  }
+},
+{
   "model": "cms.pageblock",
   "pk": 3,
   "fields": {
@@ -4502,6 +4622,17 @@
     "section": "1",
     "page": 19,
     "block": 17
+  }
+},
+{
+  "model": "cms.pageblock",
+  "pk": 33,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 20,
+    "block": 7
   }
 },
 {

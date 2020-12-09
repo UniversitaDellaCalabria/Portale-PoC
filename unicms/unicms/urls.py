@@ -50,7 +50,11 @@ urlpatterns += re_path('^openapi.json$',
 
 
 if 'cms' in settings.INSTALLED_APPS:
-    urlpatterns += path('tinymce/', include('tinymce.urls')),
     urlpatterns += path('', 
                         include(('cms.urls', 'cms'), namespace="unicms"), 
                         name="unicms"),
+
+if 'cms_search' in settings.INSTALLED_APPS:
+    urlpatterns += path('', 
+                        include(('cms_search.urls', 'cms_search'), namespace="unicms_search"), 
+                        name="unicms_search"),

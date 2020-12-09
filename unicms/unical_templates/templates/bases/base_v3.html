@@ -25,6 +25,7 @@ bootstrap-italia-base.html
 {{ block.super }}
 <link rel="stylesheet" href="{% sass_src 'css/unical-portale-v3.scss' %}" type="text/css">
 {% include "inits/vue-init.html" %}
+{% include "inits/search-input-handler.html" %}
 {% include "inits/brython-init.html" %}
 {% endblock extra_head %}
 
@@ -116,7 +117,7 @@ col-10 offset-2 col-lg-12 offset-lg-0
                     </svg>
                 </div>
                 <div class="col-9 col-lg-8">
-                    <input type="text" class="top-input" />
+                    <input id="search-input" type="text" class="top-input" />
                 </div>
             </div>
         </div>
