@@ -151,6 +151,11 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'cms_medias': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
     }
 }
 
@@ -256,6 +261,12 @@ CMS_HOOKS = {
         'PRESAVE': [],
         'POSTSAVE': ['cms_search.hooks.page_se_insert',],
         'PREDELETE': ['cms_search.hooks.searchengine_entry_remove',],
+        'POSTDELETE': []
+    },
+    'Media': {
+        'PRESAVE': ['cms_medias.hooks.set_file_meta',],
+        'POSTSAVE': [],
+        'PREDELETE': [],
         'POSTDELETE': []
     }
 }
