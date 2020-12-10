@@ -101,5 +101,5 @@ class PageAdmin(AbstractCreatedModifiedBy):
 class CategoryAdmin(admin.ModelAdmin):
     list_display  = ('name', 'image_as_html')
 
-    def delete_model(modeladmin, request, queryset):
-        obj.delete()
+    # def delete_model(modeladmin, request, queryset):
+        # obj.delete()

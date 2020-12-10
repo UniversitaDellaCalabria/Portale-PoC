@@ -4,10 +4,10 @@ import os
 from cms.medias.utils import get_file_type_size
 from django.conf import settings
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from io import BytesIO
 from PIL import Image
 
 from . import settings as app_settings
+from . utils import to_webp
 
 
 logger = logging.getLogger(__name__)
@@ -22,35 +22,36 @@ def set_file_meta(media_object):
 
 
 def webp_image_optimizer(media_object):
-    if media_object.file_type in FILETYPE_IMAGE:
-        byte_io = BytesIO()
-        if not hasattr(media_object.file, '_file'):
-            return
-        im = Image.open(media_object.file._file)
-        try:
-            im.save(byte_io, format = "WebP",  
-                    optimize=True, quality=66)
-        except Exception as e:
-            logger.exception(f'Media Hook image_optimized failed: {e}')
-            return
-        
-        byte_io.seek(0, os.SEEK_END)
-        content_size = byte_io.tell()
-        
-        byte_io.seek(0)
-        fname = '.'.join(media_object.file.name.split('.')[:-1])+'.webp'
-        media_object.file._file= InMemoryUploadedFile(file = byte_io, 
-                                                      name = fname,
-                                                      content_type = 'image/webp',
-                                                      size = content_size,
-                                                      charset='utf-8',
-                                                      field_name = 'file')
-        media_object.file._file._name = fname
-        media_object.file.name = fname
+            
+    for field_name in ('file', 'image'):
+        field = getattr(media_object, field_name, None)
+        if field:
+            break
+    
+    if not getattr(field, '_file', None):
+        return
+    
+    if field._file.content_type in FILETYPE_IMAGE:
 
-        media_object.file._file.size = content_size
-        media_object.file._file.content_type = 'image/webp'
+        byte_io = to_webp(field._file)
+        byte_io.seek(0, os.SEEK_END)
+        content_size = byte_io.tell()        
+        byte_io.seek(0)
         
+        fname = '.'.join(field.name.split('.')[:-1])+'.webp'
+        field._file= InMemoryUploadedFile(file = byte_io, 
+                                          name = fname,
+                                          content_type = 'image/webp',
+                                          size = content_size,
+                                          charset='utf-8',
+                                          field_name = field_name)
+        field._file._name = fname
+        field.name = fname
+
+        field._file.size = content_size
+        field._file.content_type = 'image/webp'
+        
+        # if they are valuable ... otherwise nothins happens to model
         media_object.file_size = content_size
         media_object.file_type = 'image/webp'
         return True

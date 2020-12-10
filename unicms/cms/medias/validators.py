@@ -16,6 +16,8 @@ FILE_MAX_SIZE = getattr(settings, 'FILE_MAX_SIZE',
 
 
 def validate_file_size(value):
+    if not hasattr(value._file, 'size'):
+        return
     content_size = None
     try:
         content_size = int(value._file.size)
@@ -29,12 +31,16 @@ def validate_file_size(value):
 
 
 def validate_file_extension(value):
+    if not hasattr(value._file, 'content_type'):
+        return
     content_type = value._file.content_type
     if content_type not in FILETYPE_ALLOWED:
         raise ValidationError(f'Unsupported file extension {content_type}')
 
 
 def validate_image_size_ratio(value):
+    if not hasattr(value._file, 'content_type'):
+        return
     if value._file.content_type in FILETYPE_IMAGE:
         w, y = get_image_width_height(value._file)
         ratio = y / w

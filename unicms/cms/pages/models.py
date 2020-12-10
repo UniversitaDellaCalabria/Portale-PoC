@@ -12,6 +12,7 @@ from cms.contexts.models import *
 from cms.contexts.utils import sanitize_path
 from cms.carousels.models import Carousel
 from cms.medias import settings as cms_media_settings
+from cms.medias.validators import *
 from cms.menus.models import NavigationBar
 from cms.templates.models import (CMS_TEMPLATE_BLOCK_SECTIONS,
                                   TemplateBlock,
@@ -223,7 +224,9 @@ class Category(TimeStampedModel, CreatedModifiedBy):
                                    null=False, blank=False)
     image       = models.ImageField(upload_to="images/categories",
                                     null=True, blank=True,
-                                    max_length=512)
+                                    max_length=512,
+                                    validators=[validate_file_extension,
+                                                validate_file_size])
 
     class Meta:
         ordering = ['name']
@@ -231,10 +234,11 @@ class Category(TimeStampedModel, CreatedModifiedBy):
 
     def __str__(self):
         return self.name
-
-    def delete(self, *args, **kwargs):
-        remove_file(self.image.url)
-        super(self.cls, self).delete(*args, **kwargs)
+    
+    # now handled with hooks
+    # def delete(self, *args, **kwargs):
+        # remove_file(self.image.url)
+        # super(self.cls, self).delete(*args, **kwargs)
 
     def image_as_html(self):
         res = ""

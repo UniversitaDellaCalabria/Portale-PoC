@@ -2,6 +2,7 @@ import logging
 import magic
 import os
 
+from io import BytesIO
 from PIL import Image
 
 logger = logging.getLogger(__name__)
@@ -23,3 +24,16 @@ def get_file_type_size(media_obj) -> dict:
 def get_image_width_height(fopen):
     pil = Image.open(fopen)
     return pil.size
+
+
+def to_webp(fobj):
+    byte_io = BytesIO()
+    im = Image.open(fobj)
+    try:
+        im.save(byte_io, format = "WebP",  
+                optimize=True, quality=66)
+    except Exception as e:
+        logger.exception(f'Media Hook image_optimized failed: {e}')
+        return
+    byte_io.seek(0)
+    return byte_io
