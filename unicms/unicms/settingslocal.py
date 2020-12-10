@@ -276,5 +276,5 @@ CMS_HOOKS = {
         'POSTDELETE': []
     }
 }
-    
+
 SEARCH_ELEMENTS_IN_PAGE = 4

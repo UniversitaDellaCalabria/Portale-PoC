@@ -940,10 +940,10 @@
     "created": "2020-10-30T16:33:34.047Z",
     "modified": "2020-11-02T10:45:06.229Z",
     "is_active": true,
-    "name": "Portale Unical Home",
-    "description": "Carosello principale di immagini e notizie",
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "name": "Portale Unical Home",
+    "description": "Carosello principale di immagini e notizie"
   }
 },
 {
@@ -954,6 +954,8 @@
     "modified": "2020-11-02T10:45:06.234Z",
     "order": 1,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "carousel": 1,
     "image": 1,
     "pre_heading": "Benvenuti",
@@ -969,6 +971,8 @@
     "modified": "2020-11-02T10:44:42.912Z",
     "order": 2,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "carousel": 1,
     "image": 2,
     "pre_heading": "Studenti",
@@ -984,6 +988,8 @@
     "modified": "2020-11-02T10:45:06.232Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "carousel": 1,
     "image": 3,
     "pre_heading": "Per gli studenti",
@@ -999,6 +1005,8 @@
     "modified": "2020-10-30T16:43:19.241Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "carousel_item": 1,
     "language": "en",
     "pre_heading": "Welcome",
@@ -1014,6 +1022,8 @@
     "modified": "2020-11-02T09:34:48.487Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "carousel_item": 3,
     "language": "en",
     "pre_heading": "Students first",
@@ -1054,11 +1064,11 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T14:06:46.447Z",
-    "modified": "2020-12-03T07:15:13.877Z",
+    "modified": "2020-12-10T07:44:57.859Z",
     "is_active": true,
-    "name": "Unical Portale - Menu principale",
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "name": "Unical Portale - Menu principale"
   }
 },
 {
@@ -1068,9 +1078,9 @@
     "created": "2020-11-02T09:42:43.659Z",
     "modified": "2020-11-02T09:43:31.256Z",
     "is_active": true,
-    "name": "Unical Portale Menu Secondario",
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "name": "Unical Portale Menu Secondario"
   }
 },
 {
@@ -1080,9 +1090,9 @@
     "created": "2020-11-20T10:28:27.095Z",
     "modified": "2020-11-20T10:28:27.095Z",
     "is_active": true,
-    "name": "DIMES - Menu secondario",
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "name": "DIMES - Menu secondario"
   }
 },
 {
@@ -1092,9 +1102,9 @@
     "created": "2020-11-20T17:15:19.394Z",
     "modified": "2020-11-20T17:15:35.907Z",
     "is_active": true,
-    "name": "DIMES - Menu Principale",
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "name": "DIMES - Menu Principale"
   }
 },
 {
@@ -1104,9 +1114,9 @@
     "created": "2020-12-03T12:09:16.230Z",
     "modified": "2020-12-03T12:29:04.072Z",
     "is_active": true,
-    "name": "Visita il campus",
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "name": "Visita il campus"
   }
 },
 {
@@ -1116,9 +1126,9 @@
     "created": "2020-12-03T12:30:13.023Z",
     "modified": "2020-12-03T15:33:02.806Z",
     "is_active": true,
-    "name": "Vivere nel/il Campus",
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "name": "Vivere nel/il Campus"
   }
 },
 {
@@ -1128,9 +1138,9 @@
     "created": "2020-12-03T15:16:35.412Z",
     "modified": "2020-12-03T15:32:50.974Z",
     "is_active": true,
-    "name": "Portale Unical SIDE - I servizi",
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "name": "Portale Unical SIDE - I servizi"
   }
 },
 {
@@ -1140,9 +1150,9 @@
     "created": "2020-12-03T17:30:13.858Z",
     "modified": "2020-12-03T17:31:27.088Z",
     "is_active": true,
-    "name": "Servizi / Futuri Studenti",
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "name": "Servizi / Futuri Studenti"
   }
 },
 {
@@ -1153,15 +1163,15 @@
     "modified": "2020-11-19T09:19:24.028Z",
     "order": 2,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Ateneo",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1172,15 +1182,15 @@
     "modified": "2020-11-12T16:35:29.106Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Didattica",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1191,15 +1201,15 @@
     "modified": "2020-11-18T17:54:29.541Z",
     "order": 1,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Campus",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1210,15 +1220,15 @@
     "modified": "2020-11-19T09:45:36.247Z",
     "order": 4,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Ricerca",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1226,18 +1236,18 @@
   "pk": 5,
   "fields": {
     "created": "2020-10-29T09:20:02.598Z",
-    "modified": "2020-11-19T09:45:36.249Z",
+    "modified": "2020-12-09T15:48:55.363Z",
     "order": 5,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
-    "name": "Innovazione",
+    "name": "Impatti",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1248,15 +1258,15 @@
     "modified": "2020-11-19T09:45:36.244Z",
     "order": 3,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Internazionale",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1267,15 +1277,15 @@
     "modified": "2020-12-02T11:00:15.175Z",
     "order": 7,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Lauree Triennali",
     "webpath": null,
     "parent": 15,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1286,15 +1296,15 @@
     "modified": "2020-12-02T11:00:15.179Z",
     "order": 8,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Lauree Magistrali a ciclo unico",
     "webpath": null,
     "parent": 15,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1305,15 +1315,15 @@
     "modified": "2020-12-02T11:00:15.182Z",
     "order": 9,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Lauree Magistrali",
     "webpath": null,
     "parent": 15,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1324,15 +1334,15 @@
     "modified": "2020-11-02T09:43:31.257Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 2,
     "name": "my Unical",
     "webpath": null,
     "parent": null,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1343,15 +1353,15 @@
     "modified": "2020-11-02T09:43:31.258Z",
     "order": 1,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 2,
     "name": "Orienta Unical",
     "webpath": null,
     "parent": null,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1362,15 +1372,15 @@
     "modified": "2020-11-02T09:43:31.258Z",
     "order": 2,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 2,
     "name": "Unical Store",
     "webpath": null,
     "parent": null,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1381,15 +1391,15 @@
     "modified": "2020-12-03T07:25:00.784Z",
     "order": 6,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Offerta Formativa",
     "webpath": 7,
     "parent": 2,
     "url": null,
     "publication": null,
-    "inherited_content": 5,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": 5
   }
 },
 {
@@ -1400,15 +1410,15 @@
     "modified": "2020-12-02T11:00:15.188Z",
     "order": 11,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Dottorati",
     "webpath": null,
     "parent": 15,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1419,15 +1429,15 @@
     "modified": "2020-12-02T14:52:50.808Z",
     "order": 12,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Master e Alta formazione",
     "webpath": null,
     "parent": 15,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1438,15 +1448,15 @@
     "modified": "2020-12-02T11:55:13.735Z",
     "order": 14,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Iscrizioni e diritto allo studio",
     "webpath": null,
     "parent": 2,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1457,15 +1467,15 @@
     "modified": "2020-12-02T15:03:59.973Z",
     "order": 15,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Ammissione, iscrizioni",
     "webpath": null,
     "parent": 21,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1476,15 +1486,15 @@
     "modified": "2020-12-02T15:03:59.975Z",
     "order": 16,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Trasferimenti e passaggi di corso",
     "webpath": null,
     "parent": 21,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1495,15 +1505,15 @@
     "modified": "2020-12-02T11:55:48.718Z",
     "order": 18,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Borse e servizi di supporto",
     "webpath": null,
     "parent": 21,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1514,15 +1524,15 @@
     "modified": "2020-12-02T11:55:48.721Z",
     "order": 19,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Servizi per studenti con disabilità, DSA e BES",
     "webpath": null,
     "parent": 21,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1533,15 +1543,15 @@
     "modified": "2020-12-03T10:48:00.222Z",
     "order": 21,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "I servizi",
     "webpath": 8,
     "parent": 3,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1552,15 +1562,15 @@
     "modified": "2020-12-02T15:09:13.971Z",
     "order": 22,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Vivere nel/il campus",
     "webpath": null,
     "parent": 3,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1571,15 +1581,15 @@
     "modified": "2020-12-02T15:10:18.368Z",
     "order": 28,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "RiMuseum",
     "webpath": null,
     "parent": 27,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1587,18 +1597,18 @@
   "pk": 29,
   "fields": {
     "created": "2020-11-12T16:29:52.953Z",
-    "modified": "2020-12-02T15:07:42.627Z",
+    "modified": "2020-12-10T07:44:57.935Z",
     "order": 29,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Futuri studenti",
     "webpath": null,
     "parent": 26,
-    "url": "#",
-    "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "url": null,
+    "publication": 7,
+    "inherited_content": null
   }
 },
 {
@@ -1609,15 +1619,15 @@
     "modified": "2020-12-02T15:07:42.629Z",
     "order": 30,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Studenti iscritti",
     "webpath": null,
     "parent": 26,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1628,15 +1638,15 @@
     "modified": "2020-12-02T15:07:42.632Z",
     "order": 31,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Laureati",
     "webpath": null,
     "parent": 26,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1644,18 +1654,18 @@
   "pk": 32,
   "fields": {
     "created": "2020-11-12T16:30:49.005Z",
-    "modified": "2020-12-02T15:13:08.874Z",
-    "order": 38,
+    "modified": "2020-12-09T15:46:01.637Z",
+    "order": 39,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Storie e architettura",
     "webpath": null,
     "parent": 53,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1663,18 +1673,18 @@
   "pk": 33,
   "fields": {
     "created": "2020-11-12T16:30:49.006Z",
-    "modified": "2020-12-02T15:13:08.877Z",
-    "order": 39,
+    "modified": "2020-12-09T15:46:01.640Z",
+    "order": 40,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Territorio",
     "webpath": null,
     "parent": 53,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1682,18 +1692,18 @@
   "pk": 34,
   "fields": {
     "created": "2020-11-12T16:30:49.006Z",
-    "modified": "2020-12-02T15:13:08.881Z",
-    "order": 40,
+    "modified": "2020-12-09T15:46:01.644Z",
+    "order": 41,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Come arrivare",
     "webpath": null,
     "parent": 53,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1701,18 +1711,18 @@
   "pk": 35,
   "fields": {
     "created": "2020-11-12T16:32:46.287Z",
-    "modified": "2020-12-02T15:13:08.883Z",
-    "order": 41,
+    "modified": "2020-12-09T15:46:01.647Z",
+    "order": 42,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Mappa",
     "webpath": null,
     "parent": 53,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1720,18 +1730,18 @@
   "pk": 36,
   "fields": {
     "created": "2020-11-12T16:32:46.287Z",
-    "modified": "2020-12-02T15:15:45.837Z",
-    "order": 42,
+    "modified": "2020-12-09T15:46:01.649Z",
+    "order": 43,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Organizzazione",
     "webpath": null,
     "parent": 1,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1739,18 +1749,18 @@
   "pk": 37,
   "fields": {
     "created": "2020-11-12T16:32:46.288Z",
-    "modified": "2020-12-02T15:16:32.907Z",
-    "order": 43,
+    "modified": "2020-12-09T15:46:01.653Z",
+    "order": 44,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Storia e Missione",
     "webpath": null,
     "parent": 36,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1758,18 +1768,18 @@
   "pk": 38,
   "fields": {
     "created": "2020-11-12T16:32:46.288Z",
-    "modified": "2020-12-02T15:17:37.837Z",
-    "order": 44,
+    "modified": "2020-12-09T15:46:01.656Z",
+    "order": 45,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Organi",
     "webpath": null,
     "parent": 36,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1777,18 +1787,18 @@
   "pk": 39,
   "fields": {
     "created": "2020-11-12T16:32:46.289Z",
-    "modified": "2020-12-02T15:17:37.841Z",
-    "order": 45,
+    "modified": "2020-12-09T15:46:01.659Z",
+    "order": 46,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Linee strategiche",
     "webpath": null,
     "parent": 36,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1796,18 +1806,18 @@
   "pk": 40,
   "fields": {
     "created": "2020-11-12T16:34:22.931Z",
-    "modified": "2020-12-03T07:15:13.994Z",
-    "order": 47,
+    "modified": "2020-12-09T15:46:01.665Z",
+    "order": 48,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Qualità didattica",
     "webpath": null,
     "parent": 36,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1815,18 +1825,18 @@
   "pk": 41,
   "fields": {
     "created": "2020-11-12T16:34:22.932Z",
-    "modified": "2020-12-03T07:15:13.999Z",
-    "order": 48,
+    "modified": "2020-12-09T15:46:01.667Z",
+    "order": 49,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Qualità ricerca",
     "webpath": null,
     "parent": 36,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1834,18 +1844,18 @@
   "pk": 42,
   "fields": {
     "created": "2020-11-12T16:34:22.932Z",
-    "modified": "2020-12-03T07:15:14.001Z",
-    "order": 49,
+    "modified": "2020-12-09T15:46:01.671Z",
+    "order": 50,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Statuto e regolamenti",
     "webpath": null,
     "parent": 36,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1853,18 +1863,18 @@
   "pk": 45,
   "fields": {
     "created": "2020-11-12T16:38:06.977Z",
-    "modified": "2020-12-03T07:15:14.006Z",
-    "order": 51,
+    "modified": "2020-12-09T15:46:01.677Z",
+    "order": 52,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Dipartimenti",
     "webpath": null,
     "parent": 46,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1872,18 +1882,18 @@
   "pk": 46,
   "fields": {
     "created": "2020-11-12T16:38:06.978Z",
-    "modified": "2020-12-03T07:15:14.004Z",
-    "order": 50,
+    "modified": "2020-12-09T15:46:01.674Z",
+    "order": 51,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Strutture",
     "webpath": null,
     "parent": 1,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1891,18 +1901,18 @@
   "pk": 47,
   "fields": {
     "created": "2020-11-12T16:38:06.978Z",
-    "modified": "2020-12-03T07:15:14.009Z",
-    "order": 52,
+    "modified": "2020-12-09T15:46:01.679Z",
+    "order": 53,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Amministrazione e uffici",
     "webpath": null,
     "parent": 46,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1910,18 +1920,18 @@
   "pk": 48,
   "fields": {
     "created": "2020-11-12T16:38:06.978Z",
-    "modified": "2020-12-03T07:15:14.012Z",
-    "order": 53,
+    "modified": "2020-12-09T15:46:01.682Z",
+    "order": 54,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Centro Residenziale",
     "webpath": null,
     "parent": 46,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1929,18 +1939,18 @@
   "pk": 49,
   "fields": {
     "created": "2020-11-12T16:38:06.979Z",
-    "modified": "2020-12-03T07:15:14.016Z",
-    "order": 54,
+    "modified": "2020-12-09T15:46:01.684Z",
+    "order": 55,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Scuola Superiore di Scienze Amministrazioni Pubbliche",
     "webpath": null,
     "parent": 46,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1948,18 +1958,18 @@
   "pk": 50,
   "fields": {
     "created": "2020-11-12T16:38:06.979Z",
-    "modified": "2020-12-03T07:15:14.019Z",
-    "order": 55,
+    "modified": "2020-12-09T15:46:01.689Z",
+    "order": 56,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Scuola di Specializzazione in Patologia Clinica",
     "webpath": null,
     "parent": 46,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1967,18 +1977,18 @@
   "pk": 51,
   "fields": {
     "created": "2020-11-12T16:38:06.979Z",
-    "modified": "2020-12-03T07:15:14.022Z",
-    "order": 56,
+    "modified": "2020-12-09T15:46:01.692Z",
+    "order": 57,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Centri",
     "webpath": null,
     "parent": 46,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -1989,15 +1999,15 @@
     "modified": "2020-12-03T14:54:02.564Z",
     "order": 23,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Visita il campus",
     "webpath": 9,
     "parent": 3,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2008,15 +2018,15 @@
     "modified": "2020-12-02T15:10:18.355Z",
     "order": 24,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Quartieri",
     "webpath": null,
     "parent": 27,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2027,15 +2037,15 @@
     "modified": "2020-12-02T15:10:18.358Z",
     "order": 25,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Residenze",
     "webpath": null,
     "parent": 27,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2046,15 +2056,15 @@
     "modified": "2020-12-02T15:10:18.361Z",
     "order": 26,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Biblioteche",
     "webpath": null,
     "parent": 27,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2065,15 +2075,15 @@
     "modified": "2020-12-02T15:10:18.365Z",
     "order": 27,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Museo storia naturale e Orto botanico",
     "webpath": null,
     "parent": 27,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2084,15 +2094,15 @@
     "modified": "2020-12-02T15:11:47.151Z",
     "order": 32,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Teatri e cinema",
     "webpath": null,
     "parent": 27,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2103,15 +2113,15 @@
     "modified": "2020-12-02T15:11:47.155Z",
     "order": 33,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Centro Linguistico di Ateneo",
     "webpath": null,
     "parent": 27,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2122,15 +2132,15 @@
     "modified": "2020-12-02T15:11:47.158Z",
     "order": 34,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Centro Sanitario",
     "webpath": null,
     "parent": 27,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2141,15 +2151,15 @@
     "modified": "2020-12-02T15:11:47.161Z",
     "order": 35,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Centro Sportivo",
     "webpath": null,
     "parent": 27,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2160,15 +2170,15 @@
     "modified": "2020-12-02T15:11:47.163Z",
     "order": 36,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Centro Congressi",
     "webpath": null,
     "parent": 27,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2176,18 +2186,18 @@
   "pk": 103,
   "fields": {
     "created": "2020-11-19T09:49:06.005Z",
-    "modified": "2020-12-03T07:15:13.991Z",
-    "order": 46,
+    "modified": "2020-12-09T15:46:01.662Z",
+    "order": 47,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Assicurazione di Qualità",
     "webpath": null,
     "parent": 36,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2198,15 +2208,15 @@
     "modified": "2020-12-02T15:11:47.166Z",
     "order": 37,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Polo d'infanzia",
     "webpath": null,
     "parent": 27,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2217,15 +2227,15 @@
     "modified": "2020-11-20T10:28:27.096Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 18,
     "name": "my Dip",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2236,15 +2246,15 @@
     "modified": "2020-11-20T10:28:27.096Z",
     "order": 1,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 18,
     "name": "servizi per gli studenti",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2255,15 +2265,15 @@
     "modified": "2020-11-20T17:15:19.414Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "Dipartimento",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2274,15 +2284,15 @@
     "modified": "2020-11-20T17:15:35.933Z",
     "order": 5,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "presentazione",
     "webpath": null,
     "parent": 188,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2293,15 +2303,15 @@
     "modified": "2020-11-20T17:15:35.938Z",
     "order": 6,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "organizzazione",
     "webpath": null,
     "parent": 188,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2312,15 +2322,15 @@
     "modified": "2020-11-20T17:15:35.943Z",
     "order": 7,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "qualità e miglioramento",
     "webpath": null,
     "parent": 188,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2331,15 +2341,15 @@
     "modified": "2020-11-20T17:15:35.949Z",
     "order": 8,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "bandi e concorsi",
     "webpath": null,
     "parent": 188,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2350,15 +2360,15 @@
     "modified": "2020-11-20T17:15:35.953Z",
     "order": 9,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "dove siamo",
     "webpath": null,
     "parent": 188,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2369,15 +2379,15 @@
     "modified": "2020-11-20T17:15:19.488Z",
     "order": 1,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "Didattica",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2388,15 +2398,15 @@
     "modified": "2020-11-20T17:15:35.957Z",
     "order": 10,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "lauree triennali",
     "webpath": null,
     "parent": 194,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2407,15 +2417,15 @@
     "modified": "2020-11-20T17:15:35.966Z",
     "order": 11,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "lauree magistrali",
     "webpath": null,
     "parent": 194,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2426,15 +2436,15 @@
     "modified": "2020-11-20T17:15:35.971Z",
     "order": 12,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "corsi post laurea",
     "webpath": null,
     "parent": 194,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2445,15 +2455,15 @@
     "modified": "2020-11-20T17:15:35.977Z",
     "order": 13,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "dottorati di ricerca",
     "webpath": null,
     "parent": 194,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2464,15 +2474,15 @@
     "modified": "2020-11-20T17:15:19.596Z",
     "order": 2,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "Persone",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2483,15 +2493,15 @@
     "modified": "2020-11-20T17:15:36.026Z",
     "order": 22,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "docenti",
     "webpath": null,
     "parent": 199,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2502,15 +2512,15 @@
     "modified": "2020-11-20T17:15:36.031Z",
     "order": 23,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "personale tecnico amministrativo",
     "webpath": null,
     "parent": 199,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2521,15 +2531,15 @@
     "modified": "2020-11-20T17:15:36.034Z",
     "order": 24,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "dottorandi",
     "webpath": null,
     "parent": 199,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2540,15 +2550,15 @@
     "modified": "2020-11-20T17:15:36.037Z",
     "order": 25,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "assegnisti - collaboratori",
     "webpath": null,
     "parent": 199,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2559,15 +2569,15 @@
     "modified": "2020-11-20T17:15:19.659Z",
     "order": 3,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "Ricerca",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2578,15 +2588,15 @@
     "modified": "2020-11-20T17:15:35.994Z",
     "order": 17,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "ambiti",
     "webpath": null,
     "parent": 204,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2597,15 +2607,15 @@
     "modified": "2020-11-20T17:15:35.998Z",
     "order": 18,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "progetti",
     "webpath": null,
     "parent": 204,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2616,15 +2626,15 @@
     "modified": "2020-11-20T17:15:36.003Z",
     "order": 19,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "laboratori",
     "webpath": null,
     "parent": 204,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2635,15 +2645,15 @@
     "modified": "2020-11-20T17:15:36.011Z",
     "order": 20,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "dottorati",
     "webpath": null,
     "parent": 204,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2654,15 +2664,15 @@
     "modified": "2020-11-20T17:15:36.020Z",
     "order": 21,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "attività- risultati",
     "webpath": null,
     "parent": 204,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2673,15 +2683,15 @@
     "modified": "2020-11-20T17:15:19.732Z",
     "order": 4,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "Innovazione",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2692,15 +2702,15 @@
     "modified": "2020-11-20T17:15:35.984Z",
     "order": 14,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "imprese",
     "webpath": null,
     "parent": 210,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2711,15 +2721,15 @@
     "modified": "2020-11-20T17:15:35.987Z",
     "order": 15,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "cultura",
     "webpath": null,
     "parent": 210,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2730,15 +2740,15 @@
     "modified": "2020-11-20T17:15:35.990Z",
     "order": 16,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 19,
     "name": "società",
     "webpath": null,
     "parent": 210,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2749,15 +2759,15 @@
     "modified": "2020-12-02T11:00:15.184Z",
     "order": 10,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Lauree in Lingua inglese",
     "webpath": null,
     "parent": 15,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2768,15 +2778,15 @@
     "modified": "2020-12-02T14:52:50.811Z",
     "order": 13,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Formazione insegnanti",
     "webpath": null,
     "parent": 15,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2787,15 +2797,15 @@
     "modified": "2020-12-02T11:55:48.715Z",
     "order": 17,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Frequentare i corsi",
     "webpath": null,
     "parent": 21,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2806,15 +2816,15 @@
     "modified": "2020-12-02T11:55:48.725Z",
     "order": 20,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Orientamento",
     "webpath": null,
     "parent": 21,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2822,18 +2832,18 @@
   "pk": 218,
   "fields": {
     "created": "2020-12-02T15:21:53.964Z",
-    "modified": "2020-12-03T07:15:14.025Z",
-    "order": 57,
+    "modified": "2020-12-09T15:47:15.637Z",
+    "order": 58,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
-    "name": "Cosmopolita da sempre",
+    "name": "Da sempre aperta",
     "webpath": null,
     "parent": 6,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2841,18 +2851,18 @@
   "pk": 219,
   "fields": {
     "created": "2020-12-02T15:23:13.931Z",
-    "modified": "2020-12-03T07:15:14.028Z",
-    "order": 58,
+    "modified": "2020-12-09T15:48:02.613Z",
+    "order": 61,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Accordi internazionali",
     "webpath": null,
     "parent": 218,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2860,18 +2870,18 @@
   "pk": 220,
   "fields": {
     "created": "2020-12-02T15:23:13.932Z",
-    "modified": "2020-12-03T07:15:14.031Z",
+    "modified": "2020-12-09T15:48:02.607Z",
     "order": 59,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Per studiare in Unical",
     "webpath": null,
     "parent": 218,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2879,18 +2889,18 @@
   "pk": 221,
   "fields": {
     "created": "2020-12-02T15:23:13.932Z",
-    "modified": "2020-12-03T07:15:14.034Z",
+    "modified": "2020-12-09T15:48:02.611Z",
     "order": 60,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Studenti Unical verso l'estero",
     "webpath": null,
     "parent": 218,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2898,18 +2908,18 @@
   "pk": 222,
   "fields": {
     "created": "2020-12-02T15:23:13.932Z",
-    "modified": "2020-12-03T07:15:14.036Z",
-    "order": 61,
+    "modified": "2020-12-09T15:46:01.707Z",
+    "order": 62,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Mobilità docenti, ricercatori e staff",
     "webpath": null,
     "parent": 218,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2917,18 +2927,18 @@
   "pk": 223,
   "fields": {
     "created": "2020-12-02T15:24:06.726Z",
-    "modified": "2020-12-03T07:15:14.038Z",
-    "order": 62,
+    "modified": "2020-12-09T15:46:01.709Z",
+    "order": 63,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Un sistema all'avanguardia",
     "webpath": null,
     "parent": 4,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2936,18 +2946,18 @@
   "pk": 224,
   "fields": {
     "created": "2020-12-02T15:24:44.360Z",
-    "modified": "2020-12-03T07:15:14.040Z",
-    "order": 63,
+    "modified": "2020-12-09T15:46:01.712Z",
+    "order": 64,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Strutture",
     "webpath": null,
     "parent": 223,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2955,18 +2965,18 @@
   "pk": 225,
   "fields": {
     "created": "2020-12-02T15:24:44.360Z",
-    "modified": "2020-12-03T07:15:14.043Z",
-    "order": 64,
+    "modified": "2020-12-09T15:46:01.716Z",
+    "order": 65,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Macro ambiti",
     "webpath": null,
     "parent": 223,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2974,18 +2984,18 @@
   "pk": 226,
   "fields": {
     "created": "2020-12-02T15:24:44.361Z",
-    "modified": "2020-12-03T07:15:14.045Z",
-    "order": 65,
+    "modified": "2020-12-09T15:46:01.719Z",
+    "order": 66,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Dottorati",
     "webpath": null,
     "parent": 223,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -2993,18 +3003,18 @@
   "pk": 227,
   "fields": {
     "created": "2020-12-02T15:32:24.343Z",
-    "modified": "2020-12-03T07:15:14.049Z",
-    "order": 66,
+    "modified": "2020-12-09T15:49:13.578Z",
+    "order": 67,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
-    "name": "Energie per",
+    "name": "Energie e progetti per",
     "webpath": null,
     "parent": 5,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3012,18 +3022,18 @@
   "pk": 228,
   "fields": {
     "created": "2020-12-02T15:32:59.902Z",
-    "modified": "2020-12-03T07:15:14.052Z",
-    "order": 67,
+    "modified": "2020-12-09T15:46:01.724Z",
+    "order": 68,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Le imprese",
     "webpath": null,
     "parent": 227,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3031,18 +3041,18 @@
   "pk": 229,
   "fields": {
     "created": "2020-12-02T15:32:59.903Z",
-    "modified": "2020-12-03T07:15:14.054Z",
-    "order": 68,
+    "modified": "2020-12-09T15:46:01.727Z",
+    "order": 69,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "Le culture",
     "webpath": null,
     "parent": 227,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3050,18 +3060,18 @@
   "pk": 230,
   "fields": {
     "created": "2020-12-02T15:32:59.903Z",
-    "modified": "2020-12-03T07:15:14.057Z",
-    "order": 69,
+    "modified": "2020-12-09T15:46:01.729Z",
+    "order": 70,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 1,
     "name": "La società",
     "webpath": null,
     "parent": 227,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3072,15 +3082,15 @@
     "modified": "2020-12-03T12:29:04.078Z",
     "order": 1,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 20,
     "name": "storia e architettura",
     "webpath": null,
     "parent": 235,
     "url": "#",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3091,15 +3101,15 @@
     "modified": "2020-12-03T12:29:04.080Z",
     "order": 2,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 20,
     "name": "territorio",
     "webpath": null,
     "parent": 235,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3110,15 +3120,15 @@
     "modified": "2020-12-03T12:29:04.083Z",
     "order": 3,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 20,
     "name": "come arrivare",
     "webpath": null,
     "parent": 235,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3129,15 +3139,15 @@
     "modified": "2020-12-03T12:29:04.086Z",
     "order": 4,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 20,
     "name": "mappa",
     "webpath": null,
     "parent": 235,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3148,15 +3158,15 @@
     "modified": "2020-12-03T14:52:45.507Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 20,
     "name": "visita il campus",
     "webpath": 9,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3167,15 +3177,15 @@
     "modified": "2020-12-03T12:32:18.408Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "vivere nel/il campus",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3186,15 +3196,15 @@
     "modified": "2020-12-03T12:32:18.412Z",
     "order": 1,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "quartieri",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3205,15 +3215,15 @@
     "modified": "2020-12-03T12:32:18.414Z",
     "order": 2,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "residenze",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3224,15 +3234,15 @@
     "modified": "2020-12-03T12:32:18.417Z",
     "order": 3,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "biblioteche",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3243,15 +3253,15 @@
     "modified": "2020-12-03T12:33:44.439Z",
     "order": 4,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "museo storia naturale e orto botanico",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3262,15 +3272,15 @@
     "modified": "2020-12-03T12:33:44.440Z",
     "order": 5,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "rimuseum",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3281,15 +3291,15 @@
     "modified": "2020-12-03T12:33:44.440Z",
     "order": 6,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "teatri e cinema",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3300,15 +3310,15 @@
     "modified": "2020-12-03T12:33:44.440Z",
     "order": 7,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "centro linguistico di ateneo",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3319,15 +3329,15 @@
     "modified": "2020-12-03T12:33:44.441Z",
     "order": 8,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "centro sanitario",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3338,15 +3348,15 @@
     "modified": "2020-12-03T12:33:44.441Z",
     "order": 9,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "centro sportivo",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3357,15 +3367,15 @@
     "modified": "2020-12-03T12:33:44.441Z",
     "order": 10,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "centro congressi",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3376,15 +3386,15 @@
     "modified": "2020-12-03T12:33:44.441Z",
     "order": 11,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 21,
     "name": "polo d'infanzia",
     "webpath": null,
     "parent": 236,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3395,15 +3405,15 @@
     "modified": "2020-12-03T15:32:29.301Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 22,
     "name": "I servizi",
     "webpath": null,
     "parent": null,
     "url": "//test.unical.it:8000/portale/campus/servizi/",
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3414,15 +3424,15 @@
     "modified": "2020-12-03T17:26:11.627Z",
     "order": 1,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 22,
     "name": "futuri studenti",
     "webpath": 10,
     "parent": 248,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3433,15 +3443,15 @@
     "modified": "2020-12-03T15:17:01.417Z",
     "order": 2,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 22,
     "name": "studenti iscritti",
     "webpath": null,
     "parent": 248,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3452,15 +3462,15 @@
     "modified": "2020-12-03T15:17:01.418Z",
     "order": 3,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 22,
     "name": "laureati",
     "webpath": null,
     "parent": 248,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3468,18 +3478,18 @@
   "pk": 252,
   "fields": {
     "created": "2020-12-03T17:30:20.957Z",
-    "modified": "2020-12-03T17:30:22.552Z",
+    "modified": "2020-12-09T17:46:47.413Z",
     "order": 0,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 23,
     "name": "futuri studenti",
     "webpath": null,
     "parent": null,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3490,15 +3500,15 @@
     "modified": "2020-12-03T17:31:27.091Z",
     "order": 1,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 23,
     "name": "ammissione",
     "webpath": null,
     "parent": 252,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3509,15 +3519,15 @@
     "modified": "2020-12-03T17:31:27.092Z",
     "order": 2,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 23,
     "name": "tasse",
     "webpath": null,
     "parent": 252,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3528,15 +3538,15 @@
     "modified": "2020-12-03T17:31:27.092Z",
     "order": 3,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 23,
     "name": "mensa",
     "webpath": null,
     "parent": 252,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3547,15 +3557,15 @@
     "modified": "2020-12-03T17:31:27.093Z",
     "order": 4,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 23,
     "name": "alloggi",
     "webpath": null,
     "parent": 252,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3566,15 +3576,15 @@
     "modified": "2020-12-03T17:31:27.093Z",
     "order": 5,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 23,
     "name": "borse di studio",
     "webpath": null,
     "parent": 252,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3585,15 +3595,15 @@
     "modified": "2020-12-03T17:31:27.093Z",
     "order": 6,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 23,
     "name": "sussidi",
     "webpath": null,
     "parent": 252,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3604,15 +3614,15 @@
     "modified": "2020-12-03T17:31:27.094Z",
     "order": 7,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 23,
     "name": "counselling",
     "webpath": null,
     "parent": 252,
     "url": null,
     "publication": null,
-    "inherited_content": null,
-    "created_by": null,
-    "modified_by": null
+    "inherited_content": null
   }
 },
 {
@@ -3623,24 +3633,73 @@
     "modified": "2020-12-03T17:31:27.094Z",
     "order": 8,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "menu": 23,
     "name": "servizi per studenti con disabilità DSA e Bes",
     "webpath": null,
     "parent": 252,
     "url": null,
     "publication": null,
-    "inherited_content": null,
+    "inherited_content": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 261,
+  "fields": {
+    "created": "2020-12-09T15:44:50.484Z",
+    "modified": "2020-12-09T15:46:01.633Z",
+    "order": 38,
+    "is_active": true,
     "created_by": null,
-    "modified_by": null
+    "modified_by": null,
+    "menu": 1,
+    "name": "Associazioni",
+    "webpath": null,
+    "parent": 27,
+    "url": null,
+    "publication": null,
+    "inherited_content": null
+  }
+},
+{
+  "model": "cms_menus.navigationbaritem",
+  "pk": 262,
+  "fields": {
+    "created": "2020-12-09T15:46:01.730Z",
+    "modified": "2020-12-09T15:46:01.730Z",
+    "order": 71,
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "menu": 1,
+    "name": "Alumni",
+    "webpath": null,
+    "parent": 27,
+    "url": null,
+    "publication": null,
+    "inherited_content": null
   }
 },
 {
   "model": "cms_menus.navigationbaritemlocalization",
   "pk": 1,
   "fields": {
+    "created_by": null,
+    "modified_by": null,
     "item": 4,
     "language": "en",
     "name": "Research"
+  }
+},
+{
+  "model": "cms_contexts.website",
+  "pk": 1,
+  "fields": {
+    "name": "example.com",
+    "domain": "example.com",
+    "is_active": false
   }
 },
 {
@@ -3667,6 +3726,8 @@
   "fields": {
     "created": "2020-10-29T09:11:39.008Z",
     "modified": "2020-11-07T14:55:20.868Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 2,
     "name": "Portale dell'Università della Calabria",
     "parent": null,
@@ -3683,6 +3744,8 @@
   "fields": {
     "created": "2020-11-07T14:57:19.676Z",
     "modified": "2020-11-07T14:58:52.545Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 2,
     "name": "banane",
     "parent": 1,
@@ -3699,6 +3762,8 @@
   "fields": {
     "created": "2020-11-20T08:50:48.265Z",
     "modified": "2020-11-23T08:09:16.220Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 3,
     "name": "DIMES (subdomain)",
     "parent": null,
@@ -3715,6 +3780,8 @@
   "fields": {
     "created": "2020-11-20T09:14:17.710Z",
     "modified": "2020-11-23T08:08:52.725Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 2,
     "name": "DIMES",
     "parent": 5,
@@ -3731,6 +3798,8 @@
   "fields": {
     "created": "2020-11-20T12:29:06.360Z",
     "modified": "2020-11-20T16:39:05.276Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 2,
     "name": "dipartimenti",
     "parent": 1,
@@ -3747,6 +3816,8 @@
   "fields": {
     "created": "2020-11-30T16:43:00.111Z",
     "modified": "2020-11-30T16:43:00.111Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 3,
     "name": "ricerca dimes",
     "parent": 3,
@@ -3763,6 +3834,8 @@
   "fields": {
     "created": "2020-12-03T07:22:04.219Z",
     "modified": "2020-12-03T07:22:04.219Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 2,
     "name": "Offerta formativa",
     "parent": 1,
@@ -3778,13 +3851,15 @@
   "pk": 8,
   "fields": {
     "created": "2020-12-03T10:46:38.760Z",
-    "modified": "2020-12-03T10:46:38.761Z",
+    "modified": "2020-12-09T16:10:03.884Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 2,
     "name": "I Servizi del Campus",
-    "parent": 1,
+    "parent": 12,
     "alias": null,
     "alias_url": "",
-    "path": "campus/servizi/",
+    "path": "servizi/",
     "fullpath": "/campus/servizi/",
     "is_active": true
   }
@@ -3795,6 +3870,8 @@
   "fields": {
     "created": "2020-12-03T14:52:05.979Z",
     "modified": "2020-12-03T14:52:05.979Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 2,
     "name": "Visita il campus",
     "parent": 1,
@@ -3810,9 +3887,11 @@
   "pk": 10,
   "fields": {
     "created": "2020-12-03T15:56:23.454Z",
-    "modified": "2020-12-03T15:56:23.454Z",
+    "modified": "2020-12-09T16:12:12.342Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 2,
-    "name": "Servizi / Futuri Studenti",
+    "name": "Futuri Studenti",
     "parent": 8,
     "alias": null,
     "alias_url": "",
@@ -3827,6 +3906,8 @@
   "fields": {
     "created": "2020-12-06T15:04:22.135Z",
     "modified": "2020-12-06T15:08:57.658Z",
+    "created_by": null,
+    "modified_by": null,
     "site": 2,
     "name": "Motore di Ricerca",
     "parent": 1,
@@ -3834,6 +3915,42 @@
     "alias_url": "",
     "path": "search/",
     "fullpath": "/search/",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.webpath",
+  "pk": 12,
+  "fields": {
+    "created": "2020-12-09T16:08:41.327Z",
+    "modified": "2020-12-09T16:08:41.327Z",
+    "created_by": 2,
+    "modified_by": 2,
+    "site": 2,
+    "name": "Campus",
+    "parent": 1,
+    "alias": null,
+    "alias_url": "",
+    "path": "campus/",
+    "fullpath": "/campus/",
+    "is_active": true
+  }
+},
+{
+  "model": "cms_contexts.webpath",
+  "pk": 13,
+  "fields": {
+    "created": "2020-12-09T17:19:16.758Z",
+    "modified": "2020-12-09T17:19:16.758Z",
+    "created_by": 2,
+    "modified_by": null,
+    "site": 2,
+    "name": "Ammissione",
+    "parent": 10,
+    "alias": null,
+    "alias_url": "",
+    "path": "ammissione/",
+    "fullpath": "/campus/servizi/futuri-studenti/ammissione/",
     "is_active": true
   }
 },
@@ -3864,6 +3981,8 @@
     "created": "2020-11-24T09:33:24.719Z",
     "modified": "2020-11-24T10:13:50.234Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "name": "Unical gallery",
     "description": "Galleria foto unical"
   }
@@ -3875,13 +3994,13 @@
     "created": "2020-10-30T16:32:21.019Z",
     "modified": "2020-10-30T16:32:21.019Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "file_size": 508364,
+    "file_type": "image/jpeg",
     "title": "Unical Campus",
     "file": "medias/2020/campus_khrzwfL.jpg",
-    "description": "Vista con panorama",
-    "file_size": null,
-    "file_type": null,
-    "created_by": null,
-    "modified_by": null
+    "description": "Vista con panorama"
   }
 },
 {
@@ -3891,13 +4010,13 @@
     "created": "2020-10-31T13:53:43.251Z",
     "modified": "2020-10-31T14:35:45.239Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "file_size": 34612,
+    "file_type": "image/jpeg",
     "title": "Unical Campus esempio 2",
     "file": "medias/2020/students1.jpg",
-    "description": "Esempio di immagine promozionale di campus",
-    "file_size": null,
-    "file_type": null,
-    "created_by": null,
-    "modified_by": null
+    "description": "Esempio di immagine promozionale di campus"
   }
 },
 {
@@ -3907,13 +4026,13 @@
     "created": "2020-10-31T15:04:12.200Z",
     "modified": "2020-10-31T15:04:12.200Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "file_size": 106444,
+    "file_type": "image/jpeg",
     "title": "studenti 3",
     "file": "medias/2020/students2.jpg",
-    "description": "studenti 3",
-    "file_size": null,
-    "file_type": null,
-    "created_by": null,
-    "modified_by": null
+    "description": "studenti 3"
   }
 },
 {
@@ -3923,13 +4042,13 @@
     "created": "2020-11-11T17:14:02.849Z",
     "modified": "2020-11-11T17:14:02.849Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "file_size": 27355,
+    "file_type": "image/jpeg",
     "title": "Banner test 1",
     "file": "medias/2020/test_news_1.jpg",
-    "description": "test",
-    "file_size": null,
-    "file_type": null,
-    "created_by": null,
-    "modified_by": null
+    "description": "test"
   }
 },
 {
@@ -3940,6 +4059,8 @@
     "modified": "2020-11-24T09:33:24.727Z",
     "order": 10,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "media": 1,
     "collection": 1
   }
@@ -3952,6 +4073,8 @@
     "modified": "2020-11-24T09:33:24.727Z",
     "order": 20,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "media": 2,
     "collection": 1
   }
@@ -3964,6 +4087,8 @@
     "modified": "2020-11-24T10:13:09.157Z",
     "order": 30,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "media": 4,
     "collection": 1
   }
@@ -3976,6 +4101,8 @@
     "modified": "2020-11-24T10:13:50.240Z",
     "order": 10,
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "media": 3,
     "collection": 1
   }
@@ -3987,6 +4114,8 @@
     "created": "2020-10-29T09:12:44.427Z",
     "modified": "2020-11-24T10:58:04.194Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "draft_of": null,
     "name": "Portale dell'Università della Calabria",
     "webpath": 1,
@@ -3995,8 +4124,6 @@
     "date_start": "2020-10-29T09:12:02Z",
     "date_end": null,
     "state": "published",
-    "created_by": null,
-    "modified_by": null,
     "type": "home"
   }
 },
@@ -4007,6 +4134,8 @@
     "created": "2020-11-20T09:15:53.481Z",
     "modified": "2020-11-25T17:34:49.167Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "draft_of": null,
     "name": "Dimes",
     "webpath": 4,
@@ -4015,8 +4144,6 @@
     "date_start": "2020-11-20T09:15:51Z",
     "date_end": null,
     "state": "published",
-    "created_by": null,
-    "modified_by": null,
     "type": "home"
   }
 },
@@ -4027,6 +4154,8 @@
     "created": "2020-11-24T12:52:00.324Z",
     "modified": "2020-11-24T12:52:09.027Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "draft_of": 1,
     "name": "Portale dell'Università della Calabria",
     "webpath": 1,
@@ -4035,8 +4164,6 @@
     "date_start": "2020-11-24T12:52:00Z",
     "date_end": null,
     "state": "draft",
-    "created_by": null,
-    "modified_by": null,
     "type": "home"
   }
 },
@@ -4047,6 +4174,8 @@
     "created": "2020-12-03T07:23:10.854Z",
     "modified": "2020-12-03T07:43:10.663Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "draft_of": null,
     "name": "Offerta Formativa",
     "webpath": 7,
@@ -4055,8 +4184,6 @@
     "date_start": "2020-12-03T07:22:54Z",
     "date_end": null,
     "state": "published",
-    "created_by": null,
-    "modified_by": null,
     "type": "standard"
   }
 },
@@ -4067,6 +4194,8 @@
     "created": "2020-12-03T10:47:08.171Z",
     "modified": "2020-12-03T15:51:35.569Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "draft_of": null,
     "name": "I Servizi del Campus",
     "webpath": 8,
@@ -4075,8 +4204,6 @@
     "date_start": "2020-12-03T10:46:59Z",
     "date_end": null,
     "state": "published",
-    "created_by": null,
-    "modified_by": null,
     "type": "standard"
   }
 },
@@ -4087,6 +4214,8 @@
     "created": "2020-12-03T14:52:21.564Z",
     "modified": "2020-12-03T15:52:29.657Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "draft_of": null,
     "name": "Visita il campus",
     "webpath": 9,
@@ -4095,8 +4224,6 @@
     "date_start": "2020-12-03T14:52:17Z",
     "date_end": "2050-12-03T15:01:03Z",
     "state": "published",
-    "created_by": null,
-    "modified_by": null,
     "type": "standard"
   }
 },
@@ -4105,8 +4232,10 @@
   "pk": 19,
   "fields": {
     "created": "2020-12-03T15:56:59.313Z",
-    "modified": "2020-12-03T17:48:48.746Z",
+    "modified": "2020-12-09T17:44:31.138Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "draft_of": null,
     "name": "I Servizi del Campus",
     "webpath": 10,
@@ -4115,8 +4244,6 @@
     "date_start": "2020-12-03T15:56:47Z",
     "date_end": null,
     "state": "published",
-    "created_by": null,
-    "modified_by": null,
     "type": "standard"
   }
 },
@@ -4127,6 +4254,8 @@
     "created": "2020-12-06T15:07:13.649Z",
     "modified": "2020-12-06T15:38:49.821Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "draft_of": null,
     "name": "Motore di Ricerca Portale Unical",
     "webpath": 11,
@@ -4135,8 +4264,6 @@
     "date_start": "2020-12-06T15:06:53Z",
     "date_end": null,
     "state": "published",
-    "created_by": null,
-    "modified_by": null,
     "type": "standard"
   }
 },
@@ -4641,6 +4768,8 @@
   "fields": {
     "created": "2020-11-09T13:25:34.020Z",
     "modified": "2020-11-09T13:25:34.020Z",
+    "created_by": null,
+    "modified_by": null,
     "name": "Didattica",
     "description": "Didattica",
     "image": "images/categories/inline_image_preview.jpg"
@@ -4652,6 +4781,8 @@
   "fields": {
     "created": "2020-11-09T13:26:39.646Z",
     "modified": "2020-11-09T13:26:39.646Z",
+    "created_by": null,
+    "modified_by": null,
     "name": "Ricerca",
     "description": "Ricerca",
     "image": "images/categories/ricerca.png"
@@ -4663,6 +4794,8 @@
   "fields": {
     "created": "2020-11-09T13:27:51.975Z",
     "modified": "2020-11-09T13:27:51.975Z",
+    "created_by": null,
+    "modified_by": null,
     "name": "Eventi",
     "description": "Eventi",
     "image": "images/categories/eventi.jpg"
@@ -4674,6 +4807,8 @@
   "fields": {
     "created": "2020-11-14T15:11:08.755Z",
     "modified": "2020-11-14T15:11:08.755Z",
+    "created_by": null,
+    "modified_by": null,
     "name": "Cultura",
     "description": "Cultura",
     "image": ""
@@ -4685,6 +4820,8 @@
   "fields": {
     "created": "2020-12-03T10:45:29.559Z",
     "modified": "2020-12-03T10:45:29.559Z",
+    "created_by": null,
+    "modified_by": null,
     "name": "Servizi",
     "description": "I servizi del Campus",
     "image": ""
@@ -4696,6 +4833,8 @@
   "fields": {
     "created": "2020-12-03T15:04:27.918Z",
     "modified": "2020-12-03T15:04:27.918Z",
+    "created_by": null,
+    "modified_by": null,
     "name": "Visita il campus",
     "description": "test",
     "image": ""
@@ -4708,6 +4847,8 @@
     "created": "2020-11-09T13:33:21.852Z",
     "modified": "2020-11-25T09:51:03.244Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Papiri, Codex, Libri. La attraverso labora lorem ipsum",
     "subheading": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
     "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p><p>&lt;h1&gt;This HTML is escaped by default!&lt;/h1&gt;</p><p>&nbsp;</p>",
@@ -4718,8 +4859,6 @@
     "date_end": "2022-11-30T14:31:20Z",
     "note": "",
     "slug": "unical-campus-1",
-    "created_by": null,
-    "modified_by": null,
     "category": [
       1
     ]
@@ -4732,6 +4871,8 @@
     "created": "2020-11-09T13:36:12.360Z",
     "modified": "2020-11-16T14:29:56.271Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Unical Campus esempio 2",
     "subheading": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
     "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
@@ -4742,8 +4883,6 @@
     "date_end": "2022-11-30T14:29:43Z",
     "note": "",
     "slug": "unical-campus-esempio-2",
-    "created_by": null,
-    "modified_by": null,
     "category": [
       3
     ]
@@ -4756,6 +4895,8 @@
     "created": "2020-11-09T13:36:59.347Z",
     "modified": "2020-11-16T14:30:18.991Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Unical Campus 3",
     "subheading": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
     "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>",
@@ -4766,8 +4907,6 @@
     "date_end": "2022-11-30T14:30:13Z",
     "note": "",
     "slug": "unical-campus-3",
-    "created_by": null,
-    "modified_by": null,
     "category": [
       2
     ]
@@ -4780,6 +4919,8 @@
     "created": "2020-11-11T16:49:38.838Z",
     "modified": "2020-11-20T14:47:36.489Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Studiare online è sempre più semplice",
     "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>",
@@ -4790,8 +4931,6 @@
     "date_end": "2022-11-30T14:31:00Z",
     "note": "",
     "slug": "studiare-online-e-sempre-piu-semplice",
-    "created_by": null,
-    "modified_by": null,
     "category": [
       2
     ]
@@ -4804,6 +4943,8 @@
     "created": "2020-11-11T17:18:19.297Z",
     "modified": "2020-11-24T14:11:36.607Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Il cinema è Unical",
     "subheading": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
@@ -4814,8 +4955,6 @@
     "date_end": "2022-11-30T14:30:24Z",
     "note": "",
     "slug": "il-cinema-e-unical",
-    "created_by": null,
-    "modified_by": null,
     "category": [
       4,
       3
@@ -4829,6 +4968,8 @@
     "created": "2020-12-03T07:45:16.807Z",
     "modified": "2020-12-03T08:06:07.624Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Studiare all'Unical",
     "subheading": "sub heading",
     "content": "",
@@ -4839,8 +4980,6 @@
     "date_end": "2050-12-03T07:43:56Z",
     "note": "",
     "slug": "studiare-allunical",
-    "created_by": null,
-    "modified_by": null,
     "category": [
       1
     ]
@@ -4851,22 +4990,22 @@
   "pk": 7,
   "fields": {
     "created": "2020-12-03T10:33:49.701Z",
-    "modified": "2020-12-03T11:09:03.782Z",
+    "modified": "2020-12-09T15:58:52.859Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Futuri studenti",
     "subheading": "Dopo la scuo uanans sun d dmndidmla superi undaurosanor qui puoi sceglier yunas ueondhc eie udndiid did dmdi il cors unsusi didnd odm dimd comeusna di te.",
     "content": "",
     "content_type": "markdown",
     "presentation_image": 3,
-    "state": "draft",
+    "state": "published",
     "date_start": "2020-12-03T10:33:19Z",
     "date_end": "2050-12-03T10:33:20Z",
     "note": "",
     "slug": "futuri-studenti",
-    "created_by": null,
-    "modified_by": null,
     "category": [
-      1
+      5
     ]
   }
 },
@@ -4875,20 +5014,20 @@
   "pk": 8,
   "fields": {
     "created": "2020-12-03T10:51:16.034Z",
-    "modified": "2020-12-03T10:51:49.222Z",
+    "modified": "2020-12-09T15:58:36.868Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Studenti iscritti",
     "subheading": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
     "content": "",
     "content_type": "markdown",
     "presentation_image": 2,
-    "state": "draft",
+    "state": "published",
     "date_start": "2020-12-03T10:49:04Z",
     "date_end": "2050-12-03T10:49:05Z",
     "note": "",
     "slug": "studenti-iscritti",
-    "created_by": null,
-    "modified_by": null,
     "category": [
       5
     ]
@@ -4901,6 +5040,8 @@
     "created": "2020-12-03T10:52:35.844Z",
     "modified": "2020-12-03T10:53:12.123Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Laureati",
     "subheading": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsum lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsum lorem ipsum lorem ipsumlorem ipsumlorem ipsumlorem ipsum",
     "content": "",
@@ -4911,8 +5052,6 @@
     "date_end": "2050-12-03T10:52:11Z",
     "note": "",
     "slug": "laureati",
-    "created_by": null,
-    "modified_by": null,
     "category": [
       5
     ]
@@ -4925,6 +5064,8 @@
     "created": "2020-12-03T15:04:45.980Z",
     "modified": "2020-12-03T15:47:10.135Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "Visita il Campus",
     "subheading": "Il Campus universitario più grande e attrezzato d’Italia, \r\noltre 200 ettari di verde con dndunf,kf msmnd fcifmnf \r\nfudndiw sdnd di, oltre 200 ettari di verde con dndunf,kf msmnd\r\n fcifmnf fudndiw sdnd di",
     "content": "",
@@ -4935,8 +5076,6 @@
     "date_end": "2050-12-03T15:04:15Z",
     "note": "",
     "slug": "visita-il-campus",
-    "created_by": null,
-    "modified_by": null,
     "category": [
       6
     ]
@@ -4951,12 +5090,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 1,
     "webpath": 1,
     "in_evidence_start": "2020-11-09T13:33:54Z",
-    "in_evidence_end": null,
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": null
   }
 },
 {
@@ -4968,12 +5107,12 @@
     "order": 50,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 2,
     "webpath": 1,
     "in_evidence_start": "2020-11-09T13:36:10Z",
-    "in_evidence_end": null,
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": null
   }
 },
 {
@@ -4985,12 +5124,12 @@
     "order": 90,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 3,
     "webpath": 1,
     "in_evidence_start": "2020-11-09T13:36:53Z",
-    "in_evidence_end": null,
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": null
   }
 },
 {
@@ -5002,12 +5141,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 4,
     "webpath": 1,
     "in_evidence_start": "2020-11-11T16:50:08Z",
-    "in_evidence_end": null,
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": null
   }
 },
 {
@@ -5019,12 +5158,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 5,
     "webpath": 1,
     "in_evidence_start": "2020-11-11T17:18:17Z",
-    "in_evidence_end": null,
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": null
   }
 },
 {
@@ -5036,12 +5175,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 5,
     "webpath": 4,
     "in_evidence_start": "2020-11-20T09:17:44Z",
-    "in_evidence_end": null,
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": null
   }
 },
 {
@@ -5053,12 +5192,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 4,
     "webpath": 4,
     "in_evidence_start": "2020-11-20T14:47:29Z",
-    "in_evidence_end": null,
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": null
   }
 },
 {
@@ -5070,12 +5209,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 1,
     "webpath": 4,
     "in_evidence_start": "2020-11-20T14:47:57Z",
-    "in_evidence_end": null,
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": null
   }
 },
 {
@@ -5087,12 +5226,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 6,
     "webpath": 7,
     "in_evidence_start": "2020-12-03T07:46:10Z",
-    "in_evidence_end": "2060-12-03T07:46:12Z",
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": "2060-12-03T07:46:12Z"
   }
 },
 {
@@ -5104,12 +5243,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 7,
     "webpath": 8,
     "in_evidence_start": "2020-12-03T10:34:02Z",
-    "in_evidence_end": "2050-12-03T10:34:03Z",
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": "2050-12-03T10:34:03Z"
   }
 },
 {
@@ -5121,12 +5260,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 8,
     "webpath": 8,
     "in_evidence_start": "2020-12-03T10:49:14Z",
-    "in_evidence_end": "2050-12-03T10:49:16Z",
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": "2050-12-03T10:49:16Z"
   }
 },
 {
@@ -5138,12 +5277,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 9,
     "webpath": 8,
     "in_evidence_start": "2020-12-03T10:52:24Z",
-    "in_evidence_end": "2050-12-03T10:52:24Z",
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": "2050-12-03T10:52:24Z"
   }
 },
 {
@@ -5155,12 +5294,12 @@
     "order": 10,
     "is_active": true,
     "section": null,
+    "created_by": null,
+    "modified_by": null,
     "publication": 10,
     "webpath": 9,
     "in_evidence_start": "2020-12-03T15:04:38Z",
-    "in_evidence_end": "2050-12-03T15:04:39Z",
-    "created_by": null,
-    "modified_by": null
+    "in_evidence_end": "2050-12-03T15:04:39Z"
   }
 },
 {
@@ -5548,12 +5687,12 @@
     "modified": "2020-11-25T09:51:03.248Z",
     "order": 10,
     "is_active": true,
+    "file_size": 137610,
+    "file_type": "image/png",
     "publication": 1,
     "name": "allegato di prova",
     "file": "publications_attachments/1/Schermata_da_2020-09-09_11-57-00.png",
-    "description": "Descrizione dell'allegato",
-    "file_size": null,
-    "file_type": null
+    "description": "Descrizione dell'allegato"
   }
 },
 {
@@ -5563,13 +5702,13 @@
     "created": "2020-11-09T15:37:55.487Z",
     "modified": "2020-11-09T15:37:55.488Z",
     "is_active": true,
+    "created_by": null,
+    "modified_by": null,
     "title": "gdfg",
     "publication": 1,
     "language": "en",
     "subheading": "dfgdfgdf",
-    "content": "<p>dfgdfgdfg</p>",
-    "created_by": null,
-    "modified_by": null
+    "content": "<p>dfgdfgdfg</p>"
   }
 }
 ]
