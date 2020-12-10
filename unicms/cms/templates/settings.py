@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 CMS_TEMPLATE_BLOCK_SECTIONS = (('pre-head', _('Pre-Header')),
