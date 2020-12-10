@@ -15,6 +15,7 @@ from cms.templates.models import (ActivableModel,
 from taggit.managers import TaggableManager
 
 from . settings import *
+from . validators import *
 
 logger = logging.getLogger(__name__)
 FILETYPE_ALLOWED = getattr(settings, 'FILETYPE_ALLOWED',
@@ -66,7 +67,10 @@ class Media(ActivableModel, TimeStampedModel, AbstractMedia,
             CreatedModifiedBy):
     title = models.CharField(max_length=60, blank=False, null=False,
                              help_text=_("Media file title"))
-    file = models.FileField(upload_to=context_media_path)
+    file = models.FileField(upload_to=context_media_path,
+                            validators=[validate_file_extension,
+                                        validate_file_size,
+                                        validate_image_size_ratio])
     description = models.TextField()
 
     class Meta:

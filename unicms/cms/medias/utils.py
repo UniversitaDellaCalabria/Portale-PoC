@@ -2,6 +2,8 @@ import logging
 import magic
 import os
 
+from PIL import Image
+
 logger = logging.getLogger(__name__)
 
 
@@ -16,3 +18,8 @@ def get_file_type_size(media_obj) -> dict:
     data = dict(mime_type=content_type, file_size=content_size)
     logger.debug(f'Media item hook get_file_type_size: {data}')
     return data
+
+
+def get_image_width_height(fopen):
+    pil = Image.open(fopen)
+    return pil.size
