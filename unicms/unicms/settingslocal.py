@@ -194,7 +194,7 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
-        'cms.medias': {
+        'cms.medias.hooks': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': True,
@@ -307,7 +307,8 @@ CMS_HOOKS = {
         'POSTDELETE': []
     },
     'Media': {
-        'PRESAVE': ['cms.medias.hooks.set_file_meta',],
+        'PRESAVE': ['cms.medias.hooks.set_file_meta', 
+                    'cms.medias.hooks.image_optimizer'],
         'POSTSAVE': [],
         'PREDELETE': [],
         'POSTDELETE': []
@@ -318,6 +319,7 @@ CMS_HOOKS = {
         'PREDELETE': [],
         'POSTDELETE': []
     }
+    
 }
     
 SEARCH_ELEMENTS_IN_PAGE = 4
