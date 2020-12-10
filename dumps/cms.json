@@ -471,6 +471,51 @@
   }
 },
 {
+  "model": "taggit.taggeditem",
+  "pk": 47,
+  "fields": {
+    "tag": 2,
+    "content_type": 34,
+    "object_id": 11
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 48,
+  "fields": {
+    "tag": 2,
+    "content_type": 27,
+    "object_id": 21
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 49,
+  "fields": {
+    "tag": 2,
+    "content_type": 34,
+    "object_id": 12
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 50,
+  "fields": {
+    "tag": 2,
+    "content_type": 34,
+    "object_id": 13
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 51,
+  "fields": {
+    "tag": 2,
+    "content_type": 34,
+    "object_id": 14
+  }
+},
+{
   "model": "cmstemplates.pagetemplate",
   "pk": 1,
   "fields": {
@@ -762,6 +807,32 @@
     "description": "search engine",
     "type": "cms.templates.blocks.HtmlBlock",
     "content": "{% include \"search_engine.html\" %}"
+  }
+},
+{
+  "model": "cmstemplates.templateblock",
+  "pk": 19,
+  "fields": {
+    "created": "2020-12-10T11:44:32.833Z",
+    "modified": "2020-12-10T11:47:00.919Z",
+    "is_active": true,
+    "name": "Ufficio relazioni internazionali",
+    "description": "",
+    "type": "cms.templates.blocks.HtmlBlock",
+    "content": "{% load i18n %}\r\n{% load static %}\r\n\r\n<svg class=\"icon icon-lg\">\r\n<use xlink:href=\"{% static 'svg/sprite.svg' %}#it-info-circle\"></use>\r\n</svg>\r\n<br>\r\n<b>Ufficio relazioni internazionali</b>\r\n<br>\r\n<b>Ufficio Erasmus</b>"
+  }
+},
+{
+  "model": "cmstemplates.templateblock",
+  "pk": 20,
+  "fields": {
+    "created": "2020-12-10T11:49:50.465Z",
+    "modified": "2020-12-10T11:49:50.465Z",
+    "is_active": true,
+    "name": "Internazionale - Intro text",
+    "description": "",
+    "type": "cms.templates.blocks.HtmlBlock",
+    "content": "È il Campus international, con oltre 800 studenti provenienti\r\nda 80 paesi, rogrammi di mobilità all’estero, Erasmus,\r\nMost e Dual. Passeggiando sul ponte Bucci o tra i viali\r\ndelle residenze del Campus è normale sentire tanti idiomi\r\ne incrociare culture diverse. Questo perché all’UniCal, grazie\r\nal programma UnicalAdmission, vivono\r\noltre 800 studenti provenienti da 80 Paesi; circa 600,\r\ninvece, sono quelli che partecipano, in uscita\r\no in entrata, ai programmi di m"
   }
 },
 {
@@ -1191,6 +1262,24 @@
     "alias_url": "",
     "path": "ammissione/",
     "fullpath": "/campus/servizi/futuri-studenti/ammissione/",
+    "is_active": true
+  }
+},
+{
+  "model": "cmscontexts.webpath",
+  "pk": 14,
+  "fields": {
+    "created": "2020-12-10T11:30:25.811Z",
+    "modified": "2020-12-10T11:30:32.317Z",
+    "created_by": 2,
+    "modified_by": null,
+    "site": 2,
+    "name": "Internazionale",
+    "parent": 1,
+    "alias": null,
+    "alias_url": "",
+    "path": "internazionale/",
+    "fullpath": "/internazionale/",
     "is_active": true
   }
 },
@@ -4268,6 +4357,26 @@
   }
 },
 {
+  "model": "cmspages.page",
+  "pk": 21,
+  "fields": {
+    "created": "2020-12-10T11:32:32.025Z",
+    "modified": "2020-12-10T11:50:21.209Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "draft_of": null,
+    "name": "Internazionale",
+    "webpath": 14,
+    "base_template": 3,
+    "description": "",
+    "date_start": "2020-12-10T11:31:46Z",
+    "date_end": null,
+    "state": "published",
+    "type": "standard"
+  }
+},
+{
   "model": "cmspages.pagecarousel",
   "pk": 1,
   "fields": {
@@ -4554,6 +4663,45 @@
   }
 },
 {
+  "model": "cmspages.pagemenu",
+  "pk": 36,
+  "fields": {
+    "created": "2020-12-10T11:32:32.050Z",
+    "modified": "2020-12-10T11:32:32.050Z",
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 21,
+    "menu": 1
+  }
+},
+{
+  "model": "cmspages.pagemenu",
+  "pk": 37,
+  "fields": {
+    "created": "2020-12-10T11:43:27.027Z",
+    "modified": "2020-12-10T11:43:27.027Z",
+    "order": 10,
+    "is_active": true,
+    "section": "2",
+    "page": 21,
+    "menu": 21
+  }
+},
+{
+  "model": "cmspages.pagemenu",
+  "pk": 38,
+  "fields": {
+    "created": "2020-12-10T11:43:27.027Z",
+    "modified": "2020-12-10T11:43:27.027Z",
+    "order": 10,
+    "is_active": true,
+    "section": "3",
+    "page": 21,
+    "menu": 20
+  }
+},
+{
   "model": "cmspages.pageblock",
   "pk": 3,
   "fields": {
@@ -4763,6 +4911,83 @@
   }
 },
 {
+  "model": "cmspages.pageblock",
+  "pk": 35,
+  "fields": {
+    "order": 20,
+    "is_active": true,
+    "section": "2",
+    "page": 21,
+    "block": 9
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 36,
+  "fields": {
+    "order": 30,
+    "is_active": true,
+    "section": "3",
+    "page": 21,
+    "block": 10
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 37,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "2",
+    "page": 21,
+    "block": 19
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 38,
+  "fields": {
+    "order": 15,
+    "is_active": true,
+    "section": "2",
+    "page": 21,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 39,
+  "fields": {
+    "order": 25,
+    "is_active": true,
+    "section": "3",
+    "page": 21,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 41,
+  "fields": {
+    "order": 1,
+    "is_active": true,
+    "section": "1",
+    "page": 21,
+    "block": 20
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 42,
+  "fields": {
+    "order": 5,
+    "is_active": true,
+    "section": "1",
+    "page": 21,
+    "block": 14
+  }
+},
+{
   "model": "cmspages.category",
   "pk": 1,
   "fields": {
@@ -4837,6 +5062,19 @@
     "modified_by": null,
     "name": "Visita il campus",
     "description": "test",
+    "image": ""
+  }
+},
+{
+  "model": "cmspages.category",
+  "pk": 7,
+  "fields": {
+    "created": "2020-12-10T11:29:39.517Z",
+    "modified": "2020-12-10T11:29:39.517Z",
+    "created_by": null,
+    "modified_by": null,
+    "name": "Internazionale",
+    "description": "internazionale",
     "image": ""
   }
 },
@@ -5092,6 +5330,106 @@
   }
 },
 {
+  "model": "cmspublications.publication",
+  "pk": 11,
+  "fields": {
+    "created": "2020-12-10T11:28:08.372Z",
+    "modified": "2020-12-10T11:35:32.996Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "title": "Accordi e reti",
+    "subheading": "Dopo la scuo uanans sun d dmndidmla\r\nsuperi undaurosanor qui puoi sceglier yunas\r\nueondhc eie udndiid did dmdi il cors\r\nunsusi didnd odm dimd comeusna di te.",
+    "content": "",
+    "content_type": "markdown",
+    "presentation_image": 1,
+    "state": "published",
+    "date_start": "2020-12-10T11:26:35Z",
+    "date_end": "2050-12-10T11:26:36Z",
+    "note": "",
+    "slug": "accordi-e-reti",
+    "relevance": 0,
+    "category": [
+      7
+    ]
+  }
+},
+{
+  "model": "cmspublications.publication",
+  "pk": 12,
+  "fields": {
+    "created": "2020-12-10T11:37:15.907Z",
+    "modified": "2020-12-10T11:37:33.419Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "title": "Studiare all'estero",
+    "subheading": "Dopo la scuo uanans sun d dmndidmla superi undaurosanor qui puoi sceglier yunas ueondhc eie udndiid did dmdi il cors unsusi didnd odm dimd comeusna di te. Accordi e reti  Incontri Ranking",
+    "content": "",
+    "content_type": "markdown",
+    "presentation_image": 2,
+    "state": "published",
+    "date_start": "2020-12-10T11:36:09Z",
+    "date_end": "2050-12-10T11:36:10Z",
+    "note": "",
+    "slug": "studiare-allestero",
+    "relevance": 0,
+    "category": [
+      7
+    ]
+  }
+},
+{
+  "model": "cmspublications.publication",
+  "pk": 13,
+  "fields": {
+    "created": "2020-12-10T11:39:40.318Z",
+    "modified": "2020-12-10T11:39:53.423Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "title": "Studenti internazionali",
+    "subheading": "Dopo la scuo uanans sun d dmndidmla superi undaurosanor qui puoi sceglier yunas ueondhc eie udndiid did dmdi il cors unsusi didnd odm dimd comeusna di te. Accordi e reti  Incontri Ranking",
+    "content": "",
+    "content_type": "markdown",
+    "presentation_image": 3,
+    "state": "published",
+    "date_start": "2020-12-10T11:37:57Z",
+    "date_end": "2050-12-10T11:37:59Z",
+    "note": "",
+    "slug": "studenti-internazionali",
+    "relevance": 0,
+    "category": [
+      7
+    ]
+  }
+},
+{
+  "model": "cmspublications.publication",
+  "pk": 14,
+  "fields": {
+    "created": "2020-12-10T11:41:11.499Z",
+    "modified": "2020-12-10T11:41:11.499Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "title": "Mobilità docenti, ricercatori, staff",
+    "subheading": "Dopo la scuo uanans sun d dmndidmla superi undaurosanor qui puoi sceglier yunas ueondhc eie udndiid did dmdi il cors unsusi didnd odm dimd comeusna di te. Accordi e reti  Incontri Ranking",
+    "content": "",
+    "content_type": "markdown",
+    "presentation_image": 1,
+    "state": "published",
+    "date_start": "2020-12-10T11:40:16Z",
+    "date_end": "2050-12-10T11:40:17Z",
+    "note": "",
+    "slug": "mobilita-docenti-ricercatori-staff",
+    "relevance": 0,
+    "category": [
+      7
+    ]
+  }
+},
+{
   "model": "cmspublications.publicationcontext",
   "pk": 1,
   "fields": {
@@ -5310,6 +5648,74 @@
     "webpath": 9,
     "in_evidence_start": "2020-12-03T15:04:38Z",
     "in_evidence_end": "2050-12-03T15:04:39Z"
+  }
+},
+{
+  "model": "cmspublications.publicationcontext",
+  "pk": 14,
+  "fields": {
+    "created": "2020-12-10T11:30:57.995Z",
+    "modified": "2020-12-10T11:30:57.995Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "created_by": null,
+    "modified_by": null,
+    "publication": 11,
+    "webpath": 14,
+    "in_evidence_start": "2020-12-10T11:30:51Z",
+    "in_evidence_end": "2050-12-10T11:30:53Z"
+  }
+},
+{
+  "model": "cmspublications.publicationcontext",
+  "pk": 15,
+  "fields": {
+    "created": "2020-12-10T11:37:15.926Z",
+    "modified": "2020-12-10T11:37:15.926Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "created_by": null,
+    "modified_by": null,
+    "publication": 12,
+    "webpath": 14,
+    "in_evidence_start": "2020-12-10T11:36:25Z",
+    "in_evidence_end": "2050-12-10T11:36:26Z"
+  }
+},
+{
+  "model": "cmspublications.publicationcontext",
+  "pk": 16,
+  "fields": {
+    "created": "2020-12-10T11:39:40.337Z",
+    "modified": "2020-12-10T11:39:40.337Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "created_by": null,
+    "modified_by": null,
+    "publication": 13,
+    "webpath": 14,
+    "in_evidence_start": "2020-12-10T11:38:15Z",
+    "in_evidence_end": "2050-12-10T11:38:16Z"
+  }
+},
+{
+  "model": "cmspublications.publicationcontext",
+  "pk": 17,
+  "fields": {
+    "created": "2020-12-10T11:41:11.516Z",
+    "modified": "2020-12-10T11:41:11.516Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "created_by": null,
+    "modified_by": null,
+    "publication": 14,
+    "webpath": 14,
+    "in_evidence_start": "2020-12-10T11:40:26Z",
+    "in_evidence_end": "2050-12-10T11:40:27Z"
   }
 },
 {
@@ -5650,6 +6056,215 @@
     "modified": "2020-12-03T15:08:36.027Z",
     "publication": 10,
     "name": "mappa",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 32,
+  "fields": {
+    "created": "2020-12-10T11:35:33.030Z",
+    "modified": "2020-12-10T11:35:33.030Z",
+    "publication": 11,
+    "name": "Erasmus Charter for Higher",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 33,
+  "fields": {
+    "created": "2020-12-10T11:35:33.031Z",
+    "modified": "2020-12-10T11:35:33.031Z",
+    "publication": 11,
+    "name": "Accordi e reti",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 34,
+  "fields": {
+    "created": "2020-12-10T11:35:33.031Z",
+    "modified": "2020-12-10T11:35:33.031Z",
+    "publication": 11,
+    "name": "Incontri",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 35,
+  "fields": {
+    "created": "2020-12-10T11:35:33.032Z",
+    "modified": "2020-12-10T11:35:33.032Z",
+    "publication": 11,
+    "name": "Ranking",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 36,
+  "fields": {
+    "created": "2020-12-10T11:37:15.927Z",
+    "modified": "2020-12-10T11:37:15.927Z",
+    "publication": 12,
+    "name": "Erasmus + studio",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 37,
+  "fields": {
+    "created": "2020-12-10T11:37:15.927Z",
+    "modified": "2020-12-10T11:37:15.927Z",
+    "publication": 12,
+    "name": "Tirocini",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 38,
+  "fields": {
+    "created": "2020-12-10T11:37:15.928Z",
+    "modified": "2020-12-10T11:37:15.928Z",
+    "publication": 12,
+    "name": "Altre opportunità",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 39,
+  "fields": {
+    "created": "2020-12-10T11:37:15.928Z",
+    "modified": "2020-12-10T11:37:15.928Z",
+    "publication": 12,
+    "name": "Mobilità overseases",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 40,
+  "fields": {
+    "created": "2020-12-10T11:39:40.338Z",
+    "modified": "2020-12-10T11:39:40.338Z",
+    "publication": 13,
+    "name": "Offerta formativa internazionale",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 41,
+  "fields": {
+    "created": "2020-12-10T11:39:40.339Z",
+    "modified": "2020-12-10T11:39:40.339Z",
+    "publication": 13,
+    "name": "Offerta formativa",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 42,
+  "fields": {
+    "created": "2020-12-10T11:39:40.339Z",
+    "modified": "2020-12-10T11:39:40.339Z",
+    "publication": 13,
+    "name": "Unical admission",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 43,
+  "fields": {
+    "created": "2020-12-10T11:39:40.340Z",
+    "modified": "2020-12-10T11:39:40.340Z",
+    "publication": 13,
+    "name": "Summer courses",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 44,
+  "fields": {
+    "created": "2020-12-10T11:39:40.341Z",
+    "modified": "2020-12-10T11:39:40.341Z",
+    "publication": 13,
+    "name": "Welcome office",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 45,
+  "fields": {
+    "created": "2020-12-10T11:39:40.341Z",
+    "modified": "2020-12-10T11:39:40.341Z",
+    "publication": 13,
+    "name": "Erasmus incoming",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 46,
+  "fields": {
+    "created": "2020-12-10T11:39:40.342Z",
+    "modified": "2020-12-10T11:39:40.342Z",
+    "publication": 13,
+    "name": "Vivere nel Campus",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 47,
+  "fields": {
+    "created": "2020-12-10T11:41:11.517Z",
+    "modified": "2020-12-10T11:41:11.517Z",
+    "publication": 14,
+    "name": "Erasmus + per l'estero",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 48,
+  "fields": {
+    "created": "2020-12-10T11:41:11.518Z",
+    "modified": "2020-12-10T11:41:11.518Z",
+    "publication": 14,
+    "name": "Erasmus + per Unical",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 49,
+  "fields": {
+    "created": "2020-12-10T11:41:11.518Z",
+    "modified": "2020-12-10T11:41:11.518Z",
+    "publication": 14,
+    "name": "Fullbright",
+    "url": "http://test.unical.it:8000"
+  }
+},
+{
+  "model": "cmspublications.publicationlink",
+  "pk": 50,
+  "fields": {
+    "created": "2020-12-10T11:41:11.520Z",
+    "modified": "2020-12-10T11:41:11.520Z",
+    "publication": 14,
+    "name": "Euraccess",
     "url": "http://test.unical.it:8000"
   }
 },
