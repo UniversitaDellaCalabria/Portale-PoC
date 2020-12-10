@@ -64,7 +64,7 @@ class MediaCollection(ActivableModel, TimeStampedModel,
 
 class Media(ActivableModel, TimeStampedModel, AbstractMedia, 
             CreatedModifiedBy):
-    title = models.CharField(max_length=60, blank=True, null=True,
+    title = models.CharField(max_length=60, blank=False, null=False,
                              help_text=_("Media file title"))
     file = models.FileField(upload_to=context_media_path)
     description = models.TextField()

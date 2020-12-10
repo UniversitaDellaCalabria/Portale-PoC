@@ -308,10 +308,10 @@ CMS_HOOKS = {
     },
     'Media': {
         'PRESAVE': ['cms.medias.hooks.set_file_meta', 
-                    'cms.medias.hooks.image_optimizer'],
+                    'cms.medias.hooks.webp_image_optimizer'],
         'POSTSAVE': [],
         'PREDELETE': [],
-        'POSTDELETE': []
+        'POSTDELETE': ['cms.medias.hooks.remove_file']
     },
     'PublicationAttachment': {
         'PRESAVE': ['cms.medias.hooks.set_file_meta',],
