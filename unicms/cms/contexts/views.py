@@ -11,7 +11,9 @@ from django.shortcuts import render, get_object_or_404
 from django.utils.module_loading import import_string
 from django.utils.translation import gettext_lazy as _
 
-from cms.contexts.models import WebSite, WebPath
+from . decorators import unicms_cache
+from .models import WebSite, WebPath
+
 from cms.pages.models import Page
 from urllib.parse import urlparse
 
@@ -22,6 +24,7 @@ CMS_APP_REGEXP_URLPATHS_LOADED = {import_string(k):v
                                   for k,v in getattr(settings, 'CMS_APP_REGEXP_URLPATHS', {}).items()}
 
 
+@unicms_cache
 def cms_dispatch(request):
     requested_site = re.match('^[a-zA-Z0-9\.\-\_]*',
                               # request.headers.get('Host', '')

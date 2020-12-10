@@ -111,6 +111,8 @@ CACHES = {
             "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",
             # improve resilience
             "IGNORE_EXCEPTIONS": True,
+            "SOCKET_CONNECT_TIMEOUT": 2,  # seconds
+            "SOCKET_TIMEOUT": 2,  # seconds
         }
     }
 }
@@ -180,6 +182,11 @@ LOGGING = {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
+            'propagate': True,
+        },
+        'cms.contexts.cache': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
             'propagate': True,
         },
         'cms.search': {

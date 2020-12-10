@@ -51,6 +51,45 @@ If you want to share your example data
 ./manage.py dumpdata --exclude auth.permission --exclude contenttypes --exclude sessions --exclude admin --indent 2 > ../dumps/cms.json
 ````
 
+#### Redis Cache
+
+uniCMS can cache response, these are the relevant parameters
+````
+################
+# Django related
+################
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://10.0.3.89:6379/unicms",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",
+            # improve resilience
+            "IGNORE_EXCEPTIONS": True,
+            "SOCKET_CONNECT_TIMEOUT": 2,  # seconds
+            "SOCKET_TIMEOUT": 2,  # seconds
+        }
+    }
+}
+DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
+
+######################
+# Redis uniCMS related
+######################
+
+CMS_CACHE_ENABLED = True
+
+CMS_CACHE_KEY_PREFIX = 'unicms_'
+# in seconds
+CMS_CACHE_TTL = 25
+# set to 0 means infinite
+CMS_MAX_ENTRIES = 0
+# request.get_raw_uri() that matches the following would be ignored by cache ...
+CMS_CACHE_EXCLUDED_MATCHES =  ['/search?',]
+````
+
 #### MongoDB
 uniCMS default search engine is built on top of mongodb.
 Install and configure mongodb
