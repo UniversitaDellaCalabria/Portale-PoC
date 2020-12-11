@@ -25,8 +25,8 @@ def detect_language(func_to_decorate):
 
 def unicms_cache(func_to_decorate):
     def new_func(*original_args, **original_kwargs):
-        if is_cache_available():
-            request = original_args[0]
+        request = original_args[0]
+        if is_cache_available() and not request.user.is_staff:
             # check if the request would be cached ...
             cacheable = is_request_cacheable(request)
             if cacheable:
