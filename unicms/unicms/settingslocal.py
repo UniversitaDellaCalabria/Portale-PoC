@@ -118,6 +118,16 @@ CACHES = {
 }
 DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
 
+CMS_CACHE_ENABLED = False
+
+CMS_CACHE_KEY_PREFIX = 'unicms_'
+# in seconds
+CMS_CACHE_TTL = 25
+# set to 0 means infinite
+CMS_MAX_ENTRIES = 0
+# request.get_raw_uri() that matches the following would be ignored by cache ...
+CMS_CACHE_EXCLUDED_MATCHES =  ['/search?',]
+
 # Static files (CSS, JavaScript, Images)
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',

@@ -336,13 +336,13 @@ var search = new Vue({
         let num = this.items.page_number + 1;
         let sep = '';
         if (this.get_args) sep = '&'
-        this.update_args(sep + 'page_num=' + num);
+        this.update_args(sep + 'page_number=' + num);
         },
     prevPage () {
         let num = this.items.page_number - 1;
         let sep = '';
         if (this.get_args) sep = '&'
-        this.update_args(sep + 'page_num=' + num);
+        this.update_args(sep + 'page_number=' + num);
         },
     
     }

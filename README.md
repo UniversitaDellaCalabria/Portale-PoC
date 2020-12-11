@@ -301,6 +301,12 @@ Middlewares
    and the web browser default language. It's needed to 
    handle Menu, Carousel and Publication localizations.
 
+`show_template_blocks_sections`:
+   toggles, for staff users, the display of block sections in pages.
+
+`show_cms_draft_mode`:
+   toggles, for staff users, the draft view mode in pages.
+
 
 Page Blocks
 -------------
@@ -427,35 +433,41 @@ Some usage example also have been posted [here](https://code.tutsplus.com/tutori
 An document would be as follows (see `cms_search.models`)
 
 ````
-entry = {"title": "that name that likes you",
-         "heading": "My first blog post!",
-         "content_type": "cms.",
-         "content_id": "",
-         "content": "that long full text"
-         "site": "www.unical.it",
-         "webpath": "/"
-         "urls": ["http://sdfsdf"],
-         "categories": [],
-         "tags": ["mongodb", "python", "pymongo"],
-         "indexed": timezone.now(),
-         "published": "2020-11-09T13:35:44Z",
-         "viewed": 0,
-         "relevance": 10,
-         "language": "italian",
-         "translations":
-          [
-            {
-              language: "english",
-              title: "that title",
-              heading: "that head",
-              content: "There is nothing more surreal than reality."
-            },
-            {
-              language: "french",
-              content: "Il n'y a rien de plus surréaliste que la réalité."
-            }
-          ]
-}
+entry = {
+            "title": "Papiri, Codex, Libri. La attraverso labora lorem ipsum",
+            "heading": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+            "content_type": "cms.Publication",
+            "content_id": "1",
+            "image": "/media/medias/2020/test_news_1.jpg",
+            "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p><p>&lt;h1&gt;This HTML is escaped by default!&lt;/h1&gt;</p><p>&nbsp;</p>",
+            "sites": [
+                "test.unical.it"
+            ],
+            "urls": [
+                "//test.unical.it/portale/dipartimenti/dimes/contents/news/view/unical-campus-1",
+                "//test.unical.it/portale/contents/news/view/unical-campus-1"
+            ],
+            "tags": [],
+            "categories": [
+                "Didattica"
+            ],
+            "indexed": "2020-12-09T15:00:18.151000",
+            "published": "2020-11-09T13:24:35",
+            "viewed": 0,
+            "relevance": 0.5714285714285714,
+            "language": "italian",
+            "translations": [
+                {
+                    "language": "english",
+                    "title": "gdfg",
+                    "subheading": "dfgdfgdf",
+                    "content": "<p>dfgdfgdfg</p>"
+                }
+            ],
+            "day": 9,
+            "month": 11,
+            "year": 2020
+        },
 ````
 
 #### Search Engine CLI
@@ -464,23 +476,28 @@ Publication and Page models (`cms.models`) configures by default some save_hooks
 Search Engine indexes can be rebuilt with a management command (SE cli):
 
 ````
-./manage.py cms_search_content_sync -y 2020 -type cms.Publication -d 1 -y 2020 -m 11 -show
+./manage.py cms_search_content_sync -y 2020 -type cmspublications.Publication -d 1 -y 2020 -m 11 -show
 ````
 
 Purge all the entries and renew them
 ````
-# an entire year
-./manage.py cms_search_content_sync -y 2020 -type cms.Publication -y 2020 -purge -insert
+# all Pages
+./manage.py cms_search_content_sync -y 2020 -type cmspages.Page -purge -insert -show
 
-# a single day
-./manage.py cms_search_content_sync -y 2020 -type cms.Publication -d 11 -m 12 -y 2020 -purge -insert
+# everything in that year
+./manage.py cms_search_content_sync  -purge -y 2020
+
+# a single month
+./manage.py cms_search_content_sync -y 2020 -type cmspublications.Publication -m 12 -y 2020 -purge -insert
 ````
+
+
 
 `cms_search_content_sync` rely on `settings.MODEL_TO_MONGO_MAP`:
 ```
 MODEL_TO_MONGO_MAP = {
-    'cms.Page': 'cms_search.models.page_to_entry',
-    'cms.Publication': 'cms_search.models.publication_to_entry'
+    'cmspages.Page': 'cms_search.models.page_to_entry',
+    'cmspublications.Publication': 'cms_search.models.publication_to_entry'
 }
 ````
 
