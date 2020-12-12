@@ -34,37 +34,37 @@ CMS_TEMPLATE_BLOCK_SECTIONS = (('pre-head', _('Pre-Header')),
                                ('pre-footer', _('Pre-Footer')),
                                ('footer', _('Footer')),
                                ('post-footer', _('Post-Footer'))
-                              )
+)
 
 CMS_BLOCK_TYPES = (
-                       ('cms.templates.blocks.NullBlock', 'Null Block'),
-                       ('cms.templates.blocks.HtmlBlock', 'HTML Block'),
-                       ('cms.templates.blocks.JSONBlock', 'JSON Block'),
-                       ('unical.flescaTeam.custom_blocks.AngularJSONBlock', 'Angular JSON Block'),
-                    )
+                   ('cms.templates.blocks.NullBlock', 'Null Block'),
+                   ('cms.templates.blocks.HtmlBlock', 'HTML Block'),
+                   ('cms.templates.blocks.JSONBlock', 'JSON Block'),
+)
 
-CMS_BLOCK_TEMPLATES_FOLDERS = (f'{BASE_DIR}/templates/blocks',)
+CMS_TEMPLATES_FOLDER = f'{BASE_DIR}/templates/unicms'
 CMS_BLOCK_TEMPLATES = []
-blocks_templates_files = [glob(f"{e}/*.html") for e in CMS_BLOCK_TEMPLATES_FOLDERS]
+blocks_templates_files = [glob(f"{CMS_TEMPLATES_FOLDER}/blocks/*.html")]
 for i in blocks_templates_files[0]:
     fname = i.split(os.path.sep)[-1]
-    CMS_BLOCK_TEMPLATES.append((fname, fname) )
+    CMS_BLOCK_TEMPLATES.append((fname, fname))
 
-CMS_PAGE_TEMPLATES_FOLDERS = (f'{BASE_DIR}/templates/pages',)
 CMS_PAGE_TEMPLATES = []
-pages_templates_files = [glob(f"{e}/*.html") for e in CMS_PAGE_TEMPLATES_FOLDERS]
+pages_templates_files = [glob(f"{CMS_TEMPLATES_FOLDER}/pages/*.html") ]
 for i in pages_templates_files[0]:
     fname = i.split(os.path.sep)[-1]
-    CMS_PAGE_TEMPLATES.append((fname, fname) )
+    CMS_PAGE_TEMPLATES.append((fname, fname))
 
 
 if CMS_BLOCK_TEMPLATES:
-    logger.info('Loading block template files:{}'.format('\n  '.join([i[1] for i in CMS_BLOCK_TEMPLATES])))
+    _elements = '\n  '.join([i[1] for i in CMS_BLOCK_TEMPLATES])
+    logger.info('Loading block template files:{}'.format(_elements))
 else:
     logger.warning('Block template files not found')
 
 if CMS_PAGE_TEMPLATES:
-    logger.info('Loading page template files: {}'.format(','.join([i[1] for i in CMS_PAGE_TEMPLATES])))
+    _elements = ','.join([i[1] for i in CMS_PAGE_TEMPLATES])
+    logger.info('Loading page template files: {}'.format(_elements))
 else:
     logger.warning('Page template files not found')
 

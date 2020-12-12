@@ -37,6 +37,9 @@ pip3 install -r requirements.txt
 cd unicms
 ./manage.py migrate
 
+# install your templates in settings.INSTALLED_APPS and then symlinks cms templates
+./manage.py unicms_collect_templates # use -renew to purge and create again all
+
 # if you want to load some example datas
 ./manage.py loaddata ../dumps/cms.json
 

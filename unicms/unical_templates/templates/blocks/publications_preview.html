@@ -15,7 +15,9 @@
             <div class="img-responsive-wrapper mb-3">
           <div class="img-responsive img-responsive-panoramic">
             <figure class="img-wrapper">
-              <img src="{{ pub.publication.image_url }}" title="img title" alt="imagealt">
+              <a style="" href="{{ pub.url }}">
+                <img src="{{ pub.publication.image_url }}" title="img title" alt="imagealt">
+              </a>
             </figure>
           </div>
         </div>
@@ -48,7 +50,10 @@
             <use xlink:href="{% static 'svg/sprite.svg' %}#it-settings"></use>
           </svg>
           <span>
-              {% for cat in pub.publication.categories %}{{ cat }} {% endfor %}
+              {% for cat in publication_context.publication.categories %}
+              {% if forloop.counter > 1 %} &middot {% endif %}
+              <a href='#'>{{ cat }} </a>
+              {% endfor %}
           </span>
         </div>
         <div class="card-body">

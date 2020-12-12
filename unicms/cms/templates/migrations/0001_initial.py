@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('modified', models.DateTimeField(auto_now=True)),
                 ('is_active', models.BooleanField()),
                 ('name', models.CharField(blank=True, max_length=160, null=True)),
-                ('template_file', models.CharField(choices=[('', 'No templates found')], max_length=1024)),
+                ('template_file', models.CharField(choices=(lambda: [('', 'No templates found')])(), max_length=1024)),
                 ('note', models.TextField(blank=True, help_text='Editorial Board Notes, not visible by public.', null=True)),
             ],
             options={
