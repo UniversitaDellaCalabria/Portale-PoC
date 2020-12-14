@@ -552,6 +552,15 @@
   }
 },
 {
+  "model": "taggit.taggeditem",
+  "pk": 56,
+  "fields": {
+    "tag": 2,
+    "content_type": 27,
+    "object_id": 23
+  }
+},
+{
   "model": "cmstemplates.pagetemplate",
   "pk": 1,
   "fields": {
@@ -1462,6 +1471,24 @@
     "alias_url": "",
     "path": "accordi/",
     "fullpath": "/internazionale/accordi/",
+    "is_active": true
+  }
+},
+{
+  "model": "cmscontexts.webpath",
+  "pk": 16,
+  "fields": {
+    "created": "2020-12-14T17:05:58.864Z",
+    "modified": "2020-12-14T17:06:34.748Z",
+    "created_by": 2,
+    "modified_by": null,
+    "site": 2,
+    "name": "Italia",
+    "parent": 1,
+    "alias": null,
+    "alias_url": "",
+    "path": "italia/",
+    "fullpath": "/italia/",
     "is_active": true
   }
 },
@@ -4634,6 +4661,26 @@
   }
 },
 {
+  "model": "cmspages.page",
+  "pk": 23,
+  "fields": {
+    "created": "2020-12-14T17:04:52.893Z",
+    "modified": "2020-12-14T17:06:10.401Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "draft_of": null,
+    "name": "Bootstrap Italia GRID PAGE",
+    "webpath": 16,
+    "base_template": 1,
+    "description": "",
+    "date_start": "2020-12-14T17:04:19Z",
+    "date_end": null,
+    "state": "published",
+    "type": "standard"
+  }
+},
+{
   "model": "cmspages.pagecarousel",
   "pk": 1,
   "fields": {
@@ -5470,6 +5517,39 @@
     "section": "2-top",
     "page": 1,
     "block": 28
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 76,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "1-top",
+    "page": 23,
+    "block": 24
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 77,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "2-top",
+    "page": 23,
+    "block": 24
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 78,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "3-top",
+    "page": 23,
+    "block": 24
   }
 },
 {
