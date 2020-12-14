@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'bootstrap_italia_template',
     'django_unical_bootstrap_italia',
-    
+
     'taggit',
     'nested_admin',
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cms.search',
 
     'unical_templates',
+    'unicms_bootstrap_italia_template',
     'rest_framework'
 ]
 
@@ -337,5 +338,5 @@ CMS_HOOKS = {
     }
     
 }
-    
+
 SEARCH_ELEMENTS_IN_PAGE = 4

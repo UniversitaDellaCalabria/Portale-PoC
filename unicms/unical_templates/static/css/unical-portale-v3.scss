@@ -260,3 +260,7 @@ input.top-input {
 .white-unical-color {
     color: $white;
 }
+
+li .list-item.sub {
+    line-height: inherit;
+}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from cms.contexts.models import *
@@ -51,12 +52,12 @@ class AbstractPublication(TimeStampedModel, ActivableModel):
         ]
 
 
-class Publication(AbstractPublication, AbstractPublicable, 
+class Publication(AbstractPublication, AbstractPublicable,
                   CreatedModifiedBy):
     slug = models.SlugField(null=True, blank=True)
     tags = TaggableManager()
     relevance = models.IntegerField(default=0, blank=True)
-    
+
     class Meta:
         verbose_name_plural = _("Publications")
 
@@ -96,14 +97,14 @@ class Publication(AbstractPublication, AbstractPublicable,
     def related_contexts(self):
         return PublicationContext.objects.filter(publication=self,
                                                  webpath__is_active=True)
-    
+
     @property
     def first_available_url(self):
         pubcontx = PublicationContext.objects.filter(publication=self,
                                                      webpath__is_active=True)
         if pubcontx:
             return pubcontx.first().url
-    
+
     @property
     def related_links(self):
         return self.publicationlink_set.all()
@@ -143,8 +144,8 @@ class Publication(AbstractPublication, AbstractPublicable,
         if not self.slug:
             self.slug = self.title2slug()
         super(self.__class__, self).save(*args, **kwargs)
-        
-        
+
+
     def get_attachments(self):
         return PublicationAttachment.objects.filter(publication=self,
                                                     is_active=True).\
@@ -280,7 +281,7 @@ class PublicationAttachment(TimeStampedModel, SortableModel, ActivableModel,
     class Meta:
         verbose_name_plural = _("Publication Attachments")
 
-    
+
     def __str__(self):
         return '{} {} ({})'.format(self.publication, self.name,
                                    self.file_type)

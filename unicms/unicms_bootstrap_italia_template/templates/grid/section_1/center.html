@@ -1,0 +1,69 @@
+{% load static %}
+
+<!-- load custom template tags -->
+{% load unicms_bootstrap_italia %}
+{% load unicms_carousels %}
+{% load unicms_contexts %}
+{% load unicms_menus %}
+{% load unicms_templates %}
+{% load unicms_pages %}
+{% load unicms_publications %}
+
+
+{% load_blocks section="1-center-top-1" as 1_center_top_1 %}
+{% load_blocks section="1-center-top-2" as 1_center_top_2 %}
+{% load_blocks section="1-center-top-3" as 1_center_top_3 %}
+{% load_blocks section="1-center-content" as 1_center_content %}
+{% load_blocks section="1-center-bottom-1" as 1_center_bottom_1 %}
+{% load_blocks section="1-center-bottom-2" as 1_center_bottom_2 %}
+{% load_blocks section="1-center-bottom-3" as 1_center_bottom_3 %}
+
+{% if 1_center_top_1 or 1_center_top_2 or 1_center_top_3 %}
+<div class="row">
+    {% if 1_center_top_1 and 1_center_top_2 and 1_center_top_3 %}
+        <div class="col-12 col-md-4">{{ 1_center_top_1 }}</div>
+        <div class="col-12 col-md-4">{{ 1_center_top_2 }}</div>
+        <div class="col-12 col-md-4">{{ 1_center_top_3 }}</div>
+    {% elif 1_center_top_1 and 1_center_top_2 %}
+        <div class="col-12 col-md-6">{{ 1_center_top_1 }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_top_2 }}</div>
+    {% elif 1_center_top_1 and 1_center_top_3 %}
+        <div class="col-12 col-md-6">{{ 1_center_top_1 }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_top_3 }}</div>
+    {% elif 1_center_top_21 and 1_center_top_3 %}
+        <div class="col-12 col-md-6">{{ 1_center_top_2 }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_top_3 }}</div>
+    {% else %}
+        <div class="col-12">{{ 1_center_top_1 }}{{ 1_center_top_2 }}{{ 1_center_top_3 }}</div>
+    {% endif %}
+</div>
+{% endif %}
+
+{% if 1_center_content %}
+<div class="row">
+    <div class="col">
+        {{ 1_center_content }}
+    </div>
+</div>
+{% endif %}
+
+{% if 1_center_bottom_1 or 1_center_bottom_2 or 1_center_bottom_3 %}
+<div class="row">
+    {% if 1_center_bottom_1 and 1_center_bottom_2 and 1_center_bottom_3 %}
+        <div class="col-12 col-md-4">{{ 1_center_bottom_1 }}</div>
+        <div class="col-12 col-md-4">{{ 1_center_bottom_2 }}</div>
+        <div class="col-12 col-md-4">{{ 1_center_bottom_3 }}</div>
+    {% elif 1_center_bottom_1 and 1_center_bottom_2 %}
+        <div class="col-12 col-md-6">{{ 1_center_bottom_1 }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_bottom_2 }}</div>
+    {% elif 1_center_bottom_1 and 1_center_bottom_3 %}
+        <div class="col-12 col-md-6">{{ 1_center_bottom_1 }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_bottom_3 }}</div>
+    {% elif 1_center_bottom_21 and 1_center_bottom_3 %}
+        <div class="col-12 col-md-6">{{ 1_center_bottom_2 }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_bottom_3 }}</div>
+    {% else %}
+        <div class="col-12">{{ 1_center_bottom_1 }}{{ 1_center_bottom_2 }}{{ 1_center_bottom_3 }}</div>
+    {% endif %}
+</div>
+{% endif %}

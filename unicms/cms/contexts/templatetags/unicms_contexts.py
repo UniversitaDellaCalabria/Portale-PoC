@@ -30,10 +30,10 @@ def _build_breadcrumbs(context):
 
     for i in nodes:
         url = sanitize_path(f'{root}/{i}')
-        url_prefixed = sanitize_path(f'{root_prefixed}/{i}')
         node_webpath = WebPath.objects.filter(fullpath=f'{url}/').first()
         node_name = node_webpath.name if node_webpath else i
-        crumbs.append((url_prefixed, node_name))
+        node_path = sanitize_path(f'{root_prefixed}{url}/')
+        crumbs.append((node_path, node_name))
         root = url
     crumbs[0] = [root_prefixed, _('Home')]
     return crumbs

@@ -1,39 +1,51 @@
 {% load i18n %}
 {% load static %}
 
-{% load unicms_contexts %}
+<div class="row">
 
 
-{% if publications %}
-<div class="row d-lg-flex">
-    <div class="col-12">
-        <!--start card-->
-        <div class="card-wrapper card-space">
-            <div class="card card-bg no-after">
-                <div class="card-body">
-                    <ul class="pl-0">
-                        {% for pub in publications %}
-                        <li class="mb-3" style="list-style: none">
-                            <b>
-                                <span>
-                                    {% for cat in pub.publication.categories|slice:":3" %}
-                                    {% if forloop.counter > 1 %}&nbsp;&middot;&nbsp;{% endif %}
-                                    <a href="{% call obj=pub method='get_url_list' category_name=cat %}">{{ cat }} </a>
-                                    {% endfor %}
-                                </span>
-                            </b>
-                            -
-                            <a href="{{ pub.url }}">
-                                {{ pub.publication.title }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+  <div class="col-12 col-lg-8">
+    <iframe width="100%" height="350"
+            src="https://www.youtube.com/embed/Xl0xjc2qVvw"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>
+  </div>
 
-            </div>
+    {% if publications %}
+  {% for  pub in publications %}
+  <div class="col-12 col-lg-4">
+    <!--start card-->
+    <div class="card-wrapper card-space">
+      <div class="card card-bg no-after">
+        <div class="card-body">
+            <div class="img-responsive-wrapper mb-3">
+          <div class="img-responsive img-responsive-panoramic">
+            <figure class="img-wrapper">
+              <a style="" href="{{ pub.url }}">
+                <img src="{{ pub.publication.image_url }}" title="img title" alt="imagealt">
+              </a>
+            </figure>
+          </div>
         </div>
-        <!--end card-->
+            <h5 class="card-title">
+                <a style="text-decoration: none; color: #17324d;" href="{{ pub.url }}">
+                    {{ pub.publication.title|truncatechars_html:27 }}
+                </a>
+            </h5>
+          <p class="card-text">{{ pub.publication.content|safe|truncatechars:66 }}</p>
+          <a href="#">
+              <svg class="icon">
+              <use xlink:href="{% static 'svg/sprite.svg' %}#it-share"></use>
+          </a>
+        </svg>
+        </div>
+      </div>
     </div>
+    <!--end card-->
+  </div>
+    {% endfor %}
+    {% endif %}
 </div>
-{% endif %}
+
