@@ -7,8 +7,6 @@ from glob import glob
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
-# logging.basicConfig(level=getattr(logging, 'DEBUG'))
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
