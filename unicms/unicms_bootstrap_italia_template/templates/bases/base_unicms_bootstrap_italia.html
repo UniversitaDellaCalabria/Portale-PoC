@@ -3,7 +3,8 @@
 base-setup.html
 bootstrap-italia-base.html
 -->
-{% extends 'base-setup.html' %}
+{% extends 'bootstrap-italia-base.html' %}
+
 
 {% load i18n %}
 
@@ -14,6 +15,7 @@ bootstrap-italia-base.html
 {% load static %}
 
 <!-- load custom template tags -->
+{% load unicms_bootstrap_italia %}
 {% load unicms_carousels %}
 {% load unicms_contexts %}
 {% load unicms_menus %}
@@ -24,7 +26,6 @@ bootstrap-italia-base.html
 <!-- Return to Agid native template -->
 {% block extra_head %}
 {{ block.super }}
-<link rel="stylesheet" href="{% sass_src 'css/unical-portale-v3.scss' %}" type="text/css">
 {% include "inits/vue-init.html" %}
 {% include "inits/search-input-handler.html" %}
 {% endblock extra_head %}
@@ -39,13 +40,6 @@ bootstrap-italia-base.html
     {{ block.super }}
 </div>
 {% endblock header_brand_wrapper %}
-
-<!-- Logo in Header -->
-{% block header_center_logo %}
-<div class="d-none d-lg-flex col-lg-12 px-0">
-    <image src="{% static 'images/logo_unical_white.svg' %}" style="width: 100%;"/>
-</div>
-{% endblock header_center_logo %}
 
 
 {% block header_slim_wrapper %}
@@ -62,17 +56,6 @@ bootstrap-italia-base.html
 {% endblock header_slim_wrapper %}
 
 
-<!-- Mobile slim_org_name -->
-{% block header_slim_mobile_org_name %}
-<image src="{% static 'images/logo_unical_white.svg' %}" style="max-width: 100%;"/>
-{% endblock header_slim_mobile_org_name %}
-
-{% block footer_logo %}
-<div class="col-12 col-md-4 px-0">
-    <image src="{% static 'images/logo_unical_white.svg' %}" style="max-width: 100%"/>
-</div>
-
-{% endblock footer_logo %}
 
 {% block footer_org_text %}
 {% endblock footer_org_text %}
@@ -199,3 +182,19 @@ col-10 offset-2 col-lg-12 offset-lg-0
     </div>
 </div>
 {% endblock main_menu %}
+
+{% block container %}
+
+<!-- Blocks in section 1 -->
+{% blocks_in_position position="section-1" as section_1 %}
+{% if section_1 %}
+    {% include "grid/section_1/section.html" %}
+{% endif %}
+
+<!-- Blocks in section 2 -->
+{% blocks_in_position position="section-2" as section_2 %}
+{% if section_2 %}
+    {% include "grid/section_2/section.html" %}
+{% endif %}
+
+{% endblock container %}
