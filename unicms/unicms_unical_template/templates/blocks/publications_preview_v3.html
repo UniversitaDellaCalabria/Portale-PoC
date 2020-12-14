@@ -93,39 +93,4 @@
   {% endfor %}
 
 </div>
-
-
-<!-- mobile -->
-<div id="accordionDiv1"
-     class="d-lg-none collapse-div mb-4"
-     role="tablist"
-     style="background:#fff">
-    {% for pub in publications %}
-    <div class="collapse-header" id="headingA{{ forloop.counter0 }}">
-        <button data-toggle="collapse"
-                data-target="#accordion{{ forloop.counter0 }}"
-                aria-expanded="false"
-                aria-controls="accordion{{ forloop.counter0 }}">
-            {{ pub.publication.title }}
-        </button>
-    </div>
-    <div id="accordion{{ forloop.counter0 }}"
-         class="collapse"
-         role="tabpane{{ forloop.counter0 }}"
-         aria-labelledby="headingA{{ forloop.counter0 }}"
-         data-parent="#accordionDiv1">
-        <div class="collapse-body">
-            {% if pub.publication.presentation_image %}
-            <a class="mb-3 float-left" href="{{ pub.url }}">
-                <img src="{{ pub.publication.image_url }}"
-                     title="img title"
-                     alt="imagealt"
-                     style="width: 100%" />
-            </a>
-            {% endif %}
-            {{ pub.publication.subheading }}
-        </div>
-    </div>
-    {% endfor %}
-</div>
 {% endif %}

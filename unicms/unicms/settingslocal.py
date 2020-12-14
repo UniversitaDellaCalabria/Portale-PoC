@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'cms.api',
     'cms.search',
 
-    'unical_templates',
+    'unicms_unical_template',
     'unicms_bootstrap_italia_template',
     'rest_framework'
 ]
@@ -318,7 +318,7 @@ CMS_HOOKS = {
         'POSTDELETE': []
     },
     'Media': {
-        'PRESAVE': ['cms.medias.hooks.set_file_meta', 
+        'PRESAVE': ['cms.medias.hooks.set_file_meta',
                     'cms.medias.hooks.webp_image_optimizer'],
         'POSTSAVE': [],
         'PREDELETE': [],
@@ -336,7 +336,7 @@ CMS_HOOKS = {
         'PREDELETE': [],
         'POSTDELETE': []
     }
-    
+
 }
 
 SEARCH_ELEMENTS_IN_PAGE = 4

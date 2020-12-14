@@ -23,23 +23,26 @@ CMS_TEMPLATE_BLOCK_SECTIONS = (
                                 ('menu-4', _('Navigation Menu 4')),
                                 ('slider', _('Carousel/Slider')),
                                 ('slider-2', _('Carousel/Slider 2')),
-                                ('1','1'),
-                                ('2','2'),
-                                ('3','3'),
-                                ('4','4'),
-                                ('5','5'),
-                                ('6','6'),
-                                ('7','7'),
-                                ('8','8'),
-                                ('9','9'),
+                                # ('1','1'),
+                                # ('2','2'),
+                                # ('3','3'),
+                                # ('4','4'),
+                                # ('5','5'),
+                                # ('6','6'),
+                                # ('7','7'),
+                                # ('8','8'),
+                                # ('9','9'),
                                 ('pre-footer', _('Pre-Footer')),
                                 ('footer', _('Footer')),
                                 ('post-footer', _('Post-Footer')),
 
+                                # breadcrumbs
+                                ('breadcrumbs', _('Breadcrumbs')),
 
                                 # section 1
                                 ('section-1',
                                     (
+                                       ('1-top', _('Section 1 - Top')),
                                        ('1-left-a', _('Section 1 - Left A')),
                                        ('1-left-b', _('Section 1 - Left B')),
                                        ('1-center-top-1', _('Section 1 - Center Top 1')),
@@ -57,31 +60,59 @@ CMS_TEMPLATE_BLOCK_SECTIONS = (
                                        ('1-center-bottom-3', _('Section 1 - Center Bottom 3')),
                                        ('1-right-a', _('Section 1 - Right A')),
                                        ('1-right-b', _('Section 1 - Right B')),
+                                       ('1-bottom', _('Section 1 - Bottom')),
                                     )
                                 ),
 
                                 # section 2
                                 ('section-2',
                                     (
+                                       ('2-top', _('Section 2 - Top')),
                                        ('2-left-a', _('Section 2 - Left A')),
                                        ('2-left-b', _('Section 2 - Left B')),
                                        ('2-center-top-1', _('Section 2 - Center Top 1')),
                                        ('2-center-top-2', _('Section 2 - Center Top 2')),
                                        ('2-center-top-3', _('Section 2 - Center Top 3')),
-                                       ('2-center-mid-top-1', _('Section 2 - Center Middle Top 1')),
-                                       ('2-center-mid-top-2', _('Section 2 - Center Middle Top 2')),
-                                       ('2-center-mid-top-3', _('Section 2 - Center Middle Top 3')),
+                                       # ('2-center-mid-top-1', _('Section 2 - Center Middle Top 1')),
+                                       # ('2-center-mid-top-2', _('Section 2 - Center Middle Top 2')),
+                                       # ('2-center-mid-top-3', _('Section 2 - Center Middle Top 3')),
                                        ('2-center-content', _('Section 2 - Center Content')),
-                                       ('2-center-mid-bottom-1', _('Section 2 - Center Middle Bottom 1')),
-                                       ('2-center-mid-bottom-2', _('Section 2 - Center Middle Bottom 2')),
-                                       ('2-center-mid-bottom-3', _('Section 2 - Center Middle Bottom 3')),
+                                       # ('2-center-mid-bottom-1', _('Section 2 - Center Middle Bottom 1')),
+                                       # ('2-center-mid-bottom-2', _('Section 2 - Center Middle Bottom 2')),
+                                       # ('2-center-mid-bottom-3', _('Section 2 - Center Middle Bottom 3')),
                                        ('2-center-bottom-1', _('Section 2 - Center Bottom 1')),
                                        ('2-center-bottom-2', _('Section 2 - Center Bottom 2')),
                                        ('2-center-bottom-3', _('Section 2 - Center Bottom 3')),
                                        ('2-right-a', _('Section 2 - Right A')),
                                        ('2-right-b', _('Section 2 - Right B')),
+                                       ('2-bottom', _('Section 2 - Bottom')),
                                     )
-                                )
+                                ),
+
+                                # section 1
+                                ('section-3',
+                                    (
+                                       ('3-top', _('Section 3 - Top')),
+                                       ('3-left-a', _('Section 3 - Left A')),
+                                       ('3-left-b', _('Section 3 - Left B')),
+                                       ('3-center-top-1', _('Section 3 - Center Top 1')),
+                                       ('31-center-top-2', _('Section 3 - Center Top 2')),
+                                       ('3-center-top-3', _('Section 3 - Center Top 3')),
+                                       # ('3-center-mid-top-1', _('Section 3 - Center Middle Top 1')),
+                                       # ('3-center-mid-top-2', _('Section 3 - Center Middle Top 2')),
+                                       # ('3-center-mid-top-3', _('Section 3 - Center Middle Top 3')),
+                                       ('3-center-content', _('Section 3 - Center Content')),
+                                       # ('3-center-mid-bottom-1', _('Section 3 - Center Middle Bottom 1')),
+                                       # ('3-center-mid-bottom-2', _('Section 3 - Center Middle Bottom 2')),
+                                       # ('3-center-mid-bottom-3', _('Section 3 - Center Middle Bottom 3')),
+                                       ('3-center-bottom-1', _('Section 3 - Center Bottom 1')),
+                                       ('3-center-bottom-2', _('Section 3 - Center Bottom 2')),
+                                       ('3-center-bottom-3', _('Section 3 - Center Bottom 3')),
+                                       ('3-right-a', _('Section 3 - Right A')),
+                                       ('3-right-b', _('Section 3 - Right B')),
+                                       ('3-bottom', _('Section 3 - Bottom')),
+                                    )
+                                ),
                               )
 
 CMS_BLOCK_TYPES = (

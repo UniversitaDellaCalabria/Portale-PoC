@@ -10,67 +10,79 @@
 {% load unicms_publications %}
 
 
-<div class="row py-3">
-    <div class="container">
-        <div class="row">
+<div class="row">
 
-            {% load_blocks section="2-left-a" as 2_left_a %}
-            {% load_blocks section="2-left-b" as 2_left_b %}
-            {% load_blocks section="2-center-top-1" as 2_center_top_1 %}
-            {% load_blocks section="2-center-top-2" as 2_center_top_2 %}
-            {% load_blocks section="2-center-top-3" as 2_center_top_3 %}
-            {% load_blocks section="2-center-content" as 2_center_content %}
-            {% load_blocks section="2-center-bottom-1" as 2_center_bottom_1 %}
-            {% load_blocks section="2-center-bottom-2" as 2_center_bottom_2 %}
-            {% load_blocks section="2-center-bottom-3" as 2_center_bottom_3 %}
-            {% load_blocks section="2-right-a" as 2_right_a %}
-            {% load_blocks section="2-right-b" as 2_right_b %}
+    {% load_blocks section="2-top" as 2_top %}
+    {% load_blocks section="2-left-a" as 2_left_a %}
+    {% load_blocks section="2-left-b" as 2_left_b %}
+    {% load_blocks section="2-center-top-1" as 2_center_top_1 %}
+    {% load_blocks section="2-center-top-2" as 2_center_top_2 %}
+    {% load_blocks section="2-center-top-3" as 2_center_top_3 %}
+    {% load_blocks section="2-center-content" as 2_center_content %}
+    {% load_blocks section="2-center-bottom-1" as 2_center_bottom_1 %}
+    {% load_blocks section="2-center-bottom-2" as 2_center_bottom_2 %}
+    {% load_blocks section="2-center-bottom-3" as 2_center_bottom_3 %}
+    {% load_blocks section="2-right-a" as 2_right_a %}
+    {% load_blocks section="2-right-b" as 2_right_b %}
+    {% load_blocks section="2-bottom" as 2_bottom %}
 
-            <!-- Blocks in center positions -->
-            {% if 2_center_top_1 or 2_center_top_2 or 2_center_top_3 or 2_center_content or 2_center_bottom_1 or 2_center_bottom_2 or 2_center_bottom_3 %}
-
-                <!-- Build left column -->
-                {% if 2_left_a and 2_left_b %}
-                    <div class="col-12 col-md-4">
-                        {% include "grid/section_2/left.html" %}
-                    </div>
-                {% elif 2_left_a or 2_left_b %}
-                    <div class="col-12 col-md-3">
-                        {% include "grid/section_2/left.html" %}
-                    </div>
-                {% endif %}
-
-                <!-- Center column take available space -->
-                <div class="col">
-                    {% include "grid/section_2/center.html" %}
-                </div>
-
-                <!-- Build right column -->
-                {% if 2_right_a and 2_right_b %}
-                    <div class="col-12 col-md-4">
-                        {% include "grid/section_2/right.html" %}
-                    </div>
-                {% elif 2_right_a or 2_right_b %}
-                    <div class="col-12 col-md-3">
-                        {% include "grid/section_2/right.html" %}
-                    </div>
-                {% endif %}
-
-            <!-- No blocks in center positions -->
-            {% else %}
-                {% if 2_left_a or 2_left_b %}
-                    <div class="col-12 col-md-6">
-                        {% include "grid/section_2/left.html" %}
-                    </div>
-                {% endif %}
-
-                {% if 2_right_a or 2_right_b %}
-                    <div class="col-12 col-md-6">
-                        {% include "grid/section_2/right.html" %}
-                    </div>
-                {% endif %}
-
-            {% endif %}
-        </div>
+    <!-- Blocks in top position -->
+    {% if 2_top %}
+    <div class="col-12">
+        {{ 2_top }}
     </div>
+    {% endif %}
+
+    <!-- Blocks in center positions -->
+    {% if 2_center_top_1 or 2_center_top_2 or 2_center_top_3 or 2_center_content or 2_center_bottom_1 or 2_center_bottom_2 or 2_center_bottom_3 %}
+
+        <!-- Build left column -->
+        {% if 2_left_a and 2_left_b %}
+            <div class="col-12 col-md-4">
+                {% include "grid/section_2/left.html" %}
+            </div>
+        {% elif 2_left_a or 2_left_b %}
+            <div class="col-12 col-md-3">
+                {% include "grid/section_2/left.html" %}
+            </div>
+        {% endif %}
+
+        <!-- Center column take available space -->
+        <div class="col">
+            {% include "grid/section_2/center.html" %}
+        </div>
+
+        <!-- Build right column -->
+        {% if 2_right_a and 2_right_b %}
+            <div class="col-12 col-md-4">
+                {% include "grid/section_2/right.html" %}
+            </div>
+        {% elif 2_right_a or 2_right_b %}
+            <div class="col-12 col-md-3">
+                {% include "grid/section_2/right.html" %}
+            </div>
+        {% endif %}
+
+    <!-- No blocks in center positions -->
+    {% else %}
+        {% if 2_left_a or 2_left_b %}
+            <div class="col-12 col-md-6">
+                {% include "grid/section_2/left.html" %}
+            </div>
+        {% endif %}
+
+        {% if 2_right_a or 2_right_b %}
+            <div class="col-12 col-md-6">
+                {% include "grid/section_2/right.html" %}
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+    <!-- Blocks in bottom position -->
+    {% if 2_bottom %}
+    <div class="col-12">
+        {{ 2_bottom }}
+    </div>
+    {% endif %}
 </div>

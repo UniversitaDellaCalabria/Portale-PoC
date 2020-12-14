@@ -3,7 +3,7 @@
 base-setup.html
 bootstrap-italia-base.html
 -->
-{% extends 'base-setup.html' %}
+{% extends 'bases/base_unicms_bootstrap_italia.html' %}
 
 {% load i18n %}
 
@@ -47,20 +47,11 @@ bootstrap-italia-base.html
 </div>
 {% endblock header_center_logo %}
 
+{% block header_center_org_name %}
+{% endblock header_center_org_name %}
 
-{% block header_slim_wrapper %}
-{% if request.user.is_staff %}
-<div class="container bg-white">
-    <div class="row">
-        {% include "editorialboard_frontend_menu.html" %}
-    </div>
-</div>
-{% endif %}
-
-<div class="d-lg-none">{{ block.super }}</div>
-
-{% endblock header_slim_wrapper %}
-
+{% block header_center_org_subname %}
+{% endblock header_center_org_subname %}
 
 <!-- Mobile slim_org_name -->
 {% block header_slim_mobile_org_name %}
@@ -199,3 +190,13 @@ col-10 offset-2 col-lg-12 offset-lg-0
     </div>
 </div>
 {% endblock main_menu %}
+
+{% block container %}
+    {% load_blocks section='slider' %}
+    {% load_menu section='menu-2' template="unical_portale_menu_secondario.html" %}
+    {{ block.super }}
+{% endblock container %}
+
+{% block section_2_classes %}
+    dark-grey-background py-5
+{% endblock section_2_classes %}

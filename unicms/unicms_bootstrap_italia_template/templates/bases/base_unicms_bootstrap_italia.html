@@ -19,9 +19,9 @@ bootstrap-italia-base.html
 {% load unicms_carousels %}
 {% load unicms_contexts %}
 {% load unicms_menus %}
-{% load unicms_templates %}
 {% load unicms_pages %}
 {% load unicms_publications %}
+{% load unicms_templates %}
 
 <!-- Return to Agid native template -->
 {% block extra_head %}
@@ -31,16 +31,7 @@ bootstrap-italia-base.html
 {% endblock extra_head %}
 
 <!-- Page Title -->
-{% block page_title %}{% trans "Università della Calabria" %}{% endblock page_title %}
-<!-- Meta Description (for all pages if not overrided) -->
-{% block page_meta_description %}{% trans "Sito istituzionale dell'Università della Calabria" %}{% endblock page_meta_description %}
-
-{% block header_brand_wrapper %}
-<div class="d-none d-lg-inline col-lg-6">
-    {{ block.super }}
-</div>
-{% endblock header_brand_wrapper %}
-
+{% block page_title %}{% trans "Bootstrap Italia Django CMS" %}{% endblock page_title %}
 
 {% block header_slim_wrapper %}
 {% if request.user.is_staff %}
@@ -54,8 +45,6 @@ bootstrap-italia-base.html
 <div class="d-lg-none">{{ block.super }}</div>
 
 {% endblock header_slim_wrapper %}
-
-
 
 {% block footer_org_text %}
 {% endblock footer_org_text %}
@@ -185,16 +174,38 @@ col-10 offset-2 col-lg-12 offset-lg-0
 
 {% block container %}
 
+<!-- Breadcrumbs -->
+{% block breadcrumbs %}
+    {% breadcrumbs leaf=handler %}
+{% endblock breadcrumbs %}
+
 <!-- Blocks in section 1 -->
 {% blocks_in_position position="section-1" as section_1 %}
 {% if section_1 %}
-    {% include "grid/section_1/section.html" %}
+<div class="{% block section_1_classes %}py-3{% endblock section_1_classes %}">
+    <div class="container">
+        {% include "grid/section_1/section.html" %}
+    </div>
+</div>
 {% endif %}
 
 <!-- Blocks in section 2 -->
 {% blocks_in_position position="section-2" as section_2 %}
 {% if section_2 %}
-    {% include "grid/section_2/section.html" %}
+<div class="{% block section_2_classes %}py-3 neutral-2-bg{% endblock section_2_classes %}">
+    <div class="container">
+        {% include "grid/section_2/section.html" %}
+    </div>
+</div>
 {% endif %}
 
+<!-- Blocks in section 3 -->
+{% blocks_in_position position="section-3" as section_3 %}
+{% if section_3 %}
+<div class="{% block section_3_classes %}py-3{% endblock section_3_classes %}">
+    <div class="container">
+        {% include "grid/section_3/section.html" %}
+    </div>
+</div>
+{% endif %}
 {% endblock container %}
