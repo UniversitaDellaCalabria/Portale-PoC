@@ -11,10 +11,6 @@
 {% load unicms_pages %}
 {% load unicms_publications %}
 
-<!-- SEO  -->
-{% block page_title %}{{ page.name }}{% endblock page_title %}
-{% block page_meta_description %}{{ page.description }}{% endblock page_meta_description %}
-{% block page_meta_keywords %}{% for tag in page.tags.all %}{{ tag }},{% endfor %}{% endblock page_meta_keywords %}
 
 {% block container %}
 

@@ -127,7 +127,7 @@ class ApiSearchEngine(APIView):
             total_pages = 1
         
         try:
-            page = int(request.GET.get('page_num', 1)) or 1    
+            page = int(request.GET.get('page_number', 1)) or 1    
         except ValueError:
             page = 1
         if page > total_pages:

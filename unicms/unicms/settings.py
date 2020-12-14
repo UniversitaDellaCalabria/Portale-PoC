@@ -28,8 +28,8 @@ ROOT_URLCONF = 'unicms.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/pages',
-                 'templates/blocks',
+        'DIRS': ['templates/unicms/pages',
+                 'templates/unicms/blocks',
                  'templates/admin'],
         'APP_DIRS': True,
         'OPTIONS': {

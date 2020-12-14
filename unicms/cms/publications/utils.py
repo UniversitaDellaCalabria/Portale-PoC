@@ -16,13 +16,6 @@ def load_app_settings():
                                getattr(app_settings, i))
 
 
-def remove_file(fpath):
-    try:
-        os.remove(fpath)
-    except Exception as e:
-        logger.error('{} cannot be removed: {}'.format(fpath, e))
-
-
 def publication_base_filter():
     now = timezone.localtime()
     query_params = {'is_active': True,

@@ -112,10 +112,22 @@ CACHES = {
             "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",
             # improve resilience
             "IGNORE_EXCEPTIONS": True,
+            "SOCKET_CONNECT_TIMEOUT": 2,  # seconds
+            "SOCKET_TIMEOUT": 2,  # seconds
         }
     }
 }
 DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
+
+CMS_CACHE_ENABLED = True
+
+CMS_CACHE_KEY_PREFIX = 'unicms_'
+# in seconds
+CMS_CACHE_TTL = 25
+# set to 0 means infinite
+CMS_MAX_ENTRIES = 0
+# request.get_raw_uri() that matches the following would be ignored by cache ...
+CMS_CACHE_EXCLUDED_MATCHES =  ['/search?',]
 
 # Static files (CSS, JavaScript, Images)
 STATICFILES_FINDERS = [
@@ -183,12 +195,17 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'cms.contexts.cache': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
         'cms.search': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': True,
         },
-        'cms.medias': {
+        'cms.medias.hooks': {
             'handlers': ['console'],
             'level': 'DEBUG',
             'propagate': True,
@@ -301,10 +318,17 @@ CMS_HOOKS = {
         'POSTDELETE': []
     },
     'Media': {
-        'PRESAVE': ['cms.medias.hooks.set_file_meta',],
+        'PRESAVE': ['cms.medias.hooks.set_file_meta', 
+                    'cms.medias.hooks.webp_image_optimizer'],
         'POSTSAVE': [],
         'PREDELETE': [],
-        'POSTDELETE': []
+        'POSTDELETE': ['cms.medias.hooks.remove_file']
+    },
+    'Category': {
+        'PRESAVE': ['cms.medias.hooks.webp_image_optimizer'],
+        'POSTSAVE': [],
+        'PREDELETE': [],
+        'POSTDELETE': ['cms.medias.hooks.remove_file']
     },
     'PublicationAttachment': {
         'PRESAVE': ['cms.medias.hooks.set_file_meta',],
@@ -312,6 +336,7 @@ CMS_HOOKS = {
         'PREDELETE': [],
         'POSTDELETE': []
     }
+    
 }
 
 SEARCH_ELEMENTS_IN_PAGE = 4

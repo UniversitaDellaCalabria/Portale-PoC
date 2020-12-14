@@ -14,7 +14,8 @@ FILETYPE_TEXT = ('text/plain',
                  'application/msword',
                  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
                 )
-FILETYPE_IMAGE = ('image/jpeg', 'image/png', 'image/gif', 'image/x-ms-bmp')
+FILETYPE_IMAGE = ('image/webp', 'image/jpeg', 'image/png', 
+                  'image/gif', 'image/x-ms-bmp')
 FILETYPE_P7M = ('application/pkcs7-mime',)
 FILETYPE_SIGNED = FILETYPE_PDF + FILETYPE_P7M
 FILETYPE_ALLOWED = FILETYPE_TEXT + FILETYPE_DATA + FILETYPE_IMAGE + FILETYPE_SIGNED
@@ -30,4 +31,4 @@ FILE_NAME_MAX_LEN = 128
 # 100MB 104857600
 # 250MB - 214958080
 # 500MB - 429916160
-FILE_MAX_SIZE = 10485760
+FILE_MAX_SIZE = 5242880

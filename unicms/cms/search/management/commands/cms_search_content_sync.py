@@ -3,6 +3,7 @@ from cms.search import mongo_collection
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.module_loading import import_string
+from django.apps import apps
 
 
 class Command(BaseCommand):
@@ -11,8 +12,7 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.epilog='Example: ./manage.py cms_search -y 2020 [-m N] [-d N]'
         parser.add_argument('-type', type=str, required=False,
-                            default='cms.Publication',
-                            help="eg: cms.Page")
+                            help="eg: cmspages.Page")
         parser.add_argument('-y', type=int, required=True, 
                             help="Year, eg: 2020")
         parser.add_argument('-m', type=int, required=False, 
@@ -31,7 +31,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         collection = mongo_collection()
         content_type = options['type']
-        query = {'content_type': content_type}
+        query = {'content_type': content_type} if content_type else {}
         
         for i in 'day', 'month', 'year':
             opt = i[0]
@@ -48,7 +48,8 @@ class Command(BaseCommand):
         data = []
         if options['insert']:
             app_label, model_name = content_type.split('.')
-            model = import_string(f'{app_label}.models.{model_name}')
+            # model = import_string(f'{app_label}.{model_name}')
+            model = apps.get_model(app_label=app_label, model_name=model_name)
             _func = import_string(settings.MODEL_TO_MONGO_MAP[content_type])
             for obj in model.objects.filter(is_active=True):
                 if obj.is_publicable:
