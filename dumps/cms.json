@@ -561,6 +561,15 @@
   }
 },
 {
+  "model": "taggit.taggeditem",
+  "pk": 57,
+  "fields": {
+    "tag": 2,
+    "content_type": 27,
+    "object_id": 18
+  }
+},
+{
   "model": "cmstemplates.pagetemplate",
   "pk": 1,
   "fields": {
@@ -589,10 +598,10 @@
   "pk": 3,
   "fields": {
     "created": "2020-12-03T07:22:34.774Z",
-    "modified": "2020-12-14T16:57:16.519Z",
+    "modified": "2020-12-16T12:39:03.216Z",
     "is_active": true,
     "name": "Unical - Menu Publications Stack",
-    "template_file": "main.html",
+    "template_file": "unical_main_spaced_columns.html",
     "note": ""
   }
 },
@@ -601,10 +610,10 @@
   "pk": 4,
   "fields": {
     "created": "2020-12-03T14:49:37.539Z",
-    "modified": "2020-12-14T15:45:52.653Z",
+    "modified": "2020-12-16T12:39:44.248Z",
     "is_active": true,
     "name": "Unical - Menu Publications Expanded Stack",
-    "template_file": "main.html",
+    "template_file": "unical_main_spaced_columns.html",
     "note": ""
   }
 },
@@ -613,10 +622,10 @@
   "pk": 6,
   "fields": {
     "created": "2020-12-06T15:27:09.964Z",
-    "modified": "2020-12-06T15:27:09.964Z",
+    "modified": "2020-12-16T11:08:43.870Z",
     "is_active": true,
     "name": "Motore di Ricerca",
-    "template_file": "portale_home_v3.html",
+    "template_file": "unical_main.html",
     "note": ""
   }
 },
@@ -625,22 +634,10 @@
   "pk": 7,
   "fields": {
     "created": "2020-12-14T11:18:00.221Z",
-    "modified": "2020-12-14T16:46:42.210Z",
+    "modified": "2020-12-16T09:40:23.422Z",
     "is_active": true,
     "name": "Unical - Main Template",
-    "template_file": "main.html",
-    "note": ""
-  }
-},
-{
-  "model": "cmstemplates.pagetemplate",
-  "pk": 8,
-  "fields": {
-    "created": "2020-12-14T15:47:41.500Z",
-    "modified": "2020-12-14T15:47:41.500Z",
-    "is_active": true,
-    "name": "Unical - TTEEEEEEEEEEEST",
-    "template_file": "two_columns.html",
+    "template_file": "unical_main.html",
     "note": ""
   }
 },
@@ -688,12 +685,12 @@
   "pk": 4,
   "fields": {
     "created": "2020-11-18T15:14:07.509Z",
-    "modified": "2020-12-10T10:45:31.615Z",
+    "modified": "2020-12-16T12:17:03.953Z",
     "is_active": true,
-    "name": "youtube",
+    "name": "youtube video 1",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<div class=\"row\">\r\n<div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n <div class=\"col-12 col-md-6\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/xrjjJGqZpcU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n</div>\r\n </div>"
+    "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
   }
 },
 {
@@ -727,7 +724,7 @@
   "pk": 7,
   "fields": {
     "created": "2020-12-01T14:08:42.924Z",
-    "modified": "2020-12-03T11:25:01.454Z",
+    "modified": "2020-12-16T11:16:17.657Z",
     "is_active": true,
     "name": "Main Menu",
     "description": "",
@@ -750,41 +747,15 @@
 },
 {
   "model": "cmstemplates.templateblock",
-  "pk": 9,
-  "fields": {
-    "created": "2020-12-03T11:25:38.126Z",
-    "modified": "2020-12-03T14:38:05.144Z",
-    "is_active": true,
-    "name": "Side Menu (section 2)",
-    "description": "menu in side column",
-    "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n{% load_menu section=\"2\" template=\"side_menu.html\" %}"
-  }
-},
-{
-  "model": "cmstemplates.templateblock",
-  "pk": 10,
-  "fields": {
-    "created": "2020-12-03T12:31:24.582Z",
-    "modified": "2020-12-03T15:15:31.307Z",
-    "is_active": true,
-    "name": "Side Menu (section 3)",
-    "description": "",
-    "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n{% load_menu section=\"3\" template=\"side_menu.html\" %}"
-  }
-},
-{
-  "model": "cmstemplates.templateblock",
   "pk": 11,
   "fields": {
     "created": "2020-12-03T12:34:43.845Z",
-    "modified": "2020-12-14T15:49:44.143Z",
+    "modified": "2020-12-16T10:39:57.740Z",
     "is_active": true,
     "name": "OrientaUnical Logo",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<div class=\"row\">\r\n<div class=\"col-12 col-md-8 offset-md-4\">\r\n<h1 class=\"super-bold bordeaux-unical-color\" style=\"font-size: 6rem; margin-bottom: 5px;line-height: 0.8;\">OU</h1>\r\n\r\n<p class=\"ml-1\">\r\n<b class=\"bordeaux-unical-color\">come accedere ai servizi</b>\r\n<br>\r\n<span class=\"bordeaux-unical-color super-bold\">Orienta-Unical</span>\r\n</p>\r\n</div>\r\n</div>"
+    "content": "<h1 class=\"super-bold bordeaux-unical-color\" style=\"font-size: 6rem; margin-bottom: 5px;line-height: 0.8;\">OU</h1>\r\n\r\n<p class=\"ml-1\">\r\n<b class=\"bordeaux-unical-color\">come accedere ai servizi</b>\r\n<br>\r\n<span class=\"bordeaux-unical-color super-bold\">Orienta-Unical</span>\r\n</p>"
   }
 },
 {
@@ -802,28 +773,15 @@
 },
 {
   "model": "cmstemplates.templateblock",
-  "pk": 13,
-  "fields": {
-    "created": "2020-12-03T15:15:44.561Z",
-    "modified": "2020-12-03T15:15:44.561Z",
-    "is_active": true,
-    "name": "Side Menu (section 4)",
-    "description": "",
-    "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n{% load_menu section=\"4\" template=\"side_menu.html\" %}"
-  }
-},
-{
-  "model": "cmstemplates.templateblock",
   "pk": 14,
   "fields": {
     "created": "2020-12-03T15:51:10.374Z",
-    "modified": "2020-12-14T16:05:09.219Z",
+    "modified": "2020-12-16T10:40:15.445Z",
     "is_active": true,
-    "name": "HR line Bordeaux - Offset 1/3",
+    "name": "HR line Bordeaux",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<div class=\"row\">\r\n<div class=\"col-12 col-md-8 offset-md-4\">\r\n<hr class=\"my-4 bordeaux-unical-bg\">\r\n</div>\r\n</div>"
+    "content": "<hr class=\"my-4 bordeaux-unical-bg\">"
   }
 },
 {
@@ -1013,12 +971,77 @@
   "pk": 30,
   "fields": {
     "created": "2020-12-14T16:54:24.981Z",
-    "modified": "2020-12-14T16:56:58.210Z",
+    "modified": "2020-12-16T12:58:19.064Z",
     "is_active": true,
     "name": "Unical - Page Title H1 lighter",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<h1 class=\"lighter\">{{ page.name }}</h1>"
+    "content": "<h1 class=\"lighter mt-3\">{{ page.name }}</h1>"
+  }
+},
+{
+  "model": "cmstemplates.templateblock",
+  "pk": 31,
+  "fields": {
+    "created": "2020-12-15T11:04:35.522Z",
+    "modified": "2020-12-16T10:54:48.939Z",
+    "is_active": true,
+    "name": "Menu - Campus/Servizi/Futuri Studenti",
+    "description": "",
+    "type": "cms.templates.blocks.HtmlBlock",
+    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu_by_id pk=\"23\" template=\"side_menu.html\" %}"
+  }
+},
+{
+  "model": "cmstemplates.templateblock",
+  "pk": 32,
+  "fields": {
+    "created": "2020-12-16T10:43:14.490Z",
+    "modified": "2020-12-16T10:43:47.016Z",
+    "is_active": true,
+    "name": "Menu - Campus/Visita il campus",
+    "description": "",
+    "type": "cms.templates.blocks.HtmlBlock",
+    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu_by_id pk=\"20\" template=\"side_menu.html\" %}"
+  }
+},
+{
+  "model": "cmstemplates.templateblock",
+  "pk": 33,
+  "fields": {
+    "created": "2020-12-16T10:45:37.974Z",
+    "modified": "2020-12-16T10:45:37.974Z",
+    "is_active": true,
+    "name": "Menu - Campus/Vivere il campus",
+    "description": "",
+    "type": "cms.templates.blocks.HtmlBlock",
+    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu_by_id pk=\"21\" template=\"side_menu.html\" %}"
+  }
+},
+{
+  "model": "cmstemplates.templateblock",
+  "pk": 34,
+  "fields": {
+    "created": "2020-12-16T12:17:11.749Z",
+    "modified": "2020-12-16T12:17:11.749Z",
+    "is_active": true,
+    "name": "youtube video 2",
+    "description": "",
+    "type": "cms.templates.blocks.HtmlBlock",
+    "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/xrjjJGqZpcU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+  }
+},
+{
+  "model": "cmstemplates.templateblock",
+  "pk": 35,
+  "fields": {
+    "created": "2020-12-16T12:21:56.266Z",
+    "modified": "2020-12-16T12:58:07.345Z",
+    "is_active": true,
+    "name": "Unical - Breadcrumbs",
+    "description": "",
+    "type": "cms.templates.blocks.HtmlBlock",
+    "content": "{% load unicms_contexts %}\r\n\r\n{% breadcrumbs webpath=webpath %}"
   }
 },
 {
@@ -1104,12 +1127,12 @@
   "pk": 15,
   "fields": {
     "created": "2020-12-06T15:27:09.964Z",
-    "modified": "2020-12-06T15:27:09.964Z",
+    "modified": "2020-12-16T11:08:43.872Z",
     "order": 10,
     "is_active": true,
     "template": 6,
     "block": 18,
-    "section": "1"
+    "section": "2-center-content"
   }
 },
 {
@@ -1169,12 +1192,51 @@
   "pk": 24,
   "fields": {
     "created": "2020-12-14T16:56:06.696Z",
-    "modified": "2020-12-14T16:57:16.520Z",
+    "modified": "2020-12-15T11:05:07.873Z",
     "order": 10,
     "is_active": true,
     "template": 3,
     "block": 30,
-    "section": "1-top"
+    "section": "1-top-a"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 25,
+  "fields": {
+    "created": "2020-12-16T10:47:04.618Z",
+    "modified": "2020-12-16T10:47:04.618Z",
+    "order": 10,
+    "is_active": true,
+    "template": 4,
+    "block": 30,
+    "section": "1-top-a"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 26,
+  "fields": {
+    "created": "2020-12-16T12:39:03.217Z",
+    "modified": "2020-12-16T12:39:03.217Z",
+    "order": 10,
+    "is_active": true,
+    "template": 3,
+    "block": 35,
+    "section": "breadcrumbs"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 27,
+  "fields": {
+    "created": "2020-12-16T12:39:44.249Z",
+    "modified": "2020-12-16T12:39:44.249Z",
+    "order": 10,
+    "is_active": true,
+    "template": 4,
+    "block": 35,
+    "section": "breadcrumbs"
   }
 },
 {
@@ -4465,7 +4527,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-12-14T16:22:54.190Z",
+    "modified": "2020-12-16T12:52:42.301Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
@@ -4545,7 +4607,7 @@
   "pk": 17,
   "fields": {
     "created": "2020-12-03T10:47:08.171Z",
-    "modified": "2020-12-14T16:57:05.988Z",
+    "modified": "2020-12-16T12:39:22.898Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
@@ -4565,7 +4627,7 @@
   "pk": 18,
   "fields": {
     "created": "2020-12-03T14:52:21.564Z",
-    "modified": "2020-12-03T15:52:29.657Z",
+    "modified": "2020-12-16T10:48:11.720Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
@@ -4585,14 +4647,14 @@
   "pk": 19,
   "fields": {
     "created": "2020-12-03T15:56:59.313Z",
-    "modified": "2020-12-14T15:47:51.176Z",
+    "modified": "2020-12-16T10:50:24.768Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
     "draft_of": null,
-    "name": "I Servizi del Campus",
+    "name": "Futuri Studenti",
     "webpath": 10,
-    "base_template": 8,
+    "base_template": 3,
     "description": "",
     "date_start": "2020-12-03T15:56:47Z",
     "date_end": null,
@@ -4665,7 +4727,7 @@
   "pk": 23,
   "fields": {
     "created": "2020-12-14T17:04:52.893Z",
-    "modified": "2020-12-14T17:06:10.401Z",
+    "modified": "2020-12-15T09:32:02.586Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
@@ -4825,32 +4887,6 @@
 },
 {
   "model": "cmspages.pagemenu",
-  "pk": 21,
-  "fields": {
-    "created": "2020-12-03T12:14:58.261Z",
-    "modified": "2020-12-14T14:33:59.215Z",
-    "order": 10,
-    "is_active": true,
-    "section": null,
-    "page": 17,
-    "menu": 20
-  }
-},
-{
-  "model": "cmspages.pagemenu",
-  "pk": 22,
-  "fields": {
-    "created": "2020-12-03T12:31:47.234Z",
-    "modified": "2020-12-14T14:33:59.216Z",
-    "order": 10,
-    "is_active": true,
-    "section": null,
-    "page": 17,
-    "menu": 21
-  }
-},
-{
-  "model": "cmspages.pagemenu",
   "pk": 23,
   "fields": {
     "created": "2020-12-03T15:09:55.724Z",
@@ -4867,10 +4903,10 @@
   "pk": 24,
   "fields": {
     "created": "2020-12-03T15:14:50.295Z",
-    "modified": "2020-12-03T15:17:53.562Z",
+    "modified": "2020-12-16T10:47:44.532Z",
     "order": 10,
     "is_active": true,
-    "section": "3",
+    "section": null,
     "page": 18,
     "menu": 21
   }
@@ -4880,10 +4916,10 @@
   "pk": 25,
   "fields": {
     "created": "2020-12-03T15:17:53.563Z",
-    "modified": "2020-12-03T15:17:53.563Z",
+    "modified": "2020-12-16T10:47:44.537Z",
     "order": 10,
     "is_active": true,
-    "section": "2",
+    "section": null,
     "page": 18,
     "menu": 22
   }
@@ -4899,58 +4935,6 @@
     "section": "menu-1",
     "page": 19,
     "menu": 1
-  }
-},
-{
-  "model": "cmspages.pagemenu",
-  "pk": 27,
-  "fields": {
-    "created": "2020-12-03T15:59:24.496Z",
-    "modified": "2020-12-14T15:47:51.304Z",
-    "order": 2,
-    "is_active": true,
-    "section": null,
-    "page": 19,
-    "menu": 20
-  }
-},
-{
-  "model": "cmspages.pagemenu",
-  "pk": 28,
-  "fields": {
-    "created": "2020-12-03T15:59:24.496Z",
-    "modified": "2020-12-14T15:47:51.306Z",
-    "order": 30,
-    "is_active": true,
-    "section": null,
-    "page": 19,
-    "menu": 21
-  }
-},
-{
-  "model": "cmspages.pagemenu",
-  "pk": 33,
-  "fields": {
-    "created": "2020-12-03T17:14:11.072Z",
-    "modified": "2020-12-03T17:14:11.072Z",
-    "order": 40,
-    "is_active": true,
-    "section": "menu-2",
-    "page": 19,
-    "menu": 22
-  }
-},
-{
-  "model": "cmspages.pagemenu",
-  "pk": 34,
-  "fields": {
-    "created": "2020-12-03T17:32:50.805Z",
-    "modified": "2020-12-03T17:32:50.805Z",
-    "order": 50,
-    "is_active": true,
-    "section": "menu-3",
-    "page": 19,
-    "menu": 23
   }
 },
 {
@@ -5061,44 +5045,33 @@
   "model": "cmspages.pageblock",
   "pk": 3,
   "fields": {
-    "order": 20,
+    "order": 40,
     "is_active": true,
-    "section": null,
+    "section": "1-right-a",
     "page": 17,
-    "block": 9
+    "block": 32
   }
 },
 {
   "model": "cmspages.pageblock",
   "pk": 4,
   "fields": {
-    "order": 15,
+    "order": 35,
     "is_active": true,
-    "section": null,
+    "section": "1-right-a",
     "page": 17,
-    "block": 10
+    "block": 14
   }
 },
 {
   "model": "cmspages.pageblock",
   "pk": 7,
   "fields": {
-    "order": 10,
+    "order": 30,
     "is_active": true,
-    "section": "3",
+    "section": "1-right-a",
     "page": 18,
-    "block": 10
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 8,
-  "fields": {
-    "order": 20,
-    "is_active": true,
-    "section": "2",
-    "page": 18,
-    "block": 9
+    "block": 33
   }
 },
 {
@@ -5107,7 +5080,7 @@
   "fields": {
     "order": 10,
     "is_active": true,
-    "section": "2",
+    "section": "1-right-a",
     "page": 18,
     "block": 11
   }
@@ -5129,7 +5102,7 @@
   "fields": {
     "order": 15,
     "is_active": true,
-    "section": "2",
+    "section": "1-right-a",
     "page": 18,
     "block": 14
   }
@@ -5140,7 +5113,7 @@
   "fields": {
     "order": 5,
     "is_active": true,
-    "section": "3",
+    "section": null,
     "page": 18,
     "block": 14
   }
@@ -5169,17 +5142,6 @@
 },
 {
   "model": "cmspages.pageblock",
-  "pk": 16,
-  "fields": {
-    "order": 20,
-    "is_active": true,
-    "section": null,
-    "page": 19,
-    "block": 9
-  }
-},
-{
-  "model": "cmspages.pageblock",
   "pk": 17,
   "fields": {
     "order": 30,
@@ -5187,17 +5149,6 @@
     "section": null,
     "page": 19,
     "block": 14
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 18,
-  "fields": {
-    "order": 40,
-    "is_active": true,
-    "section": null,
-    "page": 19,
-    "block": 10
   }
 },
 {
@@ -5242,28 +5193,6 @@
     "section": "menu-1",
     "page": 20,
     "block": 7
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 35,
-  "fields": {
-    "order": 20,
-    "is_active": true,
-    "section": "2",
-    "page": 21,
-    "block": 9
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 36,
-  "fields": {
-    "order": 30,
-    "is_active": true,
-    "section": "3",
-    "page": 21,
-    "block": 10
   }
 },
 {
@@ -5367,17 +5296,6 @@
 },
 {
   "model": "cmspages.pageblock",
-  "pk": 47,
-  "fields": {
-    "order": 30,
-    "is_active": true,
-    "section": "2",
-    "page": 22,
-    "block": 9
-  }
-},
-{
-  "model": "cmspages.pageblock",
   "pk": 48,
   "fields": {
     "order": 40,
@@ -5385,17 +5303,6 @@
     "section": "2",
     "page": 22,
     "block": 14
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 49,
-  "fields": {
-    "order": 50,
-    "is_active": true,
-    "section": "3",
-    "page": 22,
-    "block": 10
   }
 },
 {
@@ -5514,7 +5421,7 @@
   "fields": {
     "order": 10,
     "is_active": true,
-    "section": "2-top",
+    "section": "2-mid-top-a",
     "page": 1,
     "block": 28
   }
@@ -5525,7 +5432,7 @@
   "fields": {
     "order": 10,
     "is_active": true,
-    "section": "1-top",
+    "section": "1-center-content",
     "page": 23,
     "block": 24
   }
@@ -5536,7 +5443,7 @@
   "fields": {
     "order": 10,
     "is_active": true,
-    "section": "2-top",
+    "section": "2-center-content",
     "page": 23,
     "block": 24
   }
@@ -5547,9 +5454,42 @@
   "fields": {
     "order": 10,
     "is_active": true,
-    "section": "3-top",
+    "section": "3-center-content",
     "page": 23,
     "block": 24
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 79,
+  "fields": {
+    "order": 30,
+    "is_active": true,
+    "section": "1-right-a",
+    "page": 17,
+    "block": 33
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 80,
+  "fields": {
+    "order": 40,
+    "is_active": true,
+    "section": "2-mid-bottom-a",
+    "page": 1,
+    "block": 4
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 81,
+  "fields": {
+    "order": 50,
+    "is_active": true,
+    "section": "2-mid-bottom-b",
+    "page": 1,
+    "block": 34
   }
 },
 {
