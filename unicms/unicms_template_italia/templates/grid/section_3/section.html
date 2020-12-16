@@ -56,13 +56,13 @@
     {% if 3_center_top_a or 3_center_top_b or 3_center_top_c or 3_center_content or 3_center_bottom_a or 3_center_bottom_b or 3_center_bottom_c %}
 
         <!-- Build left column -->
-        {% if 2_left_a and 2_left_b %}
+        {% if 3_left_a and 3_left_b %}
             <div class="{% block 3_left_double_class %}col-12 col-md-4{% endblock 3_left_double_class %}">
-                {% include "grid/section_2/left.html" %}
+                {% include "grid/section_3/left.html" %}
             </div>
-        {% elif 2_left_a or 2_left_b %}
+        {% elif 3_left_a or 3_left_b %}
             <div class="{% block 3_left_single_class %}col-12 col-md-3{% endblock 3_left_single_class %}">
-                {% include "grid/section_2/left.html" %}
+                {% include "grid/section_3/left.html" %}
             </div>
         {% endif %}
 
@@ -72,13 +72,13 @@
         </div>
 
         <!-- Build right column -->
-        {% if 2_right_a and 2_right_b %}
+        {% if 3_right_a and 3_right_b %}
             <div class="{% block 3_right_double_class %}col-12 col-md-4{% endblock 3_right_double_class %}">
-                {% include "grid/section_2/right.html" %}
+                {% include "grid/section_3/right.html" %}
             </div>
-        {% elif 2_right_a or 2_right_b %}
+        {% elif 3_right_a or 3_right_b %}
             <div class="{% block 3_right_single_class %}col-12 col-md-3{% endblock 3_right_single_class %}">
-                {% include "grid/section_2/right.html" %}
+                {% include "grid/section_3/right.html" %}
             </div>
         {% endif %}
 

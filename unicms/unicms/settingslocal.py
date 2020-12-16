@@ -46,8 +46,8 @@ INSTALLED_APPS = [
     'cms.api',
     'cms.search',
 
-    'unicms_unical_template',
-    'unicms_bootstrap_italia_template',
+    'unicms_template_unical',
+    'unicms_template_italia',
     'rest_framework'
 ]
 
