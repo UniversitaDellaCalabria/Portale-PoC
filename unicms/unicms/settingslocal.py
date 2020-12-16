@@ -31,7 +31,7 @@ INSTALLED_APPS = [
 
     'sass_processor',
     'bootstrap_italia_template',
-    'django_unical_bootstrap_italia',
+    # 'django_unical_bootstrap_italia',
 
     'taggit',
     'nested_admin',

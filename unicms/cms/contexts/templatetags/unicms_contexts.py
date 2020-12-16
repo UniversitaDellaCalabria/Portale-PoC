@@ -18,8 +18,8 @@ logger = logging.getLogger(__name__)
 register = template.Library()
 
 
-def _build_breadcrumbs(context):
-    webpath = context['path']
+def _build_breadcrumbs(webpath):
+    # webpath = context['path']
     nodes = webpath.split('/')
     if nodes[-1] == '':
         del nodes[-1]
@@ -50,10 +50,11 @@ def language_menu(context, template=None, leaf=None):
     return data
 
 
-@register.simple_tag(takes_context=True)
-def breadcrumbs(context, template=None, leaf=None):
+# @register.simple_tag(takes_context=True)
+@register.simple_tag
+def breadcrumbs(webpath, template=None, leaf=None):
     template = template or 'breadcrumbs.html'
-    crumbs = _build_breadcrumbs(context)
+    crumbs = _build_breadcrumbs(webpath.fullpath)
     if leaf:
         for i in leaf.breadcrumbs:
             crumbs.append(i)

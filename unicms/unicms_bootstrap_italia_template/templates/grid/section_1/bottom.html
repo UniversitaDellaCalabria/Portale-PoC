@@ -1,0 +1,30 @@
+{% load static %}
+
+<!-- load custom template tags -->
+{% load unicms_pages %}
+
+
+{% load_blocks section="1-bottom-a" as 1_bottom_a %}
+{% load_blocks section="1-bottom-b" as 1_bottom_b %}
+{% load_blocks section="1-bottom-c" as 1_bottom_c %}
+
+{% if 1_bottom_a or 1_bottom_b or 1_bottom_c %}
+<div class="row">
+    {% if 1_bottom_a and 1_bottom_b and 1_bottom_c %}
+        <div class="col-12 col-md-4">{{ 1_bottom_a }}</div>
+        <div class="col-12 col-md-4">{{ 1_bottom_b }}</div>
+        <div class="col-12 col-md-4">{{ 1_bottom_c }}</div>
+    {% elif 1_bottom_a and 1_bottom_b %}
+        <div class="col-12 col-md-6">{{ 1_bottom_a }}</div>
+        <div class="col-12 col-md-6">{{ 1_bottom_b }}</div>
+    {% elif 1_bottom_a and 1_bottom_c %}
+        <div class="col-12 col-md-6">{{ 1_bottom_a }}</div>
+        <div class="col-12 col-md-6">{{ 1_bottom_c }}</div>
+    {% elif 1_bottom_b and 1_bottom_c %}
+        <div class="col-12 col-md-6">{{ 1_bottom_b }}</div>
+        <div class="col-12 col-md-6">{{ 1_bottom_c }}</div>
+    {% else %}
+        <div class="col-12">{{ 1_bottom_a }}{{ 1_bottom_b }}{{ 1_bottom_c }}</div>
+    {% endif %}
+</div>
+{% endif %}

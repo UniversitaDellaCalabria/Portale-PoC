@@ -17,7 +17,7 @@
 {% block page_meta_keywords %}{% for tag in publication_context.publication.tags.all %}{{ tag }},{% endfor %}{% endblock page_meta_keywords %}
 
 {% block container %}
-{% breadcrumbs leaf=handler %}
+{% breadcrumbs webpath=webpath leaf=handler %}
 
 <div class="container">
     <div class="col-12 py-5 bd-content">
@@ -85,7 +85,7 @@
                 <hr>
                 <br>
                 <h4>{% trans "attachments" %}</h4>
-                
+
                 <!-- ATTACHMENTS -->
                 <ul class="upload-file-list">
 
@@ -104,15 +104,15 @@
               <!-- END ATTACHMENTS -->
 
             {% endif %}
-            
-            
+
+
                 {% if publication_context.publication.related_galleries %}
                 <hr>
 
                 <br>
                 <h4>{% trans "photo gallery" %}</h4>
 
-                
+
                     {% for gallery in publication_context.publication.related_galleries %}
 
                         {% include "carousel_media_gallery.html" with media_items=gallery.collection.mediacollectionitem_set.all %}

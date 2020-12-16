@@ -1,49 +1,68 @@
 {% load static %}
 
 <!-- load custom template tags -->
-{% load unicms_bootstrap_italia %}
-{% load unicms_carousels %}
-{% load unicms_contexts %}
-{% load unicms_menus %}
-{% load unicms_templates %}
 {% load unicms_pages %}
-{% load unicms_publications %}
 
 
 <div class="row">
 
-    {% load_blocks section="3-top" as 3_top %}
+    {% load_blocks section="3-top-a" as 3_top_a %}
+    {% load_blocks section="3-top-b" as 3_top_b %}
+    {% load_blocks section="3-top-c" as 3_top_c %}
+
+    {% load_blocks section="3-mid-top-a" as 3_mid_top_a %}
+    {% load_blocks section="3-mid-top-b" as 3_mid_top_b %}
+    {% load_blocks section="3-mid-top-c" as 3_mid_top_c %}
+
     {% load_blocks section="3-left-a" as 3_left_a %}
     {% load_blocks section="3-left-b" as 3_left_b %}
-    {% load_blocks section="3-center-top-1" as 3_center_top_1 %}
-    {% load_blocks section="3-center-top-2" as 3_center_top_2 %}
-    {% load_blocks section="3-center-top-3" as 3_center_top_3 %}
+
+    {% load_blocks section="3-center-top-a" as 3_center_top_a %}
+    {% load_blocks section="3-center-top-b" as 3_center_top_b %}
+    {% load_blocks section="3-center-top-c" as 3_center_top_c %}
+
     {% load_blocks section="3-center-content" as 3_center_content %}
-    {% load_blocks section="3-center-bottom-1" as 3_center_bottom_1 %}
-    {% load_blocks section="3-center-bottom-2" as 3_center_bottom_2 %}
-    {% load_blocks section="3-center-bottom-3" as 3_center_bottom_3 %}
+
+    {% load_blocks section="3-center-bottom-a" as 3_center_bottom_a %}
+    {% load_blocks section="3-center-bottom-b" as 3_center_bottom_b %}
+    {% load_blocks section="3-center-bottom-c" as 3_center_bottom_c %}
+
     {% load_blocks section="3-right-a" as 3_right_a %}
     {% load_blocks section="3-right-b" as 3_right_b %}
-    {% load_blocks section="3-bottom" as 3_bottom %}
+
+    {% load_blocks section="3-mid-bottom-a" as 3_mid_bottom_a %}
+    {% load_blocks section="3-mid-bottom-b" as 3_mid_bottom_b %}
+    {% load_blocks section="3-mid-bottom-c" as 3_mid_bottom_c %}
+
+    {% load_blocks section="3-bottom-a" as 3_bottom_a %}
+    {% load_blocks section="3-bottom-b" as 3_bottom_b %}
+    {% load_blocks section="3-bottom-c" as 3_bottom_c %}
 
     <!-- Blocks in top position -->
-    {% if 3_top %}
+    {% if 3_top_a or 3_top_b or 3_top_c %}
     <div class="col-12">
-        {{ 3_top }}
+        {% include "grid/section_3/top.html" %}
+    </div>
+    {% endif %}
+
+    <!-- Blocks in middle top position -->
+    {% if 3_mid_top_a or 3_mid_top_b or 3_mid_top_c %}
+    <div class="col-12">
+        {% include "grid/section_3/mid-top.html" %}
     </div>
     {% endif %}
 
     <!-- Blocks in center positions -->
-    {% if 3_center_top_1 or 3_center_top_2 or 3_center_top_3 or 3_center_content or 3_center_bottom_1 or 3_center_bottom_2 or 3_center_bottom_3 %}
+    {% if 3_center_top_a or 3_center_top_b or 3_center_top_c or 3_center_content or 3_center_bottom_a or 3_center_bottom_b or 3_center_bottom_c %}
 
         <!-- Build left column -->
-        {% if 3_left_a and 3_left_b %}
-            <div class="col-12 col-md-4">
-                {% include "grid/section_3/left.html" %}
+        {% if 2_left_a and 2_left_b %}
+            <div class="{% block 3_left_double_class %}col-12 col-md-4{% endblock 3_left_double_class %}">
+                {% include "grid/section_2/left.html" %}
             </div>
-        {% elif 3_left_a or 3_left_b %}
-            <div class="col-12 col-md-3">
-                {% include "grid/section_3/left.html" %}
+        {% elif 2_left_a or 2_left_b %}
+            <div class="{% block 3_left_single_class %}col-12 col-md-3{% endblock 3_left_single_class %}">
+                {% include "grid/section_2/left.html" %}
             </div>
         {% endif %}
 
@@ -53,13 +72,13 @@
         </div>
 
         <!-- Build right column -->
-        {% if 3_right_a and 3_right_b %}
-            <div class="col-12 col-md-4">
-                {% include "grid/section_3/right.html" %}
+        {% if 2_right_a and 2_right_b %}
+            <div class="{% block 3_right_double_class %}col-12 col-md-4{% endblock 3_right_double_class %}">
+                {% include "grid/section_2/right.html" %}
             </div>
-        {% elif 3_right_a or 3_right_b %}
-            <div class="col-12 col-md-3">
-                {% include "grid/section_3/right.html" %}
+        {% elif 2_right_a or 2_right_b %}
+            <div class="{% block 3_right_single_class %}col-12 col-md-3{% endblock 3_right_single_class %}">
+                {% include "grid/section_2/right.html" %}
             </div>
         {% endif %}
 
@@ -79,10 +98,18 @@
 
     {% endif %}
 
-    <!-- Blocks in bottom position -->
-    {% if 3_bottom %}
+    <!-- Blocks in middle bottom position -->
+    {% if 3_mid_bottom_a or 3_mid_bottom_b or 3_mid_bottom_c %}
     <div class="col-12">
-        {{ 3_bottom }}
+        {% include "grid/section_3/mid-bottom.html" %}
     </div>
     {% endif %}
+
+    <!-- Blocks in bottom position -->
+    {% if 3_bottom_a or 3_bottom_b or 3_bottom_c %}
+    <div class="col-12">
+        {% include "grid/section_3/bottom.html" %}
+    </div>
+    {% endif %}
+
 </div>

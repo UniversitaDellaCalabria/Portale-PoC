@@ -15,7 +15,6 @@ bootstrap-italia-base.html
 {% load static %}
 
 <!-- load custom template tags -->
-{% load unicms_bootstrap_italia %}
 {% load unicms_carousels %}
 {% load unicms_contexts %}
 {% load unicms_menus %}
@@ -176,36 +175,50 @@ col-10 offset-2 col-lg-12 offset-lg-0
 
 <!-- Breadcrumbs -->
 {% block breadcrumbs %}
+    {% comment %}
     {% breadcrumbs leaf=handler %}
+    {% endcomment %}
+    {% load_blocks section="breadcrumbs" %}
 {% endblock breadcrumbs %}
+<!-- end Breadcrumbs -->
 
 <!-- Blocks in section 1 -->
+{% block section_1 %}
 {% blocks_in_position position="section-1" as section_1 %}
 {% if section_1 %}
 <div class="{% block section_1_classes %}py-3{% endblock section_1_classes %}">
     <div class="container">
-        {% include "grid/section_1/section.html" %}
+        {% include section_1_template|default:"grid/section_1/section.html" %}
     </div>
 </div>
 {% endif %}
+{% endblock section_1 %}
+<!-- end Blocks in section 1 -->
 
 <!-- Blocks in section 2 -->
+{% block section_2 %}
 {% blocks_in_position position="section-2" as section_2 %}
 {% if section_2 %}
 <div class="{% block section_2_classes %}py-3 neutral-2-bg{% endblock section_2_classes %}">
     <div class="container">
-        {% include "grid/section_2/section.html" %}
+        {% include section_2_template|default:"grid/section_2/section.html" %}
     </div>
 </div>
 {% endif %}
+{% endblock section_2 %}
+<!-- end Blocks in section 2 -->
 
 <!-- Blocks in section 3 -->
+{% block section_3 %}
 {% blocks_in_position position="section-3" as section_3 %}
 {% if section_3 %}
 <div class="{% block section_3_classes %}py-3{% endblock section_3_classes %}">
     <div class="container">
-        {% include "grid/section_3/section.html" %}
+        {% include section_2_template|default:"grid/section_3/section.html" %}
     </div>
 </div>
 {% endif %}
+{% endblock section_3 %}
+<!-- endBlocks in section 3 -->
+
 {% endblock container %}

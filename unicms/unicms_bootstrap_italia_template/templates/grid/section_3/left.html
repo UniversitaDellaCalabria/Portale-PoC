@@ -1,13 +1,7 @@
 {% load static %}
 
 <!-- load custom template tags -->
-{% load unicms_bootstrap_italia %}
-{% load unicms_carousels %}
-{% load unicms_contexts %}
-{% load unicms_menus %}
-{% load unicms_templates %}
 {% load unicms_pages %}
-{% load unicms_publications %}
 
 
 {% load_blocks section="3-left-a" as 3_left_a %}
@@ -21,7 +15,7 @@
     <div class="col-12 col-md-6">
         {{ 3_left_b }}
     </div>
-    {% elif 1_left_a %}
+    {% elif 3_left_a %}
     <div class="col-12">
         {{ 3_left_a }}
     </div>

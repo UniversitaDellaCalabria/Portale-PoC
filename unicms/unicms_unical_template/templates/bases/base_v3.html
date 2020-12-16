@@ -3,7 +3,7 @@
 base-setup.html
 bootstrap-italia-base.html
 -->
-{% extends 'bases/base_unicms_bootstrap_italia.html' %}
+{% extends 'bases/unicms_bootstrap_italia.html' %}
 
 {% load i18n %}
 
@@ -23,11 +23,12 @@ bootstrap-italia-base.html
 
 <!-- Return to Agid native template -->
 {% block extra_head %}
-{{ block.super }}
-<link rel="stylesheet" href="{% sass_src 'css/unical-portale-v3.scss' %}" type="text/css">
+<link rel="shortcut icon" href="{% static 'images/favicon/favicon-32x32.png' %}">
+<link rel="stylesheet" href="{% sass_src 'css/unicms_unical.scss' %}" type="text/css">
 {% include "inits/vue-init.html" %}
 {% include "inits/search-input-handler.html" %}
 {% endblock extra_head %}
+
 
 <!-- Page Title -->
 {% block page_title %}{% trans "Università della Calabria" %}{% endblock page_title %}
@@ -70,11 +71,6 @@ bootstrap-italia-base.html
 
 {% block header_slim_right_zone %}
 {% endblock header_slim_right_zone %}
-
-<!-- URL link logo and org name -->
-{% block header_center_url %}
-{{ webpath.get_full_path }}
-{% endblock header_center_url %}
 
 <!-- Make empty areas -->
 {% block header_mobile_arrow %}

@@ -1,40 +1,34 @@
 {% load static %}
 
 <!-- load custom template tags -->
-{% load unicms_bootstrap_italia %}
-{% load unicms_carousels %}
-{% load unicms_contexts %}
-{% load unicms_menus %}
-{% load unicms_templates %}
 {% load unicms_pages %}
-{% load unicms_publications %}
 
 
-{% load_blocks section="1-center-top-1" as 1_center_top_1 %}
-{% load_blocks section="1-center-top-2" as 1_center_top_2 %}
-{% load_blocks section="1-center-top-3" as 1_center_top_3 %}
+{% load_blocks section="1-center-top-a" as 1_center_top_a %}
+{% load_blocks section="1-center-top-b" as 1_center_top_b %}
+{% load_blocks section="1-center-top-c" as 1_center_top_c %}
 {% load_blocks section="1-center-content" as 1_center_content %}
-{% load_blocks section="1-center-bottom-1" as 1_center_bottom_1 %}
-{% load_blocks section="1-center-bottom-2" as 1_center_bottom_2 %}
-{% load_blocks section="1-center-bottom-3" as 1_center_bottom_3 %}
+{% load_blocks section="1-center-bottom-a" as 1_center_bottom_a %}
+{% load_blocks section="1-center-bottom-b" as 1_center_bottom_b %}
+{% load_blocks section="1-center-bottom-c" as 1_center_bottom_c %}
 
-{% if 1_center_top_1 or 1_center_top_2 or 1_center_top_3 %}
+{% if 1_center_top_a or 1_center_top_b or 1_center_top_c %}
 <div class="row">
-    {% if 1_center_top_1 and 1_center_top_2 and 1_center_top_3 %}
-        <div class="col-12 col-md-4">{{ 1_center_top_1 }}</div>
-        <div class="col-12 col-md-4">{{ 1_center_top_2 }}</div>
-        <div class="col-12 col-md-4">{{ 1_center_top_3 }}</div>
-    {% elif 1_center_top_1 and 1_center_top_2 %}
-        <div class="col-12 col-md-6">{{ 1_center_top_1 }}</div>
-        <div class="col-12 col-md-6">{{ 1_center_top_2 }}</div>
-    {% elif 1_center_top_1 and 1_center_top_3 %}
-        <div class="col-12 col-md-6">{{ 1_center_top_1 }}</div>
-        <div class="col-12 col-md-6">{{ 1_center_top_3 }}</div>
-    {% elif 1_center_top_21 and 1_center_top_3 %}
-        <div class="col-12 col-md-6">{{ 1_center_top_2 }}</div>
-        <div class="col-12 col-md-6">{{ 1_center_top_3 }}</div>
+    {% if 1_center_top_a and 1_center_top_b and 1_center_top_c %}
+        <div class="col-12 col-md-4">{{ 1_center_top_a }}</div>
+        <div class="col-12 col-md-4">{{ 1_center_top_b }}</div>
+        <div class="col-12 col-md-4">{{ 1_center_top_c }}</div>
+    {% elif 1_center_top_a and 1_center_top_b %}
+        <div class="col-12 col-md-6">{{ 1_center_top_a }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_top_b }}</div>
+    {% elif 1_center_top_a and 1_center_top_c %}
+        <div class="col-12 col-md-6">{{ 1_center_top_a }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_top_c }}</div>
+    {% elif 1_center_top_b and 1_center_top_c %}
+        <div class="col-12 col-md-6">{{ 1_center_top_b }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_top_c }}</div>
     {% else %}
-        <div class="col-12">{{ 1_center_top_1 }}{{ 1_center_top_2 }}{{ 1_center_top_3 }}</div>
+        <div class="col-12">{{ 1_center_top_a }}{{ 1_center_top_b }}{{ 1_center_top_c }}</div>
     {% endif %}
 </div>
 {% endif %}
@@ -47,23 +41,23 @@
 </div>
 {% endif %}
 
-{% if 1_center_bottom_1 or 1_center_bottom_2 or 1_center_bottom_3 %}
+{% if 1_center_bottom_a or 1_center_bottom_b or 1_center_bottom_c %}
 <div class="row">
-    {% if 1_center_bottom_1 and 1_center_bottom_2 and 1_center_bottom_3 %}
-        <div class="col-12 col-md-4">{{ 1_center_bottom_1 }}</div>
-        <div class="col-12 col-md-4">{{ 1_center_bottom_2 }}</div>
-        <div class="col-12 col-md-4">{{ 1_center_bottom_3 }}</div>
-    {% elif 1_center_bottom_1 and 1_center_bottom_2 %}
-        <div class="col-12 col-md-6">{{ 1_center_bottom_1 }}</div>
-        <div class="col-12 col-md-6">{{ 1_center_bottom_2 }}</div>
-    {% elif 1_center_bottom_1 and 1_center_bottom_3 %}
-        <div class="col-12 col-md-6">{{ 1_center_bottom_1 }}</div>
-        <div class="col-12 col-md-6">{{ 1_center_bottom_3 }}</div>
-    {% elif 1_center_bottom_21 and 1_center_bottom_3 %}
-        <div class="col-12 col-md-6">{{ 1_center_bottom_2 }}</div>
-        <div class="col-12 col-md-6">{{ 1_center_bottom_3 }}</div>
+    {% if 1_center_bottom_a and 1_center_bottom_b and 1_center_bottom_c %}
+        <div class="col-12 col-md-4">{{ 1_center_bottom_a }}</div>
+        <div class="col-12 col-md-4">{{ 1_center_bottom_b }}</div>
+        <div class="col-12 col-md-4">{{ 1_center_bottom_c }}</div>
+    {% elif 1_center_bottom_a and 1_center_bottom_b %}
+        <div class="col-12 col-md-6">{{ 1_center_bottom_a }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_bottom_b }}</div>
+    {% elif 1_center_bottom_a and 1_center_bottom_c %}
+        <div class="col-12 col-md-6">{{ 1_center_bottom_a }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_bottom_c }}</div>
+    {% elif 1_center_bottom_b and 1_center_bottom_c %}
+        <div class="col-12 col-md-6">{{ 1_center_bottom_b }}</div>
+        <div class="col-12 col-md-6">{{ 1_center_bottom_c }}</div>
     {% else %}
-        <div class="col-12">{{ 1_center_bottom_1 }}{{ 1_center_bottom_2 }}{{ 1_center_bottom_3 }}</div>
+        <div class="col-12">{{ 1_center_bottom_a }}{{ 1_center_bottom_b }}{{ 1_center_bottom_c }}</div>
     {% endif %}
 </div>
 {% endif %}

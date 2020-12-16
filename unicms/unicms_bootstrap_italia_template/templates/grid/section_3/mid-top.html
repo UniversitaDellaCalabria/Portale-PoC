@@ -1,0 +1,30 @@
+{% load static %}
+
+<!-- load custom template tags -->
+{% load unicms_pages %}
+
+
+{% load_blocks section="3-mid-top-a" as 3_mid_top_a %}
+{% load_blocks section="3-mid-top-b" as 3_mid_top_b %}
+{% load_blocks section="3-mid-top-c" as 3_mid_top_c %}
+
+{% if 3_mid_top_a or 3_mid_top_b or 3_mid_top_c %}
+<div class="row">
+    {% if 3_mid_top_a and 3_mid_top_b and 3_mid_top_c %}
+        <div class="col-12 col-md-4">{{ 3_mid_top_a }}</div>
+        <div class="col-12 col-md-4">{{ 3_mid_top_b }}</div>
+        <div class="col-12 col-md-4">{{ 3_mid_top_c }}</div>
+    {% elif 3_mid_top_a and 3_mid_top_b %}
+        <div class="col-12 col-md-6">{{ 3_mid_top_a }}</div>
+        <div class="col-12 col-md-6">{{ 3_mid_top_b }}</div>
+    {% elif 3_mid_top_a and 3_mid_top_c %}
+        <div class="col-12 col-md-6">{{ 3_mid_top_a }}</div>
+        <div class="col-12 col-md-6">{{ 3_mid_top_c }}</div>
+    {% elif 3_mid_top_b and 3_mid_top_c %}
+        <div class="col-12 col-md-6">{{ 3_mid_top_b }}</div>
+        <div class="col-12 col-md-6">{{ 3_mid_top_c }}</div>
+    {% else %}
+        <div class="col-12">{{ 3_mid_top_a }}{{ 3_mid_top_b }}{{ 3_mid_top_c }}</div>
+    {% endif %}
+</div>
+{% endif %}
