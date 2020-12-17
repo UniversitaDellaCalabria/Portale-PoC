@@ -1,2 +1,0 @@
-class ReservedWordException(Exception):
-    pass

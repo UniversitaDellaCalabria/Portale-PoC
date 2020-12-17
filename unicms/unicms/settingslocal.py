@@ -255,6 +255,7 @@ TINYMCE_DEFAULT_CONFIG = {
     # ],
 # }
 
+CMS_TEMPLATES_FOLDER = 'templates/unicms'
 CMS_PATH_PREFIX = 'portale/'
 
 CMS_PUBLICATION_VIEW_PREFIX_PATH = 'contents/news/view/'
