@@ -25,24 +25,6 @@ SASS_OUTPUT_STYLE = 'compact'
 
 ROOT_URLCONF = 'unicms.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/unicms/pages',
-                 'templates/unicms/blocks',
-                 'templates/admin'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-
 WSGI_APPLICATION = 'unicms.wsgi.application'
 
 # SECURITY

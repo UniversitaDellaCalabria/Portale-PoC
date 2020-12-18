@@ -213,48 +213,6 @@ LOGGING = {
     }
 }
 
-# TinyMCE CONFIGURATION
-# https://django-tinymce.readthedocs.io/en/latest/installation.html#configuration
-
-TINYMCE_DEFAULT_CONFIG = {
-    # 'plugins': "table,spellchecker,paste,searchreplace",
-    # 'theme': "advanced",
-    # 'cleanup_on_startup': True,
-    # 'custom_undo_redo_levels': 10,
-    "theme": "silver",
-    "height": 500,
-    "menubar": True,
-    "plugins": "advlist,autolink,lists,link,image,charmap,"
-               "print,preview,anchor,"
-               "searchreplace,visualblocks,code,fullscreen,"
-               "insertdatetime,media,table,paste,hr,"
-               "code,help,wordcount",
-    "toolbar": "undo redo | formatselect | "
-               "bold italic backcolor | alignleft aligncenter "
-               "alignright alignjustify | bullist numlist outdent indent | "
-               "removeformat | help",
-
-    # added
-    "a11y_advanced_options": True,
-    "media_alt_source": False,
-
-    # image upload
-    # https://www.tiny.cloud/docs/general-configuration-guide/upload-images/
-}
-# TINYMCE_SPELLCHECKER = True
-# TINYMCE_COMPRESSOR = True
-
-# TINYMCE_EXTRA_MEDIA = {
-    # 'css': {
-        # 'all': [
-            # ...
-        # ],
-    # },
-    # 'js': [
-        # ...
-    # ],
-# }
-
 CMS_TEMPLATES_FOLDER = 'templates/unicms'
 CMS_PATH_PREFIX = 'portale/'
 
@@ -269,6 +227,24 @@ CMS_APP_REGEXP_URLPATHS = {
     'cms.publications.handlers.PublicationViewHandler' : CMS_PUBLICATION_URL_VIEW_REGEXP,
     'cms.publications.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
 }
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [f'{CMS_TEMPLATES_FOLDER}',
+                 f'{CMS_TEMPLATES_FOLDER}/pages',
+                 f'{CMS_TEMPLATES_FOLDER}/blocks'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 OAS3_CONFIG = {'title': "Portale dell'Università della Calabria",
                # 'permission_classes': (permissions.AllowAny,),

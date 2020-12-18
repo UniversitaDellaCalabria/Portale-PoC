@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-unicms/templates/unicms/*
+unicms/templates/*
 unicms/static/*
 __pycache__/
 *.py[cod]
