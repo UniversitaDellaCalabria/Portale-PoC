@@ -1,12 +1,14 @@
 (uniCMS) Portale PoC
 --------------------
 
-This project aims to exemplify the design of a common University WebSite Portal.
+This project aims to exemplify the design of a common University Web Portal.
 You'll find an simplified generalization of all
 the entities that usually make up a Content Management System (CMS).
 
 This platform was built on top of Django Framework, with few specialized libraries as well.
-The final goal is to achieve as much as possible, writing as little code as possible and working even less, when possibile.
+The final goal is to achieve as much as possible, writing as 
+little code as possible and working even less, when possibile.
+
 
 # Table of Contents
 1. [Setup](#setup)
@@ -38,7 +40,7 @@ cd unicms
 ./manage.py migrate
 
 # install your templates in settings.INSTALLED_APPS and then symlinks cms templates
-./manage.py unicms_collect_templates # use -renew to purge and create again all
+./manage.py unicms_collect_templates -renew
 
 # if you want to load some example datas
 ./manage.py loaddata ../dumps/cms.json
@@ -149,8 +151,8 @@ MONGO_CONNECTION_PARAMS = dict(username='admin',
 MONGO_DB_NAME = 'unicms'
 MONGO_COLLECTION_NAME = 'search'
 MODEL_TO_MONGO_MAP = {
-    'cms.Page': 'cms_search.models.page_to_entry',
-    'cms.Publication': 'cms_search.models.publication_to_entry'
+    'cms.pages.Page': 'cms.search.models.page_to_entry',
+    'cms.publications.Publication': 'cms.search.models.publication_to_entry'
 }
 ````
 
@@ -165,26 +167,28 @@ Model
 
 This project is composed by the following applications:
 - websites, where multiple sites can be defined.
-- cms_contexts, where webpaths and EditorialBoard Users and Permissions can be defined
-- cms_templates, where multiple page templates and page blocks can be managed
-- cms_medias, specialized app for management, upload and navigation of media files.
-- cms_menus, specialized app for navigation bar creation and management.
-- cms_carousels, specialized app for Carousel and Slider creation and management.
-- cms, where Editorial boards can create Pages and News to be published in one or more Contexts.
+- cms.contexts, where webpaths and EditorialBoard Users and Permissions can be defined
+- cms.templates, where multiple page templates and page blocks can be managed
+- cms.medias, specialized app for management, upload and navigation of media files.
+- cms.menus, specialized app for navigation bar creation and management.
+- cms.carousels, specialized app for Carousel and Slider creation and management.
+- cms.pages, where Editorial boards can create Pages.
+- cms.publications, where Editorial boards publish contents in one or more WebPath.
+- cms.search, MongoDB Search Engine and management commands.
 
 
 > :warning: **If you are a pure Djangoer**: 
 
-You should know that templates and urls would be managed with cms_context, entirely through admin interface. 
+You should know that templates and urls would be managed with `cms.context`, entirely through admin interface. 
 We can even load third-party django applications, it's necessary to take into account that you should configured your django urls
 paths before defining uniCMS ones, otherwise uniCMS will intercept them and with a good chance will 
 return to the user a page of 404. You can even set `CMS_PATH_PREFIX` to a desidered value, eg: `portale/`, to 
 restrict uniCMS url matching to a specified namespace.
 
-The module `cms_contexts` defines the multiple website management (multi contexts) we have adopted.
+The module `cms.contexts` defines the multiple website management (multi contexts) we have adopted.
 Each context mail ches a Path and a web page, it's nothing more than a
 webpath. Each context has users (Editorial Board Editors) with one or more
-of the following permissions (see `cms_context.settings.CMS_CONTEXT_PERMISSIONS`):
+of the following permissions (see `cms.contexts.settings.CMS_CONTEXT_PERMISSIONS`):
 
 ````
 CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her in his/her context')),
@@ -198,14 +202,14 @@ CMS_CONTEXT_PERMISSIONS = (('1', _('can edit created by him/her in his/her conte
                            )
 ````
 
-`cms` is the model where we've defined how we build a Page or a Publication.
+`cms.page` and `cms.publications` are the models where we've defined how we build a Page or a Publication.
 For us, a Page, is anything else than a composition of blocks, rendered in a
 HTML base template. This means that a page is a block container, in which we can
 define many blocks with different order. For every page we must define
 to which context (webpath) it belong to and also the template that we want to adopt for HTML rendering.
 Nothing prevents us from using something other than HTML, it's just python, you know.
 
-Menus, Carosules, Publications and Categories can also be localized in one or many languages via Web 
+Menus, Carousels, Publications and Categories can also be localized in one or many languages via Web 
 Backend, if a client browser have a Spanish localization the rendering system will render all the spanish
 localized block, if they occour, otherwise it will switch to default
 language.
@@ -221,10 +225,10 @@ A cms template or a HTML page block can also adopt some of the template tags tha
 UniCMS template context takes at least the following objects:
 
 ````
-    'website': WebSite object (cms_context.models.Website)
+    'website': WebSite object (cms.context.models.Website)
     'path': request.get_full_path(), eg: "/that/resource/slug-or-whatever"
-    'webpath': Context object (cms_contexts.models.WebPath)
-    'page': Page object (cms.models.Page)
+    'webpath': Context object (cms.contexts.models.WebPath)
+    'page': Page object (cms.pages.models.Page)
 ````
 
 Standing on the informations taken from these objects uniCMS also adopts some other custom templatetags, as follow.
@@ -252,10 +256,12 @@ These templatetags will also work in Page Blocks that would take, optionally, a 
 - `call`: `{% call obj=pub method='get_url_list' category_name=cat %}`
     Call any object method and also pass to it whatever `**kwargs`.
 
-`cms`
+`cms_page`
 - `load_blocks`: `{% load_blocks section='slider' %}`
   it would be configured in the base templates and defines where the blocks would be rendered.
   it takes `section` as argument, to query/filter only the blocks that belongs to that section.
+
+`cms_publication`
 - `load_publications_preview`: `{% load_publications_preview template="publications_preview.html" %}`
     - additional paramenters:
         template,
@@ -264,6 +270,14 @@ These templatetags will also work in Page Blocks that would take, optionally, a 
         in_evidence=False
         categories_csv="Didattica,Ricerca"
         tags_csv="eventi,ricerca"
+- `load_publication_content_placeholder`: `{% load_publication_content_placeholder template="publication_that.html" %}`
+    - additional paramenters:
+        template,
+        section
+        publication_id # optional
+    This templatetags maps "page place holder blocks" with page 
+    publications and show a publication content, according to
+    the choosed template, where the "page place holder will be rendered.
 
 
 Handlers
@@ -271,7 +285,7 @@ Handlers
 
 There are cases in which it is necessary to create specialized applications, 
 with templates and templatetags, detached from the pages configured within the CMS. 
-Think, for example, to `cms.handlers` which manages the pages for navigating 
+Think, for example, to `cms.publications.handlers` which manages the pages for navigating 
 publications (List) and opening a publication (View).
 
 In this case the handlers have to be registered in `settings.py`, as follow:
@@ -285,29 +299,29 @@ CMS_PUBLICATION_URL_VIEW_REGEXP = f'^(?P<context>[\/a-zA-Z0-9\.\-\_]*)({CMS_PUBL
 CMS_HANDLERS_PATHS = [CMS_PUBLICATION_VIEW_PREFIX_PATH,
                       CMS_PUBLICATION_LIST_PREFIX_PATH]
 CMS_APP_REGEXP_URLPATHS = {
-    'cms.handlers.PublicationViewHandler' : CMS_PUBLICATION_URL_VIEW_REGEXP,
-    'cms.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
+    'cms.publications.handlers.PublicationViewHandler' : CMS_PUBLICATION_URL_VIEW_REGEXP,
+    'cms.publications.handlers.PublicationListHandler' : CMS_PUBLICATION_URL_LIST_REGEXP,
 }
 ````
 
 The paths defined in `CMS_HANDLERS_PATHS`  make up the list of 
-reserved words, to be considered during validation on save, in `cms_context.models.WebPath`. 
+reserved words, to be considered during validation on save, in `cms.contexts.models.WebPath`. 
 They compose a list of reserved words that cannot be used 
-as path value in `cms_context.models.WebPath`.
+as path value in `cms.contexts.models.WebPath`.
 
 
 Middlewares
 -----------
 
-`cms_contexts.middleware.detect_language_middleware`:
+`cms.contexts.middleware.detect_language_middleware`:
    detects the browser user language checking both `?lang=` request arg 
    and the web browser default language. It's needed to 
    handle Menu, Carousel and Publication localizations.
 
-`show_template_blocks_sections`:
+`cms.contexts.middleware.show_template_blocks_sections`:
    toggles, for staff users, the display of block sections in pages.
 
-`show_cms_draft_mode`:
+`cms.contexts.middleware.show_cms_draft_mode`:
    toggles, for staff users, the draft view mode in pages.
 
 
@@ -358,22 +372,22 @@ of the Page.
 
 ````
 {% load unicms_blocks %}
-            <div class="row negative-mt-5 mb-3" >
-                <div class="col-12 col-md-3">
-                    <div class="section-title-label px-3 py-1">
-                        <h3>Unical <span class="super-bold">world</span></h3>
-                    </div>
-                </div>
+    <div class="row negative-mt-5 mb-3" >
+        <div class="col-12 col-md-3">
+            <div class="section-title-label px-3 py-1">
+                <h3>Unical <span class="super-bold">world</span></h3>
             </div>
+        </div>
+    </div>
 
-            <div class="row">
-                <div class="col-12 col-lg-9">
-                    {% load_publications_preview template="publications_preview_v3.html" %}
-                </div>
-                <div class="col-12 col-lg-3">
-                    {% include "unical_portale_agenda.html" %}
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-12 col-lg-9">
+            {% load_publications_preview template="publications_preview_v3.html" %}
+        </div>
+        <div class="col-12 col-lg-3">
+            {% include "unical_portale_agenda.html" %}
+        </div>
+    </div>
 ````
 
 *Youtube iframes*
@@ -417,8 +431,8 @@ will be handled by uniCMS. uniCMS can match two kind of resources:
 for these latter uniCMS uses some reserved words, as prefix, to deal with specialized url routings.
 in the settings file we would configure these. See [Handlers](#handlers) for example.
 
-See `cms.settings` as example.
-See `cms.views.cms_dispatcher` to see how an http request is intercepted and handled by uniCMS to know if use an Handler or a Standard Page as response.
+See `cms.contexts.settings` as example.
+See `cms.contexts.views.cms_dispatcher` to see how an http request is intercepted and handled by uniCMS to know if use an Handler or a Standard Page as response.
 
 
 Search Engine
@@ -433,13 +447,13 @@ uniCMS uses MongoDB as search engine, it was adopted in place of others search e
 Technical specifications are available in [MongoDB Official Documentation](https://docs.mongodb.com/manual/core/index-text/).
 Some usage example also have been posted [here](https://code.tutsplus.com/tutorials/full-text-search-in-mongodb--cms-24835).
 
-An document would be as follows (see `cms_search.models`)
+An document would be as follows (see `cms.search.models`)
 
 ````
 entry = {
             "title": "Papiri, Codex, Libri. La attraverso labora lorem ipsum",
             "heading": "Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-            "content_type": "cms.Publication",
+            "content_type": "cms.publications.Publication",
             "content_id": "1",
             "image": "/media/medias/2020/test_news_1.jpg",
             "content": "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p><p>&lt;h1&gt;This HTML is escaped by default!&lt;/h1&gt;</p><p>&nbsp;</p>",
@@ -475,7 +489,7 @@ entry = {
 
 #### Search Engine CLI
 
-Publication and Page models (`cms.models`) configures by default some save_hooks, like the search engine indexers.
+Publication and Page models (`cms.publications.models`) configures by default some save_hooks, like the search engine indexers.
 Search Engine indexes can be rebuilt with a management command (SE cli):
 
 ````
@@ -499,8 +513,8 @@ Purge all the entries and renew them
 `cms_search_content_sync` rely on `settings.MODEL_TO_MONGO_MAP`:
 ```
 MODEL_TO_MONGO_MAP = {
-    'cmspages.Page': 'cms_search.models.page_to_entry',
-    'cmspublications.Publication': 'cms_search.models.publication_to_entry'
+    'cmspages.Page': 'cms.search.models.page_to_entry',
+    'cmspublications.Publication': 'cms.search.models.publication_to_entry'
 }
 ````
 
@@ -529,7 +543,7 @@ That's something very similar to something professional 😎.
 Post Pre Save Hooks
 -------------------
 By default Pages and Publications call pre and post save hooks.
-Django signals are registered in `cms_search.signals`.
+Django signals are registered in `cms.contexts.signals`.
 In `settings.py` we can register as many as desidered hooks to one or more 
 models, Django signals will load them on each pre/post save/delete event.
 
@@ -537,14 +551,14 @@ models, Django signals will load them on each pre/post save/delete event.
 CMS_HOOKS = {
     'Publication': {
         'PRESAVE': [],
-        'POSTSAVE': ['cms_search.hooks.publication_se_insert',],
-        'PREDELETE': ['cms_search.hooks.searchengine_entry_remove',],
+        'POSTSAVE': ['cms.search.hooks.publication_se_insert',],
+        'PREDELETE': ['cms.search.hooks.searchengine_entry_remove',],
         'POSTDELETE': []
     },
     'Page': {
         'PRESAVE': [],
-        'POSTSAVE': ['cms_search.hooks.page_se_insert',],
-        'PREDELETE': ['cms_search.hooks.searchengine_entry_remove',],
+        'POSTSAVE': ['cms.search.hooks.page_se_insert',],
+        'PREDELETE': ['cms.search.hooks.searchengine_entry_remove',],
         'POSTDELETE': []
     }
 }
@@ -561,6 +575,5 @@ Todo
 ----
 
 - SiteMap exporter
-- Search Engine
 - EditorialBoard UI with permissions
 - EditorialBoard Workflow
