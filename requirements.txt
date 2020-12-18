@@ -2,7 +2,7 @@ git+https://github.com/UniversitaDellaCalabria/uniCMS.git
 git+https://github.com/UniversitaDellaCalabria/unicms-template-italia.git
 git+https://github.com/UniversitaDellaCalabria/unicms-template-unical.git
 
-django-design-italia
+design-django-theme
 
 django-nested-admin>=3.3.2
 
@@ -15,7 +15,7 @@ django-taggit
 
 # content type
 pillow>=7.2.0
-magic>=0.4.18
+python-magic>=0.4.18
 
 # search engine
 # mongo
