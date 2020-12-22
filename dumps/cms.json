@@ -25,7 +25,7 @@
   "pk": 2,
   "fields": {
     "password": "pbkdf2_sha256$216000$VdsaV1CyuN6i$KmQ+lOwEGhP5WGh9Kaspel/M9jfseZKMOfrVydcaKVg=",
-    "last_login": "2020-12-10T09:26:54.947Z",
+    "last_login": "2020-12-18T07:59:49.482Z",
     "is_superuser": true,
     "username": "felix",
     "is_staff": true,
@@ -578,6 +578,7 @@
     "is_active": true,
     "name": "Bootstrap Italia",
     "template_file": "italia.html",
+    "image": "",
     "note": ""
   }
 },
@@ -590,6 +591,7 @@
     "is_active": true,
     "name": "Sito dipartimento - DIMES",
     "template_file": "dipartimento_home_v3_dimes.html",
+    "image": "",
     "note": ""
   }
 },
@@ -598,10 +600,11 @@
   "pk": 3,
   "fields": {
     "created": "2020-12-03T07:22:34.774Z",
-    "modified": "2020-12-16T12:39:03.216Z",
+    "modified": "2020-12-18T17:29:18.433Z",
     "is_active": true,
     "name": "Unical - Menu Publications Stack",
-    "template_file": "unical_main_spaced_columns.html",
+    "template_file": "unical_main_center_alternative.html",
+    "image": "",
     "note": ""
   }
 },
@@ -614,6 +617,7 @@
     "is_active": true,
     "name": "Unical - Menu Publications Expanded Stack",
     "template_file": "unical_main_spaced_columns.html",
+    "image": "",
     "note": ""
   }
 },
@@ -626,6 +630,7 @@
     "is_active": true,
     "name": "Motore di Ricerca",
     "template_file": "unical_main.html",
+    "image": "",
     "note": ""
   }
 },
@@ -634,10 +639,24 @@
   "pk": 7,
   "fields": {
     "created": "2020-12-14T11:18:00.221Z",
-    "modified": "2020-12-16T09:40:23.422Z",
+    "modified": "2020-12-22T07:49:42.972Z",
     "is_active": true,
     "name": "Unical - Main Template",
     "template_file": "unical_main.html",
+    "image": "",
+    "note": ""
+  }
+},
+{
+  "model": "cmstemplates.pagetemplate",
+  "pk": 8,
+  "fields": {
+    "created": "2020-12-18T17:14:36.330Z",
+    "modified": "2020-12-18T17:14:36.331Z",
+    "is_active": true,
+    "name": "Unical - Main Alternative Template",
+    "template_file": "unical_main_center_alternative.html",
+    "image": "",
     "note": ""
   }
 },
@@ -651,7 +670,8 @@
     "name": "Publications Cards",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_publications %}\r\n\r\n<div class=\"row\">\r\n   <div class=\"col\">\r\n      {% load_publications_preview template=\"publications_preview_v3.html\" %}\r\n   </div>\r\n </div>"
+    "content": "{% load unicms_publications %}\r\n\r\n<div class=\"row\">\r\n   <div class=\"col\">\r\n      {% load_publications_preview template=\"publications_preview_v3.html\" %}\r\n   </div>\r\n </div>",
+    "image": ""
   }
 },
 {
@@ -664,7 +684,8 @@
     "name": "Carousel - Main Banner",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"hero_slider.html\" %}\r\n\r\n<script>\r\n$(document).ready(function() {\r\n  $(\"#my-slider\").owlCarousel({\r\n      navigation : true, // Show next and prev buttons\r\n      loop: true,\r\n      slideSpeed : 300,\r\n      paginationSpeed : 400,\r\n      autoplay: true,\r\n      items : 1,\r\n      itemsDesktop : false,\r\n      itemsDesktopSmall : false,\r\n      itemsTablet: false,\r\n      itemsMobile : false,\r\n      dots: false\r\n  });\r\n});\r\n</script>"
+    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"hero_slider.html\" %}\r\n\r\n<script>\r\n$(document).ready(function() {\r\n  $(\"#my-slider\").owlCarousel({\r\n      navigation : true, // Show next and prev buttons\r\n      loop: true,\r\n      slideSpeed : 300,\r\n      paginationSpeed : 400,\r\n      autoplay: true,\r\n      items : 1,\r\n      itemsDesktop : false,\r\n      itemsDesktopSmall : false,\r\n      itemsTablet: false,\r\n      itemsMobile : false,\r\n      dots: false\r\n  });\r\n});\r\n</script>",
+    "image": ""
   }
 },
 {
@@ -677,7 +698,8 @@
     "name": "Unical - Avvisi",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load static %}\r\n\r\n  <div class=\"row\">\r\n    <div class=\"d-none d-md-block col-md-3\">&nbsp;</div>\r\n    <div class=\"col-12 col-md-9\">\r\n      <h3 class=\"super-bold\" style=\"padding-left:24px\">\r\n         Avvisi\r\n      </h3>\r\n    </div>\r\n  </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-12 col-lg-3\" style=\"margin-top: 24px\">\r\n<button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Tutti gli avvisi</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">URP</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Amministrazione trasparente</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Sostieni Unical</button>\r\n            </div>\r\n            <div class=\"col-12 col-lg-9\">\r\n                {% include \"unical_portale_home_avvisi_v3.html\" %}\r\n            </div>\r\n        </div>\r\n\r\n        <a href=\"#\" aria-hidden=\"true\"\r\n           data-attribute=\"back-to-top\"\r\n           class=\"back-to-top back-to-top-small\">\r\n            <svg class=\"icon icon-light\">\r\n              <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-arrow-up\"></use>\r\n            </svg>\r\n        </a>"
+    "content": "{% load static %}\r\n\r\n  <div class=\"row\">\r\n    <div class=\"d-none d-md-block col-md-3\">&nbsp;</div>\r\n    <div class=\"col-12 col-md-9\">\r\n      <h3 class=\"super-bold\" style=\"padding-left:24px\">\r\n         Avvisi\r\n      </h3>\r\n    </div>\r\n  </div>\r\n        <div class=\"row\">\r\n            <div class=\"col-12 col-lg-3\" style=\"margin-top: 24px\">\r\n<button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Tutti gli avvisi</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">URP</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Amministrazione trasparente</button>\r\n                <button type=\"button\" class=\"btn btn-grey-presta btn-block btn-lg mb-2 text-left\">Sostieni Unical</button>\r\n            </div>\r\n            <div class=\"col-12 col-lg-9\">\r\n                {% include \"unical_portale_home_avvisi_v3.html\" %}\r\n            </div>\r\n        </div>\r\n\r\n        <a href=\"#\" aria-hidden=\"true\"\r\n           data-attribute=\"back-to-top\"\r\n           class=\"back-to-top back-to-top-small\">\r\n            <svg class=\"icon icon-light\">\r\n              <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-arrow-up\"></use>\r\n            </svg>\r\n        </a>",
+    "image": ""
   }
 },
 {
@@ -685,12 +707,13 @@
   "pk": 4,
   "fields": {
     "created": "2020-11-18T15:14:07.509Z",
-    "modified": "2020-12-16T12:17:03.953Z",
+    "modified": "2020-12-21T11:44:06.480Z",
     "is_active": true,
-    "name": "youtube video 1",
+    "name": "iFrame 16/9",
     "description": "",
-    "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+    "type": "cms.templates.blocks.LinkPlaceholderBlock",
+    "content": "{\r\n\"template\": \"iframe.html\",\r\n\"aspect_ratio\": \"16by9\"\r\n}",
+    "image": ""
   }
 },
 {
@@ -703,7 +726,8 @@
     "name": "sadasd",
     "description": "asd",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<h1>HAAAAAAAAAAAAAAa</h1>"
+    "content": "<h1>HAAAAAAAAAAAAAAa</h1>",
+    "image": ""
   }
 },
 {
@@ -716,7 +740,8 @@
     "name": "publication-main-preview-DIPARTIMENTO",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_publications %}\r\n\r\n            <div class=\"row negative-mt-5 mb-3\" >\r\n                <div class=\"col-12 col-md-3\">\r\n                    <div class=\"section-title-label px-3 py-1\">\r\n                        <h3><span class=\"lighter\">in primo piano</span></h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12 col-lg-9\">\r\n                    {% load_publications_preview template=\"publications_preview_dipartimento_v3.html\" %}\r\n                </div>\r\n                <div class=\"col-12 col-lg-3\">\r\n                    {% include \"unical_portale_agenda.html\" %}\r\n                </div>\r\n            </div>"
+    "content": "{% load unicms_publications %}\r\n\r\n            <div class=\"row negative-mt-5 mb-3\" >\r\n                <div class=\"col-12 col-md-3\">\r\n                    <div class=\"section-title-label px-3 py-1\">\r\n                        <h3><span class=\"lighter\">in primo piano</span></h3>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-12 col-lg-9\">\r\n                    {% load_publications_preview template=\"publications_preview_dipartimento_v3.html\" %}\r\n                </div>\r\n                <div class=\"col-12 col-lg-3\">\r\n                    {% include \"unical_portale_agenda.html\" %}\r\n                </div>\r\n            </div>",
+    "image": ""
   }
 },
 {
@@ -729,7 +754,8 @@
     "name": "Main Menu",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n{% load_menu section='menu-1' template=\"main_menu.html\" %}"
+    "content": "{% load unicms_menus %}\r\n{% load_menu section='menu-1' template=\"main_menu.html\" %}",
+    "image": ""
   }
 },
 {
@@ -737,12 +763,13 @@
   "pk": 8,
   "fields": {
     "created": "2020-12-03T07:50:54.509Z",
-    "modified": "2020-12-10T10:48:14.492Z",
+    "modified": "2020-12-21T22:30:45.157Z",
     "is_active": true,
-    "name": "Publications Stacked",
+    "name": "Placheholder Publication - Style 1",
     "description": "",
-    "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_publications %}\r\n\r\n{% load_publications_preview template=\"publications_preview_stacked_v3.html\" %}"
+    "type": "cms.templates.blocks.PublicationContentPlaceholderBlock",
+    "content": "{\"template\": \"ph_publication_style_1.html\"}",
+    "image": ""
   }
 },
 {
@@ -755,7 +782,8 @@
     "name": "OrientaUnical Logo",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<h1 class=\"super-bold bordeaux-unical-color\" style=\"font-size: 6rem; margin-bottom: 5px;line-height: 0.8;\">OU</h1>\r\n\r\n<p class=\"ml-1\">\r\n<b class=\"bordeaux-unical-color\">come accedere ai servizi</b>\r\n<br>\r\n<span class=\"bordeaux-unical-color super-bold\">Orienta-Unical</span>\r\n</p>"
+    "content": "<h1 class=\"super-bold bordeaux-unical-color\" style=\"font-size: 6rem; margin-bottom: 5px;line-height: 0.8;\">OU</h1>\r\n\r\n<p class=\"ml-1\">\r\n<b class=\"bordeaux-unical-color\">come accedere ai servizi</b>\r\n<br>\r\n<span class=\"bordeaux-unical-color super-bold\">Orienta-Unical</span>\r\n</p>",
+    "image": ""
   }
 },
 {
@@ -768,7 +796,8 @@
     "name": "Publications Stacked Expanded",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_publications %}\r\n\r\n{% load_publications_preview template=\"publications_preview_stacked_big_v3.html\" %}"
+    "content": "{% load unicms_publications %}\r\n\r\n{% load_publications_preview template=\"publications_preview_stacked_big_v3.html\" %}",
+    "image": ""
   }
 },
 {
@@ -781,7 +810,8 @@
     "name": "HR line Bordeaux",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<hr class=\"my-4 bordeaux-unical-bg\">"
+    "content": "<hr class=\"my-4 bordeaux-unical-bg\">",
+    "image": ""
   }
 },
 {
@@ -794,7 +824,8 @@
     "name": "Menu Childs in tags (menu-2)",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n{% load_menu section=\"menu-2\" template=\"menu_tags_expanded_v3.html\" %}"
+    "content": "{% load unicms_menus %}\r\n{% load_menu section=\"menu-2\" template=\"menu_tags_expanded_v3.html\" %}",
+    "image": ""
   }
 },
 {
@@ -807,7 +838,8 @@
     "name": "Menu Childs in tags (menu-3)",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n{% load_menu section=\"menu-3\" template=\"menu_tags_expanded_v3.html\" %}"
+    "content": "{% load unicms_menus %}\r\n{% load_menu section=\"menu-3\" template=\"menu_tags_expanded_v3.html\" %}",
+    "image": ""
   }
 },
 {
@@ -820,7 +852,8 @@
     "name": "Futuri studenti - ammissione",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<div class=\"mb-3\"><b>Lauree Magistrali - Bandi a.a. 2020-21</b></div>\r\n<div>\r\nLM Gestione e conservazione dei documenti digitali: graduatoria definitiva\r\n<br>\r\nLM DIMES: riapertura domande di ammissione\r\n<br>\r\nLM Ingegneria per l'ambiente e il territorio: riapertura domande di ammissione\r\n<br>\r\nLM Ingegneria Civile: riapertura domande di ammissione\r\n<br>\r\nLM DISU: immatricolazione laureati ottobre 2020\r\n<br>\r\nLM Scienza della Nutrizione: incremento posti\r\n<br>\r\nImmatricolazioni LM Economia aziendale e management: laureandi idonei in graduatoria\r\n</div>\r\n<div class=\"my-3\"><b>Bandi Corsi di laurea magistrale a ciclo unico con vincoli ministeriali/d'ateneo</b></div>\r\n\r\n<div>\r\nCONCORSO AMMISSIONE A.A. 2020/2021\r\n<br>\r\nLAUREA MAGISTRALE IN SCIENZA DELLA NUTRIZIONE\r\n<br>\r\nGRADUATORIE DEFINITIVE E GRADUATORIA BORSE DI STUDIO\r\n<br>\r\nPERCORSO IN INGLESE NUTRITIONAL SCIENCES\r\n\r\n<br>\r\n<br>\r\nBANDO DI AMMISSIONE SCIENZE DELLA FORMAZIONE PRIMARIA 2020/2021\r\n<br>\r\nGRADUATORIA DEFINITIVA SFP 2020/2021\r\n<br>\r\nPRIMO SCORRIMENTO SFP\r\n<br>\r\n3/11/2020 - SECONDO SCORRIMENTO SFP\r\n<br>\r\n<br>\r\nQ&A\r\n<br>\r\nQuando sarà possibile compilare la domanda di ammissione per l'Università della Calabria?\r\nTrovi le date di apertura/chiusura delle domande di ammissione nel bando di tuo interesse.\r\nuali sono i requisiti per l'ammissione?\r\n<br>\r\nTrovi i requisiti di ammissione per ogni corso di studi negli allegati dei singoli dipartimenti.\r\n<br>\r\nQuando saprò se sono ammesso?\r\n<br>\r\nAttendi la pubblicazione delle graduatorie, consulta le date nel Bando di Ammissione.\r\n<br>\r\nCosa dovrò fare se risulto vincitore?\r\n<br>\r\nQuanto pagherò di tasse?\r\n<br>\r\n<br>\r\nLEGGI LA GUIDA SINTETICA\r\n</div>"
+    "content": "<div class=\"mb-3\"><b>Lauree Magistrali - Bandi a.a. 2020-21</b></div>\r\n<div>\r\nLM Gestione e conservazione dei documenti digitali: graduatoria definitiva\r\n<br>\r\nLM DIMES: riapertura domande di ammissione\r\n<br>\r\nLM Ingegneria per l'ambiente e il territorio: riapertura domande di ammissione\r\n<br>\r\nLM Ingegneria Civile: riapertura domande di ammissione\r\n<br>\r\nLM DISU: immatricolazione laureati ottobre 2020\r\n<br>\r\nLM Scienza della Nutrizione: incremento posti\r\n<br>\r\nImmatricolazioni LM Economia aziendale e management: laureandi idonei in graduatoria\r\n</div>\r\n<div class=\"my-3\"><b>Bandi Corsi di laurea magistrale a ciclo unico con vincoli ministeriali/d'ateneo</b></div>\r\n\r\n<div>\r\nCONCORSO AMMISSIONE A.A. 2020/2021\r\n<br>\r\nLAUREA MAGISTRALE IN SCIENZA DELLA NUTRIZIONE\r\n<br>\r\nGRADUATORIE DEFINITIVE E GRADUATORIA BORSE DI STUDIO\r\n<br>\r\nPERCORSO IN INGLESE NUTRITIONAL SCIENCES\r\n\r\n<br>\r\n<br>\r\nBANDO DI AMMISSIONE SCIENZE DELLA FORMAZIONE PRIMARIA 2020/2021\r\n<br>\r\nGRADUATORIA DEFINITIVA SFP 2020/2021\r\n<br>\r\nPRIMO SCORRIMENTO SFP\r\n<br>\r\n3/11/2020 - SECONDO SCORRIMENTO SFP\r\n<br>\r\n<br>\r\nQ&A\r\n<br>\r\nQuando sarà possibile compilare la domanda di ammissione per l'Università della Calabria?\r\nTrovi le date di apertura/chiusura delle domande di ammissione nel bando di tuo interesse.\r\nuali sono i requisiti per l'ammissione?\r\n<br>\r\nTrovi i requisiti di ammissione per ogni corso di studi negli allegati dei singoli dipartimenti.\r\n<br>\r\nQuando saprò se sono ammesso?\r\n<br>\r\nAttendi la pubblicazione delle graduatorie, consulta le date nel Bando di Ammissione.\r\n<br>\r\nCosa dovrò fare se risulto vincitore?\r\n<br>\r\nQuanto pagherò di tasse?\r\n<br>\r\n<br>\r\nLEGGI LA GUIDA SINTETICA\r\n</div>",
+    "image": ""
   }
 },
 {
@@ -833,7 +866,8 @@
     "name": "Motore di Ricerca",
     "description": "search engine",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% include \"search_engine.html\" %}"
+    "content": "{% include \"search_engine.html\" %}",
+    "image": ""
   }
 },
 {
@@ -846,7 +880,8 @@
     "name": "Ufficio relazioni internazionali",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load i18n %}\r\n{% load static %}\r\n\r\n<svg class=\"icon icon-lg\">\r\n<use xlink:href=\"{% static 'svg/sprite.svg' %}#it-info-circle\"></use>\r\n</svg>\r\n<br>\r\n<b>Ufficio relazioni internazionali</b>\r\n<br>\r\n<b>Ufficio Erasmus</b>"
+    "content": "{% load i18n %}\r\n{% load static %}\r\n\r\n<svg class=\"icon icon-lg\">\r\n<use xlink:href=\"{% static 'svg/sprite.svg' %}#it-info-circle\"></use>\r\n</svg>\r\n<br>\r\n<b>Ufficio relazioni internazionali</b>\r\n<br>\r\n<b>Ufficio Erasmus</b>",
+    "image": ""
   }
 },
 {
@@ -859,7 +894,8 @@
     "name": "Internazionale - Intro text",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<div class=\"mt-5\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n\r\n<span class=\"bigger-font\">È il <b>Campus</b> international, con oltre <b>800 studenti</b> provenienti\r\nda 80 paesi, rogrammi di mobilità all’estero, Erasmus,\r\nMost e Dual. Passeggiando sul ponte Bucci o tra i viali\r\ndelle residenze del Campus è normale sentire tanti idiomi\r\ne incrociare culture diverse. Questo perché all’UniCal, grazie\r\nal programma UnicalAdmission, vivono\r\noltre 800 studenti provenienti da 80 Paesi; circa 600,\r\ninvece, sono quelli che partecipano, in uscita\r\no in entrata, ai programmi di m</span>\r\n</div>"
+    "content": "<div class=\"mt-5\">\r\n<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/ArpMSujC8mM\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\r\n\r\n<span class=\"bigger-font\">È il <b>Campus</b> international, con oltre <b>800 studenti</b> provenienti\r\nda 80 paesi, rogrammi di mobilità all’estero, Erasmus,\r\nMost e Dual. Passeggiando sul ponte Bucci o tra i viali\r\ndelle residenze del Campus è normale sentire tanti idiomi\r\ne incrociare culture diverse. Questo perché all’UniCal, grazie\r\nal programma UnicalAdmission, vivono\r\noltre 800 studenti provenienti da 80 Paesi; circa 600,\r\ninvece, sono quelli che partecipano, in uscita\r\no in entrata, ai programmi di m</span>\r\n</div>",
+    "image": ""
   }
 },
 {
@@ -872,7 +908,8 @@
     "name": "Internazionale IMG",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<img src=\"//test.unical.it:8000/media/medias/2020/internazionale_temsyeH.webp\" width=\"100%\" />"
+    "content": "<img src=\"//test.unical.it:8000/media/medias/2020/internazionale_temsyeH.webp\" width=\"100%\" />",
+    "image": ""
   }
 },
 {
@@ -885,7 +922,8 @@
     "name": "Internazionale TXT",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load static %}\r\n\r\n<div class=\"mb-5\">Per favorire l'attività di internazionalizzazione dell'Ateneo,\r\nè stato avviato un programma di scambi culturali con altre Università\r\nnel mondo, da cui sono scaturiti ad oggi oltre 240 Accordi di cooperazione\r\ngenerale o specifica e Convenzioni, stipulati con circa 220 Istituzioni partner,\r\nche hanno notevolmente accresciuto la qualità dell'offerta didattico/scientifica\r\ndell'Ateneo, oltre alla sua visibilità internazionale, e di cui attualmente beneficiano\r\ndiversi studenti e docenti.</div>\r\n\r\n<svg class=\"icon\">\r\n                                    <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-files\"></use>\r\n                                  </svg> modulistica accordi"
+    "content": "{% load static %}\r\n\r\n<div class=\"mb-5\">Per favorire l'attività di internazionalizzazione dell'Ateneo,\r\nè stato avviato un programma di scambi culturali con altre Università\r\nnel mondo, da cui sono scaturiti ad oggi oltre 240 Accordi di cooperazione\r\ngenerale o specifica e Convenzioni, stipulati con circa 220 Istituzioni partner,\r\nche hanno notevolmente accresciuto la qualità dell'offerta didattico/scientifica\r\ndell'Ateneo, oltre alla sua visibilità internazionale, e di cui attualmente beneficiano\r\ndiversi studenti e docenti.</div>\r\n\r\n<svg class=\"icon\">\r\n                                    <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-files\"></use>\r\n                                  </svg> modulistica accordi",
+    "image": ""
   }
 },
 {
@@ -898,7 +936,8 @@
     "name": "Internazionale Contatti page",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load static %}\r\n\r\n<div class=\"row\">\r\n<div class=\"col-12 col-md-1\">\r\n<svg class=\"icon\">\r\n                                    <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-info-circle\"></use>\r\n                                  </svg>\r\n</div>\r\n\r\n<div class=\"col-12 col-md-5\">\r\n<b>Riferimenti</b>\r\n<br>\r\n9838394\r\n<br>\r\n@udniaoa li\r\n<br>\r\nufificodnnd d\r\n<br>\r\nihnnsndufnf\r\n</div>\r\n\r\n<div class=\"col-12 col-md-6\">\r\n<b>Ufficio Internazionale<br>\r\nlunedi vernedi 9/13<br>\r\nEdificio Centro residenziale</b>\r\n</div>\r\n</div>"
+    "content": "{% load static %}\r\n\r\n<div class=\"row\">\r\n<div class=\"col-12 col-md-1\">\r\n<svg class=\"icon\">\r\n                                    <use xlink:href=\"{% static 'svg/sprite.svg' %}#it-info-circle\"></use>\r\n                                  </svg>\r\n</div>\r\n\r\n<div class=\"col-12 col-md-5\">\r\n<b>Riferimenti</b>\r\n<br>\r\n9838394\r\n<br>\r\n@udniaoa li\r\n<br>\r\nufificodnnd d\r\n<br>\r\nihnnsndufnf\r\n</div>\r\n\r\n<div class=\"col-12 col-md-6\">\r\n<b>Ufficio Internazionale<br>\r\nlunedi vernedi 9/13<br>\r\nEdificio Centro residenziale</b>\r\n</div>\r\n</div>",
+    "image": ""
   }
 },
 {
@@ -911,7 +950,8 @@
     "name": "Color",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<div style=\"background: #aaa\" class=\"p-3\">block</div>"
+    "content": "<div style=\"background: #aaa\" class=\"p-3\">block</div>",
+    "image": ""
   }
 },
 {
@@ -924,7 +964,8 @@
     "name": "Unical - Agenda",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load static %}\r\n\r\n<div class=\"row\">\r\n<div class=\"col\">\r\n<div class=\"card-wrapper card-space\">\r\n            <div class=\"card card-bg no-after\">\r\n                <div class=\"card-body\">\r\n                    <h4 class=\"card-title\">\r\n                        <a style=\"text-decoration: none; color: #17324d;\" href=\"/content/posts/studiare-online-e-sempre-piu-semplice\">\r\n                            Agenda\r\n                        </a>\r\n                    </h4>\r\n\r\n                    <p class=\"card-text\">\r\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\r\n                    </p>\r\n\r\n                    <a href=\"#\">\r\n                        <svg class=\"icon\">\r\n                            <use xlink:href=\"/static/svg/sprite.svg#it-share\"></use>\r\n                        </svg>\r\n                    </a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n       </div>\r\n        </div>"
+    "content": "{% load static %}\r\n\r\n<div class=\"row\">\r\n<div class=\"col\">\r\n<div class=\"card-wrapper card-space\">\r\n            <div class=\"card card-bg no-after\">\r\n                <div class=\"card-body\">\r\n                    <h4 class=\"card-title\">\r\n                        <a style=\"text-decoration: none; color: #17324d;\" href=\"/content/posts/studiare-online-e-sempre-piu-semplice\">\r\n                            Agenda\r\n                        </a>\r\n                    </h4>\r\n\r\n                    <p class=\"card-text\">\r\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\r\n                    </p>\r\n\r\n                    <a href=\"#\">\r\n                        <svg class=\"icon\">\r\n                            <use xlink:href=\"/static/svg/sprite.svg#it-share\"></use>\r\n                        </svg>\r\n                    </a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n       </div>\r\n        </div>",
+    "image": ""
   }
 },
 {
@@ -937,7 +978,8 @@
     "name": "Unical - Social Card",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load static %}\r\n\r\n<div class=\"row\">\r\n<div class=\"col\">\r\n<div class=\"card-wrapper card-space\">\r\n            <div class=\"card card-bg no-after\">\r\n                <div class=\"card-body\">\r\n                    <h4 class=\"card-title\">\r\n                        <a style=\"text-decoration: none; color: #17324d;\" href=\"/content/posts/studiare-online-e-sempre-piu-semplice\">\r\n                            Social\r\n                        </a>\r\n                    </h4>\r\n\r\n                    <p class=\"card-text\">\r\n                       didunt ut labore et dolore magna aliqua.\r\n                    </p>\r\n\r\n                    <a href=\"#\">\r\n                        <svg class=\"icon\">\r\n                            <use xlink:href=\"/static/svg/sprite.svg#it-share\"></use>\r\n                        </svg>\r\n                    </a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n            </div>\r\n        </div>"
+    "content": "{% load static %}\r\n\r\n<div class=\"row\">\r\n<div class=\"col\">\r\n<div class=\"card-wrapper card-space\">\r\n            <div class=\"card card-bg no-after\">\r\n                <div class=\"card-body\">\r\n                    <h4 class=\"card-title\">\r\n                        <a style=\"text-decoration: none; color: #17324d;\" href=\"/content/posts/studiare-online-e-sempre-piu-semplice\">\r\n                            Social\r\n                        </a>\r\n                    </h4>\r\n\r\n                    <p class=\"card-text\">\r\n                       didunt ut labore et dolore magna aliqua.\r\n                    </p>\r\n\r\n                    <a href=\"#\">\r\n                        <svg class=\"icon\">\r\n                            <use xlink:href=\"/static/svg/sprite.svg#it-share\"></use>\r\n                        </svg>\r\n                    </a>\r\n                </div>\r\n            </div>\r\n        </div>\r\n            </div>\r\n        </div>",
+    "image": ""
   }
 },
 {
@@ -950,7 +992,8 @@
     "name": "Unical - Home - Unical World",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "asdsadas"
+    "content": "asdsadas",
+    "image": ""
   }
 },
 {
@@ -963,7 +1006,8 @@
     "name": "Unical - Unical World Label",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<div class=\"mt-n5 mb-3 background-white px-3 py-2 float-left\">\r\n<h3><span class=\"lighter\">UniCal</span> <span class=\"super-bold\">world</span></h3>\r\n</div>"
+    "content": "<div class=\"mt-n5 mb-3 background-white px-3 py-2 float-left\">\r\n<h3><span class=\"lighter\">UniCal</span> <span class=\"super-bold\">world</span></h3>\r\n</div>",
+    "image": ""
   }
 },
 {
@@ -976,7 +1020,8 @@
     "name": "Unical - Page Title H1 lighter",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<h1 class=\"lighter mt-3\">{{ page.name }}</h1>"
+    "content": "<h1 class=\"lighter mt-3\">{{ page.name }}</h1>",
+    "image": ""
   }
 },
 {
@@ -989,7 +1034,8 @@
     "name": "Menu - Campus/Servizi/Futuri Studenti",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu_by_id pk=\"23\" template=\"side_menu.html\" %}"
+    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu_by_id pk=\"23\" template=\"side_menu.html\" %}",
+    "image": ""
   }
 },
 {
@@ -1002,7 +1048,8 @@
     "name": "Menu - Campus/Visita il campus",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu_by_id pk=\"20\" template=\"side_menu.html\" %}"
+    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu_by_id pk=\"20\" template=\"side_menu.html\" %}",
+    "image": ""
   }
 },
 {
@@ -1015,7 +1062,8 @@
     "name": "Menu - Campus/Vivere il campus",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu_by_id pk=\"21\" template=\"side_menu.html\" %}"
+    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu_by_id pk=\"21\" template=\"side_menu.html\" %}",
+    "image": ""
   }
 },
 {
@@ -1023,12 +1071,13 @@
   "pk": 34,
   "fields": {
     "created": "2020-12-16T12:17:11.749Z",
-    "modified": "2020-12-16T12:17:11.749Z",
+    "modified": "2020-12-21T11:43:55.158Z",
     "is_active": true,
-    "name": "youtube video 2",
+    "name": "iFrame 1/1",
     "description": "",
-    "type": "cms.templates.blocks.HtmlBlock",
-    "content": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/xrjjJGqZpcU\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+    "type": "cms.templates.blocks.LinkPlaceholderBlock",
+    "content": "{\r\n\"template\": \"iframe.html\",\r\n\"aspect_ratio\": \"1by1\"\r\n}",
+    "image": ""
   }
 },
 {
@@ -1041,7 +1090,22 @@
     "name": "Unical - Breadcrumbs",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_contexts %}\r\n\r\n{% breadcrumbs webpath=webpath %}"
+    "content": "{% load unicms_contexts %}\r\n\r\n{% breadcrumbs webpath=webpath %}",
+    "image": ""
+  }
+},
+{
+  "model": "cmstemplates.templateblock",
+  "pk": 36,
+  "fields": {
+    "created": "2020-12-18T14:24:39.038Z",
+    "modified": "2020-12-18T18:13:59.972Z",
+    "is_active": true,
+    "name": "Placehoder - Intro text Pubblicazione",
+    "description": "",
+    "type": "cms.templates.blocks.PublicationContentPlaceholderBlock",
+    "content": "{\"template\": \"ph_publication.html\", \"publication_id\":\"7\"}",
+    "image": ""
   }
 },
 {
@@ -4527,7 +4591,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-12-16T12:52:42.301Z",
+    "modified": "2020-12-21T16:38:54.104Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
@@ -4607,14 +4671,14 @@
   "pk": 17,
   "fields": {
     "created": "2020-12-03T10:47:08.171Z",
-    "modified": "2020-12-16T12:39:22.898Z",
+    "modified": "2020-12-21T22:33:02.043Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
     "draft_of": null,
     "name": "I Servizi del Campus",
     "webpath": 8,
-    "base_template": 3,
+    "base_template": 7,
     "description": "",
     "date_start": "2020-12-03T10:46:59Z",
     "date_end": null,
@@ -4707,7 +4771,7 @@
   "pk": 22,
   "fields": {
     "created": "2020-12-11T08:50:05.056Z",
-    "modified": "2020-12-16T17:39:49.488Z",
+    "modified": "2020-12-21T21:01:02.030Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
@@ -4747,8 +4811,8 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:37:39.528Z",
-    "modified": "2020-11-02T10:46:46.503Z",
-    "order": 10,
+    "modified": "2020-12-21T07:50:11.800Z",
+    "order": 0,
     "is_active": true,
     "section": "slider",
     "page": 1,
@@ -4786,8 +4850,8 @@
   "pk": 1,
   "fields": {
     "created": "2020-11-02T10:08:40.122Z",
-    "modified": "2020-11-02T10:08:40.122Z",
-    "order": 10,
+    "modified": "2020-12-21T07:50:11.786Z",
+    "order": 0,
     "is_active": true,
     "section": "menu-1",
     "page": 1,
@@ -4799,8 +4863,8 @@
   "pk": 2,
   "fields": {
     "created": "2020-11-02T10:09:03.494Z",
-    "modified": "2020-12-14T15:31:16.145Z",
-    "order": 11,
+    "modified": "2020-12-21T07:50:11.797Z",
+    "order": 1,
     "is_active": true,
     "section": "menu-2",
     "page": 1,
@@ -4877,8 +4941,8 @@
   "pk": 18,
   "fields": {
     "created": "2020-12-03T10:47:08.181Z",
-    "modified": "2020-12-03T10:47:08.181Z",
-    "order": 10,
+    "modified": "2020-12-21T22:26:48.895Z",
+    "order": 0,
     "is_active": true,
     "section": "menu-1",
     "page": 17,
@@ -4994,8 +5058,8 @@
   "pk": 39,
   "fields": {
     "created": "2020-12-11T08:50:05.084Z",
-    "modified": "2020-12-11T08:50:05.084Z",
-    "order": 10,
+    "modified": "2020-12-18T14:24:46.452Z",
+    "order": 0,
     "is_active": true,
     "section": "menu-1",
     "page": 22,
@@ -5007,8 +5071,8 @@
   "pk": 42,
   "fields": {
     "created": "2020-12-11T08:50:05.085Z",
-    "modified": "2020-12-11T08:52:43.335Z",
-    "order": 10,
+    "modified": "2020-12-18T14:24:46.455Z",
+    "order": 1,
     "is_active": true,
     "section": "menu-2",
     "page": 22,
@@ -5019,7 +5083,7 @@
   "model": "cmspages.pageblock",
   "pk": 3,
   "fields": {
-    "order": 40,
+    "order": 0,
     "is_active": true,
     "section": "1-right-a",
     "page": 17,
@@ -5030,7 +5094,7 @@
   "model": "cmspages.pageblock",
   "pk": 4,
   "fields": {
-    "order": 35,
+    "order": 1,
     "is_active": true,
     "section": "1-right-a",
     "page": 17,
@@ -5063,7 +5127,7 @@
   "model": "cmspages.pageblock",
   "pk": 11,
   "fields": {
-    "order": 20,
+    "order": 2,
     "is_active": true,
     "section": "1-right-a",
     "page": 17,
@@ -5228,7 +5292,7 @@
   "model": "cmspages.pageblock",
   "pk": 43,
   "fields": {
-    "order": 10,
+    "order": 0,
     "is_active": true,
     "section": "1-right-a",
     "page": 22,
@@ -5239,7 +5303,7 @@
   "model": "cmspages.pageblock",
   "pk": 44,
   "fields": {
-    "order": 10,
+    "order": 1,
     "is_active": true,
     "section": "menu-2",
     "page": 22,
@@ -5250,7 +5314,7 @@
   "model": "cmspages.pageblock",
   "pk": 45,
   "fields": {
-    "order": 20,
+    "order": 2,
     "is_active": true,
     "section": "1-right-a",
     "page": 22,
@@ -5261,7 +5325,7 @@
   "model": "cmspages.pageblock",
   "pk": 46,
   "fields": {
-    "order": 30,
+    "order": 3,
     "is_active": true,
     "section": "1-right-a",
     "page": 22,
@@ -5272,7 +5336,7 @@
   "model": "cmspages.pageblock",
   "pk": 48,
   "fields": {
-    "order": 40,
+    "order": 4,
     "is_active": true,
     "section": null,
     "page": 22,
@@ -5283,7 +5347,7 @@
   "model": "cmspages.pageblock",
   "pk": 50,
   "fields": {
-    "order": 10,
+    "order": 5,
     "is_active": true,
     "section": "1-center-top-a",
     "page": 22,
@@ -5294,9 +5358,9 @@
   "model": "cmspages.pageblock",
   "pk": 51,
   "fields": {
-    "order": 20,
+    "order": 6,
     "is_active": true,
-    "section": "1-center-top-a",
+    "section": "1-center-top-b",
     "page": 22,
     "block": 22
   }
@@ -5305,7 +5369,7 @@
   "model": "cmspages.pageblock",
   "pk": 52,
   "fields": {
-    "order": 30,
+    "order": 7,
     "is_active": true,
     "section": "1-center-content",
     "page": 22,
@@ -5316,7 +5380,7 @@
   "model": "cmspages.pageblock",
   "pk": 53,
   "fields": {
-    "order": 40,
+    "order": 8,
     "is_active": true,
     "section": "2-center-bottom-a",
     "page": 22,
@@ -5327,7 +5391,7 @@
   "model": "cmspages.pageblock",
   "pk": 66,
   "fields": {
-    "order": 10,
+    "order": 0,
     "is_active": true,
     "section": "2-center-content",
     "page": 1,
@@ -5338,7 +5402,7 @@
   "model": "cmspages.pageblock",
   "pk": 67,
   "fields": {
-    "order": 10,
+    "order": 1,
     "is_active": true,
     "section": "2-right-a",
     "page": 1,
@@ -5349,7 +5413,7 @@
   "model": "cmspages.pageblock",
   "pk": 68,
   "fields": {
-    "order": 20,
+    "order": 2,
     "is_active": true,
     "section": "2-right-a",
     "page": 1,
@@ -5360,7 +5424,7 @@
   "model": "cmspages.pageblock",
   "pk": 69,
   "fields": {
-    "order": 10,
+    "order": 3,
     "is_active": true,
     "section": "slider",
     "page": 1,
@@ -5371,7 +5435,7 @@
   "model": "cmspages.pageblock",
   "pk": 70,
   "fields": {
-    "order": 10,
+    "order": 4,
     "is_active": true,
     "section": "3-center-content",
     "page": 1,
@@ -5382,7 +5446,7 @@
   "model": "cmspages.pageblock",
   "pk": 72,
   "fields": {
-    "order": 10,
+    "order": 3,
     "is_active": true,
     "section": "1-right-a",
     "page": 17,
@@ -5393,7 +5457,7 @@
   "model": "cmspages.pageblock",
   "pk": 74,
   "fields": {
-    "order": 10,
+    "order": 5,
     "is_active": true,
     "section": "2-mid-top-a",
     "page": 1,
@@ -5437,7 +5501,7 @@
   "model": "cmspages.pageblock",
   "pk": 79,
   "fields": {
-    "order": 30,
+    "order": 4,
     "is_active": true,
     "section": "1-right-a",
     "page": 17,
@@ -5448,7 +5512,7 @@
   "model": "cmspages.pageblock",
   "pk": 80,
   "fields": {
-    "order": 40,
+    "order": 6,
     "is_active": true,
     "section": "2-mid-bottom-a",
     "page": 1,
@@ -5459,22 +5523,228 @@
   "model": "cmspages.pageblock",
   "pk": 81,
   "fields": {
-    "order": 50,
+    "order": 7,
     "is_active": true,
     "section": "2-mid-bottom-b",
     "page": 1,
-    "block": 34
+    "block": 4
   }
 },
 {
   "model": "cmspages.pageblock",
   "pk": 85,
   "fields": {
-    "order": 50,
+    "order": 9,
     "is_active": true,
     "section": "1-top-a",
     "page": 22,
     "block": 22
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 86,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "2-center-bottom-b",
+    "page": 22,
+    "block": 36
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 87,
+  "fields": {
+    "order": 8,
+    "is_active": true,
+    "section": "2-right-a",
+    "page": 1,
+    "block": 34
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 88,
+  "fields": {
+    "order": 11,
+    "is_active": true,
+    "section": "2-center-top-a",
+    "page": 22,
+    "block": 21
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 89,
+  "fields": {
+    "order": 12,
+    "is_active": true,
+    "section": "2-center-top-b",
+    "page": 22,
+    "block": 22
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 90,
+  "fields": {
+    "order": 13,
+    "is_active": true,
+    "section": "2-right-a",
+    "page": 22,
+    "block": 32
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 91,
+  "fields": {
+    "order": 5,
+    "is_active": true,
+    "section": "1-center-top-a",
+    "page": 17,
+    "block": 8
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 92,
+  "fields": {
+    "order": 6,
+    "is_active": true,
+    "section": "1-center-top-a",
+    "page": 17,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 93,
+  "fields": {
+    "order": 7,
+    "is_active": true,
+    "section": "1-center-top-a",
+    "page": 17,
+    "block": 8
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 94,
+  "fields": {
+    "order": 8,
+    "is_active": true,
+    "section": "1-center-top-a",
+    "page": 17,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 95,
+  "fields": {
+    "order": 9,
+    "is_active": true,
+    "section": "1-center-top-a",
+    "page": 17,
+    "block": 8
+  }
+},
+{
+  "model": "cmspages.pagelink",
+  "pk": 1,
+  "fields": {
+    "created": "2020-12-21T10:22:24.879Z",
+    "modified": "2020-12-21T10:24:46.653Z",
+    "order": 0,
+    "page": 1,
+    "name": "youtube 1",
+    "url": "https://www.youtube.com/embed/ArpMSujC8mM"
+  }
+},
+{
+  "model": "cmspages.pagelink",
+  "pk": 2,
+  "fields": {
+    "created": "2020-12-21T10:29:15.522Z",
+    "modified": "2020-12-21T10:29:15.522Z",
+    "order": 1,
+    "page": 1,
+    "name": "youtube 2",
+    "url": "https://www.youtube.com/embed/ArpMSujC8mM"
+  }
+},
+{
+  "model": "cmspages.pagelink",
+  "pk": 3,
+  "fields": {
+    "created": "2020-12-21T11:35:57.131Z",
+    "modified": "2020-12-21T11:35:57.131Z",
+    "order": 2,
+    "page": 1,
+    "name": "side",
+    "url": "https://www.youtube.com/embed/ArpMSujC8mM"
+  }
+},
+{
+  "model": "cmspages.pagepublication",
+  "pk": 1,
+  "fields": {
+    "created": "2020-12-18T14:24:46.477Z",
+    "modified": "2020-12-18T14:24:46.477Z",
+    "order": 0,
+    "is_active": true,
+    "page": 22,
+    "publication": 11
+  }
+},
+{
+  "model": "cmspages.pagepublication",
+  "pk": 2,
+  "fields": {
+    "created": "2020-12-18T16:11:17.329Z",
+    "modified": "2020-12-18T16:11:17.329Z",
+    "order": 1,
+    "is_active": true,
+    "page": 22,
+    "publication": 11
+  }
+},
+{
+  "model": "cmspages.pagepublication",
+  "pk": 3,
+  "fields": {
+    "created": "2020-12-21T22:26:48.924Z",
+    "modified": "2020-12-21T22:26:48.924Z",
+    "order": 0,
+    "is_active": true,
+    "page": 17,
+    "publication": 7
+  }
+},
+{
+  "model": "cmspages.pagepublication",
+  "pk": 4,
+  "fields": {
+    "created": "2020-12-21T22:32:05.402Z",
+    "modified": "2020-12-21T22:32:05.402Z",
+    "order": 1,
+    "is_active": true,
+    "page": 17,
+    "publication": 8
+  }
+},
+{
+  "model": "cmspages.pagepublication",
+  "pk": 5,
+  "fields": {
+    "created": "2020-12-21T22:33:07.500Z",
+    "modified": "2020-12-21T22:33:07.500Z",
+    "order": 2,
+    "is_active": true,
+    "page": 17,
+    "publication": 9
   }
 },
 {
@@ -5849,7 +6119,7 @@
   "pk": 12,
   "fields": {
     "created": "2020-12-10T11:37:15.907Z",
-    "modified": "2020-12-10T11:37:33.419Z",
+    "modified": "2020-12-18T07:38:09.454Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
