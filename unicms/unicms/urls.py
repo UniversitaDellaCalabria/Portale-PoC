@@ -49,7 +49,7 @@ urlpatterns += re_path('^openapi.json$',
                        name='openapi-schema-json'),
 
 
-if 'cms.pages' in settings.INSTALLED_APPS:
+if 'cms.contexts' in settings.INSTALLED_APPS:
     urlpatterns += path('', 
                         include(('cms.contexts.urls', 'cms'), namespace="unicms"), 
                         name="unicms"),

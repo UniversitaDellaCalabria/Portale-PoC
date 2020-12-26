@@ -313,7 +313,6 @@ CMS_HOOKS = {
         'PREDELETE': [],
         'POSTDELETE': []
     }
-
 }
 
 SEARCH_ELEMENTS_IN_PAGE = 4
