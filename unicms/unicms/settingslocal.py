@@ -31,7 +31,6 @@ INSTALLED_APPS = [
 
     'sass_processor',
     'bootstrap_italia_template',
-    # 'django_unical_bootstrap_italia',
 
     'taggit',
     'nested_admin',
@@ -231,7 +230,8 @@ CMS_APP_REGEXP_URLPATHS = {
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [f'{CMS_TEMPLATES_FOLDER}',
+        'DIRS': ['templates',
+                 f'{CMS_TEMPLATES_FOLDER}',
                  f'{CMS_TEMPLATES_FOLDER}/pages',
                  f'{CMS_TEMPLATES_FOLDER}/blocks'],
         'APP_DIRS': True,
