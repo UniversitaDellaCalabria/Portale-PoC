@@ -12,17 +12,9 @@ little code as possible and working even less, when possibile.
 
 # Table of Contents
 1. [Setup](#setup)
-2. [Model](#model)
-3. [Template tags](#template-tags)
-4. [Page Blocks](#fourth-examplehttpwwwfourthexamplecom)
-5. [Handlers](#handlers)
-6. [Middlewares](#middlewares)
-7. [Menu and Navigation Bars](#menu)
-8. [Search Engine](#search-engine)
-9. [Urls](#urls)
-10. [Api OAS3](#api)
-11. [Post Pre Save Hooks](#post-pre-save-hooks)
-12. [Todo](#todo)
+2. [Documentation](#unicms-documentation)
+3. [Tests](#tests)
+4. [Todo](#todo)
 
 
 Setup
@@ -54,6 +46,13 @@ Go to `/admin` and submit the superuser credential to start putting some data in
 If you want to share your example data
 ````
 ./manage.py dumpdata --exclude auth.permission --exclude contenttypes --exclude sessions --exclude admin --indent 2 > ../dumps/cms.json
+````
+
+Tests
+-----
+
+````
+./manage.py test cms
 ````
 
 uniCMS Documentation
