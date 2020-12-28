@@ -481,6 +481,15 @@
 },
 {
   "model": "taggit.taggeditem",
+  "pk": 48,
+  "fields": {
+    "tag": 2,
+    "content_type": 27,
+    "object_id": 21
+  }
+},
+{
+  "model": "taggit.taggeditem",
   "pk": 49,
   "fields": {
     "tag": 2,
@@ -517,6 +526,24 @@
 },
 {
   "model": "taggit.taggeditem",
+  "pk": 53,
+  "fields": {
+    "tag": 2,
+    "content_type": 27,
+    "object_id": 22
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 54,
+  "fields": {
+    "tag": 2,
+    "content_type": 27,
+    "object_id": 19
+  }
+},
+{
+  "model": "taggit.taggeditem",
   "pk": 55,
   "fields": {
     "tag": 2,
@@ -535,20 +562,11 @@
 },
 {
   "model": "taggit.taggeditem",
-  "pk": 58,
+  "pk": 57,
   "fields": {
     "tag": 2,
     "content_type": 27,
-    "object_id": 20
-  }
-},
-{
-  "model": "taggit.taggeditem",
-  "pk": 59,
-  "fields": {
-    "tag": 2,
-    "content_type": 27,
-    "object_id": 24
+    "object_id": 18
   }
 },
 {
@@ -556,7 +574,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:00.088Z",
-    "modified": "2020-12-23T12:19:13.455Z",
+    "modified": "2020-12-14T12:11:49.908Z",
     "is_active": true,
     "name": "Bootstrap Italia",
     "template_file": "italia.html",
@@ -579,6 +597,32 @@
 },
 {
   "model": "cmstemplates.pagetemplate",
+  "pk": 3,
+  "fields": {
+    "created": "2020-12-03T07:22:34.774Z",
+    "modified": "2020-12-18T17:29:18.433Z",
+    "is_active": true,
+    "name": "Unical - Menu Publications Stack",
+    "template_file": "unical_main_center_alternative.html",
+    "image": "",
+    "note": ""
+  }
+},
+{
+  "model": "cmstemplates.pagetemplate",
+  "pk": 4,
+  "fields": {
+    "created": "2020-12-03T14:49:37.539Z",
+    "modified": "2020-12-16T12:39:44.248Z",
+    "is_active": true,
+    "name": "Unical - Menu Publications Expanded Stack",
+    "template_file": "unical_main_spaced_columns.html",
+    "image": "",
+    "note": ""
+  }
+},
+{
+  "model": "cmstemplates.pagetemplate",
   "pk": 6,
   "fields": {
     "created": "2020-12-06T15:27:09.964Z",
@@ -595,10 +639,23 @@
   "pk": 7,
   "fields": {
     "created": "2020-12-14T11:18:00.221Z",
-    "modified": "2020-12-22T21:12:54.990Z",
+    "modified": "2020-12-22T07:49:42.972Z",
     "is_active": true,
     "name": "Unical - Main Template",
     "template_file": "unical_main.html",
+    "image": "",
+    "note": ""
+  }
+},
+{
+  "model": "cmstemplates.pagetemplate",
+  "pk": 8,
+  "fields": {
+    "created": "2020-12-18T17:14:36.330Z",
+    "modified": "2020-12-18T17:14:36.331Z",
+    "is_active": true,
+    "name": "Unical - Main Alternative Template",
+    "template_file": "unical_main_center_alternative.html",
     "image": "",
     "note": ""
   }
@@ -622,12 +679,12 @@
   "pk": 2,
   "fields": {
     "created": "2020-11-18T15:13:34.250Z",
-    "modified": "2020-12-28T10:41:36.844Z",
+    "modified": "2020-12-14T12:03:58.342Z",
     "is_active": true,
     "name": "Carousel - Main Banner",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='banner' template=\"italia_hero_slider.html\" %}",
+    "content": "{% load unicms_carousels %}\r\n{% load_carousel section='slider' template=\"hero_slider.html\" %}\r\n\r\n<script>\r\n$(document).ready(function() {\r\n  $(\"#my-slider\").owlCarousel({\r\n      navigation : true, // Show next and prev buttons\r\n      loop: true,\r\n      slideSpeed : 300,\r\n      paginationSpeed : 400,\r\n      autoplay: true,\r\n      items : 1,\r\n      itemsDesktop : false,\r\n      itemsDesktopSmall : false,\r\n      itemsTablet: false,\r\n      itemsMobile : false,\r\n      dots: false\r\n  });\r\n});\r\n</script>",
     "image": ""
   }
 },
@@ -650,12 +707,12 @@
   "pk": 4,
   "fields": {
     "created": "2020-11-18T15:14:07.509Z",
-    "modified": "2020-12-23T07:25:56.989Z",
+    "modified": "2020-12-21T11:44:06.480Z",
     "is_active": true,
     "name": "iFrame 16/9",
     "description": "",
     "type": "cms.templates.blocks.LinkPlaceholderBlock",
-    "content": "{\r\n\"template\": \"italia_iframe_16by9.html\"\r\n}",
+    "content": "{\r\n\"template\": \"iframe.html\",\r\n\"aspect_ratio\": \"16by9\"\r\n}",
     "image": ""
   }
 },
@@ -692,12 +749,12 @@
   "pk": 7,
   "fields": {
     "created": "2020-12-01T14:08:42.924Z",
-    "modified": "2020-12-23T12:17:47.111Z",
+    "modified": "2020-12-16T11:16:17.657Z",
     "is_active": true,
     "name": "Main Menu",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n{% load_menu section='menu-1' template=\"unical_main_menu.html\" %}",
+    "content": "{% load unicms_menus %}\r\n{% load_menu section='menu-1' template=\"main_menu.html\" %}",
     "image": ""
   }
 },
@@ -804,12 +861,12 @@
   "pk": 18,
   "fields": {
     "created": "2020-12-06T15:12:04.343Z",
-    "modified": "2020-12-23T13:45:20.622Z",
+    "modified": "2020-12-06T15:29:12.483Z",
     "is_active": true,
     "name": "Motore di Ricerca",
     "description": "search engine",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% include \"italia_search_engine.html\" %}",
+    "content": "{% include \"search_engine.html\" %}",
     "image": ""
   }
 },
@@ -958,12 +1015,12 @@
   "pk": 30,
   "fields": {
     "created": "2020-12-14T16:54:24.981Z",
-    "modified": "2020-12-28T11:40:32.314Z",
+    "modified": "2020-12-16T12:58:19.064Z",
     "is_active": true,
     "name": "Unical - Page Title H1 lighter",
     "description": "",
     "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_pages %}\r\n\r\n<h1 class=\"lighter mb-5\">{% load_page_title page %}</h1>",
+    "content": "<h1 class=\"lighter mt-3\">{{ page.name }}</h1>",
     "image": ""
   }
 },
@@ -1042,82 +1099,12 @@
   "pk": 36,
   "fields": {
     "created": "2020-12-18T14:24:39.038Z",
-    "modified": "2020-12-22T15:08:44.045Z",
+    "modified": "2020-12-18T18:13:59.972Z",
     "is_active": true,
     "name": "Placehoder - Intro text Pubblicazione",
     "description": "",
     "type": "cms.templates.blocks.PublicationContentPlaceholderBlock",
-    "content": "{\"template\": \"ph_publication.html\"}",
-    "image": ""
-  }
-},
-{
-  "model": "cmstemplates.templateblock",
-  "pk": 37,
-  "fields": {
-    "created": "2020-12-22T15:05:28.313Z",
-    "modified": "2020-12-22T15:05:28.313Z",
-    "is_active": true,
-    "name": "Placeholder Publication - Card 1",
-    "description": "",
-    "type": "cms.templates.blocks.PublicationContentPlaceholderBlock",
-    "content": "{\"template\": \"publication_card_big.html\"}",
-    "image": ""
-  }
-},
-{
-  "model": "cmstemplates.templateblock",
-  "pk": 38,
-  "fields": {
-    "created": "2020-12-22T15:26:13.833Z",
-    "modified": "2020-12-22T15:26:13.833Z",
-    "is_active": true,
-    "name": "Placeholder Publication - Card no image",
-    "description": "",
-    "type": "cms.templates.blocks.PublicationContentPlaceholderBlock",
-    "content": "{\"template\": \"publication_card_no_image.html\"}",
-    "image": ""
-  }
-},
-{
-  "model": "cmstemplates.templateblock",
-  "pk": 39,
-  "fields": {
-    "created": "2020-12-23T08:38:11.573Z",
-    "modified": "2020-12-23T08:38:11.573Z",
-    "is_active": true,
-    "name": "Menu Secondario Unical",
-    "description": "",
-    "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n\r\n{% load_menu section='menu-2' template=\"unical_portale_menu_secondario.html\" %}",
-    "image": ""
-  }
-},
-{
-  "model": "cmstemplates.templateblock",
-  "pk": 40,
-  "fields": {
-    "created": "2020-12-23T12:17:58.586Z",
-    "modified": "2020-12-23T12:17:58.586Z",
-    "is_active": true,
-    "name": "Main Menu - Italia",
-    "description": "",
-    "type": "cms.templates.blocks.HtmlBlock",
-    "content": "{% load unicms_menus %}\r\n{% load_menu section='menu-1' template=\"italia_main_menu.html\" %}",
-    "image": ""
-  }
-},
-{
-  "model": "cmstemplates.templateblock",
-  "pk": 41,
-  "fields": {
-    "created": "2020-12-28T12:05:34.471Z",
-    "modified": "2020-12-28T12:22:15.327Z",
-    "is_active": true,
-    "name": "Unical - Carousel",
-    "description": "",
-    "type": "cms.templates.blocks.CarouselPlaceholderBlock",
-    "content": "{\"template\" :\"italia_hero_slider.html\"}",
+    "content": "{\"template\": \"ph_publication.html\", \"publication_id\":\"7\"}",
     "image": ""
   }
 },
@@ -1152,11 +1139,11 @@
   "pk": 7,
   "fields": {
     "created": "2020-12-01T14:08:55.143Z",
-    "modified": "2020-12-23T12:19:13.456Z",
+    "modified": "2020-12-01T14:08:55.143Z",
     "order": 1,
     "is_active": true,
     "template": 1,
-    "block": 40,
+    "block": 7,
     "section": "menu-1"
   }
 },
@@ -1171,6 +1158,32 @@
     "template": 2,
     "block": 7,
     "section": "menu-1"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 10,
+  "fields": {
+    "created": "2020-12-03T07:51:02.326Z",
+    "modified": "2020-12-14T14:28:33.062Z",
+    "order": 10,
+    "is_active": true,
+    "template": 3,
+    "block": 7,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 13,
+  "fields": {
+    "created": "2020-12-03T14:50:39.475Z",
+    "modified": "2020-12-14T15:45:15.605Z",
+    "order": 10,
+    "is_active": true,
+    "template": 4,
+    "block": 12,
+    "section": "1-center-content"
   }
 },
 {
@@ -1210,6 +1223,84 @@
     "template": 7,
     "block": 7,
     "section": "menu-1"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 21,
+  "fields": {
+    "created": "2020-12-14T12:43:22.738Z",
+    "modified": "2020-12-14T15:19:56.211Z",
+    "order": 10,
+    "is_active": true,
+    "template": 3,
+    "block": 8,
+    "section": "1-center-content"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 22,
+  "fields": {
+    "created": "2020-12-14T15:45:52.654Z",
+    "modified": "2020-12-14T15:45:52.654Z",
+    "order": 10,
+    "is_active": true,
+    "template": 4,
+    "block": 7,
+    "section": "menu-1"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 24,
+  "fields": {
+    "created": "2020-12-14T16:56:06.696Z",
+    "modified": "2020-12-15T11:05:07.873Z",
+    "order": 10,
+    "is_active": true,
+    "template": 3,
+    "block": 30,
+    "section": "1-top-a"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 25,
+  "fields": {
+    "created": "2020-12-16T10:47:04.618Z",
+    "modified": "2020-12-16T10:47:04.618Z",
+    "order": 10,
+    "is_active": true,
+    "template": 4,
+    "block": 30,
+    "section": "1-top-a"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 26,
+  "fields": {
+    "created": "2020-12-16T12:39:03.217Z",
+    "modified": "2020-12-16T12:39:03.217Z",
+    "order": 10,
+    "is_active": true,
+    "template": 3,
+    "block": 35,
+    "section": "breadcrumbs"
+  }
+},
+{
+  "model": "cmstemplates.pagetemplateblock",
+  "pk": 27,
+  "fields": {
+    "created": "2020-12-16T12:39:44.249Z",
+    "modified": "2020-12-16T12:39:44.249Z",
+    "order": 10,
+    "is_active": true,
+    "template": 4,
+    "block": 35,
+    "section": "breadcrumbs"
   }
 },
 {
@@ -1708,7 +1799,7 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-30T14:06:46.447Z",
-    "modified": "2020-12-28T09:38:55.591Z",
+    "modified": "2020-12-10T07:44:57.859Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
@@ -4500,13 +4591,12 @@
   "pk": 1,
   "fields": {
     "created": "2020-10-29T09:12:44.427Z",
-    "modified": "2020-12-28T12:31:45.147Z",
+    "modified": "2020-12-21T16:38:54.104Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
     "draft_of": null,
     "name": "Portale dell'Università della Calabria",
-    "title": "titolo pagina",
     "webpath": 1,
     "base_template": 7,
     "description": "",
@@ -4527,7 +4617,6 @@
     "modified_by": null,
     "draft_of": null,
     "name": "Dimes",
-    "title": "titolo pagina",
     "webpath": 4,
     "base_template": 2,
     "description": "",
@@ -4548,7 +4637,6 @@
     "modified_by": null,
     "draft_of": 1,
     "name": "Portale dell'Università della Calabria",
-    "title": "titolo pagina",
     "webpath": 1,
     "base_template": 1,
     "description": "",
@@ -4560,16 +4648,35 @@
 },
 {
   "model": "cmspages.page",
+  "pk": 16,
+  "fields": {
+    "created": "2020-12-03T07:23:10.854Z",
+    "modified": "2020-12-03T07:43:10.663Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "draft_of": null,
+    "name": "Offerta Formativa",
+    "webpath": 7,
+    "base_template": 3,
+    "description": "",
+    "date_start": "2020-12-03T07:22:54Z",
+    "date_end": null,
+    "state": "published",
+    "type": "standard"
+  }
+},
+{
+  "model": "cmspages.page",
   "pk": 17,
   "fields": {
     "created": "2020-12-03T10:47:08.171Z",
-    "modified": "2020-12-28T11:31:46.315Z",
+    "modified": "2020-12-21T22:33:02.043Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
     "draft_of": null,
     "name": "I Servizi del Campus",
-    "title": "I Servizi del Campus",
     "webpath": 8,
     "base_template": 7,
     "description": "",
@@ -4581,20 +4688,99 @@
 },
 {
   "model": "cmspages.page",
+  "pk": 18,
+  "fields": {
+    "created": "2020-12-03T14:52:21.564Z",
+    "modified": "2020-12-16T10:48:11.720Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "draft_of": null,
+    "name": "Visita il campus",
+    "webpath": 9,
+    "base_template": 4,
+    "description": "",
+    "date_start": "2020-12-03T14:52:17Z",
+    "date_end": "2050-12-03T15:01:03Z",
+    "state": "published",
+    "type": "standard"
+  }
+},
+{
+  "model": "cmspages.page",
+  "pk": 19,
+  "fields": {
+    "created": "2020-12-03T15:56:59.313Z",
+    "modified": "2020-12-16T10:50:24.768Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "draft_of": null,
+    "name": "Futuri Studenti",
+    "webpath": 10,
+    "base_template": 3,
+    "description": "",
+    "date_start": "2020-12-03T15:56:47Z",
+    "date_end": null,
+    "state": "published",
+    "type": "standard"
+  }
+},
+{
+  "model": "cmspages.page",
   "pk": 20,
   "fields": {
     "created": "2020-12-06T15:07:13.649Z",
-    "modified": "2020-12-22T22:29:00.602Z",
+    "modified": "2020-12-06T15:38:49.821Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
     "draft_of": null,
     "name": "Motore di Ricerca Portale Unical",
-    "title": "titolo pagina",
     "webpath": 11,
-    "base_template": 7,
+    "base_template": 6,
     "description": "",
     "date_start": "2020-12-06T15:06:53Z",
+    "date_end": null,
+    "state": "published",
+    "type": "standard"
+  }
+},
+{
+  "model": "cmspages.page",
+  "pk": 21,
+  "fields": {
+    "created": "2020-12-10T11:32:32.025Z",
+    "modified": "2020-12-11T08:31:19.337Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "draft_of": null,
+    "name": "Internazionale",
+    "webpath": 14,
+    "base_template": 3,
+    "description": "",
+    "date_start": "2020-12-10T11:31:46Z",
+    "date_end": null,
+    "state": "published",
+    "type": "standard"
+  }
+},
+{
+  "model": "cmspages.page",
+  "pk": 22,
+  "fields": {
+    "created": "2020-12-11T08:50:05.056Z",
+    "modified": "2020-12-21T21:01:02.030Z",
+    "is_active": true,
+    "created_by": null,
+    "modified_by": null,
+    "draft_of": null,
+    "name": "Accordi internazionali",
+    "webpath": 15,
+    "base_template": 3,
+    "description": "",
+    "date_start": "2020-12-11T08:48:57Z",
     "date_end": null,
     "state": "published",
     "type": "standard"
@@ -4605,13 +4791,12 @@
   "pk": 23,
   "fields": {
     "created": "2020-12-14T17:04:52.893Z",
-    "modified": "2020-12-23T12:18:58.574Z",
+    "modified": "2020-12-15T09:32:02.586Z",
     "is_active": true,
     "created_by": null,
     "modified_by": null,
     "draft_of": null,
     "name": "Bootstrap Italia GRID PAGE",
-    "title": "titolo pagina",
     "webpath": 16,
     "base_template": 1,
     "description": "",
@@ -4622,35 +4807,14 @@
   }
 },
 {
-  "model": "cmspages.page",
-  "pk": 24,
-  "fields": {
-    "created": "2020-12-22T22:32:23.831Z",
-    "modified": "2020-12-28T09:43:24.354Z",
-    "is_active": true,
-    "created_by": null,
-    "modified_by": null,
-    "draft_of": null,
-    "name": "Accordi internazionali",
-    "title": "titolo pagina",
-    "webpath": 15,
-    "base_template": 7,
-    "description": "",
-    "date_start": "2020-12-22T22:32:17Z",
-    "date_end": null,
-    "state": "published",
-    "type": "standard"
-  }
-},
-{
   "model": "cmspages.pagecarousel",
   "pk": 1,
   "fields": {
     "created": "2020-10-30T16:37:39.528Z",
-    "modified": "2020-12-23T08:21:28.856Z",
+    "modified": "2020-12-21T07:50:11.800Z",
     "order": 0,
     "is_active": true,
-    "section": "banner",
+    "section": "slider",
     "page": 1,
     "carousel": 1
   }
@@ -4679,46 +4843,6 @@
     "section": "slider",
     "page": 15,
     "carousel": 1
-  }
-},
-{
-  "model": "cmspages.pagecarousel",
-  "pk": 7,
-  "fields": {
-    "created": "2020-12-28T12:23:56.261Z",
-    "modified": "2020-12-28T12:23:56.261Z",
-    "order": 1,
-    "is_active": true,
-    "section": "banner",
-    "page": 1,
-    "carousel": 2
-  }
-},
-{
-  "model": "cmspages.pagecarousel",
-  "pk": 8,
-  "fields": {
-    "created": "2020-12-28T12:31:45.252Z",
-    "modified": "2020-12-28T12:31:45.252Z",
-    "order": 2,
-    "is_active": true,
-    "section": "banner",
-    "page": 1,
-    "carousel": 1
-  }
-},
-{
-  "model": "cmspages.pagelocalization",
-  "pk": 1,
-  "fields": {
-    "created": "2020-12-28T11:31:46.489Z",
-    "modified": "2020-12-28T11:31:46.489Z",
-    "is_active": true,
-    "created_by": null,
-    "modified_by": null,
-    "title": "Campus Services",
-    "page": 17,
-    "language": "en"
   }
 },
 {
@@ -4801,6 +4925,19 @@
 },
 {
   "model": "cmspages.pagemenu",
+  "pk": 17,
+  "fields": {
+    "created": "2020-12-03T07:23:10.866Z",
+    "modified": "2020-12-03T07:24:19.358Z",
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 16,
+    "menu": 1
+  }
+},
+{
+  "model": "cmspages.pagemenu",
   "pk": 18,
   "fields": {
     "created": "2020-12-03T10:47:08.181Z",
@@ -4814,11 +4951,63 @@
 },
 {
   "model": "cmspages.pagemenu",
+  "pk": 23,
+  "fields": {
+    "created": "2020-12-03T15:09:55.724Z",
+    "modified": "2020-12-03T15:09:55.724Z",
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 18,
+    "menu": 1
+  }
+},
+{
+  "model": "cmspages.pagemenu",
+  "pk": 24,
+  "fields": {
+    "created": "2020-12-03T15:14:50.295Z",
+    "modified": "2020-12-16T10:47:44.532Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "page": 18,
+    "menu": 21
+  }
+},
+{
+  "model": "cmspages.pagemenu",
+  "pk": 25,
+  "fields": {
+    "created": "2020-12-03T15:17:53.563Z",
+    "modified": "2020-12-16T10:47:44.537Z",
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "page": 18,
+    "menu": 22
+  }
+},
+{
+  "model": "cmspages.pagemenu",
+  "pk": 26,
+  "fields": {
+    "created": "2020-12-03T15:56:59.324Z",
+    "modified": "2020-12-03T15:56:59.324Z",
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 19,
+    "menu": 1
+  }
+},
+{
+  "model": "cmspages.pagemenu",
   "pk": 35,
   "fields": {
     "created": "2020-12-06T15:25:55.179Z",
-    "modified": "2020-12-22T22:26:14.558Z",
-    "order": 0,
+    "modified": "2020-12-06T15:38:12.107Z",
+    "order": 10,
     "is_active": true,
     "section": "menu-1",
     "page": 20,
@@ -4827,28 +5016,67 @@
 },
 {
   "model": "cmspages.pagemenu",
-  "pk": 43,
+  "pk": 36,
   "fields": {
-    "created": "2020-12-22T22:33:06.472Z",
-    "modified": "2020-12-22T22:33:06.472Z",
-    "order": 0,
+    "created": "2020-12-10T11:32:32.050Z",
+    "modified": "2020-12-10T11:32:32.050Z",
+    "order": 10,
     "is_active": true,
     "section": "menu-1",
-    "page": 24,
+    "page": 21,
     "menu": 1
   }
 },
 {
   "model": "cmspages.pagemenu",
-  "pk": 44,
+  "pk": 37,
   "fields": {
-    "created": "2020-12-23T10:01:32.013Z",
-    "modified": "2020-12-23T10:01:32.013Z",
+    "created": "2020-12-10T11:43:27.027Z",
+    "modified": "2020-12-11T08:31:19.432Z",
+    "order": 20,
+    "is_active": true,
+    "section": "3",
+    "page": 21,
+    "menu": 21
+  }
+},
+{
+  "model": "cmspages.pagemenu",
+  "pk": 38,
+  "fields": {
+    "created": "2020-12-10T11:43:27.027Z",
+    "modified": "2020-12-11T08:31:19.433Z",
+    "order": 10,
+    "is_active": true,
+    "section": "2",
+    "page": 21,
+    "menu": 20
+  }
+},
+{
+  "model": "cmspages.pagemenu",
+  "pk": 39,
+  "fields": {
+    "created": "2020-12-11T08:50:05.084Z",
+    "modified": "2020-12-18T14:24:46.452Z",
     "order": 0,
     "is_active": true,
     "section": "menu-1",
-    "page": 23,
+    "page": 22,
     "menu": 1
+  }
+},
+{
+  "model": "cmspages.pagemenu",
+  "pk": 42,
+  "fields": {
+    "created": "2020-12-11T08:50:05.085Z",
+    "modified": "2020-12-18T14:24:46.455Z",
+    "order": 1,
+    "is_active": true,
+    "section": "menu-2",
+    "page": 22,
+    "menu": 24
   }
 },
 {
@@ -4857,7 +5085,7 @@
   "fields": {
     "order": 0,
     "is_active": true,
-    "section": "1-right-b",
+    "section": "1-right-a",
     "page": 17,
     "block": 32
   }
@@ -4868,9 +5096,31 @@
   "fields": {
     "order": 1,
     "is_active": true,
-    "section": "1-right-b",
+    "section": "1-right-a",
     "page": 17,
     "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 7,
+  "fields": {
+    "order": 30,
+    "is_active": true,
+    "section": "1-right-a",
+    "page": 18,
+    "block": 33
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 9,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "1-right-a",
+    "page": 18,
+    "block": 11
   }
 },
 {
@@ -4879,9 +5129,262 @@
   "fields": {
     "order": 2,
     "is_active": true,
-    "section": "1-right-b",
+    "section": "1-right-a",
     "page": 17,
     "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 12,
+  "fields": {
+    "order": 15,
+    "is_active": true,
+    "section": "1-right-a",
+    "page": 18,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 13,
+  "fields": {
+    "order": 5,
+    "is_active": true,
+    "section": null,
+    "page": 18,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 14,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": null,
+    "page": 19,
+    "block": 11
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 15,
+  "fields": {
+    "order": 15,
+    "is_active": true,
+    "section": null,
+    "page": 19,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 17,
+  "fields": {
+    "order": 30,
+    "is_active": true,
+    "section": null,
+    "page": 19,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 29,
+  "fields": {
+    "order": 50,
+    "is_active": true,
+    "section": "menu-2",
+    "page": 19,
+    "block": 15
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 30,
+  "fields": {
+    "order": 60,
+    "is_active": true,
+    "section": "menu-3",
+    "page": 19,
+    "block": 16
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 31,
+  "fields": {
+    "order": 70,
+    "is_active": true,
+    "section": null,
+    "page": 19,
+    "block": 17
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 33,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "menu-1",
+    "page": 20,
+    "block": 7
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 37,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "2",
+    "page": 21,
+    "block": 19
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 38,
+  "fields": {
+    "order": 15,
+    "is_active": true,
+    "section": "2",
+    "page": 21,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 39,
+  "fields": {
+    "order": 25,
+    "is_active": true,
+    "section": "3",
+    "page": 21,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 41,
+  "fields": {
+    "order": 1,
+    "is_active": true,
+    "section": "1",
+    "page": 21,
+    "block": 20
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 42,
+  "fields": {
+    "order": 5,
+    "is_active": true,
+    "section": "1",
+    "page": 21,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 43,
+  "fields": {
+    "order": 0,
+    "is_active": true,
+    "section": "1-right-a",
+    "page": 22,
+    "block": 19
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 44,
+  "fields": {
+    "order": 1,
+    "is_active": true,
+    "section": "menu-2",
+    "page": 22,
+    "block": 15
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 45,
+  "fields": {
+    "order": 2,
+    "is_active": true,
+    "section": "1-right-a",
+    "page": 22,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 46,
+  "fields": {
+    "order": 3,
+    "is_active": true,
+    "section": "1-right-a",
+    "page": 22,
+    "block": 32
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 48,
+  "fields": {
+    "order": 4,
+    "is_active": true,
+    "section": null,
+    "page": 22,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 50,
+  "fields": {
+    "order": 5,
+    "is_active": true,
+    "section": "1-center-top-a",
+    "page": 22,
+    "block": 21
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 51,
+  "fields": {
+    "order": 6,
+    "is_active": true,
+    "section": "1-center-top-b",
+    "page": 22,
+    "block": 22
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 52,
+  "fields": {
+    "order": 7,
+    "is_active": true,
+    "section": "1-center-content",
+    "page": 22,
+    "block": 14
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 53,
+  "fields": {
+    "order": 8,
+    "is_active": true,
+    "section": "2-center-bottom-a",
+    "page": 22,
+    "block": 23
   }
 },
 {
@@ -4889,7 +5392,7 @@
   "pk": 66,
   "fields": {
     "order": 0,
-    "is_active": false,
+    "is_active": true,
     "section": "2-center-content",
     "page": 1,
     "block": 1
@@ -4922,8 +5425,8 @@
   "pk": 69,
   "fields": {
     "order": 3,
-    "is_active": false,
-    "section": "banner",
+    "is_active": true,
+    "section": "slider",
     "page": 1,
     "block": 2
   }
@@ -4945,7 +5448,7 @@
   "fields": {
     "order": 3,
     "is_active": true,
-    "section": "1-right-b",
+    "section": "1-right-a",
     "page": 17,
     "block": 11
   }
@@ -4965,7 +5468,7 @@
   "model": "cmspages.pageblock",
   "pk": 76,
   "fields": {
-    "order": 0,
+    "order": 10,
     "is_active": true,
     "section": "1-center-content",
     "page": 23,
@@ -4976,7 +5479,7 @@
   "model": "cmspages.pageblock",
   "pk": 77,
   "fields": {
-    "order": 1,
+    "order": 10,
     "is_active": true,
     "section": "2-center-content",
     "page": 23,
@@ -4987,7 +5490,7 @@
   "model": "cmspages.pageblock",
   "pk": 78,
   "fields": {
-    "order": 2,
+    "order": 10,
     "is_active": true,
     "section": "3-center-content",
     "page": 23,
@@ -5000,7 +5503,7 @@
   "fields": {
     "order": 4,
     "is_active": true,
-    "section": "1-right-b",
+    "section": "1-right-a",
     "page": 17,
     "block": 33
   }
@@ -5022,9 +5525,75 @@
   "fields": {
     "order": 7,
     "is_active": true,
-    "section": "2-mid-bottom-c",
+    "section": "2-mid-bottom-b",
     "page": 1,
     "block": 4
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 85,
+  "fields": {
+    "order": 9,
+    "is_active": true,
+    "section": "1-top-a",
+    "page": 22,
+    "block": 22
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 86,
+  "fields": {
+    "order": 10,
+    "is_active": true,
+    "section": "2-center-bottom-b",
+    "page": 22,
+    "block": 36
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 87,
+  "fields": {
+    "order": 8,
+    "is_active": true,
+    "section": "2-right-a",
+    "page": 1,
+    "block": 34
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 88,
+  "fields": {
+    "order": 11,
+    "is_active": true,
+    "section": "2-center-top-a",
+    "page": 22,
+    "block": 21
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 89,
+  "fields": {
+    "order": 12,
+    "is_active": true,
+    "section": "2-center-top-b",
+    "page": 22,
+    "block": 22
+  }
+},
+{
+  "model": "cmspages.pageblock",
+  "pk": 90,
+  "fields": {
+    "order": 13,
+    "is_active": true,
+    "section": "2-right-a",
+    "page": 22,
+    "block": 32
   }
 },
 {
@@ -5083,149 +5652,6 @@
   }
 },
 {
-  "model": "cmspages.pageblock",
-  "pk": 98,
-  "fields": {
-    "order": 8,
-    "is_active": true,
-    "section": "2-center-top-a",
-    "page": 1,
-    "block": 37
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 100,
-  "fields": {
-    "order": 9,
-    "is_active": true,
-    "section": "2-center-top-b",
-    "page": 1,
-    "block": 38
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 101,
-  "fields": {
-    "order": 10,
-    "is_active": true,
-    "section": "breadcrumbs",
-    "page": 17,
-    "block": 35
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 102,
-  "fields": {
-    "order": 0,
-    "is_active": true,
-    "section": "1-center-content",
-    "page": 20,
-    "block": 18
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 103,
-  "fields": {
-    "order": 1,
-    "is_active": true,
-    "section": "breadcrumbs",
-    "page": 20,
-    "block": 35
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 104,
-  "fields": {
-    "order": 0,
-    "is_active": true,
-    "section": "breadcrumbs",
-    "page": 24,
-    "block": 35
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 105,
-  "fields": {
-    "order": 1,
-    "is_active": true,
-    "section": "1-center-top-a",
-    "page": 24,
-    "block": 22
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 106,
-  "fields": {
-    "order": 10,
-    "is_active": true,
-    "section": "menu-2",
-    "page": 1,
-    "block": 39
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 110,
-  "fields": {
-    "order": 11,
-    "is_active": true,
-    "section": "1-top-a",
-    "page": 17,
-    "block": 30
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 111,
-  "fields": {
-    "order": 2,
-    "is_active": true,
-    "section": "1-top-a",
-    "page": 24,
-    "block": 30
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 112,
-  "fields": {
-    "order": 11,
-    "is_active": true,
-    "section": "banner",
-    "page": 1,
-    "block": 41
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 113,
-  "fields": {
-    "order": 12,
-    "is_active": true,
-    "section": "1-top-a",
-    "page": 1,
-    "block": 41
-  }
-},
-{
-  "model": "cmspages.pageblock",
-  "pk": 114,
-  "fields": {
-    "order": 13,
-    "is_active": true,
-    "section": "1-top-b",
-    "page": 1,
-    "block": 41
-  }
-},
-{
   "model": "cmspages.pagelink",
   "pk": 1,
   "fields": {
@@ -5263,6 +5689,30 @@
 },
 {
   "model": "cmspages.pagepublication",
+  "pk": 1,
+  "fields": {
+    "created": "2020-12-18T14:24:46.477Z",
+    "modified": "2020-12-18T14:24:46.477Z",
+    "order": 0,
+    "is_active": true,
+    "page": 22,
+    "publication": 11
+  }
+},
+{
+  "model": "cmspages.pagepublication",
+  "pk": 2,
+  "fields": {
+    "created": "2020-12-18T16:11:17.329Z",
+    "modified": "2020-12-18T16:11:17.329Z",
+    "order": 1,
+    "is_active": true,
+    "page": 22,
+    "publication": 11
+  }
+},
+{
+  "model": "cmspages.pagepublication",
   "pk": 3,
   "fields": {
     "created": "2020-12-21T22:26:48.924Z",
@@ -5278,7 +5728,7 @@
   "pk": 4,
   "fields": {
     "created": "2020-12-21T22:32:05.402Z",
-    "modified": "2020-12-22T14:10:54.233Z",
+    "modified": "2020-12-21T22:32:05.402Z",
     "order": 1,
     "is_active": true,
     "page": 17,
@@ -5290,59 +5740,11 @@
   "pk": 5,
   "fields": {
     "created": "2020-12-21T22:33:07.500Z",
-    "modified": "2020-12-22T14:10:54.236Z",
+    "modified": "2020-12-21T22:33:07.500Z",
     "order": 2,
     "is_active": true,
     "page": 17,
     "publication": 9
-  }
-},
-{
-  "model": "cmspages.pagepublication",
-  "pk": 6,
-  "fields": {
-    "created": "2020-12-22T14:35:45.009Z",
-    "modified": "2020-12-22T14:35:45.009Z",
-    "order": 0,
-    "is_active": true,
-    "page": 1,
-    "publication": 1
-  }
-},
-{
-  "model": "cmspages.pagepublication",
-  "pk": 7,
-  "fields": {
-    "created": "2020-12-22T15:16:50.164Z",
-    "modified": "2020-12-22T15:16:50.164Z",
-    "order": 1,
-    "is_active": true,
-    "page": 1,
-    "publication": 4
-  }
-},
-{
-  "model": "cmspages.pagepublication",
-  "pk": 8,
-  "fields": {
-    "created": "2020-12-22T22:33:55.396Z",
-    "modified": "2020-12-22T22:33:55.396Z",
-    "order": 0,
-    "is_active": true,
-    "page": 24,
-    "publication": 11
-  }
-},
-{
-  "model": "cmspages.pagepublication",
-  "pk": 9,
-  "fields": {
-    "created": "2020-12-23T13:03:51.044Z",
-    "modified": "2020-12-23T13:03:51.044Z",
-    "order": 2,
-    "is_active": true,
-    "page": 1,
-    "publication": 4
   }
 },
 {
